@@ -6,7 +6,7 @@ html {
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Gloria Hallelujah', cursive;
 }
 
 hr {
@@ -27,6 +27,9 @@ hr {
   font-family: 'Gloria Hallelujah', cursive;
 }
 
+h1 {
+  font-family: 'Gloria Hallelujah', cursive;
+}
 
 header.startup {
   background-position: center;
@@ -94,6 +97,7 @@ header.startup h1 {
 #copyRight {
   font-family: 'Gloria Hallelujah', cursive;
   margin-top: 10px;
+  padding-top: 10px
 }
 
 /* social footer */
