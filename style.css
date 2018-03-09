@@ -1,7 +1,6 @@
-
-body,
-html {
-  width: 100%;
+html,
+body {
+  width: 100%; 
   height: 100%; 
   /* min-height: 100%;
   position: relative; */
@@ -9,7 +8,7 @@ html {
   background-image: url("clark.png");
   background-size: cover;
 
-}
+} 
 
 body {
   font-family: 'Gloria Hallelujah', cursive;
@@ -37,12 +36,12 @@ h1 {
   font-family: 'Gloria Hallelujah', cursive;
 }
 
-header.startup {
-  background-position: center;
+ header.startup {
+  /* background-position: center;
   background-image: url("clark.png");
-  background-size: cover;
-  height: 100%;
-}
+  background-size: cover; */
+  height: 100%; 
+} 
 
 header.startup hr {
   margin-top: 200px;
@@ -86,6 +85,7 @@ header.startup h1 {
 
 .cardAbout {
   padding-top: 75px;
+  margin-bottom: 200px;
 }
 
 .responsive{
@@ -109,7 +109,7 @@ img:hover {
 
 .footer {
   /* clear: both; */
-  /* position: absolute; */
+  position: fixed;
   background-color: rgb(229, 240, 136);
   text-align: center;
   color: rgb(175, 167, 166);
