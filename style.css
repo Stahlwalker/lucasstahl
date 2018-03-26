@@ -17,11 +17,18 @@ body {
 } 
 
 body {
-  font-family: 'Gloria Hallelujah', cursive;
+  /* font-family: 'Gloria Hallelujah', cursive; */
+  font-family: 'Share Tech', sans-serif;
 }
 
 hr {
   max-width: 65px;
+  border-width: 3px;
+  border-color: rgb(175, 167, 166); 
+}
+
+#hrPort {
+  max-width: 200px;
   border-width: 3px;
   border-color: rgb(175, 167, 166); 
 }
@@ -31,15 +38,19 @@ hr {
 }
 
 .navbar-brand {
-  font-family: 'Gloria Hallelujah', cursive;
+  /* font-family: 'Gloria Hallelujah', cursive; */
+  font-family: 'Share Tech', sans-serif;
 }
 
 .nav-link {
-  font-family: 'Gloria Hallelujah', cursive;
+  /* font-family: 'Gloria Hallelujah', cursive; */
+  font-family: 'Share Tech', sans-serif;
 }
 
 h1 {
-  font-family: 'Gloria Hallelujah', cursive;
+  /* font-family: 'Gloria Hallelujah', cursive; */
+  font-family: 'Share Tech', sans-serif;
+  text-align: center;
 }
 
  header.startup {
@@ -140,7 +151,8 @@ img:hover {
 }
 
 #copyRight {
-  font-family: 'Gloria Hallelujah', cursive;
+  /* font-family: 'Gloria Hallelujah', cursive; */
+  font-family: 'Share Tech', sans-serif;
   margin-top: 10px;
   padding-top: 10px
 }
