@@ -117,8 +117,12 @@ header.startup h1 {
 }
 
 .responsive{
-  width: 100%;
+  width: 75%;
   height: auto;
+}
+
+.imageCenter{
+  text-align: center;
 }
 
 img {
