@@ -82,6 +82,7 @@ header.startup h1 {
 
 .rowAPI {
   text-align: -webkit-center;
+  color: white;
 }
 
 
@@ -124,6 +125,7 @@ header.startup h1 {
 #aboutHeader {
   text-align: center;
   padding-bottom: 20px;
+  font-size: 56px;
   font-family: 'Gloria Hallelujah', cursive;
 }
 
@@ -131,6 +133,8 @@ header.startup h1 {
   text-align: center;
   padding-top: 20px;
   font-family: 'Gloria Hallelujah', cursive;
+  color: white;
+  font-size: 56px;
 }
 
 #title {
