@@ -80,7 +80,9 @@ header.startup h1 {
   font-size: 2rem; 
 }
 
-
+.rowAPI {
+  text-align: -webkit-center;
+}
 
 
 
@@ -110,7 +112,9 @@ header.startup h1 {
   cursor: pointer;
 }
  
-
+/* .col-md-8{
+  float: left;
+} */
 .cardAbout {
   padding-top: 75px;
   margin-bottom: 200px;
