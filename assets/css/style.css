@@ -116,6 +116,16 @@ header.startup h1 {
   margin-bottom: 200px;
 }
 
+.resume {
+  text-align: center;
+}
+
+#resume {
+  margin-bottom: 75px;
+  text-align: center;
+  margin-top: -100px;
+}
+
 .responsive{
   width: 75%;
   height: auto;
