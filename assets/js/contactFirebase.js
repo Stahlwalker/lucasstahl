@@ -1,3 +1,9 @@
+jQuery.ajaxPrefilter(function (options) {
+    if (options.crossDomain && jQuery.support.cors) {
+        options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+    }
+});
+
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyABch8e624hO8-eyPXzM6yiyWoONt_GNLc",
@@ -20,7 +26,7 @@ $("#submit1").on("click", function(event) {
     var firstName = $("#fname").val().trim();
     var lastName = $("#lname").val().trim();
     var email = $("#email").val().trim();
-    var country = $("#country").val().trim();
+    // var country = $("#country").val().trim();
     var subject = $("#subject").val().trim();
 
     // Creates local "temporary" object for holding message data
@@ -28,7 +34,7 @@ $("#submit1").on("click", function(event) {
         name1: firstName,
         name2: lastName,
         emailAddress: email,
-        location: country,
+        // location: country,
         note: subject
     };
 
@@ -39,7 +45,7 @@ $("#submit1").on("click", function(event) {
       console.log(newMessage.name1);
       console.log(newMessage.name2);
       console.log(newMessage.emailAddress);
-      console.log(newMessage.location);
+    //   console.log(newMessage.location);
       console.log(newMessage.note);
 
     // Alert
@@ -49,7 +55,7 @@ $("#submit1").on("click", function(event) {
         $("#fname").val("");
         $("#1name").val("");
         $("#email").val("");
-        $("#country").val("");
+        // $("#country").val("");
         $("#subject").val("");
 
     });
@@ -64,13 +70,13 @@ $("#submit1").on("click", function(event) {
         var firstName = childSnapshot.val().name1;
         var lastName = childSnapshot.val().name2;
         var email = childSnapshot.val().emailAddress;
-        var country = childSnapshot.val().location;
+        // var country = childSnapshot.val().location;
         var subject = childSnapshot.val().note;
     
         console.log(firstName);
         console.log(lastName);
         console.log(email);
-        console.log(country);
+        // console.log(country);
         console.log(subject);
     
         // Append train info to table on page
@@ -82,7 +88,7 @@ $("#submit1").on("click", function(event) {
 
     $("#submit1").on("click", function (event) {
         $("#fname").val("");
-        $("#1name").val("");
+        $("#lname").val("");
         $("#email").val("");
         $("#country").val("");
         $("#subject").val("");
