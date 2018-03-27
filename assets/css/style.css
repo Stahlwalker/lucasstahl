@@ -175,7 +175,7 @@ header.startup h1 {
 
 
 img {
-  width: 300px;
+  width: 200px;
   height: 150px;
   margin: 10px;
   transition: all 1s;
@@ -184,6 +184,16 @@ img {
 img:hover {
   transform: scale(1.1);
 }
+
+#portImg {
+  width: 200px;
+  height: 150px;
+  margin: 10px;
+  transition: all 1s;
+  border-radius: 50%;
+ 
+}
+
 
 
 /* Footer below */
