@@ -39,7 +39,13 @@ hr {
 
 .navbar-brand {
   /* font-family: 'Gloria Hallelujah', cursive; */
-  font-family: 'Share Tech', sans-serif;
+  /* font-family: 'Share Tech', sans-serif; */
+  font-family: 'Gruppo', cursive;
+  color: grey;
+}
+
+.navbar-light .navbar-brand:hover {
+  color: white;
 }
 
 .nav-link {
@@ -104,6 +110,7 @@ header.startup h1 {
 .btn-xl {
   padding: 1rem 2rem; 
   color: rgb(175, 167, 166);
+  color: grey;
   /* border-color: grey; */
 }
 
@@ -232,7 +239,8 @@ img:hover {
   /* font-family: 'Gloria Hallelujah', cursive; */
   font-family: 'Share Tech', sans-serif;
   margin-top: 10px;
-  padding-top: 10px
+  padding-top: 10px;
+  color: grey;
 }
 
 /* social footer */
