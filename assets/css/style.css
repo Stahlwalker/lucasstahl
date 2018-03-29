@@ -143,6 +143,16 @@ header.startup h1 {
   font-size: 56px;
 }
 
+#contactHeader {
+  text-align: center;
+  padding-top: 5px;
+  /* font-family: 'Gloria Hallelujah', cursive; */
+  font-family: 'Gruppo', cursive;
+  color: white;
+  font-size: 56px;
+  padding-bottom: 10px;
+}
+
 #title {
   text-align: center;
   padding-top: 8px;
