@@ -1,6 +1,6 @@
 # lucasstahl
 
-![This is a screen shot of text file results](https://github.com/Stahlwalker/Stahlwalker.github.io/blob/master/assets/images/stahlwalker.jpg)
+![This is a screen shot of text file results](https://github.com/Stahlwalker/lucasstahl/blob/master/assets/images/lucasstahl.png)
 
 ## What the project does?
     * This project is an interactive resume that highlights work that I've done.  
