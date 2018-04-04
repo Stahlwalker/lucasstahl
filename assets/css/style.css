@@ -300,6 +300,7 @@ img:hover {
   opacity: 0;
   font-size: 14px;
   font-family: 'Share Tech', sans-serif;
+  line-height: 1.6;
 
   /* transition effect. not necessary */
   transition: opacity .2s, visibility .2s;
