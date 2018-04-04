@@ -280,3 +280,32 @@ img:hover {
   font-family: 'Gruppo', cursive;
   font-size: 20px;
 }
+
+/* relevant styles */
+.img__wrap {
+  position: relative;
+  height: 200px;
+  width: 257px;
+}
+
+.img__description {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgb(110, 150, 161);
+  color: #e6f088;
+  visibility: hidden;
+  opacity: 0;
+  font-size: 14px;
+  font-family: 'Share Tech', sans-serif;
+
+  /* transition effect. not necessary */
+  transition: opacity .2s, visibility .2s;
+}
+
+.img__wrap:hover .img__description {
+  visibility: visible;
+  opacity: 1;
+}
