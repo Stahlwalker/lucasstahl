@@ -68,6 +68,28 @@ h1 {
   margin-bottom: 150px;
 } 
 
+/* Landscape*/
+@media only screen and (min-device-width: 1366px) and (max-device-height: 1024px) and (-webkit-min-device-pixel-ratio: 2)  and (orientation: landscape)
+{
+  header.startup
+    {
+      height: 100%; 
+      margin-top: 375px;
+      margin-bottom: 150px;
+    }
+}
+
+/* Portrait*/
+@media only screen and (min-device-width: 1024px) and (max-device-height: 1366px) and (-webkit-min-device-pixel-ratio: 2)  and (orientation: portrait)
+{
+  header.startup
+    {
+      height: 100%; 
+      margin-top: 375px;
+      margin-bottom: 150px;
+    }
+}
+
 header.startup2 {
   /* background-position: center;
   background-image: url("clark.png");
