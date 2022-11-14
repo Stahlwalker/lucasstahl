@@ -238,7 +238,20 @@ img:hover {
  
 }
 
+#portImgAbout {
+  width: auto;
+  height: auto;
+  margin: 10px;
+  transition: all 1s;
+  border-radius: 30%;
+ 
+}
 
+#bioImage {
+    width: 50%;
+    height: auto;
+    border-radius: 10%;
+}
 
 /* Footer below */
 
