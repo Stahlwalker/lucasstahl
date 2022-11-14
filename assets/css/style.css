@@ -208,7 +208,7 @@ header.startup h1 {
 }
 
 .responsive{
-  width: 75%;
+  width: 50%;
   height: auto;
   border-radius: 10%;
 }
@@ -247,11 +247,11 @@ img:hover {
  
 }
 
-#bioImage {
+/* #bioImage {
     width: 50%;
     height: auto;
     border-radius: 10%;
-}
+} */
 
 /* Footer below */
 
