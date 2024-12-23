@@ -1,20 +1,21 @@
 html {
- min-height: 100%;
+  min-height: 100%;
   position: relative;
   /* background-position: center;
   background-image: url("clark.png");
   background-size: cover; */
 }
+
 body {
   /* width: 100%; 
   height: 100%;  */
- margin-bottom: 60px;
- background-position: center;
- background-image: url("../images/clark.png");
- background-size: cover;
- 
+  margin-bottom: 60px;
+  background-position: center;
+  background-image: url("../images/clark.png");
+  background-size: cover;
 
-} 
+
+}
 
 body {
   /* font-family: 'Gloria Hallelujah', cursive; */
@@ -24,17 +25,17 @@ body {
 hr {
   max-width: 65px;
   border-width: 3px;
-  border-color: rgb(175, 167, 166); 
+  border-color: rgb(175, 167, 166);
 }
 
 #hrPort {
   max-width: 200px;
   border-width: 3px;
-  border-color: rgb(175, 167, 166); 
+  border-color: rgb(175, 167, 166);
 }
 
 .faded {
-  color: rgba(255, 255, 255, 0.8); 
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .navbar-brand {
@@ -59,53 +60,49 @@ h1 {
   text-align: center;
 }
 
- header.startup {
+header.startup {
   /* background-position: center;
   background-image: url("clark.png");
   background-size: cover; */
-  height: 100%; 
+  height: 100%;
   margin-top: 135px;
   margin-bottom: 150px;
-} 
+}
 
 /* Landscape*/
-@media only screen and (min-device-width: 1366px) and (max-device-height: 1024px) and (-webkit-min-device-pixel-ratio: 2)  and (orientation: landscape)
-{
-  header.startup
-    {
-      height: 100%; 
-      /* margin-top: 375px; */
-      margin-bottom: 150px;
-    }
+@media only screen and (min-device-width: 1366px) and (max-device-height: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+  header.startup {
+    height: 100%;
+    /* margin-top: 375px; */
+    margin-bottom: 150px;
+  }
 }
 
 /* Portrait*/
-@media only screen and (min-device-width: 1024px) and (max-device-height: 1366px) and (-webkit-min-device-pixel-ratio: 2)  and (orientation: portrait)
-{
-  header.startup
-    {
-      height: 100%; 
-      /* margin-top: 375px; */
-      margin-bottom: 150px;
-    }
+@media only screen and (min-device-width: 1024px) and (max-device-height: 1366px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  header.startup {
+    height: 100%;
+    /* margin-top: 375px; */
+    margin-bottom: 150px;
+  }
 }
 
 header.startup2 {
   /* background-position: center;
   background-image: url("clark.png");
   background-size: cover; */
-  height: 100%; 
+  height: 100%;
   margin-top: 100px;
   margin-bottom: 150px;
-} 
+}
 
 header.startup hr {
   margin-top: 200px;
-  margin-bottom: 30px; 
+  margin-bottom: 30px;
 }
 
 header.startup h1 {
-  font-size: 2rem; 
+  font-size: 2rem;
 }
 
 .rowAPI {
@@ -130,7 +127,7 @@ header.startup h1 {
 }
 
 .btn-xl {
-  padding: 1rem 2rem; 
+  padding: 1rem 2rem;
   color: rgb(175, 167, 166);
   color: grey;
   /* border-color: grey; */
@@ -138,7 +135,8 @@ header.startup h1 {
 
 .btn-primary {
   background-color: rgb(229, 240, 136);
-  border-color: rgb(229, 240, 136); }
+  border-color: rgb(229, 240, 136);
+}
 
 .btn-primary:hover {
   background-color: rgb(229, 240, 136);
@@ -146,7 +144,7 @@ header.startup h1 {
   border-width: 5px;
   cursor: pointer;
 }
- 
+
 /* .col-md-8{
   float: left;
 } */
@@ -207,13 +205,13 @@ header.startup h1 {
   margin-top: -100px;
 }
 
-.responsive{
+.responsive {
   width: 50%;
   height: auto;
   border-radius: 10%;
 }
 
-.imageCenter{
+.imageCenter {
   text-align: center;
 }
 
@@ -234,8 +232,8 @@ img:hover {
   height: 150px;
   margin: 10px;
   transition: all 1s;
-  border-radius: 30%;
- 
+  border-radius: 10%;
+
 }
 
 #portImgAbout {
@@ -244,7 +242,7 @@ img:hover {
   margin: 10px;
   transition: all 1s;
   border-radius: 30%;
- 
+
 }
 
 /* #bioImage {
@@ -261,9 +259,9 @@ img:hover {
   background-color: rgb(229, 240, 136);
   text-align: center;
   color: rgb(175, 167, 166);
-  border-top: 5px solid  rgb(175, 167, 166);
-  overflow: hidden; 
-  padding-top: 20px; 
+  border-top: 5px solid rgb(175, 167, 166);
+  overflow: hidden;
+  padding-top: 20px;
   bottom: 0;
   width: 100%;
   height: 100px;
@@ -300,9 +298,12 @@ img:hover {
 .flex-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
 }
 
-.flex-container > div {
+.flex-container>div {
   margin: 55px;
   text-align: center;
   line-height: 75px;
@@ -311,9 +312,9 @@ img:hover {
 
 #portTitle {
   text-align: -webkit-center;
-  color: white;  
+  color: white;
   font-family: 'Gruppo', cursive;
-  font-size: 20px;
+  color: white;
 }
 
 /* relevant styles */
@@ -344,4 +345,36 @@ img:hover {
 .img__wrap:hover .img__description {
   visibility: visible;
   opacity: 1;
+}
+
+#githubImage {
+  flex: 0 1 300px;
+  max-width: 100%;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#portTitle {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+#hrPort {
+  width: 100%;
+  margin: 10px 0;
+}
+
+#portImg {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.img__wrap {
+  width: 100%;
+  position: relative;
 }
