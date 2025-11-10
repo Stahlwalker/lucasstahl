@@ -2,27 +2,44 @@
 <html lang="en">
 
 <head>
-
     <script type="text/javascript">
         var host = "lucasstahl.com";
         if ((host == window.location.host) && (window.location.protocol != "https:"))
             window.location.protocol = "https";
     </script>
     <meta charset="UTF-8">
-    <link rel="canonical" href="https://lucasstahl.com" />
+    <link rel="canonical" href="https://lucasstahl.com/about" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>LucasStahl</title>
+    <title>About - Luke Stahl</title>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lucasstahl.com/about">
+    <meta property="og:title" content="About - Luke Stahl">
+    <meta property="og:description" content="Developer marketer and web developer. My skills lean heavily on the front-end side of things, but I love learning new tools and ways of programming better.">
+    <meta property="og:image" content="https://lucasstahl.com/assets/images/devMkt_og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://lucasstahl.com/about">
+    <meta name="twitter:title" content="About - Luke Stahl">
+    <meta name="twitter:description" content="Developer marketer and web developer. My skills lean heavily on the front-end side of things, but I love learning new tools and ways of programming better.">
+    <meta name="twitter:image" content="https://lucasstahl.com/assets/images/devMkt_og.png">
     <link href="superman2.png" rel="icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/dark-mode.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/about.css">
     <link href="https://fonts.googleapis.com/css?family=Megrim" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Share+Tech" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Gruppo" rel="stylesheet">
-
     <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- favicon -->
@@ -49,81 +66,199 @@
     <meta name="msapplication-square150x150logo" content="https://lucasstahl.com/superman2-150x150.png" />
     <meta name="msapplication-square310x150logo" content="https://lucasstahl.com/superman2-310x150.png" />
     <meta name="msapplication-square310x310logo" content="https://lucasstahl.com/superman2-310x310.png" />
-
-
 </head>
 
 <body>
 
-    <nav class="navbar navbar-toggleable-md navbar-light bg-faded" style="background-color: rgb(229, 240, 136);">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+    <nav class="navbar navbar-expand-md navbar-light bg-faded" style="background-color: rgb(229, 240, 136);">
+        <a class="navbar-brand" href="https://lucasstahl.com">Luke Stahl</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="https://lucasstahl.com">Luke Stahl</a>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://lucasstahl.com/blog">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://lucasstahl.com/builds">Builds</a>
+                </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="https://lucasstahl.com">Home
+                    <a class="nav-link" href="https://lucasstahl.com/about">About
                         <span class="sr-only">(current)</span>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://lucasstahl.com/about">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://lucasstahl.com/portfolio">Portfolio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://lucasstahl.com/contact">Contact</a>
                 </li>
             </ul>
         </div>
     </nav>
 
-
-    <!-- <header class="startup text-center text-white d-flex" style="min-height: 1000px;"> -->
-    <div class="container my-auto">
-        <div class="cardAbout">
-            <h2 id="aboutHeader">About</h2>
-            <div class="imageCenter">
-                <img id="bioImage" src="assets/images/LukeHeadshot.jpeg" alt="Bio" class="responsive" width="600"
-                    height="400">
-            </div>
-            <br>
-            <p>I’m a director of marketing and web developer working in the tech industry. I have 18+ years of marketing
-                experience with a Master’s degree in Communications: New Media and Marketing at Southern
-                New Hampshire University. Following my master’s degree I completed a Full Stack Web Development Boot
-                Camp at Northwestern University, in order to build on my digital skillset.</p>
-            <p>I have a passion for building and optimizing for the web</p>
-            <p>Please click below to visit my GitHub Repository page to review code I’ve written.</p>
+    <!-- About Hero Section -->
+    <section class="about-hero">
+        <div class="section-container">
+            <h1 class="about-hero-title">
+                <span class="code-bracket">&lt;</span>
+                About
+                <span class="code-bracket">/&gt;</span>
+            </h1>
+            <p class="about-hero-subtitle">Developer, marketer, and builder of digital experiences</p>
         </div>
+    </section>
 
-    </div>
+    <!-- About Content Section -->
+    <section class="about-section">
+        <div class="section-container">
 
-    <div class="rowAPIABOUT">
-        <div class="col-sm-4">
-            <br>
-            <h4>GitHub</h4>
-            <hr id='hrPort'>
-            </hr>
-            <div id="githubImage">
-                <a href="https://github.com/Stahlwalker">
-                    <img id="portImgAbout" src="assets/images/GitHub1.png" alt="github" />
-                </a>
+            <!-- Bio Section -->
+            <div class="about-content">
+                <div class="about-image-container">
+                    <img src="assets/images/LukeHeadshot.jpeg" alt="Luke Stahl" class="about-image">
+                </div>
+                <div class="about-bio">
+                    <h2 class="about-bio-title">Hello, I'm Luke</h2>
+                    <div class="about-bio-text">
+                        <p>A developer marketer, and web developer. My skills lean heavily on the front-end side of things, but I love learning new tools and ways of programming better. On a personal side, I'm a husband, proud father, dog lover, and a die-hard Green Bay Packers fan for those sports enthusiasts out there.</p>
+
+                        <p>I have a passion for building and optimizing for the web, bridging the gap between marketing strategy and technical implementation.</p>
+                    </div>
+                </div>
             </div>
+
+            <!-- Skills Section -->
+            <div class="skills-section">
+                <h2 class="skills-title">
+                    <span class="code-bracket">&lt;</span>
+                    Skills & Technologies
+                    <span class="code-bracket">/&gt;</span>
+                </h2>
+                <p class="skills-subtitle">Some of the technologies I work with</p>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3 class="skill-category-title">
+                            <i class="fa-solid fa-code"></i>
+                            Frontend
+                        </h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Next.js</span>
+                            <span class="skill-tag">Astro</span>
+                            <span class="skill-tag">Swift</span>
+                            <span class="skill-tag">Tailwind CSS</span>
+                            <span class="skill-tag">HTML/CSS</span>
+                            <span class="skill-tag">JavaScript</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3 class="skill-category-title">
+                            <i class="fa-solid fa-server"></i>
+                            Backend & Tools
+                        </h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">MongoDB</span>
+                            <span class="skill-tag">MySQL</span>
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">APIs</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3 class="skill-category-title">
+                            <i class="fa-solid fa-chart-line"></i>
+                            Marketing
+                        </h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">SEO</span>
+                            <span class="skill-tag">Content Strategy</span>
+                            <span class="skill-tag">Analytics</span>
+                            <span class="skill-tag">Digital Marketing</span>
+                            <span class="skill-tag">Product Marketing</span>
+                            <span class="skill-tag">Developer Marketing</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3 class="skill-category-title">
+                            <i class="fa-solid fa-palette"></i>
+                            Design & CMS
+                        </h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Figma</span>
+                            <span class="skill-tag">Contentful</span>
+                            <span class="skill-tag">Webflow</span>
+                            <span class="skill-tag">Builder.io</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Connect Section -->
+            <div class="connect-section">
+                <h2 class="connect-title">Let's Connect</h2>
+                <p class="connect-description">Check out my code, connect on social media, or reach out directly</p>
+                <div class="connect-links">
+                    <a href="https://github.com/Stahlwalker" target="_blank" rel="noopener noreferrer" class="connect-card">
+                        <div class="connect-icon">
+                            <i class="fa-brands fa-github"></i>
+                        </div>
+                        <div class="connect-content">
+                            <h3 class="connect-link-title">GitHub</h3>
+                            <p class="connect-link-desc">View my repositories and code</p>
+                        </div>
+                        <i class="fa-solid fa-arrow-right connect-arrow"></i>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/lucasstahl" target="_blank" rel="noopener noreferrer" class="connect-card">
+                        <div class="connect-icon">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </div>
+                        <div class="connect-content">
+                            <h3 class="connect-link-title">LinkedIn</h3>
+                            <p class="connect-link-desc">Connect professionally</p>
+                        </div>
+                        <i class="fa-solid fa-arrow-right connect-arrow"></i>
+                    </a>
+
+                    <a href="https://twitter.com/LucasStahl11" target="_blank" rel="noopener noreferrer" class="connect-card">
+                        <div class="connect-icon">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </div>
+                        <div class="connect-content">
+                            <h3 class="connect-link-title">Twitter</h3>
+                            <p class="connect-link-desc">Follow my updates</p>
+                        </div>
+                        <i class="fa-solid fa-arrow-right connect-arrow"></i>
+                    </a>
+
+                    <a href="mailto:STAHL1109@GMAIL.COM" class="connect-card">
+                        <div class="connect-icon">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div class="connect-content">
+                            <h3 class="connect-link-title">Email</h3>
+                            <p class="connect-link-desc">Get in touch</p>
+                        </div>
+                        <i class="fa-solid fa-arrow-right connect-arrow"></i>
+                    </a>
+                </div>
+            </div>
+
         </div>
-    </div>
+    </section>
 
     <footer class="footer">
-        <a href="https://twitter.com/LucasStahl11">
+        <a href="https://twitter.com/LucasStahl11" target="_blank" rel="noopener noreferrer">
             <i class="fa-brands fa-x-twitter"></i>
         </a>
-        <a href="https://www.linkedin.com/in/lucasstahl">
+        <a href="https://www.linkedin.com/in/lucasstahl" target="_blank" rel="noopener noreferrer">
             <i class="fa-brands fa-linkedin-in"></i>
         </a>
+        <a href="https://github.com/Stahlwalker" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-github"></i>
+        </a>
         <a href="mailto:STAHL1109@GMAIL.COM">
-            <i class="fa fa-envelope"></i>
+            <i class="fa-solid fa-envelope"></i>
         </a>
         <p id="copyRight">@Copyright 2018</p>
     </footer>
