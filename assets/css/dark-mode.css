@@ -64,6 +64,37 @@ body {
     transform: translateY(-2px);
 }
 
+/* Navbar GitHub Icon */
+.navbar-github-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0.75rem;
+    color: var(--text-primary) !important;
+    font-size: 1.25rem;
+    width: 45px;
+    height: 45px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.navbar-github-icon:hover {
+    color: var(--accent-primary) !important;
+    background: rgba(96, 165, 250, 0.15);
+    transform: translateY(-3px);
+}
+
+.navbar-brand:hover .navbar-github-icon {
+    transform: translateY(-2px);
+}
+
+/* Hide mobile GitHub nav item on desktop */
+.navbar-github-mobile {
+    display: none;
+}
+
 .nav-link {
     color: var(--text-secondary) !important;
     font-family: 'Fira Code', monospace;
@@ -345,33 +376,73 @@ body {
     font-size: 1.25rem;
 }
 
-/* Footer Dark Mode Override */
+/* Modern Developer Footer */
 .footer {
     background: var(--bg-secondary) !important;
     border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
-    color: var(--text-secondary) !important;
-    padding: 2rem 0 !important;
+    padding: 3rem 2rem !important;
     position: relative !important;
     bottom: auto !important;
     margin-top: 4rem;
     height: auto !important;
 }
 
-.footer a {
-    color: var(--text-secondary) !important;
-    border-color: rgba(255, 255, 255, 0.1) !important;
-    transition: all 0.3s ease;
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
 }
 
-.footer a:hover {
+.footer-social {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.footer-social a {
+    color: var(--text-primary) !important;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    text-decoration: none;
+}
+
+.footer-social a:hover {
     color: var(--accent-primary) !important;
+    background: rgba(96, 165, 250, 0.15);
     transform: translateY(-3px);
 }
 
+.footer-social a svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
+
+.footer-copyright {
+    color: var(--text-secondary) !important;
+    font-size: 0.9rem;
+    font-family: 'Fira Code', monospace;
+    margin: 0;
+    text-align: center;
+}
+
+/* Legacy support */
 #copyRight {
     color: var(--text-secondary) !important;
-    margin-top: 1rem !important;
-    padding-top: 0.5rem !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 0.9rem;
+    font-family: 'Fira Code', monospace;
 }
 
 /* Featured Content Section */
@@ -817,6 +888,29 @@ html {
 }
 
 @media (max-width: 768px) {
+    /* Hide desktop GitHub icon on mobile, show in menu instead */
+    .navbar-github-desktop {
+        display: none !important;
+    }
+
+    .navbar-github-mobile {
+        display: block !important;
+    }
+
+    .footer-social {
+        gap: 1.5rem;
+    }
+
+    .footer-social a {
+        width: 40px;
+        height: 40px;
+        font-size: 1.25rem;
+    }
+
+    .footer-copyright {
+        font-size: 0.85rem;
+    }
+
     .hero-section {
         padding: 1rem;
         min-height: 90vh;
@@ -960,6 +1054,10 @@ html {
     }
 
     .scroll-indicator i {
+        font-size: 1rem;
+    }
+
+    .navbar-brand {
         font-size: 1rem;
     }
 
