@@ -1,7 +1,5 @@
 # lucasstahl.com
 
-![This is a screen shot of text file results](https://github.com/Stahlwalker/lucasstahl/blob/master/assets/images/lucasstahl.png)
-
 ## Overview
 A modern, developer-focused personal website showcasing projects, blog posts, and technical resources. Built with a dark mode theme and code-aesthetic design throughout.
 
