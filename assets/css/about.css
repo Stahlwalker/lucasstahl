@@ -165,10 +165,102 @@
     transform: translateY(-2px);
 }
 
+/* Speaking Section */
+.speaking-section {
+    margin-bottom: 4rem;
+    animation: fadeInUp 0.8s ease-out 0.5s both;
+}
+
+.speaking-title {
+    font-family: 'Fira Code', monospace;
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.speaking-subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: 2rem;
+}
+
+.talk-card {
+    background: var(--bg-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.talk-card:hover {
+    border-color: rgba(96, 165, 250, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.talk-video {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    overflow: hidden;
+}
+
+.talk-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.talk-info {
+    padding: 1.5rem;
+}
+
+.talk-title {
+    font-family: 'Fira Code', monospace;
+    font-size: 1.25rem;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.talk-description {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.talk-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+}
+
+.talk-date,
+.talk-location {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+.talk-date i,
+.talk-location i {
+    color: var(--accent-primary);
+    font-size: 0.85rem;
+}
+
 /* Connect Section */
 .connect-section {
     text-align: center;
-    animation: fadeInUp 0.8s ease-out 0.5s both;
+    animation: fadeInUp 0.8s ease-out 0.6s both;
 }
 
 .connect-title {
@@ -332,6 +424,18 @@
         padding: 1.5rem;
     }
 
+    .speaking-title {
+        font-size: 1.75rem;
+    }
+
+    .talk-info {
+        padding: 1.5rem;
+    }
+
+    .talk-title {
+        font-size: 1.25rem;
+    }
+
     .connect-title {
         font-size: 1.75rem;
     }
@@ -363,6 +467,26 @@
     }
 
     .skills-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .speaking-title {
+        font-size: 1.5rem;
+    }
+
+    .speaking-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .talk-info {
+        padding: 1.25rem;
+    }
+
+    .talk-title {
+        font-size: 1.125rem;
+    }
+
+    .talk-description {
         font-size: 0.95rem;
     }
 
@@ -407,12 +531,21 @@
     }
 
     .skills-title,
+    .speaking-title,
     .connect-title {
         font-size: 1.35rem;
     }
 
     .skill-category {
         padding: 1.25rem;
+    }
+
+    .talk-info {
+        padding: 1rem;
+    }
+
+    .talk-title {
+        font-size: 1rem;
     }
 
     .connect-card {

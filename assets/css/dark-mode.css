@@ -671,6 +671,12 @@ body {
     border: 1px solid rgba(52, 211, 153, 0.3);
 }
 
+.type-talk {
+    background: rgba(249, 115, 22, 0.15);
+    color: #fb923c;
+    border: 1px solid rgba(249, 115, 22, 0.3);
+}
+
 .feed-main {
     flex: 1;
 }
