@@ -231,6 +231,12 @@ body {
     font-style: italic;
     display: block;
     margin-bottom: 1rem;
+    /* Reset H1 styles to maintain design */
+    font-size: inherit;
+    font-weight: inherit;
+    text-align: left;
+    margin-top: 0;
+    font-family: inherit;
 }
 
 .code-block {
