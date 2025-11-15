@@ -165,10 +165,242 @@
     transform: translateY(-2px);
 }
 
+/* Tools I Love Section */
+.tools-section {
+    margin-bottom: 4rem;
+    position: relative;
+    animation: fadeInUp 0.8s ease-out 0.5s both;
+}
+
+.tools-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 800px 400px at 50% 50%, rgba(96, 165, 250, 0.12), transparent 50%),
+        radial-gradient(ellipse 600px 300px at 50% 50%, rgba(129, 140, 248, 0.08), transparent 50%);
+    opacity: 0.8;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.tools-section::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(96, 165, 250, 0.08) 0%, transparent 70%);
+    filter: blur(40px);
+    pointer-events: none;
+    z-index: 0;
+    animation: pulse-glow 4s ease-in-out infinite;
+}
+
+@keyframes border-flow {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 300% 50%;
+    }
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+.tools-title {
+    font-family: 'Fira Code', monospace;
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline;
+    gap: 1rem;
+}
+
+.tools-title-comment {
+    font-family: 'Fira Code', monospace;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    opacity: 0.6;
+    font-style: italic;
+}
+
+.tools-subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+    position: relative;
+    z-index: 1;
+}
+
+.tools-showcase {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4rem 3rem;
+    position: relative;
+    z-index: 1;
+    border-radius: 24px;
+    background: rgba(15, 23, 42, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.tools-showcase::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(
+        90deg,
+        rgba(96, 165, 250, 0.6),
+        rgba(129, 140, 248, 0.6),
+        rgba(168, 85, 247, 0.6),
+        rgba(236, 72, 153, 0.6),
+        rgba(96, 165, 250, 0.6)
+    );
+    background-size: 300% 100%;
+    border-radius: 24px;
+    padding: 2px;
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: -1;
+    animation: border-flow 8s linear infinite;
+}
+
+.tools-showcase::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(
+        90deg,
+        rgba(96, 165, 250, 0.6),
+        rgba(129, 140, 248, 0.6),
+        rgba(168, 85, 247, 0.6),
+        rgba(236, 72, 153, 0.6),
+        rgba(96, 165, 250, 0.6)
+    );
+    background-size: 300% 100%;
+    border-radius: 24px;
+    filter: blur(20px);
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: -1;
+    animation: border-flow 8s linear infinite;
+}
+
+.tools-logo-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.tool-logo-item {
+    flex: 0 0 auto;
+}
+
+.tool-logo-box {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(96, 165, 250, 0.2);
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.65rem 1.5rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: visible;
+    height: 40px;
+    cursor: default;
+    backdrop-filter: blur(8px);
+}
+
+.tool-logo-box::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.4), rgba(129, 140, 248, 0.4), rgba(168, 85, 247, 0.4));
+    border-radius: 999px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    filter: blur(8px);
+    z-index: -1;
+}
+
+.tool-logo-box::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.1), rgba(129, 140, 248, 0.1));
+    border-radius: 999px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.tool-logo-box:hover {
+    border-color: rgba(96, 165, 250, 0.6);
+    transform: translateY(-2px);
+    box-shadow:
+        0 0 20px rgba(96, 165, 250, 0.4),
+        0 0 40px rgba(96, 165, 250, 0.2),
+        0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.tool-logo-box:hover::before {
+    opacity: 1;
+}
+
+.tool-logo-box:hover::after {
+    opacity: 1;
+}
+
+.tool-logo-text {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgba(203, 213, 225, 0.9);
+    text-align: center;
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 1;
+    white-space: nowrap;
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.tool-logo-box:hover .tool-logo-text {
+    color: rgba(255, 255, 255, 1);
+    text-shadow:
+        0 0 8px rgba(96, 165, 250, 0.8),
+        0 0 16px rgba(96, 165, 250, 0.4);
+}
+
 /* Speaking Section */
 .speaking-section {
     margin-bottom: 4rem;
-    animation: fadeInUp 0.8s ease-out 0.5s both;
+    animation: fadeInUp 0.8s ease-out 0.6s both;
 }
 
 .speaking-title {
@@ -424,6 +656,27 @@
         padding: 1.5rem;
     }
 
+    .tools-showcase {
+        padding: 3rem 2rem;
+    }
+
+    .tools-title {
+        font-size: 1.75rem;
+    }
+
+    .tools-logo-grid {
+        gap: 0.875rem;
+    }
+
+    .tool-logo-box {
+        padding: 0.6rem 1.35rem;
+        height: 38px;
+    }
+
+    .tool-logo-text {
+        font-size: 0.8125rem;
+    }
+
     .speaking-title {
         font-size: 1.75rem;
     }
@@ -468,6 +721,37 @@
 
     .skills-subtitle {
         font-size: 0.95rem;
+    }
+
+    .tools-section::after {
+        width: 400px;
+        height: 400px;
+    }
+
+    .tools-showcase {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .tools-title {
+        font-size: 1.5rem;
+    }
+
+    .tools-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 2rem;
+    }
+
+    .tools-logo-grid {
+        gap: 0.75rem;
+    }
+
+    .tool-logo-box {
+        padding: 0.55rem 1.25rem;
+        height: 36px;
+    }
+
+    .tool-logo-text {
+        font-size: 0.8rem;
     }
 
     .speaking-title {
@@ -531,6 +815,7 @@
     }
 
     .skills-title,
+    .tools-title,
     .speaking-title,
     .connect-title {
         font-size: 1.35rem;
