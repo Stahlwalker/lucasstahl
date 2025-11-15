@@ -334,8 +334,9 @@
     position: relative;
     overflow: visible;
     height: 40px;
-    cursor: default;
+    cursor: pointer;
     backdrop-filter: blur(8px);
+    text-decoration: none;
 }
 
 .tool-logo-box::before {
