@@ -1,16 +1,25 @@
 # lucasstahl.com
 
 ## Overview
-A modern, developer-focused personal website showcasing projects, blog posts, and technical resources. Built with a dark mode theme and code-aesthetic design throughout.
+A modern, developer-focused personal website showcasing projects, blog posts, and technical resources. Built with Astro for optimal performance and maintainability, featuring a dark mode theme and code-aesthetic design throughout.
+
+## Tech Stack
+
+- **Framework**: [Astro](https://astro.build) v5.15.8
+- **Deployment**: GitHub Pages
+- **Analytics**: PostHog
+- **Fonts**: Fira Code and Inter for code aesthetic
+- **Icons**: Font Awesome 6
 
 ## Features
 
 ### Pages
-- **Homepage**: Hero section with featured work, recent articles, and project highlights
-- **Blog**: Curated collection of articles on web development, CMS platforms, AI tools, and developer marketing
-- **Builds**: Portfolio of 20+ projects spanning React, Next.js, TypeScript, and full-stack applications
-- **About**: Professional bio, skills, and contact information
-- **Gems**: Timeline-style resource collection with code-themed presentation
+- **Homepage** (`/`): Hero section with featured work, recent articles, and project highlights
+- **About** (`/about`): Professional bio, skills, tech stack, and speaking engagements
+- **Blog** (`/blog`): Curated collection of articles on web development, CMS platforms, AI tools, and developer marketing
+- **Builds** (`/builds`): Portfolio of 20+ projects spanning React, Next.js, TypeScript, and full-stack applications
+- **Gems** (`/gems`): Timeline-style resource collection with code-themed presentation
+- **Contact** (`/contact`): Contact form and social links
 
 ### Design System
 - **Dark Mode Theme**: Developer-focused color palette with custom CSS variables
@@ -19,34 +28,83 @@ A modern, developer-focused personal website showcasing projects, blog posts, an
 - **Code Styling**: Terminal prompts, syntax highlighting, and monospace fonts throughout
 - **Animations**: Smooth transitions, hover effects, and gradient animations
 
-### Technical Details
-- Pure HTML, CSS, and JavaScript
-- Bootstrap 4 for responsive grid
-- Font Awesome 6 for icons
-- Custom CSS architecture with modular stylesheets
-- SEO optimized with Open Graph and Twitter Card meta tags
-- Performance optimized with modern web standards
+### SEO & Discoverability
+- `robots.txt` for search engine crawling
+- `sitemap.xml` with all pages
+- `llms.txt` for AI discoverability
+- Open Graph and Twitter Card meta tags
+- Canonical URLs
 
-## Structure
+## Project Structure
 
 ```
 lucasstahl/
-├── index.html              # Homepage
-├── blog.html              # Blog feed
-├── builds.html            # Project portfolio
-├── about.html             # About page
-├── gems.html              # Resources timeline
-├── assets/
-│   ├── css/
-│   │   ├── dark-mode.css  # Main theme and global styles
-│   │   ├── style.css      # Base styles
-│   │   ├── blog.css       # Blog-specific styles
-│   │   ├── builds.css     # Portfolio styles
-│   │   ├── about.css      # About page styles
-│   │   └── gems.css       # Timeline styles with code aesthetic
-│   └── images/            # Site images and assets
-└── README.md
+└── astro-site/              # Astro project root
+    ├── src/
+    │   ├── pages/           # Astro pages (routes)
+    │   │   ├── index.astro  # Homepage
+    │   │   ├── about.astro  # About page
+    │   │   ├── blog.astro   # Blog feed
+    │   │   ├── builds.astro # Project portfolio
+    │   │   ├── gems.astro   # Resources timeline
+    │   │   └── contact.astro # Contact page
+    │   ├── layouts/
+    │   │   └── Layout.astro # Base layout with meta tags
+    │   └── components/
+    │       ├── Navbar.astro # Navigation component
+    │       ├── Footer.astro # Footer component
+    │       └── posthog.astro # Analytics tracking
+    ├── public/              # Static assets (copied to dist)
+    │   ├── assets/
+    │   │   ├── css/        # Stylesheets
+    │   │   └── images/     # Site images
+    │   ├── robots.txt      # Search engine instructions
+    │   ├── sitemap.xml     # Site structure for SEO
+    │   ├── llms.txt        # AI discoverability
+    │   └── .nojekyll       # Disable Jekyll on GitHub Pages
+    ├── package.json
+    └── astro.config.mjs
 ```
+
+## Development
+
+### Prerequisites
+- Node.js (v18 or higher recommended)
+- npm
+
+### Setup
+```bash
+cd astro-site
+npm install
+```
+
+### Development Server
+```bash
+npm run dev
+```
+Starts the development server at `http://localhost:4321` (default Astro port)
+
+### Build
+```bash
+npm run build
+```
+Builds the site for production to the `dist/` directory
+
+### Preview Build
+```bash
+npm run preview
+```
+Preview the production build locally
+
+## Deployment
+
+This site is deployed to GitHub Pages from the `master` branch. The deployment process:
+
+1. Make changes to source files in `astro-site/src/` or `astro-site/public/`
+2. Commit and push to the `master` branch
+3. GitHub Pages automatically serves the site from the repository
+
+**Note**: Static files in `public/` are served directly. For Astro components, you may need to run a build process depending on your GitHub Pages configuration.
 
 ## Design Highlights
 
