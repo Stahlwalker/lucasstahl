@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script type="text/javascript">
+        var host = "lucasstahl.com";
+        if ((host == window.location.host) && (window.location.protocol != "https:"))
+            window.location.protocol = "https";
+    </script>
+    <meta charset="UTF-8">
+    <meta name="description" content="The blog from Luke Stahl — showcasing work across developer marketing, product strategy, and modern web development.">
+    <link rel="canonical" href="https://lucasstahl.com/blog" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Blog - Luke Stahl</title>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lucasstahl.com/blog">
+    <meta property="og:title" content="Blog - Luke Stahl">
+    <meta property="og:description" content="Insights on web development, marketing, and digital strategy from a developer marketer.">
+    <meta property="og:image" content="https://lucasstahl.com/assets/images/devMktg_og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://lucasstahl.com/blog">
+    <meta name="twitter:title" content="Blog - Luke Stahl">
+    <meta name="twitter:description" content="Insights on web development, marketing, and digital strategy from a developer marketer.">
+    <meta name="twitter:image" content="https://lucasstahl.com/assets/images/devMktg_og.png">
+    <link href="LS.ico" rel="icon">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/dark-mode.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/blog.css">
+    <link href="https://fonts.googleapis.com/css?family=Megrim" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Share+Tech" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gruppo" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/LS.ico" />
+    <link rel="apple-touch-icon" href="/LS.ico" />
+    <meta name="application-name" content="LucasStahl" />
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="https://lucasstahl.com/LS.ico" />
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-light bg-faded" style="background-color: rgb(229, 240, 136);">
+        <a class="navbar-brand" href="https://lucasstahl.com">
+            Luke Stahl
+            <a href="https://github.com/Stahlwalker" target="_blank" rel="noopener noreferrer" class="navbar-github-icon navbar-github-desktop" title="GitHub Profile">
+                <i class="fa-brands fa-github"></i>
+            </a>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="https://lucasstahl.com/blog">Blog
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://lucasstahl.com/builds">Builds</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://lucasstahl.com/about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://lucasstahl.com/gems">Gems</a>
+                </li>
+                <li class="nav-item navbar-github-mobile">
+                    <a class="nav-link" href="https://github.com/Stahlwalker" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Blog Hero Section -->
+    <section class="blog-hero">
+        <div class="section-container">
+            <h1 class="blog-hero-title">
+                <span class="code-bracket">&lt;</span>
+                Blog
+                <span class="code-bracket">/&gt;</span>
+            </h1>
+            <p class="blog-hero-subtitle">Insights on web development, marketing, and digital strategy</p>
+        </div>
+    </section>
+
+    <!-- Blog Feed Section -->
+    <section class="blog-feed-section">
+        <div class="section-container">
+            <div class="blog-feed">
+
+                <!-- Blog Post 1: Oct 8, 2025 -->
+                <article class="blog-card">
+                    <a href="https://webflow.com/blog/headless-cms-developer-tradeoffs"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="blog-card-inner">
+                        <div class="blog-thumbnail">
+                            <img src="https://cdn.prod.website-files.com/687e8d1b96312cc631cafec7/68e6e32f34bcbb12d4699d47_ENGINEERING_DesignBlogHeader_2400x1260-1-3.png"
+                                 alt="Headless CMS Developer Tradeoffs"
+                                 loading="lazy">
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <time class="blog-date">Oct 8, 2025</time>
+                                <span class="blog-type">Article</span>
+                            </div>
+                            <h2 class="blog-title">Developers love headless until they're stuck maintaining it</h2>
+                            <p class="blog-excerpt">
+                                Exploring the limitations of headless CMS platforms for marketing websites and why a hybrid approach might be the better solution for team velocity and reduced complexity.
+                            </p>
+                            <div class="blog-tags">
+                                <span class="tag">CMS</span>
+                                <span class="tag">Headless</span>
+                                <span class="tag">DevOps</span>
+                            </div>
+                            <a href="https://webflow.com/blog/headless-cms-developer-tradeoffs"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="blog-link">
+                                Read Article <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Blog Post 2: Aug 13, 2025 -->
+                <article class="blog-card">
+                    <a href="https://webflow.com/blog/ai-mcp-servers"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="blog-card-inner">
+                        <div class="blog-thumbnail">
+                            <img src="https://cdn.prod.website-files.com/687e8d1b96312cc631cafec7/68c4891e87a5b2931bdf7c0a_689d06553b565ac426ac2fab_MCP-BlogHeader.jpeg"
+                                 alt="MCP Servers for AI"
+                                 loading="lazy">
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <time class="blog-date">Aug 13, 2025</time>
+                                <span class="blog-type">Article</span>
+                            </div>
+                            <h2 class="blog-title">MCP servers worth knowing if you're building with AI</h2>
+                            <p class="blog-excerpt">
+                                Explore Model Context Protocol servers that provide structured context for AI tools. Learn about integrating MCP servers like Context7, Figma, GitHub, and more with AI-powered development environments.
+                            </p>
+                            <div class="blog-tags">
+                                <span class="tag">AI</span>
+                                <span class="tag">MCP</span>
+                                <span class="tag">Development</span>
+                            </div>
+                            <a href="https://webflow.com/blog/ai-mcp-servers"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="blog-link">
+                                Read Article <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Blog Post 3: Feb 27, 2025 -->
+                <article class="blog-card blog-card-compact">
+                    <a href="https://www.builder.io/blog/ai-apis"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="blog-card-inner">
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <time class="blog-date">Feb 27, 2025</time>
+                                <span class="blog-type">Guide</span>
+                            </div>
+                            <h2 class="blog-title">AI APIs in 2025</h2>
+                            <div class="blog-tags">
+                                <span class="tag">AI</span>
+                                <span class="tag">APIs</span>
+                                <span class="tag">Machine Learning</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Blog Post 4: Feb 5, 2025 -->
+                <article class="blog-card blog-card-compact">
+                    <a href="https://www.builder.io/m/knowledge-center/visual-editing"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="blog-card-inner">
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <time class="blog-date">Feb 5, 2025</time>
+                                <span class="blog-type">Guide</span>
+                            </div>
+                            <h2 class="blog-title">The Rise of Visual Editing in Headless CMSs</h2>
+                            <div class="blog-tags">
+                                <span class="tag">CMS</span>
+                                <span class="tag">Visual Editing</span>
+                                <span class="tag">Workflow</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Blog Post 6: Jan 29, 2025 -->
+                <article class="blog-card blog-card-compact">
+                    <a href="https://www.builder.io/blog/react-components-ai"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="blog-card-inner">
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <time class="blog-date">Jan 29, 2025</time>
+                                <span class="blog-type">Article</span>
+                            </div>
+                            <h2 class="blog-title">Building High-Performance React Components with AI Assistance</h2>
+                            <div class="blog-tags">
+                                <span class="tag">React</span>
+                                <span class="tag">AI</span>
+                                <span class="tag">Performance</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Blog Post 7: Jan 9, 2025 -->
+                <article class="blog-card blog-card-compact">
+                    <a href="https://www.builder.io/m/explainers/server-side-rendering"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="blog-card-inner">
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <time class="blog-date">Jan 9, 2025</time>
+                                <span class="blog-type">Guide</span>
+                            </div>
+                            <h2 class="blog-title">A Guide to Server-Side Rendering</h2>
+                            <div class="blog-tags">
+                                <span class="tag">SSR</span>
+                                <span class="tag">Performance</span>
+                                <span class="tag">SEO</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Blog Post 8: Jan 6, 2025 -->
+                <article class="blog-card blog-card-compact">
+                    <a href="https://www.builder.io/blog/react-component-library"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="blog-card-inner">
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <time class="blog-date">Jan 6, 2025</time>
+                                <span class="blog-type">Article</span>
+                            </div>
+                            <h2 class="blog-title">React UI Component Libraries in 2025</h2>
+                            <div class="blog-tags">
+                                <span class="tag">React</span>
+                                <span class="tag">UI Libraries</span>
+                                <span class="tag">TypeScript</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Blog Post 9: Dec 13, 2024 -->
+                <article class="blog-card blog-card-compact">
+                    <a href="https://www.builder.io/m/explainers/visual-development-platform"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="blog-card-inner">
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <time class="blog-date">Dec 13, 2024</time>
+                                <span class="blog-type">Explainer</span>
+                            </div>
+                            <h2 class="blog-title">What is Builder's Visual Development Platform?</h2>
+                            <div class="blog-tags">
+                                <span class="tag">Visual Dev</span>
+                                <span class="tag">CMS</span>
+                                <span class="tag">Platform</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Blog Post 10: Nov 20, 2024 -->
+                <article class="blog-card blog-card-compact">
+                    <a href="https://www.builder.io/m/knowledge-center/headless-commerce"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="blog-card-inner">
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <time class="blog-date">Nov 20, 2024</time>
+                                <span class="blog-type">Guide</span>
+                            </div>
+                            <h2 class="blog-title">Headless Commerce - A Guide to Decoupled E-Commerce</h2>
+                            <div class="blog-tags">
+                                <span class="tag">E-Commerce</span>
+                                <span class="tag">Headless</span>
+                                <span class="tag">Architecture</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Blog Post 11: Nov 5, 2024 -->
+                <article class="blog-card blog-card-compact">
+                    <a href="https://www.builder.io/m/knowledge-center/design-to-code"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="blog-card-inner">
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <time class="blog-date">Nov 5, 2024</time>
+                                <span class="blog-type">Guide</span>
+                            </div>
+                            <h2 class="blog-title">What is Design to Code: an Automated Approach</h2>
+                            <div class="blog-tags">
+                                <span class="tag">Design</span>
+                                <span class="tag">Automation</span>
+                                <span class="tag">Workflow</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Blog Post 12: Oct 18, 2024 -->
+                <article class="blog-card blog-card-compact">
+                    <a href="https://www.builder.io/m/explainers/design-systems"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="blog-card-inner">
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <time class="blog-date">Oct 18, 2024</time>
+                                <span class="blog-type">Explainer</span>
+                            </div>
+                            <h2 class="blog-title">Design Systems Explained</h2>
+                            <div class="blog-tags">
+                                <span class="tag">Design Systems</span>
+                                <span class="tag">UI</span>
+                                <span class="tag">Consistency</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Blog Post 13: Oct 3, 2024 -->
+                <article class="blog-card blog-card-compact">
+                    <a href="https://www.builder.io/blog/seo-ai"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="blog-card-inner">
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <time class="blog-date">Oct 3, 2024</time>
+                                <span class="blog-type">Article</span>
+                            </div>
+                            <h2 class="blog-title">A Helpful Approach to Navigating the SEO AI Shift</h2>
+                            <div class="blog-tags">
+                                <span class="tag">SEO</span>
+                                <span class="tag">AI</span>
+                                <span class="tag">Marketing</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Blog Post 14: Sep 18, 2024 -->
+                <article class="blog-card blog-card-compact">
+                    <a href="https://www.builder.io/blog/best-figma-plugins"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="blog-card-inner">
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <time class="blog-date">Sep 18, 2024</time>
+                                <span class="blog-type">Article</span>
+                            </div>
+                            <h2 class="blog-title">Figma Plugins for Developers in 2024</h2>
+                            <div class="blog-tags">
+                                <span class="tag">Figma</span>
+                                <span class="tag">Plugins</span>
+                                <span class="tag">Design Tools</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Blog Post 15: Sep 9, 2024 -->
+                <article class="blog-card blog-card-compact">
+                    <a href="https://www.builder.io/m/explainers/extensibility"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="blog-card-inner">
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <time class="blog-date">Sep 9, 2024</time>
+                                <span class="blog-type">Explainer</span>
+                            </div>
+                            <h2 class="blog-title">Extensibility: Building software that adapts</h2>
+                            <div class="blog-tags">
+                                <span class="tag">Architecture</span>
+                                <span class="tag">Extensibility</span>
+                                <span class="tag">Best Practices</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Blog Post 16: Aug 22, 2024 -->
+                <article class="blog-card blog-card-compact">
+                    <a href="https://www.builder.io/m/explainers/digital-asset-management"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="blog-card-inner">
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <time class="blog-date">Aug 22, 2024</time>
+                                <span class="blog-type">Explainer</span>
+                            </div>
+                            <h2 class="blog-title">Digital Asset Management: Organize your digital world</h2>
+                            <div class="blog-tags">
+                                <span class="tag">DAM</span>
+                                <span class="tag">Asset Management</span>
+                                <span class="tag">Organization</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Blog Post 17: Jul 26, 2024 -->
+                <article class="blog-card blog-card-compact">
+                    <a href="https://www.builder.io/m/explainers/seo-core-web-vitals"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="blog-card-inner">
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <time class="blog-date">Jul 26, 2024</time>
+                                <span class="blog-type">Guide</span>
+                            </div>
+                            <h2 class="blog-title">An SEO aha moment: understanding Core Web Vitals</h2>
+                            <div class="blog-tags">
+                                <span class="tag">SEO</span>
+                                <span class="tag">Performance</span>
+                                <span class="tag">Web Vitals</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Blog Post 18: Jul 15, 2024 -->
+                <article class="blog-card blog-card-compact">
+                    <a href="https://www.builder.io/m/explainers/structured-data"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="blog-card-inner">
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <time class="blog-date">Jul 15, 2024</time>
+                                <span class="blog-type">Explainer</span>
+                            </div>
+                            <h2 class="blog-title">Structured Data: What It Is and Why You Need It</h2>
+                            <div class="blog-tags">
+                                <span class="tag">Structured Data</span>
+                                <span class="tag">SEO</span>
+                                <span class="tag">Content</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Blog Post 19: Jul 2, 2024 -->
+                <article class="blog-card blog-card-compact">
+                    <a href="https://www.builder.io/m/explainers/content-modeling"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="blog-card-inner">
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <time class="blog-date">Jul 2, 2024</time>
+                                <span class="blog-type">Guide</span>
+                            </div>
+                            <h2 class="blog-title">Visual Content Modeling: A Comprehensive Guide</h2>
+                            <div class="blog-tags">
+                                <span class="tag">Content Modeling</span>
+                                <span class="tag">CMS</span>
+                                <span class="tag">Structure</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Blog Post 20: Feb 1, 2024 -->
+                <article class="blog-card blog-card-compact">
+                    <a href="https://www.builder.io/m/knowledge-center/jamstack-cms"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="blog-card-inner">
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <time class="blog-date">Feb 1, 2024</time>
+                                <span class="blog-type">Guide</span>
+                            </div>
+                            <h2 class="blog-title">The Complete Guide to Choosing the Best Jamstack CMS</h2>
+                            <div class="blog-tags">
+                                <span class="tag">Jamstack</span>
+                                <span class="tag">CMS</span>
+                                <span class="tag">Web Dev</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Blog Post 21: Aug 9, 2023 -->
+                <article class="blog-card blog-card-compact">
+                    <a href="https://dev.to/pangea/trusting-chatgpt-protecting-apps-from-pii-leakage-1727"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="blog-card-inner">
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <time class="blog-date">Aug 9, 2023</time>
+                                <span class="blog-type">Tutorial</span>
+                            </div>
+                            <h2 class="blog-title">Trusting ChatGPT - Protecting Apps from PII Leakage</h2>
+                            <div class="blog-tags">
+                                <span class="tag">Security</span>
+                                <span class="tag">AI</span>
+                                <span class="tag">Privacy</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Blog Post 22: Feb 14, 2023 -->
+                <article class="blog-card blog-card-compact">
+                    <a href="https://dev.to/pangea/integrating-with-firebase-with-pangeas-security-services-5g4e"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="blog-card-inner">
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <time class="blog-date">Feb 14, 2023</time>
+                                <span class="blog-type">Tutorial</span>
+                            </div>
+                            <h2 class="blog-title">Integrating with Firebase and Pangea's security services</h2>
+                            <div class="blog-tags">
+                                <span class="tag">Firebase</span>
+                                <span class="tag">Security</span>
+                                <span class="tag">Extensions</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Blog Post 23: Oct 24, 2022 -->
+                <article class="blog-card blog-card-compact">
+                    <a href="https://dev.to/pangea/integrating-pangea-audit-and-embargo-with-redwoodjs-4i8m"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="blog-card-inner">
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <time class="blog-date">Oct 24, 2022</time>
+                                <span class="blog-type">Tutorial</span>
+                            </div>
+                            <h2 class="blog-title">Integrating Pangea Audit and Embargo APIs with RedwoodJS</h2>
+                            <div class="blog-tags">
+                                <span class="tag">RedwoodJS</span>
+                                <span class="tag">Security</span>
+                                <span class="tag">Compliance</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Blog Post 24: Sep 8, 2022 -->
+                <article class="blog-card blog-card-compact">
+                    <a href="https://www.contentful.com/blog/ruby-on-rails-tutorial/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="blog-card-inner">
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <time class="blog-date">Sep 8, 2022</time>
+                                <span class="blog-type">Tutorial</span>
+                            </div>
+                            <h2 class="blog-title">Ruby on Rails tutorial: Getting started with Contentful</h2>
+                            <div class="blog-tags">
+                                <span class="tag">Ruby on Rails</span>
+                                <span class="tag">Contentful</span>
+                                <span class="tag">Backend</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Blog Post 25: Sep 1, 2022 -->
+                <article class="blog-card blog-card-compact">
+                    <a href="https://www.contentful.com/blog/how-to-get-started-using-angular-with-contentful/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="blog-card-inner">
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <time class="blog-date">Sep 1, 2022</time>
+                                <span class="blog-type">Tutorial</span>
+                            </div>
+                            <h2 class="blog-title">How to get started using Angular with Contentful</h2>
+                            <div class="blog-tags">
+                                <span class="tag">Angular</span>
+                                <span class="tag">Contentful</span>
+                                <span class="tag">TypeScript</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Blog Post 26: Aug 18, 2022 -->
+                <article class="blog-card blog-card-compact">
+                    <a href="https://www.contentful.com/blog/vue-tutorial/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="blog-card-inner">
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <time class="blog-date">Aug 18, 2022</time>
+                                <span class="blog-type">Tutorial</span>
+                            </div>
+                            <h2 class="blog-title">A hands-on tutorial for using Contentful with Vue</h2>
+                            <div class="blog-tags">
+                                <span class="tag">Vue.js</span>
+                                <span class="tag">Contentful</span>
+                                <span class="tag">JavaScript</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Blog Post 27: Aug 16, 2022 -->
+                <article class="blog-card blog-card-compact">
+                    <a href="https://www.contentful.com/blog/what-is-a-framework/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="blog-card-inner">
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <time class="blog-date">Aug 16, 2022</time>
+                                <span class="blog-type">Tutorial</span>
+                            </div>
+                            <h2 class="blog-title">What is a framework in programming? All about software frameworks</h2>
+                            <div class="blog-tags">
+                                <span class="tag">Frameworks</span>
+                                <span class="tag">Development</span>
+                                <span class="tag">Programming</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Blog Post 28: Mar 24, 2022 -->
+                <article class="blog-card blog-card-compact">
+                    <a href="https://www.contentful.com/blog/building-blog-with-nextjs-and-contentful/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="blog-card-inner">
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <time class="blog-date">Mar 24, 2022</time>
+                                <span class="blog-type">Tutorial</span>
+                            </div>
+                            <h2 class="blog-title">A galactic guide to building a blog with Next.js and Contentful</h2>
+                            <div class="blog-tags">
+                                <span class="tag">Next.js</span>
+                                <span class="tag">Contentful</span>
+                                <span class="tag">React</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+            </div>
+        </div>
+    </section>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-social">
+                <a href="https://twitter.com/LucasStahl11" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/lucasstahl" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/Stahlwalker" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://stahlwalker.notion.site/Luke-Stahl-s-Portfolio-of-Work-bc6f3e68e3084d37bfa023e4e8d3b901" target="_blank" rel="noopener noreferrer" aria-label="Notion Portfolio" class="notion-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                        <path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z"/>
+                    </svg>
+                </a>
+                <a href="mailto:STAHL1109@GMAIL.COM" aria-label="Email">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+            </div>
+            <p class="footer-copyright">© 2025 Luke Stahl. Built with code and curiosity.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+---
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+	title: string;
+	description?: string;
+	ogTitle?: string;
+	ogDescription?: string;
+	ogImage?: string;
+	canonicalUrl?: string;
+	additionalCss?: string[];
+}
+
+const {
+	title,
+	description = "The portfolio of Luke Stahl — showcasing work across developer marketing, product strategy, and modern web development.",
+	ogTitle = "Luke Stahl - Developer Marketer & Web Developer",
+	ogDescription = "Developer marketer and web developer with a passion for building and optimizing for the web, bridging the gap between marketing strategy and technical implementation.",
+	ogImage = "https://lucasstahl.com/assets/images/devMktg_og.png",
+	canonicalUrl = "https://lucasstahl.com",
+	additionalCss = []
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- https -->
+	<script type="text/javascript">
+		var host = "lucasstahl.com";
+		if ((host == window.location.host) && (window.location.protocol != "https:"))
+			window.location.protocol = "https";
+	</script>
+
+	<meta charset="UTF-8">
+	<meta name="description" content={description}>
+	<link rel="canonical" href={canonicalUrl} />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>{title}</title>
+
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website">
+	<meta property="og:url" content={canonicalUrl}>
+	<meta property="og:title" content={ogTitle}>
+	<meta property="og:description" content={ogDescription}>
+	<meta property="og:image" content={ogImage}>
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+
+	<!-- Twitter -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:url" content={canonicalUrl}>
+	<meta name="twitter:title" content={ogTitle}>
+	<meta name="twitter:description" content={ogDescription}>
+	<meta name="twitter:image" content={ogImage}>
+
+	<link href="/LS.ico" rel="icon">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/dark-mode.css">
+
+	{additionalCss.map(css => (
+		<link rel="stylesheet" type="text/css" href={css}>
+	))}
+
+	<link href="https://fonts.googleapis.com/css?family=Megrim" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Share+Tech" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Gruppo" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+	<!-- favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="/LS.ico" />
+	<link rel="apple-touch-icon" href="/LS.ico" />
+	<meta name="application-name" content="LucasStahl" />
+	<meta name="msapplication-TileColor" content="#FFFFFF" />
+	<meta name="msapplication-TileImage" content="https://lucasstahl.com/LS.ico" />
+</head>
+<body>
+	<Navbar />
+	<slot />
+	<Footer />
+</body>
+</html>

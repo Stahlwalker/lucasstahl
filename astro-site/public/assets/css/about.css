@@ -1,0 +1,840 @@
+/* About Page Styles */
+
+/* About Hero Section */
+.about-hero {
+    background: var(--bg-primary);
+    padding: 6rem 2rem 3rem;
+    text-align: center;
+}
+
+.about-hero-title {
+    font-family: 'Fira Code', monospace;
+    font-size: 3rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-weight: 700;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.about-hero-subtitle {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+/* About Section */
+.about-section {
+    background: var(--bg-primary);
+    padding: 2rem 2rem 4rem;
+}
+
+/* Bio Section */
+.about-content {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 3rem;
+    margin-bottom: 4rem;
+    animation: fadeInUp 0.8s ease-out 0.3s both;
+}
+
+.about-image-container {
+    position: relative;
+}
+
+.about-image {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 2px solid rgba(96, 165, 250, 0.3);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.about-image:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 50px rgba(96, 165, 250, 0.2);
+    border-color: var(--accent-primary);
+}
+
+.about-bio {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about-bio-title {
+    font-family: 'Fira Code', monospace;
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.about-bio-text p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+.about-bio-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* Skills Section */
+.skills-section {
+    margin-bottom: 4rem;
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.skills-title {
+    font-family: 'Fira Code', monospace;
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.skills-subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: 2rem;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.skill-category {
+    background: var(--bg-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.skill-category:hover {
+    border-color: rgba(96, 165, 250, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.skill-category-title {
+    font-family: 'Fira Code', monospace;
+    font-size: 1.25rem;
+    color: var(--text-primary);
+    margin-bottom: 1.25rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.skill-category-title i {
+    color: var(--accent-primary);
+    font-size: 1.5rem;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.skill-tag {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+    background: rgba(96, 165, 250, 0.1);
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+    transform: translateY(-2px);
+}
+
+/* Tools I Love Section */
+.tools-section {
+    margin-bottom: 4rem;
+    position: relative;
+    animation: fadeInUp 0.8s ease-out 0.5s both;
+}
+
+.tools-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 800px 400px at 50% 50%, rgba(96, 165, 250, 0.12), transparent 50%),
+        radial-gradient(ellipse 600px 300px at 50% 50%, rgba(129, 140, 248, 0.08), transparent 50%);
+    opacity: 0.8;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.tools-section::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(96, 165, 250, 0.08) 0%, transparent 70%);
+    filter: blur(40px);
+    pointer-events: none;
+    z-index: 0;
+    animation: pulse-glow 4s ease-in-out infinite;
+}
+
+@keyframes border-flow {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 300% 50%;
+    }
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+.tools-title {
+    font-family: 'Fira Code', monospace;
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline;
+    gap: 1rem;
+}
+
+.tools-title-comment {
+    font-family: 'Fira Code', monospace;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    opacity: 0.6;
+    font-style: italic;
+}
+
+.tools-subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+    position: relative;
+    z-index: 1;
+}
+
+.tools-showcase {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4rem 3rem;
+    position: relative;
+    z-index: 1;
+    border-radius: 24px;
+    background: rgba(15, 23, 42, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.tools-showcase::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(
+        90deg,
+        rgba(96, 165, 250, 0.6),
+        rgba(129, 140, 248, 0.6),
+        rgba(168, 85, 247, 0.6),
+        rgba(236, 72, 153, 0.6),
+        rgba(96, 165, 250, 0.6)
+    );
+    background-size: 300% 100%;
+    border-radius: 24px;
+    padding: 2px;
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: -1;
+    animation: border-flow 8s linear infinite;
+}
+
+.tools-showcase::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(
+        90deg,
+        rgba(96, 165, 250, 0.6),
+        rgba(129, 140, 248, 0.6),
+        rgba(168, 85, 247, 0.6),
+        rgba(236, 72, 153, 0.6),
+        rgba(96, 165, 250, 0.6)
+    );
+    background-size: 300% 100%;
+    border-radius: 24px;
+    filter: blur(20px);
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: -1;
+    animation: border-flow 8s linear infinite;
+}
+
+.tools-logo-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.tool-logo-item {
+    flex: 0 0 auto;
+}
+
+.tool-logo-box {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(96, 165, 250, 0.2);
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.65rem 1.5rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: visible;
+    height: 40px;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    text-decoration: none;
+}
+
+.tool-logo-box::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.4), rgba(129, 140, 248, 0.4), rgba(168, 85, 247, 0.4));
+    border-radius: 999px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    filter: blur(8px);
+    z-index: -1;
+}
+
+.tool-logo-box::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.1), rgba(129, 140, 248, 0.1));
+    border-radius: 999px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.tool-logo-box:hover {
+    border-color: rgba(96, 165, 250, 0.6);
+    transform: translateY(-2px);
+    box-shadow:
+        0 0 20px rgba(96, 165, 250, 0.4),
+        0 0 40px rgba(96, 165, 250, 0.2),
+        0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.tool-logo-box:hover::before {
+    opacity: 1;
+}
+
+.tool-logo-box:hover::after {
+    opacity: 1;
+}
+
+.tool-logo-text {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgba(203, 213, 225, 0.9);
+    text-align: center;
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 1;
+    white-space: nowrap;
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.tool-logo-box:hover .tool-logo-text {
+    color: rgba(255, 255, 255, 1);
+    text-shadow:
+        0 0 8px rgba(96, 165, 250, 0.8),
+        0 0 16px rgba(96, 165, 250, 0.4);
+}
+
+/* Speaking Section */
+.speaking-section {
+    margin-bottom: 4rem;
+    animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+
+.speaking-title {
+    font-family: 'Fira Code', monospace;
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.speaking-subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.talk-card {
+    background: var(--bg-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.talk-card:hover {
+    border-color: rgba(96, 165, 250, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.talk-video {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    overflow: hidden;
+}
+
+.talk-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.talk-info {
+    padding: 1.25rem;
+}
+
+.talk-title {
+    font-family: 'Fira Code', monospace;
+    font-size: 1.125rem;
+    color: var(--text-primary);
+    margin-bottom: 0.625rem;
+    font-weight: 600;
+}
+
+.talk-description {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 0.875rem;
+}
+
+.talk-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.talk-date,
+.talk-location {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+.talk-date i,
+.talk-location i {
+    color: var(--accent-primary);
+    font-size: 0.8rem;
+}
+
+/* Connect Section */
+.connect-section {
+    text-align: center;
+    animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+
+.connect-title {
+    font-family: 'Fira Code', monospace;
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+}
+
+.connect-description {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: 2rem;
+}
+
+.connect-links {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.connect-card {
+    background: var(--bg-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.connect-card:hover {
+    border-color: rgba(96, 165, 250, 0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+}
+
+.connect-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.1), rgba(129, 140, 248, 0.1));
+    border: 1px solid rgba(96, 165, 250, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.connect-icon i {
+    font-size: 1.75rem;
+    color: var(--accent-primary);
+    transition: transform 0.3s ease;
+}
+
+.connect-card:hover .connect-icon {
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.2), rgba(129, 140, 248, 0.2));
+    border-color: var(--accent-primary);
+    transform: scale(1.05);
+}
+
+.connect-card:hover .connect-icon i {
+    transform: scale(1.1);
+}
+
+.connect-content {
+    flex: 1;
+    text-align: left;
+}
+
+.connect-link-title {
+    font-family: 'Fira Code', monospace;
+    font-size: 1.125rem;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+}
+
+.connect-link-desc {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+.connect-arrow {
+    color: var(--accent-primary);
+    font-size: 1.25rem;
+    transition: transform 0.3s ease;
+}
+
+.connect-card:hover .connect-arrow {
+    transform: translateX(4px);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .about-content {
+        grid-template-columns: 250px 1fr;
+        gap: 2rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .connect-links {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-hero {
+        padding: 4rem 1rem 2rem;
+    }
+
+    .about-hero-title {
+        font-size: 2rem;
+    }
+
+    .about-hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .about-section {
+        padding: 1.5rem 1rem 3rem;
+    }
+
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .about-image-container {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .about-bio {
+        align-items: center;
+    }
+
+    .about-bio-title {
+        font-size: 1.75rem;
+    }
+
+    .skills-title {
+        font-size: 1.75rem;
+    }
+
+    .skill-category {
+        padding: 1.5rem;
+    }
+
+    .tools-showcase {
+        padding: 3rem 2rem;
+    }
+
+    .tools-title {
+        font-size: 1.75rem;
+    }
+
+    .tools-logo-grid {
+        gap: 0.875rem;
+    }
+
+    .tool-logo-box {
+        padding: 0.6rem 1.35rem;
+        height: 38px;
+    }
+
+    .tool-logo-text {
+        font-size: 0.8125rem;
+    }
+
+    .speaking-title {
+        font-size: 1.75rem;
+    }
+
+    .talk-info {
+        padding: 1.5rem;
+    }
+
+    .talk-title {
+        font-size: 1.25rem;
+    }
+
+    .connect-title {
+        font-size: 1.75rem;
+    }
+
+    .connect-card {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-hero-title {
+        font-size: 1.75rem;
+    }
+
+    .about-hero-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .about-bio-title {
+        font-size: 1.5rem;
+    }
+
+    .about-bio-text p {
+        font-size: 0.95rem;
+    }
+
+    .skills-title {
+        font-size: 1.5rem;
+    }
+
+    .skills-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .tools-section::after {
+        width: 400px;
+        height: 400px;
+    }
+
+    .tools-showcase {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .tools-title {
+        font-size: 1.5rem;
+    }
+
+    .tools-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 2rem;
+    }
+
+    .tools-logo-grid {
+        gap: 0.75rem;
+    }
+
+    .tool-logo-box {
+        padding: 0.55rem 1.25rem;
+        height: 36px;
+    }
+
+    .tool-logo-text {
+        font-size: 0.8rem;
+    }
+
+    .speaking-title {
+        font-size: 1.5rem;
+    }
+
+    .speaking-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .talk-info {
+        padding: 1.25rem;
+    }
+
+    .talk-title {
+        font-size: 1.125rem;
+    }
+
+    .talk-description {
+        font-size: 0.95rem;
+    }
+
+    .connect-title {
+        font-size: 1.5rem;
+    }
+
+    .skill-category-title {
+        font-size: 1.125rem;
+    }
+
+    .connect-card {
+        padding: 1.25rem;
+        gap: 1rem;
+    }
+
+    .connect-icon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .connect-icon i {
+        font-size: 1.5rem;
+    }
+
+    .connect-link-title {
+        font-size: 1rem;
+    }
+
+    .connect-link-desc {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 375px) {
+    .about-hero-title {
+        font-size: 1.5rem;
+    }
+
+    .about-bio-title {
+        font-size: 1.35rem;
+    }
+
+    .skills-title,
+    .tools-title,
+    .speaking-title,
+    .connect-title {
+        font-size: 1.35rem;
+    }
+
+    .skill-category {
+        padding: 1.25rem;
+    }
+
+    .talk-info {
+        padding: 1rem;
+    }
+
+    .talk-title {
+        font-size: 1rem;
+    }
+
+    .connect-card {
+        padding: 1rem;
+    }
+}
