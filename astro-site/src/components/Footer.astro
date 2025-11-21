@@ -4,6 +4,9 @@
 
 <footer class="footer">
     <div class="footer-content">
+        <div class="footer-links">
+            <a href="/handbook" class="footer-link">Developer Marketing Handbook</a>
+        </div>
         <div class="footer-social">
             <a href="https://twitter.com/LucasStahl11" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
                 <i class="fa-brands fa-x-twitter"></i>
@@ -26,6 +29,59 @@
         <p class="footer-copyright">© 2025 Luke Stahl. Built with code and curiosity.</p>
     </div>
 </footer>
+
+<style>
+    .footer-links {
+        margin: 0 0 12px 0;
+    }
+
+    .footer-link {
+        color: #888;
+        text-decoration: none;
+        font-size: 14px;
+        font-family: 'Inter', sans-serif;
+        transition: all 0.3s ease;
+        padding: 4px 12px;
+        border: 1px solid #333;
+        border-radius: 4px;
+        display: inline-block;
+        position: relative;
+        animation: subtle-glow 3s ease-in-out infinite;
+    }
+
+    .footer-link:hover {
+        color: #c3e88d;
+        border-color: #c3e88d;
+        text-decoration: none;
+        box-shadow: 0 0 10px rgba(195, 232, 141, 0.3);
+        animation: none;
+    }
+
+    @keyframes subtle-glow {
+        0%, 100% {
+            box-shadow: 0 0 5px rgba(195, 232, 141, 0.1);
+        }
+        50% {
+            box-shadow: 0 0 8px rgba(195, 232, 141, 0.2);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .footer-link {
+            font-size: 13px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .footer-links {
+            margin: 0 0 10px 0;
+        }
+
+        .footer-link {
+            font-size: 12px;
+        }
+    }
+</style>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

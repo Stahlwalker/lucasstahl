@@ -2,6 +2,7 @@
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import PostHog from '../components/posthog.astro';
+import DevMarketingConsole from '../components/DevMarketingConsole.astro';
 
 interface Props {
 	title: string;
@@ -11,6 +12,7 @@ interface Props {
 	ogImage?: string;
 	canonicalUrl?: string;
 	additionalCss?: string[];
+	hideHandbookButton?: boolean;
 }
 
 const {
@@ -20,7 +22,8 @@ const {
 	ogDescription = "Developer marketer and web developer with a passion for building and optimizing for the web, bridging the gap between marketing strategy and technical implementation.",
 	ogImage = "https://lucasstahl.com/assets/images/devMktg_og.png",
 	canonicalUrl = "https://lucasstahl.com",
-	additionalCss = []
+	additionalCss = [],
+	hideHandbookButton = false
 } = Astro.props;
 ---
 
@@ -89,5 +92,6 @@ const {
 	<Navbar />
 	<slot />
 	<Footer />
+	{!hideHandbookButton && <DevMarketingConsole />}
 </body>
 </html>
