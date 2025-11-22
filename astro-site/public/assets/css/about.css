@@ -33,7 +33,7 @@
 /* Bio Section */
 .about-content {
     display: grid;
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: 340px 1fr;
     gap: 3rem;
     margin-bottom: 4rem;
     animation: fadeInUp 0.8s ease-out 0.3s both;
@@ -41,13 +41,20 @@
 
 .about-image-container {
     position: relative;
+    padding: 4px;
+    background: linear-gradient(135deg,
+        rgba(96, 165, 250, 0.15),
+        rgba(129, 140, 248, 0.15),
+        rgba(168, 85, 247, 0.15)
+    );
+    border-radius: 16px;
 }
 
 .about-image {
     width: 100%;
     height: auto;
     border-radius: 12px;
-    border: 2px solid rgba(96, 165, 250, 0.3);
+    display: block;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
 }
@@ -55,7 +62,74 @@
 .about-image:hover {
     transform: translateY(-4px);
     box-shadow: 0 15px 50px rgba(96, 165, 250, 0.2);
-    border-color: var(--accent-primary);
+}
+
+.about-image-container:hover {
+    background: linear-gradient(135deg,
+        rgba(96, 165, 250, 0.25),
+        rgba(129, 140, 248, 0.25),
+        rgba(168, 85, 247, 0.25)
+    );
+}
+
+/* Terminal Quote */
+.terminal-quote {
+    margin-top: 1rem;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.8125rem;
+    font-weight: 400;
+    text-align: left;
+    line-height: 1.4;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(13, 13, 13, 0.8);
+    border: 1px solid rgba(130, 170, 255, 0.3);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.terminal-quote:hover {
+    border-color: rgba(130, 170, 255, 0.5);
+    box-shadow: 0 4px 16px rgba(130, 170, 255, 0.2);
+}
+
+.terminal-prompt {
+    color: #82aaff;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.terminal-text {
+    color: #c3e88d;
+    letter-spacing: 0.3px;
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block;
+    width: 0;
+    border-right: 2px solid #c3e88d;
+    padding-right: 2px;
+    animation: typing 3.5s steps(42, end) 1s forwards, blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink-caret {
+    from, to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: #c3e88d;
+    }
 }
 
 .about-bio {
@@ -689,6 +763,17 @@
         margin: 0 auto;
     }
 
+    .terminal-quote {
+        font-size: 0.7rem;
+        padding: 0.65rem 0.85rem;
+        min-height: 2.5rem;
+    }
+
+    .terminal-text {
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
     .about-bio {
         align-items: center;
     }
@@ -762,6 +847,18 @@
 
     .about-bio-text p {
         font-size: 0.95rem;
+    }
+
+    .terminal-quote {
+        font-size: 0.65rem;
+        padding: 0.6rem 0.75rem;
+        gap: 6px;
+        min-height: 2.3rem;
+    }
+
+    .terminal-text {
+        white-space: nowrap;
+        overflow: hidden;
     }
 
     .skills-title {
