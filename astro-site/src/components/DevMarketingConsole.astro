@@ -882,6 +882,10 @@ If it doesn't show developer impact, it's just noise.`
   const navLinks = document.querySelectorAll('.handbook-modal .nav-link');
   const sections = document.querySelectorAll('.handbook-modal .handbook-section');
 
+  function isMobile() {
+    return window.innerWidth <= 768;
+  }
+
   function openHandbook() {
     overlay.classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -892,8 +896,14 @@ If it doesn't show developer impact, it's just noise.`
     document.body.style.overflow = '';
   }
 
-  // Open/close handlers
-  button.addEventListener('click', openHandbook);
+  // Open/close handlers - on mobile, navigate to /handbook, on desktop open modal
+  button.addEventListener('click', () => {
+    if (isMobile()) {
+      window.location.href = '/handbook';
+    } else {
+      openHandbook();
+    }
+  });
   closeButton.addEventListener('click', closeHandbook);
 
   // Close on clicking overlay background

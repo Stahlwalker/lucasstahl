@@ -496,9 +496,14 @@ import Layout from '../layouts/Layout.astro';
 			flex-shrink: 0;
 		}
 
-		.nav-link {
+		.nav-link,
+		.nav-link-external {
 			padding: 8px 16px;
 			font-size: 12px;
+		}
+
+		.nav-link-external {
+			display: none;
 		}
 
 		.handbook-page-content {
