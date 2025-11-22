@@ -3,7 +3,7 @@
 ---
 
 <nav class="navbar navbar-expand-md navbar-light bg-faded" style="background-color: rgb(229, 240, 136);">
-    <a class="navbar-brand" href="/">
+    <a class="navbar-brand" href="/" data-nav-link>
         Luke Stahl
         <a href="https://github.com/Stahlwalker" target="_blank" rel="noopener noreferrer" class="navbar-github-icon navbar-github-desktop" title="GitHub Profile">
             <i class="fa-brands fa-github"></i>
@@ -16,16 +16,16 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/blog">Blog</a>
+                <a class="nav-link" href="/blog" data-nav-link>Blog</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/builds">Builds</a>
+                <a class="nav-link" href="/builds" data-nav-link>Builds</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/about">About</a>
+                <a class="nav-link" href="/about" data-nav-link>About</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/gems">Gems</a>
+                <a class="nav-link" href="/gems" data-nav-link>Gems</a>
             </li>
             <li class="nav-item navbar-github-mobile">
                 <a class="nav-link" href="https://github.com/Stahlwalker" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
@@ -35,3 +35,17 @@
         </ul>
     </div>
 </nav>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const navLinks = document.querySelectorAll('[data-nav-link]');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const path = this.getAttribute('href');
+                const fullUrl = window.location.origin + path;
+                window.location.href = fullUrl;
+            });
+        });
+    });
+</script>
