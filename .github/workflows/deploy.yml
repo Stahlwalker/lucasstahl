@@ -32,6 +32,9 @@ jobs:
           npm ci
 
       - name: Build Astro site
+        env:
+          NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
         run: |
           cd astro-site
           npm run build
