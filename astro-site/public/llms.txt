@@ -13,7 +13,7 @@ Luke Stahl is a developer marketer and frontend developer who bridges the gap be
 - Projects/Builds: https://lucasstahl.com/builds
 - Blog: https://lucasstahl.com/blog
 - Gems: https://lucasstahl.com/gems
-- Contact: https://lucasstahl.com/contact
+- Handbook: https://lucasstahl.com/handbook
 
 ## Professional Focus
 
