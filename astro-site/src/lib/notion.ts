@@ -19,6 +19,9 @@ export interface BlogPost {
   tags: string[];
   featured: boolean;
   featuredImage?: string;
+  ogImage?: string;
+  metaTitle?: string;
+  metaDescription?: string;
   content?: string;
 }
 
@@ -75,6 +78,18 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
         ? properties.FeaturedImage.url || ''
         : '';
 
+      const ogImage = properties.OGImage?.type === 'url'
+        ? properties.OGImage.url || ''
+        : '';
+
+      const metaTitle = properties.MetaTitle?.type === 'rich_text'
+        ? properties.MetaTitle.rich_text[0]?.plain_text || ''
+        : '';
+
+      const metaDescription = properties.MetaDescription?.type === 'rich_text'
+        ? properties.MetaDescription.rich_text[0]?.plain_text || ''
+        : '';
+
       posts.push({
         id: page.id,
         title,
@@ -84,6 +99,9 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
         tags,
         featured,
         featuredImage,
+        ogImage,
+        metaTitle,
+        metaDescription,
       });
     }
   }
@@ -102,9 +120,33 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
     const mdblocks = await n2m.pageToMarkdown(post.id);
     const mdString = n2m.toMarkdownString(mdblocks);
 
+    // Extract first image from content if no OG image is set
+    let firstImageUrl = '';
+    if (!post.ogImage && !post.featuredImage) {
+      // Fetch blocks to find first image
+      const blocks = await notion.blocks.children.list({
+        block_id: post.id,
+        page_size: 100,
+      });
+
+      for (const block of blocks.results) {
+        if ('type' in block && block.type === 'image') {
+          const imageBlock = block as any;
+          if (imageBlock.image?.type === 'external') {
+            firstImageUrl = imageBlock.image.external.url;
+            break;
+          } else if (imageBlock.image?.type === 'file') {
+            firstImageUrl = imageBlock.image.file.url;
+            break;
+          }
+        }
+      }
+    }
+
     return {
       ...post,
       content: mdString.parent,
+      ogImage: post.ogImage || post.featuredImage || firstImageUrl || '',
     };
   } catch (error) {
     console.error('Error fetching content for post:', post.slug, error);

@@ -20,14 +20,20 @@ if (!post) {
 
 // Convert markdown to HTML
 const htmlContent = post.content ? marked(post.content) : '';
+
+// Determine OG image with fallback logic
+const ogImageUrl = post.ogImage || '/assets/images/Hero_OG.png';
+const metaTitle = post.metaTitle || post.title;
+const metaDesc = post.metaDescription || post.excerpt;
 ---
 
 <Layout
-  title={`${post.title} - Luke Stahl`}
-  description={post.excerpt}
+  title={`${metaTitle} - Luke Stahl`}
+  description={metaDesc}
   canonicalUrl={`https://lucasstahl.com/blog/${post.slug}`}
-  ogTitle={post.title}
-  ogDescription={post.excerpt}
+  ogTitle={metaTitle}
+  ogDescription={metaDesc}
+  ogImage={ogImageUrl}
 >
   <article class="blog-post">
     <div class="blog-post-container">
