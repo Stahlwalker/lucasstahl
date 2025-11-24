@@ -25,6 +25,191 @@ const htmlContent = post.content ? marked(post.content) : '';
 const ogImageUrl = post.ogImage || '/assets/images/Hero_OG.png';
 const metaTitle = post.metaTitle || post.title;
 const metaDesc = post.metaDescription || post.excerpt;
+
+// Get all posts for "Continue Reading" suggestion (including external posts)
+const notionPosts = await getBlogPosts();
+
+// Define external blog posts (matching /blog page)
+const externalPosts = [
+  {
+    title: "Developers love headless until they're stuck maintaining it",
+    publishedDate: "2025-10-08",
+    url: "https://webflow.com/blog/headless-cms-developer-tradeoffs",
+    isExternal: true,
+  },
+  {
+    title: "MCP servers worth knowing if you're building with AI",
+    publishedDate: "2025-08-13",
+    url: "https://webflow.com/blog/ai-mcp-servers",
+    isExternal: true,
+  },
+  {
+    title: "AI APIs in 2025",
+    publishedDate: "2025-02-27",
+    url: "https://www.builder.io/blog/ai-apis",
+    isExternal: true,
+  },
+  {
+    title: "The Rise of Visual Editing in Headless CMSs",
+    publishedDate: "2025-02-05",
+    url: "https://www.builder.io/m/knowledge-center/visual-editing",
+    isExternal: true,
+  },
+  {
+    title: "Building High-Performance React Components with AI Assistance",
+    publishedDate: "2025-01-29",
+    url: "https://www.builder.io/blog/react-components-ai",
+    isExternal: true,
+  },
+  {
+    title: "A Guide to Server-Side Rendering",
+    publishedDate: "2025-01-09",
+    url: "https://www.builder.io/m/explainers/server-side-rendering",
+    isExternal: true,
+  },
+  {
+    title: "React UI Component Libraries in 2025",
+    publishedDate: "2025-01-06",
+    url: "https://www.builder.io/blog/react-component-library",
+    isExternal: true,
+  },
+  {
+    title: "What is Builder's Visual Development Platform?",
+    publishedDate: "2024-12-13",
+    url: "https://www.builder.io/m/explainers/visual-development-platform",
+    isExternal: true,
+  },
+  {
+    title: "Headless Commerce - A Guide to Decoupled E-Commerce",
+    publishedDate: "2024-11-20",
+    url: "https://www.builder.io/m/knowledge-center/headless-commerce",
+    isExternal: true,
+  },
+  {
+    title: "What is Design to Code: an Automated Approach",
+    publishedDate: "2024-11-05",
+    url: "https://www.builder.io/m/knowledge-center/design-to-code",
+    isExternal: true,
+  },
+  {
+    title: "Design Systems Explained",
+    publishedDate: "2024-10-18",
+    url: "https://www.builder.io/m/explainers/design-systems",
+    isExternal: true,
+  },
+  {
+    title: "A Helpful Approach to Navigating the SEO AI Shift",
+    publishedDate: "2024-10-03",
+    url: "https://www.builder.io/blog/seo-ai",
+    isExternal: true,
+  },
+  {
+    title: "Figma Plugins for Developers in 2024",
+    publishedDate: "2024-09-18",
+    url: "https://www.builder.io/blog/best-figma-plugins",
+    isExternal: true,
+  },
+  {
+    title: "Extensibility: Building software that adapts",
+    publishedDate: "2024-09-09",
+    url: "https://www.builder.io/m/explainers/extensibility",
+    isExternal: true,
+  },
+  {
+    title: "Digital Asset Management: Organize your digital world",
+    publishedDate: "2024-08-22",
+    url: "https://www.builder.io/m/explainers/digital-asset-management",
+    isExternal: true,
+  },
+  {
+    title: "An SEO aha moment: understanding Core Web Vitals",
+    publishedDate: "2024-07-26",
+    url: "https://www.builder.io/m/explainers/seo-core-web-vitals",
+    isExternal: true,
+  },
+  {
+    title: "Structured Data: What It Is and Why You Need It",
+    publishedDate: "2024-07-15",
+    url: "https://www.builder.io/m/explainers/structured-data",
+    isExternal: true,
+  },
+  {
+    title: "Visual Content Modeling: A Comprehensive Guide",
+    publishedDate: "2024-07-02",
+    url: "https://www.builder.io/m/explainers/content-modeling",
+    isExternal: true,
+  },
+  {
+    title: "The Complete Guide to Choosing the Best Jamstack CMS",
+    publishedDate: "2024-02-01",
+    url: "https://www.builder.io/m/knowledge-center/jamstack-cms",
+    isExternal: true,
+  },
+  {
+    title: "Trusting ChatGPT - Protecting Apps from PII Leakage",
+    publishedDate: "2023-08-09",
+    url: "https://dev.to/pangea/trusting-chatgpt-protecting-apps-from-pii-leakage-1727",
+    isExternal: true,
+  },
+  {
+    title: "Integrating with Firebase and Pangea's security services",
+    publishedDate: "2023-02-14",
+    url: "https://dev.to/pangea/integrating-with-firebase-with-pangeas-security-services-5g4e",
+    isExternal: true,
+  },
+  {
+    title: "Integrating Pangea Audit and Embargo APIs with RedwoodJS",
+    publishedDate: "2022-10-24",
+    url: "https://dev.to/pangea/integrating-pangea-audit-and-embargo-with-redwoodjs-4i8m",
+    isExternal: true,
+  },
+  {
+    title: "Ruby on Rails tutorial: Getting started with Contentful",
+    publishedDate: "2022-09-08",
+    url: "https://www.contentful.com/blog/ruby-on-rails-tutorial/",
+    isExternal: true,
+  },
+  {
+    title: "How to get started using Angular with Contentful",
+    publishedDate: "2022-09-01",
+    url: "https://www.contentful.com/blog/how-to-get-started-using-angular-with-contentful/",
+    isExternal: true,
+  },
+  {
+    title: "A hands-on tutorial for using Contentful with Vue",
+    publishedDate: "2022-08-18",
+    url: "https://www.contentful.com/blog/vue-tutorial/",
+    isExternal: true,
+  },
+  {
+    title: "What is a framework in programming? All about software frameworks",
+    publishedDate: "2022-08-16",
+    url: "https://www.contentful.com/blog/what-is-a-framework/",
+    isExternal: true,
+  },
+  {
+    title: "A galactic guide to building a blog with Next.js and Contentful",
+    publishedDate: "2022-03-24",
+    url: "https://www.contentful.com/blog/building-blog-with-nextjs-and-contentful/",
+    isExternal: true,
+  },
+];
+
+// Combine Notion and external posts, exclude current post
+const allPosts = [
+  ...notionPosts.map(p => ({
+    title: p.title,
+    publishedDate: p.publishedDate,
+    url: `/blog/${p.slug}`,
+    slug: p.slug,
+    isExternal: false,
+  })),
+  ...externalPosts
+].filter(p => !p.slug || p.slug !== post.slug);
+
+// Sort by date descending and get the two most recent
+allPosts.sort((a, b) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime());
+const suggestedPosts = allPosts.slice(0, 2);
 ---
 
 <Layout
@@ -37,30 +222,104 @@ const metaDesc = post.metaDescription || post.excerpt;
 >
   <article class="blog-post">
     <div class="blog-post-container">
+      <a href="/blog" class="back-to-blog">
+        <i class="fa-solid fa-arrow-left"></i> Back to Blog
+      </a>
+
       <header class="blog-post-header">
-        <time class="blog-post-date">
-          {new Date(post.publishedDate).toLocaleDateString('en-US', {
-            month: 'long',
-            day: 'numeric',
-            year: 'numeric'
-          })}
-        </time>
-        <h1 class="blog-post-title">{post.title}</h1>
-        {post.tags.length > 0 && (
-          <div class="blog-post-tags">
-            {post.tags.map(tag => (
-              <span class="tag">{tag}</span>
-            ))}
-          </div>
-        )}
+        <div class="header-background">
+          <div class="abstract-shape shape-1"></div>
+          <div class="abstract-shape shape-2"></div>
+          <div class="abstract-shape shape-3"></div>
+        </div>
+        <div class="header-content">
+          {post.tags.length > 0 && (
+            <div class="blog-post-tags">
+              {post.tags.map(tag => (
+                <span class="tag">{tag}</span>
+              ))}
+            </div>
+          )}
+          <h1 class="blog-post-title">
+            <span class="code-bracket">&lt;</span>
+            {post.title}
+            <span class="code-bracket">/&gt;</span>
+          </h1>
+          <time class="blog-post-date">
+            {new Date(post.publishedDate).toLocaleDateString('en-US', {
+              month: 'long',
+              day: 'numeric',
+              year: 'numeric'
+            })}
+          </time>
+        </div>
       </header>
 
       <div class="blog-post-content" set:html={htmlContent} />
 
       <footer class="blog-post-footer">
-        <a href="/blog" class="back-to-blog">
-          <i class="fa-solid fa-arrow-left"></i> Back to Blog
-        </a>
+        <div class="share-section">
+          <h3 class="share-title">Share this article</h3>
+          <div class="share-buttons">
+            <a
+              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(metaTitle)}&url=${encodeURIComponent(`https://lucasstahl.com/blog/${post.slug}`)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="share-button share-twitter"
+              aria-label="Share on X (Twitter)"
+            >
+              <i class="fa-brands fa-x-twitter"></i>
+            </a>
+            <a
+              href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://lucasstahl.com/blog/${post.slug}`)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="share-button share-linkedin"
+              aria-label="Share on LinkedIn"
+            >
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a
+              href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`https://lucasstahl.com/blog/${post.slug}`)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="share-button share-facebook"
+              aria-label="Share on Facebook"
+            >
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+          </div>
+        </div>
+
+        {suggestedPosts.length > 0 && (
+          <div class="continue-reading">
+            <h3 class="continue-reading-title">Continue Reading</h3>
+            <div class="suggested-posts-grid">
+              {suggestedPosts.map(suggestedPost => (
+                <a
+                  href={suggestedPost.url}
+                  class="suggested-post"
+                  target={suggestedPost.isExternal ? "_blank" : undefined}
+                  rel={suggestedPost.isExternal ? "noopener noreferrer" : undefined}
+                >
+                  <div class="suggested-post-content">
+                    <h4 class="suggested-post-title">{suggestedPost.title}</h4>
+                    <time class="suggested-post-date">
+                      {new Date(suggestedPost.publishedDate).toLocaleDateString('en-US', {
+                        month: 'short',
+                        day: 'numeric',
+                        year: 'numeric'
+                      })}
+                    </time>
+                  </div>
+                  <span class="suggested-post-arrow">
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
       </footer>
     </div>
   </article>
@@ -70,6 +329,11 @@ const metaDesc = post.metaDescription || post.excerpt;
       min-height: 100vh;
       padding: 4rem 2rem;
       background-color: var(--bg-primary, #0a0e27);
+      background-image:
+        linear-gradient(rgba(96, 165, 250, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(96, 165, 250, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      background-position: center center;
     }
 
     .blog-post-container {
@@ -77,46 +341,159 @@ const metaDesc = post.metaDescription || post.excerpt;
       margin: 0 auto;
     }
 
-    .blog-post-header {
-      margin-bottom: 3rem;
-      padding-bottom: 2rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .blog-post-date {
-      display: block;
-      font-size: 0.9rem;
+    .back-to-blog {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
       color: var(--accent-blue, #60a5fa);
-      margin-bottom: 1rem;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+      margin-bottom: 2rem;
     }
 
-    .blog-post-title {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--text-primary, #e4e4e7);
-      margin-bottom: 1.5rem;
-      line-height: 1.2;
+    .back-to-blog:hover {
+      color: var(--accent-purple, #818cf8);
+    }
+
+    .blog-post-header {
+      position: relative;
+      margin-bottom: 3rem;
+      padding: 4rem 2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      overflow: hidden;
+      border-radius: 16px;
+    }
+
+    .header-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg,
+        rgba(96, 165, 250, 0.1) 0%,
+        rgba(129, 140, 248, 0.1) 50%,
+        rgba(168, 85, 247, 0.1) 100%);
+      animation: gradientShift 15s ease infinite;
+      z-index: 0;
+    }
+
+    @keyframes gradientShift {
+      0%, 100% {
+        background: linear-gradient(135deg,
+          rgba(96, 165, 250, 0.1) 0%,
+          rgba(129, 140, 248, 0.1) 50%,
+          rgba(168, 85, 247, 0.1) 100%);
+      }
+      50% {
+        background: linear-gradient(135deg,
+          rgba(168, 85, 247, 0.1) 0%,
+          rgba(129, 140, 248, 0.1) 50%,
+          rgba(96, 165, 250, 0.1) 100%);
+      }
+    }
+
+    .abstract-shape {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.15;
+      filter: blur(40px);
+      animation: float 20s ease-in-out infinite;
+    }
+
+    .shape-1 {
+      width: 300px;
+      height: 300px;
+      background: var(--accent-blue, #60a5fa);
+      top: -100px;
+      left: -100px;
+      animation-delay: 0s;
+    }
+
+    .shape-2 {
+      width: 250px;
+      height: 250px;
+      background: var(--accent-purple, #818cf8);
+      top: 50%;
+      right: -80px;
+      animation-delay: -7s;
+    }
+
+    .shape-3 {
+      width: 200px;
+      height: 200px;
+      background: rgba(168, 85, 247, 0.8);
+      bottom: -50px;
+      left: 50%;
+      animation-delay: -14s;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+      }
+      33% {
+        transform: translate(30px, -30px) scale(1.1);
+      }
+      66% {
+        transform: translate(-20px, 20px) scale(0.9);
+      }
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .code-bracket {
+      color: var(--accent-blue, #60a5fa);
+      font-weight: 400;
+      opacity: 0.7;
+      font-size: 0.9em;
     }
 
     .blog-post-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .blog-post-title {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--text-primary, #e4e4e7);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .blog-post-date {
+      display: block;
+      font-size: 0.9rem;
+      color: rgba(228, 228, 231, 0.6);
     }
 
     .blog-post-tags .tag {
       padding: 0.25rem 0.75rem;
-      background-color: rgba(96, 165, 250, 0.1);
-      border: 1px solid rgba(96, 165, 250, 0.3);
+      background-color: rgba(34, 211, 238, 0.15);
+      border: 1px solid rgba(34, 211, 238, 0.5);
       border-radius: 4px;
-      font-size: 0.85rem;
-      color: var(--accent-blue, #60a5fa);
+      font-size: 0.75rem;
+      color: #22d3ee;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+      text-shadow: 0 0 10px rgba(34, 211, 238, 0.3);
     }
 
     .blog-post-content {
       color: var(--text-primary, #e4e4e7);
       font-size: 1.1rem;
       line-height: 1.8;
+      font-family: 'Inter', sans-serif;
     }
 
     .blog-post-content :global(h2) {
@@ -197,21 +574,134 @@ const metaDesc = post.metaDescription || post.excerpt;
     .blog-post-footer {
       margin-top: 4rem;
       padding-top: 2rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-top: 2px solid rgba(34, 211, 238, 0.3);
     }
 
-    .back-to-blog {
-      display: inline-flex;
+    .share-section {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .share-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary, #e4e4e7);
+      margin-bottom: 1rem;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .share-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
       align-items: center;
-      gap: 0.5rem;
-      color: var(--accent-blue, #60a5fa);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s;
     }
 
-    .back-to-blog:hover {
-      color: var(--accent-purple, #818cf8);
+    .share-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-primary, #e4e4e7);
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    .share-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .share-twitter:hover {
+      background-color: #1DA1F2;
+      border-color: #1DA1F2;
+      color: white;
+    }
+
+    .share-linkedin:hover {
+      background-color: #0A66C2;
+      border-color: #0A66C2;
+      color: white;
+    }
+
+    .share-facebook:hover {
+      background-color: #1877F2;
+      border-color: #1877F2;
+      color: white;
+    }
+
+    .continue-reading {
+      margin: 3rem 0 2rem 0;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+    }
+
+    .continue-reading-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary, #e4e4e7);
+      margin-bottom: 1.5rem;
+      font-family: 'Inter', sans-serif;
+      text-align: center;
+    }
+
+    .suggested-posts-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .suggested-post {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      text-decoration: none;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .suggested-post:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--accent-blue, #60a5fa);
+      transform: translateX(4px);
+    }
+
+    .suggested-post-content {
+      flex: 1;
+    }
+
+    .suggested-post-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-primary, #e4e4e7);
+      margin: 0 0 0.75rem 0;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.3;
+    }
+
+    .suggested-post-date {
+      font-size: 0.85rem;
+      color: var(--accent-blue, #60a5fa);
+    }
+
+    .suggested-post-arrow {
+      font-size: 1.5rem;
+      color: var(--accent-blue, #60a5fa);
+      transition: transform 0.3s ease;
+    }
+
+    .suggested-post:hover .suggested-post-arrow {
+      transform: translateX(4px);
     }
 
     @media (max-width: 768px) {
@@ -225,6 +715,21 @@ const metaDesc = post.metaDescription || post.excerpt;
 
       .blog-post-content {
         font-size: 1rem;
+      }
+
+      .suggested-posts-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .suggested-post {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .suggested-post-arrow {
+        align-self: flex-end;
       }
     }
   </style>
