@@ -11,6 +11,9 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.6.0",
-    "astro": "^5.15.8"
+    "@notionhq/client": "^2.3.0",
+    "astro": "^5.15.8",
+    "marked": "^17.0.1",
+    "notion-to-md": "^3.1.9"
   }
 }

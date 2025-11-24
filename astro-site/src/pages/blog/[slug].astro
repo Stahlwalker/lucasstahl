@@ -1,0 +1,225 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getBlogPosts, getBlogPostBySlug } from '../../lib/notion';
+import { marked } from 'marked';
+
+export async function getStaticPaths() {
+  const posts = await getBlogPosts();
+  const filteredPosts = posts.filter(post => post.slug && post.slug.trim() !== '');
+  return filteredPosts.map(post => ({
+    params: { slug: post.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const post = await getBlogPostBySlug(slug);
+
+if (!post) {
+  return Astro.redirect('/404');
+}
+
+// Convert markdown to HTML
+const htmlContent = post.content ? marked(post.content) : '';
+---
+
+<Layout
+  title={`${post.title} - Luke Stahl`}
+  description={post.excerpt}
+  canonicalUrl={`https://lucasstahl.com/blog/${post.slug}`}
+  ogTitle={post.title}
+  ogDescription={post.excerpt}
+>
+  <article class="blog-post">
+    <div class="blog-post-container">
+      <header class="blog-post-header">
+        <time class="blog-post-date">
+          {new Date(post.publishedDate).toLocaleDateString('en-US', {
+            month: 'long',
+            day: 'numeric',
+            year: 'numeric'
+          })}
+        </time>
+        <h1 class="blog-post-title">{post.title}</h1>
+        {post.tags.length > 0 && (
+          <div class="blog-post-tags">
+            {post.tags.map(tag => (
+              <span class="tag">{tag}</span>
+            ))}
+          </div>
+        )}
+      </header>
+
+      <div class="blog-post-content" set:html={htmlContent} />
+
+      <footer class="blog-post-footer">
+        <a href="/blog" class="back-to-blog">
+          <i class="fa-solid fa-arrow-left"></i> Back to Blog
+        </a>
+      </footer>
+    </div>
+  </article>
+
+  <style>
+    .blog-post {
+      min-height: 100vh;
+      padding: 4rem 2rem;
+      background-color: var(--bg-primary, #0a0e27);
+    }
+
+    .blog-post-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .blog-post-header {
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .blog-post-date {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--accent-blue, #60a5fa);
+      margin-bottom: 1rem;
+    }
+
+    .blog-post-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text-primary, #e4e4e7);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .blog-post-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .blog-post-tags .tag {
+      padding: 0.25rem 0.75rem;
+      background-color: rgba(96, 165, 250, 0.1);
+      border: 1px solid rgba(96, 165, 250, 0.3);
+      border-radius: 4px;
+      font-size: 0.85rem;
+      color: var(--accent-blue, #60a5fa);
+    }
+
+    .blog-post-content {
+      color: var(--text-primary, #e4e4e7);
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .blog-post-content :global(h2) {
+      font-size: 1.8rem;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--text-primary, #e4e4e7);
+    }
+
+    .blog-post-content :global(h3) {
+      font-size: 1.4rem;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      color: var(--text-primary, #e4e4e7);
+    }
+
+    .blog-post-content :global(p) {
+      margin-bottom: 1.5rem;
+    }
+
+    .blog-post-content :global(a) {
+      color: var(--accent-blue, #60a5fa);
+      text-decoration: underline;
+    }
+
+    .blog-post-content :global(a:hover) {
+      color: var(--accent-purple, #818cf8);
+    }
+
+    .blog-post-content :global(code) {
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.9em;
+    }
+
+    .blog-post-content :global(pre) {
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+
+    .blog-post-content :global(pre code) {
+      background: none;
+      padding: 0;
+    }
+
+    .blog-post-content :global(ul),
+    .blog-post-content :global(ol) {
+      margin-bottom: 1.5rem;
+      padding-left: 2rem;
+    }
+
+    .blog-post-content :global(li) {
+      margin-bottom: 0.5rem;
+    }
+
+    .blog-post-content :global(blockquote) {
+      border-left: 4px solid var(--accent-blue, #60a5fa);
+      padding-left: 1.5rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: rgba(228, 228, 231, 0.8);
+    }
+
+    .blog-post-content :global(img) {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 2rem 0;
+      display: block;
+    }
+
+    .blog-post-footer {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .back-to-blog {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent-blue, #60a5fa);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .back-to-blog:hover {
+      color: var(--accent-purple, #818cf8);
+    }
+
+    @media (max-width: 768px) {
+      .blog-post {
+        padding: 2rem 1rem;
+      }
+
+      .blog-post-title {
+        font-size: 2rem;
+      }
+
+      .blog-post-content {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</Layout>

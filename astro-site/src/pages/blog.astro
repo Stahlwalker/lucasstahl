@@ -1,5 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getBlogPosts } from '../lib/notion';
+
+const notionPosts = await getBlogPosts();
 ---
 
 <Layout
@@ -27,6 +30,7 @@ import Layout from '../layouts/Layout.astro';
 		<div class="section-container">
 			<div class="blog-feed">
 
+				<!-- External Blog Posts -->
 				<!-- Blog Post 1: Oct 8, 2025 -->
 				<article class="blog-card">
 					<a href="https://webflow.com/blog/headless-cms-developer-tradeoffs"
@@ -96,6 +100,39 @@ import Layout from '../layouts/Layout.astro';
 						</div>
 					</a>
 				</article>
+
+				<!-- Notion Blog Posts -->
+				{notionPosts.map(post => (
+					<article class={post.featured ? "blog-card" : "blog-card blog-card-compact"}>
+						<a href={`/blog/${post.slug}`} class="blog-card-inner">
+							{post.featured && post.featuredImage && (
+								<div class="blog-thumbnail">
+									<img src={post.featuredImage} alt={post.title} loading="lazy">
+								</div>
+							)}
+							<div class="blog-content">
+								<div class="blog-meta">
+									<time class="blog-date">{new Date(post.publishedDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</time>
+									<span class="blog-type">Article</span>
+								</div>
+								<h2 class="blog-title">{post.title}</h2>
+								{post.featured && <p class="blog-excerpt">{post.excerpt}</p>}
+								{post.tags.length > 0 && (
+									<div class="blog-tags">
+										{post.tags.map(tag => (
+											<span class="tag">{tag}</span>
+										))}
+									</div>
+								)}
+								{post.featured && (
+									<span class="blog-link">
+										Read Article <i class="fa-solid fa-arrow-right"></i>
+									</span>
+								)}
+							</div>
+						</a>
+					</article>
+				))}
 
 				<!-- Blog Post 3: Feb 27, 2025 -->
 				<article class="blog-card blog-card-compact">
