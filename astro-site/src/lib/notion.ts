@@ -1,5 +1,11 @@
 import { Client } from '@notionhq/client';
 import { NotionToMarkdown } from 'notion-to-md';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Initialize Notion client
 const auth = import.meta.env.NOTION_API_KEY;
@@ -9,6 +15,46 @@ if (!auth) {
 
 const notion = new Client({ auth });
 const n2m = new NotionToMarkdown({ notionClient: notion });
+
+// Utility function to download and save images
+async function downloadImage(url: string, slug: string, imageName: string): Promise<string> {
+  try {
+    // Create directory for this blog post's images
+    const blogImagesDir = path.join(process.cwd(), 'public', 'blog', 'images', slug);
+    if (!fs.existsSync(blogImagesDir)) {
+      fs.mkdirSync(blogImagesDir, { recursive: true });
+    }
+
+    // Generate a safe filename
+    const ext = path.extname(imageName) || '.png';
+    const safeName = imageName.replace(/[^a-z0-9_-]/gi, '_').replace(/_{2,}/g, '_');
+    const filename = `${safeName}${ext}`;
+    const filepath = path.join(blogImagesDir, filename);
+    const publicPath = `/blog/images/${slug}/${filename}`;
+
+    // Check if image already exists
+    if (fs.existsSync(filepath)) {
+      console.log(`Image already exists: ${publicPath}`);
+      return publicPath;
+    }
+
+    // Download the image
+    console.log(`Downloading image: ${url}`);
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Failed to download image: ${response.statusText}`);
+    }
+
+    const buffer = await response.arrayBuffer();
+    fs.writeFileSync(filepath, Buffer.from(buffer));
+    console.log(`Saved image: ${publicPath}`);
+
+    return publicPath;
+  } catch (error) {
+    console.error(`Error downloading image from ${url}:`, error);
+    return url; // Return original URL as fallback
+  }
+}
 
 export interface BlogPost {
   id: string;
@@ -143,10 +189,44 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
       }
     }
 
+    // Download and replace all Notion image URLs in the markdown content
+    let processedContent = mdString.parent;
+    const imageRegex = /!\[([^\]]*)\]\(([^)]+)\)/g;
+    let match;
+    const imageReplacements: Array<{ original: string; local: string }> = [];
+
+    while ((match = imageRegex.exec(mdString.parent)) !== null) {
+      const [, altText, imageUrl] = match;
+
+      // Only process Notion URLs (they contain 'amazonaws.com' or 'notion.so')
+      if (imageUrl.includes('amazonaws.com') || imageUrl.includes('notion.so')) {
+        // Extract filename from URL or use alt text
+        const urlParts = imageUrl.split('/');
+        const urlFilename = urlParts[urlParts.length - 1].split('?')[0];
+        const imageName = urlFilename || altText || 'image';
+
+        // Download and get local path
+        const localPath = await downloadImage(imageUrl, slug, imageName);
+        imageReplacements.push({ original: imageUrl, local: localPath });
+      }
+    }
+
+    // Replace all Notion URLs with local paths
+    for (const replacement of imageReplacements) {
+      processedContent = processedContent.replace(replacement.original, replacement.local);
+    }
+
+    // Download OG image if it's a Notion URL
+    let processedOgImage = post.ogImage || post.featuredImage || firstImageUrl || '';
+    if (processedOgImage && (processedOgImage.includes('amazonaws.com') || processedOgImage.includes('notion.so'))) {
+      const ogImageName = 'og-image';
+      processedOgImage = await downloadImage(processedOgImage, slug, ogImageName);
+    }
+
     return {
       ...post,
-      content: mdString.parent,
-      ogImage: post.ogImage || post.featuredImage || firstImageUrl || '',
+      content: processedContent,
+      ogImage: processedOgImage,
     };
   } catch (error) {
     console.error('Error fetching content for post:', post.slug, error);
