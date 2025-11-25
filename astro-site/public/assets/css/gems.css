@@ -134,6 +134,11 @@
     margin-right: 0.5rem;
 }
 
+/* Override for const featured gem */
+.featured-gem.use-const .featured-gem-title a::before {
+    content: 'const ';
+}
+
 .featured-gem-title a::after {
     content: ' = {';
     color: var(--text-secondary);
@@ -443,6 +448,11 @@
     color: var(--code-keyword);
     font-weight: 600;
     margin-right: 0.25rem;
+}
+
+/* Override for const entries */
+.timeline-entry.use-const .gem-title a::before {
+    content: 'const ';
 }
 
 .gem-title a::after {
