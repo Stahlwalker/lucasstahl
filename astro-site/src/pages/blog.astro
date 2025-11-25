@@ -22,8 +22,51 @@ const notionPosts = await getBlogPosts();
 				<span class="code-bracket">/&gt;</span>
 			</h1>
 			<p class="blog-hero-subtitle">Insights on web development, marketing, and digital strategy</p>
+			<a href="/rss.xml" target="_blank" rel="noopener noreferrer" class="rss-subscribe-button">
+				<i class="fa-solid fa-rss"></i>
+				Subscribe via RSS
+			</a>
 		</div>
 	</section>
+
+	<style>
+		.rss-subscribe-button {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.4rem;
+			margin-top: 1rem;
+			padding: 0.5rem 1rem;
+			background-color: rgba(34, 211, 238, 0.15);
+			border: 1px solid rgba(34, 211, 238, 0.5);
+			border-radius: 6px;
+			color: #22d3ee;
+			text-decoration: none;
+			font-family: 'Inter', sans-serif;
+			font-size: 0.8rem;
+			font-weight: 500;
+			transition: all 0.3s ease;
+		}
+
+		.rss-subscribe-button:hover {
+			background-color: rgba(34, 211, 238, 0.25);
+			border-color: #22d3ee;
+			color: #22d3ee;
+			text-decoration: none;
+			transform: translateY(-2px);
+			box-shadow: 0 0 10px rgba(34, 211, 238, 0.3);
+		}
+
+		.rss-subscribe-button i {
+			font-size: 0.85rem;
+		}
+
+		@media (max-width: 768px) {
+			.rss-subscribe-button {
+				font-size: 0.75rem;
+				padding: 0.45rem 0.9rem;
+			}
+		}
+	</style>
 
 	<!-- Blog Feed Section -->
 	<section class="blog-feed-section">
