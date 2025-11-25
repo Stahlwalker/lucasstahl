@@ -21,8 +21,12 @@ if (!post) {
 // Convert markdown to HTML
 const htmlContent = post.content ? marked(post.content) : '';
 
-// Determine OG image with fallback logic
-const ogImageUrl = post.ogImage || '/assets/images/Hero_OG.png';
+// Determine OG image with fallback logic and ensure absolute URL
+let ogImageUrl = post.ogImage || '/assets/images/Hero_OG.png';
+// Convert relative paths to absolute URLs for social media
+if (ogImageUrl.startsWith('/')) {
+  ogImageUrl = `https://lucasstahl.com${ogImageUrl}`;
+}
 const metaTitle = post.metaTitle || post.title;
 const metaDesc = post.metaDescription || post.excerpt;
 
