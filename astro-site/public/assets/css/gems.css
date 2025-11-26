@@ -377,6 +377,27 @@ html {
     color: var(--accent-primary);
 }
 
+/* Timeline Content Link Wrapper */
+.timeline-content-link {
+    text-decoration: none !important;
+    color: inherit;
+    display: block;
+    outline: none !important;
+}
+
+.timeline-content-link:hover {
+    text-decoration: none !important;
+}
+
+.timeline-content-link *,
+.timeline-content-link:hover * {
+    text-decoration: none !important;
+}
+
+.timeline-content-link:focus {
+    outline: none !important;
+}
+
 /* Timeline Content (Card) */
 .timeline-content {
     padding: 2rem;
@@ -403,12 +424,12 @@ html {
     border-radius: 12px 0 0 12px;
 }
 
-.timeline-entry:hover .timeline-content::before {
+.timeline-content-link:hover .timeline-content::before {
     opacity: 1;
 }
 
 /* Hover effects for timeline content */
-.timeline-entry:hover .timeline-content {
+.timeline-content-link:hover .timeline-content {
     transform: translateX(8px);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
     border-color: rgba(96, 165, 250, 0.3);
@@ -482,28 +503,22 @@ html {
 .gem-title {
     margin: 0 0 0.75rem 0;
     font-size: 1.25rem;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.3;
     font-family: 'Fira Code', monospace;
     flex-grow: 0;
     position: relative;
     z-index: 1;
-}
-
-.gem-title a {
     color: var(--text-primary);
-    text-decoration: none;
     transition: all 0.3s ease;
-    position: relative;
     display: inline-block;
     background: linear-gradient(135deg, rgba(96, 165, 250, 0.1), rgba(129, 140, 248, 0.05));
     padding: 0.5rem 0.75rem;
     border-radius: 6px;
     border-left: 3px solid var(--accent-primary);
-    font-weight: 500;
 }
 
-.gem-title a::before {
+.gem-title::before {
     content: 'let ';
     color: var(--code-keyword);
     font-weight: 600;
@@ -511,24 +526,21 @@ html {
 }
 
 /* Override for const entries */
-.timeline-entry.use-const .gem-title a::before {
+.timeline-entry.use-const .gem-title::before {
     content: 'const ';
 }
 
-.gem-title a::after {
+.gem-title::after {
     content: ' = {';
     color: var(--text-secondary);
     font-weight: 400;
     margin-left: 0.25rem;
 }
 
-.timeline-entry:hover .gem-title a {
+.timeline-content-link:hover .gem-title {
     background: linear-gradient(135deg, rgba(96, 165, 250, 0.15), rgba(129, 140, 248, 0.1));
     border-left-color: var(--accent-secondary);
     transform: translateX(4px);
-}
-
-.gem-title a:hover {
     color: var(--accent-primary);
 }
 
@@ -634,13 +646,6 @@ html {
         color: #bbb;
     }
 
-    .gem-title a {
-        color: #f0f0f0;
-    }
-
-    .gem-title a:hover {
-        color: #a5b4fc;
-    }
 
     .gem-description {
         color: #999;
@@ -1110,13 +1115,6 @@ html {
 }
 
 /* Light mode gem titles and descriptions */
-[data-theme="light"] .gem-title a {
-    color: var(--text-primary);
-}
-
-[data-theme="light"] .gem-title a:hover {
-    color: var(--accent-primary);
-}
 
 [data-theme="light"] .gem-description {
     color: var(--text-secondary);

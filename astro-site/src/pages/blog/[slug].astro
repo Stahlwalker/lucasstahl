@@ -377,7 +377,11 @@ const suggestedPosts = allPosts.slice(0, 2);
                     </time>
                   </div>
                   <span class="suggested-post-arrow">
-                    <i class="fa-solid fa-arrow-right"></i>
+                    {suggestedPost.isExternal ? (
+                      <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    ) : (
+                      <i class="fa-solid fa-arrow-right"></i>
+                    )}
                   </span>
                 </a>
               ))}
