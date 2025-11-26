@@ -102,6 +102,10 @@ body {
     text-decoration: none;
 }
 
+.navbar-github-icon + .navbar-github-icon {
+    margin-left: 0.25rem;
+}
+
 .navbar-github-icon:hover {
     color: var(--accent-primary) !important;
     background: rgba(96, 165, 250, 0.15);
