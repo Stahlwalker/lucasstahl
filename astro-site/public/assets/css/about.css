@@ -110,7 +110,7 @@
     display: inline-block;
     width: 0;
     border-right: 2px solid #c3e88d;
-    padding-right: 2px;
+    padding-right: 12px;
     animation: typing 3.5s steps(42, end) 1s forwards, blink-caret 0.75s step-end infinite;
 }
 
@@ -1034,4 +1034,126 @@
     .connect-card {
         padding: 1rem;
     }
+}
+
+/* Light Mode Styles for About Page */
+[data-theme="light"] .about-hero {
+    background-color: var(--bg-secondary);
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: -1px -1px;
+}
+
+[data-theme="light"] .about-section {
+    background-color: var(--bg-secondary);
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: -1px -1px;
+}
+
+/* Light mode skill tags - add visible borders and background */
+[data-theme="light"] .skill-tag {
+    background: rgba(0, 0, 0, 0.04);
+    border: 1.5px solid rgba(0, 0, 0, 0.15);
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .skill-tag:hover {
+    background: rgba(37, 99, 235, 0.08);
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+}
+
+/* Light mode skill categories */
+[data-theme="light"] .skill-category {
+    background: #ffffff;
+    border: 2px solid rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .skill-category:hover {
+    border-color: rgba(37, 99, 235, 0.3);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Light mode tools section */
+[data-theme="light"] .tool-card {
+    background: #ffffff;
+    border: 2px solid rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .tool-card:hover {
+    border-color: var(--accent-primary);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Light mode talks section */
+[data-theme="light"] .talk-card {
+    background: #ffffff;
+    border: 2px solid rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .talk-card:hover {
+    border-color: var(--accent-primary);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Light mode connect cards */
+[data-theme="light"] .connect-card {
+    background: #ffffff;
+    border: 2px solid rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .connect-card:hover {
+    border-color: var(--accent-primary);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Light mode terminal quote */
+[data-theme="light"] .terminal-quote {
+    background: #f8fafc;
+    border: 2px solid rgba(37, 99, 235, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .terminal-quote:hover {
+    border-color: var(--accent-primary);
+    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.15);
+}
+
+[data-theme="light"] .terminal-prompt {
+    color: var(--accent-primary);
+}
+
+[data-theme="light"] .terminal-text {
+    color: #16a34a;
+}
+
+/* Light mode tool logo boxes */
+[data-theme="light"] .tool-logo-box {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1.5px solid rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(8px);
+}
+
+[data-theme="light"] .tool-logo-box:hover {
+    border-color: rgba(37, 99, 235, 0.5);
+    box-shadow:
+        0 0 20px rgba(37, 99, 235, 0.2),
+        0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .tool-logo-text {
+    color: rgba(15, 23, 42, 0.85);
+    text-shadow: none;
+}
+
+[data-theme="light"] .tool-logo-box:hover .tool-logo-text {
+    color: #2563eb;
+    text-shadow:
+        0 0 8px rgba(37, 99, 235, 0.3),
+        0 0 16px rgba(37, 99, 235, 0.15);
 }

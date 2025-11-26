@@ -973,3 +973,226 @@ html {
         padding-top: 2rem;
     }
 }
+
+/* Light Mode Styles for Gems Page */
+[data-theme="light"] .about-hero {
+    background-color: var(--bg-secondary);
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: -1px -1px;
+}
+
+[data-theme="light"] .gems-section {
+    background-color: var(--bg-secondary);
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: -1px -1px;
+}
+
+/* Light mode scroll hint */
+[data-theme="light"] .scroll-hint {
+    background: rgba(37, 99, 235, 0.08);
+    border: 1.5px solid rgba(37, 99, 235, 0.3);
+    color: var(--text-primary);
+    opacity: 1;
+}
+
+[data-theme="light"] .scroll-hint:hover {
+    background: rgba(37, 99, 235, 0.12);
+    border-color: var(--accent-primary);
+}
+
+[data-theme="light"] .scroll-hint .comment-slash {
+    color: var(--code-comment);
+}
+
+/* Light mode featured gem */
+[data-theme="light"] .featured-gem {
+    background: #ffffff;
+    border: 2px solid rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="light"] .featured-gem:hover {
+    background: #ffffff;
+    border-color: var(--accent-primary);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="light"] .featured-gem-content {
+    background: transparent;
+}
+
+[data-theme="light"] .featured-gem-title a {
+    background: rgba(37, 99, 235, 0.08);
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .featured-gem-title a:hover {
+    background: rgba(37, 99, 235, 0.12);
+    color: var(--accent-primary);
+}
+
+[data-theme="light"] .featured-gem-description {
+    color: var(--text-secondary);
+}
+
+[data-theme="light"] .featured-gem .gem-tag:first-child {
+    background: rgba(37, 99, 235, 0.12);
+    color: var(--accent-primary);
+    border-color: rgba(37, 99, 235, 0.3);
+}
+
+/* Light mode tab buttons */
+[data-theme="light"] .tab-button {
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    color: var(--text-secondary);
+}
+
+[data-theme="light"] .tab-button.active {
+    background: var(--accent-primary);
+    color: #ffffff;
+    border-color: var(--accent-primary);
+}
+
+[data-theme="light"] .tab-button:hover:not(.active) {
+    background: rgba(37, 99, 235, 0.08);
+    border-color: rgba(37, 99, 235, 0.3);
+}
+
+/* Light mode timeline entries */
+[data-theme="light"] .timeline-content {
+    background: #ffffff;
+    border: 2px solid rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .timeline-entry:hover .timeline-content {
+    border-color: var(--accent-primary);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .timeline-marker {
+    background: #0ea5e9;
+    border-color: var(--bg-secondary);
+    box-shadow: 0 0 0 2px var(--bg-secondary), 0 0 8px rgba(14, 165, 233, 0.3);
+}
+
+[data-theme="light"] .timeline-container::before {
+    background: #0ea5e9;
+    width: 3px;
+}
+
+/* Light mode gem tags */
+[data-theme="light"] .gem-tag {
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    color: var(--text-secondary);
+}
+
+[data-theme="light"] .gem-tag:hover {
+    background: rgba(37, 99, 235, 0.08);
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+}
+
+/* Light mode gem titles and descriptions */
+[data-theme="light"] .gem-title a {
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .gem-title a:hover {
+    color: var(--accent-primary);
+}
+
+[data-theme="light"] .gem-description {
+    color: var(--text-secondary);
+}
+
+/* Light mode websites table */
+[data-theme="light"] .websites-table {
+    background: transparent;
+    border: 2px solid rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="light"] .websites-table thead {
+    background: rgba(37, 99, 235, 0.08);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="light"] .websites-table th {
+    color: var(--text-primary);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="light"] .websites-table td {
+    color: var(--text-primary);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .websites-table tbody tr {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+[data-theme="light"] .websites-table tbody tr:hover {
+    background: rgba(37, 99, 235, 0.08);
+}
+
+[data-theme="light"] .website-link {
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .website-link:hover {
+    color: var(--accent-primary);
+}
+
+[data-theme="light"] .website-category {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+[data-theme="light"] .website-date {
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .col-date {
+    color: var(--text-primary);
+    opacity: 0.8;
+}
+
+[data-theme="light"] .table-row:hover .col-date {
+    color: var(--text-primary);
+    opacity: 1;
+}
+
+[data-theme="light"] .col-type {
+    color: var(--text-primary);
+    opacity: 0.8;
+}
+
+[data-theme="light"] .table-row:hover .col-type {
+    color: var(--accent-purple);
+    opacity: 1;
+}
+
+/* Light mode table rows - add visible borders */
+[data-theme="light"] .table-row {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .table-row:hover {
+    background: rgba(37, 99, 235, 0.04);
+}
+
+/* Light mode favorite badge */
+[data-theme="light"] .favorite-badge {
+    background: linear-gradient(135deg, #ec4899, #a855f7);
+}
+
+/* Light mode fancy websites section */
+[data-theme="light"] .fancy-websites-section {
+    background: var(--bg-secondary);
+}

@@ -88,11 +88,81 @@ const {
 	<meta name="application-name" content="LucasStahl" />
 	<meta name="msapplication-TileColor" content="#FFFFFF" />
 	<meta name="msapplication-TileImage" content="https://lucasstahl.com/LS.ico" />
+
+	<!-- Theme Script (runs immediately to prevent flash) -->
+	<script is:inline>
+		// Initialize theme before page renders to prevent flash
+		(function() {
+			const savedTheme = localStorage.getItem('theme');
+			let theme;
+
+			if (savedTheme) {
+				// User has manually set a preference
+				theme = savedTheme;
+			} else {
+				// Check system preference
+				const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+				theme = prefersDark ? 'dark' : 'light';
+			}
+
+			document.documentElement.setAttribute('data-theme', theme);
+		})();
+	</script>
 </head>
 <body>
 	<Navbar />
 	<slot />
 	<Footer />
 	{!hideHandbookButton && <DevMarketingConsole />}
+
+	<!-- Theme Toggle Functionality -->
+	<script is:inline>
+		document.addEventListener('DOMContentLoaded', function() {
+			const themeToggle = document.getElementById('themeToggle');
+			const themeToggleMobile = document.getElementById('themeToggleMobile');
+			const themeIcon = document.getElementById('themeIcon');
+			const themeIconMobile = document.getElementById('themeIconMobile');
+			const html = document.documentElement;
+
+			// Get current theme
+			function getCurrentTheme() {
+				return html.getAttribute('data-theme') || 'dark';
+			}
+
+			// Update icon based on current theme
+			function updateIcon() {
+				const currentTheme = getCurrentTheme();
+				const icon = currentTheme === 'dark' ? 'fa-sun' : 'fa-moon';
+
+				if (themeIcon) {
+					themeIcon.className = `fa-solid ${icon}`;
+				}
+				if (themeIconMobile) {
+					themeIconMobile.className = `fa-solid ${icon}`;
+				}
+			}
+
+			// Toggle theme
+			function toggleTheme() {
+				const currentTheme = getCurrentTheme();
+				const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+				html.setAttribute('data-theme', newTheme);
+				localStorage.setItem('theme', newTheme);
+				updateIcon();
+			}
+
+			// Set up event listeners
+			if (themeToggle) {
+				themeToggle.addEventListener('click', toggleTheme);
+			}
+			if (themeToggleMobile) {
+				themeToggleMobile.addEventListener('click', toggleTheme);
+			}
+
+			// Initialize icon
+			updateIcon();
+		});
+	</script>
 </body>
 </html>

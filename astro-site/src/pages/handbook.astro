@@ -631,6 +631,107 @@ import Layout from '../layouts/Layout.astro';
 		color: #c3e88d;
 		background: rgba(195, 232, 141, 0.15);
 	}
+
+	/* Light Mode Styles for Handbook Page */
+	:global([data-theme="light"]) .handbook-page-container {
+		background: var(--bg-secondary);
+	}
+
+	:global([data-theme="light"]) .handbook-page-header {
+		background: #f8fafc;
+		border-bottom-color: #e2e8f0;
+	}
+
+	:global([data-theme="light"]) .handbook-page-title {
+		color: #16a34a;
+	}
+
+	:global([data-theme="light"]) .handbook-page-title::before {
+		color: #2563eb;
+	}
+
+	:global([data-theme="light"]) .handbook-page-nav {
+		background: #f8fafc;
+		border-right-color: #e2e8f0;
+	}
+
+	:global([data-theme="light"]) .nav-link {
+		color: #64748b;
+	}
+
+	:global([data-theme="light"]) .nav-link::before {
+		color: #2563eb;
+	}
+
+	:global([data-theme="light"]) .nav-link:hover,
+	:global([data-theme="light"]) .nav-link.active {
+		color: #16a34a;
+		background: rgba(22, 163, 74, 0.08);
+	}
+
+	:global([data-theme="light"]) .handbook-page-content {
+		background: #ffffff;
+	}
+
+	:global([data-theme="light"]) .handbook-section h2 {
+		color: #2563eb;
+		border-bottom-color: #e2e8f0;
+	}
+
+	:global([data-theme="light"]) .handbook-section h2::before {
+		color: #2563eb;
+	}
+
+	:global([data-theme="light"]) .handbook-section h3 {
+		color: #2563eb;
+	}
+
+	:global([data-theme="light"]) .handbook-section h3::before {
+		color: #2563eb;
+	}
+
+	:global([data-theme="light"]) .handbook-section p,
+	:global([data-theme="light"]) .handbook-section li {
+		color: #475569;
+	}
+
+	:global([data-theme="light"]) .handbook-section ul li::before,
+	:global([data-theme="light"]) .handbook-section ol li::before {
+		color: #2563eb;
+	}
+
+	:global([data-theme="light"]) .handbook-section strong {
+		color: #16a34a;
+	}
+
+	:global([data-theme="light"]) .handbook-cta {
+		background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(22, 163, 74, 0.08) 100%);
+		border-color: rgba(37, 99, 235, 0.3);
+	}
+
+	:global([data-theme="light"]) .cta-content h3 {
+		color: #2563eb;
+	}
+
+	:global([data-theme="light"]) .cta-content h3::before {
+		color: #2563eb;
+	}
+
+	:global([data-theme="light"]) .cta-content p {
+		color: #475569;
+	}
+
+	:global([data-theme="light"]) .cta-button {
+		background: #2563eb;
+		color: #ffffff;
+		border-color: #2563eb;
+	}
+
+	:global([data-theme="light"]) .cta-button:hover {
+		background: transparent;
+		color: #2563eb;
+		box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+	}
 </style>
 
 <script>
