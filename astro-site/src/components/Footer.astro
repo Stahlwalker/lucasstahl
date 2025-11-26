@@ -29,7 +29,10 @@
                 <i class="fa-solid fa-rss"></i>
             </a>
         </div>
-        <p class="footer-copyright">© 2025 Luke Stahl. Built with code and curiosity.</p>
+        <p class="footer-copyright">
+            © 2025 Luke Stahl. Built with code and curiosity.
+            <a href="/retro" class="easter-egg" aria-label="View archive" title="v1.0">v1.0</a>
+        </p>
     </div>
 </footer>
 
@@ -112,6 +115,34 @@
 
     :global([data-theme="light"]) .footer-link:hover {
         animation: none;
+    }
+
+    /* Easter egg styling */
+    .easter-egg {
+        color: rgba(255, 255, 255, 0.25);
+        text-decoration: none;
+        font-size: 11px;
+        font-family: 'Fira Code', monospace;
+        margin-left: 8px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border-radius: 3px;
+        padding: 2px 6px;
+    }
+
+    .easter-egg:hover {
+        color: var(--accent-blue, #60a5fa);
+        background: rgba(96, 165, 250, 0.1);
+        text-decoration: none;
+    }
+
+    :global([data-theme="light"]) .easter-egg {
+        color: rgba(0, 0, 0, 0.25);
+    }
+
+    :global([data-theme="light"]) .easter-egg:hover {
+        color: var(--accent-primary, #2563eb);
+        background: rgba(37, 99, 235, 0.08);
     }
 </style>
 
