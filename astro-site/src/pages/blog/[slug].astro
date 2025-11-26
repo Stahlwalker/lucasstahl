@@ -736,5 +736,42 @@ const suggestedPosts = allPosts.slice(0, 2);
         align-self: flex-end;
       }
     }
+
+    /* Light mode styles */
+    :global([data-theme="light"]) .blog-post {
+      background-color: var(--bg-secondary);
+      background-image:
+        linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+      background-size: 24px 24px;
+      background-position: -1px -1px;
+    }
+
+    :global([data-theme="light"]) .continue-reading {
+      background: rgba(255, 255, 255, 0.8);
+      border: 2px solid rgba(0, 0, 0, 0.1);
+    }
+
+    :global([data-theme="light"]) .suggested-post {
+      background: #ffffff;
+      border: 1.5px solid rgba(0, 0, 0, 0.15);
+    }
+
+    :global([data-theme="light"]) .suggested-post:hover {
+      background: rgba(37, 99, 235, 0.05);
+      border-color: var(--accent-primary);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    :global([data-theme="light"]) .blog-post-footer {
+      border-top: 2px solid rgba(0, 0, 0, 0.2);
+    }
+
+    :global([data-theme="light"]) .blog-post-tags .tag {
+      background-color: rgba(14, 165, 233, 0.15);
+      border: 1.5px solid rgba(14, 165, 233, 0.5);
+      color: #0284c7;
+      text-shadow: none;
+    }
   </style>
 </Layout>
