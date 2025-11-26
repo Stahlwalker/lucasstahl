@@ -84,6 +84,35 @@
             font-size: 12px;
         }
     }
+
+    /* Light mode footer link */
+    :global([data-theme="light"]) .footer-link {
+        color: var(--text-secondary);
+        border-color: rgba(0, 0, 0, 0.15);
+    }
+
+    :global([data-theme="light"]) .footer-link:hover {
+        color: #16a34a;
+        border-color: #16a34a;
+        box-shadow: 0 0 10px rgba(22, 163, 74, 0.2);
+    }
+
+    @keyframes subtle-glow-light {
+        0%, 100% {
+            box-shadow: 0 0 5px rgba(22, 163, 74, 0.1);
+        }
+        50% {
+            box-shadow: 0 0 8px rgba(22, 163, 74, 0.15);
+        }
+    }
+
+    :global([data-theme="light"]) .footer-link {
+        animation: subtle-glow-light 3s ease-in-out infinite;
+    }
+
+    :global([data-theme="light"]) .footer-link:hover {
+        animation: none;
+    }
 </style>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
