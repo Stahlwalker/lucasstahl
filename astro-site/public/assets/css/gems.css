@@ -972,6 +972,16 @@ html {
         margin-top: 3rem;
         padding-top: 2rem;
     }
+
+    /* Ensure icon stays inline on mobile */
+    .table-row .col-type {
+        white-space: nowrap;
+    }
+
+    .table-row .col-type .icon-wrapper {
+        display: inline-block;
+        white-space: nowrap;
+    }
 }
 
 /* Light Mode Styles for Gems Page */
@@ -1195,4 +1205,35 @@ html {
 /* Light mode fancy websites section */
 [data-theme="light"] .fancy-websites-section {
     background: var(--bg-secondary);
+}
+
+/* External Link Icon */
+.timeline-content .external-icon {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    opacity: 0.7;
+    z-index: 10;
+}
+
+[data-theme="light"] .timeline-content .external-icon {
+    color: var(--text-secondary);
+    opacity: 0.6;
+}
+
+/* Remove underline from icon in table rows */
+.table-row .col-type .icon-wrapper {
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 0.375rem;
+}
+
+.table-row:hover .col-type {
+    text-decoration: underline;
+}
+
+.table-row:hover .col-type .icon-wrapper {
+    text-decoration: none;
 }
