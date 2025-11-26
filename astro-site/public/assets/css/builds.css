@@ -60,6 +60,24 @@
     color: inherit;
     display: block;
     height: 100%;
+    outline: none !important;
+}
+
+.build-card-link:focus {
+    outline: none !important;
+}
+
+.build-card-link:hover {
+    outline: none !important;
+}
+
+.build-card-link:focus-visible .build-card-content {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+}
+
+.build-card-content:focus {
+    outline: none !important;
 }
 
 .build-card-content {
@@ -72,7 +90,7 @@
     flex-direction: column;
     transition: all 0.3s ease;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .build-card-content::before {
@@ -93,9 +111,8 @@
 }
 
 .build-card:hover .build-card-content {
-    border-color: rgba(96, 165, 250, 0.3);
-    transform: translateY(-8px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(96, 165, 250, 0.15), 0 4px 12px rgba(0, 0, 0, 0.3);
     background: var(--bg-tertiary);
 }
 
@@ -336,13 +353,14 @@
     background-position: -1px -1px;
 }
 
-[data-theme="light"] .build-card {
+[data-theme="light"] .build-card-content {
     background: #ffffff;
     border: 2px solid rgba(0, 0, 0, 0.08);
 }
 
-[data-theme="light"] .build-card:hover {
-    border-color: var(--accent-primary);
+[data-theme="light"] .build-card:hover .build-card-content {
+    border: 2px solid rgba(0, 0, 0, 0.08);
+    border-top: 3px solid var(--accent-primary);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 

@@ -1022,12 +1022,12 @@ html {
 
 /* Light mode featured gem */
 [data-theme="light"] .featured-gem {
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.5);
     border: 2px solid rgba(0, 0, 0, 0.12);
 }
 
 [data-theme="light"] .featured-gem:hover {
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.7);
     border-color: var(--accent-primary);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
