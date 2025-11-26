@@ -261,6 +261,66 @@ const suggestedPosts = allPosts.slice(0, 2);
 
       <div class="blog-post-content" set:html={htmlContent} />
 
+      <!-- Giscus Comments -->
+      <div class="comments-section">
+        <script
+          src="https://giscus.app/client.js"
+          data-repo="Stahlwalker/lucasstahl"
+          data-repo-id="R_kgDONhx3Gg"
+          data-category="General"
+          data-category-id="DIC_kwDONhx3Gs4ClYjJ"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="dark"
+          data-lang="en"
+          crossorigin="anonymous"
+          async>
+        </script>
+      </div>
+
+      <script is:inline>
+        // Sync Giscus theme with site theme
+        function setGiscusTheme() {
+          const theme = document.documentElement.getAttribute('data-theme') || 'dark';
+          const giscusTheme = theme === 'light' ? 'light' : 'dark';
+
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (iframe) {
+            iframe.contentWindow.postMessage(
+              { giscus: { setConfig: { theme: giscusTheme } } },
+              'https://giscus.app'
+            );
+          }
+        }
+
+        // Wait for Giscus to load, then sync theme
+        window.addEventListener('message', (event) => {
+          if (event.origin === 'https://giscus.app') {
+            setGiscusTheme();
+          }
+        });
+
+        // Listen for theme changes and update Giscus
+        const observer = new MutationObserver((mutations) => {
+          mutations.forEach((mutation) => {
+            if (mutation.attributeName === 'data-theme') {
+              setGiscusTheme();
+            }
+          });
+        });
+
+        observer.observe(document.documentElement, {
+          attributes: true,
+          attributeFilter: ['data-theme']
+        });
+
+        // Initial theme set
+        setTimeout(setGiscusTheme, 1000);
+      </script>
+
       <footer class="blog-post-footer">
         <div class="share-section">
           <h3 class="share-title">Share this article</h3>
@@ -575,6 +635,12 @@ const suggestedPosts = allPosts.slice(0, 2);
       display: block;
     }
 
+    .comments-section {
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 2px solid rgba(34, 211, 238, 0.3);
+    }
+
     .blog-post-footer {
       margin-top: 4rem;
       padding-top: 2rem;
@@ -772,6 +838,10 @@ const suggestedPosts = allPosts.slice(0, 2);
       border: 1.5px solid rgba(14, 165, 233, 0.5);
       color: #0284c7;
       text-shadow: none;
+    }
+
+    :global([data-theme="light"]) .comments-section {
+      border-top: 2px solid rgba(0, 0, 0, 0.2);
     }
   </style>
 </Layout>
