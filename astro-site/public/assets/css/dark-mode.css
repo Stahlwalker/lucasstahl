@@ -1314,7 +1314,29 @@ body,
 
 /* Light mode featured content section */
 [data-theme="light"] .featured-content {
-    background: var(--bg-secondary);
+    background-color: var(--bg-secondary);
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    background-size: 24px 24px, 24px 24px;
+    background-position: -1px -1px, -1px -1px;
+}
+
+/* Light mode CTA section */
+[data-theme="light"] .cta-section {
+    padding: 3rem 2rem;
+    border: 2px solid rgba(0, 0, 0, 0.12);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Light mode secondary button */
+[data-theme="light"] .btn-secondary-modern {
+    border: 2px solid rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="light"] .btn-secondary-modern:hover {
+    border-color: var(--accent-primary);
 }
 
 /* Mobile theme toggle */
