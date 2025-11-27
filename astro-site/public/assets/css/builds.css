@@ -1,5 +1,163 @@
 /* Builds Page Styles */
 
+/* Early Projects Section */
+.early-projects-section {
+    max-width: 1400px;
+    margin: 4rem auto 0;
+    padding-top: 3rem;
+    border-top: 2px solid rgba(96, 165, 250, 0.3);
+}
+
+.early-projects-section .section-title {
+    margin-bottom: 0.5rem;
+}
+
+.early-projects-section .section-label {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--text-secondary);
+}
+
+.early-projects-section .section-description {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    font-weight: 400;
+}
+
+.projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.project-row {
+    display: grid;
+    grid-template-columns: 20px 1fr auto;
+    gap: 1.5rem;
+    align-items: center;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(96, 165, 250, 0.2);
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.project-row:hover {
+    background: rgba(96, 165, 250, 0.03);
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-left: -1rem;
+    margin-right: -1rem;
+}
+
+.project-square {
+    width: 12px;
+    height: 12px;
+    background: var(--text-primary);
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+}
+
+.project-row:hover .project-square {
+    background: var(--accent-primary);
+    transform: scale(1.2);
+}
+
+.project-info {
+    flex: 1;
+}
+
+.project-name {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin: 0 0 0.25rem 0;
+    transition: color 0.2s ease;
+}
+
+.project-row:hover .project-name {
+    color: var(--accent-primary);
+}
+
+.project-desc {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.5;
+}
+
+.project-arrow {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    opacity: 0.5;
+}
+
+.project-row:hover .project-arrow {
+    opacity: 1;
+    color: var(--accent-primary);
+    transform: translateX(4px);
+}
+
+/* Light mode styles for early projects */
+[data-theme="light"] .early-projects-section {
+    border-top-color: rgba(37, 99, 235, 0.5);
+}
+
+[data-theme="light"] .project-row {
+    border-bottom-color: rgba(37, 99, 235, 0.5);
+}
+
+[data-theme="light"] .project-row:hover {
+    background: rgba(37, 99, 235, 0.04);
+}
+
+[data-theme="light"] .project-square {
+    background: var(--text-primary);
+}
+
+[data-theme="light"] .project-row:hover .project-square {
+    background: var(--accent-primary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .early-projects-section {
+        margin-top: 3rem;
+        padding-top: 2rem;
+    }
+
+    .project-row {
+        grid-template-columns: 12px 1fr auto;
+        gap: 1rem;
+        padding: 1.25rem 0;
+    }
+
+    .project-row:hover {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+        margin-left: -0.75rem;
+        margin-right: -0.75rem;
+    }
+
+    .project-square {
+        width: 10px;
+        height: 10px;
+    }
+
+    .project-name {
+        font-size: 1rem;
+    }
+
+    .project-desc {
+        font-size: 0.875rem;
+    }
+}
+
 /* Builds Hero Section */
 .builds-hero {
     background: var(--bg-primary);

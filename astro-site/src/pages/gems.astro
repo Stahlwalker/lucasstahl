@@ -372,6 +372,13 @@ import Layout from '../layouts/Layout.astro';
 
 			</div>
 
+			<!-- Load More Button -->
+			<div class="load-more-container">
+				<button id="load-more-btn" class="load-more-btn">
+					<span class="comment-slash">//</span> loadMore('gems')
+				</button>
+			</div>
+
 			<!-- Websites That Tickle My Fancy Section -->
 			<div id="fancy-websites" class="fancy-websites-section">
 				<h2 class="section-title">
@@ -388,7 +395,8 @@ import Layout from '../layouts/Layout.astro';
 						<div class="col-type">/Type</div>
 					</div>
 
-					<a href="https://posthog.com/" target="_blank" rel="noopener noreferrer" class="table-row">
+					<div class="websites-table-body">
+						<a href="https://posthog.com/" target="_blank" rel="noopener noreferrer" class="table-row">
 						<div class="col-date">2025.11.25</div>
 						<div class="col-title">PostHog <span class="star-badge">★</span></div>
 						<div class="col-type">Platform<span class="icon-wrapper"> <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
@@ -459,9 +467,82 @@ import Layout from '../layouts/Layout.astro';
 						<div class="col-title">Builder.io</div>
 						<div class="col-type">Platform<span class="icon-wrapper"> <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
 					</a>
+
+					<a href="https://www.alanagoyal.com/notes/about-me" target="_blank" rel="noopener noreferrer" class="table-row">
+						<div class="col-date">2025.11.27</div>
+						<div class="col-title">Alana Goyal</div>
+						<div class="col-type">Portfolio<span class="icon-wrapper"> <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
+					</a>
+
+					<a href="https://ryo.lu/" target="_blank" rel="noopener noreferrer" class="table-row">
+						<div class="col-date">2025.11.27</div>
+						<div class="col-title">Ryo is making Cursor</div>
+						<div class="col-type">Portfolio<span class="icon-wrapper"> <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
+					</a>
+
+					<a href="https://factory.ai/" target="_blank" rel="noopener noreferrer" class="table-row">
+						<div class="col-date">2025.11.27</div>
+						<div class="col-title">Factory</div>
+						<div class="col-type">Platform<span class="icon-wrapper"> <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
+					</a>
+					</div>
 				</div>
 			</div>
 
 		</div>
 	</section>
 </Layout>
+
+<script>
+	// Load more gems functionality
+	const GEMS_PER_PAGE = 10;
+	let currentlyVisible = GEMS_PER_PAGE;
+
+	function initLoadMore() {
+		const timelineEntries = document.querySelectorAll('.timeline-entry');
+		const loadMoreBtn = document.getElementById('load-more-btn');
+
+		// Hide entries beyond the initial 10
+		timelineEntries.forEach((entry, index) => {
+			if (index >= GEMS_PER_PAGE) {
+				entry.style.display = 'none';
+			}
+		});
+
+		// Hide button if all gems are visible
+		const remainingCount = timelineEntries.length - currentlyVisible;
+		if (remainingCount <= 0 && loadMoreBtn) {
+			loadMoreBtn.style.display = 'none';
+		}
+
+		// Load more click handler
+		loadMoreBtn?.addEventListener('click', () => {
+			const hiddenEntries = Array.from(timelineEntries).filter((entry, index) =>
+				index >= currentlyVisible && index < currentlyVisible + GEMS_PER_PAGE
+			);
+
+			hiddenEntries.forEach(entry => {
+				entry.style.display = 'block';
+				// Trigger animation
+				setTimeout(() => {
+					entry.style.opacity = '1';
+				}, 10);
+			});
+
+			currentlyVisible += GEMS_PER_PAGE;
+			const newRemainingCount = timelineEntries.length - currentlyVisible;
+
+			// Hide button when all gems are loaded
+			if (newRemainingCount <= 0 && loadMoreBtn) {
+				loadMoreBtn.style.opacity = '0';
+				loadMoreBtn.style.transform = 'translateY(20px)';
+				setTimeout(() => {
+					loadMoreBtn.style.display = 'none';
+				}, 300);
+			}
+		});
+	}
+
+	// Initialize on page load
+	document.addEventListener('DOMContentLoaded', initLoadMore);
+</script>
