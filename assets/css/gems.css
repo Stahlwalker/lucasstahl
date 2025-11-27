@@ -1,5 +1,65 @@
 /* Gems Page - Developer Vibes Edition */
 
+/* Scroll Hint in Hero */
+.scroll-hint {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.5rem 1rem;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.875rem;
+    color: var(--code-comment);
+    text-decoration: none;
+    background: rgba(96, 165, 250, 0.05);
+    border: 1px solid rgba(96, 165, 250, 0.2);
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+}
+
+.scroll-hint:hover {
+    opacity: 1;
+    background: rgba(96, 165, 250, 0.1);
+    border-color: var(--accent-primary);
+    transform: translateY(2px);
+}
+
+.scroll-hint .comment-slash {
+    color: var(--code-comment);
+    margin-right: 0.25rem;
+    font-weight: 600;
+}
+
+.scroll-hint .arrow {
+    display: inline-block;
+    margin-left: 0.25rem;
+    background: linear-gradient(135deg, #ec4899, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 8px rgba(236, 72, 153, 0.6));
+    transition: transform 0.3s ease;
+    font-weight: 700;
+}
+
+.scroll-hint:hover .arrow {
+    transform: translateY(3px);
+    animation: bounce 1s ease infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(4px);
+    }
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
 /* Navbar GitHub Icon */
 .navbar-github-icon {
     display: inline-flex;
@@ -132,6 +192,11 @@
     color: var(--code-keyword);
     font-weight: 700;
     margin-right: 0.5rem;
+}
+
+/* Override for const featured gem */
+.featured-gem.use-const .featured-gem-title a::before {
+    content: 'const ';
 }
 
 .featured-gem-title a::after {
@@ -312,6 +377,27 @@
     color: var(--accent-primary);
 }
 
+/* Timeline Content Link Wrapper */
+.timeline-content-link {
+    text-decoration: none !important;
+    color: inherit;
+    display: block;
+    outline: none !important;
+}
+
+.timeline-content-link:hover {
+    text-decoration: none !important;
+}
+
+.timeline-content-link *,
+.timeline-content-link:hover * {
+    text-decoration: none !important;
+}
+
+.timeline-content-link:focus {
+    outline: none !important;
+}
+
 /* Timeline Content (Card) */
 .timeline-content {
     padding: 2rem;
@@ -338,12 +424,12 @@
     border-radius: 12px 0 0 12px;
 }
 
-.timeline-entry:hover .timeline-content::before {
+.timeline-content-link:hover .timeline-content::before {
     opacity: 1;
 }
 
 /* Hover effects for timeline content */
-.timeline-entry:hover .timeline-content {
+.timeline-content-link:hover .timeline-content {
     transform: translateX(8px);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
     border-color: rgba(96, 165, 250, 0.3);
@@ -417,48 +503,44 @@
 .gem-title {
     margin: 0 0 0.75rem 0;
     font-size: 1.25rem;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.3;
     font-family: 'Fira Code', monospace;
     flex-grow: 0;
     position: relative;
     z-index: 1;
-}
-
-.gem-title a {
     color: var(--text-primary);
-    text-decoration: none;
     transition: all 0.3s ease;
-    position: relative;
     display: inline-block;
     background: linear-gradient(135deg, rgba(96, 165, 250, 0.1), rgba(129, 140, 248, 0.05));
     padding: 0.5rem 0.75rem;
     border-radius: 6px;
     border-left: 3px solid var(--accent-primary);
-    font-weight: 500;
 }
 
-.gem-title a::before {
+.gem-title::before {
     content: 'let ';
     color: var(--code-keyword);
     font-weight: 600;
     margin-right: 0.25rem;
 }
 
-.gem-title a::after {
+/* Override for const entries */
+.timeline-entry.use-const .gem-title::before {
+    content: 'const ';
+}
+
+.gem-title::after {
     content: ' = {';
     color: var(--text-secondary);
     font-weight: 400;
     margin-left: 0.25rem;
 }
 
-.timeline-entry:hover .gem-title a {
+.timeline-content-link:hover .gem-title {
     background: linear-gradient(135deg, rgba(96, 165, 250, 0.15), rgba(129, 140, 248, 0.1));
     border-left-color: var(--accent-secondary);
     transform: translateX(4px);
-}
-
-.gem-title a:hover {
     color: var(--accent-primary);
 }
 
@@ -564,13 +646,6 @@
         color: #bbb;
     }
 
-    .gem-title a {
-        color: #f0f0f0;
-    }
-
-    .gem-title a:hover {
-        color: #a5b4fc;
-    }
 
     .gem-description {
         color: #999;
@@ -598,20 +673,6 @@
     border-color: var(--accent-primary);
 }
 
-/* Add version-style numbering to timeline entries */
-.timeline-entry:nth-child(even) .gem-title::before {
-    content: '# ';
-    color: var(--accent-primary);
-    font-family: 'Fira Code', monospace;
-    font-weight: 700;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    margin-right: 0.25rem;
-}
-
-.timeline-entry:nth-child(even):hover .gem-title::before {
-    opacity: 1;
-}
 
 /* Responsive Timeline */
 @media (max-width: 768px) {
@@ -675,4 +736,488 @@
     .timeline-entry {
         margin-bottom: 2rem;
     }
+}
+
+/* Websites That Tickle My Fancy Section */
+.fancy-websites-section {
+    margin-top: 5rem;
+    padding-top: 3rem;
+    border-top: 2px solid rgba(96, 165, 250, 0.2);
+}
+
+.fancy-websites-section .section-title {
+    font-family: 'Fira Code', monospace;
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.fancy-websites-section .section-subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+}
+
+.websites-table {
+    max-width: 600px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.03), rgba(168, 85, 247, 0.03));
+    border: 1px solid rgba(96, 165, 250, 0.3);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(96, 165, 250, 0.1) inset;
+    position: relative;
+}
+
+.websites-table::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg,
+        transparent,
+        var(--accent-blue) 20%,
+        var(--accent-purple) 80%,
+        transparent
+    );
+    opacity: 0.6;
+}
+
+.table-header {
+    display: grid;
+    grid-template-columns: 100px minmax(200px, 400px) 100px;
+    gap: 2rem;
+    padding: 0.875rem 1.25rem;
+    background: linear-gradient(180deg, rgba(96, 165, 250, 0.12), rgba(96, 165, 250, 0.08));
+    border-bottom: 1px solid rgba(96, 165, 250, 0.3);
+    font-weight: 600;
+    font-size: 0.8125rem;
+    color: #60a5fa;
+    text-transform: uppercase;
+    letter-spacing: 0.75px;
+    text-shadow: 0 0 10px rgba(96, 165, 250, 0.3);
+}
+
+.table-row {
+    display: grid;
+    grid-template-columns: 100px minmax(200px, 400px) 100px;
+    gap: 2rem;
+    padding: 0.625rem 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    transition: all 0.2s ease;
+    text-decoration: none;
+    color: var(--text-primary);
+    position: relative;
+}
+
+.table-row::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--accent-blue), var(--accent-purple));
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.table-row:last-child {
+    border-bottom: none;
+}
+
+.table-row:hover {
+    background: rgba(96, 165, 250, 0.05);
+    border-left-color: var(--accent-blue);
+    box-shadow: inset 0 0 20px rgba(96, 165, 250, 0.05);
+}
+
+.table-row:hover::before {
+    opacity: 1;
+}
+
+.col-date {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.8125rem;
+    color: rgba(228, 228, 231, 0.5);
+    transition: color 0.2s ease;
+}
+
+.table-row:hover .col-date {
+    color: rgba(228, 228, 231, 0.7);
+}
+
+.col-title {
+    font-weight: 500;
+    font-size: 0.9375rem;
+    color: var(--text-primary);
+    transition: all 0.2s ease;
+}
+
+.table-row:hover .col-title {
+    color: var(--accent-blue);
+    transform: translateX(2px);
+}
+
+.col-type {
+    font-size: 0.8125rem;
+    color: rgba(228, 228, 231, 0.5);
+    text-align: right;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.table-row:hover .col-type {
+    color: var(--accent-purple);
+}
+
+.star-badge {
+    display: inline-block;
+    margin-left: 0.375rem;
+    font-size: 0.9rem;
+    background: linear-gradient(135deg, #ec4899, #a855f7, #14b8a6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: starPulse 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 8px rgba(236, 72, 153, 0.8));
+    font-weight: 900;
+}
+
+@keyframes starPulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.1);
+    }
+}
+
+.table-row:hover .star-badge {
+    animation: starSpin 0.6s ease;
+}
+
+@keyframes starSpin {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(180deg) scale(1.2);
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+@media (max-width: 768px) {
+    .websites-table {
+        max-width: 100%;
+        margin: 0 1rem;
+    }
+
+    .table-header,
+    .table-row {
+        grid-template-columns: 80px 1fr 80px;
+        gap: 0.75rem;
+        padding: 0.75rem 1rem;
+    }
+
+    .table-header {
+        font-size: 0.75rem;
+    }
+
+    .col-date,
+    .col-type {
+        font-size: 0.75rem;
+    }
+
+    .col-title {
+        font-size: 0.875rem;
+    }
+
+    .star-badge {
+        font-size: 0.8rem;
+        margin-left: 0.25rem;
+    }
+
+    .fancy-websites-section .section-title {
+        font-size: 1.5rem;
+    }
+
+    .fancy-websites-section .section-subtitle {
+        font-size: 0.9rem;
+        padding: 0 1rem;
+    }
+
+    .fancy-websites-section {
+        margin-top: 3rem;
+        padding-top: 2rem;
+    }
+
+    /* Ensure icon stays inline on mobile */
+    .table-row .col-type {
+        white-space: nowrap;
+    }
+
+    .table-row .col-type .icon-wrapper {
+        display: inline-block;
+        white-space: nowrap;
+    }
+}
+
+/* Light Mode Styles for Gems Page */
+[data-theme="light"] .about-hero {
+    background-color: var(--bg-secondary);
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: -1px -1px;
+}
+
+[data-theme="light"] .gems-section {
+    background-color: var(--bg-secondary);
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: -1px -1px;
+}
+
+/* Light mode scroll hint */
+[data-theme="light"] .scroll-hint {
+    background: rgba(37, 99, 235, 0.08);
+    border: 1.5px solid rgba(37, 99, 235, 0.3);
+    color: var(--text-primary);
+    opacity: 1;
+}
+
+[data-theme="light"] .scroll-hint:hover {
+    background: rgba(37, 99, 235, 0.12);
+    border-color: var(--accent-primary);
+}
+
+[data-theme="light"] .scroll-hint .comment-slash {
+    color: var(--code-comment);
+}
+
+/* Light mode featured gem */
+[data-theme="light"] .featured-gem {
+    background: rgba(255, 255, 255, 0.5);
+    border: 2px solid rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="light"] .featured-gem:hover {
+    background: rgba(255, 255, 255, 0.7);
+    border-color: var(--accent-primary);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="light"] .featured-gem-content {
+    background: transparent;
+}
+
+[data-theme="light"] .featured-gem-title a {
+    background: rgba(37, 99, 235, 0.08);
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .featured-gem-title a:hover {
+    background: rgba(37, 99, 235, 0.12);
+    color: var(--accent-primary);
+}
+
+[data-theme="light"] .featured-gem-description {
+    color: var(--text-secondary);
+}
+
+[data-theme="light"] .featured-gem .gem-tag:first-child {
+    background: rgba(37, 99, 235, 0.12);
+    color: var(--accent-primary);
+    border-color: rgba(37, 99, 235, 0.3);
+}
+
+/* Light mode tab buttons */
+[data-theme="light"] .tab-button {
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    color: var(--text-secondary);
+}
+
+[data-theme="light"] .tab-button.active {
+    background: var(--accent-primary);
+    color: #ffffff;
+    border-color: var(--accent-primary);
+}
+
+[data-theme="light"] .tab-button:hover:not(.active) {
+    background: rgba(37, 99, 235, 0.08);
+    border-color: rgba(37, 99, 235, 0.3);
+}
+
+/* Light mode timeline entries */
+[data-theme="light"] .timeline-content {
+    background: #ffffff;
+    border: 2px solid rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .timeline-entry:hover .timeline-content {
+    border-color: var(--accent-primary);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .timeline-marker {
+    background: #0ea5e9;
+    border-color: var(--bg-secondary);
+    box-shadow: 0 0 0 2px var(--bg-secondary), 0 0 8px rgba(14, 165, 233, 0.3);
+}
+
+[data-theme="light"] .timeline-container::before {
+    background: #0ea5e9;
+    width: 3px;
+}
+
+/* Light mode gem tags */
+[data-theme="light"] .gem-tag {
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    color: var(--text-secondary);
+}
+
+[data-theme="light"] .gem-tag:hover {
+    background: rgba(37, 99, 235, 0.08);
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+}
+
+/* Light mode gem titles and descriptions */
+
+[data-theme="light"] .gem-description {
+    color: var(--text-secondary);
+}
+
+/* Light mode websites table */
+[data-theme="light"] .websites-table {
+    background: transparent;
+    border: 2px solid rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="light"] .websites-table thead {
+    background: rgba(37, 99, 235, 0.08);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="light"] .websites-table th {
+    color: var(--text-primary);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="light"] .websites-table td {
+    color: var(--text-primary);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .websites-table tbody tr {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+[data-theme="light"] .websites-table tbody tr:hover {
+    background: rgba(37, 99, 235, 0.08);
+}
+
+[data-theme="light"] .website-link {
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .website-link:hover {
+    color: var(--accent-primary);
+}
+
+[data-theme="light"] .website-category {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+[data-theme="light"] .website-date {
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .col-date {
+    color: var(--text-primary);
+    opacity: 0.8;
+}
+
+[data-theme="light"] .table-row:hover .col-date {
+    color: var(--text-primary);
+    opacity: 1;
+}
+
+[data-theme="light"] .col-type {
+    color: var(--text-primary);
+    opacity: 0.8;
+}
+
+[data-theme="light"] .table-row:hover .col-type {
+    color: var(--accent-purple);
+    opacity: 1;
+}
+
+/* Light mode table rows - add visible borders */
+[data-theme="light"] .table-row {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .table-row:hover {
+    background: rgba(37, 99, 235, 0.04);
+}
+
+/* Light mode favorite badge */
+[data-theme="light"] .favorite-badge {
+    background: linear-gradient(135deg, #ec4899, #a855f7);
+}
+
+/* Light mode fancy websites section */
+[data-theme="light"] .fancy-websites-section {
+    background: var(--bg-secondary);
+}
+
+/* External Link Icon */
+.timeline-content .external-icon {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    opacity: 0.7;
+    z-index: 10;
+}
+
+[data-theme="light"] .timeline-content .external-icon {
+    color: var(--text-secondary);
+    opacity: 0.6;
+}
+
+/* Remove underline from icon in table rows */
+.table-row .col-type .icon-wrapper {
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 0.375rem;
+}
+
+.table-row:hover .col-type {
+    text-decoration: underline;
+}
+
+.table-row:hover .col-type .icon-wrapper {
+    text-decoration: none;
 }

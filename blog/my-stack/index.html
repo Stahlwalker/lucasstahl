@@ -1,0 +1,212 @@
+<!DOCTYPE html><html lang="en"> <head><!-- PostHog Analytics --><script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init Rr Mr fi Or Ar ci Tr Cr capture Mi calculateEventProperties Lr register register_once register_for_session unregister unregister_for_session Hr getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty Ur jr createPersonProfile zr kr Br opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing Dr debug M Nr getPageViewId captureTraceFeedback captureTraceMetric $r".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_4ruyfwFBGDiEiFhDLbLn5wIkpKvgDqpsuGhaPTiMpzP', {
+        api_host: 'https://us.i.posthog.com',
+        defaults: '2025-05-24',
+        person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
+    })
+</script><!-- https --><script type="text/javascript">
+		var host = "lucasstahl.com";
+		if ((host == window.location.host) && (window.location.protocol != "https:"))
+			window.location.protocol = "https";
+	</script><meta charset="UTF-8"><meta name="description" content="A look inside my developer marketing stack, the tools I use to build, write, and ship work faster without adding noise to the process."><link rel="canonical" href="https://lucasstahl.com/blog/my-stack"><link rel="alternate" type="application/rss+xml" title="Luke Stahl's Blog" href="https://lucasstahl.com/rss.xml"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>Developer marketing stack that keeps me building - Luke Stahl</title><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://lucasstahl.com/blog/my-stack"><meta property="og:title" content="Developer marketing stack that keeps me building"><meta property="og:description" content="A look inside my developer marketing stack, the tools I use to build, write, and ship work faster without adding noise to the process."><meta property="og:image" content="https://lucasstahl.com/blog/images/my-stack/og-image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><!-- Twitter --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:url" content="https://lucasstahl.com/blog/my-stack"><meta name="twitter:title" content="Developer marketing stack that keeps me building"><meta name="twitter:description" content="A look inside my developer marketing stack, the tools I use to build, write, and ship work faster without adding noise to the process."><meta name="twitter:image" content="https://lucasstahl.com/blog/images/my-stack/og-image.png"><link href="/LS.ico" rel="icon"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"><link rel="stylesheet" type="text/css" href="/assets/css/style.css"><link rel="stylesheet" type="text/css" href="/assets/css/dark-mode.css"><link href="https://fonts.googleapis.com/css?family=Megrim" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Share+Tech" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Gruppo" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"><!-- favicon --><link rel="shortcut icon" type="image/x-icon" href="/LS.ico"><link rel="apple-touch-icon" href="/LS.ico"><meta name="application-name" content="LucasStahl"><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="https://lucasstahl.com/LS.ico"><!-- Theme Script (runs immediately to prevent flash) --><script>
+		// Initialize theme before page renders to prevent flash
+		(function() {
+			const savedTheme = localStorage.getItem('theme');
+			let theme;
+
+			if (savedTheme) {
+				// User has manually set a preference
+				theme = savedTheme;
+			} else {
+				// Check system preference
+				const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+				theme = prefersDark ? 'dark' : 'light';
+			}
+
+			document.documentElement.setAttribute('data-theme', theme);
+		})();
+	</script><link rel="stylesheet" href="/_astro/about.B1Fb_czd.css">
+<link rel="stylesheet" href="/_astro/_slug_.TIZOkMQf.css"></head> <body> <nav class="navbar navbar-expand-md navbar-light bg-faded" style="background-color: rgb(229, 240, 136);"> <a class="navbar-brand" href="/" data-nav-link>
+Luke Stahl
+</a><a href="https://github.com/Stahlwalker" target="_blank" rel="noopener noreferrer" class="navbar-github-icon navbar-github-desktop" title="GitHub Profile"> <i class="fa-brands fa-github"></i> </a> <a href="https://www.linkedin.com/in/lucasstahl" target="_blank" rel="noopener noreferrer" class="navbar-github-icon navbar-github-desktop" title="LinkedIn Profile"> <i class="fa-brands fa-linkedin"></i> </a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button> <div class="collapse navbar-collapse" id="navbarNav"> <ul class="navbar-nav ml-auto"> <li class="nav-item"> <a class="nav-link" href="/blog" data-nav-link>Blog</a> </li> <li class="nav-item"> <a class="nav-link" href="/builds" data-nav-link>Builds</a> </li> <li class="nav-item"> <a class="nav-link" href="/about" data-nav-link>About</a> </li> <li class="nav-item"> <a class="nav-link" href="/gems" data-nav-link>Gems</a> </li> <li class="nav-item navbar-github-mobile"> <a class="nav-link" href="https://github.com/Stahlwalker" target="_blank" rel="noopener noreferrer" aria-label="GitHub"> <i class="fa-brands fa-github"></i> </a> </li> <li class="nav-item navbar-github-mobile"> <a class="nav-link" href="https://www.linkedin.com/in/lucasstahl" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"> <i class="fa-brands fa-linkedin"></i> </a> </li> <li class="nav-item theme-toggle-mobile"> <a class="nav-link" id="themeToggleMobile" aria-label="Toggle theme" title="Toggle theme" style="cursor: pointer;"> <i class="fa-solid fa-sun" id="themeIconMobile"></i> </a> </li> <li class="nav-item theme-toggle-desktop-nav"> <button class="theme-toggle theme-toggle-desktop" id="themeToggle" aria-label="Toggle theme" title="Toggle theme" style="border: none; background: none; padding: 0; margin-left: 1rem;"> <i class="fa-solid fa-sun" id="themeIcon"></i> </button> </li> </ul> </div> </nav> <script type="module">document.addEventListener("DOMContentLoaded",function(){document.querySelectorAll("[data-nav-link]").forEach(n=>{n.addEventListener("click",function(t){t.preventDefault();const e=this.getAttribute("href"),o=window.location.origin+e;window.location.href=o})})});</script>  <article class="blog-post" data-astro-cid-4sn4zg3r> <div class="blog-post-container" data-astro-cid-4sn4zg3r> <a href="/blog" class="back-to-blog" data-astro-cid-4sn4zg3r> <i class="fa-solid fa-arrow-left" data-astro-cid-4sn4zg3r></i> Back to Blog
+</a> <header class="blog-post-header" data-astro-cid-4sn4zg3r> <div class="header-background" data-astro-cid-4sn4zg3r> <div class="abstract-shape shape-1" data-astro-cid-4sn4zg3r></div> <div class="abstract-shape shape-2" data-astro-cid-4sn4zg3r></div> <div class="abstract-shape shape-3" data-astro-cid-4sn4zg3r></div> </div> <div class="header-content" data-astro-cid-4sn4zg3r> <div class="blog-post-tags" data-astro-cid-4sn4zg3r> <span class="tag" data-astro-cid-4sn4zg3r>Teck Stack</span> </div> <h1 class="blog-post-title" data-astro-cid-4sn4zg3r> <span class="code-bracket" data-astro-cid-4sn4zg3r>&lt;</span> Inside my developer marketing stack <span class="code-bracket" data-astro-cid-4sn4zg3r>/&gt;</span> </h1> <time class="blog-post-date" data-astro-cid-4sn4zg3r> November 23, 2025 </time> </div> </header> <div class="blog-post-content" data-astro-cid-4sn4zg3r><p><img src="/blog/images/my-stack/My_Stack_png.png" alt="My_Stack.png"></p>
+<h2></h2>
+<p>Every builder has a rhythm to how they build. For me, that rhythm lives somewhere between code and content, the overlap where developer marketing happens. These tools help me stay organized, move faster, and keep projects on track without overcomplicating the work.</p>
+<h3>IDE</h3>
+<p><a href="https://cursor.com/">Cursor</a> is now my main workspace after years in <a href="https://code.visualstudio.com/">VS Code</a>. They share the same foundation and extensions, but Cursor feels like where things are moving.</p>
+<ul>
+<li>Same integrations and ecosystem as VS Code</li>
+<li>Familiar setup that just works</li>
+<li>AI that’s advancing faster than VS Code, which is surprising since GitHub built Copilot first</li>
+<li>I pair it with <a href="https://claude.ai/code">Claude Code</a> in the terminal for context, explanations, and large-scale debugging when I need deeper insight</li>
+</ul>
+<p>It’s less about what’s new and more about pace. Cursor feels like it’s evolving while VS Code feels like it’s coasting.</p>
+<h3>AI chat tools</h3>
+<p><a href="https://chat.openai.com/">ChatGPT</a> is my go-to for projects, building custom GPTs, and setting up connectors or integrations. I also use it for content curation when I’m gathering examples or early research.</p>
+<p><a href="https://gemini.google.com/">Gemini</a> handles search and visual creation. Its new Nano Banana feature makes generating visual references surprisingly quick.</p>
+<p>Right now, both tools serve different purposes, but my guess is Gemini eventually edges out OpenAI. We’ll see.</p>
+<h3>Design and visual thinking</h3>
+<p><a href="https://figma.com/">Figma</a> is where I build and prototype designs. I don’t use its AI features, they’re still behind the curve. What makes it useful is how quickly I can move from layout ideas to something ready for production. Components, variables, and shared libraries keep everything consistent without extra effort.</p>
+<p><a href="https://excalidraw.com/">Excalidraw</a> is where I whiteboard. I sketch flows, map systems, and rough out diagrams before anything formal. A cheat code I use is generating Mermaid diagrams in ChatGPT to get a starting point, then rebuilding them in Excalidraw to make them clearer and more visual.</p>
+<h3>Analytics stack</h3>
+<p>A big part of developer marketing is understanding how people use what you build. These tools help turn product usage into insight.</p>
+<ul>
+<li><a href="https://posthog.com/"><strong>PostHog</strong></a> for web analytics, event tracking, and session replay</li>
+<li><a href="https://www.fullstory.com/"><strong>FullStory</strong></a> for journey mapping and deeper behavioral insights</li>
+<li><a href="https://www.sigmacomputing.com/"><strong>Sigma</strong></a> for the full view, from lead tracking to closed-won pipeline reporting</li>
+<li><a href="https://looker.com/"><strong>Looker</strong></a> for clean visualization and quick summaries</li>
+</ul>
+<p>There isn’t one analytics platform that does everything well. A mix is usually the reality, and this is the combination that works for me.</p>
+<h3>Marketing and SEO stack</h3>
+<p>This is the set of tools I rely on to manage search, automation, and content performance. Each one plays a different role, from tracking technical SEO to finding new opportunities and testing campaigns.</p>
+<ul>
+<li><a href="https://ahrefs.com/"><strong>Ahrefs</strong></a> is my go-to for monitoring technical SEO, tracking backlinks, and doing competitive keyword research or content gap analysis</li>
+<li><a href="https://surferseo.com/"><strong>SurferSEO</strong></a> helps grade keyword-focused content and tighten on-page structure before publishing</li>
+<li><a href="https://ads.google.com/home/tools/keyword-planner/"><strong>Google Keyword Planner</strong></a> is great for generating new ideas based on topics or URLs and gives solid monthly search volume data</li>
+<li><a href="https://ads.google.com/"><strong>Google Ads</strong></a> still earns its place, paid search still works, especially in developer marketing where people search everything (even <a href="https://www.bing.com/">Bing</a>)</li>
+<li><a href="https://www.airops.com/"><strong>AirOps</strong></a> is a newer tool I’ve been using for automation workflows, from competitive intel to content research, all built through AI</li>
+<li><a href="https://buffer.com/"><strong>Buffer</strong></a> is my social tool of choice, mainly because its free tier goes further than most and supports multiple platforms without friction</li>
+<li><a href="https://www.commonroom.io/"><strong>Common Room</strong></a> helps track and understand community activity across social, forums, and other developer channels.</li>
+</ul>
+<p>This stack helps me connect research, creation, and distribution. It’s about staying close to what works and improving a little with each iteration.</p>
+<h3>Sales and enablement stack</h3>
+<p>This is where product knowledge turns into enablement.</p>
+<ul>
+<li><a href="https://www.gong.io/"><strong>Gong</strong></a> for reviewing customer calls and spotting themes that shape positioning and messaging</li>
+<li><a href="https://www.workramp.com/"><strong>WorkRamp</strong></a> for internal education and onboarding content, keeping sales and marketing aligned on what’s new</li>
+<li><a href="https://www.figma.com/slides/"><strong>Figma Slides</strong></a> for building presentations with real design flexibility. It feels like designing, not fighting templates.</li>
+<li><a href="https://www.arcade.software/"><strong>Arcade</strong></a> for creating interactive product demos that help explain features in context without heavy editing or production time</li>
+</ul>
+<p>They keep information flowing and teams aligned on what actually matters, the customers using the product. </p>
+<h3>Collaboration stack</h3>
+<p>Collaboration works best when it’s async, not noisy.</p>
+<ul>
+<li><a href="https://notion.so/"><strong>Notion</strong></a> is where I write everything, content drafts, specs, notes, and ideas. It’s underrated for collaboration and perfect for pulling in code snippets or assets. People think they need Google Docs, but they’re wrong.</li>
+<li><a href="https://airtable.com/"><strong>Airtable</strong></a> is a dream for anyone who loves spreadsheets. It’s flexible, visual, and great for tracking content and projects. I’ve been a fan since day one, even if not everyone adopts it.</li>
+<li><a href="https://slack.com/"><strong>Slack</strong></a> is the only real choice for team communication. I live and die by the save-for-later feature, and the new canvas tools are great for organizing thoughts. Don’t at me with Microsoft Teams.</li>
+<li><a href="https://www.loom.com/"><strong>Loom</strong></a> is the best way to explain anything on video. It’s perfect for walkthroughs, feedback, or education. The editing tools are ok, not Descript-level, but work well enough. The AI still has some catching up to do.</li>
+</ul>
+<p>This stack makes it easy to share work, document ideas, and keep everyone aligned without the constant back-and-forth.</p>
+<h3>Developer and Data Stack</h3>
+<p>This is where projects take shape.</p>
+<ul>
+<li><a href="https://github.com/"><strong>GitHub</strong></a> for version control and collaboration</li>
+<li><a href="https://supabase.com/"><strong>Supabase</strong></a> for quick databases and APIs</li>
+<li><a href="https://vercel.com/"><strong>Vercel</strong></a> for deployments thought I don’t have anything against <a href="https://www.netlify.com/">Netlify</a> either. Not a super fan of Next.js so that does complicate things.</li>
+<li><a href="https://www.warp.dev/"><strong>Warp</strong></a> for a cleaner, more visual terminal</li>
+</ul>
+<p>It’s a reliable setup that scales smoothly and keeps development fast without adding unnecessary infrastructure.</p>
+<h3>Closing Thoughts</h3>
+<p>These tools have stuck because they make the work smoother. They cover everything I need to build, write, and collaborate without slowing things down.</p>
+<p>The stack will keep changing, but the goal won’t. </p>
+</div> <!-- Giscus Comments --> <div class="comments-section" data-astro-cid-4sn4zg3r> <script src="https://giscus.app/client.js" data-repo="Stahlwalker/lucasstahl" data-repo-id="R_kgDONhx3Gg" data-category="General" data-category-id="DIC_kwDONhx3Gs4ClYjJ" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="en" crossorigin="anonymous" async>
+        </script> </div> <script>
+        // Sync Giscus theme with site theme
+        function setGiscusTheme() {
+          const theme = document.documentElement.getAttribute('data-theme') || 'dark';
+          const giscusTheme = theme === 'light' ? 'light' : 'dark';
+
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (iframe) {
+            iframe.contentWindow.postMessage(
+              { giscus: { setConfig: { theme: giscusTheme } } },
+              'https://giscus.app'
+            );
+          }
+        }
+
+        // Wait for Giscus to load, then sync theme
+        window.addEventListener('message', (event) => {
+          if (event.origin === 'https://giscus.app') {
+            setGiscusTheme();
+          }
+        });
+
+        // Listen for theme changes and update Giscus
+        const observer = new MutationObserver((mutations) => {
+          mutations.forEach((mutation) => {
+            if (mutation.attributeName === 'data-theme') {
+              setGiscusTheme();
+            }
+          });
+        });
+
+        observer.observe(document.documentElement, {
+          attributes: true,
+          attributeFilter: ['data-theme']
+        });
+
+        // Initial theme set
+        setTimeout(setGiscusTheme, 1000);
+      </script> <footer class="blog-post-footer" data-astro-cid-4sn4zg3r> <div class="share-section" data-astro-cid-4sn4zg3r> <h3 class="share-title" data-astro-cid-4sn4zg3r>Share this article</h3> <div class="share-buttons" data-astro-cid-4sn4zg3r> <a href="https://twitter.com/intent/tweet?text=Developer%20marketing%20stack%20that%20keeps%20me%20building&url=https%3A%2F%2Flucasstahl.com%2Fblog%2Fmy-stack" target="_blank" rel="noopener noreferrer" class="share-button share-twitter" aria-label="Share on X (Twitter)" data-astro-cid-4sn4zg3r> <i class="fa-brands fa-x-twitter" data-astro-cid-4sn4zg3r></i> </a> <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flucasstahl.com%2Fblog%2Fmy-stack" target="_blank" rel="noopener noreferrer" class="share-button share-linkedin" aria-label="Share on LinkedIn" data-astro-cid-4sn4zg3r> <i class="fa-brands fa-linkedin-in" data-astro-cid-4sn4zg3r></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Flucasstahl.com%2Fblog%2Fmy-stack" target="_blank" rel="noopener noreferrer" class="share-button share-facebook" aria-label="Share on Facebook" data-astro-cid-4sn4zg3r> <i class="fa-brands fa-facebook-f" data-astro-cid-4sn4zg3r></i> </a> </div> </div> <div class="continue-reading" data-astro-cid-4sn4zg3r> <h3 class="continue-reading-title" data-astro-cid-4sn4zg3r>Continue Reading</h3> <div class="suggested-posts-grid" data-astro-cid-4sn4zg3r> <a href="https://webflow.com/blog/headless-cms-developer-tradeoffs" class="suggested-post" target="_blank" rel="noopener noreferrer" data-astro-cid-4sn4zg3r> <div class="suggested-post-content" data-astro-cid-4sn4zg3r> <h4 class="suggested-post-title" data-astro-cid-4sn4zg3r>Developers love headless until they&#39;re stuck maintaining it</h4> <time class="suggested-post-date" data-astro-cid-4sn4zg3r> Oct 7, 2025 </time> </div> <span class="suggested-post-arrow" data-astro-cid-4sn4zg3r> <i class="fa-solid fa-arrow-up-right-from-square" data-astro-cid-4sn4zg3r></i> </span> </a><a href="https://webflow.com/blog/ai-mcp-servers" class="suggested-post" target="_blank" rel="noopener noreferrer" data-astro-cid-4sn4zg3r> <div class="suggested-post-content" data-astro-cid-4sn4zg3r> <h4 class="suggested-post-title" data-astro-cid-4sn4zg3r>MCP servers worth knowing if you&#39;re building with AI</h4> <time class="suggested-post-date" data-astro-cid-4sn4zg3r> Aug 12, 2025 </time> </div> <span class="suggested-post-arrow" data-astro-cid-4sn4zg3r> <i class="fa-solid fa-arrow-up-right-from-square" data-astro-cid-4sn4zg3r></i> </span> </a> </div> </div> </footer> </div> </article>   <footer class="footer" data-astro-cid-sz7xmlte> <div class="footer-content" data-astro-cid-sz7xmlte> <div class="footer-links" data-astro-cid-sz7xmlte> <a href="/handbook" class="footer-link" data-astro-cid-sz7xmlte>Developer Marketing Handbook</a> </div> <div class="footer-social" data-astro-cid-sz7xmlte> <a href="https://twitter.com/LucasStahl11" target="_blank" rel="noopener noreferrer" aria-label="Twitter" data-astro-cid-sz7xmlte> <i class="fa-brands fa-x-twitter" data-astro-cid-sz7xmlte></i> </a> <a href="https://www.linkedin.com/in/lucasstahl" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" data-astro-cid-sz7xmlte> <i class="fa-brands fa-linkedin-in" data-astro-cid-sz7xmlte></i> </a> <a href="https://github.com/Stahlwalker" target="_blank" rel="noopener noreferrer" aria-label="GitHub" data-astro-cid-sz7xmlte> <i class="fa-brands fa-github" data-astro-cid-sz7xmlte></i> </a> <a href="https://stahlwalker.notion.site/Luke-Stahl-s-Portfolio-of-Work-bc6f3e68e3084d37bfa023e4e8d3b901" target="_blank" rel="noopener noreferrer" aria-label="Notion Portfolio" class="notion-icon" data-astro-cid-sz7xmlte> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24" data-astro-cid-sz7xmlte> <path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z" data-astro-cid-sz7xmlte></path> </svg> </a> <a href="mailto:STAHL1109@GMAIL.COM" aria-label="Email" data-astro-cid-sz7xmlte> <i class="fa-solid fa-envelope" data-astro-cid-sz7xmlte></i> </a> <a href="/rss.xml" target="_blank" rel="noopener noreferrer" aria-label="RSS Feed" data-astro-cid-sz7xmlte> <i class="fa-solid fa-rss" data-astro-cid-sz7xmlte></i> </a> </div> <p class="footer-copyright" data-astro-cid-sz7xmlte>
+© 2025 Luke Stahl. Built with code and curiosity.
+<a href="/retro" class="easter-egg" aria-label="View archive" title="v1.0" data-astro-cid-sz7xmlte>v1.0</a> </p> </div> </footer>  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> <div id="devConsoleButton" class="dev-console-button" data-astro-cid-hwgnlzi2>
+Handbook
+</div> <div id="devConsoleOverlay" class="dev-console-overlay" data-astro-cid-hwgnlzi2> <div class="handbook-modal" data-astro-cid-hwgnlzi2> <div class="handbook-header" data-astro-cid-hwgnlzi2> <span class="handbook-title" data-astro-cid-hwgnlzi2>Developer Marketing Handbook</span> <button id="closeConsole" class="handbook-close" aria-label="Close handbook" data-astro-cid-hwgnlzi2>×</button> </div> <div class="handbook-body" data-astro-cid-hwgnlzi2> <nav class="handbook-nav" data-astro-cid-hwgnlzi2> <ul class="nav-links" data-astro-cid-hwgnlzi2> <li data-astro-cid-hwgnlzi2><a href="#goals" class="nav-link" data-astro-cid-hwgnlzi2>Goals</a></li> <li data-astro-cid-hwgnlzi2><a href="#strategy" class="nav-link" data-astro-cid-hwgnlzi2>Strategy</a></li> <li data-astro-cid-hwgnlzi2><a href="#journey" class="nav-link" data-astro-cid-hwgnlzi2>Journey</a></li> <li data-astro-cid-hwgnlzi2><a href="#personas" class="nav-link" data-astro-cid-hwgnlzi2>Personas</a></li> <li data-astro-cid-hwgnlzi2><a href="#messaging" class="nav-link" data-astro-cid-hwgnlzi2>Messaging</a></li> <li data-astro-cid-hwgnlzi2><a href="#campaigns" class="nav-link" data-astro-cid-hwgnlzi2>Campaigns</a></li> <li data-astro-cid-hwgnlzi2><a href="#content" class="nav-link" data-astro-cid-hwgnlzi2>Content</a></li> <li data-astro-cid-hwgnlzi2><a href="#community" class="nav-link" data-astro-cid-hwgnlzi2>Community</a></li> <li data-astro-cid-hwgnlzi2><a href="#metrics" class="nav-link" data-astro-cid-hwgnlzi2>Metrics</a></li> <li data-astro-cid-hwgnlzi2><a href="/gems" class="nav-link" data-astro-cid-hwgnlzi2>Gems</a></li> </ul> </nav> <main class="handbook-content" data-astro-cid-hwgnlzi2> <section id="goals" class="handbook-section" data-astro-cid-hwgnlzi2> <h2 data-astro-cid-hwgnlzi2>Goals</h2> <p data-astro-cid-hwgnlzi2>Developer marketing builds trust first, pipeline second.<br data-astro-cid-hwgnlzi2>
+The work connects your product to how developers actually build and helps that credibility translate into adoption and revenue.</p> <p data-astro-cid-hwgnlzi2>A great developer experience is the foundation. It starts with discoverability, continues through docs, and carries into the product itself. Good documentation shortens time to value and builds confidence that your product can scale with real teams.</p> <p data-astro-cid-hwgnlzi2>Success isn't clicks or vanity metrics. It's measurable engagement that creates product-qualified leads, builds influence across teams, and contributes to both product-led and sales-led growth.<br data-astro-cid-hwgnlzi2>
+When developers use your product by choice and advocate for it inside their company, you've done the job right.</p> </section> <section id="strategy" class="handbook-section" data-astro-cid-hwgnlzi2> <h2 data-astro-cid-hwgnlzi2>Strategy</h2> <p data-astro-cid-hwgnlzi2>Start with reality, not aspiration.<br data-astro-cid-hwgnlzi2>
+Map where your product fits in the developer workflow, then help them do that job faster or with less friction.</p> <p data-astro-cid-hwgnlzi2>Lead with clarity. Explain what it is, what it does, and why it matters.<br data-astro-cid-hwgnlzi2>
+If you can do it in a clever or playful way that still feels authentic, that's bonus points.</p> <p data-astro-cid-hwgnlzi2>The best developer marketing respects time, delivers value, and makes something complex feel obvious.</p> </section> <section id="journey" class="handbook-section" data-astro-cid-hwgnlzi2> <h2 data-astro-cid-hwgnlzi2>Journey</h2> <p data-astro-cid-hwgnlzi2><strong data-astro-cid-hwgnlzi2>Awareness → Evaluation → Adoption → Advocacy.</strong><br data-astro-cid-hwgnlzi2>
+Each stage should connect clearly to the next.</p> <p data-astro-cid-hwgnlzi2><strong data-astro-cid-hwgnlzi2>Awareness</strong> happens in places developers already spend time: GitHub, Reddit, newsletters, blogs.<br data-astro-cid-hwgnlzi2> <strong data-astro-cid-hwgnlzi2>Evaluation</strong> happens in your docs, demos, and sandboxes.<br data-astro-cid-hwgnlzi2> <strong data-astro-cid-hwgnlzi2>Adoption</strong> depends on how fast they reach first success.<br data-astro-cid-hwgnlzi2> <strong data-astro-cid-hwgnlzi2>Advocacy</strong> is when they start teaching others what they learned from you.</p> </section> <section id="personas" class="handbook-section" data-astro-cid-hwgnlzi2> <h2 data-astro-cid-hwgnlzi2>Personas</h2> <p data-astro-cid-hwgnlzi2><strong data-astro-cid-hwgnlzi2>Buyers:</strong> CTO or Engineering Leader, Senior Engineer, Implementation Architect.<br data-astro-cid-hwgnlzi2> <strong data-astro-cid-hwgnlzi2>Users:</strong> Frontend, Full-stack, App Developer.<br data-astro-cid-hwgnlzi2> <strong data-astro-cid-hwgnlzi2>Adjacent:</strong> Ops, Product, Design.</p> <p data-astro-cid-hwgnlzi2>Each persona has different pain points and goals.<br data-astro-cid-hwgnlzi2>
+CTOs and Engineering Leaders care about governance and ROI.<br data-astro-cid-hwgnlzi2>
+Senior Engineers look for performance, flexibility, and code quality.<br data-astro-cid-hwgnlzi2>
+Implementation Architects focus on how well a tool integrates and scales.<br data-astro-cid-hwgnlzi2>
+Write for what each person owns, not what you wish they cared about.</p> </section> <section id="messaging" class="handbook-section" data-astro-cid-hwgnlzi2> <h2 data-astro-cid-hwgnlzi2>Messaging</h2> <p data-astro-cid-hwgnlzi2>Be clear first. Be clever only if it helps.<br data-astro-cid-hwgnlzi2>
+Good developer messaging is specific, practical, and rooted in how people actually build.</p> <p data-astro-cid-hwgnlzi2>Clarity earns trust, but a bit of personality makes it stick.<br data-astro-cid-hwgnlzi2>
+The goal isn't to sound like marketing. It's to communicate something real that developers recognize and care about.</p> <h3 data-astro-cid-hwgnlzi2>Build around three pillars:</h3> <ul data-astro-cid-hwgnlzi2> <li data-astro-cid-hwgnlzi2><strong data-astro-cid-hwgnlzi2>Speed:</strong> faster builds, fewer tickets</li> <li data-astro-cid-hwgnlzi2><strong data-astro-cid-hwgnlzi2>Efficiency:</strong> consolidated stack, lower maintenance</li> <li data-astro-cid-hwgnlzi2><strong data-astro-cid-hwgnlzi2>Control:</strong> safe scale, long-term confidence</li> </ul> <p data-astro-cid-hwgnlzi2>If you can back it with code, data, or proof, keep it.<br data-astro-cid-hwgnlzi2>
+If it only sounds good, cut it.</p> </section> <section id="campaigns" class="handbook-section" data-astro-cid-hwgnlzi2> <h2 data-astro-cid-hwgnlzi2>Campaigns</h2> <p data-astro-cid-hwgnlzi2>Treat campaigns like product launches.<br data-astro-cid-hwgnlzi2>
+Plan, ship, measure, repeat.</p> <h3 data-astro-cid-hwgnlzi2>Each campaign should answer three questions:</h3> <ul data-astro-cid-hwgnlzi2> <li data-astro-cid-hwgnlzi2>What developer problem are we solving?</li> <li data-astro-cid-hwgnlzi2>What proof are we showing?</li> <li data-astro-cid-hwgnlzi2>What happens next?</li> </ul> <p data-astro-cid-hwgnlzi2>Make it easy for developers to try, test, or share.<br data-astro-cid-hwgnlzi2>
+Run retros on every launch and capture what worked, what didn't, and what to change next time. Always learn from what you launch.</p> </section> <section id="content" class="handbook-section" data-astro-cid-hwgnlzi2> <h2 data-astro-cid-hwgnlzi2>Content</h2> <p data-astro-cid-hwgnlzi2>Write with clarity and intention. Every piece should help developers build faster, learn something new, or solve a real problem.</p> <p data-astro-cid-hwgnlzi2>Strong content earns attention because it's useful. Show working examples, explain tradeoffs, and include visuals or code where it helps understanding. If it doesn't teach or demonstrate something real, it doesn't belong.</p> <h3 data-astro-cid-hwgnlzi2>Core content types</h3> <ul data-astro-cid-hwgnlzi2> <li data-astro-cid-hwgnlzi2><strong data-astro-cid-hwgnlzi2>Blog posts:</strong> tutorials, technical breakdowns, or opinionated takes grounded in experience.</li> <li data-astro-cid-hwgnlzi2><strong data-astro-cid-hwgnlzi2>Guides and tutorials:</strong> step-by-step instructions that lead to a working result.</li> <li data-astro-cid-hwgnlzi2><strong data-astro-cid-hwgnlzi2>Integration or workflow content:</strong> explain how tools connect and where they fit in a developer's process.</li> <li data-astro-cid-hwgnlzi2><strong data-astro-cid-hwgnlzi2>Technical guides and code examples:</strong> deeper material for experienced readers who want implementation detail.</li> <li data-astro-cid-hwgnlzi2><strong data-astro-cid-hwgnlzi2>Explainer or glossary content:</strong> clear, factual definitions written to answer specific questions directly.</li> <li data-astro-cid-hwgnlzi2><strong data-astro-cid-hwgnlzi2>Video or live sessions:</strong> demos, interviews, or walkthroughs that show real workflows.</li> <li data-astro-cid-hwgnlzi2><strong data-astro-cid-hwgnlzi2>Research and surveys:</strong> reports or insights that help developers understand the state of their field.</li> </ul> <h3 data-astro-cid-hwgnlzi2>Content strategy buckets</h3> <ol data-astro-cid-hwgnlzi2> <li data-astro-cid-hwgnlzi2><strong data-astro-cid-hwgnlzi2>Awareness</strong> — generate buzz and discussion. Hot takes, thought leadership, or topics that invite conversation.</li> <li data-astro-cid-hwgnlzi2><strong data-astro-cid-hwgnlzi2>Acquisition</strong> — bring new developers in through problem-solving content. Tutorials, guides, and explainers that answer real questions.</li> <li data-astro-cid-hwgnlzi2><strong data-astro-cid-hwgnlzi2>Enablement</strong> — help existing users succeed. Deep tutorials, documentation extensions, and practical how-to content with long-term value.</li> <li data-astro-cid-hwgnlzi2><strong data-astro-cid-hwgnlzi2>Convert Paid</strong> — drive upgrades or signups. Feature-specific walkthroughs or advanced use cases that show value worth paying for.</li> </ol> <p data-astro-cid-hwgnlzi2>Each piece should fit into one of these buckets and serve a clear purpose. Awareness earns attention. Acquisition builds trust. Enablement drives success. Convert Paid turns success into growth.</p> <p data-astro-cid-hwgnlzi2>Clarity is the standard. Use it to earn credibility.</p> </section> <section id="community" class="handbook-section" data-astro-cid-hwgnlzi2> <h2 data-astro-cid-hwgnlzi2>Community</h2> <p data-astro-cid-hwgnlzi2>Reddit. GitHub. Discord. Slack. YouTube and other social platforms.<br data-astro-cid-hwgnlzi2>
+Join conversations, don't start pitches.</p> <p data-astro-cid-hwgnlzi2>Be helpful. Add context. Share working examples.<br data-astro-cid-hwgnlzi2>
+When your content becomes the answer people link to, you've earned credibility.</p> </section> <section id="metrics" class="handbook-section" data-astro-cid-hwgnlzi2> <h2 data-astro-cid-hwgnlzi2>Metrics</h2> <p data-astro-cid-hwgnlzi2>Measure adoption and revenue, not reach.<br data-astro-cid-hwgnlzi2>
+Awareness is useful, but only if it drives activation or expansion.</p> <p data-astro-cid-hwgnlzi2>Focus on signals that show impact:</p> <ul data-astro-cid-hwgnlzi2> <li data-astro-cid-hwgnlzi2>Product or API usage</li> <li data-astro-cid-hwgnlzi2>Time to first success</li> <li data-astro-cid-hwgnlzi2>Product-qualified leads</li> <li data-astro-cid-hwgnlzi2>Developer-influenced revenue</li> <li data-astro-cid-hwgnlzi2>Retention and repeat engagement</li> </ul> <p data-astro-cid-hwgnlzi2>The goal is simple: prove that developer trust turns into growth.</p> </section> <section class="handbook-cta" data-astro-cid-hwgnlzi2> <div class="cta-content" data-astro-cid-hwgnlzi2> <h3 data-astro-cid-hwgnlzi2>Need more resources?</h3> <p data-astro-cid-hwgnlzi2>Check out my curated collection of developer marketing tools, newsletters, and resources.</p> <a href="/gems" class="cta-button" data-astro-cid-hwgnlzi2>
+View Gems →
+</a> </div> </section> </main> </div> </div> </div>  <script type="module">const l=document.getElementById("devConsoleButton"),i=document.getElementById("devConsoleOverlay"),d=document.getElementById("closeConsole"),s=document.querySelectorAll(".handbook-modal .nav-link"),v=document.querySelectorAll(".handbook-modal .handbook-section");function u(){return window.innerWidth<=768}function f(){i.classList.add("active"),document.body.style.overflow="hidden"}function r(){i.classList.remove("active"),document.body.style.overflow=""}l.addEventListener("click",()=>{u()?window.location.href="/handbook":f()});d.addEventListener("click",r);i.addEventListener("click",e=>{e.target===i&&r()});document.addEventListener("keydown",e=>{if(i.classList.contains("active")){if(e.key==="Escape"&&r(),e.key==="ArrowDown"){e.preventDefault();const o=document.querySelector(".handbook-modal .nav-link.active");if(o){const t=o.parentElement.nextElementSibling;if(t){const n=t.querySelector(".nav-link");n&&n.click()}}else{const t=document.querySelector(".handbook-modal .nav-link");t&&t.click()}}if(e.key==="ArrowUp"){e.preventDefault();const o=document.querySelector(".handbook-modal .nav-link.active");if(o){const t=o.parentElement.previousElementSibling;if(t){const n=t.querySelector(".nav-link");n&&n.click()}}}}});s.forEach(e=>{e.addEventListener("click",o=>{o.preventDefault();const t=e.getAttribute("href").substring(1),n=document.getElementById(t);n&&(n.scrollIntoView({behavior:"smooth",block:"start"}),s.forEach(c=>c.classList.remove("active")),e.classList.add("active"))})});const a=document.querySelector(".handbook-content");if(a){const e=new IntersectionObserver(o=>{o.forEach(t=>{if(t.isIntersecting){const n=t.target.getAttribute("id");s.forEach(c=>{c.classList.remove("active"),c.getAttribute("href")===`#${n}`&&c.classList.add("active")})}})},{root:a,threshold:.5});v.forEach(o=>e.observe(o))}</script> <!-- Theme Toggle Functionality --> <script>
+		document.addEventListener('DOMContentLoaded', function() {
+			const themeToggle = document.getElementById('themeToggle');
+			const themeToggleMobile = document.getElementById('themeToggleMobile');
+			const themeIcon = document.getElementById('themeIcon');
+			const themeIconMobile = document.getElementById('themeIconMobile');
+			const html = document.documentElement;
+
+			// Get current theme
+			function getCurrentTheme() {
+				return html.getAttribute('data-theme') || 'dark';
+			}
+
+			// Update icon based on current theme
+			function updateIcon() {
+				const currentTheme = getCurrentTheme();
+				const icon = currentTheme === 'dark' ? 'fa-sun' : 'fa-moon';
+
+				if (themeIcon) {
+					themeIcon.className = `fa-solid ${icon}`;
+				}
+				if (themeIconMobile) {
+					themeIconMobile.className = `fa-solid ${icon}`;
+				}
+			}
+
+			// Toggle theme
+			function toggleTheme() {
+				const currentTheme = getCurrentTheme();
+				const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+				html.setAttribute('data-theme', newTheme);
+				localStorage.setItem('theme', newTheme);
+				updateIcon();
+			}
+
+			// Set up event listeners
+			if (themeToggle) {
+				themeToggle.addEventListener('click', toggleTheme);
+			}
+			if (themeToggleMobile) {
+				themeToggleMobile.addEventListener('click', toggleTheme);
+			}
+
+			// Initialize icon
+			updateIcon();
+		});
+	</script> </body> </html>

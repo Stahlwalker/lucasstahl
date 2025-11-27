@@ -535,3 +535,77 @@
         font-size: 1rem;
     }
 }
+
+/* Light Mode Styles for Blog */
+[data-theme="light"] .blog-card {
+    background-color: #ffffff;
+    background-image: none;
+    border: 2px solid rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .blog-card:hover {
+    border-color: var(--accent-primary);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="light"] .blog-hero {
+    background-color: var(--bg-secondary);
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: -1px -1px;
+}
+
+[data-theme="light"] .blog-feed-section {
+    background-color: var(--bg-secondary);
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: -1px -1px;
+}
+
+/* Light mode compact blog cards */
+[data-theme="light"] .blog-card-compact {
+    background-color: #ffffff !important;
+    background-image: none !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme="light"] .blog-card-compact:hover {
+    background-color: rgba(248, 250, 252, 1) !important;
+    background-image: none !important;
+    border-color: rgba(37, 99, 235, 0.3) !important;
+}
+
+[data-theme="light"] .blog-feed .blog-card:nth-child(3) {
+    border-top-color: rgba(0, 0, 0, 0.12);
+}
+
+/* Light mode blog tags */
+[data-theme="light"] .tag {
+    background: rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    color: var(--text-secondary);
+}
+
+[data-theme="light"] .tag:hover {
+    background: rgba(37, 99, 235, 0.08);
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+}
+
+/* External Link Icon */
+.external-icon {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    opacity: 0.7;
+    margin-left: 0.5rem;
+}
+
+[data-theme="light"] .external-icon {
+    color: var(--text-secondary);
+    opacity: 0.6;
+}
