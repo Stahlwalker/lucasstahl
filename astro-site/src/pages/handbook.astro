@@ -39,7 +39,7 @@ import Layout from '../layouts/Layout.astro';
 					<p>Developer marketing builds trust first, pipeline second.<br/>
 					The work connects your product to how developers actually build and helps that credibility translate into adoption and revenue.</p>
 
-					<p>A great developer experience is the foundation. It starts with discoverability, continues through docs, and carries into the product itself. Good documentation shortens time to value and builds confidence that your product can scale with real teams.</p>
+					<p>A great developer experience is the foundation. It starts with discoverability, continues through docs, and carries into the product itself. Good documentation shortens time to value and builds confidence that your product can scale with real teams. Developers trust what they can inspect, so show how the product works and let the system speak for itself.</p>
 
 					<p>Success isn't clicks or vanity metrics. It's measurable engagement that creates product-qualified leads, builds influence across teams, and contributes to both product-led and sales-led growth.<br/>
 					When developers use your product by choice and advocate for it inside their company, you've done the job right.</p>
@@ -47,10 +47,13 @@ import Layout from '../layouts/Layout.astro';
 
 				<section id="strategy" class="handbook-section">
 					<h2>Strategy</h2>
-					<p>Start with reality, not aspiration.<br/>
-					Map where your product fits in the developer workflow, then help them do that job faster or with less friction.</p>
+					<p>Start with reality, not aspiration.</p>
 
-					<p>Lead with clarity. Explain what it is, what it does, and why it matters.<br/>
+					<p>Map where your product fits in the developer workflow, then help them do that job faster or with less friction.</p>
+
+					<p>Lead with clarity. Explain what it is, what it does, and why it matters.</p>
+
+					<p>Show the system behind the product. Architecture, examples, and tradeoffs explain more than positioning ever will.<br/>
 					If you can do it in a clever or playful way that still feels authentic, that's bonus points.</p>
 
 					<p>The best developer marketing respects time, delivers value, and makes something complex feel obvious.</p>
@@ -62,8 +65,13 @@ import Layout from '../layouts/Layout.astro';
 					Each stage should connect clearly to the next.</p>
 
 					<p><strong>Awareness</strong> happens in places developers already spend time: GitHub, Reddit, newsletters, blogs.<br/>
-					<strong>Evaluation</strong> happens in your docs, demos, and sandboxes.<br/>
-					<strong>Adoption</strong> depends on how fast they reach first success.<br/>
+					<strong>Evaluation</strong> happens in your docs, demos, and sandboxes.</p>
+
+					<div class="callout">
+						For most developers, the docs are the real homepage, so accuracy and structure matter more than polish.
+					</div>
+
+					<p><strong>Adoption</strong> depends on how fast they reach first success.<br/>
 					<strong>Advocacy</strong> is when they start teaching others what they learned from you.</p>
 				</section>
 
@@ -83,6 +91,7 @@ import Layout from '../layouts/Layout.astro';
 				<section id="messaging" class="handbook-section">
 					<h2>Messaging</h2>
 					<p>Be clear first. Be clever only if it helps.<br/>
+					Make every message easy to scan. Lead with the point before expanding on it.<br/>
 					Good developer messaging is specific, practical, and rooted in how people actually build.</p>
 
 					<p>Clarity earns trust, but a bit of personality makes it stick.<br/>
@@ -111,6 +120,8 @@ import Layout from '../layouts/Layout.astro';
 						<li>What happens next?</li>
 					</ul>
 
+					<p>Treat developer feedback like bug reports and close the loop quickly when something needs to be corrected or clarified.</p>
+
 					<p>Make it easy for developers to try, test, or share.<br/>
 					Run retros on every launch and capture what worked, what didn't, and what to change next time. Always learn from what you launch.</p>
 				</section>
@@ -119,7 +130,9 @@ import Layout from '../layouts/Layout.astro';
 					<h2>Content</h2>
 					<p>Write with clarity and intention. Every piece should help developers build faster, learn something new, or solve a real problem.</p>
 
-					<p>Strong content earns attention because it's useful. Show working examples, explain tradeoffs, and include visuals or code where it helps understanding. If it doesn't teach or demonstrate something real, it doesn't belong.</p>
+					<p>Strong content earns attention because it's useful.<br/>
+					Lead with the outcome or insight, then show how to get there. Make it easy to skim from top to bottom.<br/>
+					Show working examples, explain tradeoffs, and include visuals or code where it helps understanding. If it doesn't teach or demonstrate something real, it doesn't belong.</p>
 
 					<h3>Core content types</h3>
 					<ul>
@@ -168,7 +181,7 @@ import Layout from '../layouts/Layout.astro';
 						<li>Retention and repeat engagement</li>
 					</ul>
 
-					<p>The goal is simple: prove that developer trust turns into growth.</p>
+					<p>The goal is to prove that trust earned from developers shows up later in product usage and revenue.</p>
 				</section>
 
 				<section class="handbook-cta">
@@ -390,6 +403,20 @@ import Layout from '../layouts/Layout.astro';
 	.handbook-section strong {
 		color: #c3e88d;
 		font-weight: 600;
+	}
+
+	/* Callout */
+	.callout {
+		margin: 20px 0;
+		padding: 16px 20px;
+		background: linear-gradient(135deg, rgba(130, 170, 255, 0.08), rgba(195, 232, 141, 0.05));
+		border-left: 3px solid #82aaff;
+		border-radius: 4px;
+		font-size: 14px;
+		color: #e4e4e7;
+		font-family: 'Fira Code', monospace;
+		line-height: 1.7;
+		font-style: italic;
 	}
 
 	/* CTA Section */
@@ -702,6 +729,12 @@ import Layout from '../layouts/Layout.astro';
 
 	:global([data-theme="light"]) .handbook-section strong {
 		color: #16a34a;
+	}
+
+	:global([data-theme="light"]) .callout {
+		background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(22, 163, 74, 0.05));
+		border-left-color: #2563eb;
+		color: #475569;
 	}
 
 	:global([data-theme="light"]) .handbook-cta {

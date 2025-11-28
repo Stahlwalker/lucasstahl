@@ -283,6 +283,14 @@
     border-radius: 8px;
 }
 
+.contributions-chart .contributions-light {
+    display: none;
+}
+
+.contributions-chart .contributions-dark {
+    display: block;
+}
+
 .github-profile-link {
     display: inline-flex;
     align-items: center;
@@ -328,6 +336,14 @@
 
 [data-theme="light"] .contributions-chart:hover {
     border-color: rgba(37, 99, 235, 0.4);
+}
+
+[data-theme="light"] .contributions-chart .contributions-dark {
+    display: none;
+}
+
+[data-theme="light"] .contributions-chart .contributions-light {
+    display: block;
 }
 
 [data-theme="light"] .github-profile-link {

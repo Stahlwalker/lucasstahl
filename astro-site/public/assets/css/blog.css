@@ -609,3 +609,57 @@
     color: var(--text-secondary);
     opacity: 0.6;
 }
+
+/* Load More Button */
+.load-more-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
+.load-more-btn {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0.9rem 2rem;
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.08), rgba(129, 140, 248, 0.05));
+    border: 1px solid rgba(96, 165, 250, 0.3);
+    border-radius: 8px;
+    color: var(--accent-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.02em;
+}
+
+.load-more-btn:hover {
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.15), rgba(129, 140, 248, 0.1));
+    border-color: var(--accent-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(96, 165, 250, 0.2);
+}
+
+.load-more-btn .comment-slash {
+    color: #546e7a;
+    margin-right: 0.5rem;
+    font-weight: 600;
+}
+
+/* Light mode for load more button */
+[data-theme="light"] .load-more-btn {
+    background: rgba(37, 99, 235, 0.06);
+    border-color: rgba(37, 99, 235, 0.3);
+}
+
+[data-theme="light"] .load-more-btn:hover {
+    background: rgba(37, 99, 235, 0.1);
+    border-color: var(--accent-primary);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+
+@media (max-width: 768px) {
+    .load-more-btn {
+        font-size: 0.875rem;
+        padding: 0.8rem 1.5rem;
+    }
+}
