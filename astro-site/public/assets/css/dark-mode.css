@@ -1275,13 +1275,13 @@ html {
     cursor: pointer;
     transition: all 0.3s ease;
     font-size: 1.25rem;
-    margin-left: 0.75rem;
+    transform: translateY(-3px);
 }
 
 .theme-toggle:hover {
     background: rgba(96, 165, 250, 0.15);
     border-color: var(--accent-primary);
-    transform: translateY(-3px);
+    transform: translateY(-6px);
 }
 
 .theme-toggle i {

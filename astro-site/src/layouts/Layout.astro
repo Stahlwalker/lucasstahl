@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import PostHog from '../components/posthog.astro';
 import DevMarketingConsole from '../components/DevMarketingConsole.astro';
+import Search from '../components/Search.astro';
 
 interface Props {
 	title: string;
@@ -69,6 +70,7 @@ const {
 		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/dark-mode.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/search.css">
 
 	{additionalCss.map(css => (
 		<link rel="stylesheet" type="text/css" href={css}>
@@ -93,14 +95,14 @@ const {
 	<script is:inline>
 		// Initialize theme before page renders to prevent flash
 		(function() {
-			const savedTheme = localStorage.getItem('theme');
+			const savedMode = localStorage.getItem('theme');
 			let theme;
 
-			if (savedTheme) {
-				// User has manually set a preference
-				theme = savedTheme;
+			if (savedMode === 'dark' || savedMode === 'light') {
+				// User has manually set dark or light
+				theme = savedMode;
 			} else {
-				// Check system preference
+				// System mode or no preference - check system preference
 				const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 				theme = prefersDark ? 'dark' : 'light';
 			}
@@ -114,6 +116,7 @@ const {
 	<slot />
 	<Footer />
 	{!hideHandbookButton && <DevMarketingConsole />}
+	<Search />
 
 	<!-- Theme Toggle Functionality -->
 	<script is:inline>
@@ -124,15 +127,32 @@ const {
 			const themeIconMobile = document.getElementById('themeIconMobile');
 			const html = document.documentElement;
 
-			// Get current theme
-			function getCurrentTheme() {
-				return html.getAttribute('data-theme') || 'dark';
+			// Get current theme mode (dark, light, or system)
+			function getCurrentMode() {
+				return localStorage.getItem('theme') || 'system';
 			}
 
-			// Update icon based on current theme
+			// Get the actual theme to display (resolves system to dark/light)
+			function getDisplayTheme() {
+				const mode = getCurrentMode();
+				if (mode === 'system') {
+					return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+				}
+				return mode;
+			}
+
+			// Update icon based on current mode
 			function updateIcon() {
-				const currentTheme = getCurrentTheme();
-				const icon = currentTheme === 'dark' ? 'fa-sun' : 'fa-moon';
+				const mode = getCurrentMode();
+				let icon;
+
+				if (mode === 'dark') {
+					icon = 'fa-moon';
+				} else if (mode === 'light') {
+					icon = 'fa-sun';
+				} else {
+					icon = 'fa-display'; // system mode
+				}
 
 				if (themeIcon) {
 					themeIcon.className = `fa-solid ${icon}`;
@@ -142,13 +162,27 @@ const {
 				}
 			}
 
-			// Toggle theme
-			function toggleTheme() {
-				const currentTheme = getCurrentTheme();
-				const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+			// Apply theme to document
+			function applyTheme() {
+				const displayTheme = getDisplayTheme();
+				html.setAttribute('data-theme', displayTheme);
+			}
 
-				html.setAttribute('data-theme', newTheme);
-				localStorage.setItem('theme', newTheme);
+			// Toggle theme: dark -> light -> system -> dark
+			function toggleTheme() {
+				const currentMode = getCurrentMode();
+				let newMode;
+
+				if (currentMode === 'dark') {
+					newMode = 'light';
+				} else if (currentMode === 'light') {
+					newMode = 'system';
+				} else {
+					newMode = 'dark';
+				}
+
+				localStorage.setItem('theme', newMode);
+				applyTheme();
 				updateIcon();
 			}
 
@@ -160,7 +194,15 @@ const {
 				themeToggleMobile.addEventListener('click', toggleTheme);
 			}
 
-			// Initialize icon
+			// Listen for system theme changes when in system mode
+			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
+				if (getCurrentMode() === 'system') {
+					applyTheme();
+				}
+			});
+
+			// Initialize
+			applyTheme();
 			updateIcon();
 		});
 	</script>
