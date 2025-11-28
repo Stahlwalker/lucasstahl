@@ -30,6 +30,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="/gems" data-nav-link>Gems</a>
             </li>
+            <li class="nav-item search-nav-item">
+                <button class="nav-link search-button" id="searchButton" aria-label="Search" title="Search (⌘K)" style="border: none; background: none; cursor: pointer;">
+                    <i class="fa-solid fa-search"></i>
+                </button>
+            </li>
             <li class="nav-item navbar-github-mobile">
                 <a class="nav-link" href="https://github.com/Stahlwalker" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                     <i class="fa-brands fa-github"></i>
@@ -46,7 +51,7 @@
                 </a>
             </li>
             <li class="nav-item theme-toggle-desktop-nav">
-                <button class="theme-toggle theme-toggle-desktop" id="themeToggle" aria-label="Toggle theme" title="Toggle theme" style="border: none; background: none; padding: 0; margin-left: 1rem;">
+                <button class="theme-toggle theme-toggle-desktop" id="themeToggle" aria-label="Toggle theme" title="Toggle theme" style="border: none; background: none; padding: 0;">
                     <i class="fa-solid fa-sun" id="themeIcon"></i>
                 </button>
             </li>
@@ -65,5 +70,15 @@
                 window.location.href = fullUrl;
             });
         });
+
+        // Search button handler
+        const searchButton = document.getElementById('searchButton');
+        if (searchButton) {
+            searchButton.addEventListener('click', function() {
+                if (window.openSearchModal) {
+                    window.openSearchModal();
+                }
+            });
+        }
     });
 </script>
