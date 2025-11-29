@@ -123,6 +123,7 @@ const {
 		document.addEventListener('DOMContentLoaded', function() {
 			const themeToggle = document.getElementById('themeToggle');
 			const themeToggleMobile = document.getElementById('themeToggleMobile');
+			const footerThemeToggle = document.getElementById('footerThemeToggle');
 			const themeIcon = document.getElementById('themeIcon');
 			const themeIconMobile = document.getElementById('themeIconMobile');
 			const html = document.documentElement;
@@ -139,6 +140,36 @@ const {
 					return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 				}
 				return mode;
+			}
+
+			// Update footer toggle UI
+			function updateFooterToggle() {
+				if (!footerThemeToggle) return;
+
+				const mode = getCurrentMode();
+				const buttons = footerThemeToggle.querySelectorAll('.theme-option');
+				const highlight = footerThemeToggle.querySelector('.theme-toggle-highlight');
+
+				buttons.forEach((btn, index) => {
+					if (btn.getAttribute('data-theme') === mode) {
+						btn.classList.add('active');
+						// Position highlight
+						if (highlight) {
+							if (index === 0) {
+								highlight.style.left = '2px';
+								highlight.style.width = '32px';
+							} else if (index === 1) {
+								highlight.style.left = '34px';
+								highlight.style.width = '32px';
+							} else {
+								highlight.style.left = '66px';
+								highlight.style.width = 'calc(100% - 68px)';
+							}
+						}
+					} else {
+						btn.classList.remove('active');
+					}
+				});
 			}
 
 			// Update icon based on current mode
@@ -184,6 +215,15 @@ const {
 				localStorage.setItem('theme', newMode);
 				applyTheme();
 				updateIcon();
+				updateFooterToggle();
+			}
+
+			// Set specific theme (for footer toggle)
+			function setTheme(newMode) {
+				localStorage.setItem('theme', newMode);
+				applyTheme();
+				updateIcon();
+				updateFooterToggle();
 			}
 
 			// Set up event listeners
@@ -192,6 +232,18 @@ const {
 			}
 			if (themeToggleMobile) {
 				themeToggleMobile.addEventListener('click', toggleTheme);
+			}
+
+			// Set up footer toggle listeners
+			if (footerThemeToggle) {
+				const buttons = footerThemeToggle.querySelectorAll('.theme-option');
+				buttons.forEach(btn => {
+					btn.addEventListener('click', (e) => {
+						e.stopPropagation();
+						const mode = btn.getAttribute('data-theme');
+						setTheme(mode);
+					});
+				});
 			}
 
 			// Listen for system theme changes when in system mode
@@ -204,6 +256,7 @@ const {
 			// Initialize
 			applyTheme();
 			updateIcon();
+			updateFooterToggle();
 		});
 	</script>
 </body>

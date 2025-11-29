@@ -142,7 +142,10 @@ const searchIndex = await buildSearchIndex();
                data-index="${index}"
                data-url="${item.url}"
                data-external="${isExternal}">
-            <div class="search-result-path">/${item.type}${pathDisplay}</div>
+            <div class="search-result-path">
+              <span class="search-result-type">/${item.type}</span>
+              <span class="search-result-url">${pathDisplay}</span>
+            </div>
             <div class="search-result-title">${item.title}</div>
             <div class="search-result-description">${item.description}</div>
           </div>
@@ -215,7 +218,10 @@ const searchIndex = await buildSearchIndex();
              data-index="${index}"
              data-url="${item.url}"
              data-external="${isExternal}">
-          <div class="search-result-path">/${item.type}${pathDisplay}</div>
+          <div class="search-result-path">
+            <span class="search-result-type">/${item.type}</span>
+            <span class="search-result-url">${pathDisplay}</span>
+          </div>
           <div class="search-result-title">${item.title}</div>
           <div class="search-result-description">${item.description}</div>
         </div>

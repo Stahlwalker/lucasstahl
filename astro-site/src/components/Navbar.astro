@@ -12,10 +12,15 @@
             <i class="fa-brands fa-linkedin"></i>
         </a>
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse"
-        data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="navbar-mobile-actions">
+        <button class="mobile-search-button" id="mobileSearchButton" aria-label="Search" title="Search">
+            <i class="fa-solid fa-search"></i>
+        </button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
@@ -71,10 +76,20 @@
             });
         });
 
-        // Search button handler
+        // Search button handlers
         const searchButton = document.getElementById('searchButton');
+        const mobileSearchButton = document.getElementById('mobileSearchButton');
+
         if (searchButton) {
             searchButton.addEventListener('click', function() {
+                if (window.openSearchModal) {
+                    window.openSearchModal();
+                }
+            });
+        }
+
+        if (mobileSearchButton) {
+            mobileSearchButton.addEventListener('click', function() {
                 if (window.openSearchModal) {
                     window.openSearchModal();
                 }

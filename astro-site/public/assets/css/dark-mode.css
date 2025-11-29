@@ -121,6 +121,30 @@ body {
     display: none;
 }
 
+/* Mobile search button styling */
+.navbar-mobile-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.mobile-search-button {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+}
+
+.mobile-search-button:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
 .nav-link {
     color: var(--text-secondary) !important;
     font-family: 'Fira Code', monospace;
@@ -1008,6 +1032,24 @@ html {
         display: block !important;
     }
 
+    /* Show mobile search button, hide desktop search in nav */
+    .mobile-search-button {
+        display: block !important;
+    }
+
+    .search-nav-item {
+        display: none !important;
+    }
+
+    /* Hide desktop theme toggle on mobile, keep single icon toggle */
+    .theme-toggle-desktop {
+        display: none !important;
+    }
+
+    .theme-toggle-mobile {
+        display: block !important;
+    }
+
     .footer-social {
         gap: 1.5rem;
     }
@@ -1336,6 +1378,10 @@ body,
 
 [data-theme="light"] .navbar-toggler-icon {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.7%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+[data-theme="light"] .mobile-search-button {
+    color: #1a1a1a;
 }
 
 /* Light mode hero section */

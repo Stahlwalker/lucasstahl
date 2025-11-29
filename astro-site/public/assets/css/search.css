@@ -243,9 +243,25 @@
 .search-result-path {
   font-family: 'Fira Code', monospace;
   font-size: 0.75rem;
-  color: #e5f088 !important;
   margin-bottom: 0.5rem;
   font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.search-result-type {
+  background: rgba(96, 165, 250, 0.15);
+  color: #60a5fa !important;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.search-result-url {
+  color: #e5f088 !important;
+  opacity: 0.8;
 }
 
 .search-result-title {
@@ -380,8 +396,14 @@
   background: rgba(14, 116, 218, 0.06);
 }
 
-[data-theme="light"] .search-result-path {
+[data-theme="light"] .search-result-type {
+  background: rgba(14, 116, 218, 0.15);
+  color: #0e74da !important;
+}
+
+[data-theme="light"] .search-result-url {
   color: #16a34a !important;
+  opacity: 0.9;
 }
 
 [data-theme="light"] .search-result-title {
