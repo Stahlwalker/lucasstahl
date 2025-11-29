@@ -145,6 +145,7 @@ const searchIndex = await buildSearchIndex();
             <div class="search-result-path">
               <span class="search-result-type">/${item.type}</span>
               <span class="search-result-url">${pathDisplay}</span>
+              ${isExternal ? '<i class="fa-solid fa-arrow-up-right-from-square search-external-icon"></i>' : ''}
             </div>
             <div class="search-result-title">${item.title}</div>
             <div class="search-result-description">${item.description}</div>
@@ -221,6 +222,7 @@ const searchIndex = await buildSearchIndex();
           <div class="search-result-path">
             <span class="search-result-type">/${item.type}</span>
             <span class="search-result-url">${pathDisplay}</span>
+            ${isExternal ? '<i class="fa-solid fa-arrow-up-right-from-square search-external-icon"></i>' : ''}
           </div>
           <div class="search-result-title">${item.title}</div>
           <div class="search-result-description">${item.description}</div>

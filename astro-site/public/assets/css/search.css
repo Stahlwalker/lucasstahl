@@ -264,6 +264,12 @@
   opacity: 0.8;
 }
 
+.search-external-icon {
+  color: rgba(228, 228, 231, 0.4) !important;
+  font-size: 0.7rem;
+  margin-left: 0.25rem;
+}
+
 .search-result-title {
   font-family: 'Inter', sans-serif;
   font-size: 1rem;
@@ -404,6 +410,10 @@
 [data-theme="light"] .search-result-url {
   color: #16a34a !important;
   opacity: 0.9;
+}
+
+[data-theme="light"] .search-external-icon {
+  color: rgba(26, 26, 26, 0.4) !important;
 }
 
 [data-theme="light"] .search-result-title {
