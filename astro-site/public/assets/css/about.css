@@ -48,6 +48,8 @@
         rgba(168, 85, 247, 0.15)
     );
     border-radius: 16px;
+    width: fit-content;
+    height: fit-content;
 }
 
 .about-image {
@@ -102,6 +104,12 @@
     flex-shrink: 0;
 }
 
+.terminal-text-wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
 .terminal-text {
     color: #c3e88d;
     letter-spacing: 0.3px;
@@ -109,9 +117,16 @@
     white-space: nowrap;
     display: inline-block;
     width: 0;
-    border-right: 2px solid #c3e88d;
-    padding-right: 12px;
-    animation: typing 3.5s steps(42, end) 1s forwards, blink-caret 0.75s step-end infinite;
+    animation: typing 3.5s steps(36, end) 1s forwards;
+}
+
+.terminal-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background: #c3e88d;
+    animation: blink-caret 0.75s step-end infinite;
+    flex-shrink: 0;
 }
 
 @keyframes typing {
@@ -125,10 +140,10 @@
 
 @keyframes blink-caret {
     from, to {
-        border-color: transparent;
+        opacity: 0;
     }
     50% {
-        border-color: #c3e88d;
+        opacity: 1;
     }
 }
 
@@ -936,8 +951,29 @@
 /* Responsive Design */
 @media (max-width: 992px) {
     .about-content {
-        grid-template-columns: 250px 1fr;
+        grid-template-columns: 1fr;
         gap: 2rem;
+        text-align: center;
+    }
+
+    .about-image-container {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .terminal-quote {
+        font-size: 0.7rem;
+        padding: 0.65rem 0.85rem;
+        min-height: 2.5rem;
+    }
+
+    .terminal-text {
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .about-bio {
+        align-items: center;
     }
 
     .skills-grid {
