@@ -1657,8 +1657,6 @@
 .logo-showcase-item.icon-only {
     padding: 1rem;
     min-height: 90px;
-    background: linear-gradient(135deg, rgba(96, 165, 250, 0.06), rgba(129, 140, 248, 0.06));
-    border-color: rgba(96, 165, 250, 0.18);
 }
 
 .logo-showcase-item.icon-only .logo-showcase-img {
@@ -1668,7 +1666,6 @@
 
 .logo-showcase-item.icon-only:hover {
     transform: translateY(-4px);
-    background: linear-gradient(135deg, rgba(96, 165, 250, 0.12), rgba(129, 140, 248, 0.12));
 }
 
 /* Figma icon - larger size */
@@ -1744,18 +1741,18 @@
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
-/* Light mode glimmer effect */
+/* Light mode glimmer effect - enhanced for visibility */
 @keyframes glimmerLight {
     0%, 70%, 100% {
         border-color: rgba(37, 99, 235, 0.15);
         box-shadow: none;
     }
     35% {
-        border-color: rgba(37, 99, 235, 0.6);
+        border-color: rgba(29, 78, 216, 0.9);
         box-shadow:
-            0 0 30px rgba(37, 99, 235, 0.4),
-            0 0 15px rgba(59, 130, 246, 0.3),
-            inset 0 0 30px rgba(37, 99, 235, 0.15);
+            0 0 35px rgba(29, 78, 216, 0.5),
+            0 0 20px rgba(37, 99, 235, 0.4),
+            inset 0 0 35px rgba(37, 99, 235, 0.25);
     }
 }
 
@@ -1763,12 +1760,38 @@
     animation: glimmerLight 8s ease-in-out infinite;
 }
 
-/* Light mode shimmer - slightly darker for visibility */
+/* Reapply staggered delays for light mode */
+[data-theme="light"] .logo-showcase-item:nth-child(1) { animation-delay: 0s; }
+[data-theme="light"] .logo-showcase-item:nth-child(2) { animation-delay: 0.2s; }
+[data-theme="light"] .logo-showcase-item:nth-child(3) { animation-delay: 0.4s; }
+[data-theme="light"] .logo-showcase-item:nth-child(4) { animation-delay: 0.6s; }
+[data-theme="light"] .logo-showcase-item:nth-child(5) { animation-delay: 0.8s; }
+[data-theme="light"] .logo-showcase-item:nth-child(6) { animation-delay: 1s; }
+[data-theme="light"] .logo-showcase-item:nth-child(7) { animation-delay: 1.2s; }
+[data-theme="light"] .logo-showcase-item:nth-child(8) { animation-delay: 1.4s; }
+[data-theme="light"] .logo-showcase-item:nth-child(9) { animation-delay: 1.6s; }
+[data-theme="light"] .logo-showcase-item:nth-child(10) { animation-delay: 1.8s; }
+[data-theme="light"] .logo-showcase-item:nth-child(11) { animation-delay: 2s; }
+[data-theme="light"] .logo-showcase-item:nth-child(12) { animation-delay: 2.2s; }
+[data-theme="light"] .logo-showcase-item:nth-child(13) { animation-delay: 2.4s; }
+[data-theme="light"] .logo-showcase-item:nth-child(14) { animation-delay: 2.6s; }
+[data-theme="light"] .logo-showcase-item:nth-child(15) { animation-delay: 2.8s; }
+[data-theme="light"] .logo-showcase-item:nth-child(16) { animation-delay: 3s; }
+[data-theme="light"] .logo-showcase-item:nth-child(17) { animation-delay: 3.2s; }
+[data-theme="light"] .logo-showcase-item:nth-child(18) { animation-delay: 3.4s; }
+[data-theme="light"] .logo-showcase-item:nth-child(19) { animation-delay: 3.6s; }
+[data-theme="light"] .logo-showcase-item:nth-child(20) { animation-delay: 3.8s; }
+[data-theme="light"] .logo-showcase-item:nth-child(21) { animation-delay: 4s; }
+[data-theme="light"] .logo-showcase-item:nth-child(22) { animation-delay: 4.2s; }
+[data-theme="light"] .logo-showcase-item:nth-child(23) { animation-delay: 4.4s; }
+[data-theme="light"] .logo-showcase-item:nth-child(24) { animation-delay: 4.6s; }
+
+/* Light mode shimmer - darker for better visibility */
 [data-theme="light"] .logo-showcase-item::before {
     background: linear-gradient(
         90deg,
         transparent,
-        rgba(37, 99, 235, 0.2) 50%,
+        rgba(15, 50, 150, 0.5) 50%,
         transparent
     );
 }
