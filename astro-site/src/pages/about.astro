@@ -1,5 +1,57 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import headshotImage from '../assets/images/Luke_Stahl_Headshot.jpg';
+
+// Logo imports - Light mode
+import ahrefsLight from '../assets/images/light/Ahrefs-Logo-Transparent-Trimmed.png';
+import airopsLight from '../assets/images/light/AirOps light.png';
+import airtableLight from '../assets/images/light/Airtable_color_light.png';
+import anthropicLight from '../assets/images/light/Anthropic_light.png';
+import arcadeLight from '../assets/images/light/Arcade ️_For_Light_Background_1.png';
+import bufferLight from '../assets/images/light/Buffer_id7kKj2o40_1.png';
+import commonRoomLight from '../assets/images/light/Common_Room_full_light.png';
+import cursorLight from '../assets/images/light/Cursor_light.png';
+import descriptLight from '../assets/images/light/Descript_light.png';
+import excalidrawLight from '../assets/images/light/Excalidraw_light.png';
+import figmaLight from '../assets/images/light/Figma Icon (Full-color).png';
+import fullstoryLight from '../assets/images/light/Fullstory_light.png';
+import githubLight from '../assets/images/light/GitHub_light.png';
+import gongLight from '../assets/images/light/Gong_2x_light.png';
+import loomLight from '../assets/images/light/Loom_light.png';
+import notionLight from '../assets/images/light/Notion_light.png';
+import openaiLight from '../assets/images/light/OpenAI_Logo_1.png';
+import posthogLight from '../assets/images/light/Posthog_light.png';
+import slackLight from '../assets/images/light/Slack_light.png';
+import supabaseLight from '../assets/images/light/Supabase_light.png';
+import surferLight from '../assets/images/light/Surfer_light.png';
+import vercelLight from '../assets/images/light/Vercel_light.png';
+import warpLight from '../assets/images/light/Warp light.png';
+
+// Logo imports - Dark mode
+import ahrefsDark from '../assets/images/dark/Ahrefs-Logo-Inverted-Transparent-Trimmed.png';
+import airopsDark from '../assets/images/dark/AirOPs_dark_full.png';
+import airtableDark from '../assets/images/dark/Airtable_idsyXgmlAP_1.png';
+import anthropicDark from '../assets/images/dark/Antrhopic_dark.png';
+import arcadeDark from '../assets/images/dark/Arcade ️_For_Dark_Background_1.png';
+import bufferDark from '../assets/images/dark/Buffer_id61iLrD7W_1.png';
+import commonRoomDark from '../assets/images/dark/Common_Room_dark_full.png';
+import cursorDark from '../assets/images/dark/Cursor_dark.png';
+import descriptDark from '../assets/images/dark/Descript_dark.png';
+import excalidrawDark from '../assets/images/dark/Excalidraw_dark.png';
+import figmaDark from '../assets/images/dark/Figma Icon (Full-color).png';
+import fullstoryDark from '../assets/images/dark/FullStory_dark.png';
+import githubDark from '../assets/images/dark/GitHub_dark.png';
+import gongDark from '../assets/images/dark/Gong_2x_dark.png';
+import loomDark from '../assets/images/dark/Loom_icon_dark.png';
+import notionDark from '../assets/images/dark/Notion_dark.png';
+import openaiDark from '../assets/images/dark/OpenAI_Logo_1.png';
+import posthogDark from '../assets/images/dark/posthog-logo-white.png';
+import slackDark from '../assets/images/dark/Slack_dark.png';
+import supabaseDark from '../assets/images/dark/Supabase_dark.png';
+import surferDark from '../assets/images/dark/Surfer_dark.png';
+import vercelDark from '../assets/images/dark/Vercel_dark.png';
+import warpDark from '../assets/images/dark/Warp_dark.png';
 ---
 
 <Layout
@@ -29,7 +81,7 @@ import Layout from '../layouts/Layout.astro';
 			<!-- Bio Section -->
 			<div class="about-content">
 				<div class="about-image-container">
-					<img src="/assets/images/Luke_Stahl_Headshot.jpg" alt="Luke Stahl" class="about-image">
+					<Image src={headshotImage} alt="Luke Stahl" class="about-image" width={664} height={692} quality={85} loading="eager" />
 					<div class="terminal-quote">
 						<span class="terminal-prompt">></span>
 						<span class="terminal-text-wrapper">
@@ -200,140 +252,140 @@ import Layout from '../layouts/Layout.astro';
 					<div class="logo-showcase-grid">
 					<!-- Ahrefs -->
 					<a href="https://ahrefs.com" target="_blank" rel="noopener noreferrer" class="logo-showcase-item">
-						<img src="/assets/images/light/Ahrefs-Logo-Transparent-Trimmed.png" alt="Ahrefs" class="logo-showcase-img logo-light">
-						<img src="/assets/images/dark/Ahrefs-Logo-Inverted-Transparent-Trimmed.png" alt="Ahrefs" class="logo-showcase-img logo-dark">
+						<Image src={ahrefsLight} alt="Ahrefs" class="logo-showcase-img logo-light" loading="lazy" quality={90} />
+						<Image src={ahrefsDark} alt="Ahrefs" class="logo-showcase-img logo-dark" loading="lazy" quality={90} />
 					</a>
 
 					<!-- AirOps -->
 					<a href="https://airops.com" target="_blank" rel="noopener noreferrer" class="logo-showcase-item">
-						<img src="/assets/images/light/AirOps light.png" alt="AirOps" class="logo-showcase-img logo-light">
-						<img src="/assets/images/dark/AirOPs_dark_full.png" alt="AirOps" class="logo-showcase-img logo-dark">
+						<Image src={airopsLight} alt="AirOps" class="logo-showcase-img logo-light" loading="lazy" quality={90} />
+						<Image src={airopsDark} alt="AirOps" class="logo-showcase-img logo-dark" loading="lazy" quality={90} />
 					</a>
 
 					<!-- Airtable -->
 					<a href="https://airtable.com" target="_blank" rel="noopener noreferrer" class="logo-showcase-item">
-						<img src="/assets/images/light/Airtable_color_light.png" alt="Airtable" class="logo-showcase-img logo-light">
-						<img src="/assets/images/dark/Airtable_idsyXgmlAP_1.png" alt="Airtable" class="logo-showcase-img logo-dark">
+						<Image src={airtableLight} alt="Airtable" class="logo-showcase-img logo-light" loading="lazy" quality={90} />
+						<Image src={airtableDark} alt="Airtable" class="logo-showcase-img logo-dark" loading="lazy" quality={90} />
 					</a>
 
 					<!-- Anthropic -->
 					<a href="https://claude.ai/code" target="_blank" rel="noopener noreferrer" class="logo-showcase-item">
-						<img src="/assets/images/light/Anthropic_light.png" alt="Anthropic" class="logo-showcase-img logo-light">
-						<img src="/assets/images/dark/Antrhopic_dark.png" alt="Anthropic" class="logo-showcase-img logo-dark">
+						<Image src={anthropicLight} alt="Anthropic" class="logo-showcase-img logo-light" loading="lazy" quality={90} />
+						<Image src={anthropicDark} alt="Anthropic" class="logo-showcase-img logo-dark" loading="lazy" quality={90} />
 					</a>
 
 					<!-- Arcade -->
 					<a href="https://www.arcade.software/" target="_blank" rel="noopener noreferrer" class="logo-showcase-item">
-						<img src="/assets/images/light/Arcade ️_For_Light_Background_1.png" alt="Arcade" class="logo-showcase-img logo-light">
-						<img src="/assets/images/dark/Arcade ️_For_Dark_Background_1.png" alt="Arcade" class="logo-showcase-img logo-dark">
+						<Image src={arcadeLight} alt="Arcade" class="logo-showcase-img logo-light" loading="lazy" quality={90} />
+						<Image src={arcadeDark} alt="Arcade" class="logo-showcase-img logo-dark" loading="lazy" quality={90} />
 					</a>
 
 					<!-- Buffer -->
 					<a href="https://buffer.com" target="_blank" rel="noopener noreferrer" class="logo-showcase-item">
-						<img src="/assets/images/light/Buffer_id7kKj2o40_1.png" alt="Buffer" class="logo-showcase-img logo-light">
-						<img src="/assets/images/dark/Buffer_id61iLrD7W_1.png" alt="Buffer" class="logo-showcase-img logo-dark">
+						<Image src={bufferLight} alt="Buffer" class="logo-showcase-img logo-light" loading="lazy" quality={90} />
+						<Image src={bufferDark} alt="Buffer" class="logo-showcase-img logo-dark" loading="lazy" quality={90} />
 					</a>
 
 					<!-- Common Room -->
 					<a href="https://www.commonroom.io/" target="_blank" rel="noopener noreferrer" class="logo-showcase-item">
-						<img src="/assets/images/light/Common_Room_full_light.png" alt="Common Room" class="logo-showcase-img logo-light">
-						<img src="/assets/images/dark/Common_Room_dark_full.png" alt="Common Room" class="logo-showcase-img logo-dark">
+						<Image src={commonRoomLight} alt="Common Room" class="logo-showcase-img logo-light" loading="lazy" quality={90} />
+						<Image src={commonRoomDark} alt="Common Room" class="logo-showcase-img logo-dark" loading="lazy" quality={90} />
 					</a>
 
 					<!-- Cursor -->
 					<a href="https://cursor.com" target="_blank" rel="noopener noreferrer" class="logo-showcase-item">
-						<img src="/assets/images/light/Cursor_light.png" alt="Cursor" class="logo-showcase-img logo-light">
-						<img src="/assets/images/dark/Cursor_dark.png" alt="Cursor" class="logo-showcase-img logo-dark">
+						<Image src={cursorLight} alt="Cursor" class="logo-showcase-img logo-light" loading="lazy" quality={90} />
+						<Image src={cursorDark} alt="Cursor" class="logo-showcase-img logo-dark" loading="lazy" quality={90} />
 					</a>
 
 					<!-- Descript -->
 					<a href="https://descript.com" target="_blank" rel="noopener noreferrer" class="logo-showcase-item">
-						<img src="/assets/images/light/Descript_light.png" alt="Descript" class="logo-showcase-img logo-light">
-						<img src="/assets/images/dark/Descript_dark.png" alt="Descript" class="logo-showcase-img logo-dark">
+						<Image src={descriptLight} alt="Descript" class="logo-showcase-img logo-light" loading="lazy" quality={90} />
+						<Image src={descriptDark} alt="Descript" class="logo-showcase-img logo-dark" loading="lazy" quality={90} />
 					</a>
 
 					<!-- Excalidraw (Icon Only) -->
 					<a href="https://excalidraw.com" target="_blank" rel="noopener noreferrer" class="logo-showcase-item icon-only">
-						<img src="/assets/images/light/Excalidraw_light.png" alt="Excalidraw" class="logo-showcase-img logo-light">
-						<img src="/assets/images/dark/Excalidraw_dark.png" alt="Excalidraw" class="logo-showcase-img logo-dark">
+						<Image src={excalidrawLight} alt="Excalidraw" class="logo-showcase-img logo-light" loading="lazy" quality={90} />
+						<Image src={excalidrawDark} alt="Excalidraw" class="logo-showcase-img logo-dark" loading="lazy" quality={90} />
 					</a>
 
 					<!-- Figma (Icon Only) -->
 					<a href="https://figma.com" target="_blank" rel="noopener noreferrer" class="logo-showcase-item icon-only figma-icon">
-						<img src="/assets/images/light/Figma Icon (Full-color).png" alt="Figma" class="logo-showcase-img logo-light">
-						<img src="/assets/images/dark/Figma Icon (Full-color).png" alt="Figma" class="logo-showcase-img logo-dark">
+						<Image src={figmaLight} alt="Figma" class="logo-showcase-img logo-light" loading="lazy" quality={90} />
+						<Image src={figmaDark} alt="Figma" class="logo-showcase-img logo-dark" loading="lazy" quality={90} />
 					</a>
 
 					<!-- FullStory -->
 					<a href="https://fullstory.com" target="_blank" rel="noopener noreferrer" class="logo-showcase-item">
-						<img src="/assets/images/light/Fullstory_light.png" alt="FullStory" class="logo-showcase-img logo-light">
-						<img src="/assets/images/dark/FullStory_dark.png" alt="FullStory" class="logo-showcase-img logo-dark">
+						<Image src={fullstoryLight} alt="FullStory" class="logo-showcase-img logo-light" loading="lazy" quality={90} />
+						<Image src={fullstoryDark} alt="FullStory" class="logo-showcase-img logo-dark" loading="lazy" quality={90} />
 					</a>
 
 					<!-- GitHub -->
 					<a href="https://github.com" target="_blank" rel="noopener noreferrer" class="logo-showcase-item">
-						<img src="/assets/images/light/GitHub_light.png" alt="GitHub" class="logo-showcase-img logo-light">
-						<img src="/assets/images/dark/GitHub_dark.png" alt="GitHub" class="logo-showcase-img logo-dark">
+						<Image src={githubLight} alt="GitHub" class="logo-showcase-img logo-light" loading="lazy" quality={90} />
+						<Image src={githubDark} alt="GitHub" class="logo-showcase-img logo-dark" loading="lazy" quality={90} />
 					</a>
 
 					<!-- Gong -->
 					<a href="https://www.gong.io/" target="_blank" rel="noopener noreferrer" class="logo-showcase-item">
-						<img src="/assets/images/light/Gong_2x_light.png" alt="Gong" class="logo-showcase-img logo-light logo-gong">
-						<img src="/assets/images/dark/Gong_2x_dark.png" alt="Gong" class="logo-showcase-img logo-dark logo-gong">
+						<Image src={gongLight} alt="Gong" class="logo-showcase-img logo-light logo-gong" loading="lazy" quality={90} />
+						<Image src={gongDark} alt="Gong" class="logo-showcase-img logo-dark logo-gong" loading="lazy" quality={90} />
 					</a>
 
 					<!-- Loom -->
 					<a href="https://loom.com" target="_blank" rel="noopener noreferrer" class="logo-showcase-item loom-dark-icon">
-						<img src="/assets/images/light/Loom_light.png" alt="Loom" class="logo-showcase-img logo-light">
-						<img src="/assets/images/dark/Loom_icon_dark.png" alt="Loom" class="logo-showcase-img logo-dark">
+						<Image src={loomLight} alt="Loom" class="logo-showcase-img logo-light" loading="lazy" quality={90} />
+						<Image src={loomDark} alt="Loom" class="logo-showcase-img logo-dark" loading="lazy" quality={90} />
 					</a>
 
 					<!-- Notion -->
 					<a href="https://notion.so" target="_blank" rel="noopener noreferrer" class="logo-showcase-item">
-						<img src="/assets/images/light/Notion_light.png" alt="Notion" class="logo-showcase-img logo-light">
-						<img src="/assets/images/dark/Notion_dark.png" alt="Notion" class="logo-showcase-img logo-dark">
+						<Image src={notionLight} alt="Notion" class="logo-showcase-img logo-light" loading="lazy" quality={90} />
+						<Image src={notionDark} alt="Notion" class="logo-showcase-img logo-dark" loading="lazy" quality={90} />
 					</a>
 
 					<!-- OpenAI -->
 					<a href="https://chatgpt.com" target="_blank" rel="noopener noreferrer" class="logo-showcase-item">
-						<img src="/assets/images/light/OpenAI_Logo_1.png" alt="OpenAI" class="logo-showcase-img logo-light">
-						<img src="/assets/images/dark/OpenAI_Logo_1.png" alt="OpenAI" class="logo-showcase-img logo-dark">
+						<Image src={openaiLight} alt="OpenAI" class="logo-showcase-img logo-light" loading="lazy" quality={90} />
+						<Image src={openaiDark} alt="OpenAI" class="logo-showcase-img logo-dark" loading="lazy" quality={90} />
 					</a>
 
 					<!-- PostHog -->
 					<a href="https://posthog.com" target="_blank" rel="noopener noreferrer" class="logo-showcase-item">
-						<img src="/assets/images/light/Posthog_light.png" alt="PostHog" class="logo-showcase-img logo-light">
-						<img src="/assets/images/dark/posthog-logo-white.png" alt="PostHog" class="logo-showcase-img logo-dark">
+						<Image src={posthogLight} alt="PostHog" class="logo-showcase-img logo-light" loading="lazy" quality={90} />
+						<Image src={posthogDark} alt="PostHog" class="logo-showcase-img logo-dark" loading="lazy" quality={90} />
 					</a>
 
 					<!-- Slack -->
 					<a href="https://slack.com" target="_blank" rel="noopener noreferrer" class="logo-showcase-item">
-						<img src="/assets/images/light/Slack_light.png" alt="Slack" class="logo-showcase-img logo-light">
-						<img src="/assets/images/dark/Slack_dark.png" alt="Slack" class="logo-showcase-img logo-dark">
+						<Image src={slackLight} alt="Slack" class="logo-showcase-img logo-light" loading="lazy" quality={90} />
+						<Image src={slackDark} alt="Slack" class="logo-showcase-img logo-dark" loading="lazy" quality={90} />
 					</a>
 
 					<!-- Supabase -->
 					<a href="https://supabase.com" target="_blank" rel="noopener noreferrer" class="logo-showcase-item">
-						<img src="/assets/images/light/Supabase_light.png" alt="Supabase" class="logo-showcase-img logo-light">
-						<img src="/assets/images/dark/Supabase_dark.png" alt="Supabase" class="logo-showcase-img logo-dark">
+						<Image src={supabaseLight} alt="Supabase" class="logo-showcase-img logo-light" loading="lazy" quality={90} />
+						<Image src={supabaseDark} alt="Supabase" class="logo-showcase-img logo-dark" loading="lazy" quality={90} />
 					</a>
 
 					<!-- Surfer -->
 					<a href="https://surferseo.com" target="_blank" rel="noopener noreferrer" class="logo-showcase-item">
-						<img src="/assets/images/light/Surfer_light.png" alt="Surfer" class="logo-showcase-img logo-light">
-						<img src="/assets/images/dark/Surfer_dark.png" alt="Surfer" class="logo-showcase-img logo-dark">
+						<Image src={surferLight} alt="Surfer" class="logo-showcase-img logo-light" loading="lazy" quality={90} />
+						<Image src={surferDark} alt="Surfer" class="logo-showcase-img logo-dark" loading="lazy" quality={90} />
 					</a>
 
 					<!-- Vercel -->
 					<a href="https://vercel.com" target="_blank" rel="noopener noreferrer" class="logo-showcase-item">
-						<img src="/assets/images/light/Vercel_light.png" alt="Vercel" class="logo-showcase-img logo-light">
-						<img src="/assets/images/dark/Vercel_dark.png" alt="Vercel" class="logo-showcase-img logo-dark">
+						<Image src={vercelLight} alt="Vercel" class="logo-showcase-img logo-light" loading="lazy" quality={90} />
+						<Image src={vercelDark} alt="Vercel" class="logo-showcase-img logo-dark" loading="lazy" quality={90} />
 					</a>
 
 					<!-- Warp (Icon) -->
 					<a href="https://www.warp.dev/" target="_blank" rel="noopener noreferrer" class="logo-showcase-item icon-only">
-						<img src="/assets/images/light/Warp light.png" alt="Warp" class="logo-showcase-img logo-light">
-						<img src="/assets/images/dark/Warp_dark.png" alt="Warp" class="logo-showcase-img logo-dark">
+						<Image src={warpLight} alt="Warp" class="logo-showcase-img logo-light" loading="lazy" quality={90} />
+						<Image src={warpDark} alt="Warp" class="logo-showcase-img logo-dark" loading="lazy" quality={90} />
 					</a>
 					</div>
 				</div>
