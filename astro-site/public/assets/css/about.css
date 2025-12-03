@@ -1850,7 +1850,12 @@
     }
 
     .logo-gong {
-        max-height: 50px;
+        max-height: 80px;
+    }
+
+    /* Make OpenAI logo bigger on mobile */
+    .logo-showcase-item:has([alt="OpenAI"]) .logo-showcase-img {
+        max-height: 55px;
     }
 
     .logo-showcase-title {
