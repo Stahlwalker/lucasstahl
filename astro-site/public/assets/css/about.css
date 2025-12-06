@@ -2,7 +2,7 @@
 
 /* About Hero Section */
 .about-hero {
-    background: var(--bg-primary);
+    background: transparent;
     padding: 6rem 2rem 3rem;
     text-align: center;
 }
@@ -26,7 +26,7 @@
 
 /* About Section */
 .about-section {
-    background: var(--bg-primary);
+    background: transparent;
     padding: 2rem 2rem 4rem;
 }
 

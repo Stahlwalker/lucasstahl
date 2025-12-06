@@ -2,7 +2,7 @@
 
 /* Blog Hero Section */
 .blog-hero {
-    background: var(--bg-primary);
+    background: transparent;
     padding: 6rem 2rem 3rem;
     text-align: center;
 }
@@ -26,7 +26,7 @@
 
 /* Blog Feed Section */
 .blog-feed-section {
-    background: var(--bg-primary);
+    background: transparent;
     padding: 2rem 2rem 4rem;
 }
 
@@ -81,7 +81,7 @@
 
 /* Add background to compact post cards */
 .blog-card-compact {
-    background: rgba(255, 255, 255, 0.05) !important;
+    background: var(--bg-secondary) !important;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     border-radius: 8px !important;
     padding: 0 1rem !important;
@@ -93,7 +93,7 @@
 }
 
 .blog-card-compact:hover {
-    background: rgba(255, 255, 255, 0.08) !important;
+    background: var(--bg-tertiary) !important;
     border-color: rgba(96, 165, 250, 0.4) !important;
     transform: translateX(4px);
 }
@@ -115,16 +115,16 @@
 
 /* Compact Blog Card (no thumbnail) */
 .blog-card-compact {
-    background: transparent;
-    border: none;
+    background: var(--bg-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 0;
+    border-radius: 8px;
 }
 
 .blog-card-compact:hover {
-    background: rgba(255, 255, 255, 0.02);
-    border-color: rgba(255, 255, 255, 0.05);
-    transform: none;
+    background: var(--bg-tertiary);
+    border-color: rgba(96, 165, 250, 0.4);
+    transform: translateX(4px);
     box-shadow: none;
 }
 
