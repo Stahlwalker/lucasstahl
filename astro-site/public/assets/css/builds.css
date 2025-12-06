@@ -6,7 +6,7 @@
     margin: 4rem auto 0;
     padding: 3rem 2rem;
     border-top: 2px solid rgba(96, 165, 250, 0.3);
-    background: linear-gradient(135deg, rgba(96, 165, 250, 0.02), rgba(129, 140, 248, 0.02));
+    background: var(--bg-secondary);
     border-radius: 12px;
     position: relative;
 }
@@ -177,7 +177,7 @@
 /* Light mode styles for early projects */
 [data-theme="light"] .early-projects-section {
     border-top-color: rgba(37, 99, 235, 0.5);
-    background: linear-gradient(135deg, rgba(37, 99, 235, 0.02), rgba(99, 102, 241, 0.02));
+    background: var(--bg-secondary);
 }
 
 [data-theme="light"] .early-projects-section .section-label {
@@ -401,7 +401,7 @@
 
 /* Builds Hero Section */
 .builds-hero {
-    background: var(--bg-primary);
+    background: transparent;
     padding: 6rem 2rem 3rem;
     text-align: center;
 }
@@ -425,7 +425,7 @@
 
 /* Builds Section */
 .builds-section {
-    background: var(--bg-primary);
+    background: transparent;
     padding: 2rem 2rem 4rem;
 }
 

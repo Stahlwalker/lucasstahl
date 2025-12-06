@@ -199,6 +199,12 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
+	/* Override body grid background for handbook page only */
+	:global(body) {
+		background-color: #1a1a1a !important;
+		background-image: none !important;
+	}
+
 	.handbook-page-container {
 		min-height: 100vh;
 		background: #1a1a1a;
@@ -242,6 +248,7 @@ import Layout from '../layouts/Layout.astro';
 		grid-template-columns: 240px 1fr;
 		max-width: 1200px;
 		margin: 0 auto;
+		min-height: 100vh;
 	}
 
 	.handbook-page-nav {
@@ -660,6 +667,11 @@ import Layout from '../layouts/Layout.astro';
 	}
 
 	/* Light Mode Styles for Handbook Page */
+	:global([data-theme="light"]) body {
+		background-color: #f8fafc !important;
+		background-image: none !important;
+	}
+
 	:global([data-theme="light"]) .handbook-page-container {
 		background: var(--bg-secondary);
 	}
