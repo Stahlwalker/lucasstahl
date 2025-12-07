@@ -30,14 +30,15 @@ import Layout from '../layouts/Layout.astro';
 
 				<div class="hero-buttons">
 					<form action="/assets/Luke_Stahl_Resume_2025.pdf" download style="display: inline;">
-						<button type="submit" class="btn-modern btn-primary-modern">
+						<button type="submit" class="btn-modern btn-primary-modern" id="viewResumeBtn">
 							<i class="fa-solid fa-file-lines"></i>
 							View Resume
 						</button>
 					</form>
 					<a href="https://stahlwalker.notion.site/Luke-Stahl-s-Portfolio-of-Work-bc6f3e68e3084d37bfa023e4e8d3b901?source=copy_link"
 					   target="_blank"
-					   class="btn-modern btn-secondary-modern">
+					   class="btn-modern btn-secondary-modern"
+					   id="portfolioBtn">
 						<i class="fa-solid fa-briefcase"></i>
 						Portfolio
 					</a>
@@ -387,6 +388,36 @@ import Layout from '../layouts/Layout.astro';
 				behavior: 'smooth',
 				block: 'start'
 			});
+		});
+
+		// PostHog tracking for hero buttons
+		document.addEventListener('DOMContentLoaded', function() {
+			// Track View Resume button click
+			const viewResumeBtn = document.getElementById('viewResumeBtn');
+			if (viewResumeBtn) {
+				viewResumeBtn.addEventListener('click', function() {
+					if (window.posthog) {
+						window.posthog.capture('resume_downloaded', {
+							button_location: 'hero_section',
+							button_text: 'View Resume'
+						});
+					}
+				});
+			}
+
+			// Track Portfolio button click
+			const portfolioBtn = document.getElementById('portfolioBtn');
+			if (portfolioBtn) {
+				portfolioBtn.addEventListener('click', function() {
+					if (window.posthog) {
+						window.posthog.capture('portfolio_clicked', {
+							button_location: 'hero_section',
+							button_text: 'Portfolio',
+							destination: 'notion'
+						});
+					}
+				});
+			}
 		});
 	</script>
 </Layout>
