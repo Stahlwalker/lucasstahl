@@ -19,7 +19,7 @@ A modern, developer-focused personal website showcasing projects, blog posts, an
 - **Blog** (`/blog`): Curated collection of articles on web development, CMS platforms, AI tools, and developer marketing
 - **Builds** (`/builds`): Portfolio of 20+ projects spanning React, Next.js, TypeScript, and full-stack applications
 - **Gems** (`/gems`): Timeline-style resource collection with code-themed presentation
-- **Contact** (`/contact`): Contact form and social links
+- **Handbook** (`/handbook`): Developer Marketing Handbook with insights and strategies
 
 ### Design System
 - **Dark Mode Theme**: Developer-focused color palette with custom CSS variables
@@ -47,7 +47,7 @@ lucasstahl/
     │   │   ├── blog.astro   # Blog feed
     │   │   ├── builds.astro # Project portfolio
     │   │   ├── gems.astro   # Resources timeline
-    │   │   └── contact.astro # Contact page
+    │   │   └── handbook.astro # Developer Marketing Handbook
     │   ├── layouts/
     │   │   └── Layout.astro # Base layout with meta tags
     │   └── components/
@@ -62,6 +62,7 @@ lucasstahl/
     │   ├── sitemap.xml     # Site structure for SEO
     │   ├── llms.txt        # AI discoverability
     │   └── .nojekyll       # Disable Jekyll on GitHub Pages
+    ├── DARK_MODE_COLOR_REFERENCE.md  # Color palette reference
     ├── package.json
     └── astro.config.mjs
 ```
@@ -108,10 +109,12 @@ This site is deployed to GitHub Pages from the `master` branch. The deployment p
 
 ## Design Highlights
 
-### Color Palette
-- Primary Background: `#0a0e27`
-- Secondary Background: `#151932`
+### Color Palette (Navy Blue Theme)
+- Primary Background: `#0a1128`
+- Secondary Background: `#0f1a35`
+- Tertiary Background: `#162544`
 - Text Primary: `#e4e4e7`
+- Text Secondary: `#a1a1aa`
 - Accent Blue: `#60a5fa`
 - Accent Purple: `#818cf8`
 - Code Keyword: `#c792ea`
