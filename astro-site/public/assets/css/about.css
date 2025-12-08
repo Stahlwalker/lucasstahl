@@ -220,6 +220,259 @@
     opacity: 0.5;
 }
 
+/* Career Timeline Section */
+.career-timeline-section {
+    margin-bottom: 4rem;
+    animation: fadeInUp 0.8s ease-out 0.35s both;
+    text-align: center;
+}
+
+.career-timeline-title {
+    font-family: 'Fira Code', monospace;
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.career-timeline-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    font-family: 'Fira Code', monospace;
+    opacity: 0.7;
+    font-style: italic;
+}
+
+/* Terminal Styles */
+.terminal-container {
+    background: #1a1a1a;
+    border: 1px solid rgba(96, 165, 250, 0.3);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.terminal-header {
+    background: #2a2a2a;
+    padding: 0.75rem 1rem;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    border-bottom: 1px solid rgba(96, 165, 250, 0.2);
+}
+
+.terminal-buttons {
+    display: flex;
+    gap: 0.5rem;
+    justify-self: start;
+}
+
+.terminal-button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.terminal-button.close {
+    background: #ff5f56;
+}
+
+.terminal-button.minimize {
+    background: #ffbd2e;
+}
+
+.terminal-button.maximize {
+    background: #27c93f;
+}
+
+.terminal-title {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    text-align: center;
+    justify-self: center;
+}
+
+.terminal-music-icon {
+    background: transparent;
+    border: none;
+    color: #60a5fa;
+    font-size: 0.75rem;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+    padding: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-self: end;
+}
+
+.terminal-music-icon:hover {
+    opacity: 1;
+    color: #3b82f6;
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 4px rgba(96, 165, 250, 0.6));
+}
+
+.terminal-music-icon.playing {
+    opacity: 1;
+    color: #3b82f6;
+    animation: music-pulse 1s ease-in-out infinite;
+    filter: drop-shadow(0 0 6px rgba(96, 165, 250, 0.8));
+}
+
+@keyframes music-pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+.terminal-body {
+    padding: 1.5rem;
+    min-height: 300px;
+    max-height: 500px;
+    overflow-y: auto;
+    background: #0d0d0d;
+}
+
+.terminal-output {
+    margin-bottom: 1rem;
+}
+
+.terminal-line {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.875rem;
+    color: #d0d0d0;
+    line-height: 1.6;
+    margin-bottom: 0.25rem;
+}
+
+.terminal-line.transition {
+    color: var(--accent-blue);
+    font-weight: 600;
+}
+
+.terminal-line.current {
+    color: var(--accent-purple);
+    font-weight: 600;
+}
+
+.terminal-line.bootcamp {
+    color: #f59e0b;
+    font-weight: 600;
+}
+
+.terminal-line.total-years {
+    color: #10b981;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+
+.counter-number {
+    color: #10b981;
+    font-weight: 700;
+    font-size: 1.125rem;
+}
+
+.terminal-line.press-enter-line {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.press-enter-text {
+    color: #c3e88d;
+    animation: blink-text 1.5s ease-in-out infinite;
+}
+
+.press-enter-mobile {
+    display: none;
+}
+
+.press-enter-desktop {
+    display: inline;
+}
+
+@media (max-width: 992px) {
+    .press-enter-mobile {
+        display: inline;
+    }
+
+    .press-enter-desktop {
+        display: none;
+    }
+}
+
+.blinking-cursor {
+    animation: blink 1s step-end infinite;
+    color: var(--accent-blue);
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+@keyframes blink-text {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+.terminal-input-line {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.terminal-prompt {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.875rem;
+    color: var(--accent-blue);
+    font-weight: 600;
+}
+
+.terminal-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.875rem;
+    color: #c3e88d;
+    caret-color: #c3e88d;
+}
+
+.terminal-input::selection {
+    background: rgba(195, 232, 141, 0.3);
+}
+
+/* Scrollbar for terminal */
+.terminal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.terminal-body::-webkit-scrollbar-track {
+    background: #0d0d0d;
+}
+
+.terminal-body::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
+
+.terminal-body::-webkit-scrollbar-thumb:hover {
+    background: #444;
+}
+
 /* Skills Section */
 .skills-section {
     margin-bottom: 4rem;
@@ -983,6 +1236,51 @@
     .connect-links {
         grid-template-columns: 1fr;
     }
+
+    /* Career Timeline Mobile */
+    .ekg-container {
+        padding: 1.5rem 0.75rem;
+        background-size: 30px 100%;
+    }
+
+    .ekg-line {
+        height: 100px;
+    }
+
+    .company-tooltip {
+        font-size: 0.75rem;
+        padding: 0.5rem 0.75rem;
+    }
+
+    .year-label {
+        font-size: 0.75rem;
+    }
+
+    .year-description {
+        font-size: 0.65rem;
+    }
+
+    .view-timeline-btn {
+        padding: 0.875rem 1.75rem;
+        font-size: 0.9rem;
+    }
+
+    .ekg-modal {
+        max-width: 95%;
+        margin: 0 10px;
+    }
+
+    .ekg-modal-header {
+        padding: 0.875rem 1rem;
+    }
+
+    .ekg-modal-title {
+        font-size: 0.9rem;
+    }
+
+    .ekg-modal-body {
+        padding: 1.5rem 1rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1034,6 +1332,105 @@
 
     .skills-title {
         font-size: 1.75rem;
+    }
+
+    /* Career Timeline Mobile 768px */
+    .career-timeline-title {
+        font-size: 1.75rem;
+    }
+
+    .career-timeline-subtitle {
+        font-size: 0.875rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .terminal-container {
+        max-width: 100%;
+    }
+
+    .terminal-header {
+        padding: 0.65rem 0.75rem;
+    }
+
+    .terminal-button {
+        width: 10px;
+        height: 10px;
+    }
+
+    .terminal-title {
+        font-size: 0.75rem;
+    }
+
+    .terminal-body {
+        padding: 1rem;
+        min-height: 250px;
+        max-height: 400px;
+    }
+
+    .terminal-line {
+        font-size: 0.75rem;
+        line-height: 1.5;
+    }
+
+    .terminal-prompt {
+        font-size: 0.75rem;
+    }
+
+    .terminal-input {
+        font-size: 0.75rem;
+    }
+
+    .total-years {
+        font-size: 0.875rem;
+    }
+
+    .counter-number {
+        font-size: 1rem;
+    }
+
+    .ekg-container {
+        padding: 1rem 0.5rem;
+        background-size: 25px 100%;
+    }
+
+    .ekg-line {
+        height: 80px;
+    }
+
+    .ekg-markers {
+        height: 50px;
+    }
+
+    .company-dot {
+        width: 12px;
+        height: 12px;
+        border-width: 2px;
+    }
+
+    .company-tooltip {
+        font-size: 0.7rem;
+        padding: 0.4rem 0.6rem;
+        top: 25px;
+    }
+
+    .company-marker:hover .company-tooltip {
+        top: 20px;
+    }
+
+    .company-name {
+        font-size: 0.75rem;
+    }
+
+    .company-years {
+        font-size: 0.65rem;
+    }
+
+    .year-label {
+        font-size: 0.7rem;
+    }
+
+    .year-description {
+        font-size: 0.6rem;
     }
 
     .skill-category {
@@ -1111,6 +1508,115 @@
 @media (max-width: 480px) {
     .about-hero-title {
         font-size: 1.75rem;
+    }
+
+    /* Career Timeline Mobile 480px */
+    .career-timeline-title {
+        font-size: 1.5rem;
+    }
+
+    .career-timeline-subtitle {
+        font-size: 0.8rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .terminal-header {
+        padding: 0.5rem 0.65rem;
+    }
+
+    .terminal-button {
+        width: 8px;
+        height: 8px;
+    }
+
+    .terminal-title {
+        font-size: 0.7rem;
+    }
+
+    .terminal-body {
+        padding: 0.75rem;
+        min-height: 200px;
+        max-height: 350px;
+        font-size: 0.7rem;
+    }
+
+    .terminal-line {
+        font-size: 0.7rem;
+        line-height: 1.4;
+        margin-bottom: 0.2rem;
+    }
+
+    .terminal-prompt {
+        font-size: 0.7rem;
+    }
+
+    .terminal-input {
+        font-size: 0.7rem;
+    }
+
+    .press-enter-text {
+        font-size: 0.7rem;
+    }
+
+    .total-years {
+        font-size: 0.8rem;
+    }
+
+    .counter-number {
+        font-size: 0.9rem;
+    }
+
+    .ekg-container {
+        padding: 0.75rem 0.25rem;
+        background-size: 20px 100%;
+    }
+
+    .ekg-line {
+        height: 60px;
+    }
+
+    .ekg-path {
+        stroke-width: 2;
+    }
+
+    .current-heartbeat {
+        stroke-width: 2.5;
+    }
+
+    .ekg-markers {
+        height: 45px;
+    }
+
+    .company-dot {
+        width: 10px;
+        height: 10px;
+    }
+
+    .company-marker:hover .company-dot {
+        transform: scale(1.2);
+        box-shadow: 0 0 0 6px rgba(96, 165, 250, 0.2);
+    }
+
+    .company-tooltip {
+        font-size: 0.65rem;
+        padding: 0.35rem 0.5rem;
+    }
+
+    .company-name {
+        font-size: 0.7rem;
+        margin-bottom: 2px;
+    }
+
+    .company-years {
+        font-size: 0.6rem;
+    }
+
+    .year-label {
+        font-size: 0.65rem;
+    }
+
+    .year-description {
+        font-size: 0.55rem;
     }
 
     .about-hero-subtitle {
@@ -1310,6 +1816,79 @@
         linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
     background-size: 24px 24px;
     background-position: 0 0;
+}
+
+/* Light mode terminal - light background */
+[data-theme="light"] .terminal-container {
+    background: #f8fafc;
+    border: 1px solid rgba(37, 99, 235, 0.3);
+}
+
+[data-theme="light"] .terminal-header {
+    background: #cbd5e1;
+    border-bottom: 1px solid rgba(37, 99, 235, 0.3);
+}
+
+[data-theme="light"] .terminal-title {
+    color: #475569;
+}
+
+[data-theme="light"] .terminal-music-icon {
+    color: #2563eb;
+    opacity: 0.7;
+}
+
+[data-theme="light"] .terminal-music-icon:hover {
+    color: #1d4ed8;
+    opacity: 1;
+    filter: drop-shadow(0 0 6px rgba(37, 99, 235, 0.7));
+}
+
+[data-theme="light"] .terminal-music-icon.playing {
+    color: #1d4ed8;
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(37, 99, 235, 0.9));
+}
+
+[data-theme="light"] .terminal-body {
+    background: #ffffff;
+}
+
+[data-theme="light"] .terminal-line {
+    color: #334155;
+}
+
+[data-theme="light"] .terminal-prompt {
+    color: #2563eb;
+}
+
+[data-theme="light"] .terminal-input {
+    color: #16a34a;
+    caret-color: #16a34a;
+}
+
+[data-theme="light"] .press-enter-text {
+    color: #16a34a;
+}
+
+[data-theme="light"] .terminal-line.transition {
+    color: #2563eb;
+}
+
+[data-theme="light"] .terminal-line.current {
+    color: #7c3aed;
+}
+
+[data-theme="light"] .terminal-line.bootcamp {
+    color: #ea580c;
+}
+
+[data-theme="light"] .total-years {
+    color: #059669;
+}
+
+[data-theme="light"] .counter-number {
+    color: #059669;
 }
 
 /* Light mode skill tags - add visible borders and background */

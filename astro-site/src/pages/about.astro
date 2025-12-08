@@ -129,6 +129,47 @@ import webflowDark from '../assets/images/dark/Webflow_dark.png';
 				</div>
 			</div>
 
+			<!-- Career Timeline Section -->
+			<div class="career-timeline-section">
+				<h2 class="career-timeline-title">
+					<span class="code-bracket">&lt;</span>
+					Journey So Far
+					<span class="code-bracket">/&gt;</span>
+				</h2>
+				<p class="career-timeline-subtitle">// carry on my wayward son</p>
+
+				<div class="terminal-container">
+					<div class="terminal-header">
+						<div class="terminal-buttons">
+							<span class="terminal-button close"></span>
+							<span class="terminal-button minimize"></span>
+							<span class="terminal-button maximize"></span>
+						</div>
+						<div class="terminal-title">career_timeline.sh</div>
+						<button class="terminal-music-icon" id="musicIcon" aria-label="Play music">
+							<i class="fa-solid fa-music"></i>
+						</button>
+					</div>
+					<div class="terminal-body" id="terminalBody">
+						<div class="terminal-output" id="terminalOutput">
+							<div class="terminal-line">$ Healthcare marketing to SaaS marketing</div>
+							<div class="terminal-line"></div>
+							<div class="terminal-line press-enter-line">
+								<span class="terminal-prompt">$</span>
+								<span class="press-enter-text">
+									<span class="press-enter-desktop">Press Enter</span>
+									<span class="press-enter-mobile">Click</span>
+								</span>
+							</div>
+						</div>
+						<div class="terminal-input-line" style="display: none;">
+							<span class="terminal-prompt">$</span>
+							<input type="text" class="terminal-input" id="terminalInput" autocomplete="off" spellcheck="false" />
+						</div>
+					</div>
+				</div>
+			</div>
+
 			<!-- Skills Section -->
 			<div class="skills-section">
 				<h2 class="skills-title">
@@ -478,3 +519,206 @@ import webflowDark from '../assets/images/dark/Webflow_dark.png';
 		</div>
 	</section>
 </Layout>
+
+<script>
+	// Career Terminal
+	const terminalInput = document.getElementById('terminalInput');
+	const terminalOutput = document.getElementById('terminalOutput');
+	let isTyping = false;
+	let timelineComplete = false;
+
+	function sleep(ms) {
+		return new Promise(resolve => setTimeout(resolve, ms));
+	}
+
+	async function typeText(text, className = 'terminal-line') {
+		const line = document.createElement('div');
+		line.className = className;
+		terminalOutput.appendChild(line);
+
+		for (let i = 0; i < text.length; i++) {
+			line.textContent += text[i];
+			terminalOutput.parentElement.scrollTop = terminalOutput.parentElement.scrollHeight;
+			await sleep(20);
+		}
+		await sleep(100);
+	}
+
+	async function addLine(text, className = 'terminal-line') {
+		const line = document.createElement('div');
+		line.className = className;
+		line.textContent = text;
+		terminalOutput.appendChild(line);
+		terminalOutput.parentElement.scrollTop = terminalOutput.parentElement.scrollHeight;
+		await sleep(50);
+	}
+
+	async function showTimeline() {
+		if (isTyping) return;
+		isTyping = true;
+		terminalInput.disabled = true;
+
+		// Remove the "Press Enter" line
+		const pressEnterLine = document.querySelector('.press-enter-line');
+		if (pressEnterLine) pressEnterLine.remove();
+
+		await addLine('');
+		await addLine('─────────────────────────────────────────────────────────');
+		await addLine('');
+		await typeText('2005-2018      │ Healthcare Marketing (13 years)');
+		await addLine('');
+		await addLine('─────────────────────────────────────────────────────────');
+		await typeText('2018           │ Full Stack Web Development Bootcamp', 'terminal-line bootcamp');
+		await typeText('               │ Northwestern University');
+		await addLine('─────────────────────────────────────────────────────────');
+		await addLine('');
+		await typeText('2018           │ → Developer Marketing (7 years)', 'terminal-line transition');
+		await addLine('');
+		await typeText('2018-2021      │ HERE Technologies');
+		await typeText('2021-2022      │ Contentful');
+		await typeText('2022-2023      │ Pangea');
+		await typeText('2023-2025      │ Builder.io');
+		await typeText('2025-Present   │ Webflow', 'terminal-line current');
+		await addLine('');
+		await addLine('─────────────────────────────────────────────────────────');
+
+		// Animated counter for total years
+		const totalYears = 20;
+		const counterLine = document.createElement('div');
+		counterLine.className = 'terminal-line total-years';
+		counterLine.textContent = 'Marketing Experience: ';
+		terminalOutput.appendChild(counterLine);
+
+		const counterSpan = document.createElement('span');
+		counterSpan.className = 'counter-number';
+		counterLine.appendChild(counterSpan);
+
+		// Animate counter from 0 to total years
+		for (let i = 0; i <= totalYears; i++) {
+			counterSpan.textContent = i + ' years';
+			terminalOutput.parentElement.scrollTop = terminalOutput.parentElement.scrollHeight;
+			await sleep(50);
+		}
+
+		await addLine('─────────────────────────────────────────────────────────');
+		await addLine('');
+
+		terminalInput.disabled = false;
+		terminalInput.blur();
+		isTyping = false;
+		timelineComplete = true;
+	}
+
+	function clearTerminal() {
+		terminalOutput.innerHTML = '';
+		terminalInput.value = '';
+		timelineComplete = false;
+	}
+
+	function resetTerminal() {
+		terminalOutput.innerHTML = `
+			<div class="terminal-line">$ Healthcare marketing to SaaS marketing</div>
+			<div class="terminal-line"></div>
+			<div class="terminal-line press-enter-line">
+				<span class="terminal-prompt">$</span>
+				<span class="press-enter-text">
+					<span class="press-enter-desktop">Press Enter</span>
+					<span class="press-enter-mobile">Click</span>
+				</span>
+			</div>
+		`;
+		terminalInput.value = '';
+		isTyping = false;
+		terminalInput.disabled = false;
+		timelineComplete = false;
+	}
+
+	// Handle keyboard events on the terminal body
+	const terminalBody = document.getElementById('terminalBody');
+
+	document.addEventListener('keydown', (e) => {
+		// Only handle if terminal is visible on screen
+		const terminalRect = terminalBody?.getBoundingClientRect();
+		if (!terminalRect) return;
+
+		if (e.key === 'Enter' && !isTyping) {
+			const command = terminalInput.value.trim().toLowerCase();
+
+			if (command === 'clear') {
+				clearTerminal();
+				terminalInput.value = '';
+			} else if (command === 'esc') {
+				resetTerminal();
+			} else {
+				showTimeline();
+				terminalInput.value = '';
+			}
+		} else if (e.key === 'Escape') {
+			e.preventDefault();
+			resetTerminal();
+		}
+	});
+
+	terminalInput.addEventListener('keydown', (e) => {
+		const command = terminalInput.value.trim().toLowerCase();
+
+		if (e.key === 'Enter' && !isTyping) {
+			if (command === 'clear') {
+				clearTerminal();
+				terminalInput.value = '';
+			} else if (command === 'esc') {
+				resetTerminal();
+			} else {
+				showTimeline();
+				terminalInput.value = '';
+			}
+		} else if (e.key === 'Escape') {
+			e.preventDefault();
+			resetTerminal();
+		}
+	});
+
+	// Click to trigger timeline (for mobile) or focus input (for desktop)
+	terminalBody?.addEventListener('click', () => {
+		if (!isTyping) {
+			// On mobile/tablet, handle click behavior
+			if (window.innerWidth <= 992) {
+				if (timelineComplete) {
+					// Second click: reset terminal so it's ready to run again
+					resetTerminal();
+				} else {
+					// First click: show timeline
+					showTimeline();
+				}
+			} else {
+				// On desktop, focus the input
+				terminalInput.focus();
+			}
+		}
+	});
+
+	// Easter egg music player
+	const musicIcon = document.getElementById('musicIcon');
+	const audio = new Audio('/src/assets/images/carry_on.mp3');
+	let isPlaying = false;
+
+	musicIcon?.addEventListener('click', (e) => {
+		e.stopPropagation(); // Prevent triggering terminal click
+
+		if (isPlaying) {
+			audio.pause();
+			musicIcon.classList.remove('playing');
+			isPlaying = false;
+		} else {
+			audio.play();
+			musicIcon.classList.add('playing');
+			isPlaying = true;
+		}
+	});
+
+	// Reset icon when audio ends
+	audio.addEventListener('ended', () => {
+		musicIcon.classList.remove('playing');
+		isPlaying = false;
+	});
+</script>
