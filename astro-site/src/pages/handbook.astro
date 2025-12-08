@@ -35,6 +35,11 @@ import Layout from '../layouts/Layout.astro';
 
 			<main class="handbook-page-content">
 				<section id="goals" class="handbook-section">
+					<div class="copy-button-wrapper">
+						<button class="copy-all-sections-btn" id="copyAllBtn" title="Copy Goals through Metrics sections">
+							<i class="fa-regular fa-copy"></i>
+						</button>
+					</div>
 					<h2>Goals</h2>
 					<p>Developer marketing builds trust first, pipeline second.<br/>
 					The work connects your product to how developers actually build and helps that credibility translate into adoption and revenue.</p>
@@ -322,6 +327,43 @@ import Layout from '../layouts/Layout.astro';
 	.handbook-section {
 		margin-bottom: 48px;
 		scroll-margin-top: 20px;
+	}
+
+	.copy-button-wrapper {
+		display: flex;
+		justify-content: flex-end;
+		margin-bottom: 12px;
+	}
+
+	.copy-all-sections-btn {
+		background: transparent;
+		border: 1px solid #82aaff;
+		color: #82aaff;
+		padding: 6px 10px;
+		border-radius: 4px;
+		cursor: pointer;
+		font-size: 14px;
+		transition: all 0.2s ease;
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		font-family: 'Fira Code', monospace;
+		flex-shrink: 0;
+	}
+
+	.copy-all-sections-btn:hover {
+		background: rgba(130, 170, 255, 0.1);
+		transform: translateY(-1px);
+	}
+
+	.copy-all-sections-btn:active {
+		transform: translateY(0);
+	}
+
+	.copy-all-sections-btn.copied {
+		background: rgba(195, 232, 141, 0.1);
+		border-color: #c3e88d;
+		color: #c3e88d;
 	}
 
 	.handbook-section h2 {
@@ -777,6 +819,21 @@ import Layout from '../layouts/Layout.astro';
 		color: #2563eb;
 		box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
 	}
+
+	:global([data-theme="light"]) .copy-all-sections-btn {
+		border-color: #2563eb;
+		color: #2563eb;
+	}
+
+	:global([data-theme="light"]) .copy-all-sections-btn:hover {
+		background: rgba(37, 99, 235, 0.08);
+	}
+
+	:global([data-theme="light"]) .copy-all-sections-btn.copied {
+		background: rgba(22, 163, 74, 0.08);
+		border-color: #16a34a;
+		color: #16a34a;
+	}
 </style>
 
 <script>
@@ -798,4 +855,57 @@ import Layout from '../layouts/Layout.astro';
 	document.querySelectorAll('.handbook-section').forEach(section => {
 		observer.observe(section);
 	});
+
+	// Copy all sections from Goals through Metrics
+	const copyAllBtn = document.getElementById('copyAllBtn');
+	if (copyAllBtn) {
+		copyAllBtn.addEventListener('click', async () => {
+			const sectionIds = ['goals', 'strategy', 'journey', 'personas', 'messaging', 'campaigns', 'content', 'community', 'metrics'];
+			let allContent = '';
+
+			sectionIds.forEach(id => {
+				const section = document.getElementById(id);
+				if (section) {
+					// Get section title
+					const title = section.querySelector('h2')?.textContent.trim() || '';
+					allContent += `${title}\n${'='.repeat(title.length)}\n\n`;
+
+					// Get all paragraphs, lists, and callouts
+					const elements = section.querySelectorAll('p, ul, ol, .callout, h3');
+					elements.forEach(el => {
+						if (el.tagName === 'H3') {
+							allContent += `\n${el.textContent.trim()}\n${'-'.repeat(el.textContent.trim().length)}\n\n`;
+						} else if (el.tagName === 'UL' || el.tagName === 'OL') {
+							const items = el.querySelectorAll('li');
+							items.forEach(li => {
+								allContent += `• ${li.textContent.trim()}\n`;
+							});
+							allContent += '\n';
+						} else {
+							allContent += `${el.textContent.trim()}\n\n`;
+						}
+					});
+
+					allContent += '\n---\n\n';
+				}
+			});
+
+			try {
+				await navigator.clipboard.writeText(allContent);
+
+				// Visual feedback
+				const icon = copyAllBtn.querySelector('i');
+				const originalClass = icon.className;
+				icon.className = 'fa-solid fa-check';
+				copyAllBtn.classList.add('copied');
+
+				setTimeout(() => {
+					icon.className = originalClass;
+					copyAllBtn.classList.remove('copied');
+				}, 2000);
+			} catch (err) {
+				console.error('Failed to copy:', err);
+			}
+		});
+	}
 </script>
