@@ -31,36 +31,6 @@ const {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<!-- Suppress PostHog errors early in page load -->
-	<script is:inline>
-		// Set up error suppression before PostHog loads
-		(function() {
-			// Suppress PostHog-related errors globally
-			const originalError = window.onerror;
-			window.onerror = function(message, source, lineno, colno, error) {
-				// Suppress PostHog fetch errors
-				if (message && typeof message === 'string' && (message.includes('js:1483') || message.includes('fetch'))) {
-					return true; // Suppress error
-				}
-				if (source && source.includes('posthog')) {
-					return true; // Suppress PostHog-related errors
-				}
-				// Call original error handler for other errors
-				if (originalError) {
-					return originalError(message, source, lineno, colno, error);
-				}
-				return false;
-			};
-
-			// Suppress unhandled promise rejections from PostHog
-			window.addEventListener('unhandledrejection', function(event) {
-				if (event.reason && event.reason.message && event.reason.message.includes('fetch')) {
-					event.preventDefault(); // Suppress PostHog fetch errors
-				}
-			});
-		})();
-	</script>
-
 	<!-- PostHog Analytics -->
 	<PostHog />
 
