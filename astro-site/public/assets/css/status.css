@@ -1,0 +1,577 @@
+/* Status Page Styles */
+
+/* Status Hero Section */
+.status-hero {
+    background: transparent;
+    padding: 6rem 2rem 3rem;
+    text-align: center;
+}
+
+.status-title-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(59, 130, 246, 0.15);
+    border: 1.5px solid rgba(59, 130, 246, 0.4);
+    border-radius: 100px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #3b82f6;
+    animation: pulse-live 2s ease-in-out infinite;
+}
+
+@keyframes pulse-live {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.6;
+        transform: scale(1.2);
+    }
+}
+
+.badge-text {
+    color: #3b82f6;
+}
+
+.status-hero-title {
+    font-family: 'Fira Code', monospace;
+    font-size: 3rem;
+    color: var(--text-primary);
+    margin: 0;
+    font-weight: 700;
+}
+
+.status-hero-subtitle {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+/* Status Bar */
+.status-bar {
+    background: transparent;
+    padding: 2rem 2rem 0;
+    animation: fadeInUp 0.8s ease-out 0.3s both;
+}
+
+.status-bar-content {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(34, 197, 94, 0.08));
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    border-left: 4px solid #22c55e;
+    border-radius: 8px;
+}
+
+.status-indicator {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.status-indicator.operational {
+    background: #22c55e;
+    box-shadow: 0 0 12px rgba(34, 197, 94, 0.5);
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: 0 0 12px rgba(34, 197, 94, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(34, 197, 94, 0.7);
+    }
+}
+
+.status-bar-text {
+    flex: 1;
+}
+
+.status-bar-title {
+    font-family: 'Fira Code', monospace;
+    font-size: 1.125rem;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+}
+
+.status-bar-subtitle {
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* Status Section */
+.status-section {
+    background: transparent;
+    padding: 2rem 2rem 4rem;
+}
+
+/* Status Layout */
+.status-layout {
+    display: grid;
+    grid-template-columns: 600px 1fr;
+    gap: 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.status-section-title {
+    font-family: 'Fira Code', monospace;
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+/* Systems List */
+.systems-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.system-item {
+    background: var(--bg-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.system-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.system-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.system-name {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'Fira Code', monospace;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.system-icon {
+    font-size: 1.125rem;
+    color: var(--accent-primary);
+    width: 20px;
+    text-align: center;
+}
+
+.system-dots {
+    flex: 1;
+    height: 1px;
+    background-image: repeating-linear-gradient(
+        to right,
+        var(--text-secondary) 0,
+        var(--text-secondary) 4px,
+        transparent 4px,
+        transparent 8px
+    );
+    opacity: 0.3;
+}
+
+.system-status {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 0.375rem 0.875rem;
+    border-radius: 6px;
+    white-space: nowrap;
+}
+
+.system-description {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    padding-left: 2rem;
+}
+
+/* Status-specific colors */
+.system-item[data-status="operational"] .system-status {
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    color: #22c55e;
+}
+
+.system-item[data-status="active"] .system-status {
+    background: rgba(59, 130, 246, 0.15);
+    border: 1px solid rgba(59, 130, 246, 0.4);
+    color: #3b82f6;
+}
+
+.system-item[data-status="nominal"] .system-status {
+    background: rgba(34, 211, 238, 0.15);
+    border: 1px solid rgba(34, 211, 238, 0.4);
+    color: #22d3ee;
+}
+
+.system-item[data-status="stable"] .system-status {
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    color: #10b981;
+}
+
+.system-item[data-status="updating"] .system-status {
+    background: rgba(251, 191, 36, 0.15);
+    border: 1px solid rgba(251, 191, 36, 0.4);
+    color: #fbbf24;
+}
+
+.system-item[data-status="rate-limited"] .system-status {
+    background: rgba(245, 158, 11, 0.15);
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    color: #f59e0b;
+}
+
+.system-item[data-status="degraded"] .system-status {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    color: #ef4444;
+}
+
+/* Incidents Section */
+.status-incidents {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.incidents-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.incident-card {
+    background: var(--bg-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.incident-card.no-incidents {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.incident-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.incident-status {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.375rem 0.75rem;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.incident-status.resolved {
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    color: #22c55e;
+}
+
+.incident-date {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.incident-title {
+    font-family: 'Fira Code', monospace;
+    font-size: 1.125rem;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.incident-description {
+    color: var(--text-secondary);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.incident-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-left: 2px solid rgba(255, 255, 255, 0.1);
+    padding-left: 1rem;
+}
+
+.timeline-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.timeline-time {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.timeline-status {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--accent-primary);
+}
+
+.timeline-message {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Status Legend */
+.status-legend-title {
+    font-family: 'Fira Code', monospace;
+    font-size: 1.25rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.status-legend-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.status-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.legend-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.legend-indicator.operational {
+    background: #22c55e;
+}
+
+.legend-indicator.active {
+    background: #3b82f6;
+}
+
+.legend-indicator.nominal {
+    background: #22d3ee;
+}
+
+.legend-indicator.stable {
+    background: #10b981;
+}
+
+.legend-indicator.updating {
+    background: #fbbf24;
+}
+
+.legend-indicator.rate-limited {
+    background: #f59e0b;
+}
+
+.legend-indicator.degraded {
+    background: #ef4444;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .status-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .status-bar {
+        padding: 1.25rem 1rem;
+    }
+
+    .status-bar-title {
+        font-size: 1.125rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .status-hero {
+        padding: 4rem 1rem 2rem;
+    }
+
+    .status-hero-title {
+        font-size: 2rem;
+    }
+
+    .status-hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .status-section {
+        padding: 1.5rem 1rem 3rem;
+    }
+
+    .status-bar {
+        padding: 1rem;
+    }
+
+    .status-bar-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .status-bar-title {
+        font-size: 1.125rem;
+    }
+
+    .status-section-title {
+        font-size: 1.25rem;
+    }
+
+    .system-header {
+        flex-wrap: wrap;
+    }
+
+    .system-name {
+        flex-basis: 100%;
+    }
+
+    .system-dots {
+        display: none;
+    }
+
+    .system-status {
+        margin-left: auto;
+    }
+
+    .system-description {
+        padding-left: 0;
+    }
+
+    .incident-title {
+        font-size: 1rem;
+    }
+
+    .incident-description {
+        font-size: 0.875rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .status-hero-title {
+        font-size: 1.75rem;
+    }
+
+    .overall-status-title {
+        font-size: 1.25rem;
+    }
+
+    .system-name {
+        font-size: 0.9rem;
+    }
+
+    .system-status {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.7rem;
+    }
+
+    .status-legend {
+        padding: 1.5rem;
+    }
+
+    .status-legend-title {
+        font-size: 1rem;
+    }
+
+    .status-legend-items {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+}
+
+/* Light Mode Styles */
+[data-theme="light"] .status-bar-content {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.25), rgba(34, 197, 94, 0.18));
+    border: 1px solid rgba(34, 197, 94, 0.5);
+    border-left: 4px solid #16a34a;
+}
+
+[data-theme="light"] .system-item {
+    background: #ffffff;
+    border: 2px solid rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .system-item:hover {
+    border-color: rgba(96, 165, 250, 0.3);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .incident-card {
+    background: #ffffff;
+    border: 2px solid rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .system-dots {
+    background-image: repeating-linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.3) 0,
+        rgba(0, 0, 0, 0.3) 4px,
+        transparent 4px,
+        transparent 8px
+    );
+}
+
+[data-theme="light"] .incident-timeline {
+    border-left-color: rgba(0, 0, 0, 0.1);
+}

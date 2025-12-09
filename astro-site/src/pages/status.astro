@@ -1,0 +1,236 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+	title="Status - Luke Stahl"
+	description="Developer Marketing Systems Status"
+	canonicalUrl="https://lucasstahl.com/status"
+	ogTitle="Status - Luke Stahl"
+	ogDescription="Real-time status of developer marketing systems and operations"
+	additionalCss={["/assets/css/status.css"]}
+>
+	<!-- Status Page -->
+	<section class="status-hero">
+		<div class="section-container">
+			<div class="status-title-group">
+				<div class="status-badge">
+					<span class="badge-dot"></span>
+					<span class="badge-text">LIVE</span>
+				</div>
+				<h1 class="status-hero-title">Status</h1>
+			</div>
+			<p class="status-hero-subtitle">Developer Marketing Systems</p>
+		</div>
+	</section>
+
+	<!-- Overall Status Bar -->
+	<section class="status-bar">
+		<div class="section-container">
+			<div class="status-bar-content">
+				<div class="status-indicator operational"></div>
+				<div class="status-bar-text">
+					<h2 class="status-bar-title">All Systems Operational</h2>
+					<p class="status-bar-subtitle">Last updated: <span id="lastUpdated"></span></p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="status-section">
+		<div class="section-container">
+			<div class="status-layout">
+				<!-- Left Column: Systems -->
+				<div class="status-systems">
+					<h2 class="status-section-title">System Status</h2>
+					<div class="systems-list">
+				<!-- Build System -->
+				<div class="system-item" data-status="operational">
+					<div class="system-header">
+						<div class="system-name">
+							<i class="fa-solid fa-hammer system-icon"></i>
+							<span>Build System</span>
+						</div>
+						<div class="system-dots"></div>
+						<div class="system-status">Operational</div>
+					</div>
+					<div class="system-description">Shipping features and fixes at velocity</div>
+				</div>
+
+				<!-- Writing Engine -->
+				<div class="system-item" data-status="operational">
+					<div class="system-header">
+						<div class="system-name">
+							<i class="fa-solid fa-pen-fancy system-icon"></i>
+							<span>Writing Engine</span>
+						</div>
+						<div class="system-dots"></div>
+						<div class="system-status">Operational</div>
+					</div>
+					<div class="system-description">Technical content flowing smoothly</div>
+				</div>
+
+				<!-- Content Pipeline -->
+				<div class="system-item" data-status="operational">
+					<div class="system-header">
+						<div class="system-name">
+							<i class="fa-solid fa-boxes-stacked system-icon"></i>
+							<span>Content Pipeline</span>
+						</div>
+						<div class="system-dots"></div>
+						<div class="system-status">Operational</div>
+					</div>
+					<div class="system-description">Publishing queue processing</div>
+				</div>
+
+				<!-- DX Research Stream -->
+				<div class="system-item" data-status="operational">
+					<div class="system-header">
+						<div class="system-name">
+							<i class="fa-solid fa-flask system-icon"></i>
+							<span>DX Research Stream</span>
+						</div>
+						<div class="system-dots"></div>
+						<div class="system-status">Operational</div>
+					</div>
+					<div class="system-description">Developer experience insights incoming</div>
+				</div>
+
+				<!-- Strategy Layer -->
+				<div class="system-item" data-status="updating">
+					<div class="system-header">
+						<div class="system-name">
+							<i class="fa-solid fa-chess system-icon"></i>
+							<span>Strategy Layer</span>
+						</div>
+						<div class="system-dots"></div>
+						<div class="system-status">Updating</div>
+					</div>
+					<div class="system-description">Roadmap always refining</div>
+				</div>
+
+				<!-- Community Monitoring -->
+				<div class="system-item" data-status="operational">
+					<div class="system-header">
+						<div class="system-name">
+							<i class="fa-solid fa-users system-icon"></i>
+							<span>Community Monitoring</span>
+						</div>
+						<div class="system-dots"></div>
+						<div class="system-status">Operational</div>
+					</div>
+					<div class="system-description">Developer conversations tracked</div>
+				</div>
+
+				<!-- AI Assistants -->
+				<div class="system-item" data-status="operational">
+					<div class="system-header">
+						<div class="system-name">
+							<i class="fa-solid fa-robot system-icon"></i>
+							<span>AI Assistants</span>
+						</div>
+						<div class="system-dots"></div>
+						<div class="system-status">Operational</div>
+					</div>
+					<div class="system-description">Claude at max capacity, zero rate limits</div>
+				</div>
+
+				<!-- Coffee Service -->
+				<div class="system-item" data-status="degraded">
+					<div class="system-header">
+						<div class="system-name">
+							<i class="fa-solid fa-mug-hot system-icon"></i>
+							<span>Coffee Service</span>
+						</div>
+						<div class="system-dots"></div>
+						<div class="system-status">Degraded</div>
+					</div>
+					<div class="system-description">Running low, send caffeine</div>
+				</div>
+					</div>
+				</div>
+
+				<!-- Right Column: Incidents -->
+				<div class="status-incidents">
+					<!-- Active Incidents -->
+					<div class="incidents-section">
+						<h2 class="status-section-title">Active Incidents</h2>
+						<div class="incident-card no-incidents">
+							<p>No active incidents</p>
+						</div>
+					</div>
+
+					<!-- Recently Resolved -->
+					<div class="incidents-section">
+						<h2 class="status-section-title">Recently Resolved</h2>
+						<div class="incident-card">
+							<div class="incident-header">
+								<div class="incident-status resolved">Resolved</div>
+								<div class="incident-date">Dec 6, 2024</div>
+							</div>
+							<h3 class="incident-title">Coffee Service Emergency</h3>
+							<p class="incident-description">Coffee service experienced critical degradation. Emergency caffeine protocols activated. Required 3x espresso shots to restore full operational capacity.</p>
+							<div class="incident-timeline">
+								<div class="timeline-item">
+									<div class="timeline-time">09:47 AM PST</div>
+									<div class="timeline-status">Resolved</div>
+									<div class="timeline-message">System fully restored. All systems operational.</div>
+								</div>
+								<div class="timeline-item">
+									<div class="timeline-time">09:15 AM PST</div>
+									<div class="timeline-status">Investigating</div>
+									<div class="timeline-message">Deployed emergency caffeine fix. Monitoring recovery.</div>
+								</div>
+								<div class="timeline-item">
+									<div class="timeline-time">08:30 AM PST</div>
+									<div class="timeline-status">Identified</div>
+									<div class="timeline-message">Coffee reserves below minimum threshold. Productivity at risk.</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Status Legend -->
+					<div class="incidents-section">
+						<h3 class="status-legend-title">Status Indicators</h3>
+						<div class="status-legend-items">
+							<div class="status-legend-item">
+								<div class="legend-indicator operational"></div>
+								<span>Operational</span>
+							</div>
+							<div class="status-legend-item">
+								<div class="legend-indicator updating"></div>
+								<span>Updating</span>
+							</div>
+							<div class="status-legend-item">
+								<div class="legend-indicator degraded"></div>
+								<span>Degraded</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>
+
+<script>
+	// Update timestamp
+	function updateTimestamp() {
+		const now = new Date();
+		const timestamp = now.toLocaleString('en-US', {
+			month: 'short',
+			day: 'numeric',
+			year: 'numeric',
+			hour: 'numeric',
+			minute: '2-digit',
+			timeZoneName: 'short'
+		});
+		const timestampElement = document.getElementById('lastUpdated');
+		if (timestampElement) {
+			timestampElement.textContent = timestamp;
+		}
+	}
+
+	updateTimestamp();
+</script>

@@ -48,6 +48,10 @@
                 <div class="theme-toggle-highlight"></div>
             </div>
         </div>
+        <a href="/status" class="status-indicator" aria-label="View system status">
+            <span class="status-dot"></span>
+            <span class="status-text">All systems normal.</span>
+        </a>
     </div>
 </footer>
 
@@ -162,6 +166,52 @@
         .footer-theme-toggle {
             position: static;
             margin: 1rem auto 0;
+        }
+    }
+
+    .status-indicator {
+        position: absolute;
+        bottom: 0.75rem;
+        left: 2rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.875rem;
+        transition: color 0.3s ease;
+    }
+
+    .status-indicator:hover {
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .status-indicator .status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #3b82f6;
+        flex-shrink: 0;
+    }
+
+    .status-indicator .status-text {
+        font-family: 'Inter', sans-serif;
+        white-space: nowrap;
+    }
+
+    :global([data-theme="light"]) .status-indicator {
+        color: rgba(0, 0, 0, 0.6);
+    }
+
+    :global([data-theme="light"]) .status-indicator:hover {
+        color: rgba(0, 0, 0, 0.9);
+    }
+
+    @media (max-width: 768px) {
+        .status-indicator {
+            position: static;
+            margin: 0.5rem auto 0;
+            justify-content: center;
         }
     }
 
