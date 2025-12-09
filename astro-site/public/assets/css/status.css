@@ -480,11 +480,11 @@
     }
 
     .system-header {
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
     }
 
     .system-name {
-        flex-basis: 100%;
+        flex: 1;
     }
 
     .system-dots {
@@ -492,7 +492,7 @@
     }
 
     .system-status {
-        margin-left: auto;
+        flex-shrink: 0;
     }
 
     .system-description {
