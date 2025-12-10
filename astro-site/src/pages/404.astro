@@ -1,0 +1,308 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+	title="404 - Luke Stahl"
+	description="Page not found"
+	canonicalUrl="https://lucasstahl.com/404"
+>
+	<div class="error-page">
+		<!-- Animated Kryptonian grid -->
+		<div class="kryptonian-grid" aria-hidden="true"></div>
+
+		<div class="error-container">
+			<div class="error-code">404</div>
+
+			<div class="error-content">
+				<h1 class="error-title">You slipped into the wrong universe</h1>
+				<p class="error-message">This route doesn't exist in this timeline.</p>
+				<p class="error-message">I'm probably refactoring something or a link went rogue.</p>
+			</div>
+
+			<a href="/" class="error-button">
+				<i class="fa-solid fa-arrow-left"></i>
+				Back to the right universe
+			</a>
+		</div>
+	</div>
+</Layout>
+
+<style is:global>
+	body {
+		background: #000000 !important;
+	}
+</style>
+
+<style>
+	.error-page {
+		min-height: calc(100vh - 300px);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: radial-gradient(ellipse at center, #0d1117 0%, #000000 100%);
+		color: #e4e4e7;
+		padding: 2rem;
+		position: relative;
+	}
+
+	/* Vignette spotlight effect */
+	.error-page::before {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 800px;
+		height: 800px;
+		background: radial-gradient(circle, rgba(0, 212, 255, 0.08) 0%, transparent 70%);
+		pointer-events: none;
+		z-index: 2;
+	}
+
+	/* Kryptonian animated grid */
+	.kryptonian-grid {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-image:
+			linear-gradient(rgba(0, 212, 255, 0.08) 1px, transparent 1px),
+			linear-gradient(90deg, rgba(0, 212, 255, 0.08) 1px, transparent 1px);
+		background-size: 80px 80px;
+		background-position: 0 0;
+		pointer-events: none;
+		z-index: 1;
+		animation: gridDrift 60s linear infinite;
+	}
+
+	@keyframes gridDrift {
+		0% {
+			background-position: 0 0;
+		}
+		100% {
+			background-position: 80px 80px;
+		}
+	}
+
+	.error-container {
+		max-width: 600px;
+		width: 100%;
+		position: relative;
+		z-index: 3;
+		text-align: center;
+	}
+
+	.error-code {
+		font-size: 1rem;
+		font-weight: 500;
+		color: #ff4444;
+		margin-bottom: 2rem;
+		font-family: 'Fira Code', 'Courier New', monospace;
+		letter-spacing: 0.05em;
+		animation: timelineGlitch 6s ease-in-out infinite;
+	}
+
+	@keyframes timelineGlitch {
+		0%, 95% {
+			opacity: 1;
+			transform: translateX(0);
+		}
+		96% {
+			opacity: 0.4;
+			transform: translateX(-2px);
+		}
+		97% {
+			opacity: 0.8;
+			transform: translateX(2px);
+		}
+		98% {
+			opacity: 0.5;
+			transform: translateX(-1px);
+		}
+		99%, 100% {
+			opacity: 1;
+			transform: translateX(0);
+		}
+	}
+
+	.error-content {
+		margin-bottom: 3rem;
+		position: relative;
+	}
+
+	/* Multiverse drift glow behind headline */
+	.error-content::before {
+		content: '';
+		position: absolute;
+		top: -20px;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 120%;
+		height: 120px;
+		background: radial-gradient(ellipse at center, rgba(0, 212, 255, 0.15) 0%, rgba(0, 212, 255, 0.08) 40%, transparent 70%);
+		filter: blur(20px);
+		pointer-events: none;
+		z-index: -1;
+	}
+
+	.error-title {
+		font-size: 3rem;
+		font-weight: 600;
+		color: #00d4ff;
+		margin: 0 0 1rem 0;
+		line-height: 1.2;
+		transition: text-shadow 0.3s ease;
+		cursor: default;
+		text-shadow: 0 0 20px rgba(0, 212, 255, 0.4), 0 0 40px rgba(0, 212, 255, 0.2);
+		position: relative;
+	}
+
+	.error-title:hover {
+		animation: heatVision 0.8s ease-in-out infinite;
+	}
+
+	@keyframes heatVision {
+		0%, 100% {
+			text-shadow: 0 0 10px rgba(255, 68, 68, 0.3), 0 0 20px rgba(0, 212, 255, 0.2);
+		}
+		25% {
+			text-shadow: 0 0 20px rgba(255, 68, 68, 0.8), 0 0 30px rgba(255, 68, 68, 0.5);
+		}
+		50% {
+			text-shadow: 0 0 5px rgba(255, 68, 68, 0.2), 0 0 15px rgba(0, 212, 255, 0.1);
+		}
+		75% {
+			text-shadow: 0 0 25px rgba(255, 68, 68, 0.9), 0 0 40px rgba(255, 68, 68, 0.6);
+		}
+	}
+
+	.error-message {
+		font-size: 1.125rem;
+		color: #a1a1aa;
+		margin: 0 0 0.75rem 0;
+		line-height: 1.6;
+	}
+
+	.error-button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		padding: 0.875rem 1.5rem;
+		background: transparent;
+		color: #e4e4e7;
+		text-decoration: none;
+		font-weight: 500;
+		transition: all 0.3s ease;
+		border: 1px solid rgba(0, 212, 255, 0.3);
+		border-radius: 50px;
+		cursor: pointer;
+		position: relative;
+	}
+
+	.error-button:hover {
+		border-color: rgba(0, 212, 255, 0.6);
+		box-shadow: 0 0 20px rgba(0, 212, 255, 0.4), inset 0 0 20px rgba(0, 212, 255, 0.1);
+		color: #ffffff;
+	}
+
+	.error-button:focus {
+		outline: none;
+		box-shadow: 0 0 0 3px rgba(255, 68, 68, 0.3), 0 0 20px rgba(0, 212, 255, 0.2);
+	}
+
+	.error-button i {
+		font-size: 0.875rem;
+		color: #00d4ff;
+		transition: transform 0.2s ease;
+	}
+
+	.error-button:hover i {
+		transform: translateX(-2px);
+	}
+
+	/* Tablet */
+	@media (max-width: 1024px) {
+		.error-page::before {
+			width: 600px;
+			height: 600px;
+		}
+
+		.error-content::before {
+			width: 100%;
+		}
+	}
+
+	/* Mobile */
+	@media (max-width: 768px) {
+		.error-page {
+			min-height: calc(100vh - 250px);
+			padding: 1.5rem 1rem;
+		}
+
+		.error-page::before {
+			width: 400px;
+			height: 400px;
+		}
+
+		.kryptonian-grid {
+			background-size: 60px 60px;
+		}
+
+		@keyframes gridDrift {
+			0% {
+				background-position: 0 0;
+			}
+			100% {
+				background-position: 60px 60px;
+			}
+		}
+
+		.error-code {
+			font-size: 0.875rem;
+			margin-bottom: 1.5rem;
+		}
+
+		.error-content {
+			margin-bottom: 2rem;
+		}
+
+		.error-content::before {
+			width: 100%;
+			height: 100px;
+			top: -15px;
+		}
+
+		.error-title {
+			font-size: 2rem;
+			line-height: 1.3;
+		}
+
+		.error-message {
+			font-size: 1rem;
+		}
+
+		.error-button {
+			padding: 0.75rem 1.25rem;
+			font-size: 0.9375rem;
+		}
+	}
+
+	/* Small mobile */
+	@media (max-width: 480px) {
+		.error-title {
+			font-size: 1.75rem;
+		}
+
+		.error-message {
+			font-size: 0.9375rem;
+		}
+
+		.error-page::before {
+			width: 300px;
+			height: 300px;
+		}
+	}
+</style>
