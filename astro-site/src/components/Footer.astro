@@ -52,6 +52,33 @@
             <span class="status-dot"></span>
             <span class="status-text">All systems normal.</span>
         </a>
+
+        <!-- Developer Writing Assistant Toggle -->
+        <button class="assistant-toggle" id="assistantToggle" aria-label="Toggle Developer Writing Assistant">
+            <i class="fa-solid fa-chevron-up"></i>
+        </button>
+    </div>
+
+    <!-- Developer Writing Assistant Embed -->
+    <div class="assistant-container" id="assistantContainer">
+        <div class="assistant-header">
+            <h3 class="assistant-title">
+                <i class="fa-solid fa-pen-fancy"></i>
+                Developer Writing Assistant
+            </h3>
+            <button class="assistant-close" id="assistantClose" aria-label="Close Assistant">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="assistant-iframe-wrapper">
+            <iframe
+                src="https://dev-writing-assistant.netlify.app/"
+                class="assistant-iframe"
+                title="Developer Writing Assistant"
+                frameborder="0"
+                allowfullscreen
+            ></iframe>
+        </div>
     </div>
 </footer>
 
@@ -324,6 +351,169 @@
         color: var(--accent-primary, #2563eb);
         background: rgba(37, 99, 235, 0.08);
     }
+
+    /* Developer Writing Assistant Styles */
+    .assistant-toggle {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: none;
+        padding: 0;
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 1.25rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 100;
+    }
+
+    .assistant-toggle:hover {
+        color: var(--accent-blue, #60a5fa);
+        transform: translateY(-3px);
+    }
+
+    .assistant-toggle i {
+        transition: transform 0.3s ease;
+    }
+
+    .assistant-toggle.active i {
+        transform: rotate(180deg);
+    }
+
+    .assistant-container {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 80vh;
+        background: var(--bg-primary, #0a1128);
+        border: 1px solid rgba(96, 165, 250, 0.3);
+        border-radius: 12px 12px 0 0;
+        box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.3);
+        transform: translateY(100%);
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .assistant-container.active {
+        transform: translateY(0);
+    }
+
+    .assistant-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 1.5rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px 12px 0 0;
+    }
+
+    .assistant-title {
+        margin: 0;
+        font-size: 1.125rem;
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        color: var(--accent-blue, #60a5fa);
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .assistant-close {
+        background: none;
+        border: none;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 0.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        border-radius: 4px;
+    }
+
+    .assistant-close:hover {
+        color: rgba(255, 255, 255, 0.9);
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .assistant-iframe-wrapper {
+        flex: 1;
+        overflow: hidden;
+        background: white;
+        border-radius: 0 0 12px 12px;
+    }
+
+    .assistant-iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: block;
+    }
+
+    /* Light mode styles for assistant */
+    :global([data-theme="light"]) .assistant-toggle {
+        color: rgba(0, 0, 0, 0.3);
+    }
+
+    :global([data-theme="light"]) .assistant-toggle:hover {
+        color: var(--accent-primary, #2563eb);
+    }
+
+    :global([data-theme="light"]) .assistant-container {
+        background: var(--bg-primary, #f8fafc);
+        border-color: rgba(0, 0, 0, 0.15);
+        box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    :global([data-theme="light"]) .assistant-header {
+        background: rgba(0, 0, 0, 0.03);
+        border-bottom-color: rgba(0, 0, 0, 0.1);
+    }
+
+    :global([data-theme="light"]) .assistant-title {
+        color: var(--accent-primary, #2563eb);
+    }
+
+    :global([data-theme="light"]) .assistant-close {
+        color: rgba(0, 0, 0, 0.6);
+    }
+
+    :global([data-theme="light"]) .assistant-close:hover {
+        color: rgba(0, 0, 0, 0.9);
+        background: rgba(0, 0, 0, 0.05);
+    }
+
+    /* Mobile responsive styles */
+    @media (max-width: 768px) {
+        .assistant-toggle {
+            top: 1rem;
+            right: 1rem;
+            width: 44px;
+            height: 44px;
+            font-size: 1.1rem;
+        }
+
+        .assistant-container {
+            height: 90vh;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .assistant-toggle {
+            width: 40px;
+            height: 40px;
+            font-size: 1rem;
+        }
+    }
 </style>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -335,3 +525,65 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
+
+<script is:inline>
+    // Developer Writing Assistant Toggle Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const assistantToggle = document.getElementById('assistantToggle');
+        const assistantContainer = document.getElementById('assistantContainer');
+        const assistantClose = document.getElementById('assistantClose');
+        const assistantIframe = document.querySelector('.assistant-iframe');
+
+        // Send theme to iframe when it loads
+        if (assistantIframe) {
+            assistantIframe.addEventListener('load', function() {
+                const theme = document.documentElement.getAttribute('data-theme') || 'dark';
+                assistantIframe.contentWindow.postMessage({ type: 'theme-change', theme }, '*');
+            });
+        }
+
+        function toggleAssistant() {
+            assistantToggle.classList.toggle('active');
+            assistantContainer.classList.toggle('active');
+
+            // Track with PostHog if available
+            if (window.posthog) {
+                const isActive = assistantContainer.classList.contains('active');
+                window.posthog.capture('writing_assistant_toggled', {
+                    action: isActive ? 'opened' : 'closed',
+                    location: 'footer'
+                });
+            }
+        }
+
+        function closeAssistant() {
+            assistantToggle.classList.remove('active');
+            assistantContainer.classList.remove('active');
+
+            // Track with PostHog if available
+            if (window.posthog) {
+                window.posthog.capture('writing_assistant_closed', {
+                    method: 'close_button',
+                    location: 'footer'
+                });
+            }
+        }
+
+        // Toggle button click
+        if (assistantToggle) {
+            assistantToggle.addEventListener('click', toggleAssistant);
+        }
+
+        // Close button click
+        if (assistantClose) {
+            assistantClose.addEventListener('click', closeAssistant);
+        }
+
+        // Close on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && assistantContainer.classList.contains('active')) {
+                closeAssistant();
+            }
+        });
+    });
+</script>

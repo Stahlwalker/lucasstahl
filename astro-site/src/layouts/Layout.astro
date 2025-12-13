@@ -201,10 +201,20 @@ const {
 				}
 			}
 
+			// Send theme to iframe
+			function sendThemeToIframe(theme) {
+				const iframe = document.querySelector('.assistant-iframe');
+				if (iframe && iframe.contentWindow) {
+					iframe.contentWindow.postMessage({ type: 'theme-change', theme }, '*');
+				}
+			}
+
 			// Apply theme to document
 			function applyTheme() {
 				const displayTheme = getDisplayTheme();
 				html.setAttribute('data-theme', displayTheme);
+				// Send theme to iframe
+				sendThemeToIframe(displayTheme);
 			}
 
 			// Toggle theme: dark -> light -> system -> dark
@@ -258,6 +268,7 @@ const {
 			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
 				if (getCurrentMode() === 'system') {
 					applyTheme();
+					updateFooterToggle();
 				}
 			});
 
