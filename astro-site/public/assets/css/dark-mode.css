@@ -72,6 +72,12 @@ body {
 
 .navbar-toggler {
     border-color: rgba(255, 255, 255, 0.2) !important;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0.5rem;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    cursor: pointer;
 }
 
 .navbar-toggler-icon {

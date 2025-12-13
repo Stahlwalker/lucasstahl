@@ -95,5 +95,38 @@
                 }
             });
         }
+
+        // Improved mobile touch handling for navbar hamburger menu
+        const navbarToggler = document.querySelector('.navbar-toggler');
+        const navbarCollapse = document.getElementById('navbarNav');
+
+        if (navbarToggler && navbarCollapse) {
+            // Enhanced click handler
+            navbarToggler.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                navbarCollapse.classList.toggle('show');
+                const isExpanded = navbarCollapse.classList.contains('show');
+                navbarToggler.setAttribute('aria-expanded', isExpanded.toString());
+            });
+
+            // Touch event for better mobile support
+            navbarToggler.addEventListener('touchend', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                navbarCollapse.classList.toggle('show');
+                const isExpanded = navbarCollapse.classList.contains('show');
+                navbarToggler.setAttribute('aria-expanded', isExpanded.toString());
+            });
+
+            // Close menu when clicking a nav link
+            const navMenuLinks = navbarCollapse.querySelectorAll('.nav-link');
+            navMenuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    navbarCollapse.classList.remove('show');
+                    navbarToggler.setAttribute('aria-expanded', 'false');
+                });
+            });
+        }
     });
 </script>
