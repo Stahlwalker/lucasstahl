@@ -628,7 +628,7 @@ body {
 /* Feed Item */
 .feed-item {
     background: var(--bg-secondary);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.05);
     border-radius: 12px;
     overflow: hidden;
     transition: all 0.3s ease;
@@ -892,9 +892,9 @@ body {
 /* CTA Section */
 .cta-section {
     text-align: center;
-    padding: 2rem;
+    padding: 3rem 2rem;
     background: var(--bg-secondary);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     animation: fadeInUp 0.8s ease-out 0.5s both;
 }
