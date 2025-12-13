@@ -433,12 +433,16 @@
         color: rgba(255, 255, 255, 0.6);
         font-size: 1.5rem;
         cursor: pointer;
-        padding: 0.25rem;
+        padding: 0.5rem;
         display: flex;
         align-items: center;
         justify-content: center;
         transition: all 0.3s ease;
         border-radius: 4px;
+        min-width: 44px;
+        min-height: 44px;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
     }
 
     .assistant-close:hover {
@@ -575,9 +579,20 @@
             assistantToggle.addEventListener('click', toggleAssistant);
         }
 
-        // Close button click
+        // Close button click - handle both click and touch events
         if (assistantClose) {
-            assistantClose.addEventListener('click', closeAssistant);
+            assistantClose.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                closeAssistant();
+            });
+
+            // Add touch event for better mobile support
+            assistantClose.addEventListener('touchend', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                closeAssistant();
+            });
         }
 
         // Close on escape key
