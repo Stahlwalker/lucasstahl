@@ -856,5 +856,19 @@ const suggestedPosts = allPosts.slice(0, 2);
     :global([data-theme="light"]) .comments-section {
       border-top: 2px solid rgba(0, 0, 0, 0.2);
     }
+
+    :global([data-theme="light"]) .blog-post-content :global(blockquote) {
+      border-left: 4px solid var(--accent-primary, #2563eb);
+      background: rgba(37, 99, 235, 0.08);
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      color: var(--text-primary, #18181b);
+      font-style: italic;
+    }
+
+    :global([data-theme="light"]) .blog-post-content :global(blockquote p) {
+      color: var(--text-primary, #18181b);
+      margin: 0;
+    }
   </style>
 </Layout>
