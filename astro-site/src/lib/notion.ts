@@ -120,8 +120,8 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
         ? properties.Featured.checkbox
         : false;
 
-      const featuredImage = properties.FeaturedImage?.type === 'url'
-        ? properties.FeaturedImage.url || ''
+      const featuredImage = properties.FeatureImage?.type === 'url'
+        ? properties.FeatureImage.url || ''
         : '';
 
       const ogImage = properties.OGImage?.type === 'url'
