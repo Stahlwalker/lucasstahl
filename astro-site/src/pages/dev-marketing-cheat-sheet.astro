@@ -368,6 +368,25 @@ const sections = [
 	</div>
 </MinimalLayout>
 
+<script>
+	// PostHog tracking for PDF download
+	document.addEventListener('DOMContentLoaded', function() {
+		const downloadBtn = document.querySelector('.download-btn');
+
+		if (downloadBtn) {
+			downloadBtn.addEventListener('click', function() {
+				if (window.posthog) {
+					window.posthog.capture('cheat_sheet_pdf_downloaded', {
+						page: 'dev_marketing_cheat_sheet',
+						button_location: 'header',
+						button_text: 'Download PDF'
+					});
+				}
+			});
+		}
+	});
+</script>
+
 <style>
 	/* Container */
 	.cheatsheet-container {
