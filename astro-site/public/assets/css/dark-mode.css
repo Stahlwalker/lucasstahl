@@ -90,6 +90,8 @@ body {
     font-size: 1.25rem;
     font-weight: 600;
     transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .navbar-brand:hover {
@@ -163,6 +165,8 @@ body {
     margin: 0 0.5rem;
     transition: all 0.3s ease;
     position: relative;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .nav-link::after {

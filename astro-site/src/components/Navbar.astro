@@ -68,12 +68,17 @@
     document.addEventListener('DOMContentLoaded', function() {
         const navLinks = document.querySelectorAll('[data-nav-link]');
         navLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
+            // Handle navigation for both click and touch
+            const handleNavigation = function(e) {
                 e.preventDefault();
+                e.stopPropagation();
                 const path = this.getAttribute('href');
                 const fullUrl = window.location.origin + path;
                 window.location.href = fullUrl;
-            });
+            };
+
+            link.addEventListener('click', handleNavigation);
+            link.addEventListener('touchend', handleNavigation);
         });
 
         // Search button handlers
