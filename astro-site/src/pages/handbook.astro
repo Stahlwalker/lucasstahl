@@ -193,9 +193,14 @@ import Layout from '../layouts/Layout.astro';
 					<div class="cta-content">
 						<h3>Need more resources?</h3>
 						<p>Check out my curated collection of developer marketing tools, newsletters, and resources.</p>
-						<a href="/gems" class="cta-button">
-							View Gems →
-						</a>
+						<div class="cta-buttons">
+							<a href="/gems" class="cta-button cta-button-primary">
+								View Gems →
+							</a>
+							<a href="/dev-marketing-cheat-sheet" class="cta-button cta-button-secondary">
+								View Cheat Sheet →
+							</a>
+						</div>
 					</div>
 				</section>
 			</main>
@@ -500,25 +505,47 @@ import Layout from '../layouts/Layout.astro';
 		line-height: 1.6;
 	}
 
+	.cta-buttons {
+		display: flex;
+		gap: 12px;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
+	}
+
 	.cta-button {
 		display: inline-block;
 		padding: 12px 28px;
-		background: #82aaff;
-		color: #0d0d0d;
 		text-decoration: none;
 		border-radius: 6px;
 		font-family: 'Fira Code', monospace;
 		font-size: 14px;
 		font-weight: 600;
 		transition: all 0.3s ease;
-		border: 2px solid #82aaff;
 	}
 
-	.cta-button:hover {
-		background: transparent;
-		color: #82aaff;
-		transform: translateY(-2px);
-		box-shadow: 0 4px 12px rgba(130, 170, 255, 0.3);
+	.cta-button-primary {
+		background: linear-gradient(135deg, #82aaff, #60a5fa);
+		color: white;
+		border: 2px solid transparent;
+		box-shadow: 0 4px 15px rgba(96, 165, 250, 0.3);
+	}
+
+	.cta-button-primary:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 6px 25px rgba(96, 165, 250, 0.4);
+	}
+
+	.cta-button-secondary {
+		background: var(--bg-secondary);
+		color: var(--text-primary);
+		border: 2px solid rgba(255, 255, 255, 0.2);
+	}
+
+	.cta-button-secondary:hover {
+		background: var(--bg-tertiary);
+		border-color: #82aaff;
+		transform: translateY(-3px);
 	}
 
 	/* Scrollbar styling */
@@ -808,16 +835,25 @@ import Layout from '../layouts/Layout.astro';
 		color: #475569;
 	}
 
-	:global([data-theme="light"]) .cta-button {
-		background: #2563eb;
+	:global([data-theme="light"]) .cta-button-primary {
+		background: linear-gradient(135deg, #2563eb, #3b82f6);
 		color: #ffffff;
-		border-color: #2563eb;
+		border-color: transparent;
 	}
 
-	:global([data-theme="light"]) .cta-button:hover {
-		background: transparent;
-		color: #2563eb;
-		box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+	:global([data-theme="light"]) .cta-button-primary:hover {
+		box-shadow: 0 6px 25px rgba(37, 99, 235, 0.3);
+	}
+
+	:global([data-theme="light"]) .cta-button-secondary {
+		background: #f8fafc;
+		color: #475569;
+		border-color: rgba(0, 0, 0, 0.2);
+	}
+
+	:global([data-theme="light"]) .cta-button-secondary:hover {
+		background: #f1f5f9;
+		border-color: #2563eb;
 	}
 
 	:global([data-theme="light"]) .copy-all-sections-btn {

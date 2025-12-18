@@ -7,6 +7,8 @@ export default defineConfig({
   site: 'https://lucasstahl.com',
   integrations: [sitemap()],
   redirects: {
-    '/contact': '/about'
+    '/contact': '/about',
+    '/portfolio': '/',
+    '/portfolio.html': '/'
   }
 });

@@ -1,0 +1,1172 @@
+---
+import MinimalLayout from '../layouts/MinimalLayout.astro';
+
+// Main Role & Responsibilities Categories (Top Section)
+const roleCategories = [
+	{
+		title: "Developer Audience & Market Insight",
+		color: "purple",
+		items: [
+			"Developer workflow research",
+			"Competitive + ecosystem intelligence",
+			"Community monitoring (GitHub, Reddit, Discord)",
+			"Search intent + documentation analytics",
+			"Developer persona + segmentation",
+			"Voice of Developer (VoD)"
+		]
+	},
+	{
+		title: "Strategic Foundations",
+		color: "blue",
+		items: [
+			"Developer value pillars",
+			"Technical positioning",
+			"Buyer vs user definition",
+			"Use case + integration mapping",
+			"Developer-focused GTM strategy",
+			"Technical POV development"
+		]
+	},
+	{
+		title: "Messaging & Technical Narrative",
+		color: "green",
+		items: [
+			"Developer messaging frameworks",
+			"Architecture + workflow explanations",
+			"Technical landing page copy",
+			"Migration + comparison content",
+			"Diagrams + system breakdowns",
+			"Message validation with developers"
+		]
+	},
+	{
+		title: "Activation & Adoption",
+		color: "yellow",
+		items: [
+			"Tutorials, quickstarts, examples",
+			"Starter templates + repos",
+			"Onboarding optimization",
+			"Documentation alignment",
+			"Developer campaign support",
+			"Feature + integration adoption paths"
+		]
+	},
+	{
+		title: "Ecosystem, Community & Growth",
+		color: "pink",
+		items: [
+			"Community engagement",
+			"Integration + partner ecosystem support",
+			"Agency + consultant enablement",
+			"Developer feedback loops",
+			"Sales engineering alignment",
+			"Internal technical enablement"
+		]
+	}
+];
+
+// Tech Stack (Middle Section)
+const techStackCategories = [
+	{
+		title: "IDE & Development Workflow",
+		color: "green",
+		items: [
+			"Cursor — main workspace, fast iteration",
+			"Claude Code — debugging + large-scale reasoning",
+			"GitHub — version control + collaboration",
+			"Supabase — quick databases + APIs",
+			"Vercel / Netlify — deployments",
+			"Warp — terminal"
+		]
+	},
+	{
+		title: "AI & Research Tools",
+		color: "cyan",
+		items: [
+			"ChatGPT — projects, connectors, early research",
+			"Gemini — search, visual references",
+			"Perplexity — landscape + competitive insight",
+			"Common Room — community signal",
+			"Reddit / Discord / X — developer insight"
+		]
+	},
+	{
+		title: "Design & Systems Thinking",
+		color: "purple",
+		items: [
+			"Figma — layout + prototyping",
+			"Excalidraw — whiteboarding + flow sketching",
+			"ChatGPT (Mermaid) — diagram starting points"
+		]
+	},
+	{
+		title: "Content & Documentation",
+		color: "blue",
+		items: [
+			"Notion — writing, drafts, specs, ideas",
+			"GitHub — examples, starters, templates",
+			"Loom — walkthroughs, feedback, SME capture",
+			"Airtable — content + project tracking"
+		]
+	},
+	{
+		title: "Marketing & SEO Stack",
+		color: "yellow",
+		items: [
+			"Ahrefs — competitive + keyword research",
+			"SurferSEO — on-page structure",
+			"Google Keyword Planner — automation + research workflows",
+			"Buffer — social distribution"
+		]
+	},
+	{
+		title: "Analytics & Reporting",
+		color: "indigo",
+		items: [
+			"PostHog — web + activation analytics",
+			"FullStory — journey + behavioral insight",
+			"Looker — cross-team analysis",
+			"Sigma — lead → pipeline reporting",
+			"GA4 / Plausible — traffic + content performance"
+		]
+	},
+	{
+		title: "Enablement & Sales Alignment",
+		color: "pink",
+		items: [
+			"Gong — customer calls + theme detection",
+			"WorkRamp — internal education",
+			"Figma Slides — decks + presentations",
+			"Arcade — product demos"
+		]
+	},
+	{
+		title: "Collaboration Stack",
+		color: "orange",
+		items: [
+			"Notion — async writing + collaboration",
+			"Slack — communication + save-for-later workflow",
+			"Loom — async explanations",
+			"Airtable — structured project ops"
+		]
+	}
+];
+
+// Additional Sections (Bottom Grid)
+const sections = [
+	{
+		title: "KPIs & Metrics",
+		color: "blue",
+		hasCategories: true,
+		categories: [
+			{
+				name: "ACQUISITION",
+				items: [
+					"Developer acquisition",
+					"High-intent traffic",
+					"Docs entry rate",
+					"Content-driven discovery"
+				]
+			},
+			{
+				name: "ACTIVATION",
+				items: [
+					"Activation rate",
+					"Time to first action",
+					"Content → usage conversion",
+					"Documentation engagement"
+				]
+			},
+			{
+				name: "LEAD GENERATION",
+				items: [
+					"SQLs from developer paths",
+					"Lead quality from technical channels",
+					"Trial-to-SQL conversion",
+					"Pipeline influenced by developer touchpoints"
+				]
+			}
+		]
+	},
+	{
+		title: "Content & Distribution",
+		color: "yellow",
+		hasCategories: true,
+		categories: [
+			{
+				name: "Content Types",
+				items: [
+					"Technical blog posts",
+					"API documentation",
+					"Video tutorials & demos",
+					"Code samples & templates",
+					"Interactive playgrounds",
+					"Developer guides & quickstarts",
+					"Case studies",
+					"Changelog announcements"
+				]
+			},
+			{
+				name: "Distribution Channels",
+				items: [
+					"Dev.to & Hashnode",
+					"GitHub Discussions",
+					"Stack Overflow",
+					"Reddit (r/programming, r/webdev)",
+					"Hacker News",
+					"Twitter/X (Tech Twitter)",
+					"YouTube & Twitch",
+					"Developer newsletters"
+				]
+			}
+		]
+	},
+	{
+		title: "People to Follow",
+		color: "orange",
+		hasExperts: true,
+		experts: [
+			{ name: "Hank Taylor", handle: "@theHankTaylor", url: "https://x.com/theHankTaylor" },
+			{ name: "Morgane Palomares", handle: "LinkedIn", url: "https://www.linkedin.com/in/morganepalomares/" },
+			{ name: "James Hawkins", handle: "@james406", url: "https://x.com/james406" },
+			{ name: "Cecilia Stallsmith", handle: "LinkedIn", url: "https://www.linkedin.com/in/cecistallsmith/" },
+			{ name: "Lee Robinson", handle: "@leerob", url: "https://x.com/leerob" },
+			{ name: "Jack Bridger", handle: "@jacksbridger", url: "https://x.com/jacksbridger" }
+		]
+	},
+	{
+		title: "Resources",
+		color: "indigo",
+		hasResources: true,
+		resources: [
+			{ name: "Developer-Led Links Repository", url: "github.com/developer-led/links" },
+			{ name: "Developer Marketing Slack Channel", url: "marketingto.dev/" },
+			{ name: "Developer Marketing Budget", url: "posthog.com/founders/actual-marketing-budget" },
+			{ name: "Developer Roadmaps", url: "roadmap.sh/roadmaps" }
+		]
+	}
+];
+---
+
+<MinimalLayout
+	title="Developer Marketing Cheat Sheet | Luke Stahl"
+	description="A comprehensive guide to developer marketing practices, KPIs, tools, and resources for marketing to developers."
+	canonicalUrl="https://lucasstahl.com/dev-marketing-cheat-sheet"
+>
+	<div class="cheatsheet-container">
+		<!-- Fixed Header with Title and Controls -->
+		<header class="cheatsheet-header">
+			<div class="header-content">
+				<h1 class="cheatsheet-title">Developer Marketing Cheat Sheet</h1>
+				<div class="header-controls">
+					<button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle theme">
+						<i class="fa-solid fa-moon"></i>
+					</button>
+					<a href="/assets/Developer%20Marketing%20Cheatsheet.pdf" download class="download-btn">
+						<i class="fa-solid fa-download"></i>
+						<span>Download PDF</span>
+					</a>
+				</div>
+			</div>
+		</header>
+
+		<!-- Cheat Sheet Content -->
+		<main id="cheatsheet-content">
+			<!-- Role & Responsibilities Section (Top) -->
+			<section class="role-section">
+				<h2 class="section-header">Role & Responsibilities</h2>
+				<div class="role-grid">
+					{roleCategories.map(category => (
+						<div class={`role-card role-${category.color}`}>
+							<h3 class="role-title">{category.title}</h3>
+							<ul class="role-list">
+								{category.items.map(item => (
+									<li>{item}</li>
+								))}
+							</ul>
+						</div>
+					))}
+				</div>
+			</section>
+
+			<!-- Tech Stack Section -->
+			<section class="tech-stack-section">
+				<h2 class="section-header">Tech Stack</h2>
+				<div class="tech-stack-grid">
+					{techStackCategories.map(category => (
+						<div class={`role-card role-${category.color}`}>
+							<h3 class="role-title">{category.title}</h3>
+							<ul class="role-list">
+								{category.items.map(item => (
+									<li>{item}</li>
+								))}
+							</ul>
+						</div>
+					))}
+				</div>
+			</section>
+
+			<!-- Additional Sections (Bottom Grid) -->
+			<div class="cheatsheet-grid">
+			{sections.map(section => (
+				<div class={`cheatsheet-section section-${section.color}${section.isWide ? ' section-wide' : ''}`}>
+					<h2 class="section-title">{section.title}</h2>
+
+					{section.items && (
+						<ul class="item-list">
+							{section.items.map(item => (
+								<li>{item}</li>
+							))}
+						</ul>
+					)}
+
+					{section.hasCategories && section.categories && (
+						<div class="categories">
+							{section.categories.map(category => (
+								<div class="category">
+									<h3 class="category-title">{category.name}</h3>
+									<ul class="category-list">
+										{category.items.map(item => (
+											<li>{item}</li>
+										))}
+									</ul>
+								</div>
+							))}
+						</div>
+					)}
+
+					{section.hasExperts && section.experts && (
+						<ul class="expert-list">
+							{section.experts.map(expert => (
+								<li>
+									<span class="expert-name">{expert.name}</span>
+									<a href={expert.url} target="_blank" rel="noopener noreferrer" class="expert-handle">{expert.handle}</a>
+								</li>
+							))}
+						</ul>
+					)}
+
+					{section.hasResources && section.resources && (
+						<ul class="resource-list">
+							{section.resources.map(resource => (
+								<li>
+									<span class="resource-name">{resource.name}</span>
+									<a href={`https://${resource.url}`} target="_blank" rel="noopener noreferrer" class="resource-url">{resource.url}</a>
+								</li>
+							))}
+						</ul>
+					)}
+				</div>
+			))}
+			</div>
+		</main>
+
+		<!-- Footer Note -->
+		<footer class="cheatsheet-footer">
+			<p>Created by <a href="https://lucasstahl.com" target="_blank">Luke Stahl</a> • Last updated December 2025</p>
+		</footer>
+	</div>
+</MinimalLayout>
+
+<style>
+	/* Container */
+	.cheatsheet-container {
+		min-height: 100vh;
+		background: var(--bg-primary);
+		color: var(--text-primary);
+		padding: 0;
+		position: relative;
+	}
+
+	.cheatsheet-container::before {
+		content: '';
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-image:
+			repeating-linear-gradient(90deg, rgba(96, 165, 250, 0.02) 0px, transparent 1px, transparent 40px, rgba(96, 165, 250, 0.02) 41px),
+			repeating-linear-gradient(0deg, rgba(96, 165, 250, 0.02) 0px, transparent 1px, transparent 40px, rgba(96, 165, 250, 0.02) 41px);
+		pointer-events: none;
+		z-index: 0;
+	}
+
+	.cheatsheet-container > * {
+		position: relative;
+		z-index: 1;
+	}
+
+	/* Fixed Header */
+	.cheatsheet-header {
+		position: sticky;
+		top: 0;
+		z-index: 100;
+		background: var(--bg-primary);
+		border-bottom: 2px solid var(--accent-primary);
+		padding: 1.5rem 2rem;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	}
+
+	.header-content {
+		max-width: 1400px;
+		margin: 0 auto;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 2rem;
+	}
+
+	.cheatsheet-title {
+		font-family: 'Fira Code', monospace;
+		font-size: 2rem;
+		font-weight: 600;
+		color: var(--accent-primary);
+		margin: 0;
+		letter-spacing: -0.5px;
+	}
+
+	.cheatsheet-title::before {
+		content: '> ';
+		color: var(--code-keyword);
+	}
+
+	.header-controls {
+		display: flex;
+		gap: 1rem;
+		align-items: center;
+	}
+
+	.theme-toggle-btn {
+		background: var(--bg-secondary);
+		border: 2px solid var(--accent-primary);
+		color: var(--text-primary);
+		padding: 0.75rem;
+		border-radius: 8px;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 44px;
+		height: 44px;
+		font-size: 1.1rem;
+	}
+
+	.theme-toggle-btn:hover {
+		background: var(--accent-primary);
+		color: var(--bg-primary);
+		transform: translateY(-2px);
+		box-shadow: 0 4px 12px rgba(96, 165, 250, 0.3);
+	}
+
+	.download-btn {
+		background: var(--accent-primary);
+		border: none;
+		color: var(--bg-primary);
+		padding: 0.75rem 1.5rem;
+		border-radius: 8px;
+		font-family: 'Fira Code', monospace;
+		font-size: 0.95rem;
+		font-weight: 500;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		text-decoration: none;
+	}
+
+	.download-btn:hover {
+		background: var(--accent-secondary);
+		transform: translateY(-2px);
+		box-shadow: 0 4px 12px rgba(96, 165, 250, 0.4);
+	}
+
+	.download-btn i {
+		font-size: 1rem;
+	}
+
+	/* Role & Responsibilities Section */
+	.role-section {
+		max-width: 1600px;
+		margin: 0 auto;
+		padding: 1rem 2rem 0.5rem 2rem;
+	}
+
+	.section-header {
+		font-family: 'Fira Code', monospace;
+		font-size: 1.25rem;
+		font-weight: 700;
+		color: var(--accent-primary);
+		margin: 0 0 1rem 0;
+		padding: 0.5rem 1rem;
+		background: rgba(96, 165, 250, 0.1);
+		border: 2px solid var(--accent-primary);
+		border-radius: 6px;
+		text-align: center;
+		box-shadow: 0 1px 3px rgba(96, 165, 250, 0.1);
+		position: relative;
+		overflow: visible;
+	}
+
+	.section-header::after {
+		content: '';
+		position: absolute;
+		bottom: -2px;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 60%;
+		height: 2px;
+		background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+		opacity: 0.5;
+	}
+
+	.role-grid {
+		display: grid;
+		grid-template-columns: repeat(5, 1fr);
+		gap: 1rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.role-card {
+		background: var(--bg-secondary);
+		border: 2px solid rgba(255, 255, 255, 0.2);
+		border-radius: 10px;
+		padding: 1rem;
+		transition: all 0.3s ease;
+		position: relative;
+		overflow: hidden;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+	}
+
+	.role-card::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 4px;
+		opacity: 1;
+		transition: all 0.3s ease;
+	}
+
+	.role-card::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(135deg, transparent 0%, rgba(96, 165, 250, 0.03) 100%);
+		pointer-events: none;
+	}
+
+	.role-purple::before { background: var(--accent-purple); }
+	.role-blue::before { background: var(--accent-blue); }
+	.role-green::before { background: var(--accent-green); }
+	.role-yellow::before { background: var(--accent-yellow); }
+	.role-pink::before { background: #ec4899; }
+	.role-cyan::before { background: #06b6d4; }
+	.role-indigo::before { background: #6366f1; }
+	.role-orange::before { background: #f97316; }
+
+	.role-card:hover {
+		border-color: var(--accent-primary);
+		transform: translateY(-2px) scale(1.01);
+		box-shadow: 0 8px 24px rgba(96, 165, 250, 0.25);
+	}
+
+	.role-card:hover::before {
+		height: 6px;
+	}
+
+	.role-title {
+		font-family: 'Fira Code', monospace;
+		font-size: 0.95rem;
+		font-weight: 700;
+		color: var(--accent-purple);
+		margin: 0 0 0.75rem 0;
+		padding-bottom: 0.5rem;
+		border-bottom: 2px solid var(--accent-purple);
+		line-height: 1.2;
+		min-height: 2.4rem;
+	}
+
+	.role-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.role-list li {
+		padding: 0.3rem 0;
+		padding-left: 1rem;
+		position: relative;
+		color: var(--text-secondary);
+		font-size: 0.8rem;
+		line-height: 1.3;
+		display: flex;
+		align-items: flex-start;
+		transition: all 0.2s ease;
+	}
+
+	.role-list li:hover {
+		color: var(--text-primary);
+	}
+
+	.role-list li::before {
+		content: '•';
+		position: absolute;
+		left: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		color: var(--accent-primary);
+		font-weight: bold;
+		font-size: 0.9rem;
+		line-height: 1;
+	}
+
+	/* Tech Stack Section */
+	.tech-stack-section {
+		max-width: 1600px;
+		margin: 0 auto;
+		padding: 0.5rem 2rem;
+	}
+
+	.tech-stack-grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 1rem;
+		margin-bottom: 1rem;
+	}
+
+	/* Grid Layout */
+	.cheatsheet-grid {
+		max-width: 1400px;
+		margin: 0 auto;
+		padding: 2rem;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.5rem;
+		grid-auto-flow: dense;
+	}
+
+	/* Section positioning */
+	.cheatsheet-section:nth-child(1) {
+		grid-column: 1;
+		grid-row: 1 / 3;
+	}
+
+	.cheatsheet-section:nth-child(2) {
+		grid-column: 2;
+		grid-row: 1 / 3;
+	}
+
+	.cheatsheet-section:nth-child(3) {
+		grid-column: 3;
+		grid-row: 1;
+	}
+
+	.cheatsheet-section:nth-child(4) {
+		grid-column: 3;
+		grid-row: 2;
+	}
+
+	/* Section Cards */
+	.cheatsheet-section {
+		background: var(--bg-secondary);
+		border: 2px solid rgba(255, 255, 255, 0.1);
+		border-radius: 12px;
+		padding: 1.5rem;
+		transition: all 0.3s ease;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.cheatsheet-section::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 4px;
+		background: var(--accent-primary);
+		opacity: 0.7;
+	}
+
+	.cheatsheet-section:hover {
+		border-color: var(--accent-primary);
+		transform: translateY(-4px);
+		box-shadow: 0 8px 24px rgba(96, 165, 250, 0.2);
+	}
+
+	/* Section Colors */
+	.section-purple::before { background: var(--accent-purple); }
+	.section-blue::before { background: var(--accent-blue); }
+	.section-green::before { background: var(--accent-green); }
+	.section-yellow::before { background: var(--accent-yellow); }
+	.section-pink::before { background: #ec4899; }
+	.section-cyan::before { background: #06b6d4; }
+	.section-orange::before { background: #f97316; }
+	.section-indigo::before { background: #6366f1; }
+	.section-red::before { background: #ef4444; }
+
+	/* Wide Section (spans 2 columns) */
+	.section-wide {
+		grid-column: span 2;
+	}
+
+	.section-title {
+		font-family: 'Fira Code', monospace;
+		font-size: 1.25rem;
+		font-weight: 600;
+		color: var(--accent-primary);
+		margin: 0 0 1rem 0;
+		padding-bottom: 0.75rem;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	}
+
+	/* Lists */
+	.item-list,
+	.category-list,
+	.expert-list,
+	.resource-list,
+	.book-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.item-list li,
+	.category-list li {
+		padding: 0.5rem 0;
+		padding-left: 1.5rem;
+		position: relative;
+		color: var(--text-secondary);
+		font-size: 0.9rem;
+		line-height: 1.5;
+	}
+
+	.item-list li::before,
+	.category-list li::before {
+		content: '→';
+		position: absolute;
+		left: 0;
+		color: var(--accent-primary);
+		font-weight: bold;
+	}
+
+	/* Categories */
+	.categories {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	/* Wide section categories display side by side */
+	.section-wide .categories {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1rem;
+	}
+
+	.category {
+		background: var(--bg-tertiary);
+		padding: 1rem;
+		border-radius: 8px;
+		border-left: 3px solid var(--accent-primary);
+	}
+
+	.category-title {
+		font-family: 'Fira Code', monospace;
+		font-size: 0.95rem;
+		font-weight: 600;
+		color: var(--accent-purple);
+		margin: 0 0 0.5rem 0;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+	}
+
+	/* Experts */
+	.expert-list li {
+		padding: 0.5rem 0;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+	}
+
+	.expert-list li:last-child {
+		border-bottom: none;
+	}
+
+	.expert-name {
+		color: var(--text-primary);
+		font-weight: 500;
+		font-size: 0.9rem;
+	}
+
+	.expert-handle {
+		color: var(--accent-primary);
+		font-family: 'Fira Code', monospace;
+		font-size: 0.85rem;
+		text-decoration: none;
+		transition: all 0.2s ease;
+	}
+
+	.expert-handle:hover {
+		color: var(--accent-secondary);
+	}
+
+	/* Resources */
+	.resource-list li {
+		padding: 0.75rem 0;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+	}
+
+	.resource-list li:last-child {
+		border-bottom: none;
+	}
+
+	.resource-name {
+		display: block;
+		color: var(--text-primary);
+		font-weight: 500;
+		font-size: 0.9rem;
+		margin-bottom: 0.25rem;
+	}
+
+	.resource-url {
+		display: block;
+		color: var(--accent-primary);
+		font-family: 'Fira Code', monospace;
+		font-size: 0.8rem;
+		text-decoration: none;
+		transition: all 0.2s ease;
+	}
+
+	.resource-url:hover {
+		color: var(--accent-secondary);
+		text-decoration: underline;
+	}
+
+	/* Footer */
+	.cheatsheet-footer {
+		max-width: 1400px;
+		margin: 0 auto;
+		padding: 2rem;
+		text-align: center;
+		border-top: 1px solid rgba(255, 255, 255, 0.1);
+	}
+
+	.cheatsheet-footer p {
+		color: var(--text-secondary);
+		font-size: 0.9rem;
+		margin: 0;
+	}
+
+	.cheatsheet-footer a {
+		color: var(--accent-primary);
+		text-decoration: none;
+		transition: color 0.3s ease;
+	}
+
+	.cheatsheet-footer a:hover {
+		color: var(--accent-secondary);
+		text-decoration: underline;
+	}
+
+	/* Responsive Design */
+	@media (max-width: 1400px) {
+		.role-grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
+
+		.tech-stack-grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	@media (max-width: 1200px) {
+		.cheatsheet-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		/* Reset grid positioning on smaller screens */
+		.cheatsheet-section:nth-child(1),
+		.cheatsheet-section:nth-child(2),
+		.cheatsheet-section:nth-child(3),
+		.cheatsheet-section:nth-child(4) {
+			grid-column: auto;
+			grid-row: auto;
+		}
+
+		.role-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		.tech-stack-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (max-width: 900px) {
+		.role-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (max-width: 768px) {
+		.cheatsheet-header {
+			padding: 0.75rem 1rem;
+			box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+		}
+
+		.header-content {
+			flex-direction: row;
+			align-items: center;
+			gap: 1rem;
+		}
+
+		.cheatsheet-title {
+			font-size: 1.1rem;
+			letter-spacing: -0.3px;
+		}
+
+		.cheatsheet-title::before {
+			content: '';
+		}
+
+		.header-controls {
+			gap: 0.5rem;
+			flex-shrink: 0;
+		}
+
+		.theme-toggle-btn {
+			width: 36px;
+			height: 36px;
+			padding: 0.5rem;
+			font-size: 0.9rem;
+		}
+
+		.download-btn {
+			padding: 0.5rem 0.75rem;
+			font-size: 0.85rem;
+		}
+
+		.download-btn span {
+			display: none;
+		}
+
+		.download-btn i {
+			font-size: 0.9rem;
+		}
+
+		.role-section,
+		.tech-stack-section {
+			padding: 0.75rem 1rem;
+		}
+
+		.section-header {
+			font-size: 1rem;
+			padding: 0.4rem 0.75rem;
+			margin: 0 0 0.75rem 0;
+		}
+
+		.role-grid,
+		.tech-stack-grid {
+			grid-template-columns: 1fr;
+			gap: 0.75rem;
+		}
+
+		.role-card {
+			padding: 0.75rem;
+		}
+
+		.role-title {
+			font-size: 0.85rem;
+			min-height: auto;
+		}
+
+		.role-list li {
+			font-size: 0.75rem;
+			padding: 0.25rem 0;
+		}
+
+		.cheatsheet-grid {
+			grid-template-columns: 1fr;
+			padding: 0.75rem 1rem;
+			gap: 0.75rem;
+		}
+
+		.section-wide .categories {
+			grid-template-columns: 1fr;
+		}
+
+		.cheatsheet-section {
+			padding: 0.75rem;
+		}
+
+		.section-title {
+			font-size: 1rem;
+		}
+
+		.category-title {
+			font-size: 0.85rem;
+		}
+
+		.item-list li,
+		.category-list li {
+			font-size: 0.8rem;
+		}
+
+		.expert-name,
+		.resource-name {
+			font-size: 0.85rem;
+		}
+
+		.expert-handle,
+		.resource-url {
+			font-size: 0.75rem;
+		}
+	}
+
+	/* Print Styles */
+	@media print {
+		.cheatsheet-container {
+			padding: 0;
+		}
+
+		.cheatsheet-header {
+			position: relative;
+			border-bottom: 2px solid #000;
+			padding: 0.5rem 1rem;
+		}
+
+		.cheatsheet-title {
+			font-size: 1.5rem;
+		}
+
+		.header-controls {
+			display: none;
+		}
+
+		.role-section,
+		.tech-stack-section {
+			padding: 0.5rem 1rem;
+		}
+
+		.section-header {
+			font-size: 1rem;
+			padding: 0.3rem 0.5rem;
+			margin: 0 0 0.5rem 0;
+		}
+
+		.role-grid,
+		.tech-stack-grid {
+			gap: 0.5rem;
+			margin-bottom: 0.5rem;
+		}
+
+		.role-card {
+			padding: 0.5rem;
+		}
+
+		.role-title {
+			font-size: 0.8rem;
+			min-height: auto;
+			margin: 0 0 0.3rem 0;
+			padding-bottom: 0.3rem;
+		}
+
+		.role-list li {
+			padding: 0.15rem 0;
+			font-size: 0.7rem;
+		}
+
+		.cheatsheet-grid {
+			padding: 0.5rem 1rem;
+			gap: 0.5rem;
+		}
+
+		.cheatsheet-section {
+			page-break-inside: avoid;
+			break-inside: avoid;
+			padding: 0.5rem;
+		}
+
+		.section-title {
+			font-size: 1rem;
+			margin: 0 0 0.5rem 0;
+			padding-bottom: 0.3rem;
+		}
+
+		.category-title {
+			font-size: 0.8rem;
+			margin: 0 0 0.3rem 0;
+		}
+
+		.item-list li,
+		.category-list li {
+			padding: 0.2rem 0;
+			font-size: 0.75rem;
+		}
+
+		.expert-list li,
+		.resource-list li {
+			padding: 0.3rem 0;
+		}
+
+		.expert-name,
+		.resource-name {
+			font-size: 0.8rem;
+		}
+
+		.expert-handle,
+		.resource-url {
+			font-size: 0.7rem;
+		}
+
+		.cheatsheet-footer {
+			display: none;
+		}
+	}
+
+	/* Light Mode Overrides */
+	[data-theme="light"] .section-header {
+		background: rgba(37, 99, 235, 0.08);
+		color: var(--accent-primary);
+		box-shadow: 0 1px 3px rgba(37, 99, 235, 0.1);
+		border-color: var(--accent-primary);
+	}
+
+	[data-theme="light"] .role-card {
+		background: #ffffff;
+		border-color: rgba(0, 0, 0, 0.2);
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+	}
+
+	[data-theme="light"] .role-card:hover {
+		border-color: var(--accent-primary);
+		box-shadow: 0 8px 24px rgba(37, 99, 235, 0.15);
+	}
+
+	[data-theme="light"] .cheatsheet-section {
+		background: #ffffff;
+		border-color: rgba(0, 0, 0, 0.12);
+	}
+
+	[data-theme="light"] .cheatsheet-section:hover {
+		border-color: var(--accent-primary);
+		box-shadow: 0 8px 24px rgba(37, 99, 235, 0.15);
+	}
+
+	[data-theme="light"] .category {
+		background: var(--bg-tertiary);
+	}
+
+	[data-theme="light"] .cheatsheet-header {
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+	}
+</style>

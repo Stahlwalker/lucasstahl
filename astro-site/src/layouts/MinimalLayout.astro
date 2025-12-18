@@ -1,0 +1,163 @@
+---
+interface Props {
+	title: string;
+	description?: string;
+	canonicalUrl?: string;
+}
+
+const {
+	title,
+	description = "Developer Marketing Cheat Sheet - A comprehensive guide to developer marketing practices, metrics, and resources.",
+	canonicalUrl = "https://lucasstahl.com/dev-marketing-cheat-sheet"
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content={description}>
+	<link rel="canonical" href={canonicalUrl} />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>{title}</title>
+
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website">
+	<meta property="og:url" content={canonicalUrl}>
+	<meta property="og:title" content={title}>
+	<meta property="og:description" content={description}>
+
+	<!-- Twitter -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:url" content={canonicalUrl}>
+	<meta name="twitter:title" content={title}>
+	<meta name="twitter:description" content={description}>
+
+	<link href="/LS.ico" rel="icon">
+
+	<!-- Preconnect to external origins for faster resource loading -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+	<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/dark-mode.css">
+
+	<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+	<!-- favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="/LS.ico" />
+	<link rel="apple-touch-icon" href="/LS.ico" />
+	<meta name="application-name" content="LucasStahl" />
+	<meta name="msapplication-TileColor" content="#FFFFFF" />
+	<meta name="msapplication-TileImage" content="https://lucasstahl.com/LS.ico" />
+
+	<!-- Theme Script (runs immediately to prevent flash) -->
+	<script is:inline>
+		// Initialize theme before page renders to prevent flash
+		(function() {
+			const savedMode = localStorage.getItem('theme');
+			let theme;
+
+			if (savedMode === 'dark' || savedMode === 'light') {
+				// User has manually set dark or light
+				theme = savedMode;
+			} else {
+				// System mode or no preference - check system preference
+				const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+				theme = prefersDark ? 'dark' : 'light';
+			}
+
+			document.documentElement.setAttribute('data-theme', theme);
+		})();
+	</script>
+</head>
+<body>
+	<slot />
+
+	<!-- Theme Toggle Functionality -->
+	<script is:inline>
+		document.addEventListener('DOMContentLoaded', function() {
+			const themeToggle = document.getElementById('themeToggle');
+			const html = document.documentElement;
+
+			// Get current theme mode (dark, light, or system)
+			function getCurrentMode() {
+				return localStorage.getItem('theme') || 'system';
+			}
+
+			// Get the actual theme to display (resolves system to dark/light)
+			function getDisplayTheme() {
+				const mode = getCurrentMode();
+				if (mode === 'system') {
+					return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+				}
+				return mode;
+			}
+
+			// Update icon based on current mode
+			function updateIcon() {
+				if (!themeToggle) return;
+
+				const mode = getCurrentMode();
+				let icon;
+
+				if (mode === 'dark') {
+					icon = 'fa-moon';
+				} else if (mode === 'light') {
+					icon = 'fa-sun';
+				} else {
+					icon = 'fa-display'; // system mode
+				}
+
+				const iconElement = themeToggle.querySelector('i');
+				if (iconElement) {
+					iconElement.className = `fa-solid ${icon}`;
+				}
+			}
+
+			// Apply theme to document
+			function applyTheme() {
+				const displayTheme = getDisplayTheme();
+				html.setAttribute('data-theme', displayTheme);
+			}
+
+			// Toggle theme: dark -> light -> system -> dark
+			function toggleTheme() {
+				const currentMode = getCurrentMode();
+				let newMode;
+
+				if (currentMode === 'dark') {
+					newMode = 'light';
+				} else if (currentMode === 'light') {
+					newMode = 'system';
+				} else {
+					newMode = 'dark';
+				}
+
+				localStorage.setItem('theme', newMode);
+				applyTheme();
+				updateIcon();
+			}
+
+			// Set up event listener
+			if (themeToggle) {
+				themeToggle.addEventListener('click', toggleTheme);
+			}
+
+			// Listen for system theme changes when in system mode
+			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
+				if (getCurrentMode() === 'system') {
+					applyTheme();
+				}
+			});
+
+			// Initialize
+			applyTheme();
+			updateIcon();
+		});
+	</script>
+</body>
+</html>
