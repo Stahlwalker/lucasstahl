@@ -257,6 +257,9 @@ const sections = [
 		<!-- Fixed Header with Title and Controls -->
 		<header class="cheatsheet-header">
 			<div class="header-content">
+				<a href="/" class="home-btn" aria-label="Go to home page">
+					<i class="fa-solid fa-home"></i>
+				</a>
 				<h1 class="cheatsheet-title">Developer Marketing Cheat Sheet</h1>
 				<div class="header-controls">
 					<button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle theme">
@@ -456,6 +459,7 @@ const sections = [
 		align-items: center;
 	}
 
+	.home-btn,
 	.theme-toggle-btn {
 		background: var(--bg-secondary);
 		border: 2px solid var(--accent-primary);
@@ -470,8 +474,10 @@ const sections = [
 		width: 44px;
 		height: 44px;
 		font-size: 1.1rem;
+		text-decoration: none;
 	}
 
+	.home-btn:hover,
 	.theme-toggle-btn:hover {
 		background: var(--accent-primary);
 		color: var(--bg-primary);
@@ -962,6 +968,7 @@ const sections = [
 			flex-shrink: 0;
 		}
 
+		.home-btn,
 		.theme-toggle-btn {
 			width: 36px;
 			height: 36px;
