@@ -224,6 +224,33 @@ const suggestedPosts = allPosts.slice(0, 2);
   ogDescription={metaDesc}
   ogImage={ogImageUrl}
 >
+  <!-- JSON-LD Structured Data - BlogPosting Schema -->
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "description": metaDesc,
+    "image": ogImageUrl,
+    "datePublished": post.publishedDate,
+    "dateModified": post.publishedDate,
+    "author": {
+      "@type": "Person",
+      "name": "Luke Stahl",
+      "url": "https://lucasstahl.com"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Luke Stahl",
+      "url": "https://lucasstahl.com"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://lucasstahl.com/blog/${post.slug}`
+    },
+    "wordCount": post.readingTime ? post.readingTime * 200 : undefined,
+    "keywords": post.tags.join(", ")
+  })} />
+
   <article class="blog-post">
     <div class="blog-post-container">
       <a href="/blog" class="back-to-blog">

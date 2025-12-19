@@ -65,6 +65,33 @@ const {
 	<meta name="twitter:description" content={ogDescription}>
 	<meta name="twitter:image" content={ogImage}>
 
+	<!-- JSON-LD Structured Data - Person Schema -->
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "Person",
+			"name": "Luke Stahl",
+			"url": "https://lucasstahl.com",
+			"image": "https://lucasstahl.com/assets/images/Luke_Stahl_Headshot.jpg",
+			"jobTitle": "Developer Marketer",
+			"description": "Developer marketer and frontend developer who bridges the gap between marketing strategy and technical execution",
+			"sameAs": [
+				"https://github.com/Stahlwalker",
+				"https://www.linkedin.com/in/lucasstahl/"
+			],
+			"knowsAbout": [
+				"Developer Marketing",
+				"Frontend Development",
+				"React",
+				"Next.js",
+				"Astro",
+				"Content Strategy",
+				"SEO",
+				"Web Development"
+			]
+		}
+	</script>
+
 	<link href="/LS.ico" rel="icon">
 
 	<!-- Preconnect to external origins for faster resource loading -->
