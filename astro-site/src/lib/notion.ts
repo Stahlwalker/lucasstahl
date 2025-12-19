@@ -16,6 +16,25 @@ if (!auth) {
 const notion = new Client({ auth });
 const n2m = new NotionToMarkdown({ notionClient: notion });
 
+// Calculate reading time based on word count
+function calculateReadingTime(content: string): number {
+  // Strip markdown formatting for accurate word count
+  const plainText = content
+    .replace(/```[\s\S]*?```/g, '') // Remove code blocks
+    .replace(/`[^`]*`/g, '') // Remove inline code
+    .replace(/!\[.*?\]\(.*?\)/g, '') // Remove images
+    .replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1') // Replace links with their text
+    .replace(/[#*_~`]/g, '') // Remove markdown symbols
+    .replace(/\s+/g, ' ') // Normalize whitespace
+    .trim();
+
+  const wordCount = plainText.split(/\s+/).length;
+  const wordsPerMinute = 200;
+  const readingTime = Math.ceil(wordCount / wordsPerMinute);
+
+  return readingTime;
+}
+
 // Utility function to download and save images
 async function downloadImage(url: string, slug: string, imageName: string): Promise<string> {
   try {
@@ -69,6 +88,7 @@ export interface BlogPost {
   metaTitle?: string;
   metaDescription?: string;
   content?: string;
+  readingTime?: number;
 }
 
 export async function getBlogPosts(): Promise<BlogPost[]> {
@@ -223,10 +243,14 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
       processedOgImage = await downloadImage(processedOgImage, slug, ogImageName);
     }
 
+    // Calculate reading time from the content
+    const readingTime = calculateReadingTime(processedContent);
+
     return {
       ...post,
       content: processedContent,
       ogImage: processedOgImage,
+      readingTime,
     };
   } catch (error) {
     console.error('Error fetching content for post:', post.slug, error);

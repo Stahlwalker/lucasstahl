@@ -249,13 +249,24 @@ const suggestedPosts = allPosts.slice(0, 2);
             {post.title}
             <span class="code-bracket">/&gt;</span>
           </h1>
-          <time class="blog-post-date">
-            {new Date(post.publishedDate).toLocaleDateString('en-US', {
-              month: 'long',
-              day: 'numeric',
-              year: 'numeric'
-            })}
-          </time>
+          <div class="blog-post-meta">
+            <time class="blog-post-date">
+              {new Date(post.publishedDate).toLocaleDateString('en-US', {
+                month: 'long',
+                day: 'numeric',
+                year: 'numeric'
+              })}
+            </time>
+            {post.readingTime && (
+              <>
+                <span class="meta-divider">•</span>
+                <span class="reading-time">
+                  <i class="fa-solid fa-clock"></i>
+                  {post.readingTime} min read
+                </span>
+              </>
+            )}
+          </div>
         </div>
       </header>
 
@@ -538,10 +549,35 @@ const suggestedPosts = allPosts.slice(0, 2);
       line-height: 1.2;
     }
 
+    .blog-post-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
     .blog-post-date {
-      display: block;
       font-size: 0.9rem;
       color: rgba(228, 228, 231, 0.6);
+    }
+
+    .meta-divider {
+      color: rgba(228, 228, 231, 0.4);
+      font-size: 0.8rem;
+    }
+
+    .reading-time {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: rgba(228, 228, 231, 0.6);
+    }
+
+    .reading-time i {
+      font-size: 0.85rem;
+      color: var(--accent-blue, #60a5fa);
     }
 
     .blog-post-tags .tag {
@@ -851,6 +887,19 @@ const suggestedPosts = allPosts.slice(0, 2);
       border: 1.5px solid rgba(14, 165, 233, 0.5);
       color: #0284c7;
       text-shadow: none;
+    }
+
+    :global([data-theme="light"]) .blog-post-date,
+    :global([data-theme="light"]) .reading-time {
+      color: rgba(24, 24, 27, 0.7);
+    }
+
+    :global([data-theme="light"]) .meta-divider {
+      color: rgba(24, 24, 27, 0.5);
+    }
+
+    :global([data-theme="light"]) .reading-time i {
+      color: var(--accent-primary);
     }
 
     :global([data-theme="light"]) .comments-section {
