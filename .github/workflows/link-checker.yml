@@ -1,0 +1,97 @@
+name: Check Links
+
+# Runs every Monday at 9 AM UTC (4 AM EST / 1 AM PST)
+on:
+  schedule:
+    - cron: '0 9 * * 1'
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  link-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check links with Lychee
+        uses: lycheeverse/lychee-action@v1
+        with:
+          # Crawl the entire site starting from homepage
+          args: |
+            --verbose
+            --no-progress
+            --accept 200,201,202,203,204,206,301,302,303,304,307,308,429
+            --exclude-all-private
+            --exclude '^mailto:'
+            --exclude 'linkedin.com/in'
+            --exclude 'twitter.com'
+            --exclude 'facebook.com'
+            --exclude 'instagram.com'
+            --max-retries 3
+            --retry-wait-time 5
+            --timeout 30
+            https://lucasstahl.com/
+          # Fail only if there are broken links (not warnings)
+          fail: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create Issue if links are broken
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // Check if an issue already exists
+            const issues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'broken-links'
+            });
+
+            // If there's already an open issue, add a comment instead
+            if (issues.data.length > 0) {
+              const existingIssue = issues.data[0];
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existingIssue.number,
+                body: `🔗 **Broken links still detected on ${new Date().toLocaleDateString()}**\n\n` +
+                      `The link checker found broken links again.\n\n` +
+                      `[View workflow run](${context.payload.repository.html_url}/actions/runs/${context.runId})`
+              });
+            } else {
+              // Create a new issue
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: '🔗 Broken Links Detected',
+                body: `## Broken Links Found\n\n` +
+                      `The automated link checker found broken links on your site.\n\n` +
+                      `### Details\n` +
+                      `- **Date**: ${new Date().toLocaleDateString()}\n` +
+                      `- **Pages Checked**: All pages on lucasstahl.com\n\n` +
+                      `### Action Required\n` +
+                      `1. Review the [workflow run logs](${context.payload.repository.html_url}/actions/runs/${context.runId}) for details\n` +
+                      `2. Fix or remove broken links\n` +
+                      `3. Close this issue once fixed\n\n` +
+                      `---\n` +
+                      `*This issue was automatically created by the link checker workflow.*`,
+                labels: ['broken-links', 'maintenance']
+              });
+            }
+
+      - name: Generate Summary
+        if: always()
+        run: |
+          echo "# 🔗 Link Check Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ job.status }}" == "success" ]; then
+            echo "✅ **All links are working!**" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "No broken links were found across your entire site." >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ **Broken links detected**" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Check the logs above for details on which links are broken." >> $GITHUB_STEP_SUMMARY
+          fi
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "---" >> $GITHUB_STEP_SUMMARY
+          echo "Checked: https://lucasstahl.com/ (all pages)" >> $GITHUB_STEP_SUMMARY
