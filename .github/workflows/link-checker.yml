@@ -24,6 +24,11 @@ jobs:
             --exclude 'twitter.com'
             --exclude 'facebook.com'
             --exclude 'instagram.com'
+            --exclude 'fonts.googleapis.com/$'
+            --exclude 'fonts.gstatic.com/$'
+            --exclude 'us-i.posthog.com/$'
+            --exclude 'cdnjs.cloudflare.com/$'
+            --exclude 'maxcdn.bootstrapcdn.com/$'
             --max-retries 3
             --retry-wait-time 5
             --timeout 30
