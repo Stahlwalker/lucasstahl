@@ -1,0 +1,169 @@
+name: Weekly Performance Check
+
+# Runs every Sunday at 9 AM UTC (4 AM EST / 1 AM PST)
+on:
+  schedule:
+    - cron: '0 9 * * 0'
+  workflow_dispatch:  # Allows manual triggering from Actions tab
+
+jobs:
+  performance-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check Performance - Home
+        id: home
+        run: |
+          echo "Testing homepage..."
+          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lucasstahl.com/&strategy=mobile&category=performance&category=accessibility&category=best-practices&category=seo")
+
+          PERF=$(echo $RESULT | jq -r '.lighthouseResult.categories.performance.score * 100')
+          A11Y=$(echo $RESULT | jq -r '.lighthouseResult.categories.accessibility.score * 100')
+          BP=$(echo $RESULT | jq -r '.lighthouseResult.categories["best-practices"].score * 100')
+          SEO=$(echo $RESULT | jq -r '.lighthouseResult.categories.seo.score * 100')
+
+          LCP=$(echo $RESULT | jq -r '.lighthouseResult.audits["largest-contentful-paint"].numericValue')
+          CLS=$(echo $RESULT | jq -r '.lighthouseResult.audits["cumulative-layout-shift"].numericValue')
+          TBT=$(echo $RESULT | jq -r '.lighthouseResult.audits["total-blocking-time"].numericValue')
+
+          echo "performance=$PERF" >> $GITHUB_OUTPUT
+          echo "accessibility=$A11Y" >> $GITHUB_OUTPUT
+          echo "best_practices=$BP" >> $GITHUB_OUTPUT
+          echo "seo=$SEO" >> $GITHUB_OUTPUT
+          echo "lcp=$LCP" >> $GITHUB_OUTPUT
+          echo "cls=$CLS" >> $GITHUB_OUTPUT
+          echo "tbt=$TBT" >> $GITHUB_OUTPUT
+
+      - name: Check Performance - About
+        id: about
+        run: |
+          echo "Testing about page..."
+          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lucasstahl.com/about&strategy=mobile&category=performance&category=accessibility&category=best-practices&category=seo")
+
+          PERF=$(echo $RESULT | jq -r '.lighthouseResult.categories.performance.score * 100')
+          A11Y=$(echo $RESULT | jq -r '.lighthouseResult.categories.accessibility.score * 100')
+          BP=$(echo $RESULT | jq -r '.lighthouseResult.categories["best-practices"].score * 100')
+          SEO=$(echo $RESULT | jq -r '.lighthouseResult.categories.seo.score * 100')
+
+          echo "performance=$PERF" >> $GITHUB_OUTPUT
+          echo "accessibility=$A11Y" >> $GITHUB_OUTPUT
+          echo "best_practices=$BP" >> $GITHUB_OUTPUT
+          echo "seo=$SEO" >> $GITHUB_OUTPUT
+
+      - name: Check Performance - Blog
+        id: blog
+        run: |
+          echo "Testing blog page..."
+          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lucasstahl.com/blog&strategy=mobile&category=performance&category=accessibility&category=best-practices&category=seo")
+
+          PERF=$(echo $RESULT | jq -r '.lighthouseResult.categories.performance.score * 100')
+          A11Y=$(echo $RESULT | jq -r '.lighthouseResult.categories.accessibility.score * 100')
+          BP=$(echo $RESULT | jq -r '.lighthouseResult.categories["best-practices"].score * 100')
+          SEO=$(echo $RESULT | jq -r '.lighthouseResult.categories.seo.score * 100')
+
+          echo "performance=$PERF" >> $GITHUB_OUTPUT
+          echo "accessibility=$A11Y" >> $GITHUB_OUTPUT
+          echo "best_practices=$BP" >> $GITHUB_OUTPUT
+          echo "seo=$SEO" >> $GITHUB_OUTPUT
+
+      - name: Check Performance - Builds
+        id: builds
+        run: |
+          echo "Testing builds page..."
+          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lucasstahl.com/builds&strategy=mobile&category=performance&category=accessibility&category=best-practices&category=seo")
+
+          PERF=$(echo $RESULT | jq -r '.lighthouseResult.categories.performance.score * 100')
+          A11Y=$(echo $RESULT | jq -r '.lighthouseResult.categories.accessibility.score * 100')
+          BP=$(echo $RESULT | jq -r '.lighthouseResult.categories["best-practices"].score * 100')
+          SEO=$(echo $RESULT | jq -r '.lighthouseResult.categories.seo.score * 100')
+
+          echo "performance=$PERF" >> $GITHUB_OUTPUT
+          echo "accessibility=$A11Y" >> $GITHUB_OUTPUT
+          echo "best_practices=$BP" >> $GITHUB_OUTPUT
+          echo "seo=$SEO" >> $GITHUB_OUTPUT
+
+      - name: Check Performance - Gems
+        id: gems
+        run: |
+          echo "Testing gems page..."
+          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lucasstahl.com/gems&strategy=mobile&category=performance&category=accessibility&category=best-practices&category=seo")
+
+          PERF=$(echo $RESULT | jq -r '.lighthouseResult.categories.performance.score * 100')
+          A11Y=$(echo $RESULT | jq -r '.lighthouseResult.categories.accessibility.score * 100')
+          BP=$(echo $RESULT | jq -r '.lighthouseResult.categories["best-practices"].score * 100')
+          SEO=$(echo $RESULT | jq -r '.lighthouseResult.categories.seo.score * 100')
+
+          echo "performance=$PERF" >> $GITHUB_OUTPUT
+          echo "accessibility=$A11Y" >> $GITHUB_OUTPUT
+          echo "best_practices=$BP" >> $GITHUB_OUTPUT
+          echo "seo=$SEO" >> $GITHUB_OUTPUT
+
+      - name: Generate Summary
+        run: |
+          echo "# 📊 Weekly Performance Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## Core Web Vitals (Homepage)" >> $GITHUB_STEP_SUMMARY
+          echo "- **LCP**: ${{ steps.home.outputs.lcp }}ms (target: <2500ms)" >> $GITHUB_STEP_SUMMARY
+          echo "- **CLS**: ${{ steps.home.outputs.cls }} (target: <0.1)" >> $GITHUB_STEP_SUMMARY
+          echo "- **TBT**: ${{ steps.home.outputs.tbt }}ms (target: <300ms)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## Lighthouse Scores (All Pages)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Page | Performance | Accessibility | Best Practices | SEO |" >> $GITHUB_STEP_SUMMARY
+          echo "|------|-------------|---------------|----------------|-----|" >> $GITHUB_STEP_SUMMARY
+          echo "| Home | ${{ steps.home.outputs.performance }} | ${{ steps.home.outputs.accessibility }} | ${{ steps.home.outputs.best_practices }} | ${{ steps.home.outputs.seo }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| About | ${{ steps.about.outputs.performance }} | ${{ steps.about.outputs.accessibility }} | ${{ steps.about.outputs.best_practices }} | ${{ steps.about.outputs.seo }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Blog | ${{ steps.blog.outputs.performance }} | ${{ steps.blog.outputs.accessibility }} | ${{ steps.blog.outputs.best_practices }} | ${{ steps.blog.outputs.seo }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Builds | ${{ steps.builds.outputs.performance }} | ${{ steps.builds.outputs.accessibility }} | ${{ steps.builds.outputs.best_practices }} | ${{ steps.builds.outputs.seo }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Gems | ${{ steps.gems.outputs.performance }} | ${{ steps.gems.outputs.accessibility }} | ${{ steps.gems.outputs.best_practices }} | ${{ steps.gems.outputs.seo }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "---" >> $GITHUB_STEP_SUMMARY
+          echo "🔗 [View detailed reports on PageSpeed Insights](https://pagespeed.web.dev/?url=https://lucasstahl.com/)" >> $GITHUB_STEP_SUMMARY
+
+      - name: Check Thresholds
+        run: |
+          FAIL=0
+
+          # Check each page against thresholds
+          if (( $(echo "${{ steps.home.outputs.performance }} < 85" | bc -l) )); then
+            echo "❌ Home performance score (${{ steps.home.outputs.performance }}) below threshold (85)"
+            FAIL=1
+          fi
+
+          if (( $(echo "${{ steps.about.outputs.performance }} < 85" | bc -l) )); then
+            echo "❌ About performance score (${{ steps.about.outputs.performance }}) below threshold (85)"
+            FAIL=1
+          fi
+
+          if (( $(echo "${{ steps.blog.outputs.performance }} < 85" | bc -l) )); then
+            echo "❌ Blog performance score (${{ steps.blog.outputs.performance }}) below threshold (85)"
+            FAIL=1
+          fi
+
+          if (( $(echo "${{ steps.builds.outputs.performance }} < 85" | bc -l) )); then
+            echo "❌ Builds performance score (${{ steps.builds.outputs.performance }}) below threshold (85)"
+            FAIL=1
+          fi
+
+          if (( $(echo "${{ steps.gems.outputs.performance }} < 85" | bc -l) )); then
+            echo "❌ Gems performance score (${{ steps.gems.outputs.performance }}) below threshold (85)"
+            FAIL=1
+          fi
+
+          # Check Core Web Vitals
+          if (( $(echo "${{ steps.home.outputs.lcp }} > 2500" | bc -l) )); then
+            echo "❌ LCP (${{ steps.home.outputs.lcp }}ms) exceeds target (2500ms)"
+            FAIL=1
+          fi
+
+          if (( $(echo "${{ steps.home.outputs.cls }} > 0.1" | bc -l) )); then
+            echo "❌ CLS (${{ steps.home.outputs.cls }}) exceeds target (0.1)"
+            FAIL=1
+          fi
+
+          if [ $FAIL -eq 1 ]; then
+            echo "⚠️ Performance check failed - scores below thresholds"
+            exit 1
+          else
+            echo "✅ All performance checks passed!"
+          fi
