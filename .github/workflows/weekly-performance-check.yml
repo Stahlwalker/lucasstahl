@@ -9,6 +9,9 @@ on:
 jobs:
   performance-check:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
 
     steps:
       - name: Check Performance - Home
@@ -281,3 +284,53 @@ jobs:
           echo "- TBT: ${{ steps.home-desktop.outputs.tbt }}ms"
           echo ""
           echo "✅ Weekly performance check complete!"
+
+      - name: Create Performance Report Issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          REPORT=$(cat <<'EOF'
+          ## 📊 Weekly Performance Report - $(date '+%B %d, %Y')
+
+          ### 📱 Mobile Performance Scores
+          | Page | Score |
+          |------|-------|
+          | Home | ${{ steps.home.outputs.performance }} |
+          | About | ${{ steps.about.outputs.performance }} |
+          | Blog | ${{ steps.blog.outputs.performance }} |
+          | Builds | ${{ steps.builds.outputs.performance }} |
+          | Gems | ${{ steps.gems.outputs.performance }} |
+
+          ### 🖥️ Desktop Performance Scores
+          | Page | Score |
+          |------|-------|
+          | Home | ${{ steps.home-desktop.outputs.performance }} |
+          | About | ${{ steps.about-desktop.outputs.performance }} |
+          | Blog | ${{ steps.blog-desktop.outputs.performance }} |
+          | Builds | ${{ steps.builds-desktop.outputs.performance }} |
+          | Gems | ${{ steps.gems-desktop.outputs.performance }} |
+
+          ### 🎯 Core Web Vitals
+
+          **📱 Mobile (Homepage)**
+          - **LCP**: ${{ steps.home.outputs.lcp }}ms (target: <2500ms)
+          - **CLS**: ${{ steps.home.outputs.cls }} (target: <0.1)
+          - **TBT**: ${{ steps.home.outputs.tbt }}ms (target: <300ms)
+
+          **🖥️ Desktop (Homepage)**
+          - **LCP**: ${{ steps.home-desktop.outputs.lcp }}ms (target: <2500ms)
+          - **CLS**: ${{ steps.home-desktop.outputs.cls }} (target: <0.1)
+          - **TBT**: ${{ steps.home-desktop.outputs.tbt }}ms (target: <300ms)
+
+          ---
+
+          🔗 [View Full Workflow Run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+          🔗 [Test on PageSpeed Insights](https://pagespeed.web.dev/?url=https://lucasstahl.com/)
+          EOF
+          )
+
+          gh issue create \
+            --title "📊 Weekly Performance Report - $(date '+%B %d, %Y')" \
+            --body "$REPORT" \
+            --label "performance" \
+            --repo ${{ github.repository }}
