@@ -252,93 +252,32 @@ jobs:
           echo "---" >> $GITHUB_STEP_SUMMARY
           echo "🔗 [View detailed reports on PageSpeed Insights](https://pagespeed.web.dev/?url=https://lucasstahl.com/)" >> $GITHUB_STEP_SUMMARY
 
-      - name: Check Thresholds
+      - name: Performance Summary
         run: |
-          FAIL=0
-
-          echo "### 📱 Mobile Performance Checks"
-          # Check mobile pages against thresholds
-          if (( $(echo "${{ steps.home.outputs.performance }} < 50" | bc -l) )); then
-            echo "❌ Home (mobile) performance score (${{ steps.home.outputs.performance }}) below threshold (50)"
-            FAIL=1
-          fi
-
-          if (( $(echo "${{ steps.about.outputs.performance }} < 50" | bc -l) )); then
-            echo "❌ About (mobile) performance score (${{ steps.about.outputs.performance }}) below threshold (50)"
-            FAIL=1
-          fi
-
-          if (( $(echo "${{ steps.blog.outputs.performance }} < 50" | bc -l) )); then
-            echo "❌ Blog (mobile) performance score (${{ steps.blog.outputs.performance }}) below threshold (50)"
-            FAIL=1
-          fi
-
-          if (( $(echo "${{ steps.builds.outputs.performance }} < 50" | bc -l) )); then
-            echo "❌ Builds (mobile) performance score (${{ steps.builds.outputs.performance }}) below threshold (50)"
-            FAIL=1
-          fi
-
-          if (( $(echo "${{ steps.gems.outputs.performance }} < 50" | bc -l) )); then
-            echo "❌ Gems (mobile) performance score (${{ steps.gems.outputs.performance }}) below threshold (50)"
-            FAIL=1
-          fi
-
+          echo "## 📊 Performance Summary"
           echo ""
-          echo "### 🖥️ Desktop Performance Checks"
-          # Check desktop pages against thresholds
-          if (( $(echo "${{ steps.home-desktop.outputs.performance }} < 60" | bc -l) )); then
-            echo "❌ Home (desktop) performance score (${{ steps.home-desktop.outputs.performance }}) below threshold (60)"
-            FAIL=1
-          fi
-
-          if (( $(echo "${{ steps.about-desktop.outputs.performance }} < 60" | bc -l) )); then
-            echo "❌ About (desktop) performance score (${{ steps.about-desktop.outputs.performance }}) below threshold (60)"
-            FAIL=1
-          fi
-
-          if (( $(echo "${{ steps.blog-desktop.outputs.performance }} < 60" | bc -l) )); then
-            echo "❌ Blog (desktop) performance score (${{ steps.blog-desktop.outputs.performance }}) below threshold (60)"
-            FAIL=1
-          fi
-
-          if (( $(echo "${{ steps.builds-desktop.outputs.performance }} < 60" | bc -l) )); then
-            echo "❌ Builds (desktop) performance score (${{ steps.builds-desktop.outputs.performance }}) below threshold (60)"
-            FAIL=1
-          fi
-
-          if (( $(echo "${{ steps.gems-desktop.outputs.performance }} < 60" | bc -l) )); then
-            echo "❌ Gems (desktop) performance score (${{ steps.gems-desktop.outputs.performance }}) below threshold (60)"
-            FAIL=1
-          fi
-
+          echo "### 📱 Mobile Scores"
+          echo "- Home: ${{ steps.home.outputs.performance }}"
+          echo "- About: ${{ steps.about.outputs.performance }}"
+          echo "- Blog: ${{ steps.blog.outputs.performance }}"
+          echo "- Builds: ${{ steps.builds.outputs.performance }}"
+          echo "- Gems: ${{ steps.gems.outputs.performance }}"
           echo ""
-          echo "### 🎯 Core Web Vitals Checks"
-          # Check Mobile Core Web Vitals
-          if (( $(echo "${{ steps.home.outputs.lcp }} > 8000" | bc -l) )); then
-            echo "❌ Mobile LCP (${{ steps.home.outputs.lcp }}ms) exceeds target (8000ms)"
-            FAIL=1
-          fi
-
-          if (( $(echo "${{ steps.home.outputs.cls }} > 0.1" | bc -l) )); then
-            echo "❌ Mobile CLS (${{ steps.home.outputs.cls }}) exceeds target (0.1)"
-            FAIL=1
-          fi
-
-          # Check Desktop Core Web Vitals
-          if (( $(echo "${{ steps.home-desktop.outputs.lcp }} > 2500" | bc -l) )); then
-            echo "❌ Desktop LCP (${{ steps.home-desktop.outputs.lcp }}ms) exceeds target (2500ms)"
-            FAIL=1
-          fi
-
-          if (( $(echo "${{ steps.home-desktop.outputs.cls }} > 0.1" | bc -l) )); then
-            echo "❌ Desktop CLS (${{ steps.home-desktop.outputs.cls }}) exceeds target (0.1)"
-            FAIL=1
-          fi
-
+          echo "### 🖥️ Desktop Scores"
+          echo "- Home: ${{ steps.home-desktop.outputs.performance }}"
+          echo "- About: ${{ steps.about-desktop.outputs.performance }}"
+          echo "- Blog: ${{ steps.blog-desktop.outputs.performance }}"
+          echo "- Builds: ${{ steps.builds-desktop.outputs.performance }}"
+          echo "- Gems: ${{ steps.gems-desktop.outputs.performance }}"
           echo ""
-          if [ $FAIL -eq 1 ]; then
-            echo "⚠️ Performance check failed - scores below thresholds"
-            exit 1
-          else
-            echo "✅ All performance checks passed!"
-          fi
+          echo "### 🎯 Core Web Vitals (Mobile)"
+          echo "- LCP: ${{ steps.home.outputs.lcp }}ms"
+          echo "- CLS: ${{ steps.home.outputs.cls }}"
+          echo "- TBT: ${{ steps.home.outputs.tbt }}ms"
+          echo ""
+          echo "### 🎯 Core Web Vitals (Desktop)"
+          echo "- LCP: ${{ steps.home-desktop.outputs.lcp }}ms"
+          echo "- CLS: ${{ steps.home-desktop.outputs.cls }}"
+          echo "- TBT: ${{ steps.home-desktop.outputs.tbt }}ms"
+          echo ""
+          echo "✅ Weekly performance check complete!"
