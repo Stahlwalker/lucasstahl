@@ -50,15 +50,24 @@ const searchIndex = await buildSearchIndex();
   let fuse;
   let selectedIndex = -1;
   let searchIndex = [];
+  let searchIndexLoaded = false;
+  let searchIndexLoading = false;
 
   // Fetch search index
   async function loadSearchIndex() {
+    // Prevent multiple simultaneous loads
+    if (searchIndexLoaded || searchIndexLoading) return;
+
+    searchIndexLoading = true;
     try {
       const response = await fetch('/search-index.json');
       searchIndex = await response.json();
       initSearch();
+      searchIndexLoaded = true;
     } catch (error) {
       console.error('Failed to load search index:', error);
+    } finally {
+      searchIndexLoading = false;
     }
   }
 
@@ -79,12 +88,17 @@ const searchIndex = await buildSearchIndex();
   }
 
   // Open search modal
-  function openSearchModal() {
+  async function openSearchModal() {
     const modal = document.getElementById('search-modal');
     const input = document.getElementById('search-input');
 
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
+
+    // Lazy load search index on first open
+    if (!searchIndexLoaded && !searchIndexLoading) {
+      await loadSearchIndex();
+    }
 
     // Show recent items
     showRecentItems();
@@ -265,8 +279,6 @@ const searchIndex = await buildSearchIndex();
 
   // Initialize when DOM is ready
   document.addEventListener('DOMContentLoaded', () => {
-    loadSearchIndex();
-
     const searchInput = document.getElementById('search-input');
     const searchClose = document.getElementById('search-close');
     const searchOverlay = document.querySelector('.search-modal-overlay');
