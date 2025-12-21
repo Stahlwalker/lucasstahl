@@ -332,4 +332,5 @@ jobs:
           gh issue create \
             --title "📊 Weekly Performance Report - $(date '+%B %d, %Y')" \
             --body "$REPORT" \
+            --label "performance" \
             --repo ${{ github.repository }}
