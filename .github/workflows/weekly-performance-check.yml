@@ -15,7 +15,7 @@ jobs:
         id: home
         run: |
           echo "Testing homepage..."
-          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lucasstahl.com/&strategy=mobile&category=performance&category=accessibility&category=best-practices&category=seo")
+          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lucasstahl.com/&strategy=mobile&category=performance&category=accessibility&category=best-practices&category=seo&key=${{ secrets.PAGESPEED_API_KEY }}")
 
           # Check if API returned an error
           ERROR=$(echo $RESULT | jq -r '.error.message // empty')
@@ -58,7 +58,7 @@ jobs:
         continue-on-error: true
         run: |
           echo "Testing about page..."
-          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lucasstahl.com/about&strategy=mobile&category=performance&category=accessibility&category=best-practices&category=seo")
+          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lucasstahl.com/about&strategy=mobile&category=performance&category=accessibility&category=best-practices&category=seo&key=${{ secrets.PAGESPEED_API_KEY }}")
 
           PERF=$(echo $RESULT | jq -r '(.lighthouseResult.categories.performance.score // 0) * 100')
           A11Y=$(echo $RESULT | jq -r '(.lighthouseResult.categories.accessibility.score // 0) * 100')
@@ -75,7 +75,7 @@ jobs:
         continue-on-error: true
         run: |
           echo "Testing blog page..."
-          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lucasstahl.com/blog&strategy=mobile&category=performance&category=accessibility&category=best-practices&category=seo")
+          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lucasstahl.com/blog&strategy=mobile&category=performance&category=accessibility&category=best-practices&category=seo&key=${{ secrets.PAGESPEED_API_KEY }}")
 
           PERF=$(echo $RESULT | jq -r '(.lighthouseResult.categories.performance.score // 0) * 100')
           A11Y=$(echo $RESULT | jq -r '(.lighthouseResult.categories.accessibility.score // 0) * 100')
@@ -92,7 +92,7 @@ jobs:
         continue-on-error: true
         run: |
           echo "Testing builds page..."
-          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lucasstahl.com/builds&strategy=mobile&category=performance&category=accessibility&category=best-practices&category=seo")
+          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lucasstahl.com/builds&strategy=mobile&category=performance&category=accessibility&category=best-practices&category=seo&key=${{ secrets.PAGESPEED_API_KEY }}")
 
           PERF=$(echo $RESULT | jq -r '(.lighthouseResult.categories.performance.score // 0) * 100')
           A11Y=$(echo $RESULT | jq -r '(.lighthouseResult.categories.accessibility.score // 0) * 100')
@@ -109,7 +109,7 @@ jobs:
         continue-on-error: true
         run: |
           echo "Testing gems page..."
-          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lucasstahl.com/gems&strategy=mobile&category=performance&category=accessibility&category=best-practices&category=seo")
+          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lucasstahl.com/gems&strategy=mobile&category=performance&category=accessibility&category=best-practices&category=seo&key=${{ secrets.PAGESPEED_API_KEY }}")
 
           PERF=$(echo $RESULT | jq -r '(.lighthouseResult.categories.performance.score // 0) * 100')
           A11Y=$(echo $RESULT | jq -r '(.lighthouseResult.categories.accessibility.score // 0) * 100')
@@ -126,7 +126,7 @@ jobs:
         continue-on-error: true
         run: |
           echo "Testing homepage (desktop)..."
-          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lucasstahl.com/&strategy=desktop&category=performance&category=accessibility&category=best-practices&category=seo")
+          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lucasstahl.com/&strategy=desktop&category=performance&category=accessibility&category=best-practices&category=seo&key=${{ secrets.PAGESPEED_API_KEY }}")
 
           PERF=$(echo $RESULT | jq -r '(.lighthouseResult.categories.performance.score // 0) * 100')
           A11Y=$(echo $RESULT | jq -r '(.lighthouseResult.categories.accessibility.score // 0) * 100')
@@ -150,7 +150,7 @@ jobs:
         continue-on-error: true
         run: |
           echo "Testing about page (desktop)..."
-          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lucasstahl.com/about&strategy=desktop&category=performance&category=accessibility&category=best-practices&category=seo")
+          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lucasstahl.com/about&strategy=desktop&category=performance&category=accessibility&category=best-practices&category=seo&key=${{ secrets.PAGESPEED_API_KEY }}")
 
           PERF=$(echo $RESULT | jq -r '(.lighthouseResult.categories.performance.score // 0) * 100')
           A11Y=$(echo $RESULT | jq -r '(.lighthouseResult.categories.accessibility.score // 0) * 100')
@@ -167,7 +167,7 @@ jobs:
         continue-on-error: true
         run: |
           echo "Testing blog page (desktop)..."
-          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lucasstahl.com/blog&strategy=desktop&category=performance&category=accessibility&category=best-practices&category=seo")
+          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lucasstahl.com/blog&strategy=desktop&category=performance&category=accessibility&category=best-practices&category=seo&key=${{ secrets.PAGESPEED_API_KEY }}")
 
           PERF=$(echo $RESULT | jq -r '(.lighthouseResult.categories.performance.score // 0) * 100')
           A11Y=$(echo $RESULT | jq -r '(.lighthouseResult.categories.accessibility.score // 0) * 100')
@@ -184,7 +184,7 @@ jobs:
         continue-on-error: true
         run: |
           echo "Testing builds page (desktop)..."
-          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lucasstahl.com/builds&strategy=desktop&category=performance&category=accessibility&category=best-practices&category=seo")
+          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lucasstahl.com/builds&strategy=desktop&category=performance&category=accessibility&category=best-practices&category=seo&key=${{ secrets.PAGESPEED_API_KEY }}")
 
           PERF=$(echo $RESULT | jq -r '(.lighthouseResult.categories.performance.score // 0) * 100')
           A11Y=$(echo $RESULT | jq -r '(.lighthouseResult.categories.accessibility.score // 0) * 100')
@@ -201,7 +201,7 @@ jobs:
         continue-on-error: true
         run: |
           echo "Testing gems page (desktop)..."
-          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lucasstahl.com/gems&strategy=desktop&category=performance&category=accessibility&category=best-practices&category=seo")
+          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lucasstahl.com/gems&strategy=desktop&category=performance&category=accessibility&category=best-practices&category=seo&key=${{ secrets.PAGESPEED_API_KEY }}")
 
           PERF=$(echo $RESULT | jq -r '(.lighthouseResult.categories.performance.score // 0) * 100')
           A11Y=$(echo $RESULT | jq -r '(.lighthouseResult.categories.accessibility.score // 0) * 100')
