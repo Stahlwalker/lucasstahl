@@ -83,6 +83,31 @@ jobs:
               });
             }
 
+      - name: Send Email Notification
+        if: always()
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          TO_EMAIL: ${{ secrets.NOTIFICATION_EMAIL }}
+          FROM_EMAIL: ${{ secrets.FROM_EMAIL }}
+        run: |
+          if [ "${{ job.status }}" == "success" ]; then
+            SUBJECT="✅ Link Check Passed - lucasstahl.com"
+            BODY="<h2>✅ All Links Working</h2><p>The automated link checker ran successfully on <strong>$(date '+%B %d, %Y')</strong>.</p><p><strong>Result:</strong> No broken links found! All links across your site are working properly.</p><hr><p><strong>Pages Checked:</strong> All pages on lucasstahl.com</p><p><a href=\"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\">View Full Workflow Run</a></p>"
+          else
+            SUBJECT="🔗 Broken Links Detected on lucasstahl.com"
+            BODY="<h2>🔗 Broken Links Detected</h2><p>The automated link checker found broken links on your site on <strong>$(date '+%B %d, %Y')</strong>.</p><h3>Action Required</h3><ol><li>Review the <a href=\"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\">workflow run logs</a> for details</li><li>Fix or remove broken links</li><li>Close the GitHub issue once fixed</li></ol><hr><p><strong>Pages Checked:</strong> All pages on lucasstahl.com</p><p><a href=\"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\">View Full Workflow Run</a></p>"
+          fi
+
+          curl -X POST "https://api.resend.com/emails" \
+            -H "Authorization: Bearer $RESEND_API_KEY" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "from": "'"$FROM_EMAIL"'",
+              "to": ["'"$TO_EMAIL"'"],
+              "subject": "'"$SUBJECT"'",
+              "html": "'"$BODY"'"
+            }'
+
       - name: Generate Summary
         if: always()
         run: |
