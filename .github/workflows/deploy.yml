@@ -62,8 +62,8 @@ jobs:
             -H "Content-Type: application/json" \
             -d '{
               "host": "lucasstahl.com",
-              "key": "8e6du5uhykfumubthrygvkye2sx9bg72",
-              "keyLocation": "https://lucasstahl.com/8e6du5uhykfumubthrygvkye2sx9bg72.txt",
+              "key": "b6bz6by4n4xv6srpxp7p84hkq1uxq12y",
+              "keyLocation": "https://lucasstahl.com/b6bz6by4n4xv6srpxp7p84hkq1uxq12y.txt",
               "urlList": [
                 "https://lucasstahl.com/",
                 "https://lucasstahl.com/about/",
