@@ -1,76 +1,72 @@
 # lucasstahl.com
 
-## Overview
-A modern, developer-focused personal website showcasing projects, blog posts, and technical resources. Built with Astro for optimal performance and maintainability, featuring a dark mode theme and code-aesthetic design throughout.
+Personal website and blog for Luke Stahl.
+
+Built with Astro v5, Notion CMS, deployed to GitHub Pages.
 
 ## Tech Stack
 
-- **Framework**: [Astro](https://astro.build) v5.15.8
-- **Deployment**: GitHub Pages
-- **Analytics**: PostHog
-- **Fonts**: Fira Code and Inter for code aesthetic
-- **Icons**: Font Awesome 6
-
-## Features
-
-### Pages
-- **Homepage** (`/`): Hero section with featured work, recent articles, and project highlights
-- **About** (`/about`): Professional bio, skills, tech stack, and speaking engagements
-- **Blog** (`/blog`): Curated collection of articles on web development, CMS platforms, AI tools, and developer marketing
-- **Builds** (`/builds`): Portfolio of 20+ projects spanning React, Next.js, TypeScript, and full-stack applications
-- **Gems** (`/gems`): Timeline-style resource collection with code-themed presentation
-- **Handbook** (`/handbook`): Developer Marketing Handbook with insights and strategies
-
-### Design System
-- **Dark Mode Theme**: Developer-focused color palette with custom CSS variables
-- **Typography**: Fira Code and Inter fonts for code aesthetic
-- **Responsive Design**: Optimized for desktop, tablet, and mobile devices
-- **Code Styling**: Terminal prompts, syntax highlighting, and monospace fonts throughout
-- **Animations**: Smooth transitions, hover effects, and gradient animations
-
-### SEO & Discoverability
-- `robots.txt` for search engine crawling
-- `sitemap.xml` with all pages
-- `llms.txt` for AI discoverability
-- Open Graph and Twitter Card meta tags
-- Canonical URLs
+- **Framework**: [Astro](https://astro.build/) v5.16.0
+- **CMS**: [Notion](https://www.notion.so/)
+- **Error Tracking**: [Sentry](https://sentry.io/)
+- **Analytics**: [PostHog](https://posthog.com/)
+- **Deployment**: GitHub Pages via GitHub Actions
+- **Email**: [Resend](https://resend.com/)
 
 ## Project Structure
 
 ```
 lucasstahl/
-└── astro-site/              # Astro project root
+└── astro-site/              # Astro project
     ├── src/
-    │   ├── pages/           # Astro pages (routes)
+    │   ├── pages/           # Routes
     │   │   ├── index.astro  # Homepage
-    │   │   ├── about.astro  # About page
-    │   │   ├── blog.astro   # Blog feed
-    │   │   ├── builds.astro # Project portfolio
-    │   │   ├── gems.astro   # Resources timeline
-    │   │   └── handbook.astro # Developer Marketing Handbook
-    │   ├── layouts/
-    │   │   └── Layout.astro # Base layout with meta tags
-    │   └── components/
-    │       ├── Navbar.astro # Navigation component
-    │       ├── Footer.astro # Footer component
-    │       └── posthog.astro # Analytics tracking
-    ├── public/              # Static assets (copied to dist)
-    │   ├── assets/
-    │   │   ├── css/        # Stylesheets
-    │   │   └── images/     # Site images
-    │   ├── robots.txt      # Search engine instructions
-    │   ├── sitemap.xml     # Site structure for SEO
-    │   ├── llms.txt        # AI discoverability
-    │   └── .nojekyll       # Disable Jekyll on GitHub Pages
-    ├── DARK_MODE_COLOR_REFERENCE.md  # Color palette reference
-    ├── package.json
-    └── astro.config.mjs
+    │   │   ├── about.astro
+    │   │   ├── blog.astro
+    │   │   ├── blog/[slug].astro  # Dynamic blog posts
+    │   │   ├── builds.astro
+    │   │   ├── gems.astro
+    │   │   └── handbook.astro
+    │   ├── layouts/         # Layout components
+    │   └── lib/             # Utilities (Notion API)
+    ├── public/              # Static assets
+    │   └── assets/
+    │       ├── css/
+    │       └── images/
+    ├── .github/
+    │   └── workflows/       # GitHub Actions
+    └── package.json
 ```
+
+## Features
+
+### Content
+- Blog posts managed in Notion, synced on build
+- RSS feed at `/rss.xml`
+- Sitemap with canonical URLs and noindex filtering
+- llms.txt for LLM context
+
+### Monitoring
+- Sentry error tracking in production (10% sample rate)
+- PostHog web analytics
+- Giscus comments on blog posts
+
+### Automation
+- Weekly link checker (broken link detection)
+- Weekly Core Web Vitals checks
+- Email alerts via Resend
+
+### SEO
+- Canonical URLs with trailing slashes
+- OpenGraph and Twitter Card meta tags
+- JSON-LD structured data for blog posts
+- Sitemap generation
+- Dark/light mode
 
 ## Development
 
 ### Prerequisites
-- Node.js (v18 or higher recommended)
+- Node.js v18+
 - npm
 
 ### Setup
@@ -79,57 +75,90 @@ cd astro-site
 npm install
 ```
 
-### Development Server
-```bash
-npm run dev
-```
-Starts the development server at `http://localhost:4321` (default Astro port)
+### Commands
 
-### Build
-```bash
-npm run build
-```
-Builds the site for production to the `dist/` directory
+All commands run from the `astro-site` directory:
 
-### Preview Build
+| Command | Action |
+| :--- | :--- |
+| `npm install` | Install dependencies |
+| `npm run dev` | Start dev server at `localhost:4321` |
+| `npm run build` | Build to `./dist/` |
+| `npm run preview` | Preview build locally |
+| `npm run astro ...` | Run Astro CLI commands |
+
+## Environment Variables
+
+Create `.env` in the `astro-site` directory:
+
 ```bash
-npm run preview
+# Notion API
+NOTION_API_KEY=your_notion_api_key
+NOTION_DATABASE_ID=your_notion_database_id
+
+# Sentry
+PUBLIC_SENTRY_DSN=your_sentry_dsn
+
+# Resend
+RESEND_API_KEY=your_resend_api_key
+RESEND_AUDIENCE_ID=your_resend_audience_id
 ```
-Preview the production build locally
+
+### GitHub Secrets
+
+Add these to repository settings:
+
+- `NOTION_API_KEY`
+- `NOTION_DATABASE_ID`
+- `PUBLIC_SENTRY_DSN`
+- `RESEND_API_KEY`
+- `RESEND_AUDIENCE_ID`
 
 ## Deployment
 
-This site is deployed to GitHub Pages from the `master` branch. The deployment process:
+Automatically deploys to GitHub Pages on push to `master`.
 
-1. Make changes to source files in `astro-site/src/` or `astro-site/public/`
-2. Commit and push to the `master` branch
-3. GitHub Pages automatically serves the site from the repository
+**URL**: https://lucasstahl.com
 
-**Note**: Static files in `public/` are served directly. For Astro components, you may need to run a build process depending on your GitHub Pages configuration.
+### Deploy Process
 
-## Design Highlights
+1. Build site with environment variables
+2. Upload to GitHub Pages
+3. Deploy to production
 
-### Color Palette (Navy Blue Theme)
-- Primary Background: `#0a1128`
-- Secondary Background: `#0f1a35`
-- Tertiary Background: `#162544`
-- Text Primary: `#e4e4e7`
-- Text Secondary: `#a1a1aa`
-- Accent Blue: `#60a5fa`
-- Accent Purple: `#818cf8`
-- Code Keyword: `#c792ea`
-- Code String: `#c3e88d`
+## GitHub Actions Workflows
 
-### Key Components
-- Boxed social icons with hover effects
-- Timeline layout with vertical markers and line numbers
-- Code-style resource titles (`let ResourceName = {`)
-- Comment-style descriptions (`// description... };`)
-- Gradient backgrounds with animated shapes
-- Responsive navigation with mobile hamburger menu
+### Deploy (`deploy.yml`)
+- Triggers on push to `master` or manual
+- Builds with Notion content
+- Deploys to GitHub Pages
 
-## Maintenance
-This project is actively maintained by Luke Stahl.
+### Link Checker (`link-checker.yml`)
+- Runs Mondays at 9 AM UTC
+- Checks for broken links (4xx/5xx)
+- Emails via Resend if issues found
+- Manual trigger available
 
-## License
-© 2025 Luke Stahl. All rights reserved.
+### Performance Monitor (`weekly-performance-check.yml`)
+- Runs Mondays at 8 AM UTC
+- Tests Core Web Vitals on key pages
+- Creates GitHub issues if performance drops
+- Emails via Resend
+- Tracks: LCP, FID, CLS, FCP, TTFB
+- Manual trigger available
+
+## Blog Management
+
+Add new post in Notion:
+
+1. Create page in Notion database
+2. Add: Title, Slug, Published Date, Status
+3. Set Status to "Published"
+4. Push to deploy
+5. Live at `/blog/{slug}`
+
+## Contact
+
+- Website: [lucasstahl.com](https://lucasstahl.com)
+- GitHub: [@stahlwalker](https://github.com/stahlwalker)
+- LinkedIn: [Luke Stahl](https://www.linkedin.com/in/lukestahl/)
