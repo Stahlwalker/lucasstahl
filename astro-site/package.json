@@ -13,6 +13,7 @@
     "@astrojs/rss": "^4.0.14",
     "@astrojs/sitemap": "^3.6.0",
     "@notionhq/client": "^2.3.0",
+    "@sentry/astro": "^10.32.1",
     "astro": "^5.15.8",
     "fuse.js": "^7.1.0",
     "marked": "^17.0.1",
