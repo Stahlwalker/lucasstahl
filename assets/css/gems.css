@@ -7,18 +7,17 @@
     padding: 0.5rem 1rem;
     font-family: 'Fira Code', monospace;
     font-size: 0.875rem;
-    color: var(--code-comment);
+    color: var(--text-secondary);
     text-decoration: none;
-    background: rgba(96, 165, 250, 0.05);
-    border: 1px solid rgba(96, 165, 250, 0.2);
+    background: rgba(96, 165, 250, 0.1);
+    border: 1px solid rgba(96, 165, 250, 0.4);
     border-radius: 6px;
     transition: all 0.3s ease;
-    opacity: 0.7;
+    opacity: 1;
 }
 
 .scroll-hint:hover {
-    opacity: 1;
-    background: rgba(96, 165, 250, 0.1);
+    background: rgba(96, 165, 250, 0.15);
     border-color: var(--accent-primary);
     transform: translateY(2px);
 }
@@ -715,18 +714,23 @@ html {
 
 @media (max-width: 480px) {
     .timeline-container {
-        padding-left: 30px;
+        padding-left: 50px;
     }
 
     .timeline-container::before {
-        left: 8px;
+        left: 18px;
     }
 
     .timeline-marker {
-        left: -22px;
+        left: -32px;
         width: 8px;
         height: 8px;
         top: 20px;
+    }
+
+    .timeline-marker::before {
+        right: 18px;
+        width: 20px;
     }
 
     .timeline-content {
@@ -736,6 +740,65 @@ html {
     .timeline-entry {
         margin-bottom: 2rem;
     }
+}
+
+/* Load More Button Container */
+.load-more-container {
+    display: flex;
+    justify-content: center;
+    margin: 3rem 0 4rem 0;
+    padding: 0 1rem;
+}
+
+.load-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem 1rem;
+    background: rgba(96, 165, 250, 0.1);
+    color: var(--text-secondary);
+    border: 1px solid rgba(96, 165, 250, 0.4);
+    border-radius: 6px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.875rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: none;
+    opacity: 1;
+}
+
+.load-more-btn .comment-slash {
+    color: var(--code-comment);
+    margin-right: 0.25rem;
+    font-weight: 600;
+}
+
+.load-more-btn:hover {
+    background: rgba(96, 165, 250, 0.15);
+    border-color: var(--accent-primary);
+    transform: none;
+}
+
+.load-more-btn:active {
+    transform: translateY(1px);
+}
+
+/* Light mode button styles */
+[data-theme="light"] .load-more-btn {
+    background: rgba(37, 99, 235, 0.08);
+    border: 1.5px solid rgba(37, 99, 235, 0.3);
+    color: var(--text-primary);
+    opacity: 1;
+}
+
+[data-theme="light"] .load-more-btn:hover {
+    background: rgba(37, 99, 235, 0.12);
+    border-color: var(--accent-primary);
+}
+
+[data-theme="light"] .load-more-btn .comment-slash {
+    color: var(--code-comment);
 }
 
 /* Websites That Tickle My Fancy Section */
@@ -765,12 +828,14 @@ html {
 .websites-table {
     max-width: 600px;
     margin: 0 auto;
-    background: linear-gradient(135deg, rgba(96, 165, 250, 0.03), rgba(168, 85, 247, 0.03));
+    background: var(--bg-secondary);
     border: 1px solid rgba(96, 165, 250, 0.3);
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(96, 165, 250, 0.1) inset;
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .websites-table::before {
@@ -802,6 +867,33 @@ html {
     text-transform: uppercase;
     letter-spacing: 0.75px;
     text-shadow: 0 0 10px rgba(96, 165, 250, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.websites-table-body {
+    overflow-y: auto;
+    max-height: 450px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(96, 165, 250, 0.3) transparent;
+}
+
+.websites-table-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.websites-table-body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.websites-table-body::-webkit-scrollbar-thumb {
+    background: rgba(96, 165, 250, 0.3);
+    border-radius: 4px;
+}
+
+.websites-table-body::-webkit-scrollbar-thumb:hover {
+    background: rgba(96, 165, 250, 0.5);
 }
 
 .table-row {
@@ -1189,6 +1281,19 @@ html {
 /* Light mode fancy websites section */
 [data-theme="light"] .fancy-websites-section {
     background: var(--bg-secondary);
+}
+
+/* Light mode scrollbar */
+[data-theme="light"] .websites-table-body {
+    scrollbar-color: rgba(37, 99, 235, 0.3) transparent;
+}
+
+[data-theme="light"] .websites-table-body::-webkit-scrollbar-thumb {
+    background: rgba(37, 99, 235, 0.3);
+}
+
+[data-theme="light"] .websites-table-body::-webkit-scrollbar-thumb:hover {
+    background: rgba(37, 99, 235, 0.5);
 }
 
 /* External Link Icon */

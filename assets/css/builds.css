@@ -1,8 +1,407 @@
 /* Builds Page Styles */
 
+/* Early Projects Section */
+.early-projects-section {
+    max-width: 1400px;
+    margin: 4rem auto 0;
+    padding: 3rem 2rem;
+    border-top: 2px solid rgba(96, 165, 250, 0.3);
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    position: relative;
+}
+
+.early-projects-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg,
+        transparent,
+        var(--accent-primary) 20%,
+        var(--accent-secondary) 80%,
+        transparent
+    );
+}
+
+.early-projects-section .section-title {
+    margin-bottom: 0.5rem;
+}
+
+.early-projects-section .section-label {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--accent-primary);
+    text-shadow: 0 0 10px rgba(96, 165, 250, 0.3);
+}
+
+.early-projects-section .section-description {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    font-weight: 400;
+    font-family: 'Fira Code', monospace;
+}
+
+.projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.project-row {
+    display: grid;
+    grid-template-columns: 20px 1fr auto;
+    gap: 1.5rem;
+    align-items: center;
+    padding: 1.5rem 1rem;
+    border-bottom: 1px solid rgba(96, 165, 250, 0.15);
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+    position: relative;
+    border-radius: 8px;
+    margin-bottom: 0.25rem;
+}
+
+.project-row::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--accent-primary), var(--accent-secondary));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 8px 0 0 8px;
+}
+
+.project-row:hover {
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.05), rgba(129, 140, 248, 0.03));
+    border-color: rgba(96, 165, 250, 0.3);
+    transform: translateX(4px);
+}
+
+.project-row:hover::before {
+    opacity: 1;
+}
+
+.project-square {
+    width: 12px;
+    height: 12px;
+    background: var(--text-secondary);
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+    position: relative;
+}
+
+.project-square::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--accent-primary);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
+}
+
+.project-row:hover .project-square::after {
+    opacity: 1;
+}
+
+.project-info {
+    flex: 1;
+}
+
+.project-name {
+    font-size: 1.125rem;
+    font-weight: 400;
+    color: var(--accent-primary);
+    margin: 0 0 0.25rem 0;
+    transition: all 0.3s ease;
+    font-family: 'Fira Code', monospace;
+    letter-spacing: 0.02em;
+    position: relative;
+    display: inline-block;
+}
+
+.project-name::before {
+    content: '> ';
+    color: var(--text-secondary);
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    margin-right: 0.25rem;
+}
+
+.project-row:hover .project-name::before {
+    opacity: 1;
+    color: var(--accent-primary);
+}
+
+.project-row:hover .project-name {
+    color: var(--accent-primary);
+}
+
+.project-desc {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.6;
+    transition: color 0.3s ease;
+}
+
+.project-row:hover .project-desc {
+    color: var(--text-primary);
+}
+
+.project-arrow {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    opacity: 0.5;
+}
+
+.project-row:hover .project-arrow {
+    opacity: 1;
+    color: var(--accent-primary);
+    transform: translateX(4px);
+}
+
+/* Light mode styles for early projects */
+[data-theme="light"] .early-projects-section {
+    border-top-color: rgba(37, 99, 235, 0.5);
+    background: var(--bg-secondary);
+}
+
+[data-theme="light"] .early-projects-section .section-label {
+    color: var(--accent-primary);
+    text-shadow: none;
+}
+
+[data-theme="light"] .project-row {
+    border-bottom-color: rgba(37, 99, 235, 0.2);
+}
+
+[data-theme="light"] .project-row:hover {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.04), rgba(99, 102, 241, 0.02));
+    border-color: rgba(37, 99, 235, 0.3);
+}
+
+[data-theme="light"] .project-square {
+    background: var(--text-secondary);
+}
+
+[data-theme="light"] .project-square::after {
+    background: var(--accent-primary);
+}
+
+[data-theme="light"] .project-name {
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .project-row:hover .project-name {
+    color: var(--accent-primary);
+}
+
+/* GitHub Contributions Section */
+.github-contributions-section {
+    max-width: 1400px;
+    margin: 4rem auto 0;
+    padding: 3rem 2rem;
+    border-top: 2px solid rgba(96, 165, 250, 0.3);
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.02), rgba(129, 140, 248, 0.02));
+    border-radius: 12px;
+    position: relative;
+    text-align: center;
+}
+
+.github-contributions-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg,
+        transparent,
+        var(--accent-primary) 20%,
+        var(--accent-secondary) 80%,
+        transparent
+    );
+}
+
+.github-contributions-section .section-title {
+    margin-bottom: 0.5rem;
+}
+
+.github-contributions-section .section-label {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--accent-primary);
+    text-shadow: 0 0 10px rgba(96, 165, 250, 0.3);
+}
+
+.github-contributions-section .section-description {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    font-weight: 400;
+    font-family: 'Fira Code', monospace;
+}
+
+.contributions-chart {
+    margin: 2rem 0;
+    padding: 2rem;
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    border: 1px solid rgba(96, 165, 250, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    overflow-x: auto;
+}
+
+.contributions-chart:hover {
+    border-color: rgba(96, 165, 250, 0.4);
+    box-shadow: 0 8px 24px rgba(96, 165, 250, 0.1);
+}
+
+.contributions-chart img {
+    width: 100%;
+    min-width: 800px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.contributions-chart .contributions-light {
+    display: none;
+}
+
+.contributions-chart .contributions-dark {
+    display: block;
+}
+
+.github-profile-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.1), rgba(129, 140, 248, 0.05));
+    border: 1px solid rgba(96, 165, 250, 0.3);
+    border-radius: 8px;
+    color: var(--accent-primary);
+    text-decoration: none;
+    font-family: 'Fira Code', monospace;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.github-profile-link:hover {
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.15), rgba(129, 140, 248, 0.1));
+    border-color: var(--accent-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(96, 165, 250, 0.2);
+}
+
+.github-profile-link i {
+    font-size: 1.125rem;
+}
+
+/* Light mode for GitHub contributions */
+[data-theme="light"] .github-contributions-section {
+    border-top-color: rgba(37, 99, 235, 0.5);
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.02), rgba(99, 102, 241, 0.02));
+}
+
+[data-theme="light"] .github-contributions-section .section-label {
+    color: var(--accent-primary);
+    text-shadow: none;
+}
+
+[data-theme="light"] .contributions-chart {
+    background: #ffffff;
+    border-color: rgba(37, 99, 235, 0.2);
+}
+
+[data-theme="light"] .contributions-chart:hover {
+    border-color: rgba(37, 99, 235, 0.4);
+}
+
+[data-theme="light"] .contributions-chart .contributions-dark {
+    display: none;
+}
+
+[data-theme="light"] .contributions-chart .contributions-light {
+    display: block;
+}
+
+[data-theme="light"] .github-profile-link {
+    background: rgba(37, 99, 235, 0.06);
+    border-color: rgba(37, 99, 235, 0.3);
+}
+
+[data-theme="light"] .github-profile-link:hover {
+    background: rgba(37, 99, 235, 0.1);
+    border-color: var(--accent-primary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .early-projects-section {
+        margin-top: 3rem;
+        padding-top: 2rem;
+    }
+
+    .github-contributions-section {
+        margin-top: 3rem;
+        padding: 2rem 1rem;
+    }
+
+    .contributions-chart {
+        padding: 1rem;
+    }
+
+    .project-row {
+        grid-template-columns: 12px 1fr auto;
+        gap: 1rem;
+        padding: 1.25rem 0;
+    }
+
+    .project-row:hover {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+        margin-left: -0.75rem;
+        margin-right: -0.75rem;
+    }
+
+    .project-square {
+        width: 10px;
+        height: 10px;
+    }
+
+    .project-name {
+        font-size: 1rem;
+    }
+
+    .project-desc {
+        font-size: 0.875rem;
+    }
+}
+
 /* Builds Hero Section */
 .builds-hero {
-    background: var(--bg-primary);
+    background: transparent;
     padding: 6rem 2rem 3rem;
     text-align: center;
 }
@@ -26,7 +425,7 @@
 
 /* Builds Section */
 .builds-section {
-    background: var(--bg-primary);
+    background: transparent;
     padding: 2rem 2rem 4rem;
 }
 
