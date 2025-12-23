@@ -55,3 +55,25 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Submit to IndexNow
+        run: |
+          curl -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "host": "lucasstahl.com",
+              "key": "8e6du5uhykfumubthrygvkye2sx9bg72",
+              "keyLocation": "https://lucasstahl.com/8e6du5uhykfumubthrygvkye2sx9bg72.txt",
+              "urlList": [
+                "https://lucasstahl.com/",
+                "https://lucasstahl.com/about/",
+                "https://lucasstahl.com/blog/",
+                "https://lucasstahl.com/builds/",
+                "https://lucasstahl.com/gems/",
+                "https://lucasstahl.com/handbook/",
+                "https://lucasstahl.com/status/",
+                "https://lucasstahl.com/dev-marketing-cheat-sheet/",
+                "https://lucasstahl.com/blog/my-stack/",
+                "https://lucasstahl.com/blog/markdown-vs-cms/"
+              ]
+            }'
