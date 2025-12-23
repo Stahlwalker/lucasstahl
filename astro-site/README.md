@@ -1,19 +1,19 @@
 # lucasstahl.com
 
-Personal website and blog for Luke Stahl - Developer Marketer.
+Personal website and blog for Luke Stahl.
 
-Built with Astro v5, Notion CMS, and deployed to GitHub Pages.
+Built with Astro v5, Notion CMS, deployed to GitHub Pages.
 
-## 🚀 Tech Stack
+## Tech Stack
 
 - **Framework**: [Astro](https://astro.build/) v5.16.0
-- **CMS**: [Notion](https://www.notion.so/) for blog content management
-- **Error Tracking**: [Sentry](https://sentry.io/) for production monitoring
-- **Analytics**: [PostHog](https://posthog.com/) for web analytics
+- **CMS**: [Notion](https://www.notion.so/)
+- **Error Tracking**: [Sentry](https://sentry.io/)
+- **Analytics**: [PostHog](https://posthog.com/)
 - **Deployment**: GitHub Pages via GitHub Actions
-- **Email Notifications**: [Resend](https://resend.com/) for automated alerts
+- **Email**: [Resend](https://resend.com/)
 
-## 📁 Project Structure
+## Project Structure
 
 ```text
 /
@@ -34,64 +34,63 @@ Built with Astro v5, Notion CMS, and deployed to GitHub Pages.
 └── package.json
 ```
 
-## ✨ Key Features
+## Features
 
-### Content Management
-- **Notion CMS Integration**: Blog posts are managed in Notion and automatically synced on build
-- **RSS Feed**: Auto-generated RSS feed at `/rss.xml`
-- **Sitemap**: Auto-generated sitemap with proper canonical URLs and noindex filtering
-- **llms.txt**: LLM-optimized site documentation
+### Content
+- Blog posts managed in Notion, synced on build
+- RSS feed at `/rss.xml`
+- Sitemap with canonical URLs and noindex filtering
+- llms.txt for LLM context
 
-### Monitoring & Analytics
-- **Sentry Error Tracking**: Production-only error monitoring with 10% sampling rate
-- **PostHog Analytics**: Web analytics and user behavior tracking
-- **Giscus Comments**: GitHub-based commenting system for blog posts
+### Monitoring
+- Sentry error tracking in production (10% sample rate)
+- PostHog web analytics
+- Giscus comments on blog posts
 
-### Automated Workflows
-- **Link Checker**: Weekly scan for broken links with Slack/email notifications
-- **Core Web Vitals Monitoring**: Weekly performance checks with automated GitHub issue creation
-- **Email Notifications**: Resend integration for workflow alerts
+### Automation
+- Weekly link checker (broken link detection)
+- Weekly Core Web Vitals checks
+- Email alerts via Resend
 
-### SEO & Performance
-- Canonical URL management with trailing slash normalization
+### SEO
+- Canonical URLs with trailing slashes
 - OpenGraph and Twitter Card meta tags
-- Structured data (JSON-LD) for blog posts
-- Optimized sitemap generation
-- Dark/light mode support
+- JSON-LD structured data for blog posts
+- Sitemap generation
+- Dark/light mode
 
-## 🧞 Commands
+## Commands
 
-All commands are run from the `astro-site` directory:
+All commands run from the `astro-site` directory:
 
 | Command | Action |
 | :--- | :--- |
 | `npm install` | Install dependencies |
-| `npm run dev` | Start local dev server at `localhost:4321` |
-| `npm run build` | Build production site to `./dist/` |
-| `npm run preview` | Preview production build locally |
+| `npm run dev` | Start dev server at `localhost:4321` |
+| `npm run build` | Build to `./dist/` |
+| `npm run preview` | Preview build locally |
 | `npm run astro ...` | Run Astro CLI commands |
-| `npm run astro -- --help` | Get help with Astro CLI |
 
-## 🔧 Environment Variables
+## Environment Variables
 
-Create a `.env` file in the `astro-site` directory:
+Create `.env` in the `astro-site` directory:
 
 ```bash
 # Notion API
 NOTION_API_KEY=your_notion_api_key
 NOTION_DATABASE_ID=your_notion_database_id
 
-# Sentry (production only)
+# Sentry
 PUBLIC_SENTRY_DSN=your_sentry_dsn
 
-# Resend (for email notifications)
+# Resend
 RESEND_API_KEY=your_resend_api_key
 RESEND_AUDIENCE_ID=your_resend_audience_id
 ```
 
 ### GitHub Secrets
 
-Add these secrets to your GitHub repository settings for workflows:
+Add these to repository settings:
 
 - `NOTION_API_KEY`
 - `NOTION_DATABASE_ID`
@@ -99,71 +98,71 @@ Add these secrets to your GitHub repository settings for workflows:
 - `RESEND_API_KEY`
 - `RESEND_AUDIENCE_ID`
 
-## 🚢 Deployment
+## Deployment
 
-The site automatically deploys to GitHub Pages via GitHub Actions on every push to `master`.
+Automatically deploys to GitHub Pages on push to `master`.
 
-**Deployment URL**: https://lucasstahl.com
+**URL**: https://lucasstahl.com
 
-### Deployment Workflow
+### Deploy Process
 
-1. Builds Astro site with production environment variables
-2. Uploads build artifacts to GitHub Pages
-3. Deploys to production
+1. Build site with environment variables
+2. Upload to GitHub Pages
+3. Deploy to production
 
-## 🔗 GitHub Actions Workflows
+## GitHub Actions Workflows
 
 ### Deploy (`deploy.yml`)
-- Triggers on push to `master` or manual dispatch
-- Builds site with Notion content
+- Triggers on push to `master` or manual
+- Builds with Notion content
 - Deploys to GitHub Pages
 
 ### Link Checker (`link-checker.yml`)
-- Runs weekly on Mondays at 9 AM UTC
-- Scans all pages for broken links (HTTP 4xx/5xx)
-- Sends email notifications via Resend if issues found
-- Can be manually triggered
+- Runs Mondays at 9 AM UTC
+- Checks for broken links (4xx/5xx)
+- Emails via Resend if issues found
+- Manual trigger available
 
 ### Performance Monitor (`weekly-performance-check.yml`)
-- Runs weekly on Mondays at 8 AM UTC
+- Runs Mondays at 8 AM UTC
 - Tests Core Web Vitals on key pages
-- Creates GitHub issues automatically if performance degrades
-- Sends email notifications via Resend
-- Tracks metrics: LCP, FID, CLS, FCP, TTFB
-- Can be manually triggered
+- Creates GitHub issues if performance drops
+- Emails via Resend
+- Tracks: LCP, FID, CLS, FCP, TTFB
+- Manual trigger available
 
-## 📝 Blog Management
+## Blog Management
 
-Blog posts are managed in Notion. To add a new post:
+Add new post in Notion:
 
-1. Create a new page in the Notion database
-2. Fill in required properties: Title, Slug, Published Date, Status
+1. Create page in Notion database
+2. Add: Title, Slug, Published Date, Status
 3. Set Status to "Published"
-4. Push to trigger a new deployment
-5. Post will be live at `/blog/{slug}`
+4. Push to deploy
+5. Live at `/blog/{slug}`
 
-## 🎨 Customization
+## Customization
 
-### Adding New Pages
-Create new `.astro` files in `src/pages/` - they'll automatically become routes.
+### Pages
+Create `.astro` files in `src/pages/` - auto-routed.
 
-### Updating Styles
-Page-specific CSS is in `public/assets/css/` and linked via `additionalCss` prop in Layout components.
+### Styles
+Page CSS in `public/assets/css/`, linked via `additionalCss` in Layout.
 
 ### Dark Mode
-Dark mode toggle is available site-wide with theme persistence via localStorage.
+Toggle available site-wide, persisted in localStorage.
 
-## 🔍 SEO Configuration
+## SEO
 
-All pages use the `Layout.astro` component which handles:
+`Layout.astro` handles:
 - Title and meta descriptions
-- Canonical URLs (with trailing slash normalization)
+- Canonical URLs (trailing slashes)
 - OpenGraph tags
 - Twitter Card tags
 - Custom OG images
 - Structured data for blog posts
 
-## 📬 Contact
+## Contact
 
 - Website: [lucasstahl.com](https://lucasstahl.com)
 - GitHub: [@stahlwalker](https://github.com/stahlwalker)
