@@ -5,7 +5,7 @@ import sentry from '@sentry/astro';
 
 // Pages to exclude from sitemap (noindex pages)
 const excludedPages = [
-  '/retro',
+  '/retro/',
   // Add more noindex pages here as needed
 ];
 
@@ -14,7 +14,8 @@ export default defineConfig({
   site: 'https://lucasstahl.com',
   integrations: [
     sitemap({
-      filter: (page) => !excludedPages.some(excluded => page.includes(excluded))
+      filter: (page) => !excludedPages.some(excluded => page.includes(excluded)),
+      serialize: (item) => item
     }),
     sentry()
   ],
