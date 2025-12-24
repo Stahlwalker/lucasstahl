@@ -4,6 +4,7 @@ import Footer from '../components/Footer.astro';
 import PostHog from '../components/posthog.astro';
 import DevMarketingConsole from '../components/DevMarketingConsole.astro';
 import Search from '../components/Search.astro';
+import AnnouncementBar from '../components/AnnouncementBar.astro';
 
 interface Props {
 	title: string;
@@ -14,6 +15,11 @@ interface Props {
 	canonicalUrl?: string;
 	additionalCss?: string[];
 	hideHandbookButton?: boolean;
+	// Announcement Bar Configuration
+	showAnnouncement?: boolean;
+	announcementMessage?: string;
+	announcementLink?: string;
+	announcementId?: string;
 }
 
 const {
@@ -24,7 +30,12 @@ const {
 	ogImage = "https://lucasstahl.com/assets/images/Hero_OG.png",
 	canonicalUrl = "https://lucasstahl.com",
 	additionalCss = [],
-	hideHandbookButton = false
+	hideHandbookButton = false,
+	// Announcement Bar (easily toggle on/off)
+	showAnnouncement = true,
+	announcementMessage = "New: Markdown + AI Website vs CMS",
+	announcementLink = "/blog/markdown-vs-cms/",
+	announcementId = "blog-markdown-cms-dec-2025"
 } = Astro.props;
 ---
 
@@ -144,6 +155,13 @@ const {
 	</script>
 </head>
 <body>
+	{showAnnouncement && announcementMessage && (
+		<AnnouncementBar
+			message={announcementMessage}
+			link={announcementLink}
+			announcementId={announcementId}
+		/>
+	)}
 	<Navbar />
 	<slot />
 	<Footer />

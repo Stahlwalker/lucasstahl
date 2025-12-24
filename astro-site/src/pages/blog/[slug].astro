@@ -214,6 +214,9 @@ const allPosts = [
 // Sort by date descending and get the two most recent
 allPosts.sort((a, b) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime());
 const suggestedPosts = allPosts.slice(0, 2);
+
+// Hide announcement on the blog post it's promoting to avoid redundancy
+const hideAnnouncement = post.slug === 'markdown-vs-cms';
 ---
 
 <Layout
@@ -223,6 +226,7 @@ const suggestedPosts = allPosts.slice(0, 2);
   ogTitle={metaTitle}
   ogDescription={metaDesc}
   ogImage={ogImageUrl}
+  showAnnouncement={!hideAnnouncement}
 >
   <!-- JSON-LD Structured Data - BlogPosting Schema -->
   <script slot="head" type="application/ld+json" set:html={JSON.stringify({
