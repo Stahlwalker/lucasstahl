@@ -90,7 +90,7 @@ const notionPosts = await getBlogPosts();
 				<!-- Featured Notion Blog Posts -->
 				{notionPosts.filter(post => post.featured).map(post => (
 					<article class="blog-card">
-						<a href={`/blog/${post.slug}`} class="blog-card-inner">
+						<a href={`/blog/${post.slug}/`} class="blog-card-inner">
 							{post.featuredImage && (
 								<div class="blog-thumbnail">
 									<img src={post.featuredImage} alt={post.title} loading="lazy">
@@ -159,7 +159,7 @@ const notionPosts = await getBlogPosts();
 				<!-- Non-Featured Notion Blog Posts -->
 				{notionPosts.filter(post => !post.featured).map(post => (
 					<article class="blog-card blog-card-compact">
-						<a href={`/blog/${post.slug}`} class="blog-card-inner">
+						<a href={`/blog/${post.slug}/`} class="blog-card-inner">
 							<div class="blog-content">
 								<div class="blog-meta">
 									<time class="blog-date">{new Date(post.publishedDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</time>

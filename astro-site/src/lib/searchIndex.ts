@@ -20,7 +20,7 @@ export async function buildSearchIndex(): Promise<SearchItem[]> {
       type: 'blog',
       title: post.title,
       description: post.excerpt,
-      url: `/blog/${post.slug}`,
+      url: `/blog/${post.slug}/`,
       tags: post.tags,
       date: post.publishedDate
     });

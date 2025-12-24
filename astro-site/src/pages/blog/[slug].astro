@@ -204,7 +204,7 @@ const allPosts = [
   ...notionPosts.map(p => ({
     title: p.title,
     publishedDate: p.publishedDate,
-    url: `/blog/${p.slug}`,
+    url: `/blog/${p.slug}/`,
     slug: p.slug,
     isExternal: false,
   })),
@@ -236,16 +236,16 @@ const suggestedPosts = allPosts.slice(0, 2);
     "author": {
       "@type": "Person",
       "name": "Luke Stahl",
-      "url": "https://lucasstahl.com"
+      "url": "https://lucasstahl.com/"
     },
     "publisher": {
       "@type": "Person",
       "name": "Luke Stahl",
-      "url": "https://lucasstahl.com"
+      "url": "https://lucasstahl.com/"
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://lucasstahl.com/blog/${post.slug}`
+      "@id": `https://lucasstahl.com/blog/${post.slug}/`
     },
     "wordCount": post.readingTime ? post.readingTime * 200 : undefined,
     "keywords": post.tags.join(", ")
@@ -364,7 +364,7 @@ const suggestedPosts = allPosts.slice(0, 2);
           <h3 class="share-title">Share this article</h3>
           <div class="share-buttons">
             <a
-              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(metaTitle)}&url=${encodeURIComponent(`https://lucasstahl.com/blog/${post.slug}`)}`}
+              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(metaTitle)}&url=${encodeURIComponent(`https://lucasstahl.com/blog/${post.slug}/`)}`}
               target="_blank"
               rel="noopener noreferrer"
               class="share-button share-twitter"
@@ -373,7 +373,7 @@ const suggestedPosts = allPosts.slice(0, 2);
               <i class="fa-brands fa-x-twitter"></i>
             </a>
             <a
-              href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://lucasstahl.com/blog/${post.slug}`)}`}
+              href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://lucasstahl.com/blog/${post.slug}/`)}`}
               target="_blank"
               rel="noopener noreferrer"
               class="share-button share-linkedin"
@@ -382,7 +382,7 @@ const suggestedPosts = allPosts.slice(0, 2);
               <i class="fa-brands fa-linkedin-in"></i>
             </a>
             <a
-              href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`https://lucasstahl.com/blog/${post.slug}`)}`}
+              href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`https://lucasstahl.com/blog/${post.slug}/`)}`}
               target="_blank"
               rel="noopener noreferrer"
               class="share-button share-facebook"
