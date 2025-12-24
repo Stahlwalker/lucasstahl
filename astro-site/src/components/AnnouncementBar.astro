@@ -6,17 +6,29 @@ interface Props {
 }
 
 const { message, link, announcementId } = Astro.props;
+
+// Check if message starts with "New:" and split it for styling
+const startsWithNew = message.startsWith('New:');
+const messageContent = startsWithNew
+	? { prefix: 'New:', rest: message.slice(4).trim() }
+	: { prefix: '', rest: message };
 ---
 
 <div class="announcement-bar" data-announcement-id={announcementId}>
 	{link ? (
 		<a href={link} class="announcement-link">
-			<span class="announcement-message">{message}</span>
+			<span class="announcement-message">
+				{startsWithNew && <span class="announcement-highlight">{messageContent.prefix}</span>}
+				{' '}{messageContent.rest}
+			</span>
 			<i class="fa-solid fa-arrow-right announcement-arrow"></i>
 		</a>
 	) : (
 		<div class="announcement-content">
-			<span class="announcement-message">{message}</span>
+			<span class="announcement-message">
+				{startsWithNew && <span class="announcement-highlight">{messageContent.prefix}</span>}
+				{' '}{messageContent.rest}
+			</span>
 		</div>
 	)}
 	<button class="announcement-close" aria-label="Dismiss announcement">
@@ -102,10 +114,16 @@ const { message, link, announcementId } = Astro.props;
 		text-align: center;
 	}
 
+	.announcement-highlight {
+		color: #a855f7;
+		font-weight: 600;
+	}
+
 	.announcement-arrow {
 		font-size: 0.875rem;
 		transition: transform 0.2s ease;
 		flex-shrink: 0;
+		color: #a855f7;
 	}
 
 	.announcement-close {
@@ -155,6 +173,15 @@ const { message, link, announcementId } = Astro.props;
 
 	:global([data-theme="light"]) .announcement-message {
 		color: inherit;
+	}
+
+	:global([data-theme="light"]) .announcement-highlight {
+		color: #7c3aed;
+		font-weight: 600;
+	}
+
+	:global([data-theme="light"]) .announcement-arrow {
+		color: #7c3aed;
 	}
 
 	:global([data-theme="light"]) .announcement-close {
