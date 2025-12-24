@@ -115,15 +115,38 @@ const messageContent = startsWithNew
 	}
 
 	.announcement-highlight {
-		color: #a855f7;
+		color: #c3e88d;
 		font-weight: 600;
+		display: inline-block;
+		animation: gentlePulse 2s ease-in-out infinite;
+	}
+
+	@keyframes gentlePulse {
+		0%, 100% {
+			transform: scale(1);
+			text-shadow: 0 0 10px rgba(195, 232, 141, 0.5);
+		}
+		50% {
+			transform: scale(1.05);
+			text-shadow: 0 0 20px rgba(195, 232, 141, 0.9), 0 0 30px rgba(195, 232, 141, 0.5);
+		}
 	}
 
 	.announcement-arrow {
 		font-size: 0.875rem;
-		transition: transform 0.2s ease;
 		flex-shrink: 0;
-		color: #a855f7;
+		color: #c3e88d;
+		position: relative;
+		animation: arrowGlow 3s ease-in-out infinite;
+	}
+
+	@keyframes arrowGlow {
+		0%, 100% {
+			text-shadow: 0 0 10px rgba(195, 232, 141, 0.5), 0 0 20px rgba(195, 232, 141, 0.3);
+		}
+		50% {
+			text-shadow: 0 0 20px rgba(195, 232, 141, 0.9), 0 0 30px rgba(195, 232, 141, 0.5), 0 0 40px rgba(195, 232, 141, 0.3);
+		}
 	}
 
 	.announcement-close {
@@ -180,8 +203,33 @@ const messageContent = startsWithNew
 		font-weight: 600;
 	}
 
+	@keyframes gentlePulseLight {
+		0%, 100% {
+			transform: scale(1);
+			text-shadow: 0 0 10px rgba(124, 58, 237, 0.3);
+		}
+		50% {
+			transform: scale(1.05);
+			text-shadow: 0 0 20px rgba(124, 58, 237, 0.6), 0 0 30px rgba(124, 58, 237, 0.3);
+		}
+	}
+
+	:global([data-theme="light"]) .announcement-highlight {
+		animation: gentlePulseLight 2s ease-in-out infinite;
+	}
+
 	:global([data-theme="light"]) .announcement-arrow {
 		color: #7c3aed;
+		animation: arrowGlowLight 3s ease-in-out infinite;
+	}
+
+	@keyframes arrowGlowLight {
+		0%, 100% {
+			text-shadow: 0 0 10px rgba(124, 58, 237, 0.3), 0 0 20px rgba(124, 58, 237, 0.15);
+		}
+		50% {
+			text-shadow: 0 0 20px rgba(124, 58, 237, 0.6), 0 0 30px rgba(124, 58, 237, 0.3), 0 0 40px rgba(124, 58, 237, 0.15);
+		}
 	}
 
 	:global([data-theme="light"]) .announcement-close {
