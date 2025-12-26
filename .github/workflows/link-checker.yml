@@ -32,7 +32,7 @@ jobs:
             --max-retries 3
             --retry-wait-time 5
             --timeout 30
-            https://lucasstahl.com/
+            https://lukestahl.io/
           # Fail only if there are broken links (not warnings)
           fail: true
         env:
@@ -72,7 +72,7 @@ jobs:
                       `The automated link checker found broken links on your site.\n\n` +
                       `### Details\n` +
                       `- **Date**: ${new Date().toLocaleDateString()}\n` +
-                      `- **Pages Checked**: All pages on lucasstahl.com\n\n` +
+                      `- **Pages Checked**: All pages on lukestahl.io\n\n` +
                       `### Action Required\n` +
                       `1. Review the [workflow run logs](${context.payload.repository.html_url}/actions/runs/${context.runId}) for details\n` +
                       `2. Fix or remove broken links\n` +
@@ -91,11 +91,11 @@ jobs:
           FROM_EMAIL: ${{ secrets.FROM_EMAIL }}
         run: |
           if [ "${{ job.status }}" == "success" ]; then
-            SUBJECT="✅ Link Check Passed - lucasstahl.com"
-            BODY="<h2>✅ All Links Working</h2><p>The automated link checker ran successfully on <strong>$(date '+%B %d, %Y')</strong>.</p><p><strong>Result:</strong> No broken links found! All links across your site are working properly.</p><hr><p><strong>Pages Checked:</strong> All pages on lucasstahl.com</p><p><a href=\"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\">View Full Workflow Run</a></p>"
+            SUBJECT="✅ Link Check Passed - lukestahl.io"
+            BODY="<h2>✅ All Links Working</h2><p>The automated link checker ran successfully on <strong>$(date '+%B %d, %Y')</strong>.</p><p><strong>Result:</strong> No broken links found! All links across your site are working properly.</p><hr><p><strong>Pages Checked:</strong> All pages on lukestahl.io</p><p><a href=\"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\">View Full Workflow Run</a></p>"
           else
-            SUBJECT="🔗 Broken Links Detected on lucasstahl.com"
-            BODY="<h2>🔗 Broken Links Detected</h2><p>The automated link checker found broken links on your site on <strong>$(date '+%B %d, %Y')</strong>.</p><h3>Action Required</h3><ol><li>Review the <a href=\"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\">workflow run logs</a> for details</li><li>Fix or remove broken links</li><li>Close the GitHub issue once fixed</li></ol><hr><p><strong>Pages Checked:</strong> All pages on lucasstahl.com</p><p><a href=\"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\">View Full Workflow Run</a></p>"
+            SUBJECT="🔗 Broken Links Detected on lukestahl.io"
+            BODY="<h2>🔗 Broken Links Detected</h2><p>The automated link checker found broken links on your site on <strong>$(date '+%B %d, %Y')</strong>.</p><h3>Action Required</h3><ol><li>Review the <a href=\"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\">workflow run logs</a> for details</li><li>Fix or remove broken links</li><li>Close the GitHub issue once fixed</li></ol><hr><p><strong>Pages Checked:</strong> All pages on lukestahl.io</p><p><a href=\"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\">View Full Workflow Run</a></p>"
           fi
 
           # Use jq to properly escape the JSON
@@ -127,4 +127,4 @@ jobs:
           fi
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "---" >> $GITHUB_STEP_SUMMARY
-          echo "Checked: https://lucasstahl.com/ (all pages)" >> $GITHUB_STEP_SUMMARY
+          echo "Checked: https://lukestahl.io/ (all pages)" >> $GITHUB_STEP_SUMMARY
