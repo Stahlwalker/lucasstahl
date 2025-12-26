@@ -61,19 +61,19 @@ jobs:
           curl -X POST "https://api.indexnow.org/indexnow" \
             -H "Content-Type: application/json" \
             -d '{
-              "host": "lucasstahl.com",
-              "key": "b6bz6by4n4xv6srpxp7p84hkq1uxq12y",
-              "keyLocation": "https://lucasstahl.com/b6bz6by4n4xv6srpxp7p84hkq1uxq12y.txt",
+              "host": "lukestahl.io",
+              "key": "8rencvayba2db8knz7h2zgkc5pg4jfgw",
+              "keyLocation": "https://lukestahl.io/8rencvayba2db8knz7h2zgkc5pg4jfgw.txt",
               "urlList": [
-                "https://lucasstahl.com/",
-                "https://lucasstahl.com/about/",
-                "https://lucasstahl.com/blog/",
-                "https://lucasstahl.com/builds/",
-                "https://lucasstahl.com/gems/",
-                "https://lucasstahl.com/handbook/",
-                "https://lucasstahl.com/status/",
-                "https://lucasstahl.com/dev-marketing-cheat-sheet/",
-                "https://lucasstahl.com/blog/my-stack/",
-                "https://lucasstahl.com/blog/markdown-vs-cms/"
+                "https://lukestahl.io/",
+                "https://lukestahl.io/about/",
+                "https://lukestahl.io/blog/",
+                "https://lukestahl.io/builds/",
+                "https://lukestahl.io/gems/",
+                "https://lukestahl.io/handbook/",
+                "https://lukestahl.io/status/",
+                "https://lukestahl.io/dev-marketing-cheat-sheet/",
+                "https://lukestahl.io/blog/my-stack/",
+                "https://lukestahl.io/blog/markdown-vs-cms/"
               ]
             }'
