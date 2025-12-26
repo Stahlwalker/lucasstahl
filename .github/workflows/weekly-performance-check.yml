@@ -18,7 +18,7 @@ jobs:
         id: home
         run: |
           echo "Testing homepage..."
-          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lucasstahl.com/&strategy=mobile&category=performance&category=accessibility&category=best-practices&category=seo&key=${{ secrets.PAGESPEED_API_KEY }}")
+          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lukestahl.io/&strategy=mobile&category=performance&category=accessibility&category=best-practices&category=seo&key=${{ secrets.PAGESPEED_API_KEY }}")
 
           # Check if API returned an error
           ERROR=$(echo $RESULT | jq -r '.error.message // empty')
@@ -61,7 +61,7 @@ jobs:
         continue-on-error: true
         run: |
           echo "Testing about page..."
-          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lucasstahl.com/about&strategy=mobile&category=performance&category=accessibility&category=best-practices&category=seo&key=${{ secrets.PAGESPEED_API_KEY }}")
+          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lukestahl.io/about&strategy=mobile&category=performance&category=accessibility&category=best-practices&category=seo&key=${{ secrets.PAGESPEED_API_KEY }}")
 
           PERF=$(echo $RESULT | jq -r '(.lighthouseResult.categories.performance.score // 0) * 100')
           A11Y=$(echo $RESULT | jq -r '(.lighthouseResult.categories.accessibility.score // 0) * 100')
@@ -78,7 +78,7 @@ jobs:
         continue-on-error: true
         run: |
           echo "Testing blog page..."
-          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lucasstahl.com/blog&strategy=mobile&category=performance&category=accessibility&category=best-practices&category=seo&key=${{ secrets.PAGESPEED_API_KEY }}")
+          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lukestahl.io/blog&strategy=mobile&category=performance&category=accessibility&category=best-practices&category=seo&key=${{ secrets.PAGESPEED_API_KEY }}")
 
           PERF=$(echo $RESULT | jq -r '(.lighthouseResult.categories.performance.score // 0) * 100')
           A11Y=$(echo $RESULT | jq -r '(.lighthouseResult.categories.accessibility.score // 0) * 100')
@@ -95,7 +95,7 @@ jobs:
         continue-on-error: true
         run: |
           echo "Testing builds page..."
-          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lucasstahl.com/builds&strategy=mobile&category=performance&category=accessibility&category=best-practices&category=seo&key=${{ secrets.PAGESPEED_API_KEY }}")
+          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lukestahl.io/builds&strategy=mobile&category=performance&category=accessibility&category=best-practices&category=seo&key=${{ secrets.PAGESPEED_API_KEY }}")
 
           PERF=$(echo $RESULT | jq -r '(.lighthouseResult.categories.performance.score // 0) * 100')
           A11Y=$(echo $RESULT | jq -r '(.lighthouseResult.categories.accessibility.score // 0) * 100')
@@ -112,7 +112,7 @@ jobs:
         continue-on-error: true
         run: |
           echo "Testing gems page..."
-          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lucasstahl.com/gems&strategy=mobile&category=performance&category=accessibility&category=best-practices&category=seo&key=${{ secrets.PAGESPEED_API_KEY }}")
+          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lukestahl.io/gems&strategy=mobile&category=performance&category=accessibility&category=best-practices&category=seo&key=${{ secrets.PAGESPEED_API_KEY }}")
 
           PERF=$(echo $RESULT | jq -r '(.lighthouseResult.categories.performance.score // 0) * 100')
           A11Y=$(echo $RESULT | jq -r '(.lighthouseResult.categories.accessibility.score // 0) * 100')
@@ -129,7 +129,7 @@ jobs:
         continue-on-error: true
         run: |
           echo "Testing homepage (desktop)..."
-          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lucasstahl.com/&strategy=desktop&category=performance&category=accessibility&category=best-practices&category=seo&key=${{ secrets.PAGESPEED_API_KEY }}")
+          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lukestahl.io/&strategy=desktop&category=performance&category=accessibility&category=best-practices&category=seo&key=${{ secrets.PAGESPEED_API_KEY }}")
 
           PERF=$(echo $RESULT | jq -r '(.lighthouseResult.categories.performance.score // 0) * 100')
           A11Y=$(echo $RESULT | jq -r '(.lighthouseResult.categories.accessibility.score // 0) * 100')
@@ -153,7 +153,7 @@ jobs:
         continue-on-error: true
         run: |
           echo "Testing about page (desktop)..."
-          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lucasstahl.com/about&strategy=desktop&category=performance&category=accessibility&category=best-practices&category=seo&key=${{ secrets.PAGESPEED_API_KEY }}")
+          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lukestahl.io/about&strategy=desktop&category=performance&category=accessibility&category=best-practices&category=seo&key=${{ secrets.PAGESPEED_API_KEY }}")
 
           PERF=$(echo $RESULT | jq -r '(.lighthouseResult.categories.performance.score // 0) * 100')
           A11Y=$(echo $RESULT | jq -r '(.lighthouseResult.categories.accessibility.score // 0) * 100')
@@ -170,7 +170,7 @@ jobs:
         continue-on-error: true
         run: |
           echo "Testing blog page (desktop)..."
-          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lucasstahl.com/blog&strategy=desktop&category=performance&category=accessibility&category=best-practices&category=seo&key=${{ secrets.PAGESPEED_API_KEY }}")
+          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lukestahl.io/blog&strategy=desktop&category=performance&category=accessibility&category=best-practices&category=seo&key=${{ secrets.PAGESPEED_API_KEY }}")
 
           PERF=$(echo $RESULT | jq -r '(.lighthouseResult.categories.performance.score // 0) * 100')
           A11Y=$(echo $RESULT | jq -r '(.lighthouseResult.categories.accessibility.score // 0) * 100')
@@ -187,7 +187,7 @@ jobs:
         continue-on-error: true
         run: |
           echo "Testing builds page (desktop)..."
-          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lucasstahl.com/builds&strategy=desktop&category=performance&category=accessibility&category=best-practices&category=seo&key=${{ secrets.PAGESPEED_API_KEY }}")
+          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lukestahl.io/builds&strategy=desktop&category=performance&category=accessibility&category=best-practices&category=seo&key=${{ secrets.PAGESPEED_API_KEY }}")
 
           PERF=$(echo $RESULT | jq -r '(.lighthouseResult.categories.performance.score // 0) * 100')
           A11Y=$(echo $RESULT | jq -r '(.lighthouseResult.categories.accessibility.score // 0) * 100')
@@ -204,7 +204,7 @@ jobs:
         continue-on-error: true
         run: |
           echo "Testing gems page (desktop)..."
-          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lucasstahl.com/gems&strategy=desktop&category=performance&category=accessibility&category=best-practices&category=seo&key=${{ secrets.PAGESPEED_API_KEY }}")
+          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lukestahl.io/gems&strategy=desktop&category=performance&category=accessibility&category=best-practices&category=seo&key=${{ secrets.PAGESPEED_API_KEY }}")
 
           PERF=$(echo $RESULT | jq -r '(.lighthouseResult.categories.performance.score // 0) * 100')
           A11Y=$(echo $RESULT | jq -r '(.lighthouseResult.categories.accessibility.score // 0) * 100')
@@ -253,7 +253,7 @@ jobs:
           echo "| Gems | ${{ steps.gems-desktop.outputs.performance }} | ${{ steps.gems-desktop.outputs.accessibility }} | ${{ steps.gems-desktop.outputs.best_practices }} | ${{ steps.gems-desktop.outputs.seo }} |" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "---" >> $GITHUB_STEP_SUMMARY
-          echo "🔗 [View detailed reports on PageSpeed Insights](https://pagespeed.web.dev/?url=https://lucasstahl.com/)" >> $GITHUB_STEP_SUMMARY
+          echo "🔗 [View detailed reports on PageSpeed Insights](https://pagespeed.web.dev/?url=https://lukestahl.io/)" >> $GITHUB_STEP_SUMMARY
 
       - name: Performance Summary
         run: |
@@ -325,7 +325,7 @@ jobs:
           ---
 
           🔗 [View Full Workflow Run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
-          🔗 [Test on PageSpeed Insights](https://pagespeed.web.dev/?url=https://lucasstahl.com/)
+          🔗 [Test on PageSpeed Insights](https://pagespeed.web.dev/?url=https://lukestahl.io/)
           EOF
           )
 
@@ -342,7 +342,7 @@ jobs:
           FROM_EMAIL: ${{ secrets.FROM_EMAIL }}
         run: |
           SUBJECT="📊 Weekly Performance Report - $(date '+%B %d, %Y')"
-          BODY="<h2>📊 Weekly Performance Report - $(date '+%B %d, %Y')</h2><h3>📱 Mobile Performance Scores</h3><table border=\"1\" cellpadding=\"8\" cellspacing=\"0\" style=\"border-collapse: collapse;\"><tr style=\"background: #f5f5f5;\"><th style=\"padding: 8px;\">Page</th><th style=\"padding: 8px;\">Score</th></tr><tr><td style=\"padding: 8px;\">Home</td><td style=\"padding: 8px;\">${{ steps.home.outputs.performance }}</td></tr><tr><td style=\"padding: 8px;\">About</td><td style=\"padding: 8px;\">${{ steps.about.outputs.performance }}</td></tr><tr><td style=\"padding: 8px;\">Blog</td><td style=\"padding: 8px;\">${{ steps.blog.outputs.performance }}</td></tr><tr><td style=\"padding: 8px;\">Builds</td><td style=\"padding: 8px;\">${{ steps.builds.outputs.performance }}</td></tr><tr><td style=\"padding: 8px;\">Gems</td><td style=\"padding: 8px;\">${{ steps.gems.outputs.performance }}</td></tr></table><h3>🖥️ Desktop Performance Scores</h3><table border=\"1\" cellpadding=\"8\" cellspacing=\"0\" style=\"border-collapse: collapse;\"><tr style=\"background: #f5f5f5;\"><th style=\"padding: 8px;\">Page</th><th style=\"padding: 8px;\">Score</th></tr><tr><td style=\"padding: 8px;\">Home</td><td style=\"padding: 8px;\">${{ steps.home-desktop.outputs.performance }}</td></tr><tr><td style=\"padding: 8px;\">About</td><td style=\"padding: 8px;\">${{ steps.about-desktop.outputs.performance }}</td></tr><tr><td style=\"padding: 8px;\">Blog</td><td style=\"padding: 8px;\">${{ steps.blog-desktop.outputs.performance }}</td></tr><tr><td style=\"padding: 8px;\">Builds</td><td style=\"padding: 8px;\">${{ steps.builds-desktop.outputs.performance }}</td></tr><tr><td style=\"padding: 8px;\">Gems</td><td style=\"padding: 8px;\">${{ steps.gems-desktop.outputs.performance }}</td></tr></table><h3>🎯 Core Web Vitals</h3><h4>📱 Mobile (Homepage)</h4><ul><li><strong>LCP:</strong> ${{ steps.home.outputs.lcp }}ms (target: &lt;2500ms)</li><li><strong>CLS:</strong> ${{ steps.home.outputs.cls }} (target: &lt;0.1)</li><li><strong>TBT:</strong> ${{ steps.home.outputs.tbt }}ms (target: &lt;300ms)</li></ul><h4>🖥️ Desktop (Homepage)</h4><ul><li><strong>LCP:</strong> ${{ steps.home-desktop.outputs.lcp }}ms (target: &lt;2500ms)</li><li><strong>CLS:</strong> ${{ steps.home-desktop.outputs.cls }} (target: &lt;0.1)</li><li><strong>TBT:</strong> ${{ steps.home-desktop.outputs.tbt }}ms (target: &lt;300ms)</li></ul><hr><p><a href=\"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\">View Full Workflow Run</a><br><a href=\"https://pagespeed.web.dev/?url=https://lucasstahl.com/\">Test on PageSpeed Insights</a></p>"
+          BODY="<h2>📊 Weekly Performance Report - $(date '+%B %d, %Y')</h2><h3>📱 Mobile Performance Scores</h3><table border=\"1\" cellpadding=\"8\" cellspacing=\"0\" style=\"border-collapse: collapse;\"><tr style=\"background: #f5f5f5;\"><th style=\"padding: 8px;\">Page</th><th style=\"padding: 8px;\">Score</th></tr><tr><td style=\"padding: 8px;\">Home</td><td style=\"padding: 8px;\">${{ steps.home.outputs.performance }}</td></tr><tr><td style=\"padding: 8px;\">About</td><td style=\"padding: 8px;\">${{ steps.about.outputs.performance }}</td></tr><tr><td style=\"padding: 8px;\">Blog</td><td style=\"padding: 8px;\">${{ steps.blog.outputs.performance }}</td></tr><tr><td style=\"padding: 8px;\">Builds</td><td style=\"padding: 8px;\">${{ steps.builds.outputs.performance }}</td></tr><tr><td style=\"padding: 8px;\">Gems</td><td style=\"padding: 8px;\">${{ steps.gems.outputs.performance }}</td></tr></table><h3>🖥️ Desktop Performance Scores</h3><table border=\"1\" cellpadding=\"8\" cellspacing=\"0\" style=\"border-collapse: collapse;\"><tr style=\"background: #f5f5f5;\"><th style=\"padding: 8px;\">Page</th><th style=\"padding: 8px;\">Score</th></tr><tr><td style=\"padding: 8px;\">Home</td><td style=\"padding: 8px;\">${{ steps.home-desktop.outputs.performance }}</td></tr><tr><td style=\"padding: 8px;\">About</td><td style=\"padding: 8px;\">${{ steps.about-desktop.outputs.performance }}</td></tr><tr><td style=\"padding: 8px;\">Blog</td><td style=\"padding: 8px;\">${{ steps.blog-desktop.outputs.performance }}</td></tr><tr><td style=\"padding: 8px;\">Builds</td><td style=\"padding: 8px;\">${{ steps.builds-desktop.outputs.performance }}</td></tr><tr><td style=\"padding: 8px;\">Gems</td><td style=\"padding: 8px;\">${{ steps.gems-desktop.outputs.performance }}</td></tr></table><h3>🎯 Core Web Vitals</h3><h4>📱 Mobile (Homepage)</h4><ul><li><strong>LCP:</strong> ${{ steps.home.outputs.lcp }}ms (target: &lt;2500ms)</li><li><strong>CLS:</strong> ${{ steps.home.outputs.cls }} (target: &lt;0.1)</li><li><strong>TBT:</strong> ${{ steps.home.outputs.tbt }}ms (target: &lt;300ms)</li></ul><h4>🖥️ Desktop (Homepage)</h4><ul><li><strong>LCP:</strong> ${{ steps.home-desktop.outputs.lcp }}ms (target: &lt;2500ms)</li><li><strong>CLS:</strong> ${{ steps.home-desktop.outputs.cls }} (target: &lt;0.1)</li><li><strong>TBT:</strong> ${{ steps.home-desktop.outputs.tbt }}ms (target: &lt;300ms)</li></ul><hr><p><a href=\"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\">View Full Workflow Run</a><br><a href=\"https://pagespeed.web.dev/?url=https://lukestahl.io/\">Test on PageSpeed Insights</a></p>"
 
           # Use jq to properly escape the JSON
           PAYLOAD=$(jq -n \
