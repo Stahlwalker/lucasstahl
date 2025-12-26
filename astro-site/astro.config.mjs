@@ -11,7 +11,7 @@ const excludedPages = [
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://lucasstahl.com',
+  site: 'https://lukestahl.io',
   integrations: [
     sitemap({
       filter: (page) => !excludedPages.some(excluded => page.includes(excluded)),

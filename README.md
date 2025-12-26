@@ -1,4 +1,4 @@
-# lucasstahl.com
+# lukestahl.io
 
 Personal website and blog for Luke Stahl.
 
@@ -118,7 +118,7 @@ Add these to repository settings:
 
 Automatically deploys to GitHub Pages on push to `master`.
 
-**URL**: https://lucasstahl.com
+**URL**: https://lukestahl.io
 
 ### Deploy Process
 
@@ -159,6 +159,6 @@ Add new post in Notion:
 
 ## Contact
 
-- Website: [lucasstahl.com](https://lucasstahl.com)
+- Website: [lukestahl.io](https://lukestahl.io)
 - GitHub: [@stahlwalker](https://github.com/stahlwalker)
 - LinkedIn: [Luke Stahl](https://www.linkedin.com/in/lukestahl/)
