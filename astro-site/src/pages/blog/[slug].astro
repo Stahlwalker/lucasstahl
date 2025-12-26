@@ -25,7 +25,7 @@ const htmlContent = post.content ? marked(post.content) : '';
 let ogImageUrl = post.ogImage || '/assets/images/Hero_OG.png';
 // Convert relative paths to absolute URLs for social media
 if (ogImageUrl.startsWith('/')) {
-  ogImageUrl = `https://lucasstahl.com${ogImageUrl}`;
+  ogImageUrl = `https://lukestahl.io${ogImageUrl}`;
 }
 const metaTitle = post.metaTitle || post.title;
 const metaDesc = post.metaDescription || post.excerpt;
@@ -222,7 +222,7 @@ const hideAnnouncement = post.slug === 'markdown-vs-cms';
 <Layout
   title={`${metaTitle} - Luke Stahl`}
   description={metaDesc}
-  canonicalUrl={`https://lucasstahl.com/blog/${post.slug}/`}
+  canonicalUrl={`https://lukestahl.io/blog/${post.slug}/`}
   ogTitle={metaTitle}
   ogDescription={metaDesc}
   ogImage={ogImageUrl}
@@ -240,16 +240,16 @@ const hideAnnouncement = post.slug === 'markdown-vs-cms';
     "author": {
       "@type": "Person",
       "name": "Luke Stahl",
-      "url": "https://lucasstahl.com/"
+      "url": "https://lukestahl.io/"
     },
     "publisher": {
       "@type": "Person",
       "name": "Luke Stahl",
-      "url": "https://lucasstahl.com/"
+      "url": "https://lukestahl.io/"
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://lucasstahl.com/blog/${post.slug}/`
+      "@id": `https://lukestahl.io/blog/${post.slug}/`
     },
     "wordCount": post.readingTime ? post.readingTime * 200 : undefined,
     "keywords": post.tags.join(", ")
@@ -368,7 +368,7 @@ const hideAnnouncement = post.slug === 'markdown-vs-cms';
           <h3 class="share-title">Share this article</h3>
           <div class="share-buttons">
             <a
-              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(metaTitle)}&url=${encodeURIComponent(`https://lucasstahl.com/blog/${post.slug}/`)}`}
+              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(metaTitle)}&url=${encodeURIComponent(`https://lukestahl.io/blog/${post.slug}/`)}`}
               target="_blank"
               rel="noopener noreferrer"
               class="share-button share-twitter"
@@ -377,7 +377,7 @@ const hideAnnouncement = post.slug === 'markdown-vs-cms';
               <i class="fa-brands fa-x-twitter"></i>
             </a>
             <a
-              href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://lucasstahl.com/blog/${post.slug}/`)}`}
+              href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://lukestahl.io/blog/${post.slug}/`)}`}
               target="_blank"
               rel="noopener noreferrer"
               class="share-button share-linkedin"
@@ -386,7 +386,7 @@ const hideAnnouncement = post.slug === 'markdown-vs-cms';
               <i class="fa-brands fa-linkedin-in"></i>
             </a>
             <a
-              href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`https://lucasstahl.com/blog/${post.slug}/`)}`}
+              href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`https://lukestahl.io/blog/${post.slug}/`)}`}
               target="_blank"
               rel="noopener noreferrer"
               class="share-button share-facebook"

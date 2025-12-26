@@ -17,7 +17,7 @@ export async function GET(context: APIContext) {
   return rss({
     title: "Luke Stahl's Blog",
     description: 'Articles on web development, CMS platforms, AI tools, and developer marketing',
-    site: context.site || 'https://lucasstahl.com',
+    site: context.site || 'https://lukestahl.io',
     items: postsWithContent.map((post) => ({
       title: post.title,
       pubDate: new Date(post.publishedDate),
