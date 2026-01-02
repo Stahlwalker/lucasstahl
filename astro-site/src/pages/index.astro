@@ -64,7 +64,29 @@ import Layout from '../layouts/Layout.astro';
 				<p class="section-subtitle">Featured projects, insights, and explorations</p>
 			</div>
 
-			<div class="feed-container">
+			<!-- Sidebar Filter (only visible in sidebar-layout variant) -->
+			<div class="highlights-wrapper" id="highlightsWrapper">
+				<aside class="filter-sidebar" id="filterSidebar">
+					<h3 class="filter-title">Filter by Type</h3>
+					<button class="filter-btn active" data-filter="all">
+						<i class="fa-solid fa-grid-2"></i>
+						All Content
+					</button>
+					<button class="filter-btn" data-filter="article">
+						<i class="fa-solid fa-file-lines"></i>
+						Articles
+					</button>
+					<button class="filter-btn" data-filter="project">
+						<i class="fa-solid fa-code"></i>
+						Projects
+					</button>
+					<button class="filter-btn" data-filter="talk">
+						<i class="fa-solid fa-video"></i>
+						Talks
+					</button>
+				</aside>
+
+				<div class="feed-container" id="feedContainer">
 				<!-- Featured Blog: Open Source CMS -->
 				<a href="https://webflow.com/blog/open-source-cms" target="_blank" rel="noopener noreferrer" class="feed-item-link">
 					<article class="feed-item">
@@ -380,8 +402,8 @@ import Layout from '../layouts/Layout.astro';
 					</div>
 				</article>
 				</a>
-			
-</div>
+				</div>
+			</div>
 
 			<!-- GitHub Call-to-Action -->
 			<div class="github-cta">
@@ -411,6 +433,156 @@ import Layout from '../layouts/Layout.astro';
 			</div>
 		</div>
 	</section>
+
+	<style>
+		/* Sidebar Filter Layout */
+		.highlights-wrapper {
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+		}
+
+		.filter-sidebar {
+			display: none; /* Hidden by default, shown when sidebar-layout class is added */
+			flex-direction: column;
+			gap: 0.5rem;
+			background: var(--bg-secondary);
+			padding: 1.5rem;
+			border-radius: 8px;
+			border: 1px solid rgba(255, 255, 255, 0.1);
+			align-self: start;
+		}
+
+		.highlights-wrapper.sidebar-layout {
+			display: grid;
+			grid-template-columns: 200px 1fr;
+			gap: 2rem;
+		}
+
+		.highlights-wrapper.sidebar-layout .filter-sidebar {
+			display: flex;
+		}
+
+		/* 2-column grid for cards when sidebar is active */
+		.highlights-wrapper.sidebar-layout .feed-container {
+			display: grid !important;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 1rem;
+		}
+
+		.filter-title {
+			font-family: 'Fira Code', monospace;
+			font-size: 0.875rem;
+			font-weight: 600;
+			color: var(--accent-primary);
+			margin: 0 0 0.75rem 0;
+			text-transform: uppercase;
+			letter-spacing: 0.5px;
+		}
+
+		.filter-btn {
+			display: flex;
+			align-items: center;
+			gap: 0.75rem;
+			padding: 0.75rem 1rem;
+			background: transparent;
+			border: 1px solid rgba(255, 255, 255, 0.1);
+			border-radius: 6px;
+			color: var(--text-secondary);
+			font-family: 'Fira Code', monospace;
+			font-size: 0.875rem;
+			cursor: pointer;
+			transition: all 0.2s ease;
+			text-align: left;
+		}
+
+		.filter-btn:hover {
+			background: rgba(96, 165, 250, 0.1);
+			border-color: var(--accent-primary);
+			color: var(--text-primary);
+		}
+
+		.filter-btn.active {
+			background: rgba(96, 165, 250, 0.15);
+			border-color: var(--accent-primary);
+			color: var(--accent-primary);
+		}
+
+		.filter-btn i {
+			font-size: 1rem;
+			opacity: 0.8;
+		}
+
+		.filter-btn.active i {
+			opacity: 1;
+		}
+
+		/* Hide filtered items */
+		.feed-item-link.hidden {
+			display: none;
+		}
+
+		/* Single column when only 1 item visible */
+		.highlights-wrapper.sidebar-layout .feed-container.single-item {
+			grid-template-columns: 1fr !important;
+		}
+
+		/* Responsive */
+		@media (max-width: 968px) {
+			.highlights-wrapper.sidebar-layout {
+				grid-template-columns: 1fr;
+			}
+
+			.filter-sidebar {
+				display: flex !important;
+				flex-direction: row;
+				flex-wrap: wrap;
+				gap: 0.5rem;
+			}
+
+			.filter-title {
+				width: 100%;
+			}
+
+			.filter-btn {
+				flex: 0 0 auto;
+				padding: 0.5rem 0.75rem;
+				font-size: 0.8125rem;
+			}
+
+			/* Single column on mobile for better readability */
+			.highlights-wrapper.sidebar-layout .feed-container {
+				grid-template-columns: 1fr !important;
+			}
+		}
+
+		/* Light mode styles */
+		:global([data-theme="light"]) .filter-sidebar {
+			background: #f8fafc;
+			border: 2px solid #94a3b8;
+		}
+
+		:global([data-theme="light"]) .filter-title {
+			color: #2563eb;
+		}
+
+		:global([data-theme="light"]) .filter-btn {
+			color: #64748b;
+			border-color: #cbd5e1;
+		}
+
+		:global([data-theme="light"]) .filter-btn:hover {
+			background: rgba(37, 99, 235, 0.08);
+			border-color: #2563eb;
+			color: #1e293b;
+		}
+
+		:global([data-theme="light"]) .filter-btn.active {
+			background: rgba(37, 99, 235, 0.12);
+			border-color: #2563eb;
+			color: #2563eb;
+		}
+	</style>
 
 	<script>
 		// Smooth scroll functionality for scroll indicator
@@ -449,6 +621,68 @@ import Layout from '../layouts/Layout.astro';
 					}
 				});
 			}
+
+			// A/B Test: Sidebar Filter Layout
+			const highlightsWrapper = document.getElementById('highlightsWrapper');
+			if (highlightsWrapper && window.posthog) {
+				// Get feature flag variant
+				const variant = window.posthog.getFeatureFlag('highlights-layout-test');
+
+				// Apply sidebar layout if test variant
+				if (variant === 'test') {
+					highlightsWrapper.classList.add('sidebar-layout');
+					initializeFilters();
+				}
+			}
+
+			// Filter functionality
+			function initializeFilters() {
+				const filterButtons = document.querySelectorAll('.filter-btn');
+				const feedItems = document.querySelectorAll('.feed-item-link');
+
+				// Add data attributes to cards based on their type badge
+				feedItems.forEach(item => {
+					const typeBadge = item.querySelector('.feed-type');
+					if (typeBadge) {
+						const typeText = typeBadge.textContent.trim().toLowerCase();
+						item.setAttribute('data-type', typeText);
+					}
+				});
+
+				// Handle filter button clicks
+				filterButtons.forEach(button => {
+					button.addEventListener('click', function() {
+						const filter = this.getAttribute('data-filter');
+						const feedContainer = document.getElementById('feedContainer');
+
+						// Update active state
+						filterButtons.forEach(btn => btn.classList.remove('active'));
+						this.classList.add('active');
+
+						// Filter cards
+						let visibleCount = 0;
+						feedItems.forEach(item => {
+							const itemType = item.getAttribute('data-type');
+							if (filter === 'all' || itemType === filter) {
+								item.classList.remove('hidden');
+								visibleCount++;
+							} else {
+								item.classList.add('hidden');
+							}
+						});
+
+						// Switch to single column when only 1 item visible
+						if (visibleCount === 1) {
+							feedContainer.classList.add('single-item');
+						} else {
+							feedContainer.classList.remove('single-item');
+						}
+					});
+				});
+			}
+
+			// Expose filter initialization globally for testing
+			window.initializeFilters = initializeFilters;
 		});
 	</script>
 </Layout>
