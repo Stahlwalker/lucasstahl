@@ -533,7 +533,7 @@ import Layout from '../layouts/Layout.astro';
 				grid-template-columns: 1fr;
 			}
 
-			.filter-sidebar {
+			.highlights-wrapper.sidebar-layout .filter-sidebar {
 				display: flex !important;
 				flex-direction: row;
 				flex-wrap: wrap;
@@ -622,63 +622,101 @@ import Layout from '../layouts/Layout.astro';
 				});
 			}
 
-			// A/B Test: Sidebar Filter Layout
-			const highlightsWrapper = document.getElementById('highlightsWrapper');
-			if (highlightsWrapper && window.posthog) {
-				// Get feature flag variant
-				const variant = window.posthog.getFeatureFlag('highlights-layout-test');
+		// Filter functionality
+		function initializeFilters() {
+			const filterButtons = document.querySelectorAll('.filter-btn');
+			const feedItems = document.querySelectorAll('.feed-item-link');
 
-				// Apply sidebar layout if test variant
-				if (variant === 'test') {
-					highlightsWrapper.classList.add('sidebar-layout');
-					initializeFilters();
+			// Add data attributes to cards based on their type badge
+			feedItems.forEach(item => {
+				const typeBadge = item.querySelector('.feed-type');
+				if (typeBadge) {
+					const typeText = typeBadge.textContent.trim().toLowerCase();
+					item.setAttribute("data-type", typeText);
+					console.log("Set data-type:", typeText, "on", item); // Debug log
 				}
-			}
+			});
 
-			// Filter functionality
-			function initializeFilters() {
-				const filterButtons = document.querySelectorAll('.filter-btn');
-				const feedItems = document.querySelectorAll('.feed-item-link');
+			// Handle filter button clicks
+			function handleFilterClick(button) {
+				const filter = button.getAttribute("data-filter");
+				const feedContainer = document.getElementById("feedContainer");
 
-				// Add data attributes to cards based on their type badge
+				console.log("Filtering by:", filter); // Debug log
+
+				// Update active state
+				filterButtons.forEach(btn => btn.classList.remove('active'));
+				button.classList.add('active');
+
+				// Filter cards
+				let visibleCount = 0;
 				feedItems.forEach(item => {
-					const typeBadge = item.querySelector('.feed-type');
-					if (typeBadge) {
-						const typeText = typeBadge.textContent.trim().toLowerCase();
-						item.setAttribute('data-type', typeText);
+					const itemType = item.getAttribute("data-type");
+					console.log("Item type:", itemType, "Filter:", filter, "Match:", filter === "all" || itemType === filter); // Debug log
+
+					if (filter === 'all' || itemType === filter) {
+						item.classList.remove('hidden');
+						visibleCount++;
+					} else {
+						item.classList.add('hidden');
 					}
 				});
 
-				// Handle filter button clicks
-				filterButtons.forEach(button => {
-					button.addEventListener('click', function() {
-						const filter = this.getAttribute('data-filter');
-						const feedContainer = document.getElementById('feedContainer');
+				console.log("Visible count:", visibleCount); // Debug log
 
-						// Update active state
-						filterButtons.forEach(btn => btn.classList.remove('active'));
-						this.classList.add('active');
+				// Switch to single column when only 1 item visible
+				if (visibleCount === 1) {
+					feedContainer.classList.add('single-item');
+				} else {
+					feedContainer.classList.remove('single-item');
+				}
+			}
 
-						// Filter cards
-						let visibleCount = 0;
-						feedItems.forEach(item => {
-							const itemType = item.getAttribute('data-type');
-							if (filter === 'all' || itemType === filter) {
-								item.classList.remove('hidden');
-								visibleCount++;
-							} else {
-								item.classList.add('hidden');
-							}
-						});
-
-						// Switch to single column when only 1 item visible
-						if (visibleCount === 1) {
-							feedContainer.classList.add('single-item');
-						} else {
-							feedContainer.classList.remove('single-item');
-						}
-					});
+			filterButtons.forEach(button => {
+				// Regular click for desktop
+				button.addEventListener('click', function(e) {
+					handleFilterClick(this);
 				});
+
+				// Touch event for mobile
+				button.addEventListener('touchend', function(e) {
+					e.preventDefault();
+					e.stopPropagation();
+					handleFilterClick(this);
+				});
+			});
+		}
+
+		// A/B Test: Sidebar Filter Layout
+		// Wait for PostHog to load feature flags before checking
+		if (window.posthog) {
+			window.posthog.onFeatureFlags(function() {
+				const highlightsWrapper = document.getElementById('highlightsWrapper');
+				const variant = window.posthog.getFeatureFlag('highlights-layout-test');
+
+				console.log('Feature flag loaded:', variant); // Debug log
+
+				// Apply sidebar layout if test variant
+				if (variant === 'test' && highlightsWrapper) {
+					highlightsWrapper.classList.add('sidebar-layout');
+					initializeFilters();
+				}
+			});
+		}
+
+		// Also initialize filters if sidebar is already present (for testing/debugging)
+		setTimeout(function() {
+			const highlightsWrapper = document.getElementById('highlightsWrapper');
+			if (highlightsWrapper && highlightsWrapper.classList.contains('sidebar-layout')) {
+				console.log('Sidebar detected, initializing filters');
+				initializeFilters();
+			}
+		}, 500);
+
+		// Expose filter initialization globally for testing
+		window.initializeFilters = initializeFilters;
+	});
+</script>
 			}
 
 			// Expose filter initialization globally for testing
