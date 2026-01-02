@@ -42,7 +42,7 @@
                 <a class="nav-link" href="/about/" data-nav-link>About</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/gems/" data-nav-link>Gems</a>
+                <a class="nav-link" href="/gems/" data-nav-link id="gemsNavLink">Gems</a>
             </li>
             <li class="nav-item search-nav-item">
                 <button class="nav-link search-button" id="searchButton" aria-label="Search" title="Search (⌘K)" style="border: none; background: none; cursor: pointer;">
@@ -140,6 +140,29 @@
                     navbarCollapse.classList.remove('show');
                     navbarToggler.setAttribute('aria-expanded', 'false');
                 });
+            });
+        }
+
+        // A/B Test: Gems vs Resources navbar text
+        const gemsNavLink = document.getElementById('gemsNavLink');
+
+        if (gemsNavLink && window.posthog) {
+            // Get feature flag variant
+            const variant = window.posthog.getFeatureFlag('navbar-gems-test');
+
+            // Update text based on variant
+            if (variant === 'test') {
+                gemsNavLink.textContent = 'Resources';
+            }
+
+            // Track clicks on the Gems/Resources nav link
+            gemsNavLink.addEventListener('click', function() {
+                if (window.posthog) {
+                    window.posthog.capture('navbar_gems_clicked', {
+                        variant: variant || 'control',
+                        link_text: gemsNavLink.textContent
+                    });
+                }
             });
         }
     });
