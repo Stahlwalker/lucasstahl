@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getBlogPosts, getBlogPostBySlug } from '../../lib/notion';
-import { marked } from 'marked';
+import { Marked } from 'marked';
 import { codeToHtml } from 'shiki';
 
 export async function getStaticPaths() {
@@ -19,8 +19,9 @@ if (!post) {
   return Astro.redirect('/404');
 }
 
-// Configure marked to use Shiki - we'll handle wrapping ourselves
-const renderer = new marked.Renderer();
+// Create a separate marked instance with Shiki syntax highlighting
+const markedWithShiki = new Marked();
+const renderer = new markedWithShiki.Renderer();
 const originalCodeRenderer = renderer.code.bind(renderer);
 
 renderer.code = async function(this: any, code: string, language: string | undefined, isEscaped: boolean) {
@@ -43,13 +44,13 @@ renderer.code = async function(this: any, code: string, language: string | undef
   }
 };
 
-marked.setOptions({
+markedWithShiki.setOptions({
   async: true,
   renderer: renderer
 });
 
 // Convert markdown to HTML with syntax highlighting
-const htmlContent = post.content ? await marked(post.content) : '';
+const htmlContent = post.content ? await markedWithShiki.parse(post.content) : '';
 
 // Determine OG image with fallback logic and ensure absolute URL
 let ogImageUrl = post.ogImage || '/assets/images/Hero_OG.png';

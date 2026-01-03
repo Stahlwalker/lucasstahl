@@ -1,7 +1,10 @@
 import rss from '@astrojs/rss';
 import { getBlogPosts, getBlogPostBySlug } from '../lib/notion';
-import { marked } from 'marked';
+import { Marked } from 'marked';
 import type { APIContext } from 'astro';
+
+// Create a synchronous marked instance for RSS (no Shiki)
+const markedSync = new Marked();
 
 export async function GET(context: APIContext) {
   const posts = await getBlogPosts();
@@ -23,7 +26,7 @@ export async function GET(context: APIContext) {
       pubDate: new Date(post.publishedDate),
       description: post.excerpt,
       link: `/blog/${post.slug}/`,
-      content: post.content ? marked(post.content) : post.excerpt,
+      content: post.content ? markedSync.parse(post.content) as string : post.excerpt,
       categories: post.tags,
     })),
     customData: `<language>en-us</language>`,
