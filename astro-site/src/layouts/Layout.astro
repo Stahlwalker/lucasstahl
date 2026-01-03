@@ -151,8 +151,27 @@ const {
 			}
 
 			document.documentElement.setAttribute('data-theme', theme);
+
+			// Set background color immediately to prevent white flash
+			const backgroundColor = theme === 'dark' ? '#0a0e27' : '#f8fafc';
+			document.documentElement.style.backgroundColor = backgroundColor;
 		})();
 	</script>
+
+	<!-- Eliminate white flash on page navigation -->
+	<style is:global>
+		html {
+			background-color: #0a0e27; /* Fallback for dark mode */
+		}
+
+		[data-theme="light"] {
+			background-color: #f8fafc;
+		}
+
+		body {
+			background-color: transparent;
+		}
+	</style>
 </head>
 <body>
 	{showAnnouncement && announcementMessage && (
