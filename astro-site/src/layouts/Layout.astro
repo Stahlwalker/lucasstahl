@@ -340,6 +340,97 @@ const {
 		});
 	</script>
 
+	<!-- Cursor Spotlight Glow Effect -->
+	<div id="cursor-glow" aria-hidden="true"></div>
+
+	<style>
+		#cursor-glow {
+			position: fixed;
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			pointer-events: none;
+			z-index: 9999;
+			opacity: 0;
+			background: radial-gradient(
+				circle,
+				rgba(96, 165, 250, 0.3) 0%,
+				rgba(96, 165, 250, 0.15) 40%,
+				transparent 70%
+			);
+			transform: translate(-50%, -50%);
+			mix-blend-mode: screen;
+			transition: opacity 0.3s ease;
+			left: 0;
+			top: 0;
+		}
+
+		/* Light mode - more subtle glow */
+		:global([data-theme="light"]) #cursor-glow {
+			background: radial-gradient(
+				circle,
+				rgba(37, 99, 235, 0.2) 0%,
+				rgba(37, 99, 235, 0.1) 40%,
+				transparent 70%
+			);
+		}
+
+		/* Hide on touch devices */
+		@media (hover: none) {
+			#cursor-glow {
+				display: none;
+			}
+		}
+	</style>
+
+	<script>
+		import { animate } from 'motion';
+
+		// Only run on desktop (non-touch devices)
+		if (window.matchMedia('(hover: hover)').matches) {
+			const cursorGlow = document.getElementById('cursor-glow');
+
+			if (cursorGlow) {
+				let mouseX = 0;
+				let mouseY = 0;
+
+				// Track mouse position
+				document.addEventListener('mousemove', (e) => {
+					mouseX = e.clientX;
+					mouseY = e.clientY;
+
+					// Show glow on first move
+					if (cursorGlow.style.opacity === '0' || cursorGlow.style.opacity === '') {
+						cursorGlow.style.opacity = '1';
+					}
+
+					// Animate glow position with smooth easing
+					animate(
+						cursorGlow,
+						{
+							left: mouseX + 'px',
+							top: mouseY + 'px'
+						},
+						{
+							duration: 0.2,
+							easing: 'ease-out'
+						}
+					);
+				});
+
+				// Hide glow when cursor leaves window
+				document.addEventListener('mouseleave', () => {
+					cursorGlow.style.opacity = '0';
+				});
+
+				// Show glow when cursor enters window
+				document.addEventListener('mouseenter', () => {
+					cursorGlow.style.opacity = '1';
+				});
+			}
+		}
+	</script>
+
 	<!-- Console Easter Egg -->
 	<script is:inline>
 		console.log("Hello. Appreciate you being here. — Luke");
