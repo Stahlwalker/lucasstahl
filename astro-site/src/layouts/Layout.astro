@@ -161,11 +161,11 @@ const {
 	<!-- Eliminate white flash on page navigation -->
 	<style is:global>
 		html {
-			background-color: #0a0e27; /* Fallback for dark mode */
+			background-color: #0a0e27; /* Dark mode default */
 		}
 
-		[data-theme="light"] {
-			background-color: #f8fafc;
+		html[data-theme="light"] {
+			background-color: #f8fafc !important;
 		}
 
 		body {
