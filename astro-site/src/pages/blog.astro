@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { getBlogPosts } from '../lib/notion';
+import { Image } from 'astro:assets';
+import blogOpenSourceHeader from '../assets/images/blog-open-source-header.jpg';
 
 const notionPosts = await getBlogPosts();
 ---
@@ -126,10 +128,14 @@ const notionPosts = await getBlogPosts();
 					   rel="noopener noreferrer"
 					   class="blog-card-inner">
 						<div class="blog-thumbnail">
-							<img src="https://cdn.prod.website-files.com/687e8d1b96312cc631cafec7/693b20280915c887c8f027f2_CODE_DesignBlogHeader_2400x1260-2.jpg"
-								 alt="The true cost of open source CMS"
-								 loading="eager"
-								 fetchpriority="high">
+							<Image
+								src={blogOpenSourceHeader}
+								alt="The true cost of open source CMS"
+								loading="eager"
+								fetchpriority="high"
+								width={1200}
+								height={630}
+							/>
 						</div>
 						<div class="blog-content">
 							<div class="blog-meta">
