@@ -68,6 +68,7 @@ body {
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding: 1rem 2rem;
+    transition: background-color 0.3s ease, border-color 0.3s ease !important;
 }
 
 .navbar-toggler {
@@ -1385,6 +1386,7 @@ body,
 [data-theme="light"] .navbar {
     background: rgba(248, 250, 252, 0.9) !important;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, border-color 0.3s ease !important;
 }
 
 [data-theme="light"] .navbar-toggler {
