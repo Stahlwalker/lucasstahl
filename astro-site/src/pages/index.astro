@@ -1,5 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import seoData from '../data/seo-results.json';
+
+const { results } = seoData;
+
+// Helper function to calculate stroke-dashoffset for progress rings
+// Circle circumference = 2 * π * r = 2 * π * 30 = 188.5
+function getStrokeDashoffset(score: number): number {
+	const circumference = 188.5;
+	return circumference - (circumference * score) / 100;
+}
 ---
 
 <Layout
@@ -405,6 +415,107 @@ import Layout from '../layouts/Layout.astro';
 				</div>
 			</div>
 
+			<!-- SEO Performance Widget -->
+			<div class="seo-widget">
+				<div class="seo-widget-header">
+					<h2 class="seo-widget-title">
+						<span class="code-bracket">&lt;</span>
+						Lighthouse Scores
+						<span class="code-bracket">/&gt;</span>
+					</h2>
+					<p class="seo-widget-subtitle">PageSpeed performance metrics</p>
+				</div>
+
+				<!-- Desktop Scores -->
+				<div class="seo-device-row">
+					<h3 class="seo-device-label">
+						<i class="fa-solid fa-desktop"></i>
+						Desktop
+					</h3>
+					<div class="seo-scores-row">
+						<div class="seo-score-circle">
+							<svg class="score-ring" width="70" height="70" viewBox="0 0 70 70">
+								<circle class="score-ring-bg" cx="35" cy="35" r="30" />
+								<circle class={`score-ring-fill ${results.desktop.home.performance >= 90 ? 'score-green' : results.desktop.home.performance >= 50 ? 'score-orange' : 'score-red'}`} cx="35" cy="35" r="30" style={`stroke-dasharray: 188.5 188.5; stroke-dashoffset: ${getStrokeDashoffset(results.desktop.home.performance)};`} />
+								<text class="score-value" x="35" y="35" text-anchor="middle" dominant-baseline="central" transform="rotate(90 35 35)">{results.desktop.home.performance}</text>
+							</svg>
+							<div class="score-label">Performance</div>
+						</div>
+						<div class="seo-score-circle">
+							<svg class="score-ring" width="70" height="70" viewBox="0 0 70 70">
+								<circle class="score-ring-bg" cx="35" cy="35" r="30" />
+								<circle class={`score-ring-fill ${results.desktop.home.accessibility >= 90 ? 'score-green' : results.desktop.home.accessibility >= 50 ? 'score-orange' : 'score-red'}`} cx="35" cy="35" r="30" style={`stroke-dasharray: 188.5 188.5; stroke-dashoffset: ${getStrokeDashoffset(results.desktop.home.accessibility)};`} />
+								<text class="score-value" x="35" y="35" text-anchor="middle" dominant-baseline="central" transform="rotate(90 35 35)">{results.desktop.home.accessibility}</text>
+							</svg>
+							<div class="score-label">Accessibility</div>
+						</div>
+						<div class="seo-score-circle">
+							<svg class="score-ring" width="70" height="70" viewBox="0 0 70 70">
+								<circle class="score-ring-bg" cx="35" cy="35" r="30" />
+								<circle class={`score-ring-fill ${results.desktop.home.bestPractices >= 90 ? 'score-green' : results.desktop.home.bestPractices >= 50 ? 'score-orange' : 'score-red'}`} cx="35" cy="35" r="30" style={`stroke-dasharray: 188.5 188.5; stroke-dashoffset: ${getStrokeDashoffset(results.desktop.home.bestPractices)};`} />
+								<text class="score-value" x="35" y="35" text-anchor="middle" dominant-baseline="central" transform="rotate(90 35 35)">{results.desktop.home.bestPractices}</text>
+							</svg>
+							<div class="score-label">Best Practices</div>
+						</div>
+						<div class="seo-score-circle">
+							<svg class="score-ring" width="70" height="70" viewBox="0 0 70 70">
+								<circle class="score-ring-bg" cx="35" cy="35" r="30" />
+								<circle class={`score-ring-fill ${results.desktop.home.seo >= 90 ? 'score-green' : results.desktop.home.seo >= 50 ? 'score-orange' : 'score-red'}`} cx="35" cy="35" r="30" style={`stroke-dasharray: 188.5 188.5; stroke-dashoffset: ${getStrokeDashoffset(results.desktop.home.seo)};`} />
+								<text class="score-value" x="35" y="35" text-anchor="middle" dominant-baseline="central" transform="rotate(90 35 35)">{results.desktop.home.seo}</text>
+							</svg>
+							<div class="score-label">SEO</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Mobile Scores -->
+				<div class="seo-device-row">
+					<h3 class="seo-device-label">
+						<i class="fa-solid fa-mobile-screen-button"></i>
+						Mobile
+					</h3>
+					<div class="seo-scores-row">
+						<div class="seo-score-circle">
+							<svg class="score-ring" width="70" height="70" viewBox="0 0 70 70">
+								<circle class="score-ring-bg" cx="35" cy="35" r="30" />
+								<circle class={`score-ring-fill ${results.mobile.home.performance >= 90 ? 'score-green' : results.mobile.home.performance >= 50 ? 'score-orange' : 'score-red'}`} cx="35" cy="35" r="30" style={`stroke-dasharray: 188.5 188.5; stroke-dashoffset: ${getStrokeDashoffset(results.mobile.home.performance)};`} />
+								<text class="score-value" x="35" y="35" text-anchor="middle" dominant-baseline="central" transform="rotate(90 35 35)">{results.mobile.home.performance}</text>
+							</svg>
+							<div class="score-label">Performance</div>
+						</div>
+						<div class="seo-score-circle">
+							<svg class="score-ring" width="70" height="70" viewBox="0 0 70 70">
+								<circle class="score-ring-bg" cx="35" cy="35" r="30" />
+								<circle class={`score-ring-fill ${results.mobile.home.accessibility >= 90 ? 'score-green' : results.mobile.home.accessibility >= 50 ? 'score-orange' : 'score-red'}`} cx="35" cy="35" r="30" style={`stroke-dasharray: 188.5 188.5; stroke-dashoffset: ${getStrokeDashoffset(results.mobile.home.accessibility)};`} />
+								<text class="score-value" x="35" y="35" text-anchor="middle" dominant-baseline="central" transform="rotate(90 35 35)">{results.mobile.home.accessibility}</text>
+							</svg>
+							<div class="score-label">Accessibility</div>
+						</div>
+						<div class="seo-score-circle">
+							<svg class="score-ring" width="70" height="70" viewBox="0 0 70 70">
+								<circle class="score-ring-bg" cx="35" cy="35" r="30" />
+								<circle class={`score-ring-fill ${results.mobile.home.bestPractices >= 90 ? 'score-green' : results.mobile.home.bestPractices >= 50 ? 'score-orange' : 'score-red'}`} cx="35" cy="35" r="30" style={`stroke-dasharray: 188.5 188.5; stroke-dashoffset: ${getStrokeDashoffset(results.mobile.home.bestPractices)};`} />
+								<text class="score-value" x="35" y="35" text-anchor="middle" dominant-baseline="central" transform="rotate(90 35 35)">{results.mobile.home.bestPractices}</text>
+							</svg>
+							<div class="score-label">Best Practices</div>
+						</div>
+						<div class="seo-score-circle">
+							<svg class="score-ring" width="70" height="70" viewBox="0 0 70 70">
+								<circle class="score-ring-bg" cx="35" cy="35" r="30" />
+								<circle class={`score-ring-fill ${results.mobile.home.seo >= 90 ? 'score-green' : results.mobile.home.seo >= 50 ? 'score-orange' : 'score-red'}`} cx="35" cy="35" r="30" style={`stroke-dasharray: 188.5 188.5; stroke-dashoffset: ${getStrokeDashoffset(results.mobile.home.seo)};`} />
+								<text class="score-value" x="35" y="35" text-anchor="middle" dominant-baseline="central" transform="rotate(90 35 35)">{results.mobile.home.seo}</text>
+							</svg>
+							<div class="score-label">SEO</div>
+						</div>
+					</div>
+				</div>
+
+				<a href="/seo" class="seo-widget-cta">
+					View Full Report
+					<i class="fa-solid fa-arrow-right"></i>
+				</a>
+			</div>
+
 			<!-- GitHub Call-to-Action -->
 			<div class="github-cta">
 				<div class="github-cta-content">
@@ -435,6 +546,214 @@ import Layout from '../layouts/Layout.astro';
 	</section>
 
 	<style>
+		/* SEO Performance Widget */
+		.seo-widget {
+			background: var(--bg-secondary);
+			border: 2px solid rgba(96, 165, 250, 0.3);
+			border-radius: 12px;
+			padding: 1.5rem;
+			margin: 2.5rem auto;
+			max-width: 900px;
+			display: flex;
+			flex-direction: column;
+			gap: 1.25rem;
+			transition: all 0.3s ease;
+		}
+
+		.seo-widget:hover {
+			border-color: var(--accent-primary);
+			box-shadow: 0 8px 32px rgba(96, 165, 250, 0.15);
+		}
+
+		.seo-widget-header {
+			text-align: center;
+		}
+
+		.seo-widget-title {
+			font-family: 'Fira Code', monospace;
+			font-size: 1.5rem;
+			font-weight: 700;
+			color: var(--text-primary);
+			margin: 0 0 0.375rem 0;
+		}
+
+		.seo-widget-subtitle {
+			font-size: 0.875rem;
+			color: var(--text-secondary);
+			margin: 0;
+		}
+
+		.seo-device-row {
+			display: flex;
+			flex-direction: column;
+			gap: 0.75rem;
+			padding: 1rem 0;
+		}
+
+		.seo-device-row:not(:last-of-type) {
+			border-bottom: 2px solid rgba(96, 165, 250, 0.3);
+			padding-bottom: 1.5rem;
+			margin-bottom: 0.5rem;
+		}
+
+		.seo-device-label {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 0.5rem;
+			font-family: 'Fira Code', monospace;
+			font-size: 0.875rem;
+			font-weight: 600;
+			color: var(--text-primary);
+			margin: 0;
+		}
+
+		.seo-device-label i {
+			font-size: 1rem;
+			color: var(--accent-primary);
+		}
+
+		.seo-scores-row {
+			display: flex;
+			justify-content: center;
+			align-items: flex-start;
+			gap: 2.5rem;
+			flex-wrap: wrap;
+		}
+
+		.seo-score-circle {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 0.375rem;
+		}
+
+		.score-ring {
+			transform: rotate(-90deg);
+			width: 70px;
+			height: 70px;
+		}
+
+		.score-ring-bg {
+			fill: none;
+			stroke: rgba(255, 255, 255, 0.1);
+			stroke-width: 5;
+		}
+
+		.score-ring-fill {
+			fill: none;
+			stroke-width: 5;
+			stroke-linecap: round;
+			transition: stroke-dashoffset 0.5s ease;
+			transform-origin: center;
+		}
+
+		.score-ring-fill.score-green {
+			stroke: #0cce6b;
+		}
+
+		.score-ring-fill.score-orange {
+			stroke: #ffa400;
+		}
+
+		.score-ring-fill.score-red {
+			stroke: #ff4e42;
+		}
+
+		.score-value {
+			font-family: 'Fira Code', 'Courier New', monospace;
+			font-size: 18px;
+			font-weight: 700;
+			fill: var(--text-primary);
+			/* Ensure text renders on mobile Chrome */
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			dominant-baseline: central;
+		}
+
+		.score-label {
+			font-family: 'Fira Code', monospace;
+			font-size: 0.6875rem;
+			color: var(--text-secondary);
+			text-align: center;
+		}
+
+		.seo-widget-cta {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.5rem;
+			padding: 0.75rem 1.25rem;
+			background: var(--accent-primary);
+			color: white;
+			font-family: 'Fira Code', monospace;
+			font-size: 0.875rem;
+			font-weight: 600;
+			border-radius: 8px;
+			text-decoration: none;
+			transition: all 0.3s ease;
+			align-self: center;
+		}
+
+		.seo-widget-cta:hover {
+			background: #4f9aff;
+			transform: translateY(-2px);
+			box-shadow: 0 4px 12px rgba(96, 165, 250, 0.3);
+		}
+
+		.seo-widget-cta i {
+			transition: transform 0.3s ease;
+		}
+
+		.seo-widget-cta:hover i {
+			transform: translateX(4px);
+		}
+
+		/* Light mode styles */
+		:global([data-theme="light"]) .seo-widget {
+			background: #f8fafc;
+			border-color: #2563eb;
+		}
+
+		:global([data-theme="light"]) .seo-widget:hover {
+			box-shadow: 0 8px 32px rgba(37, 99, 235, 0.15);
+		}
+
+		:global([data-theme="light"]) .score-ring-bg {
+			stroke: rgba(0, 0, 0, 0.1);
+		}
+
+		:global([data-theme="light"]) .seo-device-row:not(:last-of-type) {
+			border-bottom-color: rgba(37, 99, 235, 0.3);
+		}
+
+		/* Responsive */
+		@media (max-width: 768px) {
+			.seo-widget {
+				padding: 1.25rem;
+			}
+
+			.seo-scores-row {
+				gap: 0.75rem;
+			}
+
+			.seo-score-circle {
+				flex: 0 1 auto;
+			}
+
+			.score-ring {
+				width: 60px;
+				height: 60px;
+			}
+
+			.score-value {
+				font-size: 16px;
+			}
+
+			.score-label {
+				font-size: 0.625rem;
+			}
+		}
+
 		/* Sidebar Filter Layout */
 		.highlights-wrapper {
 			display: flex;
