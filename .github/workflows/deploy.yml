@@ -4,6 +4,9 @@ on:
   push:
     branches: [ master ]
   workflow_dispatch:
+  schedule:
+    # Runs every Sunday at 9:20 AM UTC (20 min after weekly performance check)
+    - cron: '20 9 * * 0'
 
 permissions:
   contents: read
