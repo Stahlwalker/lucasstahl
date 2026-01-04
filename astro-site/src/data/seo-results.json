@@ -1,74 +1,74 @@
 {
-  "lastUpdated": "2025-01-04T00:00:00Z",
+  "lastUpdated": "2026-01-04T13:56:23Z",
   "results": {
     "mobile": {
       "home": {
-        "performance": 0,
-        "accessibility": 0,
-        "bestPractices": 0,
-        "seo": 0,
-        "lcp": 0,
-        "cls": 0,
+        "performance": 61,
+        "accessibility": 96,
+        "bestPractices": 100,
+        "seo": 92,
+        "lcp": 6754.2137876709212,
+        "cls": 0.00076281003655617784,
         "tbt": 0
       },
       "about": {
-        "performance": 0,
-        "accessibility": 0,
-        "bestPractices": 0,
-        "seo": 0
+        "performance": 48,
+        "accessibility": 96,
+        "bestPractices": 77,
+        "seo": 92
       },
       "blog": {
-        "performance": 0,
-        "accessibility": 0,
-        "bestPractices": 0,
-        "seo": 0
+        "performance": 69,
+        "accessibility": 96,
+        "bestPractices": 100,
+        "seo": 92
       },
       "builds": {
-        "performance": 0,
-        "accessibility": 0,
-        "bestPractices": 0,
-        "seo": 0
+        "performance": 73,
+        "accessibility": 94,
+        "bestPractices": 100,
+        "seo": 92
       },
       "gems": {
-        "performance": 0,
-        "accessibility": 0,
-        "bestPractices": 0,
-        "seo": 0
+        "performance": 60,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 92
       }
     },
     "desktop": {
       "home": {
-        "performance": 0,
-        "accessibility": 0,
-        "bestPractices": 0,
-        "seo": 0,
-        "lcp": 0,
-        "cls": 0,
+        "performance": 97,
+        "accessibility": 96,
+        "bestPractices": 100,
+        "seo": 92,
+        "lcp": 1047.1419150291351,
+        "cls": 0.00063715708206601648,
         "tbt": 0
       },
       "about": {
-        "performance": 0,
-        "accessibility": 0,
-        "bestPractices": 0,
-        "seo": 0
+        "performance": 67,
+        "accessibility": 96,
+        "bestPractices": 77,
+        "seo": 92
       },
       "blog": {
-        "performance": 0,
-        "accessibility": 0,
-        "bestPractices": 0,
-        "seo": 0
+        "performance": 95,
+        "accessibility": 96,
+        "bestPractices": 100,
+        "seo": 92
       },
       "builds": {
-        "performance": 0,
-        "accessibility": 0,
-        "bestPractices": 0,
-        "seo": 0
+        "performance": 94,
+        "accessibility": 94,
+        "bestPractices": 100,
+        "seo": 92
       },
       "gems": {
-        "performance": 0,
-        "accessibility": 0,
-        "bestPractices": 0,
-        "seo": 0
+        "performance": 96,
+        "accessibility": 96,
+        "bestPractices": 100,
+        "seo": 92
       }
     }
   },
