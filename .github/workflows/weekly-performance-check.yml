@@ -467,10 +467,6 @@ jobs:
             echo "Email sent successfully!"
           fi
 
-      - name: Trigger Site Deployment
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          echo "🚀 Triggering site deployment to update SEO data..."
-          gh workflow run deploy.yml --ref master
-          echo "✅ Deployment triggered! The site will rebuild with updated SEO scores."
+          echo ""
+          echo "🚀 Site deployment will be triggered automatically by the push to master"
+          echo "✅ The site will rebuild with updated SEO scores"
