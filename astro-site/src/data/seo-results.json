@@ -1,0 +1,76 @@
+{
+  "lastUpdated": "2025-01-04T00:00:00Z",
+  "results": {
+    "mobile": {
+      "home": {
+        "performance": 0,
+        "accessibility": 0,
+        "bestPractices": 0,
+        "seo": 0,
+        "lcp": 0,
+        "cls": 0,
+        "tbt": 0
+      },
+      "about": {
+        "performance": 0,
+        "accessibility": 0,
+        "bestPractices": 0,
+        "seo": 0
+      },
+      "blog": {
+        "performance": 0,
+        "accessibility": 0,
+        "bestPractices": 0,
+        "seo": 0
+      },
+      "builds": {
+        "performance": 0,
+        "accessibility": 0,
+        "bestPractices": 0,
+        "seo": 0
+      },
+      "gems": {
+        "performance": 0,
+        "accessibility": 0,
+        "bestPractices": 0,
+        "seo": 0
+      }
+    },
+    "desktop": {
+      "home": {
+        "performance": 0,
+        "accessibility": 0,
+        "bestPractices": 0,
+        "seo": 0,
+        "lcp": 0,
+        "cls": 0,
+        "tbt": 0
+      },
+      "about": {
+        "performance": 0,
+        "accessibility": 0,
+        "bestPractices": 0,
+        "seo": 0
+      },
+      "blog": {
+        "performance": 0,
+        "accessibility": 0,
+        "bestPractices": 0,
+        "seo": 0
+      },
+      "builds": {
+        "performance": 0,
+        "accessibility": 0,
+        "bestPractices": 0,
+        "seo": 0
+      },
+      "gems": {
+        "performance": 0,
+        "accessibility": 0,
+        "bestPractices": 0,
+        "seo": 0
+      }
+    }
+  },
+  "history": []
+}
