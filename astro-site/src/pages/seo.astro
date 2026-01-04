@@ -11,30 +11,42 @@ function getScoreColor(score: number): string {
   return 'var(--red)';
 }
 
-// Format date
+// Format date in CST
 const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
   year: 'numeric',
   month: 'long',
   day: 'numeric',
   hour: '2-digit',
   minute: '2-digit',
-  timeZone: 'UTC'
+  timeZone: 'America/Chicago'
 });
 ---
 
 <Layout
   title="SEO Performance Dashboard - Luke Stahl"
-  description="Real-time SEO and performance metrics for lukestahl.io"
+  description="Real-time SEO and performance metrics for lukestahl.io. View PageSpeed Insights scores, Core Web Vitals, and Lighthouse metrics for all pages."
+  canonicalUrl="https://lukestahl.io/seo/"
+  ogTitle="SEO Performance Dashboard - Luke Stahl"
+  ogDescription="Real-time PageSpeed Insights scores, Core Web Vitals (LCP, CLS, TBT), and Lighthouse metrics tracking for lukestahl.io."
 >
+  <!-- SEO Hero Section -->
+  <section class="seo-hero">
+    <div class="section-container">
+      <h1 class="seo-hero-title">
+        <span class="code-bracket">&lt;</span>
+        SEO Dashboard
+        <span class="code-bracket">/&gt;</span>
+      </h1>
+      <p class="seo-hero-subtitle">Real-time performance metrics and Lighthouse scores</p>
+      <p class="last-updated">Last updated: {formattedDate} CST</p>
+      <button id="runTestBtn" class="run-test-btn">
+        <i class="fa-solid fa-play"></i> Run Manual Test
+      </button>
+    </div>
+  </section>
+
   <section class="seo-dashboard">
     <div class="section-container">
-      <div class="dashboard-header">
-        <h1>SEO Performance Dashboard</h1>
-        <p class="last-updated">Last updated: {formattedDate} UTC</p>
-        <button id="runTestBtn" class="run-test-btn">
-          <i class="fa-solid fa-play"></i> Run Manual Test
-        </button>
-      </div>
 
       <!-- Core Web Vitals Section -->
       <div class="vitals-section">
@@ -99,29 +111,75 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
           {Object.entries(results.mobile).map(([page, scores]) => (
             <div class="score-card">
               <h3>{page.charAt(0).toUpperCase() + page.slice(1)}</h3>
-              <div class="score-item">
-                <span class="score-label">Performance</span>
-                <span class="score-value" style={`color: ${getScoreColor(scores.performance)}`}>
-                  {scores.performance}
-                </span>
-              </div>
-              <div class="score-item">
-                <span class="score-label">Accessibility</span>
-                <span class="score-value" style={`color: ${getScoreColor(scores.accessibility)}`}>
-                  {scores.accessibility}
-                </span>
-              </div>
-              <div class="score-item">
-                <span class="score-label">Best Practices</span>
-                <span class="score-value" style={`color: ${getScoreColor(scores.bestPractices)}`}>
-                  {scores.bestPractices}
-                </span>
-              </div>
-              <div class="score-item">
-                <span class="score-label">SEO</span>
-                <span class="score-value" style={`color: ${getScoreColor(scores.seo)}`}>
-                  {scores.seo}
-                </span>
+              <div class="gauge-grid">
+                <div class="gauge-item">
+                  <svg class="gauge" viewBox="0 0 100 100">
+                    <circle class="gauge-bg" cx="50" cy="50" r="45"></circle>
+                    <circle
+                      class="gauge-fill"
+                      cx="50"
+                      cy="50"
+                      r="45"
+                      style={`stroke: ${getScoreColor(scores.performance)}; stroke-dashoffset: ${283 - (283 * scores.performance) / 100}`}
+                      data-score={scores.performance}
+                    ></circle>
+                    <text class="gauge-text" x="50" y="50" text-anchor="middle" dominant-baseline="middle">
+                      {scores.performance}
+                    </text>
+                  </svg>
+                  <span class="gauge-label">Performance</span>
+                </div>
+                <div class="gauge-item">
+                  <svg class="gauge" viewBox="0 0 100 100">
+                    <circle class="gauge-bg" cx="50" cy="50" r="45"></circle>
+                    <circle
+                      class="gauge-fill"
+                      cx="50"
+                      cy="50"
+                      r="45"
+                      style={`stroke: ${getScoreColor(scores.accessibility)}; stroke-dashoffset: ${283 - (283 * scores.accessibility) / 100}`}
+                      data-score={scores.accessibility}
+                    ></circle>
+                    <text class="gauge-text" x="50" y="50" text-anchor="middle" dominant-baseline="middle">
+                      {scores.accessibility}
+                    </text>
+                  </svg>
+                  <span class="gauge-label">Accessibility</span>
+                </div>
+                <div class="gauge-item">
+                  <svg class="gauge" viewBox="0 0 100 100">
+                    <circle class="gauge-bg" cx="50" cy="50" r="45"></circle>
+                    <circle
+                      class="gauge-fill"
+                      cx="50"
+                      cy="50"
+                      r="45"
+                      style={`stroke: ${getScoreColor(scores.bestPractices)}; stroke-dashoffset: ${283 - (283 * scores.bestPractices) / 100}`}
+                      data-score={scores.bestPractices}
+                    ></circle>
+                    <text class="gauge-text" x="50" y="50" text-anchor="middle" dominant-baseline="middle">
+                      {scores.bestPractices}
+                    </text>
+                  </svg>
+                  <span class="gauge-label">Best Practices</span>
+                </div>
+                <div class="gauge-item">
+                  <svg class="gauge" viewBox="0 0 100 100">
+                    <circle class="gauge-bg" cx="50" cy="50" r="45"></circle>
+                    <circle
+                      class="gauge-fill"
+                      cx="50"
+                      cy="50"
+                      r="45"
+                      style={`stroke: ${getScoreColor(scores.seo)}; stroke-dashoffset: ${283 - (283 * scores.seo) / 100}`}
+                      data-score={scores.seo}
+                    ></circle>
+                    <text class="gauge-text" x="50" y="50" text-anchor="middle" dominant-baseline="middle">
+                      {scores.seo}
+                    </text>
+                  </svg>
+                  <span class="gauge-label">SEO</span>
+                </div>
               </div>
             </div>
           ))}
@@ -134,29 +192,75 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
           {Object.entries(results.desktop).map(([page, scores]) => (
             <div class="score-card">
               <h3>{page.charAt(0).toUpperCase() + page.slice(1)}</h3>
-              <div class="score-item">
-                <span class="score-label">Performance</span>
-                <span class="score-value" style={`color: ${getScoreColor(scores.performance)}`}>
-                  {scores.performance}
-                </span>
-              </div>
-              <div class="score-item">
-                <span class="score-label">Accessibility</span>
-                <span class="score-value" style={`color: ${getScoreColor(scores.accessibility)}`}>
-                  {scores.accessibility}
-                </span>
-              </div>
-              <div class="score-item">
-                <span class="score-label">Best Practices</span>
-                <span class="score-value" style={`color: ${getScoreColor(scores.bestPractices)}`}>
-                  {scores.bestPractices}
-                </span>
-              </div>
-              <div class="score-item">
-                <span class="score-label">SEO</span>
-                <span class="score-value" style={`color: ${getScoreColor(scores.seo)}`}>
-                  {scores.seo}
-                </span>
+              <div class="gauge-grid">
+                <div class="gauge-item">
+                  <svg class="gauge" viewBox="0 0 100 100">
+                    <circle class="gauge-bg" cx="50" cy="50" r="45"></circle>
+                    <circle
+                      class="gauge-fill"
+                      cx="50"
+                      cy="50"
+                      r="45"
+                      style={`stroke: ${getScoreColor(scores.performance)}; stroke-dashoffset: ${283 - (283 * scores.performance) / 100}`}
+                      data-score={scores.performance}
+                    ></circle>
+                    <text class="gauge-text" x="50" y="50" text-anchor="middle" dominant-baseline="middle">
+                      {scores.performance}
+                    </text>
+                  </svg>
+                  <span class="gauge-label">Performance</span>
+                </div>
+                <div class="gauge-item">
+                  <svg class="gauge" viewBox="0 0 100 100">
+                    <circle class="gauge-bg" cx="50" cy="50" r="45"></circle>
+                    <circle
+                      class="gauge-fill"
+                      cx="50"
+                      cy="50"
+                      r="45"
+                      style={`stroke: ${getScoreColor(scores.accessibility)}; stroke-dashoffset: ${283 - (283 * scores.accessibility) / 100}`}
+                      data-score={scores.accessibility}
+                    ></circle>
+                    <text class="gauge-text" x="50" y="50" text-anchor="middle" dominant-baseline="middle">
+                      {scores.accessibility}
+                    </text>
+                  </svg>
+                  <span class="gauge-label">Accessibility</span>
+                </div>
+                <div class="gauge-item">
+                  <svg class="gauge" viewBox="0 0 100 100">
+                    <circle class="gauge-bg" cx="50" cy="50" r="45"></circle>
+                    <circle
+                      class="gauge-fill"
+                      cx="50"
+                      cy="50"
+                      r="45"
+                      style={`stroke: ${getScoreColor(scores.bestPractices)}; stroke-dashoffset: ${283 - (283 * scores.bestPractices) / 100}`}
+                      data-score={scores.bestPractices}
+                    ></circle>
+                    <text class="gauge-text" x="50" y="50" text-anchor="middle" dominant-baseline="middle">
+                      {scores.bestPractices}
+                    </text>
+                  </svg>
+                  <span class="gauge-label">Best Practices</span>
+                </div>
+                <div class="gauge-item">
+                  <svg class="gauge" viewBox="0 0 100 100">
+                    <circle class="gauge-bg" cx="50" cy="50" r="45"></circle>
+                    <circle
+                      class="gauge-fill"
+                      cx="50"
+                      cy="50"
+                      r="45"
+                      style={`stroke: ${getScoreColor(scores.seo)}; stroke-dashoffset: ${283 - (283 * scores.seo) / 100}`}
+                      data-score={scores.seo}
+                    ></circle>
+                    <text class="gauge-text" x="50" y="50" text-anchor="middle" dominant-baseline="middle">
+                      {scores.seo}
+                    </text>
+                  </svg>
+                  <span class="gauge-label">SEO</span>
+                </div>
               </div>
             </div>
           ))}
@@ -178,31 +282,40 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
     --red: #dc2626;
   }
 
-  .seo-dashboard {
-    padding: 4rem 1rem;
-    min-height: 100vh;
-  }
-
-  .section-container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .dashboard-header {
+  /* Hero Section - matching builds.astro pattern */
+  .seo-hero {
+    background: transparent;
+    padding: 6rem 2rem 3rem;
     text-align: center;
-    margin-bottom: 3rem;
   }
 
-  .dashboard-header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
+  .seo-hero-title {
+    font-family: 'Fira Code', monospace;
+    font-size: 3rem;
     color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-weight: 700;
+    animation: fadeInUp 0.8s ease-out;
+  }
+
+  .code-bracket {
+    color: var(--accent-blue);
+    opacity: 0.7;
+  }
+
+  .seo-hero-subtitle {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 0.5rem;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
   }
 
   .last-updated {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
+    color: var(--text-tertiary);
+    font-size: 0.875rem;
     margin-bottom: 1.5rem;
+    animation: fadeInUp 0.8s ease-out 0.3s both;
   }
 
   .run-test-btn {
@@ -218,6 +331,7 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
+    animation: fadeInUp 0.8s ease-out 0.4s both;
   }
 
   .run-test-btn:hover {
@@ -229,6 +343,28 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
     background: var(--bg-tertiary);
     cursor: not-allowed;
     transform: none;
+  }
+
+  /* Fade in animation */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .seo-dashboard {
+    padding: 2rem 1rem 4rem;
+    background: transparent;
+  }
+
+  .section-container {
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
   .vitals-section,
@@ -293,7 +429,7 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
 
   .scores-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
     margin-bottom: 2rem;
   }
@@ -307,27 +443,59 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
 
   .score-card h3 {
     font-size: 1.2rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     color: var(--text-primary);
     text-transform: capitalize;
+    text-align: center;
   }
 
-  .score-item {
+  .gauge-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .gauge-item {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    padding: 0.5rem 0;
+    gap: 0.5rem;
   }
 
-  .score-label {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
+  .gauge {
+    width: 80px;
+    height: 80px;
+    transform: rotate(-90deg);
   }
 
-  .score-value {
-    font-size: 1.3rem;
+  .gauge-bg {
+    fill: none;
+    stroke: var(--bg-tertiary);
+    stroke-width: 8;
+  }
+
+  .gauge-fill {
+    fill: none;
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 283;
+    transition: stroke-dashoffset 1s ease-in-out;
+  }
+
+  .gauge-text {
+    transform: rotate(90deg);
+    transform-origin: center;
+    font-size: 20px;
     font-weight: 700;
+    fill: var(--text-primary);
     font-family: 'Fira Code', monospace;
+  }
+
+  .gauge-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-align: center;
+    font-weight: 500;
   }
 
   .info-section {
@@ -354,13 +522,62 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
   }
 
   @media (max-width: 768px) {
-    .dashboard-header h1 {
+    .seo-hero {
+      padding: 4rem 1rem 2rem;
+    }
+
+    .seo-hero-title {
       font-size: 2rem;
+    }
+
+    .seo-hero-subtitle {
+      font-size: 1rem;
+    }
+
+    .seo-dashboard {
+      padding: 1.5rem 1rem 3rem;
     }
 
     .vitals-grid,
     .scores-grid {
       grid-template-columns: 1fr;
+    }
+
+    .gauge-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .gauge {
+      width: 70px;
+      height: 70px;
+    }
+
+    .gauge-text {
+      font-size: 18px;
+    }
+
+    .gauge-label {
+      font-size: 0.75rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .seo-hero-title {
+      font-size: 1.75rem;
+    }
+
+    .seo-hero-subtitle {
+      font-size: 0.95rem;
+    }
+
+    .gauge {
+      width: 60px;
+      height: 60px;
+    }
+
+    .gauge-text {
+      font-size: 16px;
     }
   }
 </style>
