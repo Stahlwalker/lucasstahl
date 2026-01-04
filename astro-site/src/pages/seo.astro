@@ -39,9 +39,6 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
       </h1>
       <p class="seo-hero-subtitle">Real-time performance metrics and Lighthouse scores</p>
       <p class="last-updated">Last updated: {formattedDate} CST</p>
-      <button id="runTestBtn" class="run-test-btn">
-        <i class="fa-solid fa-play"></i> Run Manual Test
-      </button>
     </div>
   </section>
 
@@ -53,7 +50,7 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
         <h2>Core Web Vitals</h2>
         <div class="vitals-grid">
           <div class="vitals-card">
-            <h3>📱 Mobile</h3>
+            <h3><i class="fa-solid fa-mobile-screen-button"></i> Mobile</h3>
             <div class="vital-item">
               <span class="vital-label">LCP</span>
               <span class="vital-value" style={`color: ${results.mobile.home.lcp < 2500 ? 'var(--green)' : results.mobile.home.lcp < 4000 ? 'var(--orange)' : 'var(--red)'}`}>
@@ -78,7 +75,7 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
           </div>
 
           <div class="vitals-card">
-            <h3>🖥️ Desktop</h3>
+            <h3><i class="fa-solid fa-desktop"></i> Desktop</h3>
             <div class="vital-item">
               <span class="vital-label">LCP</span>
               <span class="vital-value" style={`color: ${results.desktop.home.lcp < 2500 ? 'var(--green)' : results.desktop.home.lcp < 4000 ? 'var(--orange)' : 'var(--red)'}`}>
@@ -106,7 +103,7 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
 
       <!-- Lighthouse Scores Section -->
       <div class="scores-section">
-        <h2>📱 Mobile Lighthouse Scores</h2>
+        <h2><i class="fa-solid fa-mobile-screen-button"></i> Mobile Lighthouse Scores</h2>
         <div class="scores-grid">
           {Object.entries(results.mobile).map(([page, scores]) => (
             <div class="score-card">
@@ -187,7 +184,7 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
       </div>
 
       <div class="scores-section">
-        <h2>🖥️ Desktop Lighthouse Scores</h2>
+        <h2><i class="fa-solid fa-desktop"></i> Desktop Lighthouse Scores</h2>
         <div class="scores-grid">
           {Object.entries(results.desktop).map(([page, scores]) => (
             <div class="score-card">
@@ -268,8 +265,11 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
       </div>
 
       <div class="info-section">
-        <p><strong>Note:</strong> This dashboard displays results from automated weekly performance checks. Click "Run Manual Test" to trigger a new test (requires GitHub authentication).</p>
-        <p>🔗 <a href="https://pagespeed.web.dev/?url=https://lukestahl.io/" target="_blank" rel="noopener noreferrer">Test on PageSpeed Insights</a></p>
+        <p><strong>About this dashboard:</strong> Performance data is automatically updated every Sunday at 3 AM CST via automated testing.</p>
+        <a href="https://pagespeed.web.dev/?url=https://lukestahl.io/" target="_blank" rel="noopener noreferrer" class="test-btn">
+          Test on PageSpeed Insights
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
       </div>
     </div>
   </section>
@@ -318,33 +318,6 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
     animation: fadeInUp 0.8s ease-out 0.3s both;
   }
 
-  .run-test-btn {
-    background: linear-gradient(135deg, var(--accent-blue), #3b82f6);
-    color: white;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    animation: fadeInUp 0.8s ease-out 0.4s both;
-  }
-
-  .run-test-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
-  }
-
-  .run-test-btn:disabled {
-    background: var(--bg-tertiary);
-    cursor: not-allowed;
-    transform: none;
-  }
-
   /* Fade in animation */
   @keyframes fadeInUp {
     from {
@@ -377,6 +350,15 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
     color: var(--text-primary);
+  }
+
+  .vitals-section h2 i,
+  .scores-section h2 i {
+    margin-right: 0.5rem;
+  }
+
+  .vitals-card h3 i {
+    margin-right: 0.5rem;
   }
 
   .vitals-grid {
@@ -507,18 +489,31 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
   }
 
   .info-section p {
-    margin-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
     color: var(--text-secondary);
   }
 
-  .info-section a {
-    color: var(--accent-blue);
+  .test-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, var(--accent-blue), #3b82f6);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
     text-decoration: none;
     font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
   }
 
-  .info-section a:hover {
-    text-decoration: underline;
+  .test-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+  }
+
+  .test-btn i {
+    font-size: 0.875rem;
   }
 
   @media (max-width: 768px) {
@@ -580,41 +575,42 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
       font-size: 16px;
     }
   }
+
+  /* Light mode styles */
+  :global([data-theme="light"]) .seo-hero {
+    background-color: var(--bg-secondary);
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: -1px -1px;
+  }
+
+  :global([data-theme="light"]) .seo-dashboard {
+    background-color: var(--bg-secondary);
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: -1px -1px;
+  }
+
+  :global([data-theme="light"]) .score-card {
+    background: #ffffff;
+    border: 2px solid rgba(0, 0, 0, 0.08);
+  }
+
+  :global([data-theme="light"]) .vitals-card {
+    background: #ffffff;
+    border: 2px solid rgba(0, 0, 0, 0.08);
+  }
+
+  :global([data-theme="light"]) .info-section {
+    background: #ffffff;
+    border: 2px solid rgba(0, 0, 0, 0.08);
+  }
+
+  :global([data-theme="light"]) .gauge-bg {
+    stroke: rgba(0, 0, 0, 0.08);
+  }
 </style>
-
-<script>
-  document.getElementById('runTestBtn')?.addEventListener('click', async () => {
-    const btn = document.getElementById('runTestBtn') as HTMLButtonElement;
-    if (!btn) return;
-
-    btn.disabled = true;
-    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Running Test...';
-
-    try {
-      // This will trigger the GitHub workflow via workflow_dispatch
-      // Note: This requires the user to be authenticated with GitHub
-      const response = await fetch('https://api.github.com/repos/stahlwalker/lucasstahl/actions/workflows/weekly-performance-check.yml/dispatches', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/vnd.github.v3+json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ref: 'master'
-        })
-      });
-
-      if (response.ok) {
-        alert('Performance test started! Results will be available in a few minutes. Check the GitHub Actions tab for progress.');
-      } else {
-        alert('Failed to trigger test. You may need to run the workflow manually from the GitHub Actions tab.');
-      }
-    } catch (error) {
-      console.error('Error triggering workflow:', error);
-      alert('Failed to trigger test. Please run the workflow manually from the GitHub Actions tab.');
-    } finally {
-      btn.disabled = false;
-      btn.innerHTML = '<i class="fa-solid fa-play"></i> Run Manual Test';
-    }
-  });
-</script>
