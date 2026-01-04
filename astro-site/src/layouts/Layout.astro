@@ -112,7 +112,8 @@ const {
 	<link rel="preconnect" href="https://us-i.posthog.com">
 	<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/dark-mode.css">
-	<link rel="stylesheet" type="text/css" href="/assets/css/search.css">
+	<!-- Defer search.css - only needed when search modal opens (saves 660ms mobile blocking) -->
+	<link rel="stylesheet" type="text/css" href="/assets/css/search.css" media="print" onload="this.media='all'">
 
 	{additionalCss.map(css => (
 		<link rel="stylesheet" type="text/css" href={css}>
@@ -126,11 +127,12 @@ const {
 	<!-- Font Awesome - single file is faster on mobile (fewer network round trips) -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-	<!-- Noscript fallback for fonts -->
+	<!-- Noscript fallback for fonts and search -->
 	<noscript>
 		<link href="https://fonts.googleapis.com/css?family=Share+Tech&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Gruppo&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="/assets/css/search.css">
 	</noscript>
 
 	<!-- favicon -->
