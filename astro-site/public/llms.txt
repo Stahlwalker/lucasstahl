@@ -8,19 +8,20 @@ Luke Stahl is a developer marketer and frontend developer who bridges the gap be
 
 ## Site Structure
 
-- Home: https://lucasstahl.com/
-- About: https://lucasstahl.com/about/
-- Projects/Builds: https://lucasstahl.com/builds/
-- Blog: https://lucasstahl.com/blog/
-- Gems: https://lucasstahl.com/gems/
-- Handbook: https://lucasstahl.com/handbook/
-- Developer Marketing Cheat Sheet: https://lucasstahl.com/dev-marketing-cheat-sheet/
-- Status: https://lucasstahl.com/status/
+- Home: https://lukestahl.io/
+- About: https://lukestahl.io/about/
+- Projects/Builds: https://lukestahl.io/builds/
+- Blog: https://lukestahl.io/blog/
+- Gems: https://lukestahl.io/gems/
+- Handbook: https://lukestahl.io/handbook/
+- Developer Marketing Cheat Sheet: https://lukestahl.io/dev-marketing-cheat-sheet/
+- SEO Performance Dashboard: https://lukestahl.io/seo/
+- Status: https://lukestahl.io/status/
 
 ## Blog Posts
 
-- Can a modern website run on Markdown + AI alone?: https://lucasstahl.com/blog/markdown-vs-cms/
-- Inside my developer marketing stack: https://lucasstahl.com/blog/my-stack/
+- Can a modern website run on Markdown + AI alone?: https://lukestahl.io/blog/markdown-vs-cms/
+- Inside my developer marketing stack: https://lukestahl.io/blog/my-stack/
 
 ## Professional Focus
 
