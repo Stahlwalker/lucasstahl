@@ -8,6 +8,8 @@
         api_host: 'https://us.i.posthog.com',
         defaults: '2025-05-24',
         person_profiles: 'identified_only',
+        disable_session_recording: true, // Saves ~140KB - re-enable when needed
+        disable_surveys: true, // Saves ~30KB - not being used
         loaded: (posthog) => {
             if (import.meta.env.DEV) {
                 posthog.debug();
