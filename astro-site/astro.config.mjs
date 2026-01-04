@@ -24,5 +24,10 @@ export default defineConfig({
     '/contact': '/about',
     '/portfolio': '/',
     '/portfolio.html': '/'
+  },
+  vite: {
+    build: {
+      target: 'esnext', // Target modern browsers only, no legacy polyfills
+    }
   }
 });
