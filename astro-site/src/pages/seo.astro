@@ -120,7 +120,7 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
                       style={`stroke: ${getScoreColor(scores.performance)}; stroke-dashoffset: ${283 - (283 * scores.performance) / 100}`}
                       data-score={scores.performance}
                     ></circle>
-                    <text class="gauge-text" x="50" y="50" text-anchor="middle" dy="0.35em" font-family="Fira Code, Courier New, monospace" font-size="20" font-weight="700">
+                    <text class="gauge-text" x="50" y="50" text-anchor="middle">
                       {scores.performance}
                     </text>
                   </svg>
@@ -137,7 +137,7 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
                       style={`stroke: ${getScoreColor(scores.accessibility)}; stroke-dashoffset: ${283 - (283 * scores.accessibility) / 100}`}
                       data-score={scores.accessibility}
                     ></circle>
-                    <text class="gauge-text" x="50" y="50" text-anchor="middle" dy="0.35em" font-family="Fira Code, Courier New, monospace" font-size="20" font-weight="700">
+                    <text class="gauge-text" x="50" y="50" text-anchor="middle">
                       {scores.accessibility}
                     </text>
                   </svg>
@@ -154,7 +154,7 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
                       style={`stroke: ${getScoreColor(scores.bestPractices)}; stroke-dashoffset: ${283 - (283 * scores.bestPractices) / 100}`}
                       data-score={scores.bestPractices}
                     ></circle>
-                    <text class="gauge-text" x="50" y="50" text-anchor="middle" dy="0.35em" font-family="Fira Code, Courier New, monospace" font-size="20" font-weight="700">
+                    <text class="gauge-text" x="50" y="50" text-anchor="middle">
                       {scores.bestPractices}
                     </text>
                   </svg>
@@ -171,7 +171,7 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
                       style={`stroke: ${getScoreColor(scores.seo)}; stroke-dashoffset: ${283 - (283 * scores.seo) / 100}`}
                       data-score={scores.seo}
                     ></circle>
-                    <text class="gauge-text" x="50" y="50" text-anchor="middle" dy="0.35em" font-family="Fira Code, Courier New, monospace" font-size="20" font-weight="700">
+                    <text class="gauge-text" x="50" y="50" text-anchor="middle">
                       {scores.seo}
                     </text>
                   </svg>
@@ -201,7 +201,7 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
                       style={`stroke: ${getScoreColor(scores.performance)}; stroke-dashoffset: ${283 - (283 * scores.performance) / 100}`}
                       data-score={scores.performance}
                     ></circle>
-                    <text class="gauge-text" x="50" y="50" text-anchor="middle" dy="0.35em" font-family="Fira Code, Courier New, monospace" font-size="20" font-weight="700">
+                    <text class="gauge-text" x="50" y="50" text-anchor="middle">
                       {scores.performance}
                     </text>
                   </svg>
@@ -218,7 +218,7 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
                       style={`stroke: ${getScoreColor(scores.accessibility)}; stroke-dashoffset: ${283 - (283 * scores.accessibility) / 100}`}
                       data-score={scores.accessibility}
                     ></circle>
-                    <text class="gauge-text" x="50" y="50" text-anchor="middle" dy="0.35em" font-family="Fira Code, Courier New, monospace" font-size="20" font-weight="700">
+                    <text class="gauge-text" x="50" y="50" text-anchor="middle">
                       {scores.accessibility}
                     </text>
                   </svg>
@@ -235,7 +235,7 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
                       style={`stroke: ${getScoreColor(scores.bestPractices)}; stroke-dashoffset: ${283 - (283 * scores.bestPractices) / 100}`}
                       data-score={scores.bestPractices}
                     ></circle>
-                    <text class="gauge-text" x="50" y="50" text-anchor="middle" dy="0.35em" font-family="Fira Code, Courier New, monospace" font-size="20" font-weight="700">
+                    <text class="gauge-text" x="50" y="50" text-anchor="middle">
                       {scores.bestPractices}
                     </text>
                   </svg>
@@ -252,7 +252,7 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
                       style={`stroke: ${getScoreColor(scores.seo)}; stroke-dashoffset: ${283 - (283 * scores.seo) / 100}`}
                       data-score={scores.seo}
                     ></circle>
-                    <text class="gauge-text" x="50" y="50" text-anchor="middle" dy="0.35em" font-family="Fira Code, Courier New, monospace" font-size="20" font-weight="700">
+                    <text class="gauge-text" x="50" y="50" text-anchor="middle">
                       {scores.seo}
                     </text>
                   </svg>
@@ -461,13 +461,14 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
   .gauge {
     width: 80px;
     height: 80px;
-    transform: rotate(-90deg);
   }
 
   .gauge-bg {
     fill: none;
     stroke: var(--bg-tertiary);
     stroke-width: 8;
+    transform: rotate(-90deg);
+    transform-origin: center;
   }
 
   .gauge-fill {
@@ -476,18 +477,19 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
     stroke-linecap: round;
     stroke-dasharray: 283;
     transition: stroke-dashoffset 1s ease-in-out;
+    transform: rotate(-90deg);
+    transform-origin: center;
   }
 
   .gauge-text {
-    transform: rotate(90deg);
-    transform-origin: center;
     font-size: 20px;
     font-weight: 700;
     fill: var(--text-primary);
     font-family: 'Fira Code', 'Courier New', monospace;
     /* Ensure text renders on mobile */
     -webkit-font-smoothing: antialiased;
-    paint-order: stroke fill;
+    -moz-osx-font-smoothing: grayscale;
+    dominant-baseline: central;
     transition: fill 0.3s ease;
   }
 
