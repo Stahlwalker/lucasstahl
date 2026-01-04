@@ -287,6 +287,7 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
     background: transparent;
     padding: 6rem 2rem 3rem;
     text-align: center;
+    transition: background-color 0.3s ease;
   }
 
   .seo-hero-title {
@@ -296,11 +297,13 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
     margin-bottom: 1rem;
     font-weight: 700;
     animation: fadeInUp 0.8s ease-out;
+    transition: color 0.3s ease;
   }
 
   .code-bracket {
     color: var(--accent-blue);
     opacity: 0.7;
+    transition: color 0.3s ease;
   }
 
   .seo-hero-subtitle {
@@ -309,6 +312,7 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
     max-width: 600px;
     margin: 0 auto 0.5rem;
     animation: fadeInUp 0.8s ease-out 0.2s both;
+    transition: color 0.3s ease;
   }
 
   .last-updated {
@@ -316,6 +320,7 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
     font-size: 0.875rem;
     margin-bottom: 1.5rem;
     animation: fadeInUp 0.8s ease-out 0.3s both;
+    transition: color 0.3s ease;
   }
 
   /* Fade in animation */
@@ -333,6 +338,7 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
   .seo-dashboard {
     padding: 2rem 1rem 4rem;
     background: transparent;
+    transition: background-color 0.3s ease;
   }
 
   .section-container {
@@ -350,6 +356,7 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
     color: var(--text-primary);
+    transition: color 0.3s ease;
   }
 
   .vitals-section h2 i,
@@ -373,12 +380,14 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
     border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 1.5rem;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
   }
 
   .vitals-card h3 {
     font-size: 1.3rem;
     margin-bottom: 1rem;
     color: var(--text-primary);
+    transition: color 0.3s ease;
   }
 
   .vital-item {
@@ -396,17 +405,20 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
   .vital-label {
     font-weight: 600;
     color: var(--text-secondary);
+    transition: color 0.3s ease;
   }
 
   .vital-value {
     font-size: 1.5rem;
     font-weight: 700;
     font-family: 'Fira Code', monospace;
+    transition: color 0.3s ease;
   }
 
   .vital-target {
     font-size: 0.8rem;
     color: var(--text-tertiary);
+    transition: color 0.3s ease;
   }
 
   .scores-grid {
@@ -421,6 +433,7 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
     border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 1.5rem;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
   }
 
   .score-card h3 {
@@ -429,6 +442,7 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
     color: var(--text-primary);
     text-transform: capitalize;
     text-align: center;
+    transition: color 0.3s ease;
   }
 
   .gauge-grid {
@@ -474,6 +488,7 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
     /* Ensure text renders on mobile */
     -webkit-font-smoothing: antialiased;
     paint-order: stroke fill;
+    transition: fill 0.3s ease;
   }
 
   .gauge-label {
@@ -481,6 +496,7 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
     color: var(--text-secondary);
     text-align: center;
     font-weight: 500;
+    transition: color 0.3s ease;
   }
 
   .info-section {
@@ -489,11 +505,13 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
     border-radius: 12px;
     padding: 1.5rem;
     margin-top: 2rem;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
   }
 
   .info-section p {
     margin-bottom: 1.5rem;
     color: var(--text-secondary);
+    transition: color 0.3s ease;
   }
 
   .test-btn {
