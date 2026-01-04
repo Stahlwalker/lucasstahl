@@ -1,0 +1,403 @@
+---
+import Layout from '../layouts/Layout.astro';
+import seoData from '../data/seo-results.json';
+
+const { results, lastUpdated } = seoData;
+
+// Helper function to get color based on score
+function getScoreColor(score: number): string {
+  if (score >= 90) return 'var(--green)';
+  if (score >= 50) return 'var(--orange)';
+  return 'var(--red)';
+}
+
+// Format date
+const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+  hour: '2-digit',
+  minute: '2-digit',
+  timeZone: 'UTC'
+});
+---
+
+<Layout
+  title="SEO Performance Dashboard - Luke Stahl"
+  description="Real-time SEO and performance metrics for lukestahl.io"
+>
+  <section class="seo-dashboard">
+    <div class="section-container">
+      <div class="dashboard-header">
+        <h1>SEO Performance Dashboard</h1>
+        <p class="last-updated">Last updated: {formattedDate} UTC</p>
+        <button id="runTestBtn" class="run-test-btn">
+          <i class="fa-solid fa-play"></i> Run Manual Test
+        </button>
+      </div>
+
+      <!-- Core Web Vitals Section -->
+      <div class="vitals-section">
+        <h2>Core Web Vitals</h2>
+        <div class="vitals-grid">
+          <div class="vitals-card">
+            <h3>📱 Mobile</h3>
+            <div class="vital-item">
+              <span class="vital-label">LCP</span>
+              <span class="vital-value" style={`color: ${results.mobile.home.lcp < 2500 ? 'var(--green)' : results.mobile.home.lcp < 4000 ? 'var(--orange)' : 'var(--red)'}`}>
+                {(results.mobile.home.lcp / 1000).toFixed(2)}s
+              </span>
+              <span class="vital-target">Target: &lt;2.5s</span>
+            </div>
+            <div class="vital-item">
+              <span class="vital-label">CLS</span>
+              <span class="vital-value" style={`color: ${results.mobile.home.cls < 0.1 ? 'var(--green)' : results.mobile.home.cls < 0.25 ? 'var(--orange)' : 'var(--red)'}`}>
+                {results.mobile.home.cls.toFixed(3)}
+              </span>
+              <span class="vital-target">Target: &lt;0.1</span>
+            </div>
+            <div class="vital-item">
+              <span class="vital-label">TBT</span>
+              <span class="vital-value" style={`color: ${results.mobile.home.tbt < 300 ? 'var(--green)' : results.mobile.home.tbt < 600 ? 'var(--orange)' : 'var(--red)'}`}>
+                {results.mobile.home.tbt}ms
+              </span>
+              <span class="vital-target">Target: &lt;300ms</span>
+            </div>
+          </div>
+
+          <div class="vitals-card">
+            <h3>🖥️ Desktop</h3>
+            <div class="vital-item">
+              <span class="vital-label">LCP</span>
+              <span class="vital-value" style={`color: ${results.desktop.home.lcp < 2500 ? 'var(--green)' : results.desktop.home.lcp < 4000 ? 'var(--orange)' : 'var(--red)'}`}>
+                {(results.desktop.home.lcp / 1000).toFixed(2)}s
+              </span>
+              <span class="vital-target">Target: &lt;2.5s</span>
+            </div>
+            <div class="vital-item">
+              <span class="vital-label">CLS</span>
+              <span class="vital-value" style={`color: ${results.desktop.home.cls < 0.1 ? 'var(--green)' : results.desktop.home.cls < 0.25 ? 'var(--orange)' : 'var(--red)'}`}>
+                {results.desktop.home.cls.toFixed(3)}
+              </span>
+              <span class="vital-target">Target: &lt;0.1</span>
+            </div>
+            <div class="vital-item">
+              <span class="vital-label">TBT</span>
+              <span class="vital-value" style={`color: ${results.desktop.home.tbt < 300 ? 'var(--green)' : results.desktop.home.tbt < 600 ? 'var(--orange)' : 'var(--red)'}`}>
+                {results.desktop.home.tbt}ms
+              </span>
+              <span class="vital-target">Target: &lt;300ms</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lighthouse Scores Section -->
+      <div class="scores-section">
+        <h2>📱 Mobile Lighthouse Scores</h2>
+        <div class="scores-grid">
+          {Object.entries(results.mobile).map(([page, scores]) => (
+            <div class="score-card">
+              <h3>{page.charAt(0).toUpperCase() + page.slice(1)}</h3>
+              <div class="score-item">
+                <span class="score-label">Performance</span>
+                <span class="score-value" style={`color: ${getScoreColor(scores.performance)}`}>
+                  {scores.performance}
+                </span>
+              </div>
+              <div class="score-item">
+                <span class="score-label">Accessibility</span>
+                <span class="score-value" style={`color: ${getScoreColor(scores.accessibility)}`}>
+                  {scores.accessibility}
+                </span>
+              </div>
+              <div class="score-item">
+                <span class="score-label">Best Practices</span>
+                <span class="score-value" style={`color: ${getScoreColor(scores.bestPractices)}`}>
+                  {scores.bestPractices}
+                </span>
+              </div>
+              <div class="score-item">
+                <span class="score-label">SEO</span>
+                <span class="score-value" style={`color: ${getScoreColor(scores.seo)}`}>
+                  {scores.seo}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="scores-section">
+        <h2>🖥️ Desktop Lighthouse Scores</h2>
+        <div class="scores-grid">
+          {Object.entries(results.desktop).map(([page, scores]) => (
+            <div class="score-card">
+              <h3>{page.charAt(0).toUpperCase() + page.slice(1)}</h3>
+              <div class="score-item">
+                <span class="score-label">Performance</span>
+                <span class="score-value" style={`color: ${getScoreColor(scores.performance)}`}>
+                  {scores.performance}
+                </span>
+              </div>
+              <div class="score-item">
+                <span class="score-label">Accessibility</span>
+                <span class="score-value" style={`color: ${getScoreColor(scores.accessibility)}`}>
+                  {scores.accessibility}
+                </span>
+              </div>
+              <div class="score-item">
+                <span class="score-label">Best Practices</span>
+                <span class="score-value" style={`color: ${getScoreColor(scores.bestPractices)}`}>
+                  {scores.bestPractices}
+                </span>
+              </div>
+              <div class="score-item">
+                <span class="score-label">SEO</span>
+                <span class="score-value" style={`color: ${getScoreColor(scores.seo)}`}>
+                  {scores.seo}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="info-section">
+        <p><strong>Note:</strong> This dashboard displays results from automated weekly performance checks. Click "Run Manual Test" to trigger a new test (requires GitHub authentication).</p>
+        <p>🔗 <a href="https://pagespeed.web.dev/?url=https://lukestahl.io/" target="_blank" rel="noopener noreferrer">Test on PageSpeed Insights</a></p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  :root {
+    --green: #16a34a;
+    --orange: #f59e0b;
+    --red: #dc2626;
+  }
+
+  .seo-dashboard {
+    padding: 4rem 1rem;
+    min-height: 100vh;
+  }
+
+  .section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .dashboard-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .dashboard-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+  }
+
+  .last-updated {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .run-test-btn {
+    background: linear-gradient(135deg, var(--accent-blue), #3b82f6);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .run-test-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+  }
+
+  .run-test-btn:disabled {
+    background: var(--bg-tertiary);
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .vitals-section,
+  .scores-section {
+    margin-bottom: 3rem;
+  }
+
+  .vitals-section h2,
+  .scores-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+  }
+
+  .vitals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .vitals-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+
+  .vitals-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+
+  .vital-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .vital-item:last-child {
+    border-bottom: none;
+  }
+
+  .vital-label {
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
+
+  .vital-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: 'Fira Code', monospace;
+  }
+
+  .vital-target {
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+  }
+
+  .scores-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .score-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+
+  .score-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    text-transform: capitalize;
+  }
+
+  .score-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+  }
+
+  .score-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+
+  .score-value {
+    font-size: 1.3rem;
+    font-weight: 700;
+    font-family: 'Fira Code', monospace;
+  }
+
+  .info-section {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .info-section p {
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+  }
+
+  .info-section a {
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .info-section a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .dashboard-header h1 {
+      font-size: 2rem;
+    }
+
+    .vitals-grid,
+    .scores-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  document.getElementById('runTestBtn')?.addEventListener('click', async () => {
+    const btn = document.getElementById('runTestBtn') as HTMLButtonElement;
+    if (!btn) return;
+
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Running Test...';
+
+    try {
+      // This will trigger the GitHub workflow via workflow_dispatch
+      // Note: This requires the user to be authenticated with GitHub
+      const response = await fetch('https://api.github.com/repos/stahlwalker/lucasstahl/actions/workflows/weekly-performance-check.yml/dispatches', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ref: 'master'
+        })
+      });
+
+      if (response.ok) {
+        alert('Performance test started! Results will be available in a few minutes. Check the GitHub Actions tab for progress.');
+      } else {
+        alert('Failed to trigger test. You may need to run the workflow manually from the GitHub Actions tab.');
+      }
+    } catch (error) {
+      console.error('Error triggering workflow:', error);
+      alert('Failed to trigger test. Please run the workflow manually from the GitHub Actions tab.');
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = '<i class="fa-solid fa-play"></i> Run Manual Test';
+    }
+  });
+</script>

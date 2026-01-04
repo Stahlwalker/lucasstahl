@@ -10,7 +10,7 @@ jobs:
   performance-check:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write  # Changed to write for committing results
       issues: write
 
     steps:
@@ -255,6 +255,105 @@ jobs:
           echo "---" >> $GITHUB_STEP_SUMMARY
           echo "🔗 [View detailed reports on PageSpeed Insights](https://pagespeed.web.dev/?url=https://lukestahl.io/)" >> $GITHUB_STEP_SUMMARY
 
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Save Results to JSON
+        run: |
+          TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+          # Create JSON with results
+          cat > astro-site/src/data/seo-results.json <<EOF
+          {
+            "lastUpdated": "$TIMESTAMP",
+            "results": {
+              "mobile": {
+                "home": {
+                  "performance": ${{ steps.home.outputs.performance }},
+                  "accessibility": ${{ steps.home.outputs.accessibility }},
+                  "bestPractices": ${{ steps.home.outputs.best_practices }},
+                  "seo": ${{ steps.home.outputs.seo }},
+                  "lcp": ${{ steps.home.outputs.lcp }},
+                  "cls": ${{ steps.home.outputs.cls }},
+                  "tbt": ${{ steps.home.outputs.tbt }}
+                },
+                "about": {
+                  "performance": ${{ steps.about.outputs.performance }},
+                  "accessibility": ${{ steps.about.outputs.accessibility }},
+                  "bestPractices": ${{ steps.about.outputs.best_practices }},
+                  "seo": ${{ steps.about.outputs.seo }}
+                },
+                "blog": {
+                  "performance": ${{ steps.blog.outputs.performance }},
+                  "accessibility": ${{ steps.blog.outputs.accessibility }},
+                  "bestPractices": ${{ steps.blog.outputs.best_practices }},
+                  "seo": ${{ steps.blog.outputs.seo }}
+                },
+                "builds": {
+                  "performance": ${{ steps.builds.outputs.performance }},
+                  "accessibility": ${{ steps.builds.outputs.accessibility }},
+                  "bestPractices": ${{ steps.builds.outputs.best_practices }},
+                  "seo": ${{ steps.builds.outputs.seo }}
+                },
+                "gems": {
+                  "performance": ${{ steps.gems.outputs.performance }},
+                  "accessibility": ${{ steps.gems.outputs.accessibility }},
+                  "bestPractices": ${{ steps.gems.outputs.best_practices }},
+                  "seo": ${{ steps.gems.outputs.seo }}
+                }
+              },
+              "desktop": {
+                "home": {
+                  "performance": ${{ steps.home-desktop.outputs.performance }},
+                  "accessibility": ${{ steps.home-desktop.outputs.accessibility }},
+                  "bestPractices": ${{ steps.home-desktop.outputs.best_practices }},
+                  "seo": ${{ steps.home-desktop.outputs.seo }},
+                  "lcp": ${{ steps.home-desktop.outputs.lcp }},
+                  "cls": ${{ steps.home-desktop.outputs.cls }},
+                  "tbt": ${{ steps.home-desktop.outputs.tbt }}
+                },
+                "about": {
+                  "performance": ${{ steps.about-desktop.outputs.performance }},
+                  "accessibility": ${{ steps.about-desktop.outputs.accessibility }},
+                  "bestPractices": ${{ steps.about-desktop.outputs.best_practices }},
+                  "seo": ${{ steps.about-desktop.outputs.seo }}
+                },
+                "blog": {
+                  "performance": ${{ steps.blog-desktop.outputs.performance }},
+                  "accessibility": ${{ steps.blog-desktop.outputs.accessibility }},
+                  "bestPractices": ${{ steps.blog-desktop.outputs.best_practices }},
+                  "seo": ${{ steps.blog-desktop.outputs.seo }}
+                },
+                "builds": {
+                  "performance": ${{ steps.builds-desktop.outputs.performance }},
+                  "accessibility": ${{ steps.builds-desktop.outputs.accessibility }},
+                  "bestPractices": ${{ steps.builds-desktop.outputs.best_practices }},
+                  "seo": ${{ steps.builds-desktop.outputs.seo }}
+                },
+                "gems": {
+                  "performance": ${{ steps.gems-desktop.outputs.performance }},
+                  "accessibility": ${{ steps.gems-desktop.outputs.accessibility }},
+                  "bestPractices": ${{ steps.gems-desktop.outputs.best_practices }},
+                  "seo": ${{ steps.gems-desktop.outputs.seo }}
+                }
+              }
+            },
+            "history": []
+          }
+          EOF
+
+          echo "✅ Results saved to seo-results.json"
+
+      - name: Commit and Push Results
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add astro-site/src/data/seo-results.json
+          git diff --staged --quiet || git commit -m "📊 Update SEO performance results - $(date -u +"%Y-%m-%d %H:%M UTC")"
+          git push
+
       - name: Performance Summary
         run: |
           echo "## 📊 Performance Summary"
@@ -284,6 +383,7 @@ jobs:
           echo "- TBT: ${{ steps.home-desktop.outputs.tbt }}ms"
           echo ""
           echo "✅ Weekly performance check complete!"
+          echo "📊 Results saved to astro-site/src/data/seo-results.json"
 
       - name: Create Performance Report Issue
         env:
