@@ -584,6 +584,13 @@
     border-top-color: rgba(0, 0, 0, 0.12);
 }
 
+/* Light mode blog type badges */
+[data-theme="light"] .blog-type {
+    background: rgba(37, 99, 235, 0.1);
+    color: #1e40af;
+    border-color: rgba(37, 99, 235, 0.3);
+}
+
 /* Light mode blog tags */
 [data-theme="light"] .tag {
     background: rgba(0, 0, 0, 0.04);

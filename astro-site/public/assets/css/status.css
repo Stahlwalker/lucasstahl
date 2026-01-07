@@ -544,7 +544,7 @@
 [data-theme="light"] .status-bar-content {
     background: linear-gradient(135deg, rgba(34, 197, 94, 0.25), rgba(34, 197, 94, 0.18));
     border: 1px solid rgba(34, 197, 94, 0.5);
-    border-left: 4px solid #16a34a;
+    border-left: 4px solid #15803d;
 }
 
 [data-theme="light"] .system-item {
@@ -574,4 +574,21 @@
 
 [data-theme="light"] .incident-timeline {
     border-left-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Light mode status colors for better contrast */
+[data-theme="light"] .system-item[data-status="operational"] .system-status {
+    color: #15803d;
+}
+
+[data-theme="light"] .system-item[data-status="updating"] .system-status {
+    color: #ca8a04;
+}
+
+[data-theme="light"] .system-item[data-status="degraded"] .system-status {
+    color: #dc2626;
+}
+
+[data-theme="light"] .incident-status.resolved {
+    color: #15803d;
 }

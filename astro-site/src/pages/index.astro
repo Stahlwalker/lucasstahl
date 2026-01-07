@@ -546,6 +546,48 @@ function getStrokeDashoffset(score: number): number {
 	</section>
 
 	<style>
+		/* Feed Type Badges */
+		.feed-type {
+			display: inline-block;
+			padding: 0.25rem 0.5rem;
+			border-radius: 4px;
+			font-size: 0.75rem;
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.5px;
+		}
+
+		.type-article {
+			background-color: rgba(96, 165, 250, 0.15);
+			color: #60a5fa;
+		}
+
+		.type-project {
+			background-color: rgba(16, 185, 129, 0.15);
+			color: #10b981;
+		}
+
+		.type-talk {
+			background-color: rgba(251, 146, 60, 0.15);
+			color: #fb923c;
+		}
+
+		/* Light mode variants with WCAG AA compliant colors */
+		:global([data-theme="light"]) .type-article {
+			background-color: rgba(37, 99, 235, 0.1);
+			color: #1e40af;
+		}
+
+		:global([data-theme="light"]) .type-project {
+			background-color: rgba(5, 150, 105, 0.1);
+			color: #047857;
+		}
+
+		:global([data-theme="light"]) .type-talk {
+			background-color: rgba(234, 88, 12, 0.1);
+			color: #c2410c;
+		}
+
 		/* SEO Performance Widget */
 		.seo-widget {
 			background: var(--bg-secondary);
