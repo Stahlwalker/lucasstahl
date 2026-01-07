@@ -2,21 +2,31 @@
 // src/components/posthog.astro
 ---
 <script>
-    import posthog from 'posthog-js'
+    // Defer PostHog initialization until page is interactive
+    function initPostHog() {
+        import('posthog-js').then(({ default: posthog }) => {
+            posthog.init('phc_4ruyfwFBGDiEiFhDLbLn5wIkpKvgDqpsuGhaPTiMpzP', {
+                api_host: 'https://us.i.posthog.com',
+                defaults: '2025-05-24',
+                person_profiles: 'identified_only',
+                disable_session_recording: true, // Saves ~140KB - re-enable when needed
+                disable_surveys: true, // Saves ~30KB - not being used
+                loaded: (posthog) => {
+                    if (import.meta.env.DEV) {
+                        posthog.debug();
+                    }
+                }
+            });
 
-    posthog.init('phc_4ruyfwFBGDiEiFhDLbLn5wIkpKvgDqpsuGhaPTiMpzP', {
-        api_host: 'https://us.i.posthog.com',
-        defaults: '2025-05-24',
-        person_profiles: 'identified_only',
-        disable_session_recording: true, // Saves ~140KB - re-enable when needed
-        disable_surveys: true, // Saves ~30KB - not being used
-        loaded: (posthog) => {
-            if (import.meta.env.DEV) {
-                posthog.debug();
-            }
-        }
-    })
+            // Expose PostHog globally for feature flags and custom event tracking
+            window.posthog = posthog;
+        });
+    }
 
-    // Expose PostHog globally for feature flags and custom event tracking
-    window.posthog = posthog
+    // Wait for page to be interactive before loading analytics
+    if (document.readyState === 'complete') {
+        initPostHog();
+    } else {
+        window.addEventListener('load', initPostHog);
+    }
 </script>
