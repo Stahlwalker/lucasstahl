@@ -19,6 +19,6 @@
     "marked": "^17.0.1",
     "motion": "^12.23.26",
     "notion-to-md": "^3.1.9",
-    "posthog-js": "^1.311.0"
+    "posthog-js": "^1.315.1"
   }
 }
