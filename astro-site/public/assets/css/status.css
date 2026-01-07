@@ -578,17 +578,17 @@
 
 /* Light mode status colors for better contrast */
 [data-theme="light"] .system-item[data-status="operational"] .system-status {
-    color: #15803d;
+    color: #0f6b2f;
 }
 
 [data-theme="light"] .system-item[data-status="updating"] .system-status {
-    color: #ca8a04;
+    color: #a16207;
 }
 
 [data-theme="light"] .system-item[data-status="degraded"] .system-status {
-    color: #dc2626;
+    color: #b91c1c;
 }
 
 [data-theme="light"] .incident-status.resolved {
-    color: #15803d;
+    color: #0f6b2f;
 }

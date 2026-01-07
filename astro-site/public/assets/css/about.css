@@ -389,8 +389,8 @@
 }
 
 .press-enter-text {
-    color: #c3e88d;
-    animation: blink-text 1.5s ease-in-out infinite;
+    color: #a3c77e;
+    animation: blink-text 2.5s ease-in-out infinite;
 }
 
 .press-enter-mobile {
@@ -423,7 +423,7 @@
 
 @keyframes blink-text {
     0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
+    50% { opacity: 0.65; }
 }
 
 .terminal-input-line {
@@ -1903,7 +1903,7 @@
 }
 
 [data-theme="light"] .press-enter-text {
-    color: #15803d;
+    color: #0f6b2f;
 }
 
 [data-theme="light"] .terminal-line.transition {
