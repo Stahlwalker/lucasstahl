@@ -15,4 +15,10 @@ Sentry.init({
 
   // Only enable in production
   enabled: import.meta.env.PROD,
+
+  // Ignore common transient browser errors
+  ignoreErrors: [
+    'Importing a module script failed',
+    'Failed to fetch dynamically imported module',
+  ],
 });
