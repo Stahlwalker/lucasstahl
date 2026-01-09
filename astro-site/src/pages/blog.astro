@@ -1,8 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { getBlogPosts } from '../lib/notion';
-import { Image } from 'astro:assets';
-import blogOpenSourceHeader from '../assets/images/blog-open-source-header.jpg';
 
 const notionPosts = await getBlogPosts();
 ---
@@ -122,21 +120,11 @@ const notionPosts = await getBlogPosts();
 
 				<!-- External Blog Posts -->
 				<!-- Blog Post: Dec 11, 2025 -->
-				<article class="blog-card">
+				<article class="blog-card blog-card-compact">
 					<a href="https://webflow.com/blog/open-source-cms"
 					   target="_blank"
 					   rel="noopener noreferrer"
 					   class="blog-card-inner">
-						<div class="blog-thumbnail">
-							<Image
-								src={blogOpenSourceHeader}
-								alt="The true cost of open source CMS"
-								loading="eager"
-								fetchpriority="high"
-								width={1200}
-								height={630}
-							/>
-						</div>
 						<div class="blog-content">
 							<div class="blog-meta">
 								<time class="blog-date">Dec 11, 2025</time>
