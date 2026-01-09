@@ -9,6 +9,320 @@ import Layout from '../layouts/Layout.astro';
 	<!-- Noindex meta tag to keep this out of search engines -->
 	<meta name="robots" content="noindex, nofollow" slot="head" />
 
+	<!-- Color Palette Reference -->
+	<section class="color-palette-section">
+		<div class="palette-container">
+			<h1 class="palette-title">Color Palette Reference</h1>
+			<p class="palette-subtitle">Complete design system color documentation</p>
+
+			<!-- Dark Mode Colors -->
+			<div class="palette-group">
+				<h2 class="palette-group-title">Dark Mode (Default)</h2>
+
+				<div class="palette-category">
+					<h3>Backgrounds</h3>
+					<div class="color-grid">
+						<div class="color-item">
+							<div class="color-swatch" style="background: #0a1128;"></div>
+							<div class="color-info">
+								<span class="color-name">Primary Background</span>
+								<span class="color-hex">#0a1128</span>
+							</div>
+						</div>
+						<div class="color-item">
+							<div class="color-swatch" style="background: #0f1a35;"></div>
+							<div class="color-info">
+								<span class="color-name">Secondary Background</span>
+								<span class="color-hex">#0f1a35</span>
+							</div>
+						</div>
+						<div class="color-item">
+							<div class="color-swatch" style="background: #162544;"></div>
+							<div class="color-info">
+								<span class="color-name">Tertiary Background</span>
+								<span class="color-hex">#162544</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="palette-category">
+					<h3>Text</h3>
+					<div class="color-grid">
+						<div class="color-item">
+							<div class="color-swatch" style="background: #e4e4e7;"></div>
+							<div class="color-info">
+								<span class="color-name">Primary Text</span>
+								<span class="color-hex">#e4e4e7</span>
+							</div>
+						</div>
+						<div class="color-item">
+							<div class="color-swatch" style="background: #a1a1aa;"></div>
+							<div class="color-info">
+								<span class="color-name">Secondary Text</span>
+								<span class="color-hex">#a1a1aa</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="palette-category">
+					<h3>Accent Colors</h3>
+					<div class="color-grid">
+						<div class="color-item">
+							<div class="color-swatch" style="background: #60a5fa;"></div>
+							<div class="color-info">
+								<span class="color-name">Primary Accent (Blue)</span>
+								<span class="color-hex">#60a5fa</span>
+							</div>
+						</div>
+						<div class="color-item">
+							<div class="color-swatch" style="background: #818cf8;"></div>
+							<div class="color-info">
+								<span class="color-name">Secondary Accent (Indigo)</span>
+								<span class="color-hex">#818cf8</span>
+							</div>
+						</div>
+						<div class="color-item">
+							<div class="color-swatch" style="background: #fbbf24;"></div>
+							<div class="color-info">
+								<span class="color-name">Accent Yellow</span>
+								<span class="color-hex">#fbbf24</span>
+							</div>
+						</div>
+						<div class="color-item">
+							<div class="color-swatch" style="background: #34d399;"></div>
+							<div class="color-info">
+								<span class="color-name">Accent Green</span>
+								<span class="color-hex">#34d399</span>
+							</div>
+						</div>
+						<div class="color-item">
+							<div class="color-swatch" style="background: #a855f7;"></div>
+							<div class="color-info">
+								<span class="color-name">Accent Purple</span>
+								<span class="color-hex">#a855f7</span>
+							</div>
+						</div>
+						<div class="color-item">
+							<div class="color-swatch" style="background: #ec4899;"></div>
+							<div class="color-info">
+								<span class="color-name">Pink Accent</span>
+								<span class="color-hex">#ec4899</span>
+							</div>
+						</div>
+						<div class="color-item">
+							<div class="color-swatch" style="background: #fb923c;"></div>
+							<div class="color-info">
+								<span class="color-name">Orange Accent</span>
+								<span class="color-hex">#fb923c</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="palette-category">
+					<h3>Code Syntax Highlighting</h3>
+					<div class="color-grid">
+						<div class="color-item">
+							<div class="color-swatch" style="background: #c792ea;"></div>
+							<div class="color-info">
+								<span class="color-name">Keywords</span>
+								<span class="color-hex">#c792ea</span>
+							</div>
+						</div>
+						<div class="color-item">
+							<div class="color-swatch" style="background: #c3e88d;"></div>
+							<div class="color-info">
+								<span class="color-name">Strings</span>
+								<span class="color-hex">#c3e88d</span>
+							</div>
+						</div>
+						<div class="color-item">
+							<div class="color-swatch" style="background: #82aaff;"></div>
+							<div class="color-info">
+								<span class="color-name">Properties</span>
+								<span class="color-hex">#82aaff</span>
+							</div>
+						</div>
+						<div class="color-item">
+							<div class="color-swatch" style="background: #697098;"></div>
+							<div class="color-info">
+								<span class="color-name">Comments</span>
+								<span class="color-hex">#697098</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Light Mode Colors -->
+			<div class="palette-group">
+				<h2 class="palette-group-title">Light Mode</h2>
+
+				<div class="palette-category">
+					<h3>Backgrounds</h3>
+					<div class="color-grid">
+						<div class="color-item">
+							<div class="color-swatch" style="background: #ffffff; border: 1px solid #e5e7eb;"></div>
+							<div class="color-info">
+								<span class="color-name">Primary Background</span>
+								<span class="color-hex">#ffffff</span>
+							</div>
+						</div>
+						<div class="color-item">
+							<div class="color-swatch" style="background: #f8fafc;"></div>
+							<div class="color-info">
+								<span class="color-name">Secondary Background</span>
+								<span class="color-hex">#f8fafc</span>
+							</div>
+						</div>
+						<div class="color-item">
+							<div class="color-swatch" style="background: #f1f5f9;"></div>
+							<div class="color-info">
+								<span class="color-name">Tertiary Background</span>
+								<span class="color-hex">#f1f5f9</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="palette-category">
+					<h3>Text</h3>
+					<div class="color-grid">
+						<div class="color-item">
+							<div class="color-swatch" style="background: #0f172a;"></div>
+							<div class="color-info">
+								<span class="color-name">Primary Text</span>
+								<span class="color-hex">#0f172a</span>
+							</div>
+						</div>
+						<div class="color-item">
+							<div class="color-swatch" style="background: #475569;"></div>
+							<div class="color-info">
+								<span class="color-name">Secondary Text</span>
+								<span class="color-hex">#475569</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="palette-category">
+					<h3>Accent Colors</h3>
+					<div class="color-grid">
+						<div class="color-item">
+							<div class="color-swatch" style="background: #2563eb;"></div>
+							<div class="color-info">
+								<span class="color-name">Primary Accent (Blue)</span>
+								<span class="color-hex">#2563eb</span>
+							</div>
+						</div>
+						<div class="color-item">
+							<div class="color-swatch" style="background: #4f46e5;"></div>
+							<div class="color-info">
+								<span class="color-name">Secondary Accent (Indigo)</span>
+								<span class="color-hex">#4f46e5</span>
+							</div>
+						</div>
+						<div class="color-item">
+							<div class="color-swatch" style="background: #d97706;"></div>
+							<div class="color-info">
+								<span class="color-name">Accent Yellow/Orange</span>
+								<span class="color-hex">#d97706</span>
+							</div>
+						</div>
+						<div class="color-item">
+							<div class="color-swatch" style="background: #059669;"></div>
+							<div class="color-info">
+								<span class="color-name">Accent Green</span>
+								<span class="color-hex">#059669</span>
+							</div>
+						</div>
+						<div class="color-item">
+							<div class="color-swatch" style="background: #7c3aed;"></div>
+							<div class="color-info">
+								<span class="color-name">Accent Purple</span>
+								<span class="color-hex">#7c3aed</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="palette-category">
+					<h3>Code Syntax Highlighting</h3>
+					<div class="color-grid">
+						<div class="color-item">
+							<div class="color-swatch" style="background: #9333ea;"></div>
+							<div class="color-info">
+								<span class="color-name">Keywords</span>
+								<span class="color-hex">#9333ea</span>
+							</div>
+						</div>
+						<div class="color-item">
+							<div class="color-swatch" style="background: #16a34a;"></div>
+							<div class="color-info">
+								<span class="color-name">Strings</span>
+								<span class="color-hex">#16a34a</span>
+							</div>
+						</div>
+						<div class="color-item">
+							<div class="color-swatch" style="background: #0284c7;"></div>
+							<div class="color-info">
+								<span class="color-name">Properties</span>
+								<span class="color-hex">#0284c7</span>
+							</div>
+						</div>
+						<div class="color-item">
+							<div class="color-swatch" style="background: #64748b;"></div>
+							<div class="color-info">
+								<span class="color-name">Comments</span>
+								<span class="color-hex">#64748b</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Legacy Colors -->
+			<div class="palette-group">
+				<h2 class="palette-group-title">Legacy Colors</h2>
+
+				<div class="palette-category">
+					<div class="color-grid">
+						<div class="color-item">
+							<div class="color-swatch" style="background: #AFA7A6;"></div>
+							<div class="color-info">
+								<span class="color-name">Grey Borders/Text</span>
+								<span class="color-hex">#AFA7A6</span>
+							</div>
+						</div>
+						<div class="color-item">
+							<div class="color-swatch" style="background: #E5F088;"></div>
+							<div class="color-info">
+								<span class="color-name">Yellow-Green Accent</span>
+								<span class="color-hex">#E5F088</span>
+							</div>
+						</div>
+						<div class="color-item">
+							<div class="color-swatch" style="background: #6E96A1;"></div>
+							<div class="color-info">
+								<span class="color-name">Teal Overlay</span>
+								<span class="color-hex">#6E96A1</span>
+							</div>
+						</div>
+						<div class="color-item">
+							<div class="color-swatch" style="background: #70726F;"></div>
+							<div class="color-info">
+								<span class="color-name">Dark Grey</span>
+								<span class="color-hex">#70726F</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
 	<!-- Section 0: Isometric Diamond Hero -->
 	<section class="diamond-hero">
 		<canvas id="diamondCanvas"></canvas>
@@ -291,6 +605,150 @@ import Layout from '../layouts/Layout.astro';
 	</section>
 
 	<style>
+		/* Color Palette Section */
+		.color-palette-section {
+			background: #000;
+			padding: 3rem 2rem 2rem;
+			position: relative;
+		}
+
+		.palette-container {
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		.palette-title {
+			font-family: 'Inter', sans-serif;
+			font-size: 1.75rem;
+			font-weight: 500;
+			color: #fff;
+			text-align: center;
+			margin: 0 0 0.5rem 0;
+			letter-spacing: -0.02em;
+		}
+
+		.palette-subtitle {
+			text-align: center;
+			color: rgba(255, 255, 255, 0.5);
+			font-size: 0.85rem;
+			margin-bottom: 2rem;
+		}
+
+		.palette-group {
+			margin-bottom: 2rem;
+		}
+
+		.palette-group-title {
+			font-family: 'Inter', sans-serif;
+			font-size: 1.1rem;
+			font-weight: 500;
+			color: #fff;
+			margin: 0 0 1rem 0;
+			padding-bottom: 0.5rem;
+			border-bottom: 1px solid rgba(96, 165, 250, 0.2);
+		}
+
+		.palette-category {
+			margin-bottom: 1.5rem;
+		}
+
+		.palette-category h3 {
+			font-family: 'Fira Code', monospace;
+			font-size: 0.8rem;
+			color: rgba(255, 255, 255, 0.6);
+			margin: 0 0 0.75rem 0;
+			font-weight: 500;
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
+		}
+
+		.color-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+			gap: 0.75rem;
+		}
+
+		.color-item {
+			background: rgba(20, 20, 20, 0.6);
+			border: 1px solid rgba(255, 255, 255, 0.1);
+			border-radius: 8px;
+			padding: 0.75rem;
+			transition: all 0.3s ease;
+			cursor: pointer;
+		}
+
+		.color-item:hover {
+			border-color: rgba(96, 165, 250, 0.5);
+			transform: translateY(-2px);
+			box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+		}
+
+		.color-swatch {
+			width: 100%;
+			height: 50px;
+			border-radius: 6px;
+			margin-bottom: 0.6rem;
+			box-shadow:
+				0 2px 8px rgba(0, 0, 0, 0.3),
+				inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+		}
+
+		.color-info {
+			display: flex;
+			flex-direction: column;
+			gap: 0.3rem;
+		}
+
+		.color-name {
+			font-family: 'Inter', sans-serif;
+			font-size: 0.75rem;
+			color: rgba(255, 255, 255, 0.9);
+			font-weight: 500;
+		}
+
+		.color-hex {
+			font-family: 'Fira Code', monospace;
+			font-size: 0.7rem;
+			color: rgba(255, 255, 255, 0.5);
+			padding: 0.2rem 0.4rem;
+			background: rgba(255, 255, 255, 0.05);
+			border-radius: 3px;
+			width: fit-content;
+		}
+
+		.color-item:hover .color-hex {
+			color: #60a5fa;
+			background: rgba(96, 165, 250, 0.1);
+		}
+
+		/* Responsive */
+		@media (max-width: 768px) {
+			.color-palette-section {
+				padding: 2rem 1rem 1rem;
+			}
+
+			.color-grid {
+				grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+				gap: 0.6rem;
+			}
+
+			.color-item {
+				padding: 0.6rem;
+			}
+
+			.color-swatch {
+				height: 40px;
+			}
+
+			.palette-group-title {
+				font-size: 1rem;
+			}
+
+			.palette-title {
+				font-size: 1.5rem;
+			}
+		}
+
 		/* Isometric Diamond Hero */
 		.diamond-hero {
 			position: relative;
