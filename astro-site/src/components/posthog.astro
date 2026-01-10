@@ -11,6 +11,7 @@
                 person_profiles: 'identified_only',
                 disable_session_recording: true, // Saves ~140KB - re-enable when needed
                 disable_surveys: true, // Saves ~30KB - not being used
+                capture_exceptions: true, // Enable error tracking
                 loaded: (posthog) => {
                     if (import.meta.env.DEV) {
                         posthog.debug();
