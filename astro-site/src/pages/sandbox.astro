@@ -369,6 +369,260 @@ import Layout from '../layouts/Layout.astro';
 		</div>
 	</section>
 
+	<!-- Pill Navigation Section -->
+	<section class="pill-nav-section">
+		<!-- Combined Pill Container -->
+		<nav class="pill-navbar">
+			<div class="pill-nav-wrapper">
+				<!-- Main Navigation Row -->
+				<div class="pill-nav-container">
+					<div class="pill-nav-left">
+					<div class="pill-nav-logo">clerk</div>
+
+					<div class="pill-nav-items">
+						<div class="pill-nav-item has-dropdown">
+							<button class="pill-nav-link">
+								Products
+								<svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+									<path d="M6 8L2 4h8L6 8z"/>
+								</svg>
+							</button>
+							<div class="pill-dropdown">
+								<div class="pill-dropdown-section">
+									<h4>PRODUCTS</h4>
+									<a href="#" class="pill-dropdown-item">
+										<div class="dropdown-icon">🔐</div>
+										<div>
+											<div class="dropdown-title">Authentication</div>
+											<div class="dropdown-desc">For effortless sign-up, sign-in, and user profiles</div>
+										</div>
+									</a>
+									<a href="#" class="pill-dropdown-item">
+										<div class="dropdown-icon">👥</div>
+										<div>
+											<div class="dropdown-title">Organizations</div>
+											<div class="dropdown-desc">For powering multi-tenant teams and roles</div>
+										</div>
+									</a>
+									<a href="#" class="pill-dropdown-item">
+										<div class="dropdown-icon">💳</div>
+										<div>
+											<div class="dropdown-title">Billing <span class="beta-badge">Beta</span></div>
+											<div class="dropdown-desc">For handling subscriptions plans and payments</div>
+										</div>
+									</a>
+								</div>
+								<div class="pill-dropdown-section">
+									<h4>SOLUTIONS</h4>
+									<a href="#" class="pill-dropdown-item compact">
+										<div class="dropdown-icon">⚛️</div>
+										<span>React Components</span>
+									</a>
+									<a href="#" class="pill-dropdown-item compact">
+										<div class="dropdown-icon">▲</div>
+										<span>Next.js Authentication</span>
+									</a>
+									<a href="#" class="pill-dropdown-item compact">
+										<div class="dropdown-icon">📱</div>
+										<span>Expo</span>
+									</a>
+								</div>
+								<div class="pill-dropdown-section">
+									<h4>USE CASES</h4>
+									<a href="#" class="pill-dropdown-item compact">AI</a>
+									<a href="#" class="pill-dropdown-item compact">iOS</a>
+									<a href="#" class="pill-dropdown-item compact">Android</a>
+									<a href="#" class="pill-dropdown-item compact">M2M</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="pill-nav-item has-dropdown">
+							<button class="pill-nav-link">
+								Docs
+								<svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+									<path d="M6 8L2 4h8L6 8z"/>
+								</svg>
+							</button>
+						</div>
+
+						<a href="#" class="pill-nav-item">
+							<span class="pill-nav-link">Changelog</span>
+						</a>
+
+						<div class="pill-nav-item has-dropdown">
+							<button class="pill-nav-link">
+								Company
+								<svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+									<path d="M6 8L2 4h8L6 8z"/>
+								</svg>
+							</button>
+						</div>
+
+						<a href="#" class="pill-nav-item">
+							<span class="pill-nav-link">Pricing</span>
+						</a>
+					</div>
+				</div>
+
+					<div class="pill-nav-right">
+						<a href="#" class="pill-nav-signin">Sign in</a>
+						<button class="pill-nav-cta">Start building →</button>
+					</div>
+				</div>
+
+				<!-- Secondary Navigation Row (Product Sub-nav) -->
+				<div class="pill-subnav-container">
+				<div class="pill-subnav-left">
+					<a href="#" class="pill-subnav-item active">
+						<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+							<circle cx="8" cy="5" r="2"/>
+							<path d="M8 8c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+						</svg>
+						Authentication
+					</a>
+					<a href="#" class="pill-subnav-item">
+						<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+							<path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-8 0c1.1 0 2-.9 2-2S5.1 4 4 4s-2 .9-2 2 .9 2 2 2zm0 2c-1.33 0-4 .67-4 2v2h8v-2c0-1.33-2.67-2-4-2zm8 0c-.17 0-.36.02-.55.05 .66.44 1.11 1.07 1.11 1.95v2h4v-2c0-1.33-2.67-2-4-2z"/>
+						</svg>
+						Organizations
+					</a>
+					<a href="#" class="pill-subnav-item">
+						<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+							<path d="M13 2H3c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h10c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zM4 12V4h8v8H4z"/>
+						</svg>
+						Billing
+					</a>
+				</div>
+
+				<div class="pill-subnav-right">
+					<div class="pill-subnav-item has-dropdown">
+						<button class="pill-subnav-link">
+							Authentication Components
+							<svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+								<path d="M6 8L2 4h8L6 8z"/>
+							</svg>
+						</button>
+					</div>
+					<div class="pill-subnav-item has-dropdown">
+						<button class="pill-subnav-link">
+							Authentication Docs
+							<svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+								<path d="M6 8L2 4h8L6 8z"/>
+							</svg>
+						</button>
+					</div>
+					<button class="pill-subnav-watch">
+						<svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+							<circle cx="7" cy="7" r="6" stroke="currentColor" fill="none"/>
+							<path d="M5 4l5 3-5 3V4z"/>
+						</svg>
+						Watch Introduction
+					</button>
+				</div>
+			</div>
+			</div>
+		</nav>
+
+		<!-- Demo Content -->
+		<div class="pill-nav-demo-content">
+			<h2>Pill Navigation Demo</h2>
+			<p>This demonstrates Clerk's navigation pattern with a primary pill navbar and secondary sub-navigation for product pages.</p>
+		</div>
+	</section>
+
+	<!-- Social SSO Section (Clerk-style) -->
+	<section class="social-sso-section">
+		<div class="sso-container">
+			<!-- Header -->
+			<div class="sso-header">
+				<span class="sso-label">Social SSO</span>
+				<h2 class="sso-title">Add high-conversion Social SSO<br/>to your application in seconds</h2>
+				<p class="sso-description">When available, <strong>53% of users</strong> choose to sign in with SSO instead of the alternatives. With Social SSO, Clerk makes it extremely simple to offer authentication the way your users want.</p>
+			</div>
+
+			<!-- Floating Icons with Central Button -->
+			<div class="sso-providers">
+				<!-- Provider Icons -->
+				<div class="provider-icon" style="top: 20%; left: 8%;">
+					<svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+						<path d="M22.46 6c-.85.38-1.78.64-2.75.76 1-.6 1.76-1.55 2.12-2.68-.93.55-1.96.95-3.06 1.17-.88-.94-2.13-1.53-3.51-1.53-2.66 0-4.81 2.16-4.81 4.81 0 .38.04.75.13 1.1-4-.2-7.53-2.11-9.9-5.02-.42.72-.66 1.55-.66 2.44 0 1.67.85 3.14 2.14 4-.79-.03-1.53-.24-2.18-.6v.06c0 2.33 1.66 4.28 3.86 4.72-.4.11-.83.17-1.27.17-.31 0-.62-.03-.92-.08.62 1.94 2.43 3.35 4.57 3.39-1.67 1.31-3.77 2.09-6.05 2.09-.39 0-.78-.02-1.17-.07 2.18 1.4 4.77 2.21 7.55 2.21 9.06 0 14-7.5 14-14 0-.21 0-.42-.02-.63.96-.7 1.8-1.56 2.46-2.55z"/>
+					</svg>
+				</div>
+				<div class="provider-icon" style="top: 15%; left: 18%;">
+					<svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+						<path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-6.5 15H11v-5.5H9V11h2V9.5c0-1.93 1.17-2.98 2.9-2.98.85 0 1.58.06 1.79.09v2.08h-1.23c-.96 0-1.15.46-1.15 1.13V11h2.3l-.3 1.5h-2v5.5z"/>
+					</svg>
+				</div>
+				<div class="provider-icon" style="top: 35%; left: 12%;">
+					<svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+						<path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+					</svg>
+				</div>
+				<div class="provider-icon" style="top: 50%; left: 20%;">
+					<svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+						<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+					</svg>
+				</div>
+				<div class="provider-icon" style="top: 18%; right: 18%;">
+					<svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+						<path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/>
+					</svg>
+				</div>
+				<div class="provider-icon" style="top: 30%; right: 10%;">
+					<svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+						<path d="M20.45 4.91A9.94 9.94 0 0 0 12 2a9.94 9.94 0 0 0-8.45 2.91A9.9 9.9 0 0 0 2 12a9.93 9.93 0 0 0 2.05 7.08A9.94 9.94 0 0 0 12 22a9.94 9.94 0 0 0 8.45-2.92A9.92 9.92 0 0 0 22 12a9.94 9.94 0 0 0-1.55-7.09zM12 4a8 8 0 0 1 5.66 2.34L12 12V4zm0 16a8 8 0 0 1-5.66-2.34L12 12v8z"/>
+					</svg>
+				</div>
+				<div class="provider-icon" style="top: 55%; right: 15%;">
+					<svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+						<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+					</svg>
+				</div>
+				<div class="provider-icon" style="top: 20%; right: 5%;">
+					<svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+						<path d="M18.6 6.62c-1.44 0-2.8.56-3.77 1.53L7.8 14.39c-.64.64-1.49.99-2.4.99-1.87 0-3.39-1.51-3.39-3.38S3.53 8.62 5.4 8.62c.91 0 1.76.35 2.44 1.03l.75.72a.5.5 0 0 0 .71 0l.71-.71a.5.5 0 0 0 0-.71l-.72-.72a5.42 5.42 0 0 0-3.89-1.61c-3.01 0-5.45 2.44-5.45 5.45 0 3.01 2.44 5.45 5.45 5.45 1.44 0 2.8-.56 3.77-1.53l7.03-7.24c.64-.64 1.49-.99 2.4-.99 1.87 0 3.39 1.51 3.39 3.38s-1.52 3.38-3.39 3.38c-.9 0-1.76-.35-2.44-1.03l-.75-.72a.5.5 0 0 0-.71 0l-.71.71a.5.5 0 0 0 0 .71l.72.72a5.42 5.42 0 0 0 3.89 1.61c3.01 0 5.45-2.44 5.45-5.45s-2.44-5.45-5.45-5.45z"/>
+					</svg>
+				</div>
+
+				<!-- Central Sign-in Button -->
+				<button class="sso-signin-btn">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+						<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+						<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+						<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+						<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+					</svg>
+					Sign in with Google
+				</button>
+			</div>
+
+			<!-- Feature Cards -->
+			<div class="sso-features">
+				<div class="sso-feature-card">
+					<div class="feature-icon">⚡</div>
+					<h3>Convert faster with SSO</h3>
+					<p>SSO averages 1.3 times faster than passwords, and 5.2 times faster than other passwordless authentication solutions like magic links.</p>
+				</div>
+				<div class="sso-feature-card">
+					<div class="feature-icon">🔌</div>
+					<h3>One-click integration</h3>
+					<p>Don't spoil SSO's impressive performance with common mistakes. Clerk handles edge cases gracefully, so you don't have to.</p>
+				</div>
+				<div class="sso-feature-card">
+					<div class="feature-icon">🎯</div>
+					<h3>Pick your providers</h3>
+					<p>Clerk supports a wide range of SSO providers and is always adding more. If you need a provider that isn't listed, please submit a request here.</p>
+				</div>
+				<div class="sso-feature-card">
+					<div class="feature-icon">🔗</div>
+					<h3>Automatic Account Linking</h3>
+					<p>If a user signs in with SSO after creating their account a different way, they are automatically linked to the original.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
 	<!-- Section 3.5: Floating Code Window with Gradient Spotlights -->
 	<section class="code-spotlight-section">
 		<!-- Gradient spotlights -->
@@ -963,22 +1217,618 @@ import Layout from '../layouts/Layout.astro';
 			bottom: 0;
 			left: 0;
 			width: 100%;
-			height: 120px;
+			height: 100px;
 			background: #0a0a0a;
-			clip-path: polygon(0 40%, 100% 0%, 100% 100%, 0% 100%);
+			clip-path: polygon(
+				0 0%,           /* top left - starts high */
+				8% 35%,         /* dip down on left */
+				15% 35%,        /* stay flat */
+				85% 35%,        /* stay flat across middle */
+				92% 35%,        /* stay flat */
+				100% 0%,        /* dip back up on right */
+				100% 100%,      /* bottom right */
+				0% 100%         /* bottom left */
+			);
 			z-index: 1;
 		}
 
 		/* Responsive adjustments */
 		@media (max-width: 768px) {
 			.angled-divider {
-				height: 80px;
-				clip-path: polygon(0 50%, 100% 0%, 100% 100%, 0% 100%);
+				height: 60px;
+				clip-path: polygon(
+					0 0%,
+					10% 40%,
+					20% 40%,
+					80% 40%,
+					90% 40%,
+					100% 0%,
+					100% 100%,
+					0% 100%
+				);
 			}
 
 			.angled-divider-section {
 				min-height: 60vh;
 				padding: 4rem 1.5rem;
+			}
+		}
+
+		/* Pill Navigation Section */
+		.pill-nav-section {
+			background: #0a0a0a;
+			min-height: 100vh;
+			padding-top: 0;
+		}
+
+		/* Main Pill Navbar */
+		.pill-navbar {
+			background: transparent;
+			padding: 0.75rem 1rem;
+			position: sticky;
+			top: 0;
+			z-index: 100;
+		}
+
+		/* Wrapper that creates the single pill */
+		.pill-nav-wrapper {
+			max-width: calc(100% - 2rem);
+			width: 100%;
+			margin: 0 auto;
+			background: #1a1a1a;
+			border: 1px solid rgba(255, 255, 255, 0.1);
+			border-radius: 24px;
+			overflow: visible;
+		}
+
+		/* Main navigation row */
+		.pill-nav-container {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 1rem;
+			min-height: 48px;
+			padding: 0.5rem 1rem;
+			border-top-left-radius: 24px;
+			border-top-right-radius: 24px;
+		}
+
+		/* Secondary navigation row */
+		.pill-subnav-container {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 1rem;
+			padding: 0.5rem 1rem;
+			border-top: 1px solid rgba(255, 255, 255, 0.1);
+			background: rgba(0, 0, 0, 0.3);
+			border-bottom-left-radius: 24px;
+			border-bottom-right-radius: 24px;
+		}
+
+		.pill-nav-left {
+			display: flex;
+			align-items: center;
+			gap: 1.5rem;
+		}
+
+		.pill-nav-logo {
+			font-family: 'Inter', sans-serif;
+			font-size: 1.1rem;
+			font-weight: 700;
+			color: #fff;
+			text-transform: lowercase;
+		}
+
+		.pill-nav-items {
+			display: flex;
+			align-items: center;
+			gap: 0.25rem;
+		}
+
+		.pill-nav-item {
+			position: relative;
+		}
+
+		.pill-nav-link {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.3rem;
+			padding: 0.4rem 0.875rem;
+			border-radius: 16px;
+			background: transparent;
+			border: none;
+			color: rgba(255, 255, 255, 0.7);
+			font-size: 0.875rem;
+			font-weight: 500;
+			cursor: pointer;
+			transition: all 0.2s ease;
+			text-decoration: none;
+			white-space: nowrap;
+		}
+
+		.pill-nav-link:hover {
+			background: rgba(255, 255, 255, 0.1);
+			color: #fff;
+		}
+
+		.pill-nav-item.has-dropdown:hover .pill-dropdown {
+			opacity: 1;
+			visibility: visible;
+			transform: translateY(0);
+		}
+
+		/* Pill Dropdown */
+		.pill-dropdown {
+			position: absolute;
+			top: calc(100% + 0.5rem);
+			left: 0;
+			background: #2a2a2a;
+			border: 1px solid rgba(255, 255, 255, 0.15);
+			border-radius: 12px;
+			padding: 1.5rem;
+			min-width: 600px;
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 2rem;
+			opacity: 0;
+			visibility: hidden;
+			transform: translateY(-10px);
+			transition: all 0.2s ease;
+			box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+		}
+
+		.pill-dropdown-section h4 {
+			font-family: 'Inter', sans-serif;
+			font-size: 0.7rem;
+			font-weight: 600;
+			color: rgba(255, 255, 255, 0.5);
+			letter-spacing: 0.05em;
+			margin: 0 0 0.75rem 0;
+		}
+
+		.pill-dropdown-item {
+			display: flex;
+			align-items: flex-start;
+			gap: 0.75rem;
+			padding: 0.75rem;
+			border-radius: 8px;
+			color: #fff;
+			text-decoration: none;
+			transition: all 0.2s ease;
+			margin-bottom: 0.5rem;
+		}
+
+		.pill-dropdown-item:hover {
+			background: rgba(255, 255, 255, 0.08);
+		}
+
+		.pill-dropdown-item.compact {
+			align-items: center;
+			padding: 0.5rem 0.75rem;
+		}
+
+		.dropdown-icon {
+			font-size: 1.25rem;
+			line-height: 1;
+		}
+
+		.dropdown-title {
+			font-size: 0.9rem;
+			font-weight: 600;
+			margin-bottom: 0.25rem;
+		}
+
+		.dropdown-desc {
+			font-size: 0.8rem;
+			color: rgba(255, 255, 255, 0.6);
+			line-height: 1.4;
+		}
+
+		.beta-badge {
+			display: inline-block;
+			background: #60a5fa;
+			color: #fff;
+			font-size: 0.65rem;
+			font-weight: 600;
+			padding: 0.15rem 0.4rem;
+			border-radius: 4px;
+			text-transform: uppercase;
+			margin-left: 0.5rem;
+		}
+
+		/* Right side nav */
+		.pill-nav-right {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.pill-nav-signin {
+			color: rgba(255, 255, 255, 0.8);
+			text-decoration: none;
+			font-size: 0.875rem;
+			font-weight: 500;
+			padding: 0.4rem 0.875rem;
+			border-radius: 16px;
+			transition: all 0.2s ease;
+		}
+
+		.pill-nav-signin:hover {
+			background: rgba(255, 255, 255, 0.08);
+			color: #fff;
+		}
+
+		.pill-nav-cta {
+			background: #fff;
+			color: #000;
+			border: none;
+			padding: 0.5rem 1rem;
+			border-radius: 16px;
+			font-size: 0.875rem;
+			font-weight: 600;
+			cursor: pointer;
+			transition: all 0.2s ease;
+		}
+
+		.pill-nav-cta:hover {
+			transform: translateY(-1px);
+			box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+		}
+
+		.pill-subnav-left {
+			display: flex;
+			align-items: center;
+			gap: 0.25rem;
+		}
+
+		.pill-subnav-right {
+			display: flex;
+			align-items: center;
+			gap: 0.25rem;
+		}
+
+		.pill-subnav-item {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.4rem;
+			padding: 0.4rem 0.75rem;
+			border-radius: 16px;
+			background: transparent;
+			border: none;
+			color: rgba(255, 255, 255, 0.6);
+			font-size: 0.8rem;
+			font-weight: 500;
+			cursor: pointer;
+			transition: all 0.2s ease;
+			text-decoration: none;
+			white-space: nowrap;
+		}
+
+		.pill-subnav-item:hover {
+			background: rgba(255, 255, 255, 0.08);
+			color: rgba(255, 255, 255, 0.9);
+		}
+
+		.pill-subnav-item.active {
+			background: rgba(255, 255, 255, 0.12);
+			color: #fff;
+		}
+
+		.pill-subnav-item svg {
+			width: 13px;
+			height: 13px;
+			opacity: 0.7;
+		}
+
+		.pill-subnav-right {
+			display: flex;
+			align-items: center;
+			gap: 0.25rem;
+		}
+
+		.pill-subnav-link {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.3rem;
+			padding: 0.4rem 0.75rem;
+			border-radius: 16px;
+			background: transparent;
+			border: none;
+			color: rgba(255, 255, 255, 0.6);
+			font-size: 0.8rem;
+			font-weight: 500;
+			cursor: pointer;
+			transition: all 0.2s ease;
+			white-space: nowrap;
+		}
+
+		.pill-subnav-link:hover {
+			background: rgba(255, 255, 255, 0.08);
+			color: rgba(255, 255, 255, 0.9);
+		}
+
+		.pill-subnav-watch {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.4rem;
+			padding: 0.4rem 0.75rem;
+			border-radius: 16px;
+			background: transparent;
+			border: 1px solid rgba(255, 255, 255, 0.2);
+			color: rgba(255, 255, 255, 0.8);
+			font-size: 0.8rem;
+			font-weight: 500;
+			cursor: pointer;
+			transition: all 0.2s ease;
+			white-space: nowrap;
+		}
+
+		.pill-subnav-watch:hover {
+			background: rgba(255, 255, 255, 0.08);
+			border-color: rgba(255, 255, 255, 0.4);
+			color: #fff;
+		}
+
+		/* Demo Content */
+		.pill-nav-demo-content {
+			max-width: 1000px;
+			margin: 0 auto;
+			padding: 6rem 2rem;
+			text-align: center;
+			color: #fff;
+		}
+
+		.pill-nav-demo-content h2 {
+			font-family: 'Inter', sans-serif;
+			font-size: 2.5rem;
+			font-weight: 500;
+			margin: 0 0 1rem 0;
+		}
+
+		.pill-nav-demo-content p {
+			font-size: 1.1rem;
+			color: rgba(255, 255, 255, 0.7);
+			line-height: 1.6;
+		}
+
+		/* Responsive */
+		@media (max-width: 968px) {
+			.pill-navbar {
+				padding: 0.75rem 0.5rem;
+			}
+
+			.pill-nav-wrapper {
+				max-width: calc(100% - 1rem);
+			}
+
+			.pill-nav-items {
+				display: none;
+			}
+
+			.pill-dropdown {
+				min-width: 400px;
+				grid-template-columns: 1fr;
+			}
+
+			.pill-subnav-left {
+				overflow-x: auto;
+				flex-wrap: nowrap;
+			}
+
+			.pill-subnav-right {
+				display: none;
+			}
+
+			.pill-subnav-container {
+				padding: 0.4rem 0.75rem;
+			}
+		}
+
+		/* Social SSO Section */
+		.social-sso-section {
+			background: #1a1d29;
+			min-height: 100vh;
+			padding: 6rem 2rem;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.sso-container {
+			max-width: 1400px;
+			margin: 0 auto;
+		}
+
+		.sso-header {
+			text-align: center;
+			max-width: 900px;
+			margin: 0 auto 4rem;
+		}
+
+		.sso-label {
+			display: inline-block;
+			color: #60a5fa;
+			font-size: 0.9rem;
+			font-weight: 600;
+			letter-spacing: 0.05em;
+			margin-bottom: 1.5rem;
+			text-transform: uppercase;
+		}
+
+		.sso-title {
+			font-family: 'Inter', sans-serif;
+			font-size: clamp(2rem, 5vw, 3.5rem);
+			font-weight: 500;
+			color: #fff;
+			margin: 0 0 1.5rem 0;
+			line-height: 1.2;
+			letter-spacing: -0.02em;
+		}
+
+		.sso-description {
+			font-size: 1.1rem;
+			line-height: 1.6;
+			color: rgba(255, 255, 255, 0.7);
+			margin: 0;
+		}
+
+		.sso-description strong {
+			color: #fff;
+			font-weight: 600;
+		}
+
+		/* SSO Providers Area */
+		.sso-providers {
+			position: relative;
+			height: 400px;
+			margin: 0 auto 6rem;
+			max-width: 900px;
+		}
+
+		.provider-icon {
+			position: absolute;
+			width: 56px;
+			height: 56px;
+			background: rgba(255, 255, 255, 0.08);
+			border: 1px solid rgba(255, 255, 255, 0.15);
+			border-radius: 12px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: rgba(255, 255, 255, 0.6);
+			backdrop-filter: blur(10px);
+			transition: all 0.3s ease;
+			animation: float 3s ease-in-out infinite;
+		}
+
+		.provider-icon:nth-child(1) { animation-delay: 0s; }
+		.provider-icon:nth-child(2) { animation-delay: 0.3s; }
+		.provider-icon:nth-child(3) { animation-delay: 0.6s; }
+		.provider-icon:nth-child(4) { animation-delay: 0.9s; }
+		.provider-icon:nth-child(5) { animation-delay: 1.2s; }
+		.provider-icon:nth-child(6) { animation-delay: 1.5s; }
+		.provider-icon:nth-child(7) { animation-delay: 1.8s; }
+		.provider-icon:nth-child(8) { animation-delay: 2.1s; }
+
+		.provider-icon:hover {
+			background: rgba(255, 255, 255, 0.12);
+			border-color: rgba(96, 165, 250, 0.5);
+			color: rgba(255, 255, 255, 0.9);
+			transform: translateY(-4px);
+		}
+
+		@keyframes float {
+			0%, 100% { transform: translateY(0px); }
+			50% { transform: translateY(-10px); }
+		}
+
+		/* Central Sign-in Button */
+		.sso-signin-btn {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			display: flex;
+			align-items: center;
+			gap: 0.75rem;
+			background: #fff;
+			color: #1a1d29;
+			border: none;
+			padding: 1rem 2rem;
+			border-radius: 10px;
+			font-size: 1rem;
+			font-weight: 600;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+			z-index: 10;
+		}
+
+		.sso-signin-btn:hover {
+			transform: translate(-50%, -50%) translateY(-2px);
+			box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+		}
+
+		/* Feature Cards */
+		.sso-features {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			gap: 2rem;
+			margin-top: 4rem;
+		}
+
+		.sso-feature-card {
+			background: rgba(255, 255, 255, 0.05);
+			border: 1px solid rgba(255, 255, 255, 0.1);
+			border-radius: 12px;
+			padding: 2rem;
+			transition: all 0.3s ease;
+		}
+
+		.sso-feature-card:hover {
+			background: rgba(255, 255, 255, 0.08);
+			border-color: rgba(96, 165, 250, 0.3);
+			transform: translateY(-4px);
+		}
+
+		.feature-icon {
+			font-size: 2rem;
+			margin-bottom: 1rem;
+		}
+
+		.sso-feature-card h3 {
+			font-family: 'Inter', sans-serif;
+			font-size: 1.1rem;
+			font-weight: 600;
+			color: #fff;
+			margin: 0 0 0.75rem 0;
+		}
+
+		.sso-feature-card p {
+			font-size: 0.9rem;
+			line-height: 1.6;
+			color: rgba(255, 255, 255, 0.6);
+			margin: 0;
+		}
+
+		/* Responsive */
+		@media (max-width: 968px) {
+			.sso-features {
+				grid-template-columns: repeat(2, 1fr);
+			}
+
+			.sso-providers {
+				height: 300px;
+			}
+
+			.provider-icon {
+				width: 48px;
+				height: 48px;
+			}
+		}
+
+		@media (max-width: 640px) {
+			.sso-features {
+				grid-template-columns: 1fr;
+			}
+
+			.social-sso-section {
+				padding: 4rem 1.5rem;
+			}
+
+			.sso-providers {
+				height: 250px;
+				margin-bottom: 4rem;
+			}
+
+			.provider-icon {
+				width: 40px;
+				height: 40px;
+			}
+
+			.sso-signin-btn {
+				font-size: 0.9rem;
+				padding: 0.875rem 1.5rem;
 			}
 		}
 

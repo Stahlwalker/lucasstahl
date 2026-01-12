@@ -6,6 +6,7 @@ import sentry from '@sentry/astro';
 // Pages to exclude from sitemap (noindex pages)
 const excludedPages = [
   '/retro/',
+  '/sandbox/',
   // Add more noindex pages here as needed
 ];
 
