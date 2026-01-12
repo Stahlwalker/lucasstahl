@@ -352,6 +352,23 @@ import Layout from '../layouts/Layout.astro';
 		</div>
 	</section>
 
+	<!-- Section with Angled Divider (Clerk-style) -->
+	<section class="angled-divider-section light-section">
+		<div class="section-content">
+			<h2>Everything you need for authentication</h2>
+			<p>Ever feel like authentication requirements change with the season? Clerk keeps up with the latest trends and security best practices.</p>
+			<button class="explore-btn">Explore user authentication →</button>
+		</div>
+		<div class="angled-divider"></div>
+	</section>
+
+	<section class="angled-divider-section dark-section">
+		<div class="section-content">
+			<h2>Powerful integrations</h2>
+			<p>Connect with your favorite tools and services. Build faster with pre-built integrations and webhooks.</p>
+		</div>
+	</section>
+
 	<!-- Section 3.5: Floating Code Window with Gradient Spotlights -->
 	<section class="code-spotlight-section">
 		<!-- Gradient spotlights -->
@@ -870,6 +887,99 @@ import Layout from '../layouts/Layout.astro';
 			);
 			filter: blur(80px);
 			opacity: 0.7;
+		}
+
+		/* Angled Divider Section (Clerk-style) */
+		.angled-divider-section {
+			position: relative;
+			min-height: 70vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 6rem 2rem;
+			overflow: visible;
+		}
+
+		.angled-divider-section.light-section {
+			background: #f8f9fa;
+			color: #000;
+		}
+
+		.angled-divider-section.dark-section {
+			background: #0a0a0a;
+			color: #fff;
+			margin-top: -1px;
+		}
+
+		.angled-divider-section .section-content {
+			max-width: 900px;
+			text-align: center;
+			padding: 2rem;
+		}
+
+		.angled-divider-section h2 {
+			font-family: 'Inter', sans-serif;
+			font-size: clamp(2rem, 5vw, 3.5rem);
+			font-weight: 500;
+			margin: 0 0 1.5rem 0;
+			letter-spacing: -0.02em;
+		}
+
+		.angled-divider-section p {
+			font-size: 1.15rem;
+			line-height: 1.6;
+			margin-bottom: 2rem;
+			opacity: 0.8;
+		}
+
+		.explore-btn {
+			background: transparent;
+			border: 2px solid currentColor;
+			color: inherit;
+			padding: 0.875rem 2rem;
+			font-size: 0.95rem;
+			font-weight: 500;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			border-radius: 8px;
+		}
+
+		.explore-btn:hover {
+			background: rgba(0, 0, 0, 0.05);
+			transform: translateY(-2px);
+		}
+
+		.light-section .explore-btn:hover {
+			background: rgba(0, 0, 0, 0.05);
+		}
+
+		.dark-section .explore-btn:hover {
+			background: rgba(255, 255, 255, 0.1);
+		}
+
+		/* The angled divider itself */
+		.angled-divider {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 120px;
+			background: #0a0a0a;
+			clip-path: polygon(0 40%, 100% 0%, 100% 100%, 0% 100%);
+			z-index: 1;
+		}
+
+		/* Responsive adjustments */
+		@media (max-width: 768px) {
+			.angled-divider {
+				height: 80px;
+				clip-path: polygon(0 50%, 100% 0%, 100% 100%, 0% 100%);
+			}
+
+			.angled-divider-section {
+				min-height: 60vh;
+				padding: 4rem 1.5rem;
+			}
 		}
 
 		/* Noise overlay */
