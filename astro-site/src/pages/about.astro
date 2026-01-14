@@ -291,7 +291,7 @@ import webflowDark from '../assets/images/dark/Webflow_dark.png';
 			</div>
 
 			<!-- Logo Showcase Section (Experimental) -->
-			<div class="logo-showcase-wrapper">
+			<div class="logo-showcase-wrapper" data-lazy-logos>
 				<h2 class="logo-showcase-title">
 					<span class="code-bracket">&lt;</span>
 					My Stack
@@ -304,7 +304,7 @@ import webflowDark from '../assets/images/dark/Webflow_dark.png';
 					<a href="/blog/my-stack/" class="tools-subtitle-link">Read the full breakdown <i class="fa-solid fa-arrow-right"></i></a>
 				</p>
 
-				<div class="logo-showcase-section">
+				<div class="logo-showcase-section" style="min-height: 400px;">
 					<div class="logo-showcase-grid">
 					<!-- Ahrefs -->
 					<a href="https://ahrefs.com" target="_blank" rel="noopener noreferrer" class="logo-showcase-item">
@@ -802,4 +802,43 @@ import webflowDark from '../assets/images/dark/Webflow_dark.png';
 		musicIcon.classList.remove('playing');
 		isPlaying = false;
 	});
+
+	// Lazy Load Logo Section - Only load when scrolled into view
+	(function() {
+		const logoWrapper = document.querySelector('[data-lazy-logos]');
+		const logoGrid = logoWrapper?.querySelector('.logo-showcase-grid');
+
+		if (!logoWrapper || !logoGrid) return;
+
+		// Initially hide all logo images
+		const allLogoImages = logoGrid.querySelectorAll('.logo-showcase-img');
+		let logosLoaded = false;
+
+		const loadLogos = () => {
+			if (logosLoaded) return;
+			logosLoaded = true;
+
+			// Show all logo images
+			allLogoImages.forEach(img => {
+				img.style.opacity = '1';
+			});
+
+			console.log('✅ Logo section loaded');
+		};
+
+		// Create intersection observer
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					loadLogos();
+					observer.disconnect(); // Stop observing once loaded
+				}
+			});
+		}, {
+			rootMargin: '200px' // Start loading 200px before section is visible
+		});
+
+		// Start observing
+		observer.observe(logoWrapper);
+	})();
 </script>

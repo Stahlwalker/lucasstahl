@@ -4,3 +4,6 @@ sitemap-0.xml
 
 # Private style guide
 docs/Lukes-Developer-Writing-Style.md
+
+# Claude model cost reference (local reference only)
+docs/CLAUDE_MODEL_COSTS.md
