@@ -1903,7 +1903,7 @@
 }
 
 [data-theme="light"] .press-enter-text {
-    color: #0f6b2f;
+    color: #044524; /* Darker green for WCAG AA contrast (7:1 ratio) */
 }
 
 [data-theme="light"] .terminal-line.transition {
