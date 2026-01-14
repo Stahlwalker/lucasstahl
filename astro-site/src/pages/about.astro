@@ -778,13 +778,24 @@ import webflowDark from '../assets/images/dark/Webflow_dark.png';
 		}
 	});
 
-	// Easter egg music player
+	// Easter egg music player - Lazy load audio only when clicked
 	const musicIcon = document.getElementById('musicIcon');
-	const audio = new Audio('/assets/audio/carry_on.mp3');
+	let audio = null; // Don't load audio until user clicks
 	let isPlaying = false;
 
 	musicIcon?.addEventListener('click', (e) => {
 		e.stopPropagation(); // Prevent triggering terminal click
+
+		// Create audio element only on first click (lazy load)
+		if (!audio) {
+			audio = new Audio('/assets/audio/carry_on.mp3');
+
+			// Set up ended event listener once audio is created
+			audio.addEventListener('ended', () => {
+				musicIcon.classList.remove('playing');
+				isPlaying = false;
+			});
+		}
 
 		if (isPlaying) {
 			audio.pause();
@@ -795,12 +806,6 @@ import webflowDark from '../assets/images/dark/Webflow_dark.png';
 			musicIcon.classList.add('playing');
 			isPlaying = true;
 		}
-	});
-
-	// Reset icon when audio ends
-	audio.addEventListener('ended', () => {
-		musicIcon.classList.remove('playing');
-		isPlaying = false;
 	});
 
 	// Lazy Load Logo Section - Only load when scrolled into view
