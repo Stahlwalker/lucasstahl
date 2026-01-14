@@ -64,5 +64,6 @@ npm run preview      # Preview build locally
 
 ## Instructions for Claude
 
-- **Writing Style**: When writing content, documentation, or blog posts, reference `docs/Lukes-Developer-Writing-Style.md` for tone, style, and formatting guidelines
+- **Writing Style**: When generating page content, documentation, or site copy, always reference `docs/Lukes-Developer-Writing-Style.md` for tone, style, and formatting guidelines (Note: blog posts are written by Luke in Notion)
 - NEVER commit .env files
+- Always use Context7 MCP when I need library/API documentation, code generation, setup or configuration steps without me having to explicitly ask.
