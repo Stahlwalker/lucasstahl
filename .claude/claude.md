@@ -36,8 +36,13 @@ Personal website and blog for Luke Stahl, deployed at lukestahl.io. The site fea
 
 ### Running Locally
 
-All development work happens in the `astro-site` directory. You must cd into it first:
+All development work happens in the `astro-site` directory.
 
+**Repository Structure:**
+- Project root: `/Users/lucasstahl/Desktop/Open Projects/Programming/lucasstahl/`
+- Astro site: `/Users/lucasstahl/Desktop/Open Projects/Programming/lucasstahl/astro-site/`
+
+**If starting from the project root:**
 ```bash
 cd astro-site
 npm install          # Install dependencies
@@ -46,7 +51,15 @@ npm run build        # Build to ./dist/
 npm run preview      # Preview build locally
 ```
 
-**Important**: Always `cd astro-site` before running any npm commands.
+**If already in astro-site directory (check with `pwd`):**
+```bash
+npm install          # Install dependencies
+npm run dev          # Start dev server at localhost:4321
+npm run build        # Build to ./dist/
+npm run preview      # Preview build locally
+```
+
+**Important**: Check your current working directory with `pwd`. If you're already in `astro-site/`, don't try to `cd astro-site` again.
 
 ## Architecture
 
