@@ -600,13 +600,11 @@ function getStrokeDashoffset(score: number): number {
 			flex-direction: column;
 			gap: 1.25rem;
 			transition: all 0.3s ease;
-			transform: rotate(-2deg);
 		}
 
 		.seo-widget:hover {
 			border-color: var(--accent-primary);
 			box-shadow: 0 8px 32px rgba(96, 165, 250, 0.15);
-			transform: rotate(0deg) translateY(-4px);
 		}
 
 		.seo-widget-header {
@@ -774,11 +772,6 @@ function getStrokeDashoffset(score: number): number {
 		@media (max-width: 768px) {
 			.seo-widget {
 				padding: 1.25rem;
-				transform: rotate(0deg);
-			}
-
-			.seo-widget:hover {
-				transform: rotate(0deg);
 			}
 
 			.seo-scores-row {
