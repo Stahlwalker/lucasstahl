@@ -15,6 +15,7 @@ interface Props {
 	canonicalUrl?: string;
 	additionalCss?: string[];
 	hideHandbookButton?: boolean;
+	robots?: string;
 	// Announcement Bar Configuration
 	showAnnouncement?: boolean;
 	announcementMessage?: string;
@@ -31,6 +32,7 @@ const {
 	canonicalUrl = "https://lukestahl.io",
 	additionalCss = [],
 	hideHandbookButton = false,
+	robots,
 	// Announcement Bar (easily toggle on/off)
 	showAnnouncement = true,
 	announcementMessage = "New: Markdown + AI Website vs CMS",
@@ -54,6 +56,7 @@ const {
 
 	<meta charset="UTF-8">
 	<meta name="description" content={description}>
+	{robots && <meta name="robots" content={robots} />}
 	<link rel="canonical" href={canonicalUrl} />
 	<link rel="alternate" type="application/rss+xml" title="Luke Stahl's Blog" href="https://lukestahl.io/rss.xml" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
