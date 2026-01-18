@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-01-18T09:25:30Z",
+  "lastUpdated": "2026-01-18T12:44:12Z",
   "results": {
     "mobile": {
       "home": {
@@ -7,18 +7,18 @@
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
-        "lcp": 7057.2164551330543,
-        "cls": 0.0008018111210128905,
+        "lcp": 7055.2258598843855,
+        "cls": 0.00067427097006632613,
         "tbt": 0
       },
       "about": {
-        "performance": 0,
-        "accessibility": 0,
-        "bestPractices": 0,
-        "seo": 0
+        "performance": 60,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
       },
       "blog": {
-        "performance": 71,
+        "performance": 60,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
@@ -42,24 +42,24 @@
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
-        "lcp": 963.07304870876339,
-        "cls": 0.000584472090379495,
+        "lcp": 963.08829447504547,
+        "cls": 0.000562033327483605,
         "tbt": 0
       },
       "about": {
         "performance": 94,
-        "accessibility": 96,
+        "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
       },
       "blog": {
-        "performance": 93,
+        "performance": 94,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
       },
       "builds": {
-        "performance": 95,
+        "performance": 93,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
