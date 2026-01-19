@@ -1,0 +1,664 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+	title="Design System - Luke Stahl"
+	description="Design system for lukestahl.io - colors, typography, spacing, icons, and reusable component examples."
+	canonicalUrl="https://lukestahl.io/design-system/"
+	ogTitle="Design System - Luke Stahl"
+	ogDescription="Explore the design system behind lukestahl.io including colors, typography, and component examples."
+	additionalCss={["/assets/css/design-system.css"]}
+>
+	<!-- Brand Page Container -->
+	<div class="design-system-container">
+
+		<!-- Sidebar Navigation -->
+		<aside class="design-system-sidebar" id="designSystemSidebar">
+			<div class="sidebar-header">
+				<h2 class="sidebar-title">Design System</h2>
+				<button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+					<i class="fa-solid fa-bars"></i>
+				</button>
+			</div>
+			<nav class="sidebar-nav">
+				<a href="#introduction" class="sidebar-link active">Introduction</a>
+				<a href="#logo" class="sidebar-link">Logo</a>
+				<a href="#colors" class="sidebar-link">Colors</a>
+				<a href="#typography" class="sidebar-link">Typography</a>
+				<a href="#icons" class="sidebar-link">Icons</a>
+				<a href="#spacing" class="sidebar-link">Spacing</a>
+				<a href="#components" class="sidebar-link">Components</a>
+			</nav>
+		</aside>
+
+		<!-- Main Content -->
+		<main class="design-system-content">
+
+			<!-- Hero Section -->
+			<section class="design-system-hero">
+				<h1 class="design-system-hero-title">
+					<span class="code-bracket">&lt;</span>
+					Design System
+					<span class="code-bracket">/&gt;</span>
+				</h1>
+				<p class="design-system-hero-subtitle">
+					Design system for building consistent experiences on lukestahl.io
+				</p>
+			</section>
+
+			<!-- Introduction -->
+			<section id="introduction" class="design-system-section">
+				<h2 class="section-title">Introduction</h2>
+				<p class="section-description">
+					This design system documents the visual language, components, and patterns used across lukestahl.io.
+					It's built with modern web standards, prioritizes accessibility, and supports both dark and light themes.
+				</p>
+				<div class="info-card">
+					<h3 class="info-card-title">
+						<i class="fa-solid fa-lightbulb"></i>
+						Design Philosophy
+					</h3>
+					<ul class="info-list">
+						<li>Developer-focused aesthetic with clean typography</li>
+						<li>High contrast for accessibility (WCAG AA compliant)</li>
+						<li>Responsive design that works across all devices</li>
+					</ul>
+				</div>
+				<p class="section-description">
+					View the source code on <a href="https://github.com/Stahlwalker/lucasstahl" target="_blank" rel="noopener noreferrer" class="design-system-link">GitHub</a>.
+				</p>
+			</section>
+
+			<!-- Logo -->
+			<section id="logo" class="design-system-section">
+				<h2 class="section-title">Logo</h2>
+				<p class="section-description">
+					Brand identity and logo guidelines.
+				</p>
+
+				<div class="placeholder-card">
+					<div class="placeholder-icon">
+						<i class="fa-solid fa-image"></i>
+					</div>
+					<h3 class="placeholder-title">Logo Coming Soon</h3>
+					<p class="placeholder-text">Will include PNG and SVG download options.</p>
+				</div>
+			</section>
+
+			<!-- Colors -->
+			<section id="colors" class="design-system-section">
+				<h2 class="section-title">Colors</h2>
+				<p class="section-description">
+					A high-contrast, accessible color system that adapts between dark and light themes.
+				</p>
+
+				<!-- Primary Colors -->
+				<h3 class="subsection-title">Primary Colors</h3>
+				<div class="color-grid">
+					<div class="color-swatch" data-color="#60a5fa">
+						<div class="color-preview color-blue-primary"></div>
+						<div class="color-info">
+							<span class="color-name">Blue Primary (Dark)</span>
+							<code class="color-hex">#60a5fa</code>
+						</div>
+						<button class="copy-button" aria-label="Copy color code">
+							<i class="fa-solid fa-copy"></i>
+						</button>
+					</div>
+					<div class="color-swatch" data-color="#2563eb">
+						<div class="color-preview color-blue-light"></div>
+						<div class="color-info">
+							<span class="color-name">Blue Primary (Light)</span>
+							<code class="color-hex">#2563eb</code>
+						</div>
+						<button class="copy-button" aria-label="Copy color code">
+							<i class="fa-solid fa-copy"></i>
+						</button>
+					</div>
+				</div>
+
+				<!-- Accent Colors -->
+				<h3 class="subsection-title">Accent Colors</h3>
+				<div class="color-grid">
+					<div class="color-swatch" data-color="#818cf8">
+						<div class="color-preview color-indigo"></div>
+						<div class="color-info">
+							<span class="color-name">Indigo</span>
+							<code class="color-hex">#818cf8</code>
+						</div>
+						<button class="copy-button" aria-label="Copy color code">
+							<i class="fa-solid fa-copy"></i>
+						</button>
+					</div>
+					<div class="color-swatch" data-color="#a855f7">
+						<div class="color-preview color-purple"></div>
+						<div class="color-info">
+							<span class="color-name">Purple</span>
+							<code class="color-hex">#a855f7</code>
+						</div>
+						<button class="copy-button" aria-label="Copy color code">
+							<i class="fa-solid fa-copy"></i>
+						</button>
+					</div>
+					<div class="color-swatch" data-color="#34d399">
+						<div class="color-preview color-green"></div>
+						<div class="color-info">
+							<span class="color-name">Green</span>
+							<code class="color-hex">#34d399</code>
+						</div>
+						<button class="copy-button" aria-label="Copy color code">
+							<i class="fa-solid fa-copy"></i>
+						</button>
+					</div>
+					<div class="color-swatch" data-color="#fbbf24">
+						<div class="color-preview color-yellow"></div>
+						<div class="color-info">
+							<span class="color-name">Yellow</span>
+							<code class="color-hex">#fbbf24</code>
+						</div>
+						<button class="copy-button" aria-label="Copy color code">
+							<i class="fa-solid fa-copy"></i>
+						</button>
+					</div>
+					<div class="color-swatch" data-color="#ec4899">
+						<div class="color-preview color-pink"></div>
+						<div class="color-info">
+							<span class="color-name">Pink</span>
+							<code class="color-hex">#ec4899</code>
+						</div>
+						<button class="copy-button" aria-label="Copy color code">
+							<i class="fa-solid fa-copy"></i>
+						</button>
+					</div>
+					<div class="color-swatch" data-color="#fb923c">
+						<div class="color-preview color-orange"></div>
+						<div class="color-info">
+							<span class="color-name">Orange</span>
+							<code class="color-hex">#fb923c</code>
+						</div>
+						<button class="copy-button" aria-label="Copy color code">
+							<i class="fa-solid fa-copy"></i>
+						</button>
+					</div>
+				</div>
+
+				<!-- Background Colors (Dark) -->
+				<h3 class="subsection-title">Background Colors (Dark Mode)</h3>
+				<div class="color-grid">
+					<div class="color-swatch" data-color="#0a1128">
+						<div class="color-preview color-bg-dark-1"></div>
+						<div class="color-info">
+							<span class="color-name">Primary Background</span>
+							<code class="color-hex">#0a1128</code>
+						</div>
+						<button class="copy-button" aria-label="Copy color code">
+							<i class="fa-solid fa-copy"></i>
+						</button>
+					</div>
+					<div class="color-swatch" data-color="#0f1a35">
+						<div class="color-preview color-bg-dark-2"></div>
+						<div class="color-info">
+							<span class="color-name">Secondary Background</span>
+							<code class="color-hex">#0f1a35</code>
+						</div>
+						<button class="copy-button" aria-label="Copy color code">
+							<i class="fa-solid fa-copy"></i>
+						</button>
+					</div>
+					<div class="color-swatch" data-color="#162544">
+						<div class="color-preview color-bg-dark-3"></div>
+						<div class="color-info">
+							<span class="color-name">Tertiary Background</span>
+							<code class="color-hex">#162544</code>
+						</div>
+						<button class="copy-button" aria-label="Copy color code">
+							<i class="fa-solid fa-copy"></i>
+						</button>
+					</div>
+				</div>
+
+				<!-- Background Colors (Light) -->
+				<h3 class="subsection-title">Background Colors (Light Mode)</h3>
+				<div class="color-grid">
+					<div class="color-swatch" data-color="#ffffff">
+						<div class="color-preview color-bg-light-1"></div>
+						<div class="color-info">
+							<span class="color-name">Primary Background</span>
+							<code class="color-hex">#ffffff</code>
+						</div>
+						<button class="copy-button" aria-label="Copy color code">
+							<i class="fa-solid fa-copy"></i>
+						</button>
+					</div>
+					<div class="color-swatch" data-color="#f8fafc">
+						<div class="color-preview color-bg-light-2"></div>
+						<div class="color-info">
+							<span class="color-name">Secondary Background</span>
+							<code class="color-hex">#f8fafc</code>
+						</div>
+						<button class="copy-button" aria-label="Copy color code">
+							<i class="fa-solid fa-copy"></i>
+						</button>
+					</div>
+					<div class="color-swatch" data-color="#f1f5f9">
+						<div class="color-preview color-bg-light-3"></div>
+						<div class="color-info">
+							<span class="color-name">Tertiary Background</span>
+							<code class="color-hex">#f1f5f9</code>
+						</div>
+						<button class="copy-button" aria-label="Copy color code">
+							<i class="fa-solid fa-copy"></i>
+						</button>
+					</div>
+				</div>
+
+				<!-- Text Colors -->
+				<h3 class="subsection-title">Text Colors</h3>
+				<div class="color-grid">
+					<div class="color-swatch" data-color="#e4e4e7">
+						<div class="color-preview color-text-dark-1"></div>
+						<div class="color-info">
+							<span class="color-name">Primary Text (Dark)</span>
+							<code class="color-hex">#e4e4e7</code>
+						</div>
+						<button class="copy-button" aria-label="Copy color code">
+							<i class="fa-solid fa-copy"></i>
+						</button>
+					</div>
+					<div class="color-swatch" data-color="#a1a1aa">
+						<div class="color-preview color-text-dark-2"></div>
+						<div class="color-info">
+							<span class="color-name">Secondary Text (Dark)</span>
+							<code class="color-hex">#a1a1aa</code>
+						</div>
+						<button class="copy-button" aria-label="Copy color code">
+							<i class="fa-solid fa-copy"></i>
+						</button>
+					</div>
+					<div class="color-swatch" data-color="#0f172a">
+						<div class="color-preview color-text-light-1"></div>
+						<div class="color-info">
+							<span class="color-name">Primary Text (Light)</span>
+							<code class="color-hex">#0f172a</code>
+						</div>
+						<button class="copy-button" aria-label="Copy color code">
+							<i class="fa-solid fa-copy"></i>
+						</button>
+					</div>
+					<div class="color-swatch" data-color="#475569">
+						<div class="color-preview color-text-light-2"></div>
+						<div class="color-info">
+							<span class="color-name">Secondary Text (Light)</span>
+							<code class="color-hex">#475569</code>
+						</div>
+						<button class="copy-button" aria-label="Copy color code">
+							<i class="fa-solid fa-copy"></i>
+						</button>
+					</div>
+				</div>
+
+				<!-- Code Syntax Highlighting (Dark Mode) -->
+				<h3 class="subsection-title">Code Syntax Highlighting (Dark Mode)</h3>
+				<div class="color-grid">
+					<div class="color-swatch" data-color="#c792ea">
+						<div class="color-preview color-syntax-dark-keywords"></div>
+						<div class="color-info">
+							<span class="color-name">Keywords</span>
+							<code class="color-hex">#c792ea</code>
+						</div>
+						<button class="copy-button" aria-label="Copy color code">
+							<i class="fa-solid fa-copy"></i>
+						</button>
+					</div>
+					<div class="color-swatch" data-color="#c3e88d">
+						<div class="color-preview color-syntax-dark-strings"></div>
+						<div class="color-info">
+							<span class="color-name">Strings</span>
+							<code class="color-hex">#c3e88d</code>
+						</div>
+						<button class="copy-button" aria-label="Copy color code">
+							<i class="fa-solid fa-copy"></i>
+						</button>
+					</div>
+					<div class="color-swatch" data-color="#82aaff">
+						<div class="color-preview color-syntax-dark-properties"></div>
+						<div class="color-info">
+							<span class="color-name">Properties</span>
+							<code class="color-hex">#82aaff</code>
+						</div>
+						<button class="copy-button" aria-label="Copy color code">
+							<i class="fa-solid fa-copy"></i>
+						</button>
+					</div>
+					<div class="color-swatch" data-color="#697098">
+						<div class="color-preview color-syntax-dark-comments"></div>
+						<div class="color-info">
+							<span class="color-name">Comments</span>
+							<code class="color-hex">#697098</code>
+						</div>
+						<button class="copy-button" aria-label="Copy color code">
+							<i class="fa-solid fa-copy"></i>
+						</button>
+					</div>
+				</div>
+
+				<!-- Code Syntax Highlighting (Light Mode) -->
+				<h3 class="subsection-title">Code Syntax Highlighting (Light Mode)</h3>
+				<div class="color-grid">
+					<div class="color-swatch" data-color="#9333ea">
+						<div class="color-preview color-syntax-light-keywords"></div>
+						<div class="color-info">
+							<span class="color-name">Keywords</span>
+							<code class="color-hex">#9333ea</code>
+						</div>
+						<button class="copy-button" aria-label="Copy color code">
+							<i class="fa-solid fa-copy"></i>
+						</button>
+					</div>
+					<div class="color-swatch" data-color="#16a34a">
+						<div class="color-preview color-syntax-light-strings"></div>
+						<div class="color-info">
+							<span class="color-name">Strings</span>
+							<code class="color-hex">#16a34a</code>
+						</div>
+						<button class="copy-button" aria-label="Copy color code">
+							<i class="fa-solid fa-copy"></i>
+						</button>
+					</div>
+					<div class="color-swatch" data-color="#0284c7">
+						<div class="color-preview color-syntax-light-properties"></div>
+						<div class="color-info">
+							<span class="color-name">Properties</span>
+							<code class="color-hex">#0284c7</code>
+						</div>
+						<button class="copy-button" aria-label="Copy color code">
+							<i class="fa-solid fa-copy"></i>
+						</button>
+					</div>
+					<div class="color-swatch" data-color="#64748b">
+						<div class="color-preview color-syntax-light-comments"></div>
+						<div class="color-info">
+							<span class="color-name">Comments</span>
+							<code class="color-hex">#64748b</code>
+						</div>
+						<button class="copy-button" aria-label="Copy color code">
+							<i class="fa-solid fa-copy"></i>
+						</button>
+					</div>
+				</div>
+			</section>
+
+			<!-- Typography -->
+			<section id="typography" class="design-system-section">
+				<h2 class="section-title">Typography</h2>
+				<p class="section-description">
+					Two primary typefaces: Fira Code for code and monospace elements, Inter for body text and UI.
+				</p>
+
+				<!-- Fira Code -->
+				<div class="typography-specimen">
+					<h3 class="typography-name">Fira Code</h3>
+					<p class="typography-usage">Monospace · Code blocks · Technical elements</p>
+					<div class="typography-sample fira-code-sample">
+						<span class="sample-label">Regular 400</span>
+						<p class="sample-text-fira">const greeting = "Hello, World!";</p>
+					</div>
+					<div class="typography-sample fira-code-sample">
+						<span class="sample-label">Medium 500</span>
+						<p class="sample-text-fira font-weight-500">const greeting = "Hello, World!";</p>
+					</div>
+					<div class="typography-sample fira-code-sample">
+						<span class="sample-label">Semibold 600</span>
+						<p class="sample-text-fira font-weight-600">const greeting = "Hello, World!";</p>
+					</div>
+				</div>
+
+				<!-- Inter -->
+				<div class="typography-specimen">
+					<h3 class="typography-name">Inter</h3>
+					<p class="typography-usage">Sans-serif · Body text · UI elements</p>
+					<div class="typography-sample inter-sample">
+						<span class="sample-label">Regular 400</span>
+						<p class="sample-text-inter">The quick brown fox jumps over the lazy dog</p>
+					</div>
+					<div class="typography-sample inter-sample">
+						<span class="sample-label">Medium 500</span>
+						<p class="sample-text-inter font-weight-500">The quick brown fox jumps over the lazy dog</p>
+					</div>
+					<div class="typography-sample inter-sample">
+						<span class="sample-label">Semibold 600</span>
+						<p class="sample-text-inter font-weight-600">The quick brown fox jumps over the lazy dog</p>
+					</div>
+					<div class="typography-sample inter-sample">
+						<span class="sample-label">Bold 700</span>
+						<p class="sample-text-inter font-weight-700">The quick brown fox jumps over the lazy dog</p>
+					</div>
+				</div>
+
+				<!-- Heading Classes -->
+				<h3 class="subsection-title">Common Heading Classes</h3>
+				<div class="heading-scale">
+					<div class="heading-example" style="font-family: 'Fira Code', monospace; font-size: 3rem; font-weight: 700;">
+						.blog-hero-title (3rem / 48px)
+					</div>
+					<div class="heading-example" style="font-family: 'Fira Code', monospace; font-size: 2rem; font-weight: 600;">
+						.section-title (2rem / 32px)
+					</div>
+					<div class="heading-example" style="font-family: 'Fira Code', monospace; font-size: 1.25rem; font-weight: 600;">
+						.subsection-title (1.25rem / 20px)
+					</div>
+					<div class="heading-example" style="font-family: 'Fira Code', monospace; font-size: 1.125rem; font-weight: 600;">
+						.feed-title (1.125rem / 18px)
+					</div>
+					<div class="heading-example" style="font-family: 'Fira Code', monospace; font-size: 1rem; font-weight: 600;">
+						.blog-title (1rem / 16px)
+					</div>
+				</div>
+			</section>
+
+			<!-- Icons -->
+			<section id="icons" class="design-system-section">
+				<h2 class="section-title">Icons</h2>
+				<p class="section-description">
+					<a href="https://fontawesome.com" target="_blank" rel="noopener noreferrer" class="design-system-link">Font Awesome 6</a> provides the icon set used throughout the site. Icons are used for visual hierarchy and quick recognition.
+				</p>
+
+				<h3 class="subsection-title">Common Icons</h3>
+				<div class="icon-grid">
+					<div class="icon-item">
+						<i class="fa-solid fa-code icon-demo"></i>
+						<span class="icon-name">fa-code</span>
+					</div>
+					<div class="icon-item">
+						<i class="fa-solid fa-pen-nib icon-demo"></i>
+						<span class="icon-name">fa-pen-nib</span>
+					</div>
+					<div class="icon-item">
+						<i class="fa-solid fa-bullhorn icon-demo"></i>
+						<span class="icon-name">fa-bullhorn</span>
+					</div>
+					<div class="icon-item">
+						<i class="fa-solid fa-chart-line icon-demo"></i>
+						<span class="icon-name">fa-chart-line</span>
+					</div>
+					<div class="icon-item">
+						<i class="fa-solid fa-arrow-right icon-demo"></i>
+						<span class="icon-name">fa-arrow-right</span>
+					</div>
+					<div class="icon-item">
+						<i class="fa-solid fa-arrow-up-right-from-square icon-demo"></i>
+						<span class="icon-name">fa-arrow-up-right-from-square</span>
+					</div>
+					<div class="icon-item">
+						<i class="fa-solid fa-circle-check icon-demo"></i>
+						<span class="icon-name">fa-circle-check</span>
+					</div>
+					<div class="icon-item">
+						<i class="fa-solid fa-moon icon-demo"></i>
+						<span class="icon-name">fa-moon</span>
+					</div>
+					<div class="icon-item">
+						<i class="fa-solid fa-sun icon-demo"></i>
+						<span class="icon-name">fa-sun</span>
+					</div>
+					<div class="icon-item">
+						<i class="fa-solid fa-display icon-demo"></i>
+						<span class="icon-name">fa-display</span>
+					</div>
+					<div class="icon-item">
+						<i class="fa-solid fa-magnifying-glass icon-demo"></i>
+						<span class="icon-name">fa-magnifying-glass</span>
+					</div>
+					<div class="icon-item">
+						<i class="fa-solid fa-bars icon-demo"></i>
+						<span class="icon-name">fa-bars</span>
+					</div>
+				</div>
+
+				<div class="info-card">
+					<h4 class="info-card-title">
+						<i class="fa-solid fa-circle-info"></i>
+						Icon Guidelines
+					</h4>
+					<ul class="info-list">
+						<li>Use solid style for primary actions and filled states</li>
+						<li>Maintain consistent sizing (1rem for inline, 1.5rem for standalone)</li>
+						<li>Apply accent colors for interactive or highlighted icons</li>
+						<li>Ensure sufficient contrast against backgrounds</li>
+					</ul>
+				</div>
+			</section>
+
+			<!-- Spacing -->
+			<section id="spacing" class="design-system-section">
+				<h2 class="section-title">Spacing</h2>
+				<p class="section-description">
+					Based on an 8px (0.5rem) base unit with flexibility for in-between values when needed. Common increments include 0.5rem, 1rem, 1.5rem, 2rem, 3rem, and 4rem, with occasional use of 0.75rem, 1.25rem, and 0.875rem for fine-tuning.
+				</p>
+
+				<h3 class="subsection-title">Spacing Scale</h3>
+				<div class="spacing-scale">
+					<div class="spacing-item">
+						<div class="spacing-visual spacing-05"></div>
+						<div class="spacing-info">
+							<code class="spacing-value">0.5rem</code>
+							<span class="spacing-pixels">8px</span>
+						</div>
+					</div>
+					<div class="spacing-item">
+						<div class="spacing-visual spacing-1"></div>
+						<div class="spacing-info">
+							<code class="spacing-value">1rem</code>
+							<span class="spacing-pixels">16px</span>
+						</div>
+					</div>
+					<div class="spacing-item">
+						<div class="spacing-visual spacing-15"></div>
+						<div class="spacing-info">
+							<code class="spacing-value">1.5rem</code>
+							<span class="spacing-pixels">24px</span>
+						</div>
+					</div>
+					<div class="spacing-item">
+						<div class="spacing-visual spacing-2"></div>
+						<div class="spacing-info">
+							<code class="spacing-value">2rem</code>
+							<span class="spacing-pixels">32px</span>
+						</div>
+					</div>
+					<div class="spacing-item">
+						<div class="spacing-visual spacing-3"></div>
+						<div class="spacing-info">
+							<code class="spacing-value">3rem</code>
+							<span class="spacing-pixels">48px</span>
+						</div>
+					</div>
+					<div class="spacing-item">
+						<div class="spacing-visual spacing-4"></div>
+						<div class="spacing-info">
+							<code class="spacing-value">4rem</code>
+							<span class="spacing-pixels">64px</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="code-block">
+					<code class="code-sample">/* Common spacing values from the site */
+gap: 0.5rem;              /* 8px - tight spacing between items */
+padding: 0.75rem 1rem;    /* 12px/16px - button padding */
+padding: 1.5rem 2rem;     /* 24px/32px - card padding */
+margin-bottom: 2rem;      /* 32px - section spacing */
+padding: 3rem 2rem;       /* 48px/32px - hero sections */
+gap: 1.25rem;             /* 20px - moderate spacing */</code>
+				</div>
+			</section>
+
+			<!-- Components -->
+			<section id="components" class="design-system-section">
+				<h2 class="section-title">Components</h2>
+				<p class="section-description">
+					Reusable UI components with consistent styling and behavior.
+				</p>
+
+				<h3 class="subsection-title">Buttons</h3>
+				<div class="component-demo">
+					<button class="btn btn-primary">Primary Button</button>
+					<button class="btn btn-secondary">Secondary Button</button>
+					<button class="load-more-btn">
+						<span class="comment-slash">//</span> loadMore()
+					</button>
+					<a href="#" class="feed-link">
+						Feed Link Button <i class="fa-solid fa-arrow-up-right-from-square"></i>
+					</a>
+					<a href="#" class="inline-link-btn">
+						Inline Link Button
+					</a>
+					<a href="#" class="btn-github">
+						Dark Gradient Button
+					</a>
+					<a href="#" class="glowing-link-btn">Glowing Link Button</a>
+					<a href="#" class="rss-button">
+						Subscribe Button
+					</a>
+				</div>
+
+				<h3 class="subsection-title">Cards</h3>
+				<div class="component-demo">
+					<div class="demo-card">
+						<h4 class="demo-card-title">Card Title</h4>
+						<p class="demo-card-text">Cards are used to group related content with subtle borders and hover effects.</p>
+					</div>
+				</div>
+
+				<h3 class="subsection-title">Badges</h3>
+				<div class="component-demo">
+					<span class="feed-type type-article">Article</span>
+					<span class="feed-type type-project">Project</span>
+					<span class="feed-type type-talk">Talk</span>
+					<div class="freelance-badge">
+						<i class="fa-solid fa-circle-check"></i>
+						<span>Available for Projects</span>
+					</div>
+				</div>
+
+				<h3 class="subsection-title">Tags</h3>
+				<div class="component-demo">
+					<span class="tag">AI</span>
+					<span class="tag">APIs</span>
+					<span class="tag">Machine Learning</span>
+					<span class="tag">TypeScript</span>
+					<span class="tag">React</span>
+				</div>
+
+				<h3 class="subsection-title">Links</h3>
+				<div class="component-demo">
+					<p>
+						Standard <a href="#" class="design-system-link">inline link</a> with hover underline. External link with icon <a href="#" class="design-system-link" target="_blank">opens in new tab <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+					</p>
+				</div>
+			</section>
+
+		</main>
+	</div>
+</Layout>

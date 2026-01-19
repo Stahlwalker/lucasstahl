@@ -356,6 +356,172 @@
     border-color: var(--accent-primary);
 }
 
+/* Design System CTA */
+.design-system-cta {
+    max-width: 1400px;
+    margin: 4rem auto 0;
+    padding: 3rem 2rem;
+    border-top: 2px solid rgba(96, 165, 250, 0.3);
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.02), rgba(129, 140, 248, 0.02));
+    border-radius: 12px;
+    position: relative;
+    text-align: center;
+}
+
+.design-system-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg,
+        transparent,
+        var(--accent-primary) 20%,
+        var(--accent-secondary) 80%,
+        transparent
+    );
+}
+
+.design-system-label {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--accent-primary);
+    text-shadow: 0 0 10px rgba(96, 165, 250, 0.3);
+    margin-bottom: 0.5rem;
+}
+
+.design-system-description {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+    font-family: 'Fira Code', monospace;
+}
+
+.design-system-palette {
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    border: 1px solid rgba(96, 165, 250, 0.2);
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    transition: all 0.3s ease;
+}
+
+.design-system-palette:hover {
+    border-color: rgba(96, 165, 250, 0.4);
+    box-shadow: 0 8px 24px rgba(96, 165, 250, 0.1);
+}
+
+.color-swatch {
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+.color-swatch:hover {
+    transform: translateY(-4px) scale(1.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.color-label {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.8);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 0.2rem 0.35rem;
+    border-radius: 4px;
+    margin-bottom: 0.35rem;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.color-swatch:hover .color-label {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.design-system-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.1), rgba(129, 140, 248, 0.05));
+    border: 1px solid rgba(96, 165, 250, 0.3);
+    border-radius: 8px;
+    color: var(--accent-primary);
+    text-decoration: none;
+    font-family: 'Fira Code', monospace;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.design-system-link:hover {
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.15), rgba(129, 140, 248, 0.1));
+    border-color: var(--accent-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(96, 165, 250, 0.2);
+}
+
+.design-system-link i {
+    font-size: 1rem;
+}
+
+/* Light mode for design system CTA */
+[data-theme="light"] .design-system-cta {
+    border-top-color: rgba(37, 99, 235, 0.5);
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.02), rgba(99, 102, 241, 0.02));
+}
+
+[data-theme="light"] .design-system-label {
+    color: var(--accent-primary);
+    text-shadow: none;
+}
+
+[data-theme="light"] .design-system-palette {
+    background: #ffffff;
+    border-color: rgba(37, 99, 235, 0.2);
+}
+
+[data-theme="light"] .design-system-palette:hover {
+    border-color: rgba(37, 99, 235, 0.4);
+}
+
+[data-theme="light"] .color-swatch {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .color-swatch:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="light"] .design-system-link {
+    background: rgba(37, 99, 235, 0.06);
+    border-color: rgba(37, 99, 235, 0.3);
+}
+
+[data-theme="light"] .design-system-link:hover {
+    background: rgba(37, 99, 235, 0.1);
+    border-color: var(--accent-primary);
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .early-projects-section {
@@ -366,6 +532,21 @@
     .github-contributions-section {
         margin-top: 3rem;
         padding: 2rem 1rem;
+    }
+
+    .design-system-cta {
+        margin-top: 3rem;
+        padding: 2rem 1rem;
+    }
+
+    .design-system-palette {
+        padding: 1rem;
+        gap: 0.75rem;
+    }
+
+    .color-swatch {
+        width: 52px;
+        height: 52px;
     }
 
     .contributions-chart {
