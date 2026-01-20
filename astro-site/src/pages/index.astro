@@ -97,6 +97,41 @@ function getStrokeDashoffset(score: number): number {
 				</aside>
 
 				<div class="feed-container" id="feedContainer">
+				<!-- YouTube: Market Radar -->
+				<a href="https://youtu.be/HRnwy6G_gNA?si=dHzKuJ8YgOYvWyjR" target="_blank" rel="noopener noreferrer" class="feed-item-link">
+					<article class="feed-item">
+					<div class="feed-background feed-bg-2">
+						<div class="abstract-shape shape-1"></div>
+						<div class="abstract-shape shape-2"></div>
+						<div class="abstract-shape shape-3"></div>
+					</div>
+					<div class="feed-content">
+						<div class="feed-meta">
+							<time class="feed-date">Jan 2026</time>
+							<span class="feed-type type-video">Video</span>
+						</div>
+						<div class="feed-main">
+							<h3 class="feed-title">
+								<i class="fa-solid fa-video"></i>
+								Market Radar: Competitive Intelligence Tool
+							</h3>
+							<p class="feed-description">
+								Built during Webflow's Vibe Season: a competitive web scraper with automated email notifications using Resend's API for tracking market changes.
+							</p>
+							<div class="feed-tags">
+								<span class="tag">Web Scraping</span>
+								<span class="tag">API</span>
+								<span class="tag">AI</span>
+								<span class="tag">Competitive</span>
+							</div>
+							<span class="feed-link">
+								Watch Video <i class="fa-solid fa-arrow-up-right-from-square"></i>
+							</span>
+						</div>
+					</div>
+				</article>
+				</a>
+
 				<!-- Featured Blog: Open Source CMS -->
 				<a href="https://webflow.com/blog/open-source-cms" target="_blank" rel="noopener noreferrer" class="feed-item-link">
 					<article class="feed-item">
@@ -213,38 +248,6 @@ function getStrokeDashoffset(score: number): number {
 								<span class="tag">React</span>
 								<span class="tag">TypeScript</span>
 								<span class="tag">Tailwind CSS</span>
-							</div>
-							<span class="feed-link">
-								View Project <i class="fa-solid fa-arrow-up-right-from-square"></i>
-							</span>
-						</div>
-					</div>
-				</article>
-				</a>
-
-				<!-- Project 4: Shacks Bloom & Co -->
-				<a href="https://bloom-ebon-two.vercel.app/" target="_blank" rel="noopener noreferrer" class="feed-item-link">
-					<article class="feed-item">
-					<div class="feed-background feed-bg-2">
-						<div class="abstract-shape shape-1"></div>
-						<div class="abstract-shape shape-2"></div>
-						<div class="abstract-shape shape-3"></div>
-					</div>
-					<div class="feed-content">
-						<div class="feed-meta">
-							<time class="feed-date">Nov 2025</time>
-							<span class="feed-type type-project">Project</span>
-						</div>
-						<div class="feed-main">
-							<h3 class="feed-title">Shacks Bloom & Co</h3>
-							<p class="feed-description">
-								Web application built with React and Vite, integrated with Builder.io's Fusion AI tool for visual editing across non-technical team members and managed through GitHub.
-							</p>
-							<div class="feed-tags">
-								<span class="tag">React</span>
-								<span class="tag">Vite</span>
-								<span class="tag">JavaScript</span>
-								<span class="tag">Builder.io</span>
 							</div>
 							<span class="feed-link">
 								View Project <i class="fa-solid fa-arrow-up-right-from-square"></i>
@@ -572,6 +575,11 @@ function getStrokeDashoffset(score: number): number {
 			color: #fb923c;
 		}
 
+		.type-video {
+			background-color: rgba(168, 85, 247, 0.15);
+			color: #a855f7;
+		}
+
 		/* Light mode variants with WCAG AA compliant colors */
 		:global([data-theme="light"]) .type-article {
 			background-color: rgba(37, 99, 235, 0.1);
@@ -586,6 +594,11 @@ function getStrokeDashoffset(score: number): number {
 		:global([data-theme="light"]) .type-talk {
 			background-color: rgba(234, 88, 12, 0.1);
 			color: #c2410c;
+		}
+
+		:global([data-theme="light"]) .type-video {
+			background-color: rgba(126, 34, 206, 0.1);
+			color: #7e22ce;
 		}
 
 		/* SEO Performance Widget */
