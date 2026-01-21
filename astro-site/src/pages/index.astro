@@ -116,7 +116,7 @@ function getStrokeDashoffset(score: number): number {
 								Market Radar: Competitive Intelligence Tool
 							</h3>
 							<p class="feed-description">
-								Built during Webflow's Vibe Season: a competitive web scraper with automated email notifications using Resend's API for tracking market changes.
+								Built during Webflow's Vibe Season: a competitive web scraper with automated email notifications using Resend's API to notify of market changes.
 							</p>
 							<div class="feed-tags">
 								<span class="tag">Web Scraping</span>
@@ -124,9 +124,14 @@ function getStrokeDashoffset(score: number): number {
 								<span class="tag">AI</span>
 								<span class="tag">Competitive</span>
 							</div>
-							<span class="feed-link">
-								Watch Video <i class="fa-solid fa-arrow-up-right-from-square"></i>
-							</span>
+							<div class="feed-actions">
+								<span class="feed-link">
+									Watch Video <i class="fa-solid fa-arrow-up-right-from-square"></i>
+								</span>
+								<a href="https://lukes-competitive-web-scraper.webflow.io/website-scraper" target="_blank" rel="noopener noreferrer" class="feed-link-secondary">
+									Try the app <i class="fa-solid fa-arrow-up-right-from-square"></i>
+								</a>
+							</div>
 						</div>
 					</div>
 				</article>
@@ -930,6 +935,40 @@ function getStrokeDashoffset(score: number): number {
 			}
 		}
 
+		/* Feed Actions */
+		.feed-actions {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+			flex-wrap: wrap;
+		}
+
+		.feed-link-secondary {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.375rem;
+			font-size: 0.875rem;
+			color: var(--accent-primary);
+			text-decoration: underline;
+			text-underline-offset: 3px;
+			transition: all 0.2s ease;
+			font-family: 'Fira Code', monospace;
+		}
+
+		.feed-link-secondary:hover {
+			color: #4f9aff;
+			text-decoration-thickness: 2px;
+		}
+
+		.feed-link-secondary i {
+			font-size: 0.75rem;
+			transition: transform 0.2s ease;
+		}
+
+		.feed-link-secondary:hover i {
+			transform: translateX(2px) translateY(-2px);
+		}
+
 		/* Light mode styles */
 		:global([data-theme="light"]) .filter-sidebar {
 			background: #f8fafc;
@@ -955,6 +994,14 @@ function getStrokeDashoffset(score: number): number {
 			background: rgba(37, 99, 235, 0.12);
 			border-color: #2563eb;
 			color: #2563eb;
+		}
+
+		:global([data-theme="light"]) .feed-link-secondary {
+			color: #2563eb;
+		}
+
+		:global([data-theme="light"]) .feed-link-secondary:hover {
+			color: #1e40af;
 		}
 	</style>
 
