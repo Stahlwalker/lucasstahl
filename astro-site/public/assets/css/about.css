@@ -2481,3 +2481,124 @@
         margin-bottom: 1.25rem;
     }
 }
+
+/* LLM CTA Section */
+.llm-cta-section {
+	margin-top: 3rem;
+}
+
+.llm-cta-divider {
+	height: 2px;
+	background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.3), transparent);
+	margin-bottom: 2rem;
+}
+
+.llm-cta-card {
+	background: var(--bg-secondary);
+	border: 1px solid rgba(96, 165, 250, 0.2);
+	border-radius: 12px;
+	padding: 2rem;
+	text-align: center;
+	max-width: 500px;
+	margin: 0 auto;
+	transition: all 0.3s ease;
+}
+
+.llm-cta-card:hover {
+	border-color: var(--accent-primary);
+	box-shadow: 0 8px 24px rgba(96, 165, 250, 0.15);
+	transform: translateY(-2px);
+}
+
+.llm-cta-icon {
+	width: 60px;
+	height: 60px;
+	background: rgba(96, 165, 250, 0.1);
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 auto 1rem;
+}
+
+.llm-cta-icon i {
+	font-size: 1.75rem;
+	color: var(--accent-primary);
+}
+
+.llm-cta-title {
+	font-family: 'Fira Code', monospace;
+	font-size: 1.25rem;
+	color: var(--text-primary);
+	margin-bottom: 0.5rem;
+}
+
+.llm-cta-description {
+	color: var(--text-secondary);
+	font-size: 0.9rem;
+	margin-bottom: 1.5rem;
+}
+
+.llm-cta-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	color: var(--accent-primary);
+	text-decoration: none;
+	font-family: 'Fira Code', monospace;
+	font-size: 0.9rem;
+	font-weight: 600;
+	transition: all 0.2s ease;
+}
+
+.llm-cta-link:hover {
+	color: #4f9aff;
+	gap: 0.75rem;
+}
+
+.llm-cta-link i {
+	transition: transform 0.2s ease;
+}
+
+.llm-cta-link:hover i {
+	transform: translateX(4px);
+}
+
+/* Light mode */
+[data-theme="light"] .llm-cta-card {
+	background: #ffffff;
+	border-color: #cbd5e1;
+}
+
+[data-theme="light"] .llm-cta-card:hover {
+	border-color: #2563eb;
+	box-shadow: 0 8px 24px rgba(37, 99, 235, 0.15);
+}
+
+[data-theme="light"] .llm-cta-icon {
+	background: rgba(37, 99, 235, 0.1);
+}
+
+[data-theme="light"] .llm-cta-divider {
+	background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.3), transparent);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+	.llm-cta-card {
+		padding: 1.5rem;
+	}
+
+	.llm-cta-icon {
+		width: 50px;
+		height: 50px;
+	}
+
+	.llm-cta-icon i {
+		font-size: 1.5rem;
+	}
+
+	.llm-cta-title {
+		font-size: 1.1rem;
+	}
+}
