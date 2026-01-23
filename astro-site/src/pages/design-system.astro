@@ -662,3 +662,33 @@ gap: 1.25rem;             /* 20px - moderate spacing */</code>
 		</main>
 	</div>
 </Layout>
+
+<script>
+	// Handle copy button clicks for color swatches
+	document.addEventListener('DOMContentLoaded', () => {
+		const copyButtons = document.querySelectorAll('.copy-button');
+
+		copyButtons.forEach(button => {
+			button.addEventListener('click', async () => {
+				const swatch = button.closest('.color-swatch');
+				const colorCode = swatch.getAttribute('data-color');
+
+				try {
+					await navigator.clipboard.writeText(colorCode);
+
+					// Show checkmark feedback
+					const icon = button.querySelector('i');
+					const originalClass = icon.className;
+					icon.className = 'fa-solid fa-check';
+
+					// Reset after 2 seconds
+					setTimeout(() => {
+						icon.className = originalClass;
+					}, 2000);
+				} catch (err) {
+					console.error('Failed to copy:', err);
+				}
+			});
+		});
+	});
+</script>
