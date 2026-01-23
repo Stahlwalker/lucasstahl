@@ -11,7 +11,12 @@
                 person_profiles: 'identified_only',
                 disable_session_recording: true, // Saves ~140KB - re-enable when needed
                 disable_surveys: true, // Saves ~30KB - not being used
+                capture_pageview: true,
+                capture_pageleave: true,
+                capture_performance: false, // Disabled - requires web-vitals package (3KB). Using GitHub Actions for weekly monitoring instead
                 capture_exceptions: true, // Enable error tracking
+                enable_recording_console_log: false, // Disable console log recording
+                __preview_remote_config: false, // Disable remote config preview
                 loaded: (posthog) => {
                     if (import.meta.env.DEV) {
                         posthog.debug();

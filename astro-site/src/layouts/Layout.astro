@@ -5,6 +5,7 @@ import PostHog from '../components/posthog.astro';
 import DevMarketingConsole from '../components/DevMarketingConsole.astro';
 import Search from '../components/Search.astro';
 import AnnouncementBar from '../components/AnnouncementBar.astro';
+import AgentationWrapper from '../components/AgentationWrapper.jsx';
 
 interface Props {
 	title: string;
@@ -197,6 +198,7 @@ const {
 	<Footer />
 	{!hideHandbookButton && <DevMarketingConsole />}
 	<Search />
+	{import.meta.env.DEV && <AgentationWrapper client:only="react" />}
 
 	<!-- Theme Toggle Functionality -->
 	<script is:inline>

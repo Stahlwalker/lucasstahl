@@ -6,12 +6,13 @@ Built with Astro v5, Notion CMS, deployed to GitHub Pages.
 
 ## Tech Stack
 
-- **Framework**: [Astro](https://astro.build/) v5.16.0
+- **Framework**: [Astro](https://astro.build/) v5.16.0 with [React](https://react.dev/) v19 integration
 - **CMS**: [Notion](https://www.notion.so/)
 - **Error Tracking**: [Sentry](https://sentry.io/)
 - **Analytics**: [PostHog](https://posthog.com/)
 - **Deployment**: GitHub Pages via GitHub Actions
 - **Email**: [Resend](https://resend.com/)
+- **Dev Tools**: [Agentation](https://agentation.dev/) (development only)
 
 ## Project Structure
 
@@ -40,6 +41,11 @@ lucasstahl/
 
 ## Features
 
+### Architecture
+- **Astro Islands**: Static HTML with selective React hydration for interactive components
+- React components available via `@astrojs/react` integration
+- Maintains SSG performance while enabling React-dependent tools
+
 ### Content
 - Blog posts managed in Notion, synced on build
 - RSS feed at `/rss.xml`
@@ -62,6 +68,11 @@ lucasstahl/
 - JSON-LD structured data for blog posts
 - Sitemap generation
 - Dark/light mode
+
+### Development Tools
+- **Agentation**: Visual annotation tool for communicating design changes to Claude Code (dev only)
+- **React**: Available for interactive components when needed
+- Automatic theme detection and toggle
 
 ## Development
 
