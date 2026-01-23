@@ -61,6 +61,11 @@ npm run preview      # Preview build locally
 
 **Important**: Check your current working directory with `pwd`. If you're already in `astro-site/`, don't try to `cd astro-site` again.
 
+**For background commands**: Use absolute paths instead of relative `cd` commands because background shells don't maintain directory context. Example:
+```bash
+cd /Users/lucasstahl/Desktop/Open\ Projects/Programming/lucasstahl/astro-site && npm run dev
+```
+
 ## Architecture
 
 - **Static Site Generation**: Astro builds the entire site at build time (SSG), no server-side rendering
