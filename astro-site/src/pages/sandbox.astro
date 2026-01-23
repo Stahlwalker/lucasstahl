@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ReactTest from '../components/ReactTest.jsx';
 ---
 
 <Layout
@@ -8,6 +9,13 @@ import Layout from '../layouts/Layout.astro';
 >
 	<!-- Noindex meta tag to keep this out of search engines -->
 	<meta name="robots" content="noindex, nofollow" slot="head" />
+
+	<!-- React Test Component -->
+	<section style="background: #000; padding: 3rem 2rem;">
+		<div style="max-width: 1200px; margin: 0 auto;">
+			<ReactTest client:load />
+		</div>
+	</section>
 
 	<!-- Color Palette Reference -->
 	<section class="color-palette-section">

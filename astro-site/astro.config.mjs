@@ -3,6 +3,8 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import sentry from '@sentry/astro';
 
+import react from '@astrojs/react';
+
 // Pages to exclude from sitemap (noindex pages)
 const excludedPages = [
   '/retro/',
@@ -14,13 +16,10 @@ const excludedPages = [
 export default defineConfig({
   site: 'https://lukestahl.io',
   trailingSlash: 'ignore',
-  integrations: [
-    sitemap({
-      filter: (page) => !excludedPages.some(excluded => page.includes(excluded)),
-      serialize: (item) => item
-    }),
-    sentry()
-  ],
+  integrations: [sitemap({
+    filter: (page) => !excludedPages.some(excluded => page.includes(excluded)),
+    serialize: (item) => item
+  }), sentry(), react()],
   redirects: {
     '/contact': '/about',
     '/portfolio': '/',
