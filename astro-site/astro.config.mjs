@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import sentry from '@sentry/astro';
+import tailwind from '@astrojs/tailwind';
 
 import react from '@astrojs/react';
 
@@ -16,10 +17,17 @@ const excludedPages = [
 export default defineConfig({
   site: 'https://lukestahl.io',
   trailingSlash: 'ignore',
-  integrations: [sitemap({
-    filter: (page) => !excludedPages.some(excluded => page.includes(excluded)),
-    serialize: (item) => item
-  }), sentry(), react()],
+  integrations: [
+    sitemap({
+      filter: (page) => !excludedPages.some(excluded => page.includes(excluded)),
+      serialize: (item) => item
+    }),
+    sentry(),
+    react(),
+    tailwind({
+      applyBaseStyles: false, // Don't apply Tailwind's reset - preserve existing styles
+    })
+  ],
   redirects: {
     '/contact': '/about',
     '/portfolio': '/',

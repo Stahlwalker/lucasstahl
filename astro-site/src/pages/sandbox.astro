@@ -1,6 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ReactTest from '../components/ReactTest.jsx';
+import ShadcnTest from '../components/ShadcnTest.jsx';
+import DatePickerTest from '../components/DatePickerTest.jsx';
+import ColorBendsTest from '../components/ColorBendsTest.jsx';
 ---
 
 <Layout
@@ -14,6 +17,27 @@ import ReactTest from '../components/ReactTest.jsx';
 	<section style="background: #000; padding: 3rem 2rem;">
 		<div style="max-width: 1200px; margin: 0 auto;">
 			<ReactTest client:load />
+		</div>
+	</section>
+
+	<!-- shadcn/ui Test Component -->
+	<section style="background: #fff; padding: 3rem 2rem;">
+		<div style="max-width: 1200px; margin: 0 auto;">
+			<ShadcnTest client:load />
+		</div>
+	</section>
+
+	<!-- Date Picker Test Component -->
+	<section style="background: #f8fafc; padding: 3rem 2rem;">
+		<div style="max-width: 1200px; margin: 0 auto;">
+			<DatePickerTest client:load />
+		</div>
+	</section>
+
+	<!-- Color Bends Test Component -->
+	<section style="background: #000; padding: 3rem 2rem;">
+		<div style="max-width: 1200px; margin: 0 auto;">
+			<ColorBendsTest client:load />
 		</div>
 	</section>
 
