@@ -14,7 +14,9 @@ Built with Astro v5, Notion CMS, deployed to GitHub Pages.
 - **Analytics**: [PostHog](https://posthog.com/)
 - **Deployment**: GitHub Pages via GitHub Actions
 - **Email**: [Resend](https://resend.com/)
-- **Dev Tools**: [Agentation](https://agentation.dev/) (development only)
+- **Dev Tools**:
+  - [Agentation](https://agentation.dev/) - Visual annotation tool (development only)
+  - [CodeRabbit](https://coderabbit.ai/) - AI-powered code review for PRs
 
 ## Project Structure
 
