@@ -33,7 +33,3 @@ reviews:
 
 # Language for reviews
 language: "en-US"
-
-# Enable/disable specific checks
-checks:
-  enable_free_tier: true
