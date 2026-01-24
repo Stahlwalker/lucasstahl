@@ -7,6 +7,8 @@ Built with Astro v5, Notion CMS, deployed to GitHub Pages.
 ## Tech Stack
 
 - **Framework**: [Astro](https://astro.build/) v5.16.0 with [React](https://react.dev/) v19 integration
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) (scoped to React components only)
+- **UI Components**: [shadcn/ui](https://ui.shadcn.com/) and [React Bits](https://reactbits.dev/)
 - **CMS**: [Notion](https://www.notion.so/)
 - **Error Tracking**: [Sentry](https://sentry.io/)
 - **Analytics**: [PostHog](https://posthog.com/)
@@ -27,15 +29,21 @@ lucasstahl/
     │   │   ├── blog/[slug].astro  # Dynamic blog posts
     │   │   ├── builds.astro
     │   │   ├── gems.astro
+    │   │   ├── sandbox.astro     # Testing ground for React components
     │   │   └── handbook.astro
+    │   ├── components/      # React components
+    │   │   └── ui/          # shadcn/ui components
     │   ├── layouts/         # Layout components
-    │   └── lib/             # Utilities (Notion API)
+    │   ├── styles/          # Global styles (Tailwind CSS)
+    │   └── lib/             # Utilities (Notion API, utils)
     ├── public/              # Static assets
     │   └── assets/
     │       ├── css/
     │       └── images/
     ├── .github/
     │   └── workflows/       # GitHub Actions
+    ├── tailwind.config.js   # Tailwind configuration
+    ├── components.json      # shadcn/ui configuration
     └── package.json
 ```
 
@@ -45,6 +53,15 @@ lucasstahl/
 - **Astro Islands**: Static HTML with selective React hydration for interactive components
 - React components available via `@astrojs/react` integration
 - Maintains SSG performance while enabling React-dependent tools
+- **Tailwind CSS**: Scoped exclusively to React components (`.jsx`, `.tsx` files)
+  - No CSS reset applied (`applyBaseStyles: false`)
+  - Preserves existing site styles
+  - Zero impact on Astro pages and existing CSS
+- **shadcn/ui**: Copy-paste component library built on Radix UI primitives
+  - Components live in `src/components/ui/`
+  - Fully customizable and accessible
+  - Dark mode support via `[data-theme="dark"]`
+- **React Bits**: WebGL/Three.js powered visual components for effects and animations
 
 ### Content
 - Blog posts managed in Notion, synced on build
@@ -74,6 +91,33 @@ lucasstahl/
 - **React**: Available for interactive components when needed
 - Automatic theme detection and toggle
 
+### Component Libraries
+
+#### shadcn/ui
+Add shadcn components using the CLI:
+
+```bash
+cd astro-site
+npx shadcn@latest add <component-name>
+```
+
+Example: `npx shadcn@latest add button`
+
+Components are installed to `src/components/ui/` and are fully customizable.
+
+#### React Bits
+Add React Bits components using the CLI:
+
+```bash
+cd astro-site
+npx shadcn@latest add @react-bits/<ComponentName>-<LANG>-<STYLE>
+```
+
+Example: `npx shadcn@latest add @react-bits/ColorBends-JS-TW`
+
+- `LANG`: JS (JavaScript) or TS (TypeScript)
+- `STYLE`: TW (Tailwind) or CSS (Plain CSS)
+
 ## Development
 
 ### Prerequisites
@@ -97,6 +141,21 @@ All commands run from the `astro-site` directory:
 | `npm run build` | Build to `./dist/` |
 | `npm run preview` | Preview build locally |
 | `npm run astro ...` | Run Astro CLI commands |
+
+**Testing Ground**: Visit `/sandbox` during development to test React components, shadcn/ui, and React Bits (page is noindexed).
+
+### Performance & Safety
+
+**Tailwind CSS is production-safe:**
+- Scoped to React components only (`tailwind.config.js` content array)
+- No CSS reset applied to preserve existing styles
+- Existing Astro pages and CSS remain completely unaffected
+- CSS bundle size: ~1-2KB for variables + utilities for components used
+
+**Component isolation:**
+- All new React components are opt-in via `client:load` directive
+- Zero impact on pages that don't use React components
+- Sandbox page (`/sandbox`) is excluded from sitemap and noindexed
 
 ## Environment Variables
 
