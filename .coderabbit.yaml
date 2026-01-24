@@ -1,0 +1,39 @@
+# CodeRabbit Configuration
+# Docs: https://docs.coderabbit.ai/guides/configure-coderabbit
+
+reviews:
+  # Automatically review new PRs
+  auto_review:
+    enabled: true
+
+  # Review style: "chill" (less strict) or "assertive" (more strict)
+  profile: "chill"
+
+  # Don't request changes, only comment
+  request_changes_workflow: false
+
+  # Include high-level summary of changes
+  high_level_summary: true
+
+  # Skip the poem at the end of reviews
+  poem: false
+
+  # Review path filters (optional)
+  path_filters:
+    - "!astro-site/dist/**"
+    - "!astro-site/node_modules/**"
+    - "!**/*.lock"
+
+  # Focus areas for review
+  focus_areas:
+    - "security vulnerabilities"
+    - "performance issues"
+    - "best practices"
+    - "potential bugs"
+
+# Language for reviews
+language: "en-US"
+
+# Enable/disable specific checks
+checks:
+  enable_free_tier: true
