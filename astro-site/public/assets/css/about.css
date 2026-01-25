@@ -390,7 +390,6 @@
 
 .press-enter-text {
     color: #a855f7;
-    animation: blink-text 2.5s ease-in-out infinite;
 }
 
 .press-enter-mobile {
