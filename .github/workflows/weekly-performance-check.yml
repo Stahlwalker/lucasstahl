@@ -152,13 +152,59 @@ jobs:
         id: about-desktop
         continue-on-error: true
         run: |
+          echo "Waiting 15 seconds before testing about page (heavy page, needs API cooldown)..."
+          sleep 15
           echo "Testing about page (desktop)..."
-          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lukestahl.io/about&strategy=desktop&category=performance&category=accessibility&category=best-practices&category=seo&key=${{ secrets.PAGESPEED_API_KEY }}")
+
+          # Retry logic - try up to 3 times with delays
+          MAX_RETRIES=3
+          RETRY_COUNT=0
+          SUCCESS=false
+
+          while [ $RETRY_COUNT -lt $MAX_RETRIES ] && [ "$SUCCESS" = false ]; do
+            if [ $RETRY_COUNT -gt 0 ]; then
+              echo "Retry attempt $RETRY_COUNT of $MAX_RETRIES..."
+              sleep 10  # Wait 10 seconds between retries
+            fi
+
+            RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://lukestahl.io/about&strategy=desktop&category=performance&category=accessibility&category=best-practices&category=seo&key=${{ secrets.PAGESPEED_API_KEY }}")
+
+            # Check if API returned an error
+            ERROR=$(echo $RESULT | jq -r '.error.message // empty')
+            if [ ! -z "$ERROR" ]; then
+              echo "API Error: $ERROR"
+              RETRY_COUNT=$((RETRY_COUNT + 1))
+              continue
+            fi
+
+            # Check if we got valid data
+            PERF=$(echo $RESULT | jq -r '(.lighthouseResult.categories.performance.score // 0) * 100')
+            if [ "$PERF" != "0" ] || echo $RESULT | jq -e '.lighthouseResult.categories.performance.score == 0' > /dev/null 2>&1; then
+              SUCCESS=true
+              echo "✓ Successfully retrieved about desktop scores"
+            else
+              echo "Invalid response - no performance data"
+              RETRY_COUNT=$((RETRY_COUNT + 1))
+            fi
+          done
+
+          if [ "$SUCCESS" = false ]; then
+            echo "⚠️  Failed to get valid data after $MAX_RETRIES attempts - outputting zeros"
+          fi
 
           PERF=$(echo $RESULT | jq -r '(.lighthouseResult.categories.performance.score // 0) * 100')
           A11Y=$(echo $RESULT | jq -r '(.lighthouseResult.categories.accessibility.score // 0) * 100')
           BP=$(echo $RESULT | jq -r '(.lighthouseResult.categories["best-practices"].score // 0) * 100')
           SEO=$(echo $RESULT | jq -r '(.lighthouseResult.categories.seo.score // 0) * 100')
+
+          # Log the actual values retrieved
+          echo "About Desktop - Performance: $PERF, Accessibility: $A11Y, Best Practices: $BP, SEO: $SEO"
+
+          # If all zeros, log part of the API response for debugging
+          if [ "$PERF" = "0" ] && [ "$A11Y" = "0" ] && [ "$BP" = "0" ] && [ "$SEO" = "0" ]; then
+            echo "⚠️  All scores are zero - API response preview:"
+            echo $RESULT | jq -r '.error // .lighthouseResult.runtimeError // "No error field found"'
+          fi
 
           echo "performance=$PERF" >> $GITHUB_OUTPUT
           echo "accessibility=$A11Y" >> $GITHUB_OUTPUT

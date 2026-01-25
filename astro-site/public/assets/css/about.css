@@ -389,7 +389,7 @@
 }
 
 .press-enter-text {
-    color: #a3c77e;
+    color: #a855f7;
     animation: blink-text 2.5s ease-in-out infinite;
 }
 
@@ -1903,7 +1903,7 @@
 }
 
 [data-theme="light"] .press-enter-text {
-    color: #044524; /* Darker green for WCAG AA contrast (7:1 ratio) */
+    color: #7c3aed; /* Darker purple for accessibility even at 0.65 opacity */
 }
 
 [data-theme="light"] .terminal-line.transition {
