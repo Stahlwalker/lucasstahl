@@ -100,6 +100,30 @@ import ColorBendsTest from '../components/ColorBendsTest.jsx';
 		<canvas id="heroCanvasTwitter" width="1500" height="500" style="border-radius: 12px; display: block;"></canvas>
 	</section>
 
+	<!-- Logo Design Section -->
+	<section class="logo-design-wrapper">
+		<h2 class="logo-section-title">Logo Designs</h2>
+
+		<!-- Logo Canvas with Glasses -->
+		<div class="logo-container">
+			<canvas id="logoCanvas" width="800" height="800"></canvas>
+			<button id="downloadLogoBtn" class="download-logo-btn">
+				Download Logo with Glasses (800x800)
+			</button>
+		</div>
+
+		<!-- Logo Canvas without Glasses -->
+		<div class="logo-container">
+			<canvas id="logoCanvas2" width="800" height="800"></canvas>
+			<button id="downloadLogoBtn2" class="download-logo-btn">
+				Download PNG (800x800)
+			</button>
+			<button id="downloadLogoSvgBtn" class="download-logo-btn">
+				Download SVG
+			</button>
+		</div>
+	</section>
+
 	<!-- React Test Component -->
 	<section style="background: #000; padding: 3rem 2rem;">
 		<div style="max-width: 1200px; margin: 0 auto;">
@@ -1262,6 +1286,56 @@ import ColorBendsTest from '../components/ColorBendsTest.jsx';
 			.hero-code-indent {
 				padding-left: 1.5rem;
 			}
+		}
+
+		/* Logo Design Section */
+		.logo-design-wrapper {
+			background: #000;
+			padding: 4rem 2rem;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 2rem;
+		}
+
+		.logo-section-title {
+			font-family: 'Inter', sans-serif;
+			font-size: 2.5rem;
+			font-weight: 600;
+			color: #fff;
+			text-align: center;
+			margin: 0;
+		}
+
+		.logo-container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 1.5rem;
+		}
+
+		#logoCanvas {
+			border-radius: 12px;
+			box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+		}
+
+		.download-logo-btn {
+			background: #06b6d4;
+			color: #000;
+			border: none;
+			padding: 0.875rem 1.75rem;
+			font-size: 0.95rem;
+			font-weight: 600;
+			border-radius: 8px;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+		}
+
+		.download-logo-btn:hover {
+			background: #0891b2;
+			transform: translateY(-2px);
+			box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
 		}
 
 		/* Color Palette Section */
@@ -3781,6 +3855,749 @@ import ColorBendsTest from '../components/ColorBendsTest.jsx';
 				});
 			}
 		});
+
+		// Draw logo
+		function drawLogo() {
+			const canvas = document.getElementById('logoCanvas');
+			if (!canvas) return;
+
+			const ctx = canvas.getContext('2d');
+			const width = 800;
+			const height = 800;
+
+			// Blue background (same as Twitter banner)
+			ctx.fillStyle = '#0a1128';
+			ctx.fillRect(0, 0, width, height);
+
+			// Fine grid pattern (same as Twitter banner)
+			ctx.strokeStyle = 'rgba(96, 165, 250, 0.08)';
+			ctx.lineWidth = 1;
+			for (let x = 0; x <= width; x += 20) {
+				ctx.beginPath();
+				ctx.moveTo(x, 0);
+				ctx.lineTo(x, height);
+				ctx.stroke();
+			}
+			for (let y = 0; y <= height; y += 20) {
+				ctx.beginPath();
+				ctx.moveTo(0, y);
+				ctx.lineTo(width, y);
+				ctx.stroke();
+			}
+
+			// Laptop setup
+			const laptopX = width / 2;
+			const laptopY = height / 2 - 80;
+			const screenWidth = 480;
+			const screenHeight = 280;
+			const keyboardHeight = 100;
+			const keyboardWidth = screenWidth + 60;
+
+			// Laptop screen
+			// Screen glow
+			ctx.shadowBlur = 40;
+			ctx.shadowColor = 'rgba(6, 182, 212, 0.3)';
+
+			// Screen background
+			ctx.fillStyle = '#1e293b';
+			ctx.fillRect(laptopX - screenWidth/2, laptopY - screenHeight/2, screenWidth, screenHeight);
+
+			ctx.shadowBlur = 0;
+
+			// Screen bezel
+			ctx.strokeStyle = '#334155';
+			ctx.lineWidth = 8;
+			ctx.strokeRect(laptopX - screenWidth/2, laptopY - screenHeight/2, screenWidth, screenHeight);
+
+			// Inner screen border (cyan accent)
+			ctx.strokeStyle = '#06b6d4';
+			ctx.lineWidth = 2;
+			ctx.strokeRect(laptopX - screenWidth/2, laptopY - screenHeight/2, screenWidth, screenHeight);
+
+			// Laptop keyboard base (holographic style)
+			const keyboardY = laptopY + screenHeight/2 + 8;
+
+			// Create gradient for keyboard (cyan to purple)
+			const keyboardGradient = ctx.createLinearGradient(
+				laptopX - keyboardWidth/2,
+				keyboardY,
+				laptopX + keyboardWidth/2,
+				keyboardY + keyboardHeight
+			);
+			keyboardGradient.addColorStop(0, 'rgba(6, 182, 212, 0.3)');
+			keyboardGradient.addColorStop(0.5, 'rgba(52, 211, 153, 0.3)');
+			keyboardGradient.addColorStop(1, 'rgba(168, 85, 247, 0.3)');
+
+			// Keyboard base (trapezoid with gradient)
+			ctx.fillStyle = keyboardGradient;
+			ctx.beginPath();
+			ctx.moveTo(laptopX - screenWidth/2 - 5, keyboardY);
+			ctx.lineTo(laptopX + screenWidth/2 + 5, keyboardY);
+			ctx.lineTo(laptopX + keyboardWidth/2, keyboardY + keyboardHeight);
+			ctx.lineTo(laptopX - keyboardWidth/2, keyboardY + keyboardHeight);
+			ctx.closePath();
+			ctx.fill();
+
+			// Keyboard border with glow
+			ctx.strokeStyle = '#06b6d4';
+			ctx.lineWidth = 2;
+			ctx.shadowBlur = 15;
+			ctx.shadowColor = 'rgba(6, 182, 212, 0.5)';
+			ctx.stroke();
+			ctx.shadowBlur = 0;
+
+			// Keyboard key rows (3D perspective)
+			ctx.strokeStyle = 'rgba(6, 182, 212, 0.4)';
+			ctx.fillStyle = 'rgba(6, 182, 212, 0.1)';
+			ctx.lineWidth = 1;
+
+			const keyStartY = keyboardY + 12;
+			const keyRows = 5;
+			const keySpacing = 16;
+
+			// Trackpad dimensions (define early for key collision detection)
+			const trackpadY = keyboardY + 82;
+			const trackpadWidth = 130;
+			const trackpadHeight = 16;
+			const trackpadLeft = laptopX - trackpadWidth/2;
+			const trackpadRight = laptopX + trackpadWidth/2;
+
+			for (let row = 0; row < keyRows; row++) {
+				const y = keyStartY + row * keySpacing;
+				const rowWidth = screenWidth - 30 - (row * 10);
+				const keysInRow = 14 - row;
+
+				for (let i = 0; i < keysInRow; i++) {
+					const keyWidth = 14;
+					const keyHeight = 10;
+					const keyX = laptopX - rowWidth/2 + i * (rowWidth / keysInRow);
+
+					// Skip keys that would overlap with trackpad area (last 2 rows)
+					if (row >= 3) {
+						const keyRight = keyX + keyWidth;
+						if (keyX < trackpadRight && keyRight > trackpadLeft && y + keyHeight > trackpadY) {
+							continue; // Skip this key
+						}
+					}
+
+					// Draw key with slight 3D effect
+					ctx.fillRect(keyX, y, keyWidth, keyHeight);
+					ctx.strokeRect(keyX, y, keyWidth, keyHeight);
+				}
+			}
+
+			// Trackpad with cyan glow (positioned below keys, sized for keyboard perspective)
+
+			ctx.fillStyle = 'rgba(6, 182, 212, 0.15)';
+			ctx.fillRect(laptopX - trackpadWidth/2, trackpadY, trackpadWidth, trackpadHeight);
+			ctx.strokeStyle = 'rgba(6, 182, 212, 0.5)';
+			ctx.lineWidth = 2;
+			ctx.strokeRect(laptopX - trackpadWidth/2, trackpadY, trackpadWidth, trackpadHeight);
+
+			// Large "LS" with gradient outline in center of laptop screen
+			const lsX = laptopX + 30;
+			const lsY = laptopY;
+
+			// Draw rounded frame around LS (tighter vertically)
+			ctx.strokeStyle = 'rgba(96, 165, 250, 0.3)';
+			ctx.lineWidth = 2;
+			ctx.beginPath();
+			ctx.roundRect(lsX - 100, lsY - 70, 200, 140, 15);
+			ctx.stroke();
+
+			// Create gradient for LS text (cyan to purple)
+			const lsGradient = ctx.createLinearGradient(lsX - 80, lsY, lsX + 80, lsY);
+			lsGradient.addColorStop(0, '#06b6d4');
+			lsGradient.addColorStop(1, '#a855f7');
+
+			// Draw "LS" with outline style
+			ctx.font = 'bold 120px "Inter", sans-serif';
+			ctx.strokeStyle = lsGradient;
+			ctx.lineWidth = 4;
+			ctx.lineJoin = 'round';
+			ctx.textAlign = 'center';
+			ctx.textBaseline = 'middle';
+			ctx.strokeText('LS', lsX, lsY);
+
+			// Add inner glow
+			ctx.shadowBlur = 15;
+			ctx.shadowColor = 'rgba(6, 182, 212, 0.6)';
+			ctx.strokeText('LS', lsX, lsY);
+			ctx.shadowBlur = 0;
+
+			// CSS code on left side of laptop screen (subtle/smaller)
+			ctx.font = '8px "Fira Code", monospace';
+			ctx.textAlign = 'left';
+			ctx.globalAlpha = 0.6;
+			let codeY = laptopY - screenHeight/2 + 35;
+			const codeLines = [
+				{ text: '/* Styling LS */', color: '#697098' },
+				{ text: '.logo {', color: '#c792ea' },
+				{ text: '  background:', color: '#82aaff' },
+				{ text: '    linear-gradient(', color: '#c792ea' },
+				{ text: '      cyan,', color: '#c3e88d' },
+				{ text: '      purple', color: '#c3e88d' },
+				{ text: '    );', color: '#c792ea' },
+				{ text: '  -webkit-', color: '#82aaff' },
+				{ text: '    background-clip:', color: '#82aaff' },
+				{ text: '      text;', color: '#c3e88d' },
+				{ text: '}', color: '#c792ea' }
+			];
+
+			codeLines.forEach(line => {
+				ctx.fillStyle = line.color;
+				ctx.fillText(line.text, laptopX - screenWidth/2 + 15, codeY);
+				codeY += 14;
+			});
+
+			ctx.globalAlpha = 1;
+
+			// Draw AVIATOR glasses in foreground (looking at laptop)
+			const glassesY = keyboardY + keyboardHeight + 100;
+			const lensWidth = 180;
+			const lensHeight = 130;
+			const bridgeWidth = 60;
+
+			// Add shadow for glasses depth
+			ctx.shadowBlur = 30;
+			ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+
+			// Create gradient for glasses
+			const glassesGradient = ctx.createLinearGradient(
+				laptopX - 250,
+				glassesY,
+				laptopX + 250,
+				glassesY
+			);
+			glassesGradient.addColorStop(0, '#06b6d4');
+			glassesGradient.addColorStop(0.5, '#34d399');
+			glassesGradient.addColorStop(1, '#06b6d4');
+
+			ctx.strokeStyle = glassesGradient;
+			ctx.lineWidth = 8;
+			ctx.lineCap = 'round';
+			ctx.lineJoin = 'round';
+
+			// Left aviator lens (teardrop/pilot shape)
+			const leftLensX = laptopX - bridgeWidth/2 - lensWidth/2;
+			ctx.beginPath();
+			// Top curve
+			ctx.moveTo(leftLensX - lensWidth/2, glassesY - 20);
+			ctx.quadraticCurveTo(leftLensX - lensWidth/2, glassesY - lensHeight/2, leftLensX, glassesY - lensHeight/2);
+			ctx.quadraticCurveTo(leftLensX + lensWidth/2, glassesY - lensHeight/2, leftLensX + lensWidth/2, glassesY - 20);
+			// Bottom curve (more pronounced)
+			ctx.quadraticCurveTo(leftLensX + lensWidth/2, glassesY + lensHeight/2, leftLensX, glassesY + lensHeight/2 + 10);
+			ctx.quadraticCurveTo(leftLensX - lensWidth/2, glassesY + lensHeight/2, leftLensX - lensWidth/2, glassesY - 20);
+			ctx.closePath();
+			ctx.stroke();
+
+			// Left lens inner glow
+			ctx.save();
+			ctx.globalAlpha = 0.08;
+			ctx.fillStyle = '#06b6d4';
+			ctx.fill();
+			ctx.restore();
+
+			// Right aviator lens
+			const rightLensX = laptopX + bridgeWidth/2 + lensWidth/2;
+			ctx.beginPath();
+			// Top curve
+			ctx.moveTo(rightLensX - lensWidth/2, glassesY - 20);
+			ctx.quadraticCurveTo(rightLensX - lensWidth/2, glassesY - lensHeight/2, rightLensX, glassesY - lensHeight/2);
+			ctx.quadraticCurveTo(rightLensX + lensWidth/2, glassesY - lensHeight/2, rightLensX + lensWidth/2, glassesY - 20);
+			// Bottom curve
+			ctx.quadraticCurveTo(rightLensX + lensWidth/2, glassesY + lensHeight/2, rightLensX, glassesY + lensHeight/2 + 10);
+			ctx.quadraticCurveTo(rightLensX - lensWidth/2, glassesY + lensHeight/2, rightLensX - lensWidth/2, glassesY - 20);
+			ctx.closePath();
+			ctx.stroke();
+
+			// Right lens inner glow
+			ctx.save();
+			ctx.globalAlpha = 0.08;
+			ctx.fillStyle = '#06b6d4';
+			ctx.fill();
+			ctx.restore();
+
+			// Bridge (thin bar between lenses)
+			ctx.beginPath();
+			ctx.moveTo(leftLensX + lensWidth/2, glassesY - 30);
+			ctx.lineTo(rightLensX - lensWidth/2, glassesY - 30);
+			ctx.stroke();
+
+			// Left temple (arm) - angled
+			ctx.beginPath();
+			ctx.moveTo(leftLensX - lensWidth/2, glassesY - 20);
+			ctx.lineTo(leftLensX - lensWidth/2 - 90, glassesY - 35);
+			ctx.stroke();
+
+			// Right temple (arm) - angled
+			ctx.beginPath();
+			ctx.moveTo(rightLensX + lensWidth/2, glassesY - 20);
+			ctx.lineTo(rightLensX + lensWidth/2 + 90, glassesY - 35);
+			ctx.stroke();
+
+			// Add highlight reflections on lenses
+			ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
+			ctx.lineWidth = 3;
+
+			// Left lens highlight
+			ctx.beginPath();
+			ctx.arc(leftLensX - 30, glassesY - 20, 15, 0.5, 2);
+			ctx.stroke();
+
+			// Right lens highlight
+			ctx.beginPath();
+			ctx.arc(rightLensX - 30, glassesY - 20, 15, 0.5, 2);
+			ctx.stroke();
+
+			// Reset shadow
+			ctx.shadowBlur = 0;
+		}
+
+		// Draw logo without glasses (IDE view)
+		function drawLogoNoGlasses() {
+			const canvas = document.getElementById('logoCanvas2');
+			if (!canvas) return;
+
+			const ctx = canvas.getContext('2d');
+			const width = 800;
+			const height = 800;
+
+			// Blue background (no grid - laptop is the logo)
+			ctx.fillStyle = '#0a1128';
+			ctx.fillRect(0, 0, width, height);
+
+			// Laptop dimensions - proper connected laptop
+			const centerX = width / 2;
+			const laptopWidth = 660;
+			const screenHeight = 420;
+			const screenY = 100;
+			const keyboardHeight = 140;
+			const keyboardY = screenY + screenHeight + 5;
+
+			// Laptop screen with IDE interface (rounded corners like MacBook)
+			const screenRadius = 12;
+			ctx.shadowBlur = 40;
+			ctx.shadowColor = 'rgba(6, 182, 212, 0.3)';
+			ctx.fillStyle = 'rgba(10, 25, 47, 0.95)';
+			ctx.beginPath();
+			ctx.roundRect(centerX - laptopWidth/2, screenY, laptopWidth, screenHeight, screenRadius);
+			ctx.fill();
+			ctx.shadowBlur = 0;
+
+			// Screen border (rounded)
+			ctx.strokeStyle = '#06b6d4';
+			ctx.lineWidth = 3;
+			ctx.beginPath();
+			ctx.roundRect(centerX - laptopWidth/2, screenY, laptopWidth, screenHeight, screenRadius);
+			ctx.stroke();
+
+			// IDE window chrome (title bar)
+			ctx.fillStyle = 'rgba(20, 35, 55, 0.9)';
+			ctx.fillRect(centerX - laptopWidth/2, screenY, laptopWidth, 30);
+
+			// Window buttons (macOS style)
+			const buttonY = screenY + 15;
+			const buttonX = centerX - laptopWidth/2 + 15;
+			ctx.fillStyle = '#ff5f56';
+			ctx.beginPath();
+			ctx.arc(buttonX, buttonY, 6, 0, Math.PI * 2);
+			ctx.fill();
+			ctx.fillStyle = '#ffbd2e';
+			ctx.beginPath();
+			ctx.arc(buttonX + 20, buttonY, 6, 0, Math.PI * 2);
+			ctx.fill();
+			ctx.fillStyle = '#27c93f';
+			ctx.beginPath();
+			ctx.arc(buttonX + 40, buttonY, 6, 0, Math.PI * 2);
+			ctx.fill();
+
+			// File name in title bar
+			ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+			ctx.font = '10px "Fira Code", monospace';
+			ctx.textAlign = 'center';
+			ctx.fillText('lukestahl', centerX, screenY + 19);
+
+			// Line numbers sidebar
+			ctx.fillStyle = 'rgba(15, 25, 40, 0.8)';
+			ctx.fillRect(centerX - laptopWidth/2, screenY + 30, 40, screenHeight - 30);
+
+			// Line numbers
+			ctx.fillStyle = 'rgba(96, 165, 250, 0.4)';
+			ctx.font = '8px "Fira Code", monospace';
+			ctx.textAlign = 'right';
+			let lineY = screenY + 50;
+			for (let i = 1; i <= 12; i++) {
+				ctx.fillText(i.toString(), centerX - laptopWidth/2 + 32, lineY);
+				lineY += 14;
+			}
+
+			// CSS code in IDE (smaller, more subtle on left)
+			ctx.textAlign = 'left';
+			ctx.globalAlpha = 0.7;
+			let codeY = screenY + 50;
+			const codeX = centerX - laptopWidth/2 + 48;
+			const codeLines = [
+				{ text: '/* Styling LS */', color: '#697098' },
+				{ text: '.logo {', color: '#c792ea' },
+				{ text: '  background:', color: '#82aaff' },
+				{ text: '    linear-gradient(', color: '#c792ea' },
+				{ text: '      cyan,', color: '#c3e88d' },
+				{ text: '      purple', color: '#c3e88d' },
+				{ text: '    );', color: '#c792ea' },
+				{ text: '  -webkit-', color: '#82aaff' },
+				{ text: '    background-clip:', color: '#82aaff' },
+				{ text: '      text;', color: '#c3e88d' },
+				{ text: '}', color: '#c792ea' }
+			];
+
+			ctx.font = '8px "Fira Code", monospace';
+			codeLines.forEach(line => {
+				ctx.fillStyle = line.color;
+				ctx.fillText(line.text, codeX, codeY);
+				codeY += 14;
+			});
+			ctx.globalAlpha = 1;
+
+			// LS logo centered in screen (much larger with even padding)
+			const lsFramePadding = 45; // Half-inch padding (~40-50px) on all sides
+			const lsX = centerX + 80;
+			const lsY = screenY + screenHeight/2 + 20; // Move down to reduce bottom spacing
+
+			// Larger LS font size
+			const lsFontSize = 240;
+
+			// Calculate frame size to match top padding on all sides
+			// Frame should be just big enough to contain LS with equal padding
+			const lsFrameWidth = 360;
+			const lsFrameHeight = 240;
+
+			// Frame around LS (even spacing on all sides)
+			ctx.strokeStyle = 'rgba(96, 165, 250, 0.3)';
+			ctx.lineWidth = 2;
+			ctx.beginPath();
+			ctx.roundRect(lsX - lsFrameWidth/2, lsY - lsFrameHeight/2, lsFrameWidth, lsFrameHeight, 20);
+			ctx.stroke();
+
+			// LS gradient (cyan to purple - matching first logo)
+			const lsGradient = ctx.createLinearGradient(
+				lsX - 140,
+				lsY,
+				lsX + 140,
+				lsY
+			);
+			lsGradient.addColorStop(0, '#06b6d4');
+			lsGradient.addColorStop(1, '#a855f7');
+
+			ctx.font = `bold ${lsFontSize}px "Fira Code", monospace`;
+			ctx.textAlign = 'center';
+			ctx.textBaseline = 'middle';
+			ctx.lineWidth = 4;
+			ctx.strokeStyle = lsGradient;
+			ctx.shadowBlur = 25;
+			ctx.shadowColor = 'rgba(6, 182, 212, 0.6)';
+			ctx.strokeText('LS', lsX, lsY);
+			ctx.shadowBlur = 0;
+
+			// Keyboard (same width as screen, connected)
+			const keyboardGradient = ctx.createLinearGradient(
+				centerX,
+				keyboardY,
+				centerX,
+				keyboardY + keyboardHeight
+			);
+			keyboardGradient.addColorStop(0, 'rgba(6, 182, 212, 0.3)');
+			keyboardGradient.addColorStop(0.5, 'rgba(52, 211, 153, 0.3)');
+			keyboardGradient.addColorStop(1, 'rgba(168, 85, 247, 0.3)');
+
+			// Keyboard base (trapezoid perspective with rounded corners)
+			const keyboardRadius = 10;
+			ctx.fillStyle = keyboardGradient;
+			ctx.beginPath();
+
+			// Top left corner (rounded)
+			ctx.moveTo(centerX - laptopWidth/2 + keyboardRadius, keyboardY);
+			ctx.arcTo(centerX - laptopWidth/2, keyboardY, centerX - laptopWidth/2, keyboardY + keyboardRadius, keyboardRadius);
+
+			// Left side
+			ctx.lineTo(centerX - laptopWidth/2 - 30, keyboardY + keyboardHeight - keyboardRadius);
+
+			// Bottom left corner (rounded)
+			ctx.arcTo(centerX - laptopWidth/2 - 30, keyboardY + keyboardHeight, centerX - laptopWidth/2 - 30 + keyboardRadius, keyboardY + keyboardHeight, keyboardRadius);
+
+			// Bottom side
+			ctx.lineTo(centerX + laptopWidth/2 + 30 - keyboardRadius, keyboardY + keyboardHeight);
+
+			// Bottom right corner (rounded)
+			ctx.arcTo(centerX + laptopWidth/2 + 30, keyboardY + keyboardHeight, centerX + laptopWidth/2 + 30, keyboardY + keyboardHeight - keyboardRadius, keyboardRadius);
+
+			// Right side
+			ctx.lineTo(centerX + laptopWidth/2, keyboardY + keyboardRadius);
+
+			// Top right corner (rounded)
+			ctx.arcTo(centerX + laptopWidth/2, keyboardY, centerX + laptopWidth/2 - keyboardRadius, keyboardY, keyboardRadius);
+
+			ctx.closePath();
+			ctx.fill();
+
+			// Keyboard border
+			ctx.strokeStyle = '#06b6d4';
+			ctx.lineWidth = 2;
+			ctx.shadowBlur = 15;
+			ctx.shadowColor = 'rgba(6, 182, 212, 0.5)';
+			ctx.stroke();
+			ctx.shadowBlur = 0;
+
+			// Keyboard keys with perspective
+			ctx.strokeStyle = 'rgba(6, 182, 212, 0.4)';
+			ctx.fillStyle = 'rgba(6, 182, 212, 0.1)';
+			ctx.lineWidth = 1;
+
+			const keyRows = 5;
+			const keyStartY = keyboardY + 15;
+			const keySpacing = 24;
+
+			for (let row = 0; row < keyRows; row++) {
+				const y = keyStartY + row * keySpacing;
+				const rowWidthTop = laptopWidth - 80 + (row * 8);
+				const rowWidthBottom = laptopWidth - 80 + (row * 8) + 8;
+				const keysInRow = 13 - Math.floor(row / 2);
+
+				for (let i = 0; i < keysInRow; i++) {
+					const keyWidthTop = (rowWidthTop / keysInRow) - 4;
+					const keyWidthBottom = (rowWidthBottom / keysInRow) - 4;
+					const keyHeight = 18;
+
+					const keyTopX = centerX - rowWidthTop/2 + (i * (rowWidthTop / keysInRow));
+					const keyBottomX = centerX - rowWidthBottom/2 + (i * (rowWidthBottom / keysInRow));
+
+					// Draw key as trapezoid
+					ctx.beginPath();
+					ctx.moveTo(keyTopX, y);
+					ctx.lineTo(keyTopX + keyWidthTop, y);
+					ctx.lineTo(keyBottomX + keyWidthBottom, y + keyHeight);
+					ctx.lineTo(keyBottomX, y + keyHeight);
+					ctx.closePath();
+					ctx.fill();
+					ctx.stroke();
+				}
+			}
+		}
+
+		// Initialize logos on page load
+		drawLogo();
+		drawLogoNoGlasses();
+
+		// Download logo with glasses
+		const downloadLogoBtn = document.getElementById('downloadLogoBtn');
+		const logoCanvas = document.getElementById('logoCanvas');
+
+		if (downloadLogoBtn && logoCanvas) {
+			downloadLogoBtn.addEventListener('click', () => {
+				logoCanvas.toBlob((blob) => {
+					const url = URL.createObjectURL(blob);
+					const link = document.createElement('a');
+					link.href = url;
+					link.download = 'lukestahl-logo-with-glasses-800x800.png';
+					link.click();
+					URL.revokeObjectURL(url);
+				}, 'image/png');
+			});
+		}
+
+		// Download logo without glasses
+		const downloadLogoBtn2 = document.getElementById('downloadLogoBtn2');
+		const logoCanvas2 = document.getElementById('logoCanvas2');
+
+		if (downloadLogoBtn2 && logoCanvas2) {
+			downloadLogoBtn2.addEventListener('click', () => {
+				logoCanvas2.toBlob((blob) => {
+					const url = URL.createObjectURL(blob);
+					const link = document.createElement('a');
+					link.href = url;
+					link.download = 'lukestahl-logo-800x800.png';
+					link.click();
+					URL.revokeObjectURL(url);
+				}, 'image/png');
+			});
+		}
+
+		// Download logo as SVG
+		const downloadLogoSvgBtn = document.getElementById('downloadLogoSvgBtn');
+
+		if (downloadLogoSvgBtn) {
+			downloadLogoSvgBtn.addEventListener('click', () => {
+				const svg = generateLogoSVG();
+				const blob = new Blob([svg], { type: 'image/svg+xml' });
+				const url = URL.createObjectURL(blob);
+				const link = document.createElement('a');
+				link.href = url;
+				link.download = 'lukestahl-logo.svg';
+				link.click();
+				URL.revokeObjectURL(url);
+			});
+		}
+
+		// Generate keyboard keys for SVG
+		function generateKeyboardKeys(centerX, laptopWidth, keyboardY) {
+			let keys = '';
+			const keyRows = 5;
+			const keyStartY = keyboardY + 15;
+			const keySpacing = 24;
+
+			for (let row = 0; row < keyRows; row++) {
+				const y = keyStartY + row * keySpacing;
+				const rowWidthTop = laptopWidth - 80 + (row * 8);
+				const rowWidthBottom = laptopWidth - 80 + (row * 8) + 8;
+				const keysInRow = 13 - Math.floor(row / 2);
+
+				for (let i = 0; i < keysInRow; i++) {
+					const keyWidthTop = (rowWidthTop / keysInRow) - 4;
+					const keyWidthBottom = (rowWidthBottom / keysInRow) - 4;
+					const keyHeight = 18;
+
+					const keyTopX = centerX - rowWidthTop/2 + (i * (rowWidthTop / keysInRow));
+					const keyBottomX = centerX - rowWidthBottom/2 + (i * (rowWidthBottom / keysInRow));
+
+					// Create trapezoid path for each key
+					keys += `<path d="M ${keyTopX} ${y} L ${keyTopX + keyWidthTop} ${y} L ${keyBottomX + keyWidthBottom} ${y + keyHeight} L ${keyBottomX} ${y + keyHeight} Z" fill="rgba(6, 182, 212, 0.1)" stroke="rgba(6, 182, 212, 0.4)" stroke-width="1"/>`;
+				}
+			}
+			return keys;
+		}
+
+		// Generate SVG version of the logo
+		function generateLogoSVG() {
+			const width = 800;
+			const height = 800;
+			const centerX = width / 2;
+			const laptopWidth = 660;
+			const screenHeight = 420;
+			const screenY = 100;
+			const keyboardHeight = 140;
+			const keyboardY = screenY + screenHeight + 5;
+			const screenRadius = 12;
+			const keyboardRadius = 10;
+
+			return `<?xml version="1.0" encoding="UTF-8"?>
+<svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">
+	<!-- Background -->
+	<rect width="${width}" height="${height}" fill="#0a1128"/>
+
+	<!-- Laptop Screen with rounded corners -->
+	<defs>
+		<linearGradient id="lsGradient" x1="0%" y1="50%" x2="100%" y2="50%">
+			<stop offset="0%" stop-color="#06b6d4" stop-opacity="1"/>
+			<stop offset="100%" stop-color="#a855f7" stop-opacity="1"/>
+		</linearGradient>
+		<linearGradient id="keyboardGradient" x1="50%" y1="0%" x2="50%" y2="100%">
+			<stop offset="0%" stop-color="#06b6d4" stop-opacity="0.3"/>
+			<stop offset="50%" stop-color="#34d399" stop-opacity="0.3"/>
+			<stop offset="100%" stop-color="#a855f7" stop-opacity="0.3"/>
+		</linearGradient>
+		<filter id="screenGlow">
+			<feGaussianBlur stdDeviation="20"/>
+		</filter>
+		<filter id="keyboardGlow">
+			<feGaussianBlur stdDeviation="7.5"/>
+		</filter>
+	</defs>
+
+	<!-- Screen with glow -->
+	<rect x="${centerX - laptopWidth/2}" y="${screenY}" width="${laptopWidth}" height="${screenHeight}"
+		rx="${screenRadius}" fill="rgba(10, 25, 47, 0.95)" opacity="0.5" filter="url(#screenGlow)"/>
+	<rect x="${centerX - laptopWidth/2}" y="${screenY}" width="${laptopWidth}" height="${screenHeight}"
+		rx="${screenRadius}" fill="rgba(10, 25, 47, 0.95)" stroke="#06b6d4" stroke-width="3"/>
+
+	<!-- IDE Title Bar -->
+	<rect x="${centerX - laptopWidth/2}" y="${screenY}" width="${laptopWidth}" height="30"
+		rx="${screenRadius}" fill="rgba(20, 35, 55, 0.9)"/>
+
+	<!-- macOS Buttons -->
+	<circle cx="${centerX - laptopWidth/2 + 15}" cy="${screenY + 15}" r="6" fill="#ff5f56"/>
+	<circle cx="${centerX - laptopWidth/2 + 35}" cy="${screenY + 15}" r="6" fill="#ffbd2e"/>
+	<circle cx="${centerX - laptopWidth/2 + 55}" cy="${screenY + 15}" r="6" fill="#27c93f"/>
+
+	<!-- File name -->
+	<text x="${centerX}" y="${screenY + 19}" text-anchor="middle" fill="rgba(255, 255, 255, 0.7)"
+		font-family="'Fira Code', monospace" font-size="10" dominant-baseline="middle">lukestahl</text>
+
+	<!-- Line numbers sidebar -->
+	<rect x="${centerX - laptopWidth/2}" y="${screenY + 30}" width="40" height="${screenHeight - 30}" fill="rgba(15, 25, 40, 0.8)"/>
+
+	<!-- Line numbers -->
+	<text x="${centerX - laptopWidth/2 + 32}" y="${screenY + 50}" fill="rgba(96, 165, 250, 0.4)"
+		font-family="'Fira Code', monospace" font-size="8" text-anchor="end">
+		<tspan x="${centerX - laptopWidth/2 + 32}" dy="0">1</tspan>
+		<tspan x="${centerX - laptopWidth/2 + 32}" dy="14">2</tspan>
+		<tspan x="${centerX - laptopWidth/2 + 32}" dy="14">3</tspan>
+		<tspan x="${centerX - laptopWidth/2 + 32}" dy="14">4</tspan>
+		<tspan x="${centerX - laptopWidth/2 + 32}" dy="14">5</tspan>
+		<tspan x="${centerX - laptopWidth/2 + 32}" dy="14">6</tspan>
+		<tspan x="${centerX - laptopWidth/2 + 32}" dy="14">7</tspan>
+		<tspan x="${centerX - laptopWidth/2 + 32}" dy="14">8</tspan>
+		<tspan x="${centerX - laptopWidth/2 + 32}" dy="14">9</tspan>
+		<tspan x="${centerX - laptopWidth/2 + 32}" dy="14">10</tspan>
+		<tspan x="${centerX - laptopWidth/2 + 32}" dy="14">11</tspan>
+		<tspan x="${centerX - laptopWidth/2 + 32}" dy="14">12</tspan>
+	</text>
+
+	<!-- Code -->
+	<text x="${centerX - laptopWidth/2 + 48}" y="${screenY + 50}" fill="#697098"
+		font-family="'Fira Code', monospace" font-size="8" opacity="0.7">
+		<tspan x="${centerX - laptopWidth/2 + 48}" dy="0">/* Styling LS */</tspan>
+		<tspan x="${centerX - laptopWidth/2 + 48}" dy="14" fill="#c792ea">.logo {</tspan>
+		<tspan x="${centerX - laptopWidth/2 + 48}" dy="14" fill="#82aaff">  background:</tspan>
+		<tspan x="${centerX - laptopWidth/2 + 48}" dy="14" fill="#c792ea">    linear-gradient(</tspan>
+		<tspan x="${centerX - laptopWidth/2 + 48}" dy="14" fill="#c3e88d">      cyan,</tspan>
+		<tspan x="${centerX - laptopWidth/2 + 48}" dy="14" fill="#c3e88d">      purple</tspan>
+		<tspan x="${centerX - laptopWidth/2 + 48}" dy="14" fill="#c792ea">    );</tspan>
+		<tspan x="${centerX - laptopWidth/2 + 48}" dy="14" fill="#82aaff">  -webkit-</tspan>
+		<tspan x="${centerX - laptopWidth/2 + 48}" dy="14" fill="#82aaff">    background-clip:</tspan>
+		<tspan x="${centerX - laptopWidth/2 + 48}" dy="14" fill="#c3e88d">      text;</tspan>
+		<tspan x="${centerX - laptopWidth/2 + 48}" dy="14" fill="#c792ea">}</tspan>
+	</text>
+
+	<!-- LS Logo Frame -->
+	<rect x="${centerX + 80 - 180}" y="${screenY + screenHeight/2 + 20 - 120}" width="360" height="240"
+		rx="20" fill="none" stroke="rgba(96, 165, 250, 0.3)" stroke-width="2"/>
+
+	<!-- LS Logo -->
+	<text x="${centerX + 80}" y="${screenY + screenHeight/2 + 20}" text-anchor="middle"
+		dominant-baseline="middle" font-family="'Fira Code', monospace" font-size="240" font-weight="bold"
+		stroke="url(#lsGradient)" stroke-width="4" fill="none" filter="url(#screenGlow)">LS</text>
+	<text x="${centerX + 80}" y="${screenY + screenHeight/2 + 20}" text-anchor="middle"
+		dominant-baseline="middle" font-family="'Fira Code', monospace" font-size="240" font-weight="bold"
+		stroke="url(#lsGradient)" stroke-width="4" fill="none">LS</text>
+
+	<!-- Keyboard -->
+	<path d="M ${centerX - laptopWidth/2 + keyboardRadius} ${keyboardY}
+		L ${centerX + laptopWidth/2 - keyboardRadius} ${keyboardY}
+		Q ${centerX + laptopWidth/2} ${keyboardY} ${centerX + laptopWidth/2} ${keyboardY + keyboardRadius}
+		L ${centerX + laptopWidth/2 + 30} ${keyboardY + keyboardHeight - keyboardRadius}
+		Q ${centerX + laptopWidth/2 + 30} ${keyboardY + keyboardHeight} ${centerX + laptopWidth/2 + 30 - keyboardRadius} ${keyboardY + keyboardHeight}
+		L ${centerX - laptopWidth/2 - 30 + keyboardRadius} ${keyboardY + keyboardHeight}
+		Q ${centerX - laptopWidth/2 - 30} ${keyboardY + keyboardHeight} ${centerX - laptopWidth/2 - 30} ${keyboardY + keyboardHeight - keyboardRadius}
+		L ${centerX - laptopWidth/2} ${keyboardY + keyboardRadius}
+		Q ${centerX - laptopWidth/2} ${keyboardY} ${centerX - laptopWidth/2 + keyboardRadius} ${keyboardY}
+		Z"
+		fill="url(#keyboardGradient)" stroke="#06b6d4" stroke-width="2" opacity="0.5" filter="url(#keyboardGlow)"/>
+	<path d="M ${centerX - laptopWidth/2 + keyboardRadius} ${keyboardY}
+		L ${centerX + laptopWidth/2 - keyboardRadius} ${keyboardY}
+		Q ${centerX + laptopWidth/2} ${keyboardY} ${centerX + laptopWidth/2} ${keyboardY + keyboardRadius}
+		L ${centerX + laptopWidth/2 + 30} ${keyboardY + keyboardHeight - keyboardRadius}
+		Q ${centerX + laptopWidth/2 + 30} ${keyboardY + keyboardHeight} ${centerX + laptopWidth/2 + 30 - keyboardRadius} ${keyboardY + keyboardHeight}
+		L ${centerX - laptopWidth/2 - 30 + keyboardRadius} ${keyboardY + keyboardHeight}
+		Q ${centerX - laptopWidth/2 - 30} ${keyboardY + keyboardHeight} ${centerX - laptopWidth/2 - 30} ${keyboardY + keyboardHeight - keyboardRadius}
+		L ${centerX - laptopWidth/2} ${keyboardY + keyboardRadius}
+		Q ${centerX - laptopWidth/2} ${keyboardY} ${centerX - laptopWidth/2 + keyboardRadius} ${keyboardY}
+		Z"
+		fill="url(#keyboardGradient)" stroke="#06b6d4" stroke-width="2"/>
+
+	<!-- Keyboard Keys -->
+	${generateKeyboardKeys(centerX, laptopWidth, keyboardY)}
+</svg>`;
+		}
 
 		console.log('Sandbox loaded - ready to experiment!');
 	</script>
