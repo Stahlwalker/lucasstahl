@@ -13,6 +13,93 @@ import ColorBendsTest from '../components/ColorBendsTest.jsx';
 	<!-- Noindex meta tag to keep this out of search engines -->
 	<meta name="robots" content="noindex, nofollow" slot="head" />
 
+	<!-- Hero Homepage Design Section (1500x500) -->
+	<section class="hero-homepage-wrapper">
+		<div class="hero-homepage-section">
+			<div class="hero-grid-background"></div>
+
+			<!-- Decorative Icons -->
+			<div class="hero-icon hero-icon-1">
+				<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+					<circle cx="12" cy="12" r="10"/>
+					<path d="M12 6v6l4 2"/>
+				</svg>
+			</div>
+			<div class="hero-icon hero-icon-2">
+				<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+					<polygon points="12 2 2 7 12 12 22 7 12 2"/>
+					<polyline points="2 17 12 22 22 17"/>
+					<polyline points="2 12 12 17 22 12"/>
+				</svg>
+			</div>
+			<div class="hero-icon hero-icon-3">
+				<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+					<path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+					<polyline points="14 2 14 8 20 8"/>
+				</svg>
+			</div>
+			<div class="hero-icon hero-icon-4">
+				<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+					<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+				</svg>
+			</div>
+			<div class="hero-icon hero-icon-5">
+				<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+					<circle cx="12" cy="12" r="3"/>
+					<path d="M12 1v6m0 6v6m5.196-15.804l-4.242 4.242m0 6.364l-4.242 4.242M23 12h-6m-6 0H1m20.196-5.196l-4.242 4.242m0 6.364l-4.242 4.242"/>
+				</svg>
+			</div>
+			<div class="hero-icon hero-icon-6">
+				<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+					<rect x="2" y="3" width="20" height="14" rx="2"/>
+					<path d="M8 21h8m-4-4v4"/>
+				</svg>
+			</div>
+
+			<div class="hero-code-container">
+				<div class="hero-code-box">
+					<div class="hero-code-content">
+						<div class="hero-code-comment">
+							<span class="hero-comment-slashes">//</span> <span class="hero-comment-text">lukestahl.io</span>
+						</div>
+						<div class="hero-code-line">
+							<span class="hero-code-keyword">const</span> <span class="hero-code-variable">developerMarketing</span> = &#123;
+						</div>
+						<div class="hero-code-line hero-code-indent">
+							<span class="hero-code-property">name</span>: <span class="hero-code-string">"Luke Stahl"</span>,
+						</div>
+						<div class="hero-code-line hero-code-indent">
+							<span class="hero-code-property">focus</span>: <span class="hero-code-string">"Marketing & Web Development"</span>,
+						</div>
+						<div class="hero-code-line hero-code-indent">
+							<span class="hero-code-property">passion</span>: <span class="hero-code-string">"Building better developer experiences"</span>
+						</div>
+						<div class="hero-code-line">&#125;;</div>
+						<div class="hero-code-line">
+							<span class="hero-cursor"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Hero Homepage Design Section (1500x500) - Canvas Image -->
+	<section class="hero-homepage-wrapper">
+		<button id="downloadHeroBtn" class="download-hero-btn">
+			Download as PNG (1500x500)
+		</button>
+		<canvas id="heroCanvas" width="1500" height="500" style="border-radius: 12px; display: block;"></canvas>
+	</section>
+
+	<!-- Hero Twitter/X Banner Version (1500x500) - Larger Code Box -->
+	<section class="hero-homepage-wrapper">
+		<button id="downloadTwitterBtn" class="download-hero-btn">
+			Download Twitter/X Banner (1500x500)
+		</button>
+		<canvas id="heroCanvasTwitter" width="1500" height="500" style="border-radius: 12px; display: block;"></canvas>
+	</section>
+
 	<!-- React Test Component -->
 	<section style="background: #000; padding: 3rem 2rem;">
 		<div style="max-width: 1200px; margin: 0 auto;">
@@ -908,6 +995,275 @@ import ColorBendsTest from '../components/ColorBendsTest.jsx';
 	</section>
 
 	<style>
+		/* Hero Homepage Design Section */
+		.hero-homepage-wrapper {
+			background: #000;
+			padding: 4rem 0;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			gap: 1.5rem;
+			position: relative;
+		}
+
+		.download-hero-btn {
+			background: #06b6d4;
+			color: #000;
+			border: none;
+			padding: 0.875rem 1.75rem;
+			font-size: 0.95rem;
+			font-weight: 600;
+			border-radius: 8px;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+		}
+
+		.download-hero-btn:hover {
+			background: #0891b2;
+			transform: translateY(-2px);
+			box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
+		}
+
+		.hero-homepage-section {
+			position: relative;
+			width: 1500px;
+			height: 500px;
+			background: #0a1128;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			overflow: hidden;
+			border-radius: 12px;
+		}
+
+		.hero-fixed-size {
+			width: 1500px !important;
+			height: 500px !important;
+			min-width: 1500px;
+			min-height: 500px;
+			max-width: 1500px;
+			max-height: 500px;
+		}
+
+		.hero-grid-background {
+			position: absolute;
+			inset: 0;
+			background-image:
+				linear-gradient(rgba(96, 165, 250, 0.1) 1px, transparent 1px),
+				linear-gradient(90deg, rgba(96, 165, 250, 0.1) 1px, transparent 1px);
+			background-size: 40px 40px;
+			opacity: 0.5;
+		}
+
+		/* Decorative Icons */
+		.hero-icon {
+			position: absolute;
+			color: rgba(96, 165, 250, 0.2);
+			opacity: 0.6;
+			animation: float-icon 6s ease-in-out infinite;
+		}
+
+		.hero-icon-1 {
+			top: 10%;
+			left: 8%;
+			animation-delay: 0s;
+		}
+
+		.hero-icon-2 {
+			top: 15%;
+			right: 12%;
+			animation-delay: 1s;
+		}
+
+		.hero-icon-3 {
+			bottom: 20%;
+			left: 15%;
+			animation-delay: 2s;
+		}
+
+		.hero-icon-4 {
+			bottom: 15%;
+			right: 10%;
+			animation-delay: 3s;
+		}
+
+		.hero-icon-5 {
+			top: 50%;
+			left: 5%;
+			animation-delay: 1.5s;
+		}
+
+		.hero-icon-6 {
+			top: 55%;
+			right: 8%;
+			animation-delay: 2.5s;
+		}
+
+		@keyframes float-icon {
+			0%, 100% {
+				transform: translateY(0px);
+			}
+			50% {
+				transform: translateY(-15px);
+			}
+		}
+
+		.hero-code-container {
+			position: relative;
+			z-index: 10;
+			padding: 2rem;
+		}
+
+		.hero-code-box {
+			background: rgba(15, 26, 53, 0.95);
+			border: 1px solid rgba(96, 165, 250, 0.4);
+			border-radius: 16px;
+			padding: 2.5rem 3rem;
+			box-shadow:
+				0 25px 70px rgba(0, 0, 0, 0.6),
+				0 0 50px rgba(96, 165, 250, 0.2);
+			backdrop-filter: blur(15px);
+			min-width: 650px;
+			transform: rotate(-2deg);
+			transition: transform 0.3s ease;
+		}
+
+		.hero-code-box:hover {
+			transform: rotate(0deg);
+		}
+
+		.hero-code-content {
+			font-family: 'Fira Code', monospace;
+			font-size: 1rem;
+			line-height: 1.8;
+			color: #e4e4e7;
+		}
+
+		.hero-code-comment {
+			margin-bottom: 1.5rem;
+			font-size: 1.5rem;
+			font-style: italic;
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.hero-comment-slashes {
+			color: #697098;
+		}
+
+		.hero-comment-text {
+			color: #06b6d4;
+			font-weight: 600;
+			text-shadow: 0 0 20px rgba(6, 182, 212, 0.6);
+			letter-spacing: 0.02em;
+		}
+
+		.hero-code-line {
+			position: relative;
+			padding-left: 0.5rem;
+		}
+
+		.hero-code-indent {
+			padding-left: 3rem;
+		}
+
+		.hero-code-keyword {
+			color: #c792ea;
+			font-weight: 500;
+		}
+
+		.hero-code-variable {
+			color: #82aaff;
+		}
+
+		.hero-code-property {
+			color: #82aaff;
+		}
+
+		.hero-code-string {
+			color: #c3e88d;
+		}
+
+		.hero-cursor {
+			display: inline-block;
+			width: 10px;
+			height: 20px;
+			background: #60a5fa;
+			animation: blink 1s infinite;
+		}
+
+		@keyframes blink {
+			0%, 50% {
+				opacity: 1;
+			}
+			51%, 100% {
+				opacity: 0;
+			}
+		}
+
+		/* Responsive */
+		@media (max-width: 1600px) {
+			.hero-homepage-section {
+				width: calc(100vw - 4rem);
+				max-width: 1500px;
+			}
+		}
+
+		@media (max-width: 768px) {
+			.hero-homepage-wrapper {
+				padding: 2rem 0;
+			}
+
+			.hero-homepage-section {
+				width: calc(100vw - 2rem);
+				height: auto;
+				min-height: 400px;
+			}
+
+			.hero-code-box {
+				min-width: 0;
+				padding: 1.5rem 2rem;
+				transform: rotate(-1deg);
+			}
+
+			.hero-code-box:hover {
+				transform: rotate(0deg);
+			}
+
+			.hero-code-content {
+				font-size: 0.85rem;
+			}
+
+			.hero-code-indent {
+				padding-left: 2rem;
+			}
+
+			.hero-icon {
+				display: none;
+			}
+		}
+
+		@media (max-width: 480px) {
+			.hero-homepage-section {
+				width: calc(100vw - 1rem);
+			}
+
+			.hero-code-box {
+				padding: 1.25rem 1.5rem;
+			}
+
+			.hero-code-content {
+				font-size: 0.75rem;
+			}
+
+			.hero-code-indent {
+				padding-left: 1.5rem;
+			}
+		}
+
 		/* Color Palette Section */
 		.color-palette-section {
 			background: #000;
@@ -2873,6 +3229,558 @@ import ColorBendsTest from '../components/ColorBendsTest.jsx';
 
 		// Create particles on page load
 		document.addEventListener('DOMContentLoaded', createParticles);
+
+		// Draw hero on canvas
+		function drawHeroCanvas() {
+			const canvas = document.getElementById('heroCanvas');
+			if (!canvas) return;
+
+			const ctx = canvas.getContext('2d');
+			const width = 1500;
+			const height = 500;
+
+			// Background
+			ctx.fillStyle = '#0a1128';
+			ctx.fillRect(0, 0, width, height);
+
+			// Grid pattern (smaller boxes)
+			ctx.strokeStyle = 'rgba(96, 165, 250, 0.08)';
+			ctx.lineWidth = 1;
+			for (let x = 0; x <= width; x += 20) {
+				ctx.beginPath();
+				ctx.moveTo(x, 0);
+				ctx.lineTo(x, height);
+				ctx.stroke();
+			}
+			for (let y = 0; y <= height; y += 20) {
+				ctx.beginPath();
+				ctx.moveTo(0, y);
+				ctx.lineTo(width, y);
+				ctx.stroke();
+			}
+
+			// Draw decorative web dev icons
+			ctx.strokeStyle = 'rgba(96, 165, 250, 0.2)';
+			ctx.lineWidth = 2;
+			ctx.lineCap = 'round';
+			ctx.lineJoin = 'round';
+
+			// Icon 1: Code brackets <> (top left)
+			drawIcon(ctx, width / 2 - 420, height / 2 - 160, () => {
+				ctx.beginPath();
+				ctx.moveTo(-8, -10);
+				ctx.lineTo(-12, 0);
+				ctx.lineTo(-8, 10);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.moveTo(8, -10);
+				ctx.lineTo(12, 0);
+				ctx.lineTo(8, 10);
+				ctx.stroke();
+			});
+
+			// Icon 2: Git branch (top right)
+			drawIcon(ctx, width / 2 + 420, height / 2 - 140, () => {
+				ctx.beginPath();
+				ctx.arc(0, -10, 3, 0, Math.PI * 2);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.arc(0, 10, 3, 0, Math.PI * 2);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.arc(10, 0, 3, 0, Math.PI * 2);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.moveTo(0, -7);
+				ctx.lineTo(0, 0);
+				ctx.lineTo(7, 0);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.moveTo(0, 0);
+				ctx.lineTo(0, 7);
+				ctx.stroke();
+			});
+
+			// Icon 3: Terminal (bottom left)
+			drawIcon(ctx, width / 2 - 440, height / 2 + 150, () => {
+				ctx.beginPath();
+				ctx.roundRect(-12, -10, 24, 20, 2);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.moveTo(-6, -3);
+				ctx.lineTo(-2, 0);
+				ctx.lineTo(-6, 3);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.moveTo(0, 5);
+				ctx.lineTo(6, 5);
+				ctx.stroke();
+			});
+
+			// Icon 4: NPM package (bottom right)
+			drawIcon(ctx, width / 2 + 440, height / 2 + 130, () => {
+				ctx.beginPath();
+				ctx.rect(-10, -10, 20, 20);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.moveTo(-10, 0);
+				ctx.lineTo(10, 0);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.moveTo(0, 0);
+				ctx.lineTo(0, 10);
+				ctx.stroke();
+			});
+
+			// Icon 5: React logo (left middle)
+			drawIcon(ctx, width / 2 - 460, height / 2 - 10, () => {
+				// Center dot
+				ctx.beginPath();
+				ctx.arc(0, 0, 2, 0, Math.PI * 2);
+				ctx.fill();
+				// Ellipses
+				ctx.beginPath();
+				ctx.ellipse(0, 0, 16, 6, 0, 0, Math.PI * 2);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.ellipse(0, 0, 16, 6, Math.PI / 3, 0, Math.PI * 2);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.ellipse(0, 0, 16, 6, -Math.PI / 3, 0, Math.PI * 2);
+				ctx.stroke();
+			});
+
+			// Icon 6: Database (right middle)
+			drawIcon(ctx, width / 2 + 460, height / 2 + 15, () => {
+				ctx.beginPath();
+				ctx.ellipse(0, -8, 10, 3, 0, 0, Math.PI * 2);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.moveTo(-10, -8);
+				ctx.lineTo(-10, 8);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.moveTo(10, -8);
+				ctx.lineTo(10, 8);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.ellipse(0, 8, 10, 3, 0, 0, Math.PI * 2);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.ellipse(0, 0, 10, 3, 0, 0, Math.PI * 2);
+				ctx.stroke();
+			});
+
+			function drawIcon(ctx, x, y, drawFn) {
+				ctx.save();
+				ctx.translate(x, y);
+				drawFn();
+				ctx.restore();
+			}
+
+			// Code box (angled)
+			ctx.save();
+			ctx.translate(width / 2, height / 2);
+			ctx.rotate(-0.035); // -2 degrees
+
+			// Box shadow and glow
+			ctx.shadowBlur = 50;
+			ctx.shadowColor = 'rgba(0, 0, 0, 0.6)';
+			ctx.fillStyle = 'rgba(15, 26, 53, 0.95)';
+			ctx.strokeStyle = 'rgba(96, 165, 250, 0.4)';
+			ctx.lineWidth = 1;
+
+			const boxWidth = 650;
+			const boxHeight = 280;
+			const radius = 16;
+
+			// Rounded rectangle
+			ctx.beginPath();
+			ctx.moveTo(-boxWidth/2 + radius, -boxHeight/2);
+			ctx.lineTo(boxWidth/2 - radius, -boxHeight/2);
+			ctx.quadraticCurveTo(boxWidth/2, -boxHeight/2, boxWidth/2, -boxHeight/2 + radius);
+			ctx.lineTo(boxWidth/2, boxHeight/2 - radius);
+			ctx.quadraticCurveTo(boxWidth/2, boxHeight/2, boxWidth/2 - radius, boxHeight/2);
+			ctx.lineTo(-boxWidth/2 + radius, boxHeight/2);
+			ctx.quadraticCurveTo(-boxWidth/2, boxHeight/2, -boxWidth/2, boxHeight/2 - radius);
+			ctx.lineTo(-boxWidth/2, -boxHeight/2 + radius);
+			ctx.quadraticCurveTo(-boxWidth/2, -boxHeight/2, -boxWidth/2 + radius, -boxHeight/2);
+			ctx.closePath();
+			ctx.fill();
+			ctx.stroke();
+
+			// Reset shadow
+			ctx.shadowBlur = 0;
+
+			// Code text
+			ctx.textAlign = 'left';
+			ctx.textBaseline = 'top';
+
+			let y = -boxHeight/2 + 40;
+
+			// Comment with glow
+			ctx.font = 'italic 24px "Fira Code", monospace';
+			ctx.fillStyle = '#697098';
+			ctx.fillText('//', -boxWidth/2 + 48, y);
+
+			ctx.shadowBlur = 20;
+			ctx.shadowColor = 'rgba(6, 182, 212, 0.6)';
+			ctx.font = '600 italic 24px "Fira Code", monospace';
+			ctx.fillStyle = '#06b6d4';
+			ctx.fillText('lukestahl.io', -boxWidth/2 + 95, y);
+			ctx.shadowBlur = 0;
+
+			y += 50;
+
+			// Code lines
+			ctx.font = '16px "Fira Code", monospace';
+
+			// Line 1: const developerMarketing = {
+			ctx.fillStyle = '#c792ea';
+			ctx.fillText('const', -boxWidth/2 + 48, y);
+			ctx.fillStyle = '#82aaff';
+			ctx.fillText('developerMarketing', -boxWidth/2 + 130, y);
+			ctx.fillStyle = '#e4e4e7';
+			ctx.fillText('= {', -boxWidth/2 + 360, y);
+			y += 30;
+
+			// Line 2: name: "Luke Stahl",
+			ctx.fillStyle = '#82aaff';
+			ctx.fillText('name', -boxWidth/2 + 96, y);
+			ctx.fillStyle = '#e4e4e7';
+			ctx.fillText(':', -boxWidth/2 + 152, y);
+			ctx.fillStyle = '#c3e88d';
+			ctx.fillText('"Luke Stahl"', -boxWidth/2 + 170, y);
+			ctx.fillStyle = '#e4e4e7';
+			ctx.fillText(',', -boxWidth/2 + 320, y);
+			y += 30;
+
+			// Line 3: focus: "Marketing & Web Development",
+			ctx.fillStyle = '#82aaff';
+			ctx.fillText('focus', -boxWidth/2 + 96, y);
+			ctx.fillStyle = '#e4e4e7';
+			ctx.fillText(':', -boxWidth/2 + 160, y);
+			ctx.fillStyle = '#c3e88d';
+			ctx.fillText('"Marketing & Web Development"', -boxWidth/2 + 178, y);
+			ctx.fillStyle = '#e4e4e7';
+			ctx.fillText(',', -boxWidth/2 + 550, y);
+			y += 30;
+
+			// Line 4: passion: "Building better developer experiences"
+			ctx.fillStyle = '#82aaff';
+			ctx.fillText('passion', -boxWidth/2 + 96, y);
+			ctx.fillStyle = '#e4e4e7';
+			ctx.fillText(':', -boxWidth/2 + 184, y);
+			ctx.fillStyle = '#c3e88d';
+			ctx.fillText('"Building better developer experiences"', -boxWidth/2 + 202, y);
+			y += 30;
+
+			// Line 5: };
+			ctx.fillStyle = '#e4e4e7';
+			ctx.fillText('};', -boxWidth/2 + 48, y);
+			y += 30;
+
+			// Cursor
+			ctx.fillStyle = '#60a5fa';
+			ctx.fillRect(-boxWidth/2 + 48, y, 10, 20);
+
+			ctx.restore();
+		}
+
+		// Draw larger Twitter/X banner version
+		function drawTwitterHeroCanvas() {
+			const canvas = document.getElementById('heroCanvasTwitter');
+			if (!canvas) return;
+
+			const ctx = canvas.getContext('2d');
+			const width = 1500;
+			const height = 500;
+
+			// Background
+			ctx.fillStyle = '#0a1128';
+			ctx.fillRect(0, 0, width, height);
+
+			// Grid pattern (smaller boxes)
+			ctx.strokeStyle = 'rgba(96, 165, 250, 0.08)';
+			ctx.lineWidth = 1;
+			for (let x = 0; x <= width; x += 20) {
+				ctx.beginPath();
+				ctx.moveTo(x, 0);
+				ctx.lineTo(x, height);
+				ctx.stroke();
+			}
+			for (let y = 0; y <= height; y += 20) {
+				ctx.beginPath();
+				ctx.moveTo(0, y);
+				ctx.lineTo(width, y);
+				ctx.stroke();
+			}
+
+			// Draw decorative web dev icons (same positions)
+			ctx.strokeStyle = 'rgba(96, 165, 250, 0.2)';
+			ctx.lineWidth = 2;
+			ctx.lineCap = 'round';
+			ctx.lineJoin = 'round';
+
+			// Icons (positioned organically around the larger code box)
+			// Code brackets <> (top left)
+			drawIcon(ctx, width / 2 - 520, height / 2 - 180, () => {
+				ctx.beginPath();
+				ctx.moveTo(-8, -10);
+				ctx.lineTo(-12, 0);
+				ctx.lineTo(-8, 10);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.moveTo(8, -10);
+				ctx.lineTo(12, 0);
+				ctx.lineTo(8, 10);
+				ctx.stroke();
+			});
+
+			// Git branch (top right)
+			drawIcon(ctx, width / 2 + 510, height / 2 - 160, () => {
+				ctx.beginPath();
+				ctx.arc(0, -10, 3, 0, Math.PI * 2);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.arc(0, 10, 3, 0, Math.PI * 2);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.arc(10, 0, 3, 0, Math.PI * 2);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.moveTo(0, -7);
+				ctx.lineTo(0, 0);
+				ctx.lineTo(7, 0);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.moveTo(0, 0);
+				ctx.lineTo(0, 7);
+				ctx.stroke();
+			});
+
+			// Terminal (bottom left)
+			drawIcon(ctx, width / 2 - 530, height / 2 + 165, () => {
+				ctx.beginPath();
+				ctx.roundRect(-12, -10, 24, 20, 2);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.moveTo(-6, -3);
+				ctx.lineTo(-2, 0);
+				ctx.lineTo(-6, 3);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.moveTo(0, 5);
+				ctx.lineTo(6, 5);
+				ctx.stroke();
+			});
+
+			// NPM package (bottom right)
+			drawIcon(ctx, width / 2 + 520, height / 2 + 185, () => {
+				ctx.beginPath();
+				ctx.rect(-10, -10, 20, 20);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.moveTo(-10, 0);
+				ctx.lineTo(10, 0);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.moveTo(0, 0);
+				ctx.lineTo(0, 10);
+				ctx.stroke();
+			});
+
+			// React logo (left middle)
+			drawIcon(ctx, width / 2 - 510, height / 2 - 30, () => {
+				ctx.beginPath();
+				ctx.arc(0, 0, 2, 0, Math.PI * 2);
+				ctx.fill();
+				ctx.beginPath();
+				ctx.ellipse(0, 0, 16, 6, 0, 0, Math.PI * 2);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.ellipse(0, 0, 16, 6, Math.PI / 3, 0, Math.PI * 2);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.ellipse(0, 0, 16, 6, -Math.PI / 3, 0, Math.PI * 2);
+				ctx.stroke();
+			});
+
+			// Database (right middle)
+			drawIcon(ctx, width / 2 + 525, height / 2 + 20, () => {
+				ctx.beginPath();
+				ctx.ellipse(0, -8, 10, 3, 0, 0, Math.PI * 2);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.moveTo(-10, -8);
+				ctx.lineTo(-10, 8);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.moveTo(10, -8);
+				ctx.lineTo(10, 8);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.ellipse(0, 8, 10, 3, 0, 0, Math.PI * 2);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.ellipse(0, 0, 10, 3, 0, 0, Math.PI * 2);
+				ctx.stroke();
+			});
+
+			function drawIcon(ctx, x, y, drawFn) {
+				ctx.save();
+				ctx.translate(x, y);
+				drawFn();
+				ctx.restore();
+			}
+
+			// LARGER Code box
+			ctx.save();
+			ctx.translate(width / 2, height / 2);
+			ctx.rotate(-0.02); // Slight angle
+
+			// Box shadow and glow
+			ctx.shadowBlur = 60;
+			ctx.shadowColor = 'rgba(0, 0, 0, 0.7)';
+			ctx.fillStyle = 'rgba(15, 26, 53, 0.95)';
+			ctx.strokeStyle = 'rgba(96, 165, 250, 0.4)';
+			ctx.lineWidth = 1;
+
+			const boxWidth = 900;  // Much larger
+			const boxHeight = 380; // Much larger
+			const radius = 16;
+
+			// Rounded rectangle
+			ctx.beginPath();
+			ctx.moveTo(-boxWidth/2 + radius, -boxHeight/2);
+			ctx.lineTo(boxWidth/2 - radius, -boxHeight/2);
+			ctx.quadraticCurveTo(boxWidth/2, -boxHeight/2, boxWidth/2, -boxHeight/2 + radius);
+			ctx.lineTo(boxWidth/2, boxHeight/2 - radius);
+			ctx.quadraticCurveTo(boxWidth/2, boxHeight/2, boxWidth/2 - radius, boxHeight/2);
+			ctx.lineTo(-boxWidth/2 + radius, boxHeight/2);
+			ctx.quadraticCurveTo(-boxWidth/2, boxHeight/2, -boxWidth/2, boxHeight/2 - radius);
+			ctx.lineTo(-boxWidth/2, -boxHeight/2 + radius);
+			ctx.quadraticCurveTo(-boxWidth/2, -boxHeight/2, -boxWidth/2 + radius, -boxHeight/2);
+			ctx.closePath();
+			ctx.fill();
+			ctx.stroke();
+
+			// Reset shadow
+			ctx.shadowBlur = 0;
+
+			// Code text (MUCH LARGER)
+			ctx.textAlign = 'left';
+			ctx.textBaseline = 'top';
+
+			let y = -boxHeight/2 + 50;
+
+			// Comment with glow (larger)
+			ctx.font = 'italic 36px "Fira Code", monospace';
+			ctx.fillStyle = '#697098';
+			ctx.fillText('//', -boxWidth/2 + 70, y);
+
+			ctx.shadowBlur = 25;
+			ctx.shadowColor = 'rgba(6, 182, 212, 0.7)';
+			ctx.font = '600 italic 36px "Fira Code", monospace';
+			ctx.fillStyle = '#06b6d4';
+			ctx.fillText('lukestahl.io', -boxWidth/2 + 145, y);
+			ctx.shadowBlur = 0;
+
+			y += 75;
+
+			// Code lines (larger)
+			ctx.font = '24px "Fira Code", monospace';
+
+			// Line 1: const developerMarketing = {
+			ctx.fillStyle = '#c792ea';
+			ctx.fillText('const', -boxWidth/2 + 70, y);
+			ctx.fillStyle = '#82aaff';
+			ctx.fillText('developerMarketing', -boxWidth/2 + 190, y);
+			ctx.fillStyle = '#e4e4e7';
+			ctx.fillText('= {', -boxWidth/2 + 520, y);
+			y += 45;
+
+			// Line 2: name: "Luke Stahl",
+			ctx.fillStyle = '#82aaff';
+			ctx.fillText('name', -boxWidth/2 + 140, y);
+			ctx.fillStyle = '#e4e4e7';
+			ctx.fillText(':', -boxWidth/2 + 225, y);
+			ctx.fillStyle = '#c3e88d';
+			ctx.fillText('"Luke Stahl"', -boxWidth/2 + 250, y);
+			ctx.fillStyle = '#e4e4e7';
+			ctx.fillText(',', -boxWidth/2 + 470, y);
+			y += 45;
+
+			// Line 3: focus: "Marketing & Web Development",
+			ctx.fillStyle = '#82aaff';
+			ctx.fillText('focus', -boxWidth/2 + 140, y);
+			ctx.fillStyle = '#e4e4e7';
+			ctx.fillText(':', -boxWidth/2 + 233, y);
+			ctx.fillStyle = '#c3e88d';
+			ctx.fillText('"Marketing & Web Development"', -boxWidth/2 + 258, y);
+			ctx.fillStyle = '#e4e4e7';
+			ctx.fillText(',', -boxWidth/2 + 790, y);
+			y += 45;
+
+			// Line 4: passion: "Building better developer experiences"
+			ctx.fillStyle = '#82aaff';
+			ctx.fillText('passion', -boxWidth/2 + 140, y);
+			ctx.fillStyle = '#e4e4e7';
+			ctx.fillText(':', -boxWidth/2 + 270, y);
+			ctx.fillStyle = '#c3e88d';
+			ctx.fillText('"Building better developer experiences"', -boxWidth/2 + 295, y);
+			y += 45;
+
+			// Line 5: };
+			ctx.fillStyle = '#e4e4e7';
+			ctx.fillText('};', -boxWidth/2 + 70, y);
+			y += 45;
+
+			// Cursor (larger)
+			ctx.fillStyle = '#60a5fa';
+			ctx.fillRect(-boxWidth/2 + 70, y, 14, 28);
+
+			ctx.restore();
+		}
+
+		// Download canvas as PNG
+		document.addEventListener('DOMContentLoaded', () => {
+			drawHeroCanvas();
+			drawTwitterHeroCanvas();
+
+			const downloadBtn = document.getElementById('downloadHeroBtn');
+			const canvas = document.getElementById('heroCanvas');
+
+			if (downloadBtn && canvas) {
+				downloadBtn.addEventListener('click', () => {
+					canvas.toBlob((blob) => {
+						const url = URL.createObjectURL(blob);
+						const link = document.createElement('a');
+						link.href = url;
+						link.download = 'lukestahl-hero-1500x500.png';
+						link.click();
+						URL.revokeObjectURL(url);
+					}, 'image/png');
+				});
+			}
+
+			// Twitter banner download
+			const downloadTwitterBtn = document.getElementById('downloadTwitterBtn');
+			const twitterCanvas = document.getElementById('heroCanvasTwitter');
+
+			if (downloadTwitterBtn && twitterCanvas) {
+				downloadTwitterBtn.addEventListener('click', () => {
+					twitterCanvas.toBlob((blob) => {
+						const url = URL.createObjectURL(blob);
+						const link = document.createElement('a');
+						link.href = url;
+						link.download = 'lukestahl-twitter-banner-1500x500.png';
+						link.click();
+						URL.revokeObjectURL(url);
+					}, 'image/png');
+				});
+			}
+		});
 
 		console.log('Sandbox loaded - ready to experiment!');
 	</script>

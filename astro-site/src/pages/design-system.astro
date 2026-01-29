@@ -23,7 +23,7 @@ import Layout from '../layouts/Layout.astro';
 			</div>
 			<nav class="sidebar-nav">
 				<a href="#introduction" class="sidebar-link active">Introduction</a>
-				<a href="#logo" class="sidebar-link">Logo</a>
+				<a href="#logo" class="sidebar-link">Logo/Assets</a>
 				<a href="#colors" class="sidebar-link">Colors</a>
 				<a href="#typography" class="sidebar-link">Typography</a>
 				<a href="#icons" class="sidebar-link">Icons</a>
@@ -70,11 +70,11 @@ import Layout from '../layouts/Layout.astro';
 				</p>
 			</section>
 
-			<!-- Logo -->
+			<!-- Logo/Assets -->
 			<section id="logo" class="design-system-section">
-				<h2 class="section-title">Logo</h2>
+				<h2 class="section-title">Logo/Assets</h2>
 				<p class="section-description">
-					Brand identity and logo guidelines.
+					Brand identity, logo guidelines, and downloadable assets.
 				</p>
 
 				<div class="placeholder-card">
@@ -83,6 +83,22 @@ import Layout from '../layouts/Layout.astro';
 					</div>
 					<h3 class="placeholder-title">Logo Coming Soon</h3>
 					<p class="placeholder-text">Will include PNG and SVG download options.</p>
+				</div>
+
+				<h3 class="subsection-title">Social Banner</h3>
+				<p class="section-description" style="margin-bottom: 1rem;">
+					1500x500px banner for social media profiles (Twitter/X, LinkedIn, etc.).
+					<a href="/assets/images/banners/social-banner.png" download="lukestahl-social-banner.png" class="inline-link-btn">
+						Download banner
+					</a>
+				</p>
+
+				<div class="banner-preview-card">
+					<img
+						src="/assets/images/banners/social-banner.png"
+						alt="Luke Stahl Social Banner"
+						class="banner-preview-image"
+					/>
 				</div>
 			</section>
 
@@ -692,3 +708,20 @@ gap: 1.25rem;             /* 20px - moderate spacing */</code>
 		});
 	});
 </script>
+
+<style>
+	/* Banner preview card */
+	.banner-preview-card {
+		border: 1px solid var(--border-color);
+		border-radius: 12px;
+		overflow: hidden;
+		margin-bottom: 1rem;
+		max-width: 600px;
+	}
+
+	.banner-preview-image {
+		width: 100%;
+		height: auto;
+		display: block;
+	}
+</style>
