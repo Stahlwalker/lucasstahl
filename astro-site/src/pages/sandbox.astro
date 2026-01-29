@@ -100,6 +100,14 @@ import ColorBendsTest from '../components/ColorBendsTest.jsx';
 		<canvas id="heroCanvasTwitter" width="1500" height="500" style="border-radius: 12px; display: block;"></canvas>
 	</section>
 
+	<!-- LinkedIn Banner Version (1584x396) -->
+	<section class="hero-homepage-wrapper">
+		<button id="downloadLinkedInBtn" class="download-hero-btn">
+			Download LinkedIn Banner (1584x396)
+		</button>
+		<canvas id="heroCanvasLinkedIn" width="1584" height="396" style="border-radius: 12px; display: block;"></canvas>
+	</section>
+
 	<!-- Logo Design Section -->
 	<section class="logo-design-wrapper">
 		<h2 class="logo-section-title">Logo Designs</h2>
@@ -120,6 +128,118 @@ import ColorBendsTest from '../components/ColorBendsTest.jsx';
 			</button>
 			<button id="downloadLogoSvgBtn" class="download-logo-btn">
 				Download SVG
+			</button>
+		</div>
+
+		<!-- Logo SVG Version -->
+		<div class="logo-container">
+			<svg id="logoSvg" width="800" height="800" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+				<!-- Background -->
+				<rect width="800" height="800" fill="#0a1128"/>
+
+				<!-- Laptop Screen with rounded corners -->
+				<defs>
+					<filter id="svgScreenGlow">
+						<feGaussianBlur in="SourceGraphic" stdDeviation="40"/>
+					</filter>
+					<filter id="svgLsGlow">
+						<feGaussianBlur in="SourceGraphic" stdDeviation="25"/>
+					</filter>
+					<linearGradient id="svgLsGradient" x1="250" y1="360" x2="710" y2="360" gradientUnits="userSpaceOnUse">
+						<stop offset="0%" stop-color="#06b6d4"/>
+						<stop offset="100%" stop-color="#a855f7"/>
+					</linearGradient>
+					<linearGradient id="svgKeyboardGradient" x1="400" y1="525" x2="400" y2="665" gradientUnits="userSpaceOnUse">
+						<stop offset="0%" stop-color="#06b6d4" stop-opacity="0.3"/>
+						<stop offset="50%" stop-color="#34d399" stop-opacity="0.3"/>
+						<stop offset="100%" stop-color="#a855f7" stop-opacity="0.3"/>
+					</linearGradient>
+				</defs>
+
+				<!-- Screen glow -->
+				<rect x="70" y="100" width="660" height="420" rx="12" fill="rgba(6, 182, 212, 0.3)" filter="url(#svgScreenGlow)"/>
+
+				<!-- Screen background -->
+				<rect x="70" y="100" width="660" height="420" rx="12" fill="rgba(10, 25, 47, 0.95)"/>
+
+				<!-- Screen border -->
+				<rect x="70" y="100" width="660" height="420" rx="12" fill="none" stroke="#06b6d4" stroke-width="3"/>
+
+				<!-- Title bar -->
+				<rect x="70" y="100" width="660" height="30" fill="rgba(20, 35, 55, 0.9)"/>
+
+				<!-- macOS window buttons -->
+				<circle cx="85" cy="115" r="6" fill="#ff5f56"/>
+				<circle cx="105" cy="115" r="6" fill="#ffbd2e"/>
+				<circle cx="125" cy="115" r="6" fill="#27c93f"/>
+
+				<!-- Title text -->
+				<text x="400" y="117" font-family="'Fira Code', monospace" font-size="10" fill="rgba(255, 255, 255, 0.7)" text-anchor="middle">lukestahl</text>
+
+				<!-- Line numbers sidebar -->
+				<rect x="70" y="130" width="40" height="390" fill="rgba(15, 25, 40, 0.8)"/>
+
+				<!-- Line numbers -->
+				<text x="102" y="153" font-family="'Fira Code', monospace" font-size="8" fill="rgba(96, 165, 250, 0.4)" text-anchor="end">1</text>
+				<text x="102" y="167" font-family="'Fira Code', monospace" font-size="8" fill="rgba(96, 165, 250, 0.4)" text-anchor="end">2</text>
+				<text x="102" y="181" font-family="'Fira Code', monospace" font-size="8" fill="rgba(96, 165, 250, 0.4)" text-anchor="end">3</text>
+				<text x="102" y="195" font-family="'Fira Code', monospace" font-size="8" fill="rgba(96, 165, 250, 0.4)" text-anchor="end">4</text>
+				<text x="102" y="209" font-family="'Fira Code', monospace" font-size="8" fill="rgba(96, 165, 250, 0.4)" text-anchor="end">5</text>
+				<text x="102" y="223" font-family="'Fira Code', monospace" font-size="8" fill="rgba(96, 165, 250, 0.4)" text-anchor="end">6</text>
+				<text x="102" y="237" font-family="'Fira Code', monospace" font-size="8" fill="rgba(96, 165, 250, 0.4)" text-anchor="end">7</text>
+				<text x="102" y="251" font-family="'Fira Code', monospace" font-size="8" fill="rgba(96, 165, 250, 0.4)" text-anchor="end">8</text>
+				<text x="102" y="265" font-family="'Fira Code', monospace" font-size="8" fill="rgba(96, 165, 250, 0.4)" text-anchor="end">9</text>
+				<text x="102" y="279" font-family="'Fira Code', monospace" font-size="8" fill="rgba(96, 165, 250, 0.4)" text-anchor="end">10</text>
+				<text x="102" y="293" font-family="'Fira Code', monospace" font-size="8" fill="rgba(96, 165, 250, 0.4)" text-anchor="end">11</text>
+				<text x="102" y="307" font-family="'Fira Code', monospace" font-size="8" fill="rgba(96, 165, 250, 0.4)" text-anchor="end">12</text>
+
+				<!-- CSS Code (left side) -->
+				<g opacity="0.7">
+					<text x="118" y="153" font-family="'Fira Code', monospace" font-size="8" fill="#697098">/* Styling LS */</text>
+					<text x="118" y="167" font-family="'Fira Code', monospace" font-size="8" fill="#c792ea">.logo &#123;</text>
+					<text x="118" y="181" font-family="'Fira Code', monospace" font-size="8" fill="#82aaff">  background:</text>
+					<text x="118" y="195" font-family="'Fira Code', monospace" font-size="8" fill="#c792ea">    linear-gradient(</text>
+					<text x="118" y="209" font-family="'Fira Code', monospace" font-size="8" fill="#c3e88d">      cyan,</text>
+					<text x="118" y="223" font-family="'Fira Code', monospace" font-size="8" fill="#c3e88d">      purple</text>
+					<text x="118" y="237" font-family="'Fira Code', monospace" font-size="8" fill="#c792ea">    );</text>
+					<text x="118" y="251" font-family="'Fira Code', monospace" font-size="8" fill="#82aaff">  -webkit-</text>
+					<text x="118" y="265" font-family="'Fira Code', monospace" font-size="8" fill="#82aaff">    background-clip:</text>
+					<text x="118" y="279" font-family="'Fira Code', monospace" font-size="8" fill="#c3e88d">      text;</text>
+					<text x="118" y="293" font-family="'Fira Code', monospace" font-size="8" fill="#c792ea">&#125;</text>
+				</g>
+
+				<!-- LS Logo (focal point - lowered) -->
+				<text x="480" y="360" font-family="'Fira Code', monospace" font-size="240" font-weight="bold" fill="none" stroke="url(#svgLsGradient)" stroke-width="4" text-anchor="middle" dominant-baseline="middle" filter="url(#svgLsGlow)">LS</text>
+				<text x="480" y="360" font-family="'Fira Code', monospace" font-size="240" font-weight="bold" fill="none" stroke="url(#svgLsGradient)" stroke-width="4" text-anchor="middle" dominant-baseline="middle">LS</text>
+
+				<!-- Keyboard base (trapezoid) -->
+				<path d="M 70 525 L 730 525 L 745 665 L 55 665 Z" fill="url(#svgKeyboardGradient)" stroke="#06b6d4" stroke-width="2" filter="url(#svgScreenGlow)"/>
+				<path d="M 70 525 L 730 525 L 745 665 L 55 665 Z" fill="url(#svgKeyboardGradient)" stroke="#06b6d4" stroke-width="2"/>
+
+				<!-- Trackpad -->
+				<path d="M 335 607 L 465 607 L 468 642 L 332 642 Z" fill="rgba(6, 182, 212, 0.15)" stroke="rgba(6, 182, 212, 0.5)" stroke-width="2"/>
+			</svg>
+			<button id="downloadSvgBtn" class="download-logo-btn">
+				Download SVG (800x800)
+			</button>
+		</div>
+
+		<!-- Navbar Icon -->
+		<div class="logo-container">
+			<h3 style="margin-bottom: 1rem; color: #fff;">Navbar Icon (Scalable)</h3>
+			<div style="background: #1a1a2e; padding: 2rem; border-radius: 8px; display: inline-block;">
+				<svg id="navbarIconSvg" width="64" height="64" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+					<defs>
+						<linearGradient id="navbarLsGradient" x1="0%" y1="50%" x2="100%" y2="50%">
+							<stop offset="0%" stop-color="#06b6d4"/>
+							<stop offset="100%" stop-color="#a855f7"/>
+						</linearGradient>
+					</defs>
+					<text x="50" y="65" font-family="'Fira Code', monospace" font-size="60" font-weight="bold" fill="url(#navbarLsGradient)" text-anchor="middle">LS</text>
+				</svg>
+			</div>
+			<button id="downloadNavbarIconBtn" class="download-logo-btn">
+				Download Navbar Icon SVG
 			</button>
 		</div>
 	</section>
@@ -3817,10 +3937,261 @@ import ColorBendsTest from '../components/ColorBendsTest.jsx';
 			ctx.restore();
 		}
 
+		// Draw LinkedIn banner version (1584x396)
+		function drawLinkedInHeroCanvas() {
+			const canvas = document.getElementById('heroCanvasLinkedIn');
+			if (!canvas) return;
+
+			const ctx = canvas.getContext('2d');
+			const width = 1584;
+			const height = 396;
+
+			// Background
+			ctx.fillStyle = '#0a1128';
+			ctx.fillRect(0, 0, width, height);
+
+			// Grid pattern (smaller boxes)
+			ctx.strokeStyle = 'rgba(96, 165, 250, 0.08)';
+			ctx.lineWidth = 1;
+			for (let x = 0; x <= width; x += 20) {
+				ctx.beginPath();
+				ctx.moveTo(x, 0);
+				ctx.lineTo(x, height);
+				ctx.stroke();
+			}
+			for (let y = 0; y <= height; y += 20) {
+				ctx.beginPath();
+				ctx.moveTo(0, y);
+				ctx.lineTo(width, y);
+				ctx.stroke();
+			}
+
+			// Draw decorative web dev icons (scaled for smaller height)
+			ctx.strokeStyle = 'rgba(96, 165, 250, 0.2)';
+			ctx.lineWidth = 2;
+			ctx.lineCap = 'round';
+			ctx.lineJoin = 'round';
+
+			// Icons (positioned organically around the code box)
+			// Code brackets <> (top left)
+			drawIcon(ctx, width / 2 - 550, height / 2 - 140, () => {
+				ctx.beginPath();
+				ctx.moveTo(-8, -10);
+				ctx.lineTo(-12, 0);
+				ctx.lineTo(-8, 10);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.moveTo(8, -10);
+				ctx.lineTo(12, 0);
+				ctx.lineTo(8, 10);
+				ctx.stroke();
+			});
+
+			// Git branch (top right)
+			drawIcon(ctx, width / 2 + 540, height / 2 - 130, () => {
+				ctx.beginPath();
+				ctx.arc(0, -10, 3, 0, Math.PI * 2);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.arc(0, 10, 3, 0, Math.PI * 2);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.arc(10, 0, 3, 0, Math.PI * 2);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.moveTo(0, -7);
+				ctx.lineTo(0, 0);
+				ctx.lineTo(7, 0);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.moveTo(0, 0);
+				ctx.lineTo(0, 7);
+				ctx.stroke();
+			});
+
+			// Terminal (bottom left)
+			drawIcon(ctx, width / 2 - 560, height / 2 + 130, () => {
+				ctx.beginPath();
+				ctx.roundRect(-12, -10, 24, 20, 2);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.moveTo(-6, -3);
+				ctx.lineTo(-2, 0);
+				ctx.lineTo(-6, 3);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.moveTo(0, 5);
+				ctx.lineTo(6, 5);
+				ctx.stroke();
+			});
+
+			// NPM package (bottom right)
+			drawIcon(ctx, width / 2 + 550, height / 2 + 140, () => {
+				ctx.beginPath();
+				ctx.rect(-10, -10, 20, 20);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.moveTo(-10, 0);
+				ctx.lineTo(10, 0);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.moveTo(0, 0);
+				ctx.lineTo(0, 10);
+				ctx.stroke();
+			});
+
+			// React logo (left middle)
+			drawIcon(ctx, width / 2 - 540, height / 2 - 20, () => {
+				ctx.beginPath();
+				ctx.arc(0, 0, 2, 0, Math.PI * 2);
+				ctx.fill();
+				ctx.beginPath();
+				ctx.ellipse(0, 0, 16, 6, 0, 0, Math.PI * 2);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.ellipse(0, 0, 16, 6, Math.PI / 3, 0, Math.PI * 2);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.ellipse(0, 0, 16, 6, -Math.PI / 3, 0, Math.PI * 2);
+				ctx.stroke();
+			});
+
+			// Database (right middle)
+			drawIcon(ctx, width / 2 + 560, height / 2 + 15, () => {
+				ctx.beginPath();
+				ctx.ellipse(0, -8, 10, 3, 0, 0, Math.PI * 2);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.moveTo(-10, -8);
+				ctx.lineTo(-10, 8);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.moveTo(10, -8);
+				ctx.lineTo(10, 8);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.ellipse(0, 8, 10, 3, 0, 0, Math.PI * 2);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.ellipse(0, 0, 10, 3, 0, 0, Math.PI * 2);
+				ctx.stroke();
+			});
+
+			function drawIcon(ctx, x, y, drawFn) {
+				ctx.save();
+				ctx.translate(x, y);
+				drawFn();
+				ctx.restore();
+			}
+
+			// Code box (scaled for LinkedIn dimensions)
+			ctx.save();
+			ctx.translate(width / 2, height / 2);
+			ctx.rotate(-0.02);
+
+			// Box shadow and glow
+			ctx.shadowBlur = 50;
+			ctx.shadowColor = 'rgba(0, 0, 0, 0.7)';
+			ctx.fillStyle = 'rgba(15, 26, 53, 0.95)';
+			ctx.strokeStyle = 'rgba(96, 165, 250, 0.4)';
+			ctx.lineWidth = 1;
+
+			const boxWidth = 900;
+			const boxHeight = 300;
+			const radius = 16;
+
+			// Rounded rectangle
+			ctx.beginPath();
+			ctx.moveTo(-boxWidth/2 + radius, -boxHeight/2);
+			ctx.lineTo(boxWidth/2 - radius, -boxHeight/2);
+			ctx.quadraticCurveTo(boxWidth/2, -boxHeight/2, boxWidth/2, -boxHeight/2 + radius);
+			ctx.lineTo(boxWidth/2, boxHeight/2 - radius);
+			ctx.quadraticCurveTo(boxWidth/2, boxHeight/2, boxWidth/2 - radius, boxHeight/2);
+			ctx.lineTo(-boxWidth/2 + radius, boxHeight/2);
+			ctx.quadraticCurveTo(-boxWidth/2, boxHeight/2, -boxWidth/2, boxHeight/2 - radius);
+			ctx.lineTo(-boxWidth/2, -boxHeight/2 + radius);
+			ctx.quadraticCurveTo(-boxWidth/2, -boxHeight/2, -boxWidth/2 + radius, -boxHeight/2);
+			ctx.closePath();
+			ctx.fill();
+			ctx.stroke();
+
+			ctx.shadowBlur = 0;
+
+			// Code text
+			ctx.textAlign = 'left';
+			ctx.textBaseline = 'top';
+
+			let y = -boxHeight/2 + 30;
+
+			// Comment with glow
+			ctx.font = 'italic 32px "Fira Code", monospace';
+			ctx.fillStyle = '#697098';
+			ctx.fillText('//', -boxWidth/2 + 120, y);
+
+			ctx.shadowBlur = 20;
+			ctx.shadowColor = 'rgba(6, 182, 212, 0.7)';
+			ctx.font = '600 italic 32px "Fira Code", monospace';
+			ctx.fillStyle = '#06b6d4';
+			ctx.fillText('lukestahl.io', -boxWidth/2 + 185, y);
+			ctx.shadowBlur = 0;
+
+			y += 58;
+
+			// Code lines
+			ctx.font = '22px "Fira Code", monospace';
+
+			// Line 1: const developerMarketing = {
+			ctx.fillStyle = '#c792ea';
+			ctx.fillText('const', -boxWidth/2 + 120, y);
+			ctx.fillStyle = '#82aaff';
+			ctx.fillText('developerMarketing', -boxWidth/2 + 220, y);
+			ctx.fillStyle = '#e4e4e7';
+			ctx.fillText('= {', -boxWidth/2 + 470, y);
+			y += 42;
+
+			// Line 2: name: "Luke Stahl",
+			ctx.fillStyle = '#82aaff';
+			ctx.fillText('name', -boxWidth/2 + 180, y);
+			ctx.fillStyle = '#e4e4e7';
+			ctx.fillText(':', -boxWidth/2 + 255, y);
+			ctx.fillStyle = '#c3e88d';
+			ctx.fillText('"Luke Stahl"', -boxWidth/2 + 275, y);
+			ctx.fillStyle = '#e4e4e7';
+			ctx.fillText(',', -boxWidth/2 + 450, y);
+			y += 42;
+
+			// Line 3: focus: "Marketing & Web Development",
+			ctx.fillStyle = '#82aaff';
+			ctx.fillText('focus', -boxWidth/2 + 180, y);
+			ctx.fillStyle = '#e4e4e7';
+			ctx.fillText(':', -boxWidth/2 + 260, y);
+			ctx.fillStyle = '#c3e88d';
+			ctx.fillText('"Marketing & Web Development"', -boxWidth/2 + 280, y);
+			ctx.fillStyle = '#e4e4e7';
+			ctx.fillText(',', -boxWidth/2 + 670, y);
+			y += 42;
+
+			// Line 4: passion: "Building better developer experiences"
+			ctx.fillStyle = '#82aaff';
+			ctx.fillText('passion', -boxWidth/2 + 180, y);
+			ctx.fillStyle = '#e4e4e7';
+			ctx.fillText(':', -boxWidth/2 + 295, y);
+			ctx.fillStyle = '#c3e88d';
+			ctx.fillText('"Building better developer experiences"', -boxWidth/2 + 315, y);
+			y += 42;
+
+			// Line 5: };
+			ctx.fillStyle = '#e4e4e7';
+			ctx.fillText('};', -boxWidth/2 + 120, y);
+
+			ctx.restore();
+		}
+
 		// Download canvas as PNG
 		document.addEventListener('DOMContentLoaded', () => {
 			drawHeroCanvas();
 			drawTwitterHeroCanvas();
+			drawLinkedInHeroCanvas();
 
 			const downloadBtn = document.getElementById('downloadHeroBtn');
 			const canvas = document.getElementById('heroCanvas');
@@ -3849,6 +4220,23 @@ import ColorBendsTest from '../components/ColorBendsTest.jsx';
 						const link = document.createElement('a');
 						link.href = url;
 						link.download = 'lukestahl-twitter-banner-1500x500.png';
+						link.click();
+						URL.revokeObjectURL(url);
+					}, 'image/png');
+				});
+			}
+
+			// LinkedIn banner download
+			const downloadLinkedInBtn = document.getElementById('downloadLinkedInBtn');
+			const linkedInCanvas = document.getElementById('heroCanvasLinkedIn');
+
+			if (downloadLinkedInBtn && linkedInCanvas) {
+				downloadLinkedInBtn.addEventListener('click', () => {
+					linkedInCanvas.toBlob((blob) => {
+						const url = URL.createObjectURL(blob);
+						const link = document.createElement('a');
+						link.href = url;
+						link.download = 'lukestahl-linkedin-banner-1584x396.png';
 						link.click();
 						URL.revokeObjectURL(url);
 					}, 'image/png');
@@ -4259,25 +4647,12 @@ import ColorBendsTest from '../components/ColorBendsTest.jsx';
 			});
 			ctx.globalAlpha = 1;
 
-			// LS logo centered in screen (much larger with even padding)
-			const lsFramePadding = 45; // Half-inch padding (~40-50px) on all sides
+			// LS logo centered in screen
 			const lsX = centerX + 80;
-			const lsY = screenY + screenHeight/2 + 20; // Move down to reduce bottom spacing
+			const lsY = screenY + screenHeight/2;
 
 			// Larger LS font size
 			const lsFontSize = 240;
-
-			// Calculate frame size to match top padding on all sides
-			// Frame should be just big enough to contain LS with equal padding
-			const lsFrameWidth = 360;
-			const lsFrameHeight = 240;
-
-			// Frame around LS (even spacing on all sides)
-			ctx.strokeStyle = 'rgba(96, 165, 250, 0.3)';
-			ctx.lineWidth = 2;
-			ctx.beginPath();
-			ctx.roundRect(lsX - lsFrameWidth/2, lsY - lsFrameHeight/2, lsFrameWidth, lsFrameHeight, 20);
-			ctx.stroke();
 
 			// LS gradient (cyan to purple - matching first logo)
 			const lsGradient = ctx.createLinearGradient(
@@ -4433,6 +4808,40 @@ import ColorBendsTest from '../components/ColorBendsTest.jsx';
 				const link = document.createElement('a');
 				link.href = url;
 				link.download = 'lukestahl-logo.svg';
+				link.click();
+				URL.revokeObjectURL(url);
+			});
+		}
+
+		// Download inline SVG
+		const downloadSvgBtn = document.getElementById('downloadSvgBtn');
+		const logoSvg = document.getElementById('logoSvg');
+
+		if (downloadSvgBtn && logoSvg) {
+			downloadSvgBtn.addEventListener('click', () => {
+				const svgData = new XMLSerializer().serializeToString(logoSvg);
+				const blob = new Blob([svgData], { type: 'image/svg+xml' });
+				const url = URL.createObjectURL(blob);
+				const link = document.createElement('a');
+				link.href = url;
+				link.download = 'lukestahl-logo-800x800.svg';
+				link.click();
+				URL.revokeObjectURL(url);
+			});
+		}
+
+		// Download navbar icon as SVG
+		const downloadNavbarIconBtn = document.getElementById('downloadNavbarIconBtn');
+		const navbarIconSvg = document.getElementById('navbarIconSvg');
+
+		if (downloadNavbarIconBtn && navbarIconSvg) {
+			downloadNavbarIconBtn.addEventListener('click', () => {
+				const svgData = new XMLSerializer().serializeToString(navbarIconSvg);
+				const blob = new Blob([svgData], { type: 'image/svg+xml' });
+				const url = URL.createObjectURL(blob);
+				const link = document.createElement('a');
+				link.href = url;
+				link.download = 'ls-navbar-icon.svg';
 				link.click();
 				URL.revokeObjectURL(url);
 			});
