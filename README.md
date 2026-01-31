@@ -234,3 +234,7 @@ Add new post in Notion:
 - Website: [lukestahl.io](https://lukestahl.io)
 - GitHub: [@stahlwalker](https://github.com/stahlwalker)
 - LinkedIn: [Luke Stahl](https://www.linkedin.com/in/lukestahl/)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
