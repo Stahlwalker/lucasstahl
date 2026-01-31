@@ -2,10 +2,10 @@
 name: developer-marketing
 version: 1.0.0
 description: |
-  Create authentic, technical content and strategies for developer audiences based on Luke Stahl's Developer Marketing Handbook (https://lukestahl.io/handbook/).
-  Use when writing technical content, planning campaigns, reviewing developer-focused messaging, or building developer advocacy strategies.
-  Applies the "trust first, pipeline second" philosophy with focus on clarity, authenticity, and measurable engagement (product-qualified leads, developer-influenced revenue).
-  Covers the developer journey (Awareness → Evaluation → Adoption → Advocacy) with content strategy buckets, persona mapping, and campaign frameworks.
+  Guide and evaluate developer content and strategy based on [Luke Stahl's Developer Marketing Handbook](https://lukestahl.io/handbook/).
+  Use when reviewing technical content, planning developer campaigns, stress-testing messaging, or shaping developer advocacy strategies.
+  Applies a "trust first, pipeline second" philosophy with an emphasis on clarity, technical credibility, and measurable engagement (product-qualified leads, developer-influenced revenue).
+  Covers the developer journey (Awareness → Evaluation → Adoption → Advocacy) with content strategy buckets, persona alignment, and campaign frameworks.
 allowed-tools:
   - Read
   - Write
