@@ -4,7 +4,7 @@
 
 ## About
 
-Luke Stahl is a developer marketer and frontend developer who bridges the gap between marketing strategy and technical implementation. Currently at Webflow doing developer marketing. Before that: Builder.io, Pangea, Contentful, HERE Technologies. Started in healthcare marketing for 13 years before switching to tech in 2018.
+- Luke Stahl is a developer marketer and frontend developer who bridges the gap between marketing strategy and technical implementation. Currently at Webflow doing developer marketing. Before that: Builder.io, Pangea, Contentful, HERE Technologies. Started in healthcare marketing for 13 years before switching to tech in 2018.
 
 ## Site Structure
 
@@ -36,16 +36,16 @@ Luke Stahl is a developer marketer and frontend developer who bridges the gap be
 ## Technical Skills
 
 ### Frontend
-React, Next.js, Astro, Vue, Swift, Tailwind CSS, HTML, CSS, JavaScript, TypeScript
+- React, Next.js, Astro, Vue, Swift, Tailwind CSS, HTML, CSS, JavaScript, TypeScript
 
 ### Backend
-Node.js, MongoDB, MySQL, GraphQL, Contentful, APIs, Cloud Deployment, Edge Functions
+- Node.js, MongoDB, MySQL, GraphQL, Contentful, APIs, Cloud Deployment, Edge Functions
 
 ### Tools
-Cursor, Claude Code, Figma, Webflow, Builder.io, Notion, GitHub, Vercel, PostHog, Supabase, Ahrefs, SurferSEO, ChatGPT, Gemini, FullStory, and more
+- Cursor, Claude Code, Figma, Webflow, Builder.io, Notion, GitHub, Vercel, PostHog, Supabase, Ahrefs, SurferSEO, ChatGPT, Gemini, FullStory, and more
 
 ### Marketing
-Product Marketing, Digital & Web Marketing, Content Strategy, Analytics, SEO, Paid Media, Social, Email, Community, Events, Project Management
+- Product Marketing, Digital & Web Marketing, Content Strategy, Analytics, SEO, Paid Media, Social, Email, Community, Events, Project Management
 
 ## Education
 
@@ -70,8 +70,8 @@ Product Marketing, Digital & Web Marketing, Content Strategy, Analytics, SEO, Pa
 
 ## Speaking
 
-Conference speaker at Webflow Conf 2025 - "Webflow Cloud for Full-Stack Web Apps"
+- Conference speaker at Webflow Conf 2025 - "Webflow Cloud for Full-Stack Web Apps"
 
 ## Tech Stack
 
-This site is built with Astro and deployed on GitHub Pages. Analytics powered by PostHog.
+- This site is built with Astro and deployed on GitHub Pages. Analytics powered by PostHog.
