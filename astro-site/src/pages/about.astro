@@ -83,11 +83,159 @@ import webflowDark from '../assets/images/dark/Webflow_dark.png';
 				<span class="code-bracket">/&gt;</span>
 			</h1>
 			<p class="about-hero-subtitle">Developer, marketer, and builder of digital experiences</p>
+
+			<!-- Human/Machine Toggle -->
+			<div class="view-mode-toggle">
+				<button class="view-mode-option active" data-view="human">
+					<i class="fa-solid fa-user"></i>
+					<span>HUMAN</span>
+				</button>
+				<button class="view-mode-option" data-view="machine">
+					<i class="fa-solid fa-robot"></i>
+					<span>MACHINE</span>
+				</button>
+			</div>
 		</div>
 	</section>
 
+	<!-- Machine-Readable Markdown View (Hidden by Default) -->
+	<div class="markdown-view" style="display: none;">
+		<div class="markdown-content">
+			<!-- Toggle at Top -->
+			<div class="markdown-toggle-header">
+				<div class="view-mode-toggle modal-toggle">
+					<button class="view-mode-option" data-view="human">
+						<i class="fa-solid fa-user"></i>
+						<span>HUMAN</span>
+					</button>
+					<button class="view-mode-option active" data-view="machine">
+						<i class="fa-solid fa-robot"></i>
+						<span>MACHINE</span>
+					</button>
+				</div>
+			</div>
+			<pre class="markdown-text"># Luke Stahl - Developer Marketer & Frontend Developer
+
+> Personal portfolio and professional website for Luke Stahl
+
+## About
+
+Luke Stahl is a developer marketer and frontend developer who bridges the gap between marketing strategy and technical execution. He cares about building clean, fast sites and finding better ways for teams to collaborate across design and development. He's also a bit of a tool junky, always testing new workflows, experimenting with AI tools, and digging into competitive intel.
+
+Outside of work, Luke is a husband, father, dog person, and Green Bay Packers fan.
+
+## Education
+
+- **Certificate in Full Stack Web Development** | Northwestern University
+- **MA in Communications** | Southern New Hampshire University
+
+## Career Journey
+
+### Timeline
+
+- 2005-2018: Healthcare Marketing (13 years)
+- 2018: Full Stack Web Development Certificate - Northwestern University
+- 2018-Present: Developer Marketing (8 years)
+  - 2018-2021: HERE Technologies
+  - 2021-2022: Contentful
+  - 2022-2023: Pangea
+  - 2023-2025: Builder.io
+  - 2025-Present: Webflow
+
+**Total Marketing Experience**: 21 years
+
+## Skills
+
+### Frontend
+React, Next.js, Astro, Vue, Swift, Tailwind CSS, HTML, CSS, JavaScript, TypeScript
+
+### Backend
+Node.js, MongoDB, MySQL, GraphQL, Contentful, APIs, Cloud Deployment, Edge Functions
+
+### Developer Marketing
+Product Marketing, Digital & Web Marketing, Content Strategy, Analytics, SEO, Paid Media, Social, Email, Community, Events, Project Management
+
+### Visual Development
+Figma, Adobe Photoshop, Adobe Premiere, Webflow, Builder.io, Design Systems
+
+## My Stack
+
+### Development Tools
+- [Cursor](https://cursor.com) - AI-powered code editor
+- [Claude Code](https://claude.ai/code) - AI coding assistant
+- [GitHub](https://github.com) - Version control
+- [Vercel](https://vercel.com) - Deployment platform
+- [Supabase](https://supabase.com) - Backend as a service
+- [Figma](https://figma.com) - Design tool
+- [Webflow](https://webflow.com) - Visual development
+- [Builder.io](https://www.builder.io) - Visual development
+
+### Marketing & Analytics
+- [PostHog](https://posthog.com) - Product analytics
+- [Ahrefs](https://ahrefs.com) - SEO tools
+- [Surfer](https://surferseo.com) - SEO optimization
+- [Common Room](https://www.commonroom.io/) - Community intelligence
+- [FullStory](https://fullstory.com) - Digital experience insights
+- [Buffer](https://buffer.com) - Social media management
+- [Google Ads](https://ads.google.com/) - Advertising
+- [Gong](https://www.gong.io/) - Revenue intelligence
+
+### AI Tools
+- [OpenAI](https://chatgpt.com) - ChatGPT
+- [Google Gemini](https://gemini.google.com) - AI assistant
+- [AirOps](https://airops.com) - AI workflows
+
+### Productivity Tools
+- [Notion](https://notion.so) - Knowledge management
+- [Airtable](https://airtable.com) - Database
+- [Slack](https://slack.com) - Communication
+- [Loom](https://loom.com) - Video messaging
+- [Descript](https://descript.com) - Video editing
+- [Arcade](https://www.arcade.software/) - Interactive demos
+- [Jam](https://jam.dev) - Bug reporting
+- [Excalidraw](https://excalidraw.com) - Diagramming
+- [Warp](https://www.warp.dev/) - Terminal
+- [Sigma](https://www.sigmacomputing.com/) - Business intelligence
+
+Read more: [Inside my developer marketing stack](https://lukestahl.io/blog/my-stack/)
+
+## Speaking
+
+**Webflow Conf 2025** - September 18, 2025
+- "Webflow Cloud for Full-Stack Web Apps"
+- [Watch the talk](https://www.youtube.com/watch?v=KtXlsaPwS2U)
+
+## Services
+
+### Available for Projects
+
+Luke works with developer-focused companies to build clear content, sharpen their messaging, and create strategies that make sense to technical audiences.
+
+**Services:**
+- Developer Marketing Strategy
+- Technical Content & Writing
+- Campaign Management
+- Frontend Development
+
+[Contract Through Upwork](https://www.upwork.com/freelancers/~01a729dd72b0076831)
+
+## Contact
+
+- Email: [Luke@lukestahl.io](mailto:Luke@lukestahl.io)
+- GitHub: [https://github.com/Stahlwalker](https://github.com/Stahlwalker)
+- LinkedIn: [https://www.linkedin.com/in/lucasstahl](https://www.linkedin.com/in/lucasstahl)
+- Twitter: [https://twitter.com/LucasStahl11](https://twitter.com/LucasStahl11)
+- Portfolio: [Portfolio of Work](https://stahlwalker.notion.site/Luke-Stahl-s-Portfolio-of-Work-bc6f3e68e3084d37bfa023e4e8d3b901)
+- RSS: [https://lukestahl.io/rss.xml](https://lukestahl.io/rss.xml)
+
+---
+
+*Machine-readable format optimized for AI tools and language models*</pre>
+		</div>
+	</div>
+
 	<!-- About Content Section -->
-	<section class="about-section">
+	<section class="about-section" id="human-content">
 		<div class="section-container">
 
 			<!-- Bio Section -->
@@ -543,6 +691,133 @@ import webflowDark from '../assets/images/dark/Webflow_dark.png';
 			</div>
 
 		</div>
+
+		<!-- Machine-Readable Markdown View (Hidden by Default) -->
+		<div class="markdown-view" style="display: none;">
+			<div class="markdown-content">
+				<button class="back-to-human-btn">
+					<i class="fa-solid fa-arrow-left"></i>
+					Back to Human View
+				</button>
+				<pre class="markdown-text"># Luke Stahl - Developer Marketer & Frontend Developer
+
+> Personal portfolio and professional website for Luke Stahl
+
+## About
+
+Luke Stahl is a developer marketer and frontend developer who bridges the gap between marketing strategy and technical execution. He cares about building clean, fast sites and finding better ways for teams to collaborate across design and development. He's also a bit of a tool junky, always testing new workflows, experimenting with AI tools, and digging into competitive intel.
+
+Outside of work, Luke is a husband, father, dog person, and Green Bay Packers fan.
+
+## Education
+
+- **Certificate in Full Stack Web Development** | Northwestern University
+- **MA in Communications** | Southern New Hampshire University
+
+## Career Journey
+
+### Timeline
+
+- 2005-2018: Healthcare Marketing (13 years)
+- 2018: Full Stack Web Development Certificate - Northwestern University
+- 2018-Present: Developer Marketing (8 years)
+  - 2018-2021: HERE Technologies
+  - 2021-2022: Contentful
+  - 2022-2023: Pangea
+  - 2023-2025: Builder.io
+  - 2025-Present: Webflow
+
+**Total Marketing Experience**: 21 years
+
+## Skills
+
+### Frontend
+React, Next.js, Astro, Vue, Swift, Tailwind CSS, HTML, CSS, JavaScript, TypeScript
+
+### Backend
+Node.js, MongoDB, MySQL, GraphQL, Contentful, APIs, Cloud Deployment, Edge Functions
+
+### Developer Marketing
+Product Marketing, Digital & Web Marketing, Content Strategy, Analytics, SEO, Paid Media, Social, Email, Community, Events, Project Management
+
+### Visual Development
+Figma, Adobe Photoshop, Adobe Premiere, Webflow, Builder.io, Design Systems
+
+## My Stack
+
+### Development Tools
+- [Cursor](https://cursor.com) - AI-powered code editor
+- [Claude Code](https://claude.ai/code) - AI coding assistant
+- [GitHub](https://github.com) - Version control
+- [Vercel](https://vercel.com) - Deployment platform
+- [Supabase](https://supabase.com) - Backend as a service
+- [Figma](https://figma.com) - Design tool
+- [Webflow](https://webflow.com) - Visual development
+- [Builder.io](https://www.builder.io) - Visual development
+
+### Marketing & Analytics
+- [PostHog](https://posthog.com) - Product analytics
+- [Ahrefs](https://ahrefs.com) - SEO tools
+- [Surfer](https://surferseo.com) - SEO optimization
+- [Common Room](https://www.commonroom.io/) - Community intelligence
+- [FullStory](https://fullstory.com) - Digital experience insights
+- [Buffer](https://buffer.com) - Social media management
+- [Google Ads](https://ads.google.com/) - Advertising
+- [Gong](https://www.gong.io/) - Revenue intelligence
+
+### AI Tools
+- [OpenAI](https://chatgpt.com) - ChatGPT
+- [Google Gemini](https://gemini.google.com) - AI assistant
+- [AirOps](https://airops.com) - AI workflows
+
+### Productivity Tools
+- [Notion](https://notion.so) - Knowledge management
+- [Airtable](https://airtable.com) - Database
+- [Slack](https://slack.com) - Communication
+- [Loom](https://loom.com) - Video messaging
+- [Descript](https://descript.com) - Video editing
+- [Arcade](https://www.arcade.software/) - Interactive demos
+- [Jam](https://jam.dev) - Bug reporting
+- [Excalidraw](https://excalidraw.com) - Diagramming
+- [Warp](https://www.warp.dev/) - Terminal
+- [Sigma](https://www.sigmacomputing.com/) - Business intelligence
+
+Read more: [Inside my developer marketing stack](https://lukestahl.io/blog/my-stack/)
+
+## Speaking
+
+**Webflow Conf 2025** - September 18, 2025
+- "Webflow Cloud for Full-Stack Web Apps"
+- [Watch the talk](https://www.youtube.com/watch?v=KtXlsaPwS2U)
+
+## Services
+
+### Available for Projects
+
+Luke works with developer-focused companies to build clear content, sharpen their messaging, and create strategies that make sense to technical audiences.
+
+**Services:**
+- Developer Marketing Strategy
+- Technical Content & Writing
+- Campaign Management
+- Frontend Development
+
+[Contract Through Upwork](https://www.upwork.com/freelancers/~01a729dd72b0076831)
+
+## Contact
+
+- Email: [Luke@lukestahl.io](mailto:Luke@lukestahl.io)
+- GitHub: [https://github.com/Stahlwalker](https://github.com/Stahlwalker)
+- LinkedIn: [https://www.linkedin.com/in/lucasstahl](https://www.linkedin.com/in/lucasstahl)
+- Twitter: [https://twitter.com/LucasStahl11](https://twitter.com/LucasStahl11)
+- Portfolio: [Portfolio of Work](https://stahlwalker.notion.site/Luke-Stahl-s-Portfolio-of-Work-bc6f3e68e3084d37bfa023e4e8d3b901)
+- RSS: [https://lukestahl.io/rss.xml](https://lukestahl.io/rss.xml)
+
+---
+
+*Machine-readable format optimized for AI tools and language models*</pre>
+			</div>
+		</div>
 	</section>
 </Layout>
 
@@ -860,5 +1135,41 @@ import webflowDark from '../assets/images/dark/Webflow_dark.png';
 
 		// Start observing
 		observer.observe(logoWrapper);
+	})();
+
+	// Human/Machine View Toggle - Full Screen Modal
+	(function() {
+		const allToggleButtons = document.querySelectorAll('.view-mode-option');
+		const machineModal = document.querySelector('.markdown-view');
+
+		function updateAllToggles(activeView) {
+			allToggleButtons.forEach(btn => {
+				const btnView = btn.getAttribute('data-view');
+				if (btnView === activeView) {
+					btn.classList.add('active');
+				} else {
+					btn.classList.remove('active');
+				}
+			});
+		}
+
+		allToggleButtons.forEach(button => {
+			button.addEventListener('click', function() {
+				const view = this.getAttribute('data-view');
+
+				// Update all toggles
+				updateAllToggles(view);
+
+				if (view === 'machine') {
+					// Show full-screen modal
+					machineModal.style.display = 'block';
+					document.body.style.overflow = 'hidden';
+				} else {
+					// Hide modal
+					machineModal.style.display = 'none';
+					document.body.style.overflow = '';
+				}
+			});
+		});
 	})();
 </script>

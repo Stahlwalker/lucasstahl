@@ -726,6 +726,45 @@
     transform: scale(1.1);
 }
 
+/* Featured Project Styles */
+.featured-project .build-card-content {
+    border: 1px solid rgba(236, 72, 153, 0.5);
+    box-shadow: 0 4px 20px rgba(236, 72, 153, 0.25),
+                0 0 40px rgba(236, 72, 153, 0.15),
+                0 0 60px rgba(236, 72, 153, 0.1);
+}
+
+.featured-project:hover .build-card-content {
+    box-shadow: 0 12px 40px rgba(236, 72, 153, 0.4),
+                0 4px 12px rgba(0, 0, 0, 0.3),
+                0 0 60px rgba(236, 72, 153, 0.3),
+                0 0 80px rgba(236, 72, 153, 0.2);
+    border-color: rgba(236, 72, 153, 0.7);
+}
+
+.featured-icon {
+    background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(219, 39, 119, 0.1)) !important;
+    border: 1px solid rgba(236, 72, 153, 0.3) !important;
+    box-shadow: 0 0 20px rgba(236, 72, 153, 0.2), inset 0 0 20px rgba(236, 72, 153, 0.05);
+}
+
+.featured-icon i {
+    color: #ec4899 !important;
+    filter: drop-shadow(0 0 8px rgba(236, 72, 153, 0.5));
+}
+
+.featured-project:hover .featured-icon {
+    background: linear-gradient(135deg, rgba(236, 72, 153, 0.25), rgba(219, 39, 119, 0.2)) !important;
+    border-color: rgba(236, 72, 153, 0.5) !important;
+    box-shadow: 0 0 30px rgba(236, 72, 153, 0.4), inset 0 0 20px rgba(236, 72, 153, 0.1);
+    transform: scale(1.05);
+}
+
+.featured-project:hover .featured-icon i {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 12px rgba(236, 72, 153, 0.7));
+}
+
 /* Build Title */
 .build-title {
     font-family: 'Fira Code', monospace;
