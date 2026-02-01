@@ -1,7 +1,8 @@
-name: Weekly Cross-Browser Tests
+name: Weekly Cross-Browser Health Checks
 
 # Runs every Monday at 6 AM UTC (2 AM EST / 11 PM PST Sunday)
-# Adjust the cron schedule if you need a different timezone
+# Runs simple health checks across Chromium, Firefox, and WebKit
+# Verifies pages load successfully without checking specific features
 on:
   schedule:
     - cron: '0 6 * * 1'
@@ -10,7 +11,7 @@ on:
 jobs:
   playwright-tests:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 10
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -63,8 +64,8 @@ jobs:
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: existingIssue.number,
-                body: `🎭 **Cross-browser tests failed again on ${new Date().toLocaleDateString()}**\n\n` +
-                      `The Playwright test suite detected issues.\n\n` +
+                body: `🚨 **Health checks failed again on ${new Date().toLocaleDateString()}**\n\n` +
+                      `Cross-browser health checks detected issues.\n\n` +
                       `[View workflow run](${context.payload.repository.html_url}/actions/runs/${context.runId})\n` +
                       `[Download test report](${context.payload.repository.html_url}/actions/runs/${context.runId}#artifacts)`
               });
@@ -73,21 +74,22 @@ jobs:
               await github.rest.issues.create({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                title: '🎭 Cross-Browser Tests Failed',
-                body: `## Playwright Test Failures\n\n` +
-                      `The automated cross-browser tests found issues on your production site.\n\n` +
+                title: '🚨 Cross-Browser Health Checks Failed',
+                body: `## Health Check Failures\n\n` +
+                      `The automated cross-browser health checks found issues on your production site.\n\n` +
                       `### Details\n` +
                       `- **Date**: ${new Date().toLocaleDateString()}\n` +
                       `- **Site Tested**: https://lukestahl.io\n` +
-                      `- **Browsers Tested**: Chromium, Firefox, WebKit (Safari)\n\n` +
+                      `- **Browsers Tested**: Chromium, Firefox, WebKit (Safari)\n` +
+                      `- **Tests**: HTTP status checks, page load verification, JavaScript error detection\n\n` +
                       `### Action Required\n` +
                       `1. Review the [workflow run logs](${context.payload.repository.html_url}/actions/runs/${context.runId}) for details\n` +
-                      `2. Download the [Playwright HTML report](${context.payload.repository.html_url}/actions/runs/${context.runId}#artifacts) for detailed test results\n` +
-                      `3. Fix the issues on production or update tests if site behavior changed intentionally\n` +
+                      `2. Download the [Playwright HTML report](${context.payload.repository.html_url}/actions/runs/${context.runId}#artifacts) for detailed results\n` +
+                      `3. Check if pages are loading correctly in each browser\n` +
                       `4. Close this issue once fixed\n\n` +
                       `---\n` +
-                      `*This issue was automatically created by the Playwright testing workflow.*`,
-                labels: ['playwright-tests', 'testing']
+                      `*This issue was automatically created by the health check workflow.*`,
+                labels: ['playwright-tests', 'monitoring']
               });
             }
 
@@ -99,11 +101,11 @@ jobs:
           FROM_EMAIL: ${{ secrets.FROM_EMAIL }}
         run: |
           if [ "${{ steps.playwright.outcome }}" == "success" ]; then
-            SUBJECT="✅ Cross-Browser Tests Passed - lukestahl.io"
-            BODY="<h2>✅ All Browser Tests Passing</h2><p>The automated cross-browser test suite ran successfully on <strong>$(date '+%B %d, %Y')</strong> against your production site.</p><p><strong>Result:</strong> All tests passed across Chromium, Firefox, and WebKit!</p><hr><h3>Tests Run:</h3><ul><li>Homepage functionality</li><li>Blog navigation and rendering</li><li>Theme toggle (dark/light mode)</li><li>Search functionality</li><li>Navigation and mobile responsiveness</li></ul><p><strong>Site Tested:</strong> https://lukestahl.io</p><p><a href=\"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\">View Full Workflow Run</a></p>"
+            SUBJECT="✅ Cross-Browser Health Checks Passed - lukestahl.io"
+            BODY="<h2>✅ All Health Checks Passing</h2><p>The automated cross-browser health checks ran successfully on <strong>$(date '+%B %d, %Y')</strong> against your production site.</p><p><strong>Result:</strong> All pages load successfully across Chromium, Firefox, and WebKit!</p><hr><h3>Pages Checked:</h3><ul><li>Homepage (200 OK)</li><li>Blog page (200 OK)</li><li>About page (200 OK)</li><li>Builds page (200 OK)</li><li>Gems page (200 OK)</li><li>404 handling (works correctly)</li><li>JavaScript errors (none detected)</li></ul><p><strong>Site Tested:</strong> https://lukestahl.io</p><p><a href=\"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\">View Full Workflow Run</a></p>"
           else
-            SUBJECT="🎭 Cross-Browser Tests Failed on lukestahl.io"
-            BODY="<h2>🎭 Browser Test Failures Detected</h2><p>The automated Playwright test suite found issues on your production site on <strong>$(date '+%B %d, %Y')</strong>.</p><h3>Action Required</h3><ol><li>Review the <a href=\"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\">workflow run logs</a> for details</li><li>Download the <a href=\"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}#artifacts\">Playwright HTML report</a> for detailed test results</li><li>Fix the issues on production or update tests if site behavior changed intentionally</li><li>Close the GitHub issue once fixed</li></ol><hr><p><strong>Site Tested:</strong> https://lukestahl.io</p><p><strong>Browsers Tested:</strong> Chromium, Firefox, WebKit (Safari)</p><p><a href=\"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\">View Full Workflow Run</a></p>"
+            SUBJECT="🚨 Cross-Browser Health Checks Failed on lukestahl.io"
+            BODY="<h2>🚨 Health Check Failures Detected</h2><p>The automated health checks found issues on your production site on <strong>$(date '+%B %d, %Y')</strong>.</p><p>This could indicate pages are returning errors, not loading, or experiencing browser-specific issues.</p><h3>Action Required</h3><ol><li>Review the <a href=\"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\">workflow run logs</a> for details</li><li>Download the <a href=\"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}#artifacts\">Playwright HTML report</a> for detailed results</li><li>Check if pages are loading correctly in each browser</li><li>Close the GitHub issue once fixed</li></ol><hr><p><strong>Site Tested:</strong> https://lukestahl.io</p><p><strong>Browsers Tested:</strong> Chromium, Firefox, WebKit (Safari)</p><p><a href=\"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\">View Full Workflow Run</a></p>"
           fi
 
           # Use jq to properly escape the JSON
@@ -132,19 +134,21 @@ jobs:
       - name: Generate Summary
         if: always()
         run: |
-          echo "# 🎭 Playwright Test Results" >> $GITHUB_STEP_SUMMARY
+          echo "# 🏥 Cross-Browser Health Check Results" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           if [ "${{ steps.playwright.outcome }}" == "success" ]; then
-            echo "✅ **All tests passed!**" >> $GITHUB_STEP_SUMMARY
+            echo "✅ **All health checks passed!**" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
-            echo "All cross-browser tests completed successfully across:" >> $GITHUB_STEP_SUMMARY
-            echo "- Chromium" >> $GITHUB_STEP_SUMMARY
-            echo "- Firefox" >> $GITHUB_STEP_SUMMARY
-            echo "- WebKit (Safari)" >> $GITHUB_STEP_SUMMARY
+            echo "All pages loaded successfully across:" >> $GITHUB_STEP_SUMMARY
+            echo "- Chromium ✓" >> $GITHUB_STEP_SUMMARY
+            echo "- Firefox ✓" >> $GITHUB_STEP_SUMMARY
+            echo "- WebKit (Safari) ✓" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**Pages Verified:** Homepage, Blog, About, Builds, Gems, 404 handling" >> $GITHUB_STEP_SUMMARY
           else
-            echo "❌ **Tests failed**" >> $GITHUB_STEP_SUMMARY
+            echo "❌ **Health checks failed**" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
-            echo "Some tests failed. Please review the logs and test report for details." >> $GITHUB_STEP_SUMMARY
+            echo "Some pages are not loading correctly. Please review the logs for details." >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
             echo "📊 [Download Playwright HTML Report](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}#artifacts)" >> $GITHUB_STEP_SUMMARY
           fi
