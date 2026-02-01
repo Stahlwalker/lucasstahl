@@ -175,6 +175,7 @@ The goal is to prove that trust earned from developers shows up later in product
           <li><a href="#content" class="nav-link">Content</a></li>
           <li><a href="#community" class="nav-link">Community</a></li>
           <li><a href="#metrics" class="nav-link">Metrics</a></li>
+          <li><a href="#skill" class="nav-link">Skill</a></li>
           <li><a href="/gems/" class="nav-link">Gems</a></li>
         </ul>
       </nav>
@@ -335,6 +336,13 @@ The goal is to prove that trust earned from developers shows up later in product
           </ul>
 
           <p>The goal is to prove that trust earned from developers shows up later in product usage and revenue.</p>
+        </section>
+
+        <section id="skill" class="handbook-section">
+          <h2>Developer Marketing Skill</h2>
+          <p>I built a <a href="https://github.com/Stahlwalker/developer-marketing" target="_blank" rel="noopener noreferrer" style="color: #82aaff; text-decoration: underline;">Developer Marketing Skill for Claude</a> that helps evaluate content, strategy, and campaigns against the principles in this handbook.</p>
+
+          <p>Use it to stress-test messaging, review technical content, plan developer campaigns, or get feedback on positioning. It applies a "trust first, pipeline second" philosophy with an emphasis on clarity, technical credibility, and measurable engagement.</p>
         </section>
 
         <section class="handbook-cta">
@@ -1155,6 +1163,19 @@ The goal is to prove that trust earned from developers shows up later in product
     background: rgba(21, 128, 61, 0.08);
     border-color: #15803d;
     color: #15803d;
+  }
+
+  /* Link styling for modal */
+  .handbook-section a {
+    transition: opacity 0.2s ease;
+  }
+
+  .handbook-section a:hover {
+    opacity: 0.8;
+  }
+
+  :global([data-theme="light"]) .handbook-section a {
+    color: #2563eb !important;
   }
 </style>
 

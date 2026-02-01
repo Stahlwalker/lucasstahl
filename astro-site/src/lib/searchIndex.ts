@@ -84,9 +84,9 @@ export async function buildSearchIndex(): Promise<SearchItem[]> {
     {
       type: 'website' as const,
       title: 'Developer Marketing Handbook',
-      description: 'A handbook for developer marketing that covers goals, strategy, journey, personas, messaging, campaigns, content, community, and metrics.',
+      description: 'A handbook for developer marketing that covers goals, strategy, journey, personas, messaging, campaigns, content, community, metrics, and includes a Claude skill for evaluating dev marketing content.',
       url: '/handbook/',
-      tags: ['handbook', 'guide', 'developer marketing', 'strategy', 'messaging', 'content', 'community', 'metrics', 'devrel']
+      tags: ['handbook', 'guide', 'developer marketing', 'strategy', 'messaging', 'content', 'community', 'metrics', 'devrel', 'claude', 'skill']
     },
     {
       type: 'website' as const,
@@ -115,6 +115,34 @@ export async function buildSearchIndex(): Promise<SearchItem[]> {
       description: 'Design system for lukestahl.io - colors, typography, spacing, icons, and reusable component examples.',
       url: '/design-system/',
       tags: ['design', 'components', 'colors', 'typography', 'ui', 'ux', 'font', 'logo', 'brand', 'spacing', 'icons', 'buttons', 'badges']
+    },
+    {
+      type: 'website' as const,
+      title: 'Gems',
+      description: 'Curated collection of developer marketing resources, tools, newsletters, podcasts, and communities for developer advocates and DevRel teams.',
+      url: '/gems/',
+      tags: ['gems', 'resources', 'tools', 'devrel', 'developer marketing', 'newsletters', 'podcasts', 'communities', 'collection']
+    },
+    {
+      type: 'website' as const,
+      title: 'Builds',
+      description: 'Portfolio of projects built by Luke Stahl - websites, apps, tools, and experiments in web development and marketing automation.',
+      url: '/builds/',
+      tags: ['builds', 'projects', 'portfolio', 'apps', 'websites', 'tools', 'experiments', 'development']
+    },
+    {
+      type: 'website' as const,
+      title: 'Blog',
+      description: 'Articles and insights on developer marketing, web development, product strategy, and digital marketing from Luke Stahl.',
+      url: '/blog/',
+      tags: ['blog', 'articles', 'writing', 'developer marketing', 'web development', 'strategy', 'insights']
+    },
+    {
+      type: 'website' as const,
+      title: 'For LLMs',
+      description: 'Structured information about Luke Stahl optimized for Large Language Models - skills, experience, projects, and contact details.',
+      url: '/for-llms/',
+      tags: ['llm', 'ai', 'structured data', 'profile', 'bio', 'resume', 'skills', 'experience']
     }
   ];
 
