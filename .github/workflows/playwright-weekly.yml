@@ -1,0 +1,154 @@
+name: Weekly Cross-Browser Tests
+
+# Runs every Monday at 6 AM UTC (2 AM EST / 11 PM PST Sunday)
+# Adjust the cron schedule if you need a different timezone
+on:
+  schedule:
+    - cron: '0 6 * * 1'
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  playwright-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: 'astro-site/package-lock.json'
+
+      - name: Install dependencies
+        run: cd astro-site && npm ci
+
+      - name: Install Playwright Browsers
+        run: cd astro-site && npx playwright install --with-deps chromium firefox webkit
+
+      - name: Run Playwright tests against production
+        run: cd astro-site && npx playwright test
+        continue-on-error: true
+        id: playwright
+        env:
+          CI: true
+
+      - name: Upload Playwright Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: astro-site/playwright-report/
+          retention-days: 30
+
+      - name: Create Issue if tests fail
+        if: steps.playwright.outcome == 'failure'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // Check if an issue already exists
+            const issues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'playwright-tests'
+            });
+
+            // If there's already an open issue, add a comment instead
+            if (issues.data.length > 0) {
+              const existingIssue = issues.data[0];
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existingIssue.number,
+                body: `🎭 **Cross-browser tests failed again on ${new Date().toLocaleDateString()}**\n\n` +
+                      `The Playwright test suite detected issues.\n\n` +
+                      `[View workflow run](${context.payload.repository.html_url}/actions/runs/${context.runId})\n` +
+                      `[Download test report](${context.payload.repository.html_url}/actions/runs/${context.runId}#artifacts)`
+              });
+            } else {
+              // Create a new issue
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: '🎭 Cross-Browser Tests Failed',
+                body: `## Playwright Test Failures\n\n` +
+                      `The automated cross-browser tests found issues on your production site.\n\n` +
+                      `### Details\n` +
+                      `- **Date**: ${new Date().toLocaleDateString()}\n` +
+                      `- **Site Tested**: https://lukestahl.io\n` +
+                      `- **Browsers Tested**: Chromium, Firefox, WebKit (Safari)\n\n` +
+                      `### Action Required\n` +
+                      `1. Review the [workflow run logs](${context.payload.repository.html_url}/actions/runs/${context.runId}) for details\n` +
+                      `2. Download the [Playwright HTML report](${context.payload.repository.html_url}/actions/runs/${context.runId}#artifacts) for detailed test results\n` +
+                      `3. Fix the issues on production or update tests if site behavior changed intentionally\n` +
+                      `4. Close this issue once fixed\n\n` +
+                      `---\n` +
+                      `*This issue was automatically created by the Playwright testing workflow.*`,
+                labels: ['playwright-tests', 'testing']
+              });
+            }
+
+      - name: Send Email Notification
+        if: always()
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          TO_EMAIL: ${{ secrets.NOTIFICATION_EMAIL }}
+          FROM_EMAIL: ${{ secrets.FROM_EMAIL }}
+        run: |
+          if [ "${{ steps.playwright.outcome }}" == "success" ]; then
+            SUBJECT="✅ Cross-Browser Tests Passed - lukestahl.io"
+            BODY="<h2>✅ All Browser Tests Passing</h2><p>The automated cross-browser test suite ran successfully on <strong>$(date '+%B %d, %Y')</strong> against your production site.</p><p><strong>Result:</strong> All tests passed across Chromium, Firefox, and WebKit!</p><hr><h3>Tests Run:</h3><ul><li>Homepage functionality</li><li>Blog navigation and rendering</li><li>Theme toggle (dark/light mode)</li><li>Search functionality</li><li>Navigation and mobile responsiveness</li></ul><p><strong>Site Tested:</strong> https://lukestahl.io</p><p><a href=\"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\">View Full Workflow Run</a></p>"
+          else
+            SUBJECT="🎭 Cross-Browser Tests Failed on lukestahl.io"
+            BODY="<h2>🎭 Browser Test Failures Detected</h2><p>The automated Playwright test suite found issues on your production site on <strong>$(date '+%B %d, %Y')</strong>.</p><h3>Action Required</h3><ol><li>Review the <a href=\"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\">workflow run logs</a> for details</li><li>Download the <a href=\"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}#artifacts\">Playwright HTML report</a> for detailed test results</li><li>Fix the issues on production or update tests if site behavior changed intentionally</li><li>Close the GitHub issue once fixed</li></ol><hr><p><strong>Site Tested:</strong> https://lukestahl.io</p><p><strong>Browsers Tested:</strong> Chromium, Firefox, WebKit (Safari)</p><p><a href=\"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\">View Full Workflow Run</a></p>"
+          fi
+
+          # Use jq to properly escape the JSON
+          PAYLOAD=$(jq -n \
+            --arg from "$FROM_EMAIL" \
+            --arg to "$TO_EMAIL" \
+            --arg subject "$SUBJECT" \
+            --arg html "$BODY" \
+            '{from: $from, to: [$to], subject: $subject, html: $html}')
+
+          echo "Sending email from: $FROM_EMAIL to: $TO_EMAIL"
+          RESPONSE=$(curl -w "\nHTTP_STATUS:%{http_code}" -X POST "https://api.resend.com/emails" \
+            -H "Authorization: Bearer $RESEND_API_KEY" \
+            -H "Content-Type: application/json" \
+            -d "$PAYLOAD")
+
+          echo "Resend API Response: $RESPONSE"
+
+          HTTP_STATUS=$(echo "$RESPONSE" | grep HTTP_STATUS | cut -d':' -f2)
+          if [ "$HTTP_STATUS" != "200" ]; then
+            echo "Error: Email sending failed with status $HTTP_STATUS"
+          else
+            echo "Email sent successfully!"
+          fi
+
+      - name: Generate Summary
+        if: always()
+        run: |
+          echo "# 🎭 Playwright Test Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ steps.playwright.outcome }}" == "success" ]; then
+            echo "✅ **All tests passed!**" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "All cross-browser tests completed successfully across:" >> $GITHUB_STEP_SUMMARY
+            echo "- Chromium" >> $GITHUB_STEP_SUMMARY
+            echo "- Firefox" >> $GITHUB_STEP_SUMMARY
+            echo "- WebKit (Safari)" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ **Tests failed**" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Some tests failed. Please review the logs and test report for details." >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "📊 [Download Playwright HTML Report](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}#artifacts)" >> $GITHUB_STEP_SUMMARY
+          fi
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Site Tested:** https://lukestahl.io" >> $GITHUB_STEP_SUMMARY
+          echo "**Test Date:** $(date '+%B %d, %Y at %H:%M UTC')" >> $GITHUB_STEP_SUMMARY
+          echo "**Next scheduled run:** Next Monday at 6:00 AM UTC" >> $GITHUB_STEP_SUMMARY
