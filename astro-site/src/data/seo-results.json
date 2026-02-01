@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-01-25T13:27:15Z",
+  "lastUpdated": "2026-02-01T09:35:29Z",
   "results": {
     "mobile": {
       "home": {
@@ -7,12 +7,12 @@
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
-        "lcp": 7052.2055105795516,
-        "cls": 0.00075725217969882725,
+        "lcp": 7054.2202528191,
+        "cls": 0.00067430303796223992,
         "tbt": 0
       },
       "about": {
-        "performance": 74,
+        "performance": 60,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
@@ -24,13 +24,13 @@
         "seo": 100
       },
       "builds": {
-        "performance": 68,
+        "performance": 60,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
       },
       "gems": {
-        "performance": 60,
+        "performance": 70,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
@@ -38,34 +38,34 @@
     },
     "desktop": {
       "home": {
-        "performance": 98,
+        "performance": 95,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
-        "lcp": 964.08348274977664,
-        "cls": 0.00075416560901490849,
+        "lcp": 1287.1384192939895,
+        "cls": 0.00066748327828321209,
         "tbt": 0
       },
       "about": {
-        "performance": 93,
-        "accessibility": 100,
-        "bestPractices": 100,
-        "seo": 100
-      },
-      "blog": {
         "performance": 95,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
       },
+      "blog": {
+        "performance": 94,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      },
       "builds": {
-        "performance": 97,
+        "performance": 96,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
       },
       "gems": {
-        "performance": 96,
+        "performance": 94,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
