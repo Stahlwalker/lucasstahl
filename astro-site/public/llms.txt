@@ -22,9 +22,10 @@
 
 ## Blog Posts
 
+- [What is developer marketing and why it exists](https://lukestahl.io/blog/developer-marketing/)
+- [What gets lost during leadership transitions](https://lukestahl.io/blog/leadership-flywheel/)
 - [Can a modern website run on Markdown + AI alone?](https://lukestahl.io/blog/markdown-vs-cms/)
 - [Inside my developer marketing stack](https://lukestahl.io/blog/my-stack/)
-- [What gets lost during leadership transitions](https://lukestahl.io/blog/leadership-flywheel/)
 
 ## Professional Focus
 
