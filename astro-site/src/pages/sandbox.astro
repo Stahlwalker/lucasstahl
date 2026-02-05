@@ -5016,5 +5016,129 @@ import ColorBendsTest from '../components/ColorBendsTest.jsx';
 			0%, 100% { opacity: 0.2; }
 			50% { opacity: 0.8; }
 		}
+
+		/* Move PostHog Support Chat widget to bottom-left */
+		:global(#posthog-support-widget),
+		:global([id*="posthog-conversation"]),
+		:global([class*="posthog-conversation"]),
+		:global(iframe[title*="PostHog"]) {
+			left: 20px !important;
+			right: auto !important;
+		}
+
+		/* Target the widget container that PostHog injects */
+		:global(body > div[style*="position: fixed"][style*="right"]) {
+			left: 20px !important;
+			right: auto !important;
+		}
 	</style>
+
+	<!-- PostHog Support Chat Widget Test Section -->
+	<section style="padding: 4rem 2rem; max-width: 800px; margin: 0 auto;">
+		<div style="background: linear-gradient(135deg, rgba(96, 165, 250, 0.1), rgba(168, 85, 247, 0.1)); border-radius: 1rem; padding: 2rem; border: 1px solid rgba(96, 165, 250, 0.3);">
+			<h2 style="font-family: 'Fira Code', monospace; font-size: 1.5rem; margin-bottom: 1rem; background: linear-gradient(135deg, #60a5fa, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+				PostHog Support Chat Widget Test
+			</h2>
+			<p style="margin-bottom: 1.5rem; opacity: 0.8;">
+				Testing the PostHog Support Chat widget. The widget should appear in the bottom-left corner of the page (moved to avoid conflict with handbook modal).
+			</p>
+
+			<div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
+				<button id="showWidget" style="padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #60a5fa, #3b82f6); border: none; border-radius: 0.5rem; color: white; font-family: 'Fira Code', monospace; cursor: pointer; font-weight: 500; transition: transform 0.2s;">
+					Show Widget
+				</button>
+				<button id="hideWidget" style="padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #ef4444, #dc2626); border: none; border-radius: 0.5rem; color: white; font-family: 'Fira Code', monospace; cursor: pointer; font-weight: 500; transition: transform 0.2s;">
+					Hide Widget
+				</button>
+				<button id="checkVisibility" style="padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #a855f7, #9333ea); border: none; border-radius: 0.5rem; color: white; font-family: 'Fira Code', monospace; cursor: pointer; font-weight: 500; transition: transform 0.2s;">
+					Check Visibility
+				</button>
+			</div>
+
+			<div id="widgetStatus" style="padding: 1rem; background: rgba(0, 0, 0, 0.2); border-radius: 0.5rem; font-family: 'Fira Code', monospace; font-size: 0.875rem;">
+				<strong>Status:</strong> <span id="statusText">Initializing...</span>
+			</div>
+
+			<div style="margin-top: 1.5rem; padding: 1rem; background: rgba(0, 0, 0, 0.2); border-radius: 0.5rem; font-size: 0.875rem;">
+				<strong>Note:</strong> The widget must be enabled in your PostHog dashboard (Support → Settings → In-app widget).
+			</div>
+		</div>
+	</section>
+
+	<script>
+		// Wait for PostHog to be available
+		function waitForPostHog(callback) {
+			if (window.posthog && window.posthog.conversations) {
+				callback();
+			} else {
+				setTimeout(() => waitForPostHog(callback), 100);
+			}
+		}
+
+		// Initialize widget controls
+		waitForPostHog(() => {
+			// Identify user for testing Support Chat (required for person_profiles: 'identified_only')
+			window.posthog.identify('sandbox-test-user', {
+				email: 'test@example.com',
+				name: 'Sandbox Test User'
+			});
+
+			console.log('PostHog user identified for Support Chat testing');
+			const showBtn = document.getElementById('showWidget');
+			const hideBtn = document.getElementById('hideWidget');
+			const checkBtn = document.getElementById('checkVisibility');
+			const statusText = document.getElementById('statusText');
+
+			// Update status
+			function updateStatus(message, isError = false) {
+				if (statusText) {
+					statusText.textContent = message;
+					statusText.style.color = isError ? '#ef4444' : '#60a5fa';
+				}
+			}
+
+			// Show widget
+			showBtn?.addEventListener('click', () => {
+				try {
+					window.posthog.conversations.show();
+					updateStatus('Widget shown successfully!');
+				} catch (error) {
+					updateStatus(`Error: ${error.message}`, true);
+				}
+			});
+
+			// Hide widget
+			hideBtn?.addEventListener('click', () => {
+				try {
+					window.posthog.conversations.hide();
+					updateStatus('Widget hidden successfully!');
+				} catch (error) {
+					updateStatus(`Error: ${error.message}`, true);
+				}
+			});
+
+			// Check visibility
+			checkBtn?.addEventListener('click', () => {
+				try {
+					const isVisible = window.posthog.conversations.isVisible();
+					updateStatus(`Widget is ${isVisible ? 'visible' : 'hidden'}`);
+				} catch (error) {
+					updateStatus(`Error: ${error.message}`, true);
+				}
+			});
+
+			// Add hover effects
+			[showBtn, hideBtn, checkBtn].forEach(btn => {
+				btn?.addEventListener('mouseenter', (e) => {
+					e.target.style.transform = 'scale(1.05)';
+				});
+				btn?.addEventListener('mouseleave', (e) => {
+					e.target.style.transform = 'scale(1)';
+				});
+			});
+
+			// Initial status
+			updateStatus('PostHog loaded. Widget controls ready!');
+		});
+	</script>
 </Layout>

@@ -5,12 +5,16 @@
     // Defer PostHog initialization until page is interactive
     function initPostHog() {
         import('posthog-js').then(({ default: posthog }) => {
+            // Check if we're on the sandbox page (handle both /sandbox and /sandbox/)
+            const isSandboxPage = window.location.pathname === '/sandbox' || window.location.pathname === '/sandbox/';
+
             posthog.init('phc_4ruyfwFBGDiEiFhDLbLn5wIkpKvgDqpsuGhaPTiMpzP', {
                 api_host: 'https://us.i.posthog.com',
                 defaults: '2025-05-24',
                 person_profiles: 'identified_only',
                 disable_session_recording: true, // Saves ~140KB - re-enable when needed
                 disable_surveys: true, // Saves ~30KB - not being used
+                disable_conversations: !isSandboxPage, // Only enable conversations on /sandbox page
                 capture_pageview: true,
                 capture_pageleave: true,
                 capture_performance: false, // Disabled - requires web-vitals package (3KB). Using GitHub Actions for weekly monitoring instead
