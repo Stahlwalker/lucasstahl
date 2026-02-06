@@ -1,0 +1,147 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+	title="Newsletter Confirmed - Luke Stahl"
+	description="You're subscribed to Luke's newsletter"
+	canonicalUrl="https://lukestahl.io/newsletter/confirmed"
+	robots="noindex, nofollow"
+	showAnnouncement={false}
+>
+	<div class="confirmation-page">
+		<div class="confirmation-container">
+			<div class="confirmation-icon">
+				<i class="fa-solid fa-circle-check"></i>
+			</div>
+
+			<div class="confirmation-content">
+				<h1 class="confirmation-title">You're all set</h1>
+				<p class="confirmation-message">Thanks for subscribing. You'll hear from me soon.</p>
+			</div>
+
+			<a href="/" class="confirmation-button">
+				<i class="fa-solid fa-arrow-left"></i>
+				Back to home
+			</a>
+		</div>
+	</div>
+</Layout>
+
+<style>
+	.confirmation-page {
+		min-height: calc(100vh - 300px);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 2rem;
+	}
+
+	.confirmation-container {
+		max-width: 500px;
+		width: 100%;
+		text-align: center;
+	}
+
+	.confirmation-icon {
+		margin-bottom: 2rem;
+	}
+
+	.confirmation-icon i {
+		font-size: 4rem;
+		color: var(--accent-color);
+	}
+
+	.confirmation-content {
+		margin-bottom: 2.5rem;
+	}
+
+	.confirmation-title {
+		font-size: 2.5rem;
+		font-weight: 600;
+		color: var(--text-primary);
+		margin: 0 0 1rem 0;
+		line-height: 1.2;
+	}
+
+	.confirmation-message {
+		font-size: 1.125rem;
+		color: var(--text-secondary);
+		margin: 0;
+		line-height: 1.6;
+	}
+
+	.confirmation-button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		padding: 0.875rem 1.5rem;
+		background: var(--accent-color);
+		color: var(--bg-primary);
+		text-decoration: none;
+		font-weight: 500;
+		transition: all 0.2s ease;
+		border-radius: 8px;
+		cursor: pointer;
+	}
+
+	.confirmation-button:hover {
+		background: var(--accent-hover);
+		transform: translateY(-1px);
+	}
+
+	.confirmation-button:focus {
+		outline: 2px solid var(--accent-color);
+		outline-offset: 2px;
+	}
+
+	.confirmation-button i {
+		font-size: 0.875rem;
+		transition: transform 0.2s ease;
+	}
+
+	.confirmation-button:hover i {
+		transform: translateX(-2px);
+	}
+
+	/* Mobile */
+	@media (max-width: 768px) {
+		.confirmation-page {
+			min-height: calc(100vh - 250px);
+			padding: 1.5rem 1rem;
+		}
+
+		.confirmation-icon i {
+			font-size: 3rem;
+		}
+
+		.confirmation-content {
+			margin-bottom: 2rem;
+		}
+
+		.confirmation-title {
+			font-size: 2rem;
+		}
+
+		.confirmation-message {
+			font-size: 1rem;
+		}
+
+		.confirmation-button {
+			padding: 0.75rem 1.25rem;
+			font-size: 0.9375rem;
+		}
+	}
+
+	/* Small mobile */
+	@media (max-width: 480px) {
+		.confirmation-title {
+			font-size: 1.75rem;
+		}
+
+		.confirmation-message {
+			font-size: 0.9375rem;
+		}
+	}
+</style>
