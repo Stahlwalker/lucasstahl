@@ -1,0 +1,252 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+	title="Newsletter - Luke Stahl"
+	description="Subscribe to Luke's newsletter for developer marketing insights"
+	canonicalUrl="https://lukestahl.io/newsletter"
+	robots="noindex, nofollow"
+	showAnnouncement={false}
+>
+	<div class="newsletter-page">
+		<div class="newsletter-container">
+			<div class="newsletter-icon">
+				<i class="fa-solid fa-envelope"></i>
+			</div>
+
+			<div class="newsletter-content">
+				<h1 class="newsletter-title">Subscribe to my newsletter</h1>
+				<p class="newsletter-message">Get developer marketing insights, technical content, and project updates delivered to your inbox.</p>
+			</div>
+
+			<form class="newsletter-form" action="/newsletter/confirmed" method="POST">
+				<div class="form-row">
+					<div class="form-field">
+						<label for="firstName" class="form-label">First Name</label>
+						<input
+							type="text"
+							id="firstName"
+							name="firstName"
+							class="form-input"
+							required
+							placeholder="John"
+						/>
+					</div>
+
+					<div class="form-field">
+						<label for="lastName" class="form-label">Last Name</label>
+						<input
+							type="text"
+							id="lastName"
+							name="lastName"
+							class="form-input"
+							required
+							placeholder="Doe"
+						/>
+					</div>
+				</div>
+
+				<div class="form-field">
+					<label for="email" class="form-label">Email Address</label>
+					<input
+						type="email"
+						id="email"
+						name="email"
+						class="form-input"
+						required
+						placeholder="john@example.com"
+					/>
+				</div>
+
+				<button type="submit" class="newsletter-button">
+					<i class="fa-solid fa-paper-plane"></i>
+					Subscribe
+				</button>
+			</form>
+		</div>
+	</div>
+</Layout>
+
+<style>
+	.newsletter-page {
+		min-height: calc(100vh - 300px);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 2rem;
+	}
+
+	.newsletter-container {
+		max-width: 500px;
+		width: 100%;
+		text-align: center;
+	}
+
+	.newsletter-icon {
+		margin-bottom: 2rem;
+	}
+
+	.newsletter-icon i {
+		font-size: 4rem;
+		color: var(--accent-color);
+	}
+
+	.newsletter-content {
+		margin-bottom: 2.5rem;
+	}
+
+	.newsletter-title {
+		font-size: 2.5rem;
+		font-weight: 600;
+		color: var(--text-primary);
+		margin: 0 0 1rem 0;
+		line-height: 1.2;
+	}
+
+	.newsletter-message {
+		font-size: 1.125rem;
+		color: var(--text-secondary);
+		margin: 0;
+		line-height: 1.6;
+	}
+
+	.newsletter-form {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+		text-align: left;
+	}
+
+	.form-row {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1rem;
+	}
+
+	.form-field {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.form-label {
+		font-size: 0.875rem;
+		font-weight: 500;
+		color: var(--text-primary);
+	}
+
+	.form-input {
+		padding: 0.875rem 1rem;
+		background: var(--bg-secondary);
+		border: 2px solid rgba(96, 165, 250, 0.3);
+		border-radius: 8px;
+		color: var(--text-primary);
+		font-size: 1rem;
+		font-family: inherit;
+		transition: all 0.2s ease;
+		width: 100%;
+	}
+
+	.form-input::placeholder {
+		color: var(--text-secondary);
+		opacity: 0.6;
+	}
+
+	.form-input:focus {
+		outline: none;
+		border-color: var(--accent-color);
+		background: var(--bg-primary);
+	}
+
+	.form-input:hover {
+		border-color: var(--accent-hover);
+	}
+
+	.newsletter-button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		padding: 0.875rem 1.5rem;
+		background: var(--accent-color);
+		color: var(--bg-primary);
+		text-decoration: none;
+		font-weight: 500;
+		transition: all 0.2s ease;
+		border-radius: 8px;
+		cursor: pointer;
+		border: none;
+		font-size: 1rem;
+		font-family: inherit;
+		margin-top: 0.5rem;
+	}
+
+	.newsletter-button:hover {
+		background: var(--accent-hover);
+		transform: translateY(-1px);
+	}
+
+	.newsletter-button:focus {
+		outline: 2px solid var(--accent-color);
+		outline-offset: 2px;
+	}
+
+	.newsletter-button i {
+		font-size: 0.875rem;
+		transition: transform 0.2s ease;
+	}
+
+	.newsletter-button:hover i {
+		transform: translateX(2px);
+	}
+
+	/* Mobile */
+	@media (max-width: 768px) {
+		.newsletter-page {
+			min-height: calc(100vh - 250px);
+			padding: 1.5rem 1rem;
+		}
+
+		.newsletter-icon i {
+			font-size: 3rem;
+		}
+
+		.newsletter-content {
+			margin-bottom: 2rem;
+		}
+
+		.newsletter-title {
+			font-size: 2rem;
+		}
+
+		.newsletter-message {
+			font-size: 1rem;
+		}
+
+		.form-row {
+			grid-template-columns: 1fr;
+		}
+
+		.newsletter-button {
+			padding: 0.75rem 1.25rem;
+			font-size: 0.9375rem;
+		}
+	}
+
+	/* Small mobile */
+	@media (max-width: 480px) {
+		.newsletter-title {
+			font-size: 1.75rem;
+		}
+
+		.newsletter-message {
+			font-size: 0.9375rem;
+		}
+
+		.form-input {
+			padding: 0.75rem 0.875rem;
+			font-size: 0.9375rem;
+		}
+	}
+</style>
