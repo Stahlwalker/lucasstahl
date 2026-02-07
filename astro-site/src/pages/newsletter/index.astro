@@ -164,13 +164,13 @@ import Layout from '../../layouts/Layout.astro';
 	}
 
 	.newsletter-button {
-		display: inline-flex;
+		display: inline-flex !important;
 		align-items: center;
 		justify-content: center;
 		gap: 0.5rem;
 		padding: 0.875rem 1.5rem;
-		background: var(--accent-color);
-		color: var(--bg-primary);
+		background: #60a5fa;
+		color: white;
 		text-decoration: none;
 		font-weight: 500;
 		transition: all 0.2s ease;
@@ -180,11 +180,21 @@ import Layout from '../../layouts/Layout.astro';
 		font-size: 1rem;
 		font-family: inherit;
 		margin-top: 0.5rem;
+		width: 100%;
+	}
+
+	:global([data-theme="light"]) .newsletter-button {
+		background: #2563eb;
+		color: white;
 	}
 
 	.newsletter-button:hover {
-		background: var(--accent-hover);
+		background: #4f9aff;
 		transform: translateY(-1px);
+	}
+
+	:global([data-theme="light"]) .newsletter-button:hover {
+		background: #1e40af;
 	}
 
 	.newsletter-button:focus {
@@ -250,3 +260,102 @@ import Layout from '../../layouts/Layout.astro';
 		}
 	}
 </style>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		const form = document.querySelector('.newsletter-form');
+
+		// Create message div if it doesn't exist
+		let messageDiv = document.getElementById('subscribe-message');
+		if (!messageDiv) {
+			messageDiv = document.createElement('div');
+			messageDiv.id = 'subscribe-message';
+			messageDiv.style.cssText = `
+				margin-top: 1rem;
+				padding: 1rem;
+				border-radius: 8px;
+				text-align: center;
+				font-size: 0.95rem;
+				display: none;
+			`;
+			form.appendChild(messageDiv);
+		}
+
+		form.addEventListener('submit', async (e) => {
+			e.preventDefault();
+
+			const firstName = document.getElementById('firstName').value.trim();
+			const lastName = document.getElementById('lastName').value.trim();
+			const email = document.getElementById('email').value.trim();
+			const fullName = `${firstName} ${lastName}`;
+
+			const submitButton = form.querySelector('button[type="submit"]');
+			const originalButtonText = submitButton.innerHTML;
+
+			// Disable button and show loading state
+			submitButton.disabled = true;
+			submitButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Subscribing...';
+
+			// Hide any previous messages
+			messageDiv.style.display = 'none';
+
+			try {
+				const response = await fetch('https://marketing-builder-api.onrender.com/api/subscribers/subscribe', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({
+						name: fullName,
+						email: email,
+						confirmationUrl: 'https://lukestahl.io/newsletter/confirmed/'
+					})
+				});
+
+				const data = await response.json();
+
+				if (response.ok) {
+					// Success
+					messageDiv.textContent = '✓ Check your email to confirm your subscription!';
+					messageDiv.style.cssText += `
+						display: block;
+						background: rgba(34, 197, 94, 0.1);
+						border: 2px solid rgba(34, 197, 94, 0.3);
+						color: rgb(34, 197, 94);
+					`;
+					form.reset();
+
+					// Track with PostHog if available
+					if (window.posthog) {
+						window.posthog.capture('newsletter_subscribed', {
+							email: email,
+							source: 'newsletter_page'
+						});
+					}
+				} else {
+					// Error from API
+					messageDiv.textContent = data.error || 'Something went wrong. Please try again.';
+					messageDiv.style.cssText += `
+						display: block;
+						background: rgba(239, 68, 68, 0.1);
+						border: 2px solid rgba(239, 68, 68, 0.3);
+						color: rgb(239, 68, 68);
+					`;
+				}
+			} catch (error) {
+				// Network error
+				messageDiv.textContent = 'Failed to subscribe. Please check your connection and try again.';
+				messageDiv.style.cssText += `
+					display: block;
+					background: rgba(239, 68, 68, 0.1);
+					border: 2px solid rgba(239, 68, 68, 0.3);
+					color: rgb(239, 68, 68);
+				`;
+			} finally {
+				// Re-enable button
+				submitButton.disabled = false;
+				submitButton.innerHTML = originalButtonText;
+			}
+		});
+	});
+</script>
