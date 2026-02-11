@@ -10,6 +10,8 @@ import react from '@astrojs/react';
 const excludedPages = [
   '/retro/',
   '/sandbox/',
+  '/newsletter/',
+  '/newsletter/confirmed/',
   // Add more noindex pages here as needed
 ];
 
