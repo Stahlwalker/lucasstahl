@@ -15,6 +15,7 @@
 - [Blog](https://lukestahl.io/blog/)
 - [Gems](https://lukestahl.io/gems/)
 - [Handbook](https://lukestahl.io/handbook/)
+- [Newsletter](https://lukestahl.io/newsletter/)
 - [Developer Marketing Cheat Sheet](https://lukestahl.io/dev-marketing-cheat-sheet/)
 - [Design System](https://lukestahl.io/design-system/)
 - [SEO Performance Dashboard](https://lukestahl.io/seo/)

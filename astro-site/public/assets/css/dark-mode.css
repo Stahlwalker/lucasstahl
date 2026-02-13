@@ -1081,13 +1081,18 @@ html {
     }
 
     .footer-social {
-        gap: 1.5rem;
+        gap: 1rem;
     }
 
     .footer-social a {
-        width: 40px;
-        height: 40px;
-        font-size: 1.25rem;
+        width: 38px;
+        height: 38px;
+        font-size: 1.15rem;
+    }
+
+    .footer-social a svg {
+        width: 20px;
+        height: 20px;
     }
 
     .footer-copyright {
@@ -1253,6 +1258,21 @@ html {
 
     .scroll-indicator i {
         font-size: 1rem;
+    }
+
+    .footer-social {
+        gap: 0.75rem;
+    }
+
+    .footer-social a {
+        width: 36px;
+        height: 36px;
+        font-size: 1.05rem;
+    }
+
+    .footer-social a svg {
+        width: 18px;
+        height: 18px;
     }
 
     .navbar-brand {
@@ -1536,5 +1556,23 @@ body,
 @media (min-width: 769px) {
     .theme-toggle-mobile {
         display: none !important;
+    }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 360px) {
+    .footer-social {
+        gap: 0.5rem;
+    }
+
+    .footer-social a {
+        width: 32px;
+        height: 32px;
+        font-size: 0.95rem;
+    }
+
+    .footer-social a svg {
+        width: 16px;
+        height: 16px;
     }
 }
