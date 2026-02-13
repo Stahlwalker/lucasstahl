@@ -809,6 +809,222 @@ const notionPosts = await getBlogPosts();
 		</div>
 	</section>
 
+	<!-- Newsletter CTA Section -->
+	<section class="newsletter-cta-section">
+		<div class="section-container">
+			<div class="newsletter-cta-card">
+				<div class="newsletter-cta-icon">
+					<i class="fa-solid fa-newspaper"></i>
+				</div>
+				<div class="newsletter-cta-content">
+					<p class="newsletter-cta-label">NEWSLETTER</p>
+					<h2 class="newsletter-cta-title">The Marketing Builder</h2>
+					<p class="newsletter-cta-description">
+						Monthly updates on web dev, developer marketing opportunities, interesting projects, and individuals to follow.
+					</p>
+					<a href="/newsletter/" class="newsletter-cta-button">
+						<i class="fa-solid fa-envelope"></i>
+						Subscribe
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<style>
+		.newsletter-cta-section {
+			padding: 4rem 2rem;
+			background: transparent;
+		}
+
+		.newsletter-cta-card {
+			max-width: 700px;
+			margin: 0 auto;
+			background: rgba(10, 17, 40, 0.8);
+			backdrop-filter: blur(10px);
+			border: 1px solid rgba(34, 211, 238, 0.3);
+			border-radius: 16px;
+			padding: 3rem;
+			text-align: center;
+			position: relative;
+			overflow: hidden;
+			transition: all 0.3s ease;
+			box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+		}
+
+		.newsletter-cta-card::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: radial-gradient(circle at center, rgba(34, 211, 238, 0.08) 0%, transparent 70%);
+			pointer-events: none;
+			border-radius: 16px;
+		}
+
+		.newsletter-cta-card:hover {
+			border-color: rgba(34, 211, 238, 0.5);
+			box-shadow: 0 8px 32px rgba(34, 211, 238, 0.15);
+		}
+
+		.newsletter-cta-icon {
+			margin-bottom: 1.5rem;
+		}
+
+		.newsletter-cta-icon i {
+			font-size: 3rem;
+			color: #22d3ee;
+			opacity: 0.9;
+		}
+
+		:global([data-theme="light"]) .newsletter-cta-icon i {
+			color: #0e9cdd;
+		}
+
+		.newsletter-cta-content {
+			position: relative;
+			z-index: 1;
+		}
+
+		.newsletter-cta-label {
+			font-family: 'Fira Code', monospace;
+			font-size: 0.75rem;
+			font-weight: 600;
+			color: var(--text-secondary);
+			letter-spacing: 2px;
+			text-transform: uppercase;
+			margin: 0 0 0.75rem 0;
+		}
+
+		.newsletter-cta-title {
+			font-family: 'Fira Code', monospace;
+			font-size: 2rem;
+			font-weight: 600;
+			color: var(--text-primary);
+			margin: 0 0 1rem 0;
+			line-height: 1.2;
+		}
+
+		.newsletter-cta-description {
+			font-size: 1rem;
+			color: var(--text-secondary);
+			line-height: 1.6;
+			margin: 0 0 2rem 0;
+			max-width: 500px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.newsletter-cta-button {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.5rem;
+			padding: 0.75rem 1.5rem;
+			background-color: rgba(34, 211, 238, 0.15);
+			border: 1px solid rgba(34, 211, 238, 0.5);
+			border-radius: 6px;
+			color: #22d3ee;
+			text-decoration: none;
+			font-family: 'Inter', sans-serif;
+			font-size: 0.9rem;
+			font-weight: 500;
+			transition: all 0.3s ease;
+		}
+
+		.newsletter-cta-button:hover {
+			background-color: rgba(34, 211, 238, 0.25);
+			border-color: #22d3ee;
+			text-decoration: none;
+			transform: translateY(-2px);
+			box-shadow: 0 4px 12px rgba(34, 211, 238, 0.3);
+		}
+
+		.newsletter-cta-button i {
+			font-size: 0.9rem;
+		}
+
+		/* Light mode */
+		:global([data-theme="light"]) .newsletter-cta-card {
+			background: rgba(248, 250, 252, 0.9);
+			border-color: rgba(14, 165, 233, 0.3);
+			box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+		}
+
+		:global([data-theme="light"]) .newsletter-cta-card::before {
+			background: radial-gradient(circle at center, rgba(14, 165, 233, 0.08) 0%, transparent 70%);
+		}
+
+		:global([data-theme="light"]) .newsletter-cta-card:hover {
+			border-color: rgba(14, 165, 233, 0.5);
+			box-shadow: 0 8px 32px rgba(14, 165, 233, 0.15);
+		}
+
+		:global([data-theme="light"]) .newsletter-cta-button {
+			background-color: rgba(14, 165, 233, 0.1);
+			border: 1.5px solid rgba(14, 165, 233, 0.4);
+			color: #075985;
+		}
+
+		:global([data-theme="light"]) .newsletter-cta-button:hover {
+			background-color: rgba(14, 165, 233, 0.15);
+			border-color: #075985;
+			color: #075985;
+			box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);
+		}
+
+		/* Mobile responsive */
+		@media (max-width: 768px) {
+			.newsletter-cta-section {
+				padding: 3rem 1.5rem;
+			}
+
+			.newsletter-cta-card {
+				padding: 2.5rem 2rem;
+			}
+
+			.newsletter-cta-icon i {
+				font-size: 2.5rem;
+			}
+
+			.newsletter-cta-title {
+				font-size: 1.75rem;
+			}
+
+			.newsletter-cta-description {
+				font-size: 0.95rem;
+			}
+		}
+
+		@media (max-width: 480px) {
+			.newsletter-cta-section {
+				padding: 2.5rem 1rem;
+			}
+
+			.newsletter-cta-card {
+				padding: 2rem 1.5rem;
+			}
+
+			.newsletter-cta-icon i {
+				font-size: 2.25rem;
+			}
+
+			.newsletter-cta-title {
+				font-size: 1.5rem;
+			}
+
+			.newsletter-cta-description {
+				font-size: 0.9rem;
+			}
+
+			.newsletter-cta-button {
+				padding: 0.65rem 1.25rem;
+				font-size: 0.85rem;
+			}
+		}
+	</style>
+
 	<script>
 		// Load more blog posts functionality
 		const ITEMS_PER_LOAD = 10;
