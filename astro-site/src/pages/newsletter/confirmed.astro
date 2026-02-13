@@ -9,138 +9,558 @@ import Layout from '../../layouts/Layout.astro';
 	showAnnouncement={false}
 >
 	<div class="confirmation-page">
+		<!-- Animated background elements -->
+		<div class="confirmation-background">
+			<div class="bg-shape shape-1"></div>
+			<div class="bg-shape shape-2"></div>
+			<div class="bg-shape shape-3"></div>
+			<div class="bg-grid"></div>
+			<div class="success-particles">
+				<div class="particle"></div>
+				<div class="particle"></div>
+				<div class="particle"></div>
+				<div class="particle"></div>
+				<div class="particle"></div>
+				<div class="particle"></div>
+			</div>
+		</div>
+
 		<div class="confirmation-container">
-			<div class="confirmation-icon">
-				<i class="fa-solid fa-circle-check"></i>
-			</div>
-
 			<div class="confirmation-content">
-				<h1 class="confirmation-title">You're all set</h1>
-				<p class="confirmation-message">Thanks for subscribing. You'll hear from me soon.</p>
+				<p class="confirmation-label">NEWSLETTER</p>
+				<div class="check-icon">
+					<i class="fa-solid fa-circle-check"></i>
+					<div class="icon-burst burst-1"></div>
+					<div class="icon-burst burst-2"></div>
+					<div class="icon-burst burst-3"></div>
+					<div class="icon-burst burst-4"></div>
+				</div>
+				<h1 class="confirmation-title">
+					<span class="code-bracket">&lt;</span>
+					You're All Set
+					<span class="code-bracket">/&gt;</span>
+				</h1>
+				<p class="confirmation-message">
+					Thanks for subscribing. Keep an eye out for updates from the intersection of code and marketing.
+				</p>
 			</div>
 
-			<a href="/" class="confirmation-button">
-				<i class="fa-solid fa-arrow-left"></i>
-				Back to home
-			</a>
+			<div class="confirmation-actions">
+				<a href="/" class="confirmation-button primary">
+					<span class="button-bg"></span>
+					<span class="button-content">
+						<i class="fa-solid fa-arrow-left"></i>
+						<span>Back to Home</span>
+					</span>
+				</a>
+				<a href="/blog" class="confirmation-button secondary">
+					<span class="button-content">
+						<i class="fa-solid fa-blog"></i>
+						<span>Read the Blog</span>
+						<i class="fa-solid fa-arrow-right"></i>
+					</span>
+				</a>
+			</div>
 		</div>
 	</div>
 </Layout>
 
 <style>
 	.confirmation-page {
-		min-height: calc(100vh - 300px);
+		min-height: calc(100vh - 200px);
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		padding: 2rem;
+		padding: 4rem 2rem;
+		position: relative;
+		overflow: hidden;
 	}
 
+	/* Animated Background */
+	.confirmation-background {
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		opacity: 0.4;
+		pointer-events: none;
+	}
+
+	.bg-shape {
+		position: absolute;
+		border-radius: 50%;
+		filter: blur(60px);
+		animation: float 20s ease-in-out infinite;
+	}
+
+	.bg-shape.shape-1 {
+		width: 400px;
+		height: 400px;
+		background: linear-gradient(135deg, rgba(34, 197, 94, 0.3), rgba(16, 185, 129, 0.2));
+		top: -100px;
+		left: -100px;
+		animation-delay: 0s;
+	}
+
+	:global([data-theme="light"]) .bg-shape.shape-1 {
+		background: linear-gradient(135deg, rgba(22, 163, 74, 0.2), rgba(21, 128, 61, 0.15));
+	}
+
+	.bg-shape.shape-2 {
+		width: 350px;
+		height: 350px;
+		background: linear-gradient(135deg, rgba(96, 165, 250, 0.2), rgba(34, 197, 94, 0.3));
+		bottom: -80px;
+		right: -80px;
+		animation-delay: 7s;
+	}
+
+	:global([data-theme="light"]) .bg-shape.shape-2 {
+		background: linear-gradient(135deg, rgba(96, 165, 250, 0.15), rgba(22, 163, 74, 0.2));
+	}
+
+	.bg-shape.shape-3 {
+		width: 300px;
+		height: 300px;
+		background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(5, 150, 105, 0.3));
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		animation-delay: 14s;
+	}
+
+	:global([data-theme="light"]) .bg-shape.shape-3 {
+		background: linear-gradient(135deg, rgba(21, 128, 61, 0.15), rgba(22, 101, 52, 0.2));
+	}
+
+	.bg-grid {
+		position: absolute;
+		inset: 0;
+		background-image:
+			linear-gradient(rgba(34, 197, 94, 0.05) 1px, transparent 1px),
+			linear-gradient(90deg, rgba(34, 197, 94, 0.05) 1px, transparent 1px);
+		background-size: 50px 50px;
+		opacity: 0.3;
+	}
+
+	:global([data-theme="light"]) .bg-grid {
+		background-image:
+			linear-gradient(rgba(22, 163, 74, 0.08) 1px, transparent 1px),
+			linear-gradient(90deg, rgba(22, 163, 74, 0.08) 1px, transparent 1px);
+	}
+
+	@keyframes float {
+		0%, 100% {
+			transform: translate(0, 0) scale(1);
+		}
+		33% {
+			transform: translate(30px, -30px) scale(1.1);
+		}
+		66% {
+			transform: translate(-20px, 20px) scale(0.9);
+		}
+	}
+
+	/* Success Particles */
+	.success-particles {
+		position: absolute;
+		inset: 0;
+	}
+
+	.particle {
+		position: absolute;
+		width: 8px;
+		height: 8px;
+		background: rgba(16, 185, 129, 0.6);
+		border-radius: 50%;
+		top: 50%;
+		left: 50%;
+		animation: explode 1.5s ease-out forwards;
+		opacity: 0;
+	}
+
+	:global([data-theme="light"]) .particle {
+		background: rgba(21, 128, 61, 0.7);
+	}
+
+	.particle:nth-child(1) {
+		animation-delay: 0.5s;
+		--angle: 0deg;
+	}
+
+	.particle:nth-child(2) {
+		animation-delay: 0.55s;
+		--angle: 60deg;
+	}
+
+	.particle:nth-child(3) {
+		animation-delay: 0.6s;
+		--angle: 120deg;
+	}
+
+	.particle:nth-child(4) {
+		animation-delay: 0.65s;
+		--angle: 180deg;
+	}
+
+	.particle:nth-child(5) {
+		animation-delay: 0.7s;
+		--angle: 240deg;
+	}
+
+	.particle:nth-child(6) {
+		animation-delay: 0.75s;
+		--angle: 300deg;
+	}
+
+	@keyframes explode {
+		0% {
+			opacity: 1;
+			transform: translate(0, 0) scale(1);
+		}
+		100% {
+			opacity: 0;
+			transform:
+				translate(
+					calc(cos(var(--angle)) * 150px),
+					calc(sin(var(--angle)) * 150px)
+				)
+				scale(0);
+		}
+	}
+
+	/* Container */
 	.confirmation-container {
-		max-width: 500px;
+		max-width: 600px;
 		width: 100%;
-		text-align: center;
+		position: relative;
+		z-index: 1;
+		animation: fadeInUp 0.8s ease-out;
 	}
 
-	.confirmation-icon {
-		margin-bottom: 2rem;
+	@keyframes fadeInUp {
+		from {
+			opacity: 0;
+			transform: translateY(30px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
 	}
 
-	.confirmation-icon i {
-		font-size: 4rem;
-		color: var(--accent-color);
+	/* Check Icon */
+	.check-icon {
+		position: relative;
+		display: inline-block;
+		margin: 0 auto 1.5rem;
 	}
 
+	.check-icon i {
+		font-size: 4.5rem;
+		color: rgb(16, 185, 129);
+		position: relative;
+		z-index: 2;
+		display: block;
+		animation: successBounce 0.8s ease-out 0.3s both;
+	}
+
+	:global([data-theme="light"]) .check-icon i {
+		color: rgb(21, 128, 61);
+	}
+
+	@keyframes successBounce {
+		0% {
+			opacity: 0;
+			transform: scale(0);
+		}
+		50% {
+			transform: scale(1.2);
+		}
+		70% {
+			transform: scale(0.9);
+		}
+		100% {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
+
+	.icon-burst {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 3px;
+		height: 30px;
+		background: linear-gradient(to bottom, rgb(16, 185, 129), transparent);
+		transform-origin: center;
+		opacity: 0;
+		animation: burst 0.6s ease-out 0.5s both;
+	}
+
+	:global([data-theme="light"]) .icon-burst {
+		background: linear-gradient(to bottom, rgb(21, 128, 61), transparent);
+	}
+
+	.icon-burst.burst-1 {
+		transform: translate(-50%, -50%) rotate(0deg);
+		animation-delay: 0.5s;
+	}
+
+	.icon-burst.burst-2 {
+		transform: translate(-50%, -50%) rotate(90deg);
+		animation-delay: 0.55s;
+	}
+
+	.icon-burst.burst-3 {
+		transform: translate(-50%, -50%) rotate(45deg);
+		animation-delay: 0.6s;
+	}
+
+	.icon-burst.burst-4 {
+		transform: translate(-50%, -50%) rotate(135deg);
+		animation-delay: 0.65s;
+	}
+
+	@keyframes burst {
+		0% {
+			opacity: 0.8;
+			height: 10px;
+		}
+		100% {
+			opacity: 0;
+			height: 60px;
+		}
+	}
+
+	/* Content */
 	.confirmation-content {
-		margin-bottom: 2.5rem;
+		text-align: center;
+		margin-bottom: 3rem;
+		padding-top: 2rem;
+	}
+
+	.confirmation-label {
+		font-family: 'Fira Code', monospace;
+		font-size: 0.75rem;
+		font-weight: 600;
+		color: var(--text-secondary);
+		letter-spacing: 2px;
+		text-transform: uppercase;
+		margin: 0 0 1.5rem 0;
 	}
 
 	.confirmation-title {
+		font-family: 'Fira Code', monospace;
 		font-size: 2.5rem;
 		font-weight: 600;
 		color: var(--text-primary);
-		margin: 0 0 1rem 0;
+		margin: 0 0 0.75rem 0;
 		line-height: 1.2;
+	}
+
+	.confirmation-subtitle {
+		font-family: 'Fira Code', monospace;
+		font-size: 0.95rem;
+		color: var(--text-secondary);
+		margin: 0 0 1.5rem 0;
+		opacity: 0.7;
+		font-style: italic;
 	}
 
 	.confirmation-message {
 		font-size: 1.125rem;
 		color: var(--text-secondary);
 		margin: 0;
-		line-height: 1.6;
+		line-height: 1.7;
+		max-width: 540px;
+		margin: 0 auto;
+	}
+
+	/* Actions */
+	.confirmation-actions {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+		flex-wrap: wrap;
 	}
 
 	.confirmation-button {
+		position: relative;
+		padding: 1.125rem 2rem;
+		text-decoration: none;
+		font-weight: 600;
+		transition: all 0.3s ease;
+		border-radius: 10px;
+		cursor: pointer;
+		font-size: 1.0625rem;
+		font-family: inherit;
+		overflow: hidden;
+		letter-spacing: 0.01em;
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		gap: 0.5rem;
-		padding: 0.875rem 1.5rem;
-		background: var(--accent-color);
-		color: var(--bg-primary);
-		text-decoration: none;
-		font-weight: 500;
-		transition: all 0.2s ease;
-		border-radius: 8px;
-		cursor: pointer;
 	}
 
-	.confirmation-button:hover {
-		background: var(--accent-hover);
-		transform: translateY(-1px);
+	/* Primary Button */
+	.confirmation-button.primary {
+		background: transparent;
+		color: white;
+	}
+
+	.confirmation-button.primary .button-bg {
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(135deg, rgb(34, 197, 94) 0%, rgb(16, 185, 129) 100%);
+		transition: all 0.3s ease;
+		z-index: 0;
+	}
+
+	:global([data-theme="light"]) .confirmation-button.primary .button-bg {
+		background: linear-gradient(135deg, rgb(22, 163, 74) 0%, rgb(21, 128, 61) 100%);
+	}
+
+	.confirmation-button.primary:hover .button-bg {
+		transform: scale(1.05);
+		box-shadow: 0 8px 24px rgba(34, 197, 94, 0.4);
+	}
+
+	:global([data-theme="light"]) .confirmation-button.primary:hover .button-bg {
+		box-shadow: 0 8px 24px rgba(22, 163, 74, 0.4);
+	}
+
+	.confirmation-button.primary:hover {
+		transform: translateY(-2px);
+	}
+
+	/* Secondary Button */
+	.confirmation-button.secondary {
+		background: var(--bg-secondary);
+		color: var(--text-primary);
+		border: 2px solid rgba(96, 165, 250, 0.3);
+	}
+
+	.confirmation-button.secondary:hover {
+		border-color: var(--accent-color);
+		background: var(--bg-primary);
+		transform: translateY(-2px);
+		box-shadow: 0 8px 24px rgba(96, 165, 250, 0.2);
+	}
+
+	.button-content {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.75rem;
+	}
+
+	.confirmation-button:active {
+		transform: translateY(0);
 	}
 
 	.confirmation-button:focus {
-		outline: 2px solid var(--accent-color);
-		outline-offset: 2px;
+		outline: 2px solid rgb(34, 197, 94);
+		outline-offset: 3px;
+	}
+
+	:global([data-theme="light"]) .confirmation-button:focus {
+		outline-color: rgb(22, 163, 74);
 	}
 
 	.confirmation-button i {
-		font-size: 0.875rem;
-		transition: transform 0.2s ease;
+		font-size: 1rem;
+		transition: transform 0.3s ease;
 	}
 
-	.confirmation-button:hover i {
-		transform: translateX(-2px);
+	.confirmation-button.primary:hover i.fa-arrow-left {
+		transform: translateX(-4px);
 	}
 
-	/* Mobile */
+	.confirmation-button.secondary:hover i.fa-arrow-right {
+		transform: translateX(4px);
+	}
+
+	/* Mobile Responsive */
 	@media (max-width: 768px) {
 		.confirmation-page {
 			min-height: calc(100vh - 250px);
-			padding: 1.5rem 1rem;
+			padding: 2rem 1rem;
 		}
 
-		.confirmation-icon i {
-			font-size: 3rem;
-		}
-
-		.confirmation-content {
-			margin-bottom: 2rem;
+		.confirmation-label {
+			font-size: 0.7rem;
 		}
 
 		.confirmation-title {
 			font-size: 2rem;
 		}
 
+		.confirmation-subtitle {
+			font-size: 0.875rem;
+		}
+
 		.confirmation-message {
 			font-size: 1rem;
 		}
 
+		.confirmation-actions {
+			flex-direction: column;
+			width: 100%;
+		}
+
 		.confirmation-button {
-			padding: 0.75rem 1.25rem;
-			font-size: 0.9375rem;
+			width: 100%;
+		}
+
+		.bg-shape {
+			filter: blur(40px);
+		}
+
+		.bg-shape.shape-1,
+		.bg-shape.shape-2 {
+			width: 250px;
+			height: 250px;
+		}
+
+		.bg-shape.shape-3 {
+			width: 200px;
+			height: 200px;
 		}
 	}
 
-	/* Small mobile */
 	@media (max-width: 480px) {
+		.confirmation-label {
+			font-size: 0.65rem;
+		}
+
 		.confirmation-title {
 			font-size: 1.75rem;
 		}
 
+		.confirmation-subtitle {
+			font-size: 0.8rem;
+		}
+
 		.confirmation-message {
 			font-size: 0.9375rem;
+		}
+
+		.check-icon i {
+			font-size: 3.5rem;
+		}
+
+		.check-icon {
+			margin: 0 auto 1.25rem;
+		}
+
+		.confirmation-button {
+			padding: 1rem 1.5rem;
+			font-size: 1rem;
+		}
+
+		.button-content {
+			gap: 0.5rem;
 		}
 	}
 </style>
