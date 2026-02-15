@@ -1007,3 +1007,15 @@
     border-color: var(--accent-primary);
     color: var(--accent-primary);
 }
+
+/* Dual Links Layout */
+.build-link-wrapper.dual-links {
+    display: flex;
+    flex-direction: row;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+}
+
+.build-link-wrapper.dual-links .build-link-text {
+    display: inline-flex;
+}
