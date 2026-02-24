@@ -20,5 +20,8 @@ Sentry.init({
   ignoreErrors: [
     'Importing a module script failed',
     'Failed to fetch dynamically imported module',
+    'AbortError',
+    'The operation was aborted',
+    'The user aborted a request',
   ],
 });
