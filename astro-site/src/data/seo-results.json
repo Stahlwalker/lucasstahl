@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-22T09:37:21Z",
+  "lastUpdated": "2026-03-01T09:34:38Z",
   "results": {
     "mobile": {
       "home": {
@@ -7,8 +7,8 @@
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
-        "lcp": 6755.2435192773992,
-        "cls": 0.00072288026720734161,
+        "lcp": 6909.2395982157823,
+        "cls": 0.00080845794450056224,
         "tbt": 0
       },
       "about": {
@@ -24,7 +24,7 @@
         "seo": 100
       },
       "builds": {
-        "performance": 67,
+        "performance": 60,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
@@ -38,28 +38,28 @@
     },
     "desktop": {
       "home": {
-        "performance": 99,
+        "performance": 97,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
-        "lcp": 782.06484339084227,
-        "cls": 0.00059816187116246231,
+        "lcp": 1245.0916983265001,
+        "cls": 0.00072201762260026478,
         "tbt": 0
       },
       "about": {
-        "performance": 94,
+        "performance": 92,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
       },
       "blog": {
-        "performance": 96,
+        "performance": 93,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
       },
       "builds": {
-        "performance": 95,
+        "performance": 97,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
