@@ -173,7 +173,7 @@ const notionPosts = await getBlogPosts();
 							)}
 							<div class="blog-content">
 								<div class="blog-meta">
-									<time class="blog-date">{new Date(post.publishedDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</time>
+									<time class="blog-date">{new Date(post.publishedDate + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</time>
 									<span class="blog-type">Article</span>
 								</div>
 								<h2 class="blog-title">{post.title}</h2>
@@ -232,7 +232,7 @@ const notionPosts = await getBlogPosts();
 						<a href={`/blog/${post.slug}/`} class="blog-card-inner">
 							<div class="blog-content">
 								<div class="blog-meta">
-									<time class="blog-date">{new Date(post.publishedDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</time>
+									<time class="blog-date">{new Date(post.publishedDate + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</time>
 									<span class="blog-type">Article</span>
 								</div>
 								<h2 class="blog-title">{post.title}</h2>
