@@ -1,0 +1,567 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { Marked } from 'marked';
+
+export async function getStaticPaths() {
+  const editions = await getCollection('newsletter-editions');
+  return editions.map(edition => ({
+    params: { slug: edition.id },
+    props: { edition },
+  }));
+}
+
+const { edition } = Astro.props;
+const { title, publishedDate, description, edition: editionNumber, heroImage } = edition.data;
+
+const marked = new Marked();
+const htmlContent = await marked.parse(edition.body || '');
+
+const canonicalUrl = `https://lukestahl.io/newsletter/editions/${edition.id}/`;
+const formattedDate = new Date(publishedDate + 'T12:00:00').toLocaleDateString('en-US', {
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<Layout
+  title={`${title} - Luke Stahl`}
+  description={description}
+  canonicalUrl={canonicalUrl}
+  ogTitle={title}
+  ogDescription={description}
+  showAnnouncement={false}
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "headline": title,
+    "description": description,
+    "datePublished": publishedDate,
+    "author": {
+      "@type": "Person",
+      "name": "Luke Stahl",
+      "url": "https://lukestahl.io/"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Luke Stahl",
+      "url": "https://lukestahl.io/"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": canonicalUrl
+    },
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "The Marketing Builder Newsletter"
+    }
+  })} />
+
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://lukestahl.io/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Newsletter",
+        "item": "https://lukestahl.io/newsletter/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": title,
+        "item": canonicalUrl
+      }
+    ]
+  })} />
+
+  <div class="edition-page">
+    <div class="edition-background">
+      <div class="bg-shape shape-1"></div>
+      <div class="bg-shape shape-2"></div>
+      <div class="bg-shape shape-3"></div>
+      <div class="bg-grid"></div>
+    </div>
+
+    <div class="edition-container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="/" class="breadcrumb-link">Home</a>
+          </li>
+          <li class="breadcrumb-separator">/</li>
+          <li class="breadcrumb-item">
+            <a href="/newsletter/" class="breadcrumb-link">Newsletter</a>
+          </li>
+          <li class="breadcrumb-separator">/</li>
+          <li class="breadcrumb-item breadcrumb-current" aria-current="page">
+            <span>Edition #{editionNumber}</span>
+          </li>
+        </ol>
+      </nav>
+
+      <header class="edition-header">
+        <p class="edition-label">EDITION #{editionNumber}</p>
+        <h1 class="edition-title">
+          <span class="code-bracket">&lt;</span>
+          The Marketing Builder
+          <span class="code-bracket">/&gt;</span>
+        </h1>
+        <time class="edition-date">{formattedDate}</time>
+      </header>
+
+      <div class="edition-card">
+        <img src={heroImage} alt={title} class="edition-hero" loading="eager" />
+        <div class="edition-content" set:html={htmlContent} />
+      </div>
+
+      <div class="edition-cta">
+        <p class="edition-cta-text">Want this in your inbox every month?</p>
+        <a href="/newsletter/" class="edition-cta-button">
+          <i class="fa-solid fa-envelope"></i>
+          Subscribe
+        </a>
+      </div>
+
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .edition-page {
+    min-height: calc(100vh - 200px);
+    padding: 4rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Animated Background (same as newsletter page) */
+  .edition-background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  .bg-shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    animation: float 20s ease-in-out infinite;
+  }
+
+  .bg-shape.shape-1 {
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.3), rgba(59, 130, 246, 0.2));
+    top: -100px;
+    left: -100px;
+    animation-delay: 0s;
+  }
+
+  .bg-shape.shape-2 {
+    width: 350px;
+    height: 350px;
+    background: linear-gradient(135deg, rgba(147, 51, 234, 0.2), rgba(96, 165, 250, 0.3));
+    bottom: -80px;
+    right: -80px;
+    animation-delay: 7s;
+  }
+
+  .bg-shape.shape-3 {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(37, 99, 235, 0.3));
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-delay: 14s;
+  }
+
+  .bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(96, 165, 250, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(96, 165, 250, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.3;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -30px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+  }
+
+  /* Container */
+  .edition-container {
+    max-width: 720px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    animation: fadeInUp 0.8s ease-out;
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Breadcrumbs */
+  .breadcrumbs {
+    margin-bottom: 2rem;
+  }
+
+  .breadcrumb-list {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.875rem;
+    font-family: 'Fira Code', monospace;
+  }
+
+  .breadcrumb-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .breadcrumb-link:hover {
+    color: var(--accent-color);
+  }
+
+  .breadcrumb-separator {
+    color: var(--text-secondary);
+    opacity: 0.5;
+  }
+
+  .breadcrumb-current {
+    color: var(--text-secondary);
+    opacity: 0.7;
+  }
+
+  /* Header */
+  .edition-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .edition-label {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #818cf8;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0 0 0.75rem 0;
+  }
+
+  .edition-title {
+    font-family: 'Fira Code', monospace;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 1rem 0;
+    line-height: 1.2;
+  }
+
+  .edition-date {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    font-family: 'Fira Code', monospace;
+  }
+
+  /* Content Card */
+  .edition-card {
+    background: var(--bg-secondary);
+    border-radius: 16px;
+    border: 1px solid rgba(96, 165, 250, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.5rem;
+    overflow: hidden;
+  }
+
+  .edition-hero {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+  }
+
+  .edition-content {
+    padding: 3rem;
+  }
+
+  /* Prose styles — matches newsletter email design system */
+  .edition-content :global(h2) {
+    font-family: 'Fira Code', monospace;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 2.5rem 0 1.5rem 0;
+    padding-bottom: 0.75rem;
+    position: relative;
+  }
+
+  .edition-content :global(h2::before) {
+    content: '//';
+    color: #60a5fa;
+    margin-right: 0.5rem;
+    opacity: 0.6;
+  }
+
+  .edition-content :global(h2::after) {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #60a5fa 0%, #a855f7 100%);
+    border-radius: 2px;
+  }
+
+  .edition-content :global(h2:first-child) {
+    margin-top: 0;
+  }
+
+  .edition-content :global(p) {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0 0 1rem 0;
+    font-size: 1rem;
+  }
+
+  .edition-content :global(ul) {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .edition-content :global(li) {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    padding: 1rem;
+    background: rgba(96, 165, 250, 0.05);
+    border-radius: 6px;
+    border-left: 3px solid #60a5fa;
+    transition: all 0.2s ease;
+  }
+
+  .edition-content :global(li:hover) {
+    background: rgba(96, 165, 250, 0.08);
+    border-left-color: #a855f7;
+  }
+
+  /* List items with thumbnails — image left, text right */
+  .edition-content :global(li:has(.li-thumb)) {
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+  }
+
+  .edition-content :global(.li-thumb) {
+    width: 200px;
+    height: auto;
+    border-radius: 8px;
+    flex-shrink: 0;
+    margin: 0;
+  }
+
+  .edition-content :global(.li-text) {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .edition-content :global(a) {
+    color: #818cf8;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .edition-content :global(a:hover) {
+    color: #a855f7;
+  }
+
+  .edition-content :global(strong) {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .edition-content :global(em) {
+    color: var(--text-secondary);
+    opacity: 0.7;
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .edition-content :global(code) {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.875em;
+    background: rgba(96, 165, 250, 0.1);
+    padding: 0.125rem 0.375rem;
+    border-radius: 4px;
+    color: var(--text-primary);
+  }
+
+  .edition-content :global(hr) {
+    border: 0;
+    height: 3px;
+    width: 60px;
+    background: linear-gradient(90deg, #60a5fa 0%, #a855f7 100%);
+    border-radius: 2px;
+    margin: 2.5rem 0;
+  }
+
+  /* CTA */
+  .edition-cta {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    border: 1px solid rgba(96, 165, 250, 0.1);
+  }
+
+  .edition-cta-text {
+    color: var(--text-secondary);
+    margin: 0 0 1rem 0;
+    font-size: 1.0625rem;
+  }
+
+  .edition-cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    background-color: rgba(34, 211, 238, 0.15);
+    border: 1px solid rgba(34, 211, 238, 0.5);
+    border-radius: 6px;
+    color: #22d3ee;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .edition-cta-button:hover {
+    background-color: rgba(34, 211, 238, 0.25);
+    border-color: #22d3ee;
+    color: #22d3ee;
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 0 10px rgba(34, 211, 238, 0.3);
+  }
+
+
+  /* Light mode — closer to email design */
+  :global([data-theme="light"]) .edition-label {
+    color: #7c3aed;
+  }
+
+  :global([data-theme="light"]) .edition-content :global(a) {
+    color: #4338ca;
+  }
+
+  :global([data-theme="light"]) .edition-content :global(a:hover) {
+    color: #a855f7;
+  }
+
+  :global([data-theme="light"]) .edition-content :global(li) {
+    background: #f8fafc;
+    border-left-color: #60a5fa;
+  }
+
+  :global([data-theme="light"]) .edition-content :global(li:hover) {
+    background: #f1f5f9;
+    border-left-color: #a855f7;
+  }
+
+  :global([data-theme="light"]) .edition-cta {
+    border: 1.5px solid rgba(14, 165, 233, 0.35);
+  }
+
+  :global([data-theme="light"]) .edition-cta-button {
+    background-color: rgba(14, 165, 233, 0.1);
+    border: 1.5px solid rgba(14, 165, 233, 0.4);
+    color: #075985;
+  }
+
+  :global([data-theme="light"]) .edition-cta-button:hover {
+    background-color: rgba(14, 165, 233, 0.15);
+    border-color: #075985;
+    color: #075985;
+  }
+
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .edition-content :global(li:has(.li-thumb)) {
+      flex-direction: column;
+    }
+
+    .edition-content :global(.li-thumb) {
+      width: 100%;
+    }
+    .edition-page {
+      padding: 2rem 1rem;
+    }
+
+    .edition-title {
+      font-size: 1.625rem;
+    }
+
+    .edition-content {
+      padding: 2rem 1.5rem;
+    }
+
+    .edition-content :global(h2) {
+      font-size: 1.25rem;
+    }
+
+    .bg-shape {
+      filter: blur(40px);
+    }
+
+    .bg-shape.shape-1,
+    .bg-shape.shape-2 {
+      width: 250px;
+      height: 250px;
+    }
+
+    .bg-shape.shape-3 {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .edition-title {
+      font-size: 1.375rem;
+    }
+
+    .edition-content {
+      padding: 1.5rem 1.25rem;
+    }
+
+  }
+</style>
