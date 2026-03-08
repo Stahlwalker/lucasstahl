@@ -213,6 +213,16 @@ import Layout from '../layouts/Layout.astro';
 							<i class="fa-solid fa-copy"></i>
 						</button>
 					</div>
+					<div class="color-swatch" data-color="#22d3ee">
+						<div class="color-preview color-teal"></div>
+						<div class="color-info">
+							<span class="color-name">Teal / Cyan</span>
+							<code class="color-hex">#22d3ee</code>
+						</div>
+						<button class="copy-button" aria-label="Copy color code">
+							<i class="fa-solid fa-copy"></i>
+						</button>
+					</div>
 				</div>
 
 				<!-- Background Colors (Dark) -->
@@ -653,6 +663,13 @@ gap: 1.25rem;             /* 20px - moderate spacing */</code>
 					<a href="#" class="rss-button">
 						Subscribe Button
 					</a>
+					<div class="ds-liquid-btn">
+						<div class="ds-liquid-btn__glow"></div>
+						<div class="ds-liquid-btn__border">
+							<div class="ds-liquid-btn__spinner"></div>
+						</div>
+						<div class="ds-liquid-btn__face">Liquid Button</div>
+					</div>
 				</div>
 
 				<h3 class="subsection-title">Cards</h3>
@@ -739,5 +756,135 @@ gap: 1.25rem;             /* 20px - moderate spacing */</code>
 		width: 100%;
 		height: auto;
 		display: block;
+	}
+
+	/* Liquid Button */
+	@keyframes ds-liquid-spin {
+		from { transform: rotate(0deg); }
+		to { transform: rotate(360deg); }
+	}
+
+	.ds-liquid-btn {
+		position: relative;
+		display: inline-flex;
+		cursor: pointer;
+	}
+
+	.ds-liquid-btn__glow {
+		position: absolute;
+		inset: -8px;
+		border-radius: 16px;
+		background: #22d3ee;
+		opacity: 0.15;
+		filter: blur(12px);
+		pointer-events: none;
+		transition: opacity 0.3s ease;
+	}
+
+	.ds-liquid-btn:hover .ds-liquid-btn__glow {
+		opacity: 0.3;
+	}
+
+	.ds-liquid-btn__border {
+		position: absolute;
+		inset: -3px;
+		border-radius: 11px;
+		overflow: hidden;
+		pointer-events: none;
+		z-index: 2;
+	}
+
+	.ds-liquid-btn__spinner {
+		position: absolute;
+		width: 300%;
+		height: 300%;
+		top: -100%;
+		left: -100%;
+		animation: ds-liquid-spin 4.5s linear infinite;
+		background: conic-gradient(
+			from 0deg,
+			#0e4d5c 0%,
+			#0e7490 8%,
+			#22a3b8 18%,
+			#22d3ee 25%,
+			#a5f3fc 32%,
+			#ffffff 34%,
+			#ffc0cb 35.5%,
+			#c4b5fd 37%,
+			#a5f3fc 38.5%,
+			#22d3ee 45%,
+			#0e4d5c 50%,
+			#0e7490 58%,
+			#22a3b8 68%,
+			#22d3ee 75%,
+			#a5f3fc 82%,
+			#ffffff 84%,
+			#ffc0cb 85.5%,
+			#c4b5fd 87%,
+			#a5f3fc 88.5%,
+			#22d3ee 95%,
+			#0e4d5c 100%
+		);
+	}
+
+	.ds-liquid-btn__face {
+		position: relative;
+		z-index: 3;
+		background: #1a1a1a;
+		color: #22d3ee;
+		padding: 12px 24px;
+		border-radius: 8px;
+		font-family: 'Inter', sans-serif;
+		font-size: 14px;
+		font-weight: 500;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+	}
+
+	:global([data-theme="light"]) .ds-liquid-btn__face {
+		background: #ffffff;
+		color: #0e7490;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	}
+
+	:global([data-theme="light"]) .ds-liquid-btn__glow {
+		background: #0ea5e9;
+		opacity: 0.2;
+	}
+
+	:global([data-theme="light"]) .ds-liquid-btn:hover .ds-liquid-btn__glow {
+		opacity: 0.35;
+	}
+
+	:global([data-theme="light"]) .ds-liquid-btn__spinner {
+		background: conic-gradient(
+			from 0deg,
+			#075985 0%,
+			#0e7490 8%,
+			#0ea5e9 18%,
+			#22d3ee 25%,
+			#a5f3fc 32%,
+			#ffffff 34%,
+			#e0e7ff 35.5%,
+			#c4b5fd 37%,
+			#a5f3fc 38.5%,
+			#22d3ee 45%,
+			#075985 50%,
+			#0e7490 58%,
+			#0ea5e9 68%,
+			#22d3ee 75%,
+			#a5f3fc 82%,
+			#ffffff 84%,
+			#e0e7ff 85.5%,
+			#c4b5fd 87%,
+			#a5f3fc 88.5%,
+			#22d3ee 95%,
+			#075985 100%
+		);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.ds-liquid-btn__spinner {
+			animation: none;
+		}
 	}
 </style>

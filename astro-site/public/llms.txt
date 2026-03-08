@@ -23,6 +23,7 @@
 
 ## Blog Posts
 
+- [End of Coding, Age of Building](https://lukestahl.io/blog/end-of-coding-age-of-building/)
 - [What is developer marketing and why it exists](https://lukestahl.io/blog/developer-marketing/)
 - [What gets lost during leadership transitions](https://lukestahl.io/blog/leadership-flywheel/)
 - [Can a modern website run on Markdown + AI alone?](https://lukestahl.io/blog/markdown-vs-cms/)
@@ -57,7 +58,7 @@
 
 ## Featured Projects
 
-- Budget Tracker App: Expense tracking app with React Native, Expo, Google OAuth, and Supabase sync
+- Newsletter Builder: Newsletter curation tool that streamlines creating, reviewing, and sending link-based newsletters
 - SERP Tracker: Real-time search ranking tracker with React, TypeScript, and Chart.js
 - Stahlwalker Cookbook: Full-stack recipe app with Next.js and Contentful CMS
 - Family Gaming Hub: React/Vite app with Mac OS 9 inspired interface

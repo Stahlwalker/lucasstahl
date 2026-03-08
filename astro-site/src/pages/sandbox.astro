@@ -5141,4 +5141,978 @@ import ColorBendsTest from '../components/ColorBendsTest.jsx';
 			updateStatus('PostHog loaded. Widget controls ready!');
 		});
 	</script>
+
+	<!-- Liquid Gold Navbar Playground -->
+	<section class="gold-nav-playground">
+		<h2 class="gold-nav-title">Liquid Gold Navbar</h2>
+		<p class="gold-nav-subtitle">Floating glassmorphism toolbar with spinning gold active ring</p>
+
+		<!-- Dark backdrop for the demo -->
+		<div class="gold-nav-stage">
+			<!-- Film grain overlay -->
+			<div class="gold-nav-grain"></div>
+			<!-- Radial ambient glow -->
+			<div class="gold-nav-ambient"></div>
+
+			<!-- The toolbar -->
+			<nav class="gold-toolbar" id="goldToolbar">
+				<!-- Active indicator (4 layers) -->
+				<div class="gold-indicator" id="goldIndicator">
+					<!-- Layer 1: Glow -->
+					<div class="gold-indicator-glow"></div>
+					<!-- Layer 2: Clip container with rotating gradient -->
+					<div class="gold-indicator-clip">
+						<div class="gold-indicator-gradient"></div>
+					</div>
+					<!-- Layer 3: Inner plate -->
+					<div class="gold-indicator-plate"></div>
+				</div>
+
+				<!-- Nav buttons -->
+				<button class="gold-nav-btn active" data-index="0" aria-label="Home">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+						<polyline points="9 22 9 12 15 12 15 22"/>
+					</svg>
+				</button>
+
+				<div class="gold-nav-divider"></div>
+
+				<button class="gold-nav-btn" data-index="1" aria-label="Search">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+						<circle cx="11" cy="11" r="8"/>
+						<line x1="21" y1="21" x2="16.65" y2="16.65"/>
+					</svg>
+				</button>
+
+				<div class="gold-nav-divider"></div>
+
+				<button class="gold-nav-btn" data-index="2" aria-label="User">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+						<circle cx="12" cy="7" r="4"/>
+					</svg>
+				</button>
+
+				<div class="gold-nav-divider"></div>
+
+				<!-- Theme toggle -->
+				<button class="gold-nav-btn gold-theme-toggle" data-index="3" aria-label="Toggle theme" id="goldThemeToggle">
+					<div class="gold-theme-icons">
+						<svg class="gold-icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+							<circle cx="12" cy="12" r="5"/>
+							<line x1="12" y1="1" x2="12" y2="3"/>
+							<line x1="12" y1="21" x2="12" y2="23"/>
+							<line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+							<line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+							<line x1="1" y1="12" x2="3" y2="12"/>
+							<line x1="21" y1="12" x2="23" y2="12"/>
+							<line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+							<line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+						</svg>
+						<svg class="gold-icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+							<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+						</svg>
+					</div>
+				</button>
+			</nav>
+		</div>
+	</section>
+
+	<style>
+		.gold-nav-playground {
+			max-width: 800px;
+			margin: 4rem auto;
+			padding: 2rem;
+		}
+
+		.gold-nav-title {
+			font-family: 'Inter', sans-serif;
+			font-size: 1.5rem;
+			font-weight: 700;
+			color: var(--text-primary);
+			margin-bottom: 0.25rem;
+		}
+
+		.gold-nav-subtitle {
+			color: var(--text-secondary);
+			font-size: 0.9rem;
+			margin-bottom: 2rem;
+		}
+
+		/* Stage */
+		.gold-nav-stage {
+			position: relative;
+			background: #0a0a0f;
+			border-radius: 16px;
+			height: 280px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			overflow: hidden;
+		}
+
+		/* Film grain */
+		.gold-nav-grain {
+			position: absolute;
+			inset: 0;
+			opacity: 0.04;
+			pointer-events: none;
+			z-index: 5;
+			background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+			background-size: 128px 128px;
+		}
+
+		/* Ambient glow */
+		.gold-nav-ambient {
+			position: absolute;
+			width: 300px;
+			height: 300px;
+			border-radius: 50%;
+			background: radial-gradient(circle, rgba(232, 175, 72, 0.08) 0%, transparent 70%);
+			pointer-events: none;
+			z-index: 1;
+		}
+
+		/* Toolbar */
+		.gold-toolbar {
+			position: relative;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			padding: 10px 14px;
+			background: rgba(255, 255, 255, 0.05);
+			backdrop-filter: blur(24px);
+			-webkit-backdrop-filter: blur(24px);
+			border: 1px solid rgba(255, 255, 255, 0.08);
+			border-radius: 32px;
+			z-index: 10;
+		}
+
+		/* Nav buttons */
+		.gold-nav-btn {
+			position: relative;
+			width: 56px;
+			height: 56px;
+			border: none;
+			background: transparent;
+			color: rgba(255, 255, 255, 0.4);
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border-radius: 18px;
+			transition: color 0.3s ease;
+			z-index: 12;
+			-webkit-tap-highlight-color: transparent;
+		}
+
+		.gold-nav-btn svg {
+			width: 24px;
+			height: 24px;
+		}
+
+		.gold-nav-btn:hover {
+			color: rgba(255, 255, 255, 0.7);
+		}
+
+		.gold-nav-btn.active {
+			color: rgba(255, 255, 255, 0.95);
+		}
+
+		/* Dividers */
+		.gold-nav-divider {
+			width: 1px;
+			height: 24px;
+			background: rgba(255, 255, 255, 0.07);
+			flex-shrink: 0;
+		}
+
+		/* === Active Indicator (4 layers) === */
+		.gold-indicator {
+			position: absolute;
+			width: 60px;
+			height: 60px;
+			top: 50%;
+			left: 0;
+			margin-top: -30px;
+			z-index: 11;
+			pointer-events: none;
+			transition: transform 0.5s cubic-bezier(0.34, 1.2, 0.64, 1);
+		}
+
+		/* Layer 1: Glow */
+		.gold-indicator-glow {
+			position: absolute;
+			inset: -6px;
+			border-radius: 24px;
+			background: #e8af48;
+			opacity: 0.15;
+			filter: blur(12px);
+		}
+
+		/* Layer 2: Clip container */
+		.gold-indicator-clip {
+			position: absolute;
+			inset: 0;
+			border-radius: 20px;
+			overflow: hidden;
+		}
+
+		/* Rotating conic gradient */
+		.gold-indicator-gradient {
+			position: absolute;
+			width: 200%;
+			height: 200%;
+			top: -50%;
+			left: -50%;
+			animation: gold-spin 4.5s linear infinite;
+			background: conic-gradient(
+				from 0deg,
+				#533517 0%,
+				#7a5025 8%,
+				#c49746 18%,
+				#e8c068 25%,
+				#feeaa5 32%,
+				#ffffff 34%,
+				#ffc0cb 35.5%,
+				#a0c4ff 37%,
+				#feeaa5 38.5%,
+				#c49746 45%,
+				#533517 50%,
+				#7a5025 58%,
+				#c49746 68%,
+				#e8c068 75%,
+				#feeaa5 82%,
+				#ffffff 84%,
+				#ffc0cb 85.5%,
+				#a0c4ff 87%,
+				#feeaa5 88.5%,
+				#c49746 95%,
+				#533517 100%
+			);
+		}
+
+		@keyframes gold-spin {
+			from { transform: rotate(0deg); }
+			to { transform: rotate(360deg); }
+		}
+
+		/* Layer 3: Inner plate — dark solid fill so ring reads as a border */
+		.gold-indicator-plate {
+			position: absolute;
+			inset: 2.5px;
+			border-radius: 17px;
+			background: #151520;
+		}
+
+		/* === Theme toggle === */
+		.gold-theme-icons {
+			position: relative;
+			width: 20px;
+			height: 20px;
+		}
+
+		.gold-icon-sun,
+		.gold-icon-moon {
+			position: absolute;
+			inset: 0;
+			transition: opacity 0.4s ease, transform 0.4s ease;
+		}
+
+		.gold-icon-moon {
+			opacity: 0;
+			transform: rotate(-90deg) scale(0.5);
+		}
+
+		.gold-theme-toggle.is-light .gold-icon-sun {
+			opacity: 0;
+			transform: rotate(90deg) scale(0.5);
+		}
+
+		.gold-theme-toggle.is-light .gold-icon-moon {
+			opacity: 1;
+			transform: rotate(0deg) scale(1);
+		}
+
+		/* Bounce animation for toggle */
+		@keyframes gold-toggle-bounce {
+			0% { transform: scale(1); }
+			40% { transform: scale(1.25); }
+			100% { transform: scale(1); }
+		}
+
+		.gold-theme-toggle.bouncing {
+			animation: gold-toggle-bounce 0.4s cubic-bezier(0.34, 1.2, 0.64, 1);
+		}
+	</style>
+
+	<script is:inline>
+		(function() {
+			const toolbar = document.getElementById('goldToolbar');
+			const indicator = document.getElementById('goldIndicator');
+			const themeToggle = document.getElementById('goldThemeToggle');
+			if (!toolbar || !indicator) return;
+
+			const buttons = toolbar.querySelectorAll('.gold-nav-btn');
+			let activeIndex = 0;
+
+			function moveIndicator(index) {
+				const btn = buttons[index];
+				if (!btn) return;
+				const toolbarRect = toolbar.getBoundingClientRect();
+				const btnRect = btn.getBoundingClientRect();
+				// Center the 60px indicator over the 56px button
+				const btnCenterX = btnRect.left + btnRect.width / 2 - toolbarRect.left;
+				const offsetX = btnCenterX - 30; // 30 = half of indicator width (60px)
+				indicator.style.transform = 'translateX(' + offsetX + 'px)';
+			}
+
+			buttons.forEach((btn, i) => {
+				btn.addEventListener('click', () => {
+					if (btn === themeToggle) return; // theme toggle handled separately
+					buttons.forEach(b => b.classList.remove('active'));
+					btn.classList.add('active');
+					activeIndex = i;
+					moveIndicator(i);
+				});
+			});
+
+			// Theme toggle
+			let isLight = false;
+			if (themeToggle) {
+				themeToggle.addEventListener('click', () => {
+					isLight = !isLight;
+					themeToggle.classList.toggle('is-light', isLight);
+
+					// Bounce
+					themeToggle.classList.remove('bouncing');
+					void themeToggle.offsetWidth; // reflow
+					themeToggle.classList.add('bouncing');
+
+					// Move indicator to theme toggle
+					buttons.forEach(b => b.classList.remove('active'));
+					themeToggle.classList.add('active');
+					activeIndex = 3;
+					moveIndicator(3);
+				});
+			}
+
+			// Initial position
+			requestAnimationFrame(() => moveIndicator(0));
+			window.addEventListener('resize', () => moveIndicator(activeIndex));
+		})();
+	</script>
+
+	<!-- Handbook Button Effect Test -->
+	<section class="icon-effect-section">
+		<h2 class="icon-effect-title">Handbook Button — Liquid Teal</h2>
+		<p class="icon-effect-subtitle">Testing the spinning teal ring on the handbook button</p>
+		<div class="handbook-teal-stage">
+			<div class="hb-teal">
+				<div class="hb-teal__glow"></div>
+				<div class="hb-teal__border">
+					<div class="hb-teal__spinner"></div>
+				</div>
+				<div class="hb-teal__face">Handbook</div>
+			</div>
+		</div>
+		<p class="icon-effect-subtitle" style="margin-top: 1.5rem;">Light mode version</p>
+		<div class="handbook-teal-stage handbook-teal-stage-light">
+			<div class="hb-teal hb-teal--light">
+				<div class="hb-teal__glow hb-teal__glow--light"></div>
+				<div class="hb-teal__border">
+					<div class="hb-teal__spinner hb-teal__spinner--light"></div>
+				</div>
+				<div class="hb-teal__face hb-teal__face--light">Handbook</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Icon Effect Playground -->
+	<section class="icon-effect-section">
+		<h2 class="icon-effect-title">Icon Effect Playground</h2>
+		<p class="icon-effect-subtitle">Testing hover/animation effects on the Notion icon</p>
+		<div class="icon-effect-grid">
+			<div class="icon-effect-card icon-effect-card-dark">
+				<span class="icon-effect-label">Liquid Gold</span>
+				<div class="notion-gold-ring">
+					<div class="notion-gold-glow"></div>
+					<div class="notion-gold-clip">
+						<div class="notion-gold-gradient"></div>
+					</div>
+					<div class="notion-gold-plate">
+						<a href="#" class="notion-gold-icon" onclick="return false">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+								<path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z"/>
+							</svg>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="icon-effect-card icon-effect-card-dark">
+				<span class="icon-effect-label">Liquid Teal</span>
+				<div class="notion-teal-ring">
+					<div class="notion-teal-glow"></div>
+					<div class="notion-teal-clip">
+						<div class="notion-teal-gradient"></div>
+					</div>
+					<div class="notion-teal-plate">
+						<a href="#" class="notion-teal-icon" onclick="return false">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+								<path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z"/>
+							</svg>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="icon-effect-card icon-effect-card-light">
+				<span class="icon-effect-label">Teal (light)</span>
+				<div class="notion-teal-light-ring">
+					<div class="notion-teal-light-glow"></div>
+					<div class="notion-teal-light-clip">
+						<div class="notion-teal-light-gradient"></div>
+					</div>
+					<div class="notion-teal-light-plate">
+						<a href="#" class="notion-teal-light-icon" onclick="return false">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+								<path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z"/>
+							</svg>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="icon-effect-card">
+				<span class="icon-effect-label">Footer (exact)</span>
+				<div class="footer-social">
+					<a href="#" class="notion-icon" onclick="return false">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+							<path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z"/>
+						</svg>
+					</a>
+				</div>
+			</div>
+			<div class="icon-effect-card">
+				<span class="icon-effect-label">Glow pulse</span>
+				<a href="#" class="icon-demo icon-effect-glow notion-icon" onclick="return false">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
+						<path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z"/>
+					</svg>
+				</a>
+			</div>
+			<div class="icon-effect-card">
+				<span class="icon-effect-label">Scale + rotate</span>
+				<a href="#" class="icon-demo icon-effect-scale-rotate notion-icon" onclick="return false">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
+						<path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z"/>
+					</svg>
+				</a>
+			</div>
+			<div class="icon-effect-card">
+				<span class="icon-effect-label">Bounce</span>
+				<a href="#" class="icon-demo icon-effect-bounce notion-icon" onclick="return false">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
+						<path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z"/>
+					</svg>
+				</a>
+			</div>
+			<div class="icon-effect-card">
+				<span class="icon-effect-label">Color shift</span>
+				<a href="#" class="icon-demo icon-effect-color notion-icon" onclick="return false">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
+						<path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z"/>
+					</svg>
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<style>
+		.icon-effect-section {
+			max-width: 800px;
+			margin: 4rem auto;
+			padding: 2rem;
+		}
+
+		.icon-effect-title {
+			font-family: 'Inter', sans-serif;
+			font-size: 1.5rem;
+			font-weight: 700;
+			color: var(--text-primary);
+			margin-bottom: 0.25rem;
+		}
+
+		.icon-effect-subtitle {
+			color: var(--text-secondary);
+			font-size: 0.9rem;
+			margin-bottom: 2rem;
+		}
+
+		.icon-effect-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+			gap: 1.5rem;
+		}
+
+		.icon-effect-card {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 1rem;
+			padding: 1.5rem 1rem;
+			border: 1px solid rgba(255, 255, 255, 0.1);
+			border-radius: 12px;
+			background: rgba(255, 255, 255, 0.03);
+		}
+
+		:global([data-theme="light"]) .icon-effect-card {
+			border-color: rgba(0, 0, 0, 0.1);
+			background: rgba(0, 0, 0, 0.02);
+		}
+
+		.icon-effect-label {
+			font-family: 'Fira Code', monospace;
+			font-size: 0.7rem;
+			color: var(--text-secondary);
+			text-transform: uppercase;
+			letter-spacing: 0.5px;
+		}
+
+		.icon-demo {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 56px;
+			height: 56px;
+			color: var(--text-secondary);
+			transition: all 0.3s ease;
+			border-radius: 8px;
+		}
+
+		.icon-demo:hover {
+			color: var(--text-primary);
+		}
+
+		/* Glow pulse */
+		.icon-effect-glow:hover {
+			filter: drop-shadow(0 0 8px currentColor) drop-shadow(0 0 16px currentColor);
+		}
+
+		/* Scale + rotate */
+		.icon-effect-scale-rotate:hover {
+			transform: scale(1.3) rotate(8deg);
+		}
+
+		/* Bounce */
+		.icon-effect-bounce:hover {
+			animation: icon-bounce 0.5s ease;
+		}
+
+		@keyframes icon-bounce {
+			0%, 100% { transform: translateY(0); }
+			30% { transform: translateY(-10px); }
+			50% { transform: translateY(-4px); }
+			70% { transform: translateY(-7px); }
+		}
+
+		/* Color shift */
+		.icon-effect-color:hover {
+			color: #c3e88d;
+			filter: drop-shadow(0 0 6px rgba(195, 232, 141, 0.5));
+		}
+
+		:global([data-theme="light"]) .icon-effect-color:hover {
+			color: #16a34a;
+			filter: drop-shadow(0 0 6px rgba(22, 163, 74, 0.4));
+		}
+
+		/* Dark card for gold ring contrast */
+		.icon-effect-card-dark {
+			background: #151520 !important;
+			border-color: rgba(255, 255, 255, 0.06) !important;
+		}
+
+		/* Notion icon with liquid gold ring */
+		.notion-gold-ring {
+			position: relative;
+			width: 56px;
+			height: 56px;
+		}
+
+		.notion-gold-glow {
+			position: absolute;
+			inset: -6px;
+			border-radius: 20px;
+			background: #e8af48;
+			opacity: 0.15;
+			filter: blur(10px);
+		}
+
+		.notion-gold-clip {
+			position: absolute;
+			inset: 0;
+			border-radius: 18px;
+			overflow: hidden;
+		}
+
+		.notion-gold-gradient {
+			position: absolute;
+			width: 200%;
+			height: 200%;
+			top: -50%;
+			left: -50%;
+			animation: gold-spin 4.5s linear infinite;
+			background: conic-gradient(
+				from 0deg,
+				#533517 0%,
+				#7a5025 8%,
+				#c49746 18%,
+				#e8c068 25%,
+				#feeaa5 32%,
+				#ffffff 34%,
+				#ffc0cb 35.5%,
+				#a0c4ff 37%,
+				#feeaa5 38.5%,
+				#c49746 45%,
+				#533517 50%,
+				#7a5025 58%,
+				#c49746 68%,
+				#e8c068 75%,
+				#feeaa5 82%,
+				#ffffff 84%,
+				#ffc0cb 85.5%,
+				#a0c4ff 87%,
+				#feeaa5 88.5%,
+				#c49746 95%,
+				#533517 100%
+			);
+		}
+
+		.notion-gold-plate {
+			position: absolute;
+			inset: 2.5px;
+			border-radius: 15px;
+			background: #151520;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.notion-gold-icon {
+			color: rgba(255, 255, 255, 0.9);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-decoration: none;
+			transition: color 0.3s ease;
+		}
+
+		.notion-gold-icon:hover {
+			color: #ffffff;
+		}
+
+		/* Notion icon with liquid teal ring */
+		.notion-teal-ring {
+			position: relative;
+			width: 56px;
+			height: 56px;
+		}
+
+		.notion-teal-glow {
+			position: absolute;
+			inset: -6px;
+			border-radius: 20px;
+			background: #22d3ee;
+			opacity: 0.15;
+			filter: blur(10px);
+		}
+
+		.notion-teal-clip {
+			position: absolute;
+			inset: 0;
+			border-radius: 18px;
+			overflow: hidden;
+		}
+
+		.notion-teal-gradient {
+			position: absolute;
+			width: 200%;
+			height: 200%;
+			top: -50%;
+			left: -50%;
+			animation: gold-spin 4.5s linear infinite;
+			background: conic-gradient(
+				from 0deg,
+				#0e4d5c 0%,
+				#0e7490 8%,
+				#22a3b8 18%,
+				#22d3ee 25%,
+				#a5f3fc 32%,
+				#ffffff 34%,
+				#ffc0cb 35.5%,
+				#c4b5fd 37%,
+				#a5f3fc 38.5%,
+				#22d3ee 45%,
+				#0e4d5c 50%,
+				#0e7490 58%,
+				#22a3b8 68%,
+				#22d3ee 75%,
+				#a5f3fc 82%,
+				#ffffff 84%,
+				#ffc0cb 85.5%,
+				#c4b5fd 87%,
+				#a5f3fc 88.5%,
+				#22d3ee 95%,
+				#0e4d5c 100%
+			);
+		}
+
+		.notion-teal-plate {
+			position: absolute;
+			inset: 2.5px;
+			border-radius: 15px;
+			background: #151520;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.notion-teal-icon {
+			color: rgba(255, 255, 255, 0.9);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-decoration: none;
+			transition: color 0.3s ease;
+		}
+
+		.notion-teal-icon:hover {
+			color: #ffffff;
+		}
+
+		/* Light mode card */
+		.icon-effect-card-light {
+			background: #f8fafc !important;
+			border-color: rgba(0, 0, 0, 0.08) !important;
+		}
+
+		/* Notion icon with liquid teal ring — light mode */
+		.notion-teal-light-ring {
+			position: relative;
+			width: 56px;
+			height: 56px;
+		}
+
+		.notion-teal-light-glow {
+			position: absolute;
+			inset: -6px;
+			border-radius: 20px;
+			background: #0ea5e9;
+			opacity: 0.2;
+			filter: blur(10px);
+		}
+
+		.notion-teal-light-clip {
+			position: absolute;
+			inset: 0;
+			border-radius: 18px;
+			overflow: hidden;
+		}
+
+		.notion-teal-light-gradient {
+			position: absolute;
+			width: 200%;
+			height: 200%;
+			top: -50%;
+			left: -50%;
+			animation: gold-spin 4.5s linear infinite;
+			background: conic-gradient(
+				from 0deg,
+				#075985 0%,
+				#0e7490 8%,
+				#0ea5e9 18%,
+				#22d3ee 25%,
+				#a5f3fc 32%,
+				#ffffff 34%,
+				#e0e7ff 35.5%,
+				#c4b5fd 37%,
+				#a5f3fc 38.5%,
+				#22d3ee 45%,
+				#075985 50%,
+				#0e7490 58%,
+				#0ea5e9 68%,
+				#22d3ee 75%,
+				#a5f3fc 82%,
+				#ffffff 84%,
+				#e0e7ff 85.5%,
+				#c4b5fd 87%,
+				#a5f3fc 88.5%,
+				#22d3ee 95%,
+				#075985 100%
+			);
+		}
+
+		.notion-teal-light-plate {
+			position: absolute;
+			inset: 2.5px;
+			border-radius: 15px;
+			background: #ffffff;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+		}
+
+		.notion-teal-light-icon {
+			color: #0f172a;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-decoration: none;
+			transition: color 0.3s ease;
+		}
+
+		.notion-teal-light-icon:hover {
+			color: #075985;
+		}
+
+		/* Handbook Button — Liquid Teal Test */
+		.handbook-teal-stage {
+			background: #0a0a0f;
+			border-radius: 12px;
+			padding: 3rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.handbook-teal-stage-light {
+			background: #f8fafc;
+			border: 1px solid rgba(0, 0, 0, 0.08);
+		}
+
+		/* Container — inline-flex so it shrinks to button size */
+		.hb-teal {
+			position: relative;
+			display: inline-flex;
+			cursor: pointer;
+		}
+
+		/* The button face — this is what sizes everything */
+		.hb-teal__face {
+			position: relative;
+			z-index: 3;
+			background: #1a1a1a;
+			color: #22d3ee;
+			padding: 12px 24px;
+			border-radius: 8px;
+			font-family: 'Inter', sans-serif;
+			font-size: 14px;
+			font-weight: 500;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+		}
+
+		/* Glow — behind everything */
+		.hb-teal__glow {
+			position: absolute;
+			inset: -8px;
+			border-radius: 16px;
+			background: #22d3ee;
+			opacity: 0.15;
+			filter: blur(12px);
+			pointer-events: none;
+			transition: opacity 0.3s ease;
+		}
+
+		.hb-teal:hover .hb-teal__glow {
+			opacity: 0.3;
+		}
+
+		/* Border — clips the spinning gradient, extends 3px outside the button */
+		.hb-teal__border {
+			position: absolute;
+			inset: -3px;
+			border-radius: 11px;
+			overflow: hidden;
+			z-index: 2;
+			pointer-events: none;
+		}
+
+		/* Spinning conic gradient */
+		.hb-teal__spinner {
+			position: absolute;
+			width: 300%;
+			height: 300%;
+			top: -100%;
+			left: -100%;
+			animation: gold-spin 4.5s linear infinite;
+			background: conic-gradient(
+				from 0deg,
+				#0e4d5c 0%,
+				#0e7490 8%,
+				#22a3b8 18%,
+				#22d3ee 25%,
+				#a5f3fc 32%,
+				#ffffff 34%,
+				#ffc0cb 35.5%,
+				#c4b5fd 37%,
+				#a5f3fc 38.5%,
+				#22d3ee 45%,
+				#0e4d5c 50%,
+				#0e7490 58%,
+				#22a3b8 68%,
+				#22d3ee 75%,
+				#a5f3fc 82%,
+				#ffffff 84%,
+				#ffc0cb 85.5%,
+				#c4b5fd 87%,
+				#a5f3fc 88.5%,
+				#22d3ee 95%,
+				#0e4d5c 100%
+			);
+		}
+
+		/* Light mode variants */
+		.hb-teal__glow--light {
+			background: #0ea5e9;
+			opacity: 0.2;
+		}
+
+		.hb-teal:hover .hb-teal__glow--light {
+			opacity: 0.35;
+		}
+
+		.hb-teal__spinner--light {
+			background: conic-gradient(
+				from 0deg,
+				#075985 0%,
+				#0e7490 8%,
+				#0ea5e9 18%,
+				#22d3ee 25%,
+				#a5f3fc 32%,
+				#ffffff 34%,
+				#e0e7ff 35.5%,
+				#c4b5fd 37%,
+				#a5f3fc 38.5%,
+				#22d3ee 45%,
+				#075985 50%,
+				#0e7490 58%,
+				#0ea5e9 68%,
+				#22d3ee 75%,
+				#a5f3fc 82%,
+				#ffffff 84%,
+				#e0e7ff 85.5%,
+				#c4b5fd 87%,
+				#a5f3fc 88.5%,
+				#22d3ee 95%,
+				#075985 100%
+			);
+		}
+
+		.hb-teal__face--light {
+			background: #ffffff;
+			color: #0e7490;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+		}
+	</style>
 </Layout>

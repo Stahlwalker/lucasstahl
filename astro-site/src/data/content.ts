@@ -10,13 +10,6 @@ export const builds = [
     icon: "fa-solid fa-gamepad"
   },
   {
-    title: "Budget Tracker App",
-    description: "Expense tracking app built with React Native and Expo. Uses Google OAuth, Supabase sync, flexible time ranges, and simple charts.",
-    url: "https://budget-app-cv27.vercel.app/",
-    tags: ["React Native", "Expo", "TypeScript", "Supabase"],
-    icon: "fa-solid fa-chart-pie"
-  },
-  {
     title: "Fantasy Football Legend",
     description: "A showcase website for a Fantasy Football League built with HTML, CSS, and JavaScript.",
     url: "https://stahlwalker.github.io/fantasyfootball/",

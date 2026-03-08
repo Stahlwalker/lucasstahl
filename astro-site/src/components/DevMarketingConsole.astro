@@ -152,8 +152,14 @@ The goal is to prove that trust earned from developers shows up later in product
 };
 ---
 
-<div id="devConsoleButton" class="dev-console-button">
-  Handbook
+<div class="dev-console-ring" id="devConsoleRing">
+  <div class="dev-console-ring__glow"></div>
+  <div class="dev-console-ring__border">
+    <div class="dev-console-ring__spinner"></div>
+  </div>
+  <div id="devConsoleButton" class="dev-console-button">
+    Handbook
+  </div>
 </div>
 
 <div id="devConsoleOverlay" class="dev-console-overlay">
@@ -365,28 +371,102 @@ The goal is to prove that trust earned from developers shows up later in product
 </div>
 
 <style>
-  .dev-console-button {
+  /* Liquid Teal Ring Wrapper */
+  @keyframes dev-console-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .dev-console-ring {
     position: fixed;
     bottom: 20px;
     right: 20px;
+    display: inline-flex;
+    z-index: 999;
+    cursor: pointer;
+  }
+
+  .dev-console-ring__glow {
+    position: absolute;
+    inset: -8px;
+    border-radius: 16px;
+    background: #22d3ee;
+    opacity: 0.15;
+    filter: blur(12px);
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .dev-console-ring:hover .dev-console-ring__glow {
+    opacity: 0.3;
+  }
+
+  .dev-console-ring__border {
+    position: absolute;
+    inset: -3px;
+    border-radius: 11px;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .dev-console-ring__spinner {
+    position: absolute;
+    width: 300%;
+    height: 300%;
+    top: -100%;
+    left: -100%;
+    animation: dev-console-spin 4.5s linear infinite;
+    background: conic-gradient(
+      from 0deg,
+      #0e4d5c 0%,
+      #0e7490 8%,
+      #22a3b8 18%,
+      #22d3ee 25%,
+      #a5f3fc 32%,
+      #ffffff 34%,
+      #ffc0cb 35.5%,
+      #c4b5fd 37%,
+      #a5f3fc 38.5%,
+      #22d3ee 45%,
+      #0e4d5c 50%,
+      #0e7490 58%,
+      #22a3b8 68%,
+      #22d3ee 75%,
+      #a5f3fc 82%,
+      #ffffff 84%,
+      #ffc0cb 85.5%,
+      #c4b5fd 87%,
+      #a5f3fc 88.5%,
+      #22d3ee 95%,
+      #0e4d5c 100%
+    );
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .dev-console-ring__spinner {
+      animation: none;
+    }
+  }
+
+  .dev-console-button {
+    position: relative;
     background: #1a1a1a;
-    color: #c3e88d;
+    color: #22d3ee;
     padding: 12px 24px;
     border-radius: 8px;
     font-family: 'Inter', sans-serif;
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
-    z-index: 999;
+    z-index: 3;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
-    border: 1px solid #c3e88d;
+    border: none;
   }
 
   .dev-console-button:hover {
-    background: #2a2a2a;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(195, 232, 141, 0.3);
+    background: #222;
   }
 
   .dev-console-overlay {
@@ -874,9 +954,12 @@ The goal is to prove that trust earned from developers shows up later in product
   }
 
   @media (max-width: 768px) {
-    .dev-console-button {
+    .dev-console-ring {
       bottom: 20px;
       right: 20px;
+    }
+
+    .dev-console-button {
       padding: 10px 20px;
       font-size: 13px;
     }
@@ -992,14 +1075,49 @@ The goal is to prove that trust earned from developers shows up later in product
   /* Light Mode Styles */
   :global([data-theme="light"]) .dev-console-button {
     background: #ffffff;
-    color: #15803d;
-    border: 2px solid #15803d;
+    color: #0e7490;
+    border: none;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 
   :global([data-theme="light"]) .dev-console-button:hover {
-    background: #f0fdf4;
-    box-shadow: 0 6px 16px rgba(21, 128, 61, 0.2);
+    background: #f8fffe;
+  }
+
+  :global([data-theme="light"]) .dev-console-ring__glow {
+    background: #0ea5e9;
+    opacity: 0.2;
+  }
+
+  :global([data-theme="light"]) .dev-console-ring:hover .dev-console-ring__glow {
+    opacity: 0.35;
+  }
+
+  :global([data-theme="light"]) .dev-console-ring__spinner {
+    background: conic-gradient(
+      from 0deg,
+      #075985 0%,
+      #0e7490 8%,
+      #0ea5e9 18%,
+      #22d3ee 25%,
+      #a5f3fc 32%,
+      #ffffff 34%,
+      #e0e7ff 35.5%,
+      #c4b5fd 37%,
+      #a5f3fc 38.5%,
+      #22d3ee 45%,
+      #075985 50%,
+      #0e7490 58%,
+      #0ea5e9 68%,
+      #22d3ee 75%,
+      #a5f3fc 82%,
+      #ffffff 84%,
+      #e0e7ff 85.5%,
+      #c4b5fd 87%,
+      #a5f3fc 88.5%,
+      #22d3ee 95%,
+      #075985 100%
+    );
   }
 
   :global([data-theme="light"]) .dev-console-overlay.active {
@@ -1181,6 +1299,7 @@ The goal is to prove that trust earned from developers shows up later in product
 
 <script>
   const button = document.getElementById('devConsoleButton');
+  const ring = document.getElementById('devConsoleRing');
   const overlay = document.getElementById('devConsoleOverlay');
   const closeButton = document.getElementById('closeConsole');
   const navLinks = document.querySelectorAll('.handbook-modal .nav-link');
@@ -1201,13 +1320,15 @@ The goal is to prove that trust earned from developers shows up later in product
   }
 
   // Open/close handlers - on mobile, navigate to /handbook, on desktop open modal
-  button.addEventListener('click', () => {
+  function handleButtonClick() {
     if (isMobile()) {
       window.location.href = '/handbook';
     } else {
       openHandbook();
     }
-  });
+  }
+  button.addEventListener('click', handleButtonClick);
+  ring.addEventListener('click', handleButtonClick);
   closeButton.addEventListener('click', closeHandbook);
 
   // Close on clicking overlay background
