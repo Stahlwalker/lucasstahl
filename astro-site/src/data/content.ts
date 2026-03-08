@@ -3,6 +3,13 @@
 
 export const builds = [
   {
+    title: "Budget Tracker",
+    description: "A personal finance tracking app for managing budgets, expenses, and savings goals with visual charts and category breakdowns.",
+    url: "https://github.com/Stahlwalker/budget-app-example",
+    tags: ["React", "TypeScript", "Chart.js"],
+    icon: "fa-solid fa-wallet"
+  },
+  {
     title: "Family Gaming Hub",
     description: "A nostalgic gaming hub built with React and Vite featuring a classic Mac OS 9 inspired interface and retro design aesthetic.",
     url: "https://family-gaming.netlify.app/",
