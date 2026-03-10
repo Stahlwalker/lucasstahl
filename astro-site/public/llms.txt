@@ -18,6 +18,7 @@
 - [Newsletter](https://lukestahl.io/newsletter/)
 - [Newsletter - March 2026 Edition](https://lukestahl.io/newsletter/editions/mar-2026/)
 - [Developer Marketing Cheat Sheet](https://lukestahl.io/dev-marketing-cheat-sheet/)
+- [AI Models Guide 2026](https://lukestahl.io/ai-models-guide/)
 - [Design System](https://lukestahl.io/design-system/)
 - [SEO Performance Dashboard](https://lukestahl.io/seo/)
 - [Status](https://lukestahl.io/status/)
