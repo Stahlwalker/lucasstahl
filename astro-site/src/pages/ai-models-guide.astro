@@ -11,6 +11,8 @@ const quickReference = [
 	{ model: "DeepSeek V3/R1", company: "DeepSeek", bestFor: "Cost efficiency", differentiator: "Frontier performance trained for under $6M; open source", color: "#facc15" },
 	{ model: "Mistral Large", company: "Mistral", bestFor: "EU compliance", differentiator: "Enterprise-safe; strong open-weight models for regulated industries", color: "#818cf8" },
 	{ model: "Qwen 3", company: "Alibaba", bestFor: "Multilingual", differentiator: "119 languages; models from 0.5B to 1T+ parameters", color: "#f472b6" },
+	{ model: "Sonar", company: "Perplexity", bestFor: "Search & research", differentiator: "Search-grounded answers at 1200 tok/s; built on Llama 3.3 + Cerebras", color: "#22d3ee" },
+	{ model: "Composer", company: "Cursor", bestFor: "AI-native coding", differentiator: "MoE model trained via RL for software engineering; background agents", color: "#50e3c2" },
 ];
 
 // Frontier Models
@@ -70,6 +72,34 @@ const frontierModels = [
 			"Less filtered personality; positioned as an alternative to corporate AI"
 		],
 		bestFor: "Real-time info, math/science, users who want less guardrails"
+	},
+	{
+		name: "Sonar (Perplexity)",
+		company: "Perplexity AI",
+		location: "San Francisco",
+		color: "#22d3ee",
+		tagline: "Search-native AI built for grounded, cited answers.",
+		bullets: [
+			"Built on Llama 3.3 70B, further trained for search-grounded factuality",
+			"Runs at 1,200 tokens/sec on Cerebras inference hardware",
+			"Model family: Sonar, Sonar Pro, Reasoning Pro, Deep Research",
+			"Matches GPT-4o on user satisfaction benchmarks"
+		],
+		bestFor: "Research with citations, competitive analysis, fact-checking"
+	},
+	{
+		name: "Composer (Cursor)",
+		company: "Cursor",
+		location: "San Francisco",
+		color: "#50e3c2",
+		tagline: "AI-native coding model built for software engineering.",
+		bullets: [
+			"Mixture-of-experts model trained via RL in real development environments",
+			"4x faster generation than comparable frontier coding models",
+			"Background agents run tasks autonomously while you work",
+			"Automations trigger agents from GitHub PRs, Slack, Linear, PagerDuty"
+		],
+		bestFor: "Agentic coding, background development, automated workflows"
 	}
 ];
 
@@ -152,6 +182,7 @@ const scenarios = [
 			{ task: "Debug a complex codebase", model: "Claude 4.6", color: "#c084fc" },
 			{ task: "Generate unit tests and docs", model: "GPT-5.x", color: "#10b981" },
 			{ task: "Rapid UI prototyping", model: "GPT-5.x", color: "#10b981" },
+			{ task: "Background agents for parallel development", model: "Composer (Cursor)", color: "#50e3c2" },
 		]
 	},
 	{
@@ -161,6 +192,7 @@ const scenarios = [
 			{ task: "Analyze a long PDF or contract", model: "Gemini 3.x", color: "#60a5fa" },
 			{ task: "Summarize a YouTube video", model: "Gemini 3.x", color: "#60a5fa" },
 			{ task: "Get real-time data on a trending topic", model: "Grok 4.x", color: "#f97316" },
+			{ task: "Get sourced answers with citations", model: "Sonar (Perplexity)", color: "#22d3ee" },
 			{ task: "Deep competitive research", model: "Claude 4.6", color: "#c084fc" },
 		]
 	},
