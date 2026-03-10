@@ -1,0 +1,131 @@
+name: Weekly AI Models Guide Update
+
+on:
+  schedule:
+    - cron: '30 9 * * 1'  # Every Monday at 9:30 AM UTC
+  workflow_dispatch:        # Manual trigger for testing
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  check-for-updates:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install OpenAI SDK
+        run: npm install openai
+
+      - name: Check for AI model updates
+        id: update
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          OUTPUT=$(node .github/scripts/update-ai-models.mjs 2>&1)
+          echo "$OUTPUT"
+
+          # Extract status and changelog
+          if echo "$OUTPUT" | grep -q "STATUS=updated"; then
+            echo "has_updates=true" >> $GITHUB_OUTPUT
+            # Extract changelog for PR body
+            CHANGELOG=$(echo "$OUTPUT" | sed -n '/--- CHANGELOG ---/,/STATUS=updated/p' | head -n -1 | tail -n +2)
+            # Write changelog to file for multi-line handling
+            echo "$CHANGELOG" > /tmp/changelog.txt
+          else
+            echo "has_updates=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create Pull Request
+        if: steps.update.outputs.has_updates == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BRANCH="ai-models-update/$(date '+%Y-%m-%d')"
+          DATE_DISPLAY=$(date '+%B %d, %Y')
+          CHANGELOG=$(cat /tmp/changelog.txt)
+
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+          git checkout -b "$BRANCH"
+          git add astro-site/src/pages/ai-models-guide.astro
+          git commit -m "Update AI models guide — $DATE_DISPLAY"
+          git push -u origin "$BRANCH"
+
+          gh pr create \
+            --title "Update AI Models Guide — $DATE_DISPLAY" \
+            --body "$(cat <<EOF
+          ## Weekly AI Models Update
+
+          Automated scan found updates to the AI models guide.
+
+          ### Changes
+          $CHANGELOG
+
+          ---
+          *This PR was automatically created by the [AI Models Update workflow](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}). Review the changes before merging.*
+          EOF
+          )" \
+            --label "ai-models,automated"
+
+      - name: Send Email Notification
+        if: always()
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          TO_EMAIL: ${{ secrets.NOTIFICATION_EMAIL }}
+          FROM_EMAIL: ${{ secrets.FROM_EMAIL }}
+        run: |
+          if [ "${{ steps.update.outputs.has_updates }}" == "true" ]; then
+            SUBJECT="🤖 AI Models Guide — Updates Found"
+            BODY="<h2>🤖 AI Models Guide Update</h2><p>The weekly scan found updates to the AI models guide on <strong>$(date '+%B %d, %Y')</strong>.</p><h3>What happened</h3><p>A pull request has been created with the changes. Review and merge when ready.</p><p><a href=\"${{ github.server_url }}/${{ github.repository }}/pulls\">View Open Pull Requests</a></p><hr><p><a href=\"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\">View Workflow Run</a></p>"
+          else
+            SUBJECT="✅ AI Models Guide — No Updates This Week"
+            BODY="<h2>✅ No Updates Found</h2><p>The weekly AI models scan ran on <strong>$(date '+%B %d, %Y')</strong> and found no meaningful changes to report.</p><hr><p><a href=\"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\">View Workflow Run</a></p>"
+          fi
+
+          PAYLOAD=$(jq -n \
+            --arg from "$FROM_EMAIL" \
+            --arg to "$TO_EMAIL" \
+            --arg subject "$SUBJECT" \
+            --arg html "$BODY" \
+            '{from: $from, to: [$to], subject: $subject, html: $html}')
+
+          echo "Sending email notification..."
+          RESPONSE=$(curl -w "\nHTTP_STATUS:%{http_code}" -X POST "https://api.resend.com/emails" \
+            -H "Authorization: Bearer $RESEND_API_KEY" \
+            -H "Content-Type: application/json" \
+            -d "$PAYLOAD")
+
+          HTTP_STATUS=$(echo "$RESPONSE" | grep HTTP_STATUS | cut -d':' -f2)
+          if [ "$HTTP_STATUS" != "200" ]; then
+            echo "Email sending failed with status $HTTP_STATUS"
+          else
+            echo "Email sent successfully!"
+          fi
+
+      - name: Generate Summary
+        if: always()
+        run: |
+          echo "# 🤖 AI Models Guide Update" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ steps.update.outputs.has_updates }}" == "true" ]; then
+            echo "✅ **Updates found and PR created!**" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Review the pull request to see what changed." >> $GITHUB_STEP_SUMMARY
+          else
+            echo "ℹ️ **No meaningful updates this week.**" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "The AI models guide is up to date." >> $GITHUB_STEP_SUMMARY
+          fi
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "---" >> $GITHUB_STEP_SUMMARY
+          echo "*Run date: $(date '+%B %d, %Y at %H:%M UTC')*" >> $GITHUB_STEP_SUMMARY
