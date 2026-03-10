@@ -9,7 +9,7 @@ const roleCategories = [
 		items: [
 			"Developer workflow research",
 			"Competitive + ecosystem intelligence",
-			"Community monitoring (GitHub, Reddit, Discord)",
+			"Community monitoring (GitHub, Reddit, Discord, AI agent ecosystem)",
 			"Search intent + documentation analytics",
 			"Developer persona + segmentation",
 			"Voice of Developer (VoD)"
@@ -43,7 +43,7 @@ const roleCategories = [
 		title: "Activation & Adoption",
 		color: "yellow",
 		items: [
-			"Tutorials, quickstarts, examples",
+			"Decision frameworks, build logs, examples",
 			"Starter templates + repos",
 			"Onboarding optimization",
 			"Documentation alignment",
@@ -71,8 +71,9 @@ const techStackCategories = [
 		title: "IDE & Development Workflow",
 		color: "green",
 		items: [
-			"Cursor — main workspace, fast iteration",
-			"Claude Code — debugging + large-scale reasoning",
+			"Cursor — background agents, parallel development",
+			"Claude Code — local CLI, iteration + debugging with file system access",
+			"Browser builders (Bolt, Lovable, v0) — rapid prototyping with DB + auth",
 			"GitHub — version control + collaboration",
 			"Supabase — quick databases + APIs",
 			"Vercel / Netlify — deployments",
@@ -85,7 +86,8 @@ const techStackCategories = [
 		items: [
 			"ChatGPT — projects, connectors, early research",
 			"Gemini — search, visual references",
-			"Perplexity — landscape + competitive insight",
+			"Perplexity — competitive research + sourced answers",
+			"Context7 — library docs for AI agents",
 			"Common Room — community signal",
 			"Reddit / Discord / X — developer insight"
 		]
@@ -165,16 +167,18 @@ const sections = [
 					"Developer acquisition",
 					"High-intent traffic",
 					"Docs entry rate",
-					"Content-driven discovery"
+					"Content-driven discovery",
+					"Agent ecosystem discovery"
 				]
 			},
 			{
 				name: "ACTIVATION",
 				items: [
 					"Activation rate",
-					"Time to first action",
+					"Time to first successful build",
 					"Content → usage conversion",
-					"Documentation engagement"
+					"Documentation engagement",
+					"AI agent build success rate"
 				]
 			},
 			{
@@ -198,9 +202,9 @@ const sections = [
 				items: [
 					"Technical blog posts",
 					"API documentation",
-					"Video tutorials & demos",
+					"Build logs & walkthroughs",
 					"Code samples & templates",
-					"Interactive playgrounds",
+					"Decision frameworks",
 					"Developer guides & quickstarts",
 					"Case studies",
 					"Changelog announcements"
@@ -209,14 +213,15 @@ const sections = [
 			{
 				name: "Distribution Channels",
 				items: [
-					"Dev.to & Hashnode",
 					"GitHub Discussions",
-					"Stack Overflow",
 					"Reddit (r/programming, r/webdev)",
 					"Hacker News",
-					"Twitter/X (Tech Twitter)",
-					"YouTube & Twitch",
-					"Developer newsletters"
+					"Twitter/X & LinkedIn",
+					"YouTube",
+					"Developer newsletters",
+					"Discord communities",
+					"Podcasts (guest appearances)",
+					"Agent ecosystems (MCP integrations, Context7)"
 				]
 			}
 		]
@@ -366,7 +371,7 @@ const sections = [
 
 		<!-- Footer Note -->
 		<footer class="cheatsheet-footer">
-			<p>Created by <a href="https://lukestahl.io/" target="_blank">Luke Stahl</a> • Last updated December 2025</p>
+			<p>Created by <a href="https://lukestahl.io/" target="_blank">Luke Stahl</a> • Last updated March 2026</p>
 		</footer>
 	</div>
 </MinimalLayout>
