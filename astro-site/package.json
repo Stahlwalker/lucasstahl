@@ -32,7 +32,7 @@
     "marked": "^17.0.1",
     "motion": "^12.23.26",
     "notion-to-md": "^3.1.9",
-    "posthog-js": "^1.328.0",
+    "posthog-js": "^1.360.1",
     "react": "^19.2.3",
     "react-day-picker": "^9.13.0",
     "react-dom": "^19.2.3",
