@@ -143,6 +143,13 @@ export async function buildSearchIndex(): Promise<SearchItem[]> {
       description: 'Structured information about Luke Stahl optimized for Large Language Models - skills, experience, projects, and contact details.',
       url: '/for-llms/',
       tags: ['llm', 'ai', 'structured data', 'profile', 'bio', 'resume', 'skills', 'experience']
+    },
+    {
+      type: 'website' as const,
+      title: 'AI Models Guide',
+      description: 'A quick-reference to the major AI models in 2026 — GPT-5, Claude 4.6, Gemini 3, Grok 4, Llama 4, DeepSeek, Mistral, and Qwen 3. Who makes them, what they do best, and when to use each one.',
+      url: '/ai-models-guide/',
+      tags: ['ai', 'models', 'llm', 'gpt', 'claude', 'gemini', 'grok', 'llama', 'deepseek', 'mistral', 'qwen', 'kimi', 'glm', 'comparison', 'guide']
     }
   ];
 

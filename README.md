@@ -31,6 +31,7 @@ lucasstahl/
     │   │   ├── blog/[slug].astro  # Dynamic blog posts
     │   │   ├── builds.astro
     │   │   ├── gems.astro
+    │   │   ├── ai-models-guide.astro  # Weekly auto-updated AI models guide
     │   │   ├── sandbox.astro     # Testing ground for React components
     │   │   └── handbook.astro
     │   ├── components/      # React components
@@ -67,6 +68,7 @@ lucasstahl/
 
 ### Content
 - Blog posts managed in Notion, synced on build
+- AI models guide with weekly auto-updates via GitHub Actions
 - RSS feed at `/rss.xml`
 - Sitemap with canonical URLs and noindex filtering
 - llms.txt for LLM context
@@ -209,6 +211,12 @@ Automatically deploys to GitHub Pages on push to `master`.
 - Runs Mondays at 9 AM UTC
 - Checks for broken links (4xx/5xx)
 - Emails via Resend if issues found
+- Manual trigger available
+
+### AI Models Guide Update (`ai-models-update.yml`)
+- Runs Mondays at 9:30 AM UTC
+- Checks for new AI model releases and updates the guide page
+- Creates a PR with changes for review
 - Manual trigger available
 
 ### Performance Monitor (`weekly-performance-check.yml`)

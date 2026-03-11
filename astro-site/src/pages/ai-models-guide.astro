@@ -10,7 +10,9 @@ const quickReference = [
 	{ model: "Llama 4", company: "Meta", bestFor: "Open-source", differentiator: "10M token context; fully self-hostable", color: "#06b6d4" },
 	{ model: "DeepSeek V3/R1", company: "DeepSeek", bestFor: "Cost efficiency", differentiator: "Frontier performance trained for under $6M; open source", color: "#facc15" },
 	{ model: "Mistral Large", company: "Mistral", bestFor: "EU compliance", differentiator: "Enterprise-safe; strong open-weight models for regulated industries", color: "#818cf8" },
-	{ model: "Qwen 3", company: "Alibaba", bestFor: "Multilingual", differentiator: "119 languages; models from 0.5B to 1T+ parameters", color: "#f472b6" },
+	{ model: "Qwen 3", company: "Alibaba", bestFor: "Multilingual", differentiator: "119 languages; models from 0.6B to 1T+ parameters", color: "#f472b6" },
+	{ model: "Kimi K2.5", company: "Moonshot AI", bestFor: "Agentic open-source", differentiator: "1T params; Agent Swarm coordinates up to 100 sub-agents", color: "#ff6b6b" },
+	{ model: "GLM-5", company: "Zhipu AI", bestFor: "Open frontier", differentiator: "744B MoE; MIT license; trained on zero NVIDIA GPUs", color: "#4ecdc4" },
 	{ model: "Sonar", company: "Perplexity", bestFor: "Search & research", differentiator: "Search-grounded answers at 1200 tok/s; built on Llama 3.3 + Cerebras", color: "#22d3ee" },
 	{ model: "Composer", company: "Cursor", bestFor: "AI-native coding", differentiator: "MoE model trained via RL for software engineering; background agents", color: "#50e3c2" },
 ];
@@ -26,7 +28,7 @@ const frontierModels = [
 		bullets: [
 			"GPT-5.4 is the current flagship with a 1M token context window",
 			"Uses an internal router to select the right sub-model per request in real time",
-			"Lowest syntax error rate in code generation among frontier models",
+			"Native computer use and tool calling for agentic automation",
 			"Strong at documentation, unit tests, and complex SQL queries"
 		],
 		bestFor: "Rapid prototyping, general-purpose tasks, API automation"
@@ -66,7 +68,7 @@ const frontierModels = [
 		color: "#f97316",
 		tagline: "Real-time data meets raw reasoning power.",
 		bullets: [
-			"Grok 4 Heavy uses multi-agent parallel reasoning for hard problems",
+			"Grok 4.20 uses native multi-agent architecture with four specialist agents that debate before responding",
 			"Real-time integration with X (Twitter) for current events",
 			"Scored 100% on AIME 2025 math competition (Heavy variant)",
 			"Less filtered personality; positioned as an alternative to corporate AI"
@@ -88,7 +90,7 @@ const frontierModels = [
 		bestFor: "Research with citations, competitive analysis, fact-checking"
 	},
 	{
-		name: "Composer (Cursor)",
+		name: "Composer 1.5 (Cursor)",
 		company: "Cursor",
 		location: "San Francisco",
 		color: "#50e3c2",
@@ -97,7 +99,7 @@ const frontierModels = [
 			"Mixture-of-experts model trained via RL in real development environments",
 			"4x faster generation than comparable frontier coding models",
 			"Background agents run tasks autonomously while you work",
-			"Automations trigger agents from GitHub PRs, Slack, Linear, PagerDuty"
+			"Cursor Automations trigger agents from GitHub PRs, Slack, Linear, PagerDuty"
 		],
 		bestFor: "Agentic coding, background development, automated workflows"
 	}
@@ -120,7 +122,7 @@ const openSourceModels = [
 		bestFor: "Self-hosting, privacy-sensitive orgs, custom fine-tuning"
 	},
 	{
-		name: "DeepSeek V3 / R1",
+		name: "DeepSeek V3.2 / R1",
 		company: "DeepSeek",
 		location: "Hangzhou, China",
 		color: "#facc15",
@@ -128,8 +130,8 @@ const openSourceModels = [
 		bullets: [
 			"671B parameter MoE model famously trained for under $6M",
 			"R1 variant excels at transparent, step-by-step reasoning",
-			"Open-source with competitive benchmark scores",
-			"Can face occasional service reliability challenges"
+			"V3.2-Speciale matches GPT-5 level performance on key benchmarks",
+			"Open-source with competitive benchmark scores; V4 multimodal imminent"
 		],
 		bestFor: "Budget-conscious teams, math/reasoning, open-source self-hosting"
 	},
@@ -148,6 +150,34 @@ const openSourceModels = [
 		bestFor: "EU-regulated enterprises, privacy-first deployments"
 	},
 	{
+		name: "Kimi K2.5",
+		company: "Moonshot AI",
+		location: "Beijing, China",
+		color: "#ff6b6b",
+		tagline: "Open-source agentic powerhouse with Agent Swarm.",
+		bullets: [
+			"1T total parameters (32B active), MoE architecture with native vision-language",
+			"Agent Swarm coordinates up to 100 specialized sub-agents in parallel",
+			"Kimi Code CLI agent rivals Claude Code and Gemini CLI",
+			"Backed by Alibaba and HongShan; strong global traction"
+		],
+		bestFor: "Agentic workflows, open-source self-hosting, multimodal tasks"
+	},
+	{
+		name: "GLM-5",
+		company: "Zhipu AI",
+		location: "Beijing, China",
+		color: "#4ecdc4",
+		tagline: "Frontier-class model on a MIT license.",
+		bullets: [
+			"744B parameter MoE model (44B active) with 200K context window",
+			"Released under MIT license; trained entirely on Huawei Ascend chips",
+			"77.8% on SWE-bench Verified; 50.4% on Humanity's Last Exam",
+			"Priced roughly 6x cheaper than comparable proprietary models"
+		],
+		bestFor: "Budget-conscious teams, open-source deployment, coding"
+	},
+	{
 		name: "Qwen 3",
 		company: "Alibaba Cloud",
 		location: "Hangzhou, China",
@@ -155,9 +185,9 @@ const openSourceModels = [
 		tagline: "The multilingual giant.",
 		bullets: [
 			"Supports 119 languages with hybrid Mixture-of-Experts architecture",
-			"Parameter scales exceeding 1 trillion; 0.5B to 235B available",
-			"Matches or beats GPT-4 on many benchmarks with less compute",
-			"Specialized variants for vision, coding, math, and long context"
+			"0.6B to 235B open-weight; Qwen3-Max (1T+) API-only; Qwen3-Coder (480B) for code",
+			"Competitive with DeepSeek-R1 and OpenAI o1 on reasoning benchmarks",
+			"Qwen3-Coder achieves 69.6% on SWE-Bench Verified, surpassing many frontier models"
 		],
 		bestFor: "International businesses, multilingual apps, flexible deployment"
 	}
@@ -170,6 +200,7 @@ const imageVideoModels = [
 	{ name: "Nano Banana 2", company: "Google", bestFor: "Fast AI image editing, remixing, and style transfers; built on Gemini Flash" },
 	{ name: "DALL-E 4", company: "OpenAI", bestFor: "Integrated with ChatGPT; strong prompt adherence" },
 	{ name: "Stable Diffusion 3.5", company: "Stability AI", bestFor: "Open-source; self-hostable; highly customizable" },
+	{ name: "FLUX.2", company: "Black Forest Labs", bestFor: "From the Stable Diffusion creators; up to 4MP; open-weight Klein variant" },
 ];
 
 // Scenario Cards — real tasks mapped to models
@@ -182,7 +213,8 @@ const scenarios = [
 			{ task: "Debug a complex codebase", model: "Claude 4.6", color: "#c084fc" },
 			{ task: "Generate unit tests and docs", model: "GPT-5.x", color: "#10b981" },
 			{ task: "Rapid UI prototyping", model: "GPT-5.x", color: "#10b981" },
-			{ task: "Background agents for parallel development", model: "Composer (Cursor)", color: "#50e3c2" },
+			{ task: "Background agents for parallel development", model: "Composer 1.5 (Cursor)", color: "#50e3c2" },
+			{ task: "Open-source agentic coding", model: "Kimi K2.5", color: "#ff6b6b" },
 		]
 	},
 	{
@@ -224,6 +256,7 @@ const scenarios = [
 			{ task: "Fine-tune for a domain-specific task", model: "Llama 4", color: "#06b6d4" },
 			{ task: "Deploy in EU-regulated environments", model: "Mistral Large", color: "#818cf8" },
 			{ task: "Budget-friendly open-source alternative", model: "DeepSeek V3", color: "#facc15" },
+			{ task: "MIT-licensed frontier alternative", model: "GLM-5", color: "#4ecdc4" },
 		]
 	},
 	{
@@ -269,7 +302,7 @@ const scenarios = [
 			"@type": "WebPage",
 			"@id": "https://lukestahl.io/ai-models-guide/"
 		},
-		"keywords": "AI models, GPT-5, Claude 4.6, Gemini 3, Grok 4, Llama 4, DeepSeek, Mistral, Qwen 3, AI comparison, LLM guide 2026"
+		"keywords": "AI models, GPT-5, Claude 4.6, Gemini 3, Grok 4, Llama 4, DeepSeek, Mistral, Qwen 3, Kimi K2.5, GLM-5, AI comparison, LLM guide 2026"
 	})} />
 
 	<!-- JSON-LD: BreadcrumbList -->
@@ -401,7 +434,7 @@ const scenarios = [
 					))}
 				</div>
 				<p class="media-note">
-					<strong>Video generation leaders:</strong> Google Veo 3 (physics simulation + native audio), Sora (OpenAI), and Runway Gen-4 (creative/cinematic).
+					<strong>Video generation leaders:</strong> Google Veo 3.1 (native 4K + vertical video), Sora 2 (OpenAI, up to 25s + Disney partnership), Kling 3.0 (native 4K/60fps), and Runway Gen-4 (creative/cinematic).
 				</p>
 			</section>
 
@@ -431,6 +464,20 @@ const scenarios = [
 			<!-- Closing -->
 			<section class="section closing">
 				<p class="closing-text">There is no single "best" model in 2026. The landscape has shifted from a winner-take-all race to specialized excellence. Match the model to the task.</p>
+				<div class="closing-radar">
+					<div class="radar-scope" aria-hidden="true">
+						<div class="radar-arc radar-arc--1"></div>
+						<div class="radar-arc radar-arc--2"></div>
+						<div class="radar-arc radar-arc--3"></div>
+						<div class="radar-beam"></div>
+						<div class="radar-base"></div>
+						<span class="radar-blip radar-blip--1"></span>
+						<span class="radar-blip radar-blip--2"></span>
+						<span class="radar-blip radar-blip--3"></span>
+						<span class="radar-blip radar-blip--4"></span>
+					</div>
+					<p class="radar-text">Sourced directly from company websites and documentation. Updated weekly.</p>
+				</div>
 			</section>
 		</main>
 
@@ -613,6 +660,10 @@ const scenarios = [
 
 	.ref-table tbody tr:last-child td {
 		border-bottom: none;
+	}
+
+	.ref-table tbody td:first-child {
+		white-space: nowrap;
 	}
 
 	.ref-dot {
@@ -939,6 +990,181 @@ const scenarios = [
 		max-width: 560px;
 		margin: 0 auto;
 		font-style: italic;
+	}
+
+	.closing-radar {
+		display: inline-flex;
+		align-items: center;
+		gap: 2rem;
+		margin-top: 2.5rem;
+		background: var(--guide-bg);
+		border: 1px solid var(--guide-border);
+		border-radius: 14px;
+		padding: 1.5rem 2rem;
+	}
+
+	.radar-scope {
+		position: relative;
+		width: 110px;
+		height: 80px;
+		flex-shrink: 0;
+		overflow: hidden;
+	}
+
+	/* Arcs — upward-facing semicircles anchored at bottom center */
+	.radar-arc {
+		position: absolute;
+		border: 1px dotted rgba(96, 165, 250, 0.3);
+		border-radius: 50%;
+		left: 50%;
+		bottom: 0;
+		transform: translateX(-50%);
+	}
+
+	.radar-arc--1 {
+		width: 200px;
+		height: 200px;
+		bottom: -100px;
+	}
+
+	.radar-arc--2 {
+		width: 140px;
+		height: 140px;
+		bottom: -70px;
+	}
+
+	.radar-arc--3 {
+		width: 80px;
+		height: 80px;
+		bottom: -40px;
+	}
+
+	/* Base circle at bottom */
+	.radar-base {
+		position: absolute;
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+		border: 1.5px solid rgba(96, 165, 250, 0.5);
+		background: rgba(96, 165, 250, 0.1);
+		bottom: -5px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	/* Sweep beam — wedge projecting upward from base */
+	.radar-beam {
+		position: absolute;
+		width: 200px;
+		height: 200px;
+		bottom: -100px;
+		left: 50%;
+		transform: translateX(-50%);
+		border-radius: 50%;
+		background: conic-gradient(
+			from 240deg,
+			transparent 0deg,
+			rgba(96, 165, 250, 0.12) 20deg,
+			rgba(96, 165, 250, 0.06) 40deg,
+			transparent 60deg
+		);
+		transform-origin: center;
+		animation: beamSweep 4s linear infinite;
+	}
+
+	/* Blips — colored dots scattered in the scan area */
+	.radar-blip {
+		position: absolute;
+		width: 5px;
+		height: 5px;
+		border-radius: 50%;
+		animation: blipPulse 3s ease-in-out infinite;
+	}
+
+	.radar-blip--1 {
+		background: #c084fc;
+		box-shadow: 0 0 6px rgba(192, 132, 252, 0.6);
+		top: 28%;
+		left: 38%;
+		animation-delay: 0s;
+	}
+
+	.radar-blip--2 {
+		background: #10b981;
+		box-shadow: 0 0 6px rgba(16, 185, 129, 0.6);
+		top: 12%;
+		left: 62%;
+		animation-delay: 1s;
+	}
+
+	.radar-blip--3 {
+		background: #f97316;
+		box-shadow: 0 0 6px rgba(249, 115, 22, 0.6);
+		top: 42%;
+		left: 70%;
+		animation-delay: 2s;
+	}
+
+	.radar-blip--4 {
+		background: #60a5fa;
+		box-shadow: 0 0 6px rgba(96, 165, 250, 0.6);
+		top: 8%;
+		left: 30%;
+		animation-delay: 0.5s;
+	}
+
+	.radar-text {
+		font-size: 0.82rem;
+		color: var(--guide-text-dim);
+		text-align: left;
+		max-width: 320px;
+		line-height: 1.6;
+		margin: 0;
+	}
+
+	@keyframes beamSweep {
+		from { transform: translateX(-50%) rotate(0deg); }
+		to { transform: translateX(-50%) rotate(360deg); }
+	}
+
+	@keyframes blipPulse {
+		0%, 100% { opacity: 0.4; transform: scale(1); }
+		50% { opacity: 1; transform: scale(1.4); }
+	}
+
+	/* Light mode radar */
+	:global([data-theme="light"]) .closing-radar {
+		background: #ffffff;
+	}
+
+	:global([data-theme="light"]) .radar-arc {
+		border-color: rgba(37, 99, 235, 0.25);
+	}
+
+	:global([data-theme="light"]) .radar-base {
+		border-color: rgba(37, 99, 235, 0.4);
+		background: rgba(37, 99, 235, 0.08);
+	}
+
+	:global([data-theme="light"]) .radar-beam {
+		background: conic-gradient(
+			from 240deg,
+			transparent 0deg,
+			rgba(37, 99, 235, 0.1) 20deg,
+			rgba(37, 99, 235, 0.05) 40deg,
+			transparent 60deg
+		);
+	}
+
+	@media (max-width: 480px) {
+		.closing-radar {
+			flex-direction: column;
+			gap: 1.25rem;
+		}
+
+		.radar-text {
+			text-align: center;
+		}
 	}
 
 
