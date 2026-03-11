@@ -1253,6 +1253,19 @@ const scenarios = [
 		border-top-color: rgba(0, 0, 0, 0.06);
 	}
 
+	/* Light mode color accessibility — darken accent colors for contrast */
+	:global([data-theme="light"]) .ref-badge {
+		filter: brightness(0.62) saturate(1.3);
+	}
+
+	:global([data-theme="light"]) .model-card-best {
+		filter: brightness(0.62) saturate(1.3);
+	}
+
+	:global([data-theme="light"]) .scenario-task-model {
+		filter: brightness(0.62) saturate(1.3);
+	}
+
 	/* ============================
 	   RESPONSIVE
 	   ============================ */
