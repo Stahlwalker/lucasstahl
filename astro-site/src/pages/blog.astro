@@ -3,6 +3,30 @@ import Layout from '../layouts/Layout.astro';
 import { getBlogPosts } from '../lib/notion';
 
 const notionPosts = await getBlogPosts();
+
+// Merge non-featured Notion posts with inline external posts that need date-sorted placement
+const nonFeaturedPosts = [
+	...notionPosts.filter(post => !post.featured).map(post => ({
+		type: 'notion' as const,
+		title: post.title,
+		slug: post.slug,
+		publishedDate: post.publishedDate,
+		tags: post.tags,
+		excerpt: '',
+		href: `/blog/${post.slug}/`,
+		external: false,
+	})),
+	{
+		type: 'external' as const,
+		title: 'The true cost of open source CMS',
+		slug: 'open-source-cms',
+		publishedDate: '2025-12-11',
+		tags: ['CMS', 'Open Source', 'Architecture'],
+		excerpt: "Open source doesn't remove cost. It just changes how you pay. Exploring the hidden costs of open source CMS platforms and what teams should consider when evaluating their options.",
+		href: 'https://webflow.com/blog/open-source-cms',
+		external: true,
+	},
+].sort((a, b) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime());
 ---
 
 <Layout
@@ -193,49 +217,20 @@ const notionPosts = await getBlogPosts();
 					</article>
 				))}
 
-				<!-- External Blog Posts -->
-				<!-- Blog Post: Dec 11, 2025 -->
-				<article class="blog-card blog-card-compact">
-					<a href="https://webflow.com/blog/open-source-cms"
-					   target="_blank"
-					   rel="noopener noreferrer"
-					   class="blog-card-inner"
-					   aria-label="Read article: The true cost of open source CMS">
-						<div class="blog-content">
-							<div class="blog-meta">
-								<time class="blog-date">Dec 11, 2025</time>
-								<span class="blog-type">Article</span>
-							<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
-							</div>
-							<h2 class="blog-title">The true cost of open source CMS</h2>
-							<p class="blog-excerpt">
-								Open source doesn't remove cost. It just changes how you pay. Exploring the hidden costs of open source CMS platforms and what teams should consider when evaluating their options.
-							</p>
-							<div class="blog-tags">
-								<span class="tag">CMS</span>
-								<span class="tag">Open Source</span>
-								<span class="tag">Architecture</span>
-							</div>
-							<a href="https://webflow.com/blog/open-source-cms"
-							   target="_blank"
-							   rel="noopener noreferrer"
-							   class="blog-link">
-								Read Article <i class="fa-solid fa-arrow-right"></i>
-							</a>
-						</div>
-					</a>
-				</article>
-
-				<!-- Non-Featured Notion Blog Posts -->
-				{notionPosts.filter(post => !post.featured).map(post => (
+				<!-- Non-Featured Posts (Notion + External, sorted by date) -->
+				{nonFeaturedPosts.map(post => (
 					<article class="blog-card blog-card-compact">
-						<a href={`/blog/${post.slug}/`} class="blog-card-inner">
+						<a href={post.href}
+						   class="blog-card-inner"
+						   {...(post.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
 							<div class="blog-content">
 								<div class="blog-meta">
 									<time class="blog-date">{new Date(post.publishedDate + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</time>
 									<span class="blog-type">Article</span>
+									{post.external && <i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>}
 								</div>
 								<h2 class="blog-title">{post.title}</h2>
+								{post.excerpt && <p class="blog-excerpt">{post.excerpt}</p>}
 								{post.tags.length > 0 && (
 									<div class="blog-tags">
 										{post.tags.map(tag => (
