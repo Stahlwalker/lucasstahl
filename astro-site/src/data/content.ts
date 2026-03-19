@@ -127,6 +127,13 @@ export const tinyApps = [
 
 export const externalBlogPosts = [
   {
+    title: "Where does visual development fit in a production stack?",
+    description: "A look at where visual development tools fit alongside code-first workflows in modern production stacks.",
+    url: "https://webflow.com/blog/visual-development-stack",
+    tags: ["Visual Dev", "Architecture", "Webflow"],
+    date: "Mar 19, 2026"
+  },
+  {
     title: "The true cost of open source CMS",
     description: "Open source doesn't remove cost. It just changes how you pay. Exploring the hidden costs of open source CMS platforms and what teams should consider when evaluating their options.",
     url: "https://webflow.com/blog/open-source-cms",
