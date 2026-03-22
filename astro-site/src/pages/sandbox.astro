@@ -6115,4 +6115,346 @@ import ColorBendsTest from '../components/ColorBendsTest.jsx';
 			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 		}
 	</style>
+
+	<!-- Clerk-style Navbar Prototype -->
+	<section style="padding: 3rem 1.5rem; background: #f8f8f8;">
+		<p style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #888; margin-bottom: 1rem;">Navbar Prototype — Luke Stahl Brand Style</p>
+
+		<div class="ls-nav-proto">
+			<!-- Row 1: Main nav -->
+			<div class="ls-nav-row-1">
+				<a href="/" class="ls-nav-brand">Luke Stahl</a>
+				<nav class="ls-nav-links" id="lsNavLinks">
+					<a href="/blog/" class="ls-nav-link">Blog <span class="ls-nav-chevron">▾</span></a>
+					<a href="/ai-models-guide/" class="ls-nav-link">AI Models</a>
+					<a href="/builds/" class="ls-nav-link">Builds</a>
+					<a href="/about/" class="ls-nav-link">About <span class="ls-nav-chevron">▾</span></a>
+					<a href="/gems/" class="ls-nav-link">Gems</a>
+				</nav>
+				<div class="ls-nav-actions" id="lsNavActions">
+					<a href="/about/" class="ls-nav-signin">Contact</a>
+					<a href="/blog/" class="ls-nav-cta">Start reading →</a>
+				</div>
+				<button class="ls-nav-hamburger" id="lsNavHamburger" aria-label="Toggle navigation" aria-expanded="false">
+					<span></span><span></span><span></span>
+				</button>
+			</div>
+
+			<!-- Mobile drawer -->
+			<div class="ls-nav-drawer" id="lsNavDrawer">
+				<a href="/blog/" class="ls-nav-drawer-link">Blog</a>
+				<a href="/ai-models-guide/" class="ls-nav-drawer-link">AI Models</a>
+				<a href="/builds/" class="ls-nav-drawer-link">Builds</a>
+				<a href="/about/" class="ls-nav-drawer-link">About</a>
+				<a href="/gems/" class="ls-nav-drawer-link">Gems</a>
+				<div class="ls-nav-drawer-divider"></div>
+				<a href="/about/" class="ls-nav-drawer-link">Contact</a>
+				<a href="/blog/" class="ls-nav-cta ls-nav-drawer-cta">Start reading →</a>
+			</div>
+
+			<!-- Row 2: Contextual sub-nav -->
+			<div class="ls-nav-row-2">
+				<div class="ls-nav-tabs">
+					<a href="/blog/" class="ls-nav-tab ls-nav-tab--active">
+						<span class="ls-nav-tab-icon">✏️</span> Writing
+					</a>
+					<a href="/builds/" class="ls-nav-tab">
+						<span class="ls-nav-tab-icon">⚙️</span> Builds
+					</a>
+					<a href="/gems/" class="ls-nav-tab">
+						<span class="ls-nav-tab-icon">💎</span> Gems
+					</a>
+				</div>
+				<div class="ls-nav-sub-actions">
+					<a href="/ai-models-guide/" class="ls-nav-sub-link">Dev Marketing <span class="ls-nav-chevron">▾</span></a>
+					<a href="/for-llms/" class="ls-nav-sub-link">For LLMs <span class="ls-nav-chevron">▾</span></a>
+					<a href="/blog/" class="ls-nav-watch-btn">▶ Read Latest Post</a>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			const lsHamburger = document.getElementById('lsNavHamburger');
+			const lsDrawer = document.getElementById('lsNavDrawer');
+			lsHamburger?.addEventListener('click', () => {
+				const isOpen = lsDrawer.classList.toggle('ls-nav-drawer--open');
+				lsHamburger.setAttribute('aria-expanded', String(isOpen));
+				lsHamburger.classList.toggle('ls-nav-hamburger--open', isOpen);
+			});
+		</script>
+
+		<style>
+			.ls-nav-proto {
+				border-radius: 12px;
+				overflow: hidden;
+				border: 1px solid rgba(0,0,0,0.08);
+				font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+				max-width: 1100px;
+				margin: 0 auto;
+			}
+
+			/* Row 1 */
+			.ls-nav-row-1 {
+				display: flex;
+				align-items: center;
+				gap: 2rem;
+				padding: 0 1.25rem;
+				height: 56px;
+				background: #ffffff;
+				border-bottom: 1px solid #e8e8e8;
+			}
+
+			.ls-nav-brand {
+				font-size: 1rem;
+				font-weight: 700;
+				color: #1a2744;
+				text-decoration: none;
+				white-space: nowrap;
+				letter-spacing: -0.01em;
+			}
+
+			.ls-nav-links {
+				display: flex;
+				align-items: center;
+				gap: 0.25rem;
+				flex: 1;
+			}
+
+			.ls-nav-link {
+				padding: 0.375rem 0.625rem;
+				font-size: 0.875rem;
+				font-weight: 500;
+				color: #1a2744;
+				text-decoration: none;
+				border-radius: 6px;
+				transition: background 0.15s;
+				white-space: nowrap;
+			}
+
+			.ls-nav-link:hover {
+				background: #f0f0f0;
+			}
+
+			.ls-nav-chevron {
+				font-size: 0.65rem;
+				opacity: 0.6;
+			}
+
+			.ls-nav-actions {
+				display: flex;
+				align-items: center;
+				gap: 0.75rem;
+				margin-left: auto;
+			}
+
+			.ls-nav-signin {
+				font-size: 0.875rem;
+				font-weight: 500;
+				color: #1a2744;
+				text-decoration: none;
+				white-space: nowrap;
+			}
+
+			.ls-nav-signin:hover {
+				opacity: 0.7;
+			}
+
+			.ls-nav-cta {
+				padding: 0.375rem 0.875rem;
+				font-size: 0.875rem;
+				font-weight: 600;
+				color: #ffffff;
+				background: #1a2744;
+				text-decoration: none;
+				border: 1.5px solid #1a2744;
+				border-radius: 8px;
+				white-space: nowrap;
+				transition: background 0.15s, color 0.15s;
+			}
+
+			.ls-nav-cta:hover {
+				background: #243560;
+				border-color: #243560;
+			}
+
+			/* Row 2 */
+			.ls-nav-row-2 {
+				display: flex;
+				align-items: center;
+				padding: 0 1.25rem;
+				height: 44px;
+				background: #f5f5f5;
+				gap: 0.5rem;
+				border-top: 1px solid #e8e8e8;
+			}
+
+			.ls-nav-tabs {
+				display: flex;
+				align-items: center;
+				gap: 0.25rem;
+			}
+
+			.ls-nav-tab {
+				display: flex;
+				align-items: center;
+				gap: 0.4rem;
+				padding: 0.3rem 0.75rem;
+				font-size: 0.8125rem;
+				font-weight: 500;
+				color: #4a5568;
+				text-decoration: none;
+				border-radius: 99px;
+				transition: background 0.15s;
+				white-space: nowrap;
+			}
+
+			.ls-nav-tab:hover {
+				background: #e8e8e8;
+			}
+
+			.ls-nav-tab--active {
+				background: #e2e8f0;
+				font-weight: 700;
+				color: #1a2744;
+			}
+
+			.ls-nav-tab-icon {
+				font-size: 0.875rem;
+			}
+
+			.ls-nav-sub-actions {
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+				margin-left: auto;
+			}
+
+			.ls-nav-sub-link {
+				padding: 0.3rem 0.625rem;
+				font-size: 0.8125rem;
+				font-weight: 500;
+				color: #4a5568;
+				text-decoration: none;
+				border-radius: 6px;
+				transition: background 0.15s;
+				white-space: nowrap;
+			}
+
+			.ls-nav-sub-link:hover {
+				background: #e8e8e8;
+			}
+
+			.ls-nav-watch-btn {
+				display: flex;
+				align-items: center;
+				gap: 0.4rem;
+				padding: 0.3rem 0.75rem;
+				font-size: 0.8125rem;
+				font-weight: 600;
+				color: #1a2744;
+				text-decoration: none;
+				border: 1.5px solid #c0c8d8;
+				border-radius: 99px;
+				white-space: nowrap;
+				transition: background 0.15s;
+			}
+
+			.ls-nav-watch-btn:hover {
+				background: #e8e8e8;
+			}
+
+			/* Hamburger button */
+			.ls-nav-hamburger {
+				display: none;
+				flex-direction: column;
+				justify-content: center;
+				gap: 5px;
+				width: 36px;
+				height: 36px;
+				padding: 6px;
+				background: none;
+				border: 1px solid #e0e0e0;
+				border-radius: 6px;
+				cursor: pointer;
+				margin-left: auto;
+			}
+
+			.ls-nav-hamburger span {
+				display: block;
+				height: 2px;
+				background: #1a2744;
+				border-radius: 2px;
+				transition: transform 0.2s, opacity 0.2s;
+			}
+
+			.ls-nav-hamburger--open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+			.ls-nav-hamburger--open span:nth-child(2) { opacity: 0; }
+			.ls-nav-hamburger--open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+			/* Mobile drawer */
+			.ls-nav-drawer {
+				display: none;
+				flex-direction: column;
+				background: #ffffff;
+				border-top: 1px solid #e8e8e8;
+				padding: 0.75rem 1.25rem 1rem;
+				gap: 0.25rem;
+			}
+
+			.ls-nav-drawer--open {
+				display: flex;
+			}
+
+			.ls-nav-drawer-link {
+				padding: 0.5rem 0.5rem;
+				font-size: 0.9375rem;
+				font-weight: 500;
+				color: #1a2744;
+				text-decoration: none;
+				border-radius: 6px;
+				transition: background 0.15s;
+			}
+
+			.ls-nav-drawer-link:hover {
+				background: #f0f0f0;
+			}
+
+			.ls-nav-drawer-divider {
+				height: 1px;
+				background: #e8e8e8;
+				margin: 0.5rem 0;
+			}
+
+			.ls-nav-drawer-cta {
+				display: inline-block;
+				width: fit-content;
+				margin-top: 0.25rem;
+			}
+
+			/* Responsive breakpoints */
+			@media (max-width: 768px) {
+				.ls-nav-links,
+				.ls-nav-actions {
+					display: none;
+				}
+
+				.ls-nav-hamburger {
+					display: flex;
+				}
+
+				.ls-nav-row-1 {
+					gap: 0.75rem;
+				}
+
+				.ls-nav-row-2 {
+					overflow-x: auto;
+					-webkit-overflow-scrolling: touch;
+				}
+
+				.ls-nav-sub-actions {
+					display: none;
+				}
+			}
+		</style>
+	</section>
 </Layout>
