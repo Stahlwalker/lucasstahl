@@ -1,6 +1,7 @@
 ---
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import FooterV2 from '../components/FooterV2.astro';
 import PostHog from '../components/posthog.astro';
 import DevMarketingConsole from '../components/DevMarketingConsole.astro';
 import Search from '../components/Search.astro';
@@ -196,7 +197,7 @@ const {
 	)}
 	<Navbar />
 	<slot />
-	<Footer />
+	<FooterV2 />
 	{!hideHandbookButton && <DevMarketingConsole />}
 	<Search />
 	{import.meta.env.DEV && <AgentationWrapper client:only="react" />}
