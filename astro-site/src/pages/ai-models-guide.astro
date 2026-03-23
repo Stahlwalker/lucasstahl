@@ -14,7 +14,7 @@ const quickReference = [
 	{ model: "Kimi K2.5", company: "Moonshot AI", bestFor: "Agentic open-source", differentiator: "1T params; Agent Swarm coordinates up to 100 sub-agents", color: "#ff6b6b" },
 	{ model: "GLM-5", company: "Zhipu AI", bestFor: "Open frontier", differentiator: "744B MoE; MIT license; trained on zero NVIDIA GPUs", color: "#4ecdc4" },
 	{ model: "Sonar", company: "Perplexity", bestFor: "Search & research", differentiator: "Search-grounded answers at 1200 tok/s; built on Llama 3.3 + Cerebras", color: "#22d3ee" },
-	{ model: "Composer", company: "Cursor", bestFor: "AI-native coding", differentiator: "MoE model trained via RL for software engineering; background agents", color: "#50e3c2" },
+	{ model: "Composer 2", company: "Cursor", bestFor: "AI-native coding", differentiator: "Frontier-level coding via RL on long-horizon tasks; 73.7 SWE-bench Multilingual", color: "#50e3c2" },
 ];
 
 // Frontier Models
@@ -90,16 +90,16 @@ const frontierModels = [
 		bestFor: "Research with citations, competitive analysis, fact-checking"
 	},
 	{
-		name: "Composer 1.5 (Cursor)",
+		name: "Composer 2 (Cursor)",
 		company: "Cursor",
 		location: "San Francisco",
 		color: "#50e3c2",
-		tagline: "AI-native coding model built for software engineering.",
+		tagline: "Frontier-level coding model trained via RL on long-horizon software engineering tasks.",
 		bullets: [
-			"Mixture-of-experts model trained via RL in real development environments",
-			"4x faster generation than comparable frontier coding models",
-			"Background agents run tasks autonomously while you work",
-			"Cursor Automations trigger agents from GitHub PRs, Slack, Linear, PagerDuty"
+			"73.7 on SWE-bench Multilingual — top scores across CursorBench and Terminal-Bench 2.0",
+			"Trained with RL to solve complex tasks requiring hundreds of sequential actions",
+			"Fast variant is now default: frontier-level intelligence at lower cost than competing fast models",
+			"Background agents run tasks autonomously while you work"
 		],
 		bestFor: "Agentic coding, background development, automated workflows"
 	}
@@ -213,7 +213,7 @@ const scenarios = [
 			{ task: "Debug a complex codebase", model: "Claude 4.6", color: "#c084fc" },
 			{ task: "Generate unit tests and docs", model: "GPT-5.x", color: "#10b981" },
 			{ task: "Rapid UI prototyping", model: "GPT-5.x", color: "#10b981" },
-			{ task: "Background agents for parallel development", model: "Composer 1.5 (Cursor)", color: "#50e3c2" },
+			{ task: "Background agents for parallel development", model: "Composer 2 (Cursor)", color: "#50e3c2" },
 			{ task: "Open-source agentic coding", model: "Kimi K2.5", color: "#ff6b6b" },
 		]
 	},

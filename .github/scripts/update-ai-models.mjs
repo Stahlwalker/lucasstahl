@@ -60,7 +60,7 @@ WHAT DOES NOT COUNT:
 - Minor API updates or SDK changes
 
 SOURCE QUALITY RULES (CRITICAL):
-- For EXISTING models, only use official sources: company blogs (openai.com/blog, anthropic.com/news, blog.google, mistral.ai/news, ai.meta.com/blog, deepseek.com, qwenlm.github.io), official docs, and arxiv.org papers
+- For EXISTING models, only use official sources: company blogs (openai.com/blog, anthropic.com/news, blog.google, mistral.ai/news, ai.meta.com/blog, deepseek.com, qwenlm.github.io, cursor.com/blog, x.ai/blog, perplexity.ai/blog, moonshot.cn, zhipuai.cn, stability.ai/news, blackforestlabs.ai, kling.ai, midjourney.com/blog), official docs, and arxiv.org papers
 - For discovering NEW models, you may search broadly, but you MUST find an official announcement or company source before adding a model. Do NOT rely on AI-generated roundup articles, SEO listicles, or aggregator sites as primary sources.
 - Every change in the CHANGELOG must include a URL to an official or primary source. If you cannot find an official source for a claim, do not include that claim.
 - Do NOT use information sourced only from other AI models, AI-generated blog posts, or content farms.
