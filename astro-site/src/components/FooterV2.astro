@@ -36,7 +36,7 @@
 		<div class="v2-col">
 			<h4 class="v2-col-title v2-col-marketing">Marketing</h4>
 			<a href="/handbook/" class="v2-col-link">Developer Marketing Handbook</a>
-			<a href="/dev-marketing-cheat-sheet/" class="v2-col-link">Developer Marketing Cheatsheet</a>
+			<a href="/dev-marketing-cheat-sheet/" class="v2-col-link">Developer Marketing Cheat Sheet</a>
 			<a href="/newsletter/" class="v2-col-link">Newsletter</a>
 		</div>
 		<div class="v2-col">
@@ -47,6 +47,7 @@
 		<div class="v2-col">
 			<h4 class="v2-col-title v2-col-contact">Contact</h4>
 			<a href="/about/" class="v2-col-link">About</a>
+			<a href="https://www.upwork.com/freelancers/~01a729dd72b0076831" target="_blank" rel="noopener noreferrer" class="v2-col-link">Contract Upwork <i class="fa-solid fa-arrow-up-right-from-square v2-ext-icon"></i></a>
 		</div>
 	</div>
 
@@ -204,12 +205,12 @@
 		margin: 0 0 0.75rem 0;
 	}
 
-	.v2-col-design    { color: #22d3ee; }
-	.v2-col-dev       { color: #818cf8; }
-	.v2-col-ai        { color: #c3e88d; }
-	.v2-col-marketing { color: #f472b6; }
-	.v2-col-resources { color: #fb923c; }
-	.v2-col-contact   { color: #60a5fa; }
+	.v2-col-design,
+	.v2-col-dev,
+	.v2-col-ai,
+	.v2-col-marketing,
+	.v2-col-resources,
+	.v2-col-contact   { color: #22d3ee; }
 
 	.v2-col-link {
 		font-family: 'Inter', sans-serif;
@@ -329,15 +330,15 @@
 		width: 8px;
 		height: 8px;
 		border-radius: 50%;
-		background: #3b82f6;
+		background: #22c55e;
 		flex-shrink: 0;
-		box-shadow: 0 0 6px rgba(59, 130, 246, 0.6);
+		box-shadow: 0 0 6px rgba(34, 197, 94, 0.6);
 		animation: v2-status-pulse 2.5s ease-in-out infinite;
 	}
 
 	@keyframes v2-status-pulse {
-		0%, 100% { box-shadow: 0 0 4px rgba(59, 130, 246, 0.5); }
-		50%       { box-shadow: 0 0 12px rgba(59, 130, 246, 0.9); }
+		0%, 100% { box-shadow: 0 0 4px rgba(34, 197, 94, 0.5); }
+		50%       { box-shadow: 0 0 12px rgba(34, 197, 94, 0.9); }
 	}
 
 	/* Social icons */
@@ -508,11 +509,11 @@
 	}
 
 	:global([data-theme="light"]) .footer-v2::before {
-		background: linear-gradient(90deg, transparent, rgba(236, 72, 153, 0.6), rgba(236, 72, 153, 0.3), transparent);
+		background: linear-gradient(90deg, transparent, rgba(14, 116, 144, 0.6), rgba(14, 116, 144, 0.3), transparent);
 	}
 
 	:global([data-theme="light"]) .footer-v2::after {
-		background: radial-gradient(ellipse at top, rgba(236, 72, 153, 0.07) 0%, transparent 70%);
+		background: radial-gradient(ellipse at top, rgba(14, 116, 144, 0.07) 0%, transparent 70%);
 	}
 
 	:global([data-theme="light"]) .v2-brand-name {
@@ -528,12 +529,12 @@
 		border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 	}
 
-	:global([data-theme="light"]) .v2-col-design    { color: #0e7490; } /* cyan-700   — 5.3:1 */
-	:global([data-theme="light"]) .v2-col-dev       { color: #4338ca; } /* indigo-700 — 6.5:1 */
-	:global([data-theme="light"]) .v2-col-ai        { color: #4d7c0f; } /* lime-700   — 8.5:1 */
-	:global([data-theme="light"]) .v2-col-marketing { color: #be185d; } /* pink-700   — 7.2:1 */
-	:global([data-theme="light"]) .v2-col-resources { color: #c2410c; } /* orange-700 — 5.8:1 */
-	:global([data-theme="light"]) .v2-col-contact   { color: #1d4ed8; } /* blue-700   — 7.0:1 */
+	:global([data-theme="light"]) .v2-col-design,
+	:global([data-theme="light"]) .v2-col-dev,
+	:global([data-theme="light"]) .v2-col-ai,
+	:global([data-theme="light"]) .v2-col-marketing,
+	:global([data-theme="light"]) .v2-col-resources,
+	:global([data-theme="light"]) .v2-col-contact   { color: #0e7490; } /* cyan-700 — 5.3:1 */
 
 	:global([data-theme="light"]) .v2-col-link:hover {
 		color: #0e7490;
@@ -553,6 +554,12 @@
 	:global([data-theme="light"]) .v2-toggle-btn:hover { color: rgba(0, 0, 0, 0.8); }
 	:global([data-theme="light"]) .v2-toggle-btn.active { color: #0e7490; }
 
+	:global([data-theme="light"]) .v2-status-dot {
+		background: #4d7c0f;
+		box-shadow: 0 0 6px rgba(77, 124, 15, 0.6);
+		animation: none;
+	}
+
 	:global([data-theme="light"]) .v2-status {
 		color: rgba(0, 0, 0, 0.5);
 	}
@@ -563,7 +570,7 @@
 
 	:global([data-theme="light"]) .v2-social a:hover {
 		color: #0e7490;
-		text-shadow: none;
+		text-shadow: 0 0 10px rgba(14, 116, 144, 0.3);
 	}
 
 	:global([data-theme="light"]) .v2-easter-egg {
