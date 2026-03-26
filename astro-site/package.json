@@ -39,6 +39,9 @@
     "tailwind-merge": "^3.4.0",
     "three": "^0.167.1"
   },
+  "overrides": {
+    "fast-xml-parser": "^5.5.9"
+  },
   "devDependencies": {
     "@astrojs/tailwind": "^6.0.2",
     "@playwright/test": "^1.58.1",
