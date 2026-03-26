@@ -23,5 +23,6 @@ Sentry.init({
     'AbortError',
     'The operation was aborted',
     'The user aborted a request',
+    'signal is aborted without reason',
   ],
 });
