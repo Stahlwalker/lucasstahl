@@ -413,9 +413,27 @@ const {
 			if (cursorGlow) {
 				let mouseX = 0;
 				let mouseY = 0;
+				let currentAnimation = null;
+				let isDetached = false;
+
+				// Watch for the element being removed from the DOM (e.g. page transitions)
+				// so we can cancel the in-flight animation before commitStyles() is called
+				const observer = new MutationObserver(() => {
+					if (!document.contains(cursorGlow)) {
+						isDetached = true;
+						if (currentAnimation) {
+							currentAnimation.cancel();
+							currentAnimation = null;
+						}
+						observer.disconnect();
+					}
+				});
+				observer.observe(document.body, { childList: true, subtree: true });
 
 				// Track mouse position
 				document.addEventListener('mousemove', (e) => {
+					if (isDetached) return;
+
 					mouseX = e.clientX;
 					mouseY = e.clientY;
 
@@ -424,25 +442,18 @@ const {
 						cursorGlow.style.opacity = '1';
 					}
 
-					// Guard against element being removed from DOM (e.g. page transitions)
-					if (!document.contains(cursorGlow)) return;
-
 					// Animate glow position with smooth easing
-					// Wrapped in try-catch to suppress commitStyles() InvalidStateError
-					// if the element is detached mid-animation
-					try {
-						animate(
-							cursorGlow,
-							{
-								left: mouseX + 'px',
-								top: mouseY + 'px'
-							},
-							{
-								duration: 0.2,
-								easing: 'ease-out'
-							}
-						);
-					} catch (_) {}
+					currentAnimation = animate(
+						cursorGlow,
+						{
+							left: mouseX + 'px',
+							top: mouseY + 'px'
+						},
+						{
+							duration: 0.2,
+							easing: 'ease-out'
+						}
+					);
 				});
 
 				// Hide glow when cursor leaves window
