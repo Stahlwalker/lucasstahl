@@ -98,8 +98,12 @@ body {
 }
 
 .navbar-brand:hover {
-    color: var(--accent-primary) !important;
+    color: #22d3ee !important;
     transform: translateY(-2px);
+}
+
+[data-theme="light"] .navbar-brand:hover {
+    color: #0e7490 !important;
 }
 
 /* Navbar GitHub Icon */
@@ -123,9 +127,14 @@ body {
 }
 
 .navbar-github-icon:hover {
-    color: var(--accent-primary) !important;
-    background: rgba(96, 165, 250, 0.15);
+    color: #22d3ee !important;
+    background: rgba(34, 211, 238, 0.15);
     transform: translateY(-3px);
+}
+
+[data-theme="light"] .navbar-github-icon:hover {
+    color: #0e7490 !important;
+    background: rgba(14, 116, 144, 0.1);
 }
 
 .navbar-brand:hover .navbar-github-icon {
@@ -135,6 +144,15 @@ body {
 /* Hide mobile GitHub nav item on desktop */
 .navbar-github-mobile {
     display: none;
+}
+
+.navbar-github-mobile .nav-link:hover {
+    color: #22d3ee !important;
+    opacity: 1;
+}
+
+[data-theme="light"] .navbar-github-mobile .nav-link:hover {
+    color: #0e7490 !important;
 }
 
 /* Mobile search button styling */
@@ -179,7 +197,7 @@ body {
     height: 2px;
     bottom: -5px;
     left: 50%;
-    background: var(--accent-primary);
+    background: #22d3ee;
     transition: all 0.3s ease;
     transform: translateX(-50%);
 }
@@ -190,6 +208,10 @@ body {
 
 .nav-link:hover::after {
     width: 80%;
+}
+
+[data-theme="light"] .nav-link::after {
+    background: #0e7490;
 }
 
 /* Hero Section */
