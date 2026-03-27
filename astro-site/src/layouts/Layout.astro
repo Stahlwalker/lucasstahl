@@ -413,7 +413,6 @@ const {
 			if (cursorGlow) {
 				let mouseX = 0;
 				let mouseY = 0;
-				let currentAnimation = null;
 
 				// Track mouse position
 				document.addEventListener('mousemove', (e) => {
@@ -425,27 +424,25 @@ const {
 						cursorGlow.style.opacity = '1';
 					}
 
-					// Guard: element must still be in the DOM
+					// Guard against element being removed from DOM (e.g. page transitions)
 					if (!document.contains(cursorGlow)) return;
 
-					// Cancel in-flight animation before starting a new one to
-					// prevent commitStyles() being called on a detached element
-					if (currentAnimation) {
-						try { currentAnimation.cancel(); } catch (_) {}
-					}
-
 					// Animate glow position with smooth easing
-					currentAnimation = animate(
-						cursorGlow,
-						{
-							left: mouseX + 'px',
-							top: mouseY + 'px'
-						},
-						{
-							duration: 0.2,
-							easing: 'ease-out'
-						}
-					);
+					// Wrapped in try-catch to suppress commitStyles() InvalidStateError
+					// if the element is detached mid-animation
+					try {
+						animate(
+							cursorGlow,
+							{
+								left: mouseX + 'px',
+								top: mouseY + 'px'
+							},
+							{
+								duration: 0.2,
+								easing: 'ease-out'
+							}
+						);
+					} catch (_) {}
 				});
 
 				// Hide glow when cursor leaves window
