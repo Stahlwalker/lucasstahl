@@ -8,8 +8,8 @@ const quickReference = [
 	{ model: "Gemini 3.x", company: "Google DeepMind", bestFor: "Multimodal", differentiator: "Best benchmark breadth; strong pricing; Workspace integration", color: "#60a5fa" },
 	{ model: "Grok 4.x", company: "xAI", bestFor: "Real-time info", differentiator: "Live X/Twitter data; multi-agent parallel reasoning", color: "#f97316" },
 	{ model: "Llama 4", company: "Meta", bestFor: "Open-source", differentiator: "10M token context; fully self-hostable", color: "#06b6d4" },
-	{ model: "DeepSeek V3/R1", company: "DeepSeek", bestFor: "Cost efficiency", differentiator: "Frontier performance trained for under $6M; open source", color: "#facc15" },
-	{ model: "Mistral Large", company: "Mistral", bestFor: "EU compliance", differentiator: "Enterprise-safe; strong open-weight models for regulated industries", color: "#818cf8" },
+	{ model: "DeepSeek V4", company: "DeepSeek", bestFor: "Cost efficiency", differentiator: "V4 with 1M+ context, Engram memory, native multimodal; trained for under $6M", color: "#facc15" },
+	{ model: "Mistral 3 Family", company: "Mistral", bestFor: "EU compliance", differentiator: "Large 3, Small 4 (MoE), and Voxtral TTS — enterprise-safe with data sovereignty", color: "#818cf8" },
 	{ model: "Qwen 3", company: "Alibaba", bestFor: "Multilingual", differentiator: "119 languages; models from 0.6B to 1T+ parameters", color: "#f472b6" },
 	{ model: "Kimi K2.5", company: "Moonshot AI", bestFor: "Agentic open-source", differentiator: "1T params; Agent Swarm coordinates up to 100 sub-agents", color: "#ff6b6b" },
 	{ model: "GLM-5", company: "Zhipu AI", bestFor: "Open frontier", differentiator: "744B MoE; MIT license; trained on zero NVIDIA GPUs", color: "#4ecdc4" },
@@ -28,6 +28,7 @@ const frontierModels = [
 		bullets: [
 			"GPT-5.4 is the current flagship with a 1M token context window",
 			"Uses an internal router to select the right sub-model per request in real time",
+			"GPT-5.4 mini and nano offer GPT-5-class performance at lower cost; mini comes within 5% of flagship on coding benchmarks",
 			"Native computer use and tool calling for agentic automation",
 			"Strong at documentation, unit tests, and complex SQL queries"
 		],
@@ -43,7 +44,8 @@ const frontierModels = [
 			"Opus 4.6 (flagship), Sonnet 4.6 (best value), Haiku 4.5 (fast/cheap)",
 			"Leads human-preference leaderboards; strong ARC-AGI-2 scores",
 			"Agentic capabilities: autonomous multi-step coding tasks",
-			"Known for safety, steerability, and high-quality long-form writing"
+			"Known for safety, steerability, and high-quality long-form writing",
+			"Claude Mythos (coming soon): confirmed March 26 — described as a 'step change' in reasoning, coding, and cybersecurity; in testing with select customers"
 		],
 		bestFor: "Software development, agentic workflows, analysis, writing"
 	},
@@ -57,7 +59,8 @@ const frontierModels = [
 			"Gemini 3.1 Pro leads the Artificial Analysis Intelligence Index",
 			"Native multimodal: processes text, images, audio, and video natively",
 			"1M token context window; deep Google Workspace integration",
-			"Strong value at $2/$12 per million input/output tokens"
+			"Gemini 3.1 Flash-Lite: $0.25/1M input, 2.5× faster — cost-efficient tier for high-volume workloads",
+			"Gemini 3.1 Flash Live: audio/voice model with 90+ language support and lower latency (March 26)"
 		],
 		bestFor: "Multimodal apps, Google Workspace users, cost-conscious teams"
 	},
@@ -69,9 +72,10 @@ const frontierModels = [
 		tagline: "Real-time data meets raw reasoning power.",
 		bullets: [
 			"Grok 4.20 uses native multi-agent architecture with four specialist agents that debate before responding",
+			"Grok 4.20 Beta 2 (March 3): improved instruction following and hallucination reduction",
 			"Real-time integration with X (Twitter) for current events",
 			"Scored 100% on AIME 2025 math competition (Heavy variant)",
-			"Less filtered personality; positioned as an alternative to corporate AI"
+			"Grok 5 in training — xAI targeting Q2 2026; spec'd at ~6T parameters"
 		],
 		bestFor: "Real-time info, math/science, users who want less guardrails"
 	},
@@ -115,39 +119,39 @@ const openSourceModels = [
 		tagline: "The leading open-source model family.",
 		bullets: [
 			"Llama 4 Scout: industry-leading 10M token context window",
+			"Llama 4 Maverick: 17B active / 128 experts — outperforms GPT-4o and Gemini 2.0 Flash on key benchmarks",
 			"Fully open weights; can be self-hosted for complete data control",
-			"Performance competitive with paid frontier models",
-			"Requires powerful hardware for full-scale deployment"
+			"Llama 4 Behemoth (288B active) still in training; widely covered as next milestone"
 		],
 		bestFor: "Self-hosting, privacy-sensitive orgs, custom fine-tuning"
 	},
 	{
-		name: "DeepSeek V3.2 / R1",
+		name: "DeepSeek V4",
 		company: "DeepSeek",
 		location: "Hangzhou, China",
 		color: "#facc15",
-		tagline: "Frontier performance at a fraction of the cost.",
+		tagline: "Frontier performance at a fraction of the cost — now with native multimodal.",
 		bullets: [
-			"671B parameter MoE model famously trained for under $6M",
+			"V4 rolling out with 1M+ context window and Engram conditional memory",
+			"Native multimodal: text, image, and video in a single model",
 			"R1 variant excels at transparent, step-by-step reasoning",
-			"V3.2-Speciale matches GPT-5 level performance on key benchmarks",
-			"Open-source with competitive benchmark scores; V4 multimodal imminent"
+			"Open-source; trained for under $6M — redefining AI cost efficiency"
 		],
 		bestFor: "Budget-conscious teams, math/reasoning, open-source self-hosting"
 	},
 	{
-		name: "Mistral Large 3",
+		name: "Mistral 3 Family",
 		company: "Mistral AI",
 		location: "Paris, France",
 		color: "#818cf8",
-		tagline: "The enterprise-safe European choice.",
+		tagline: "The enterprise-safe European model family, now spanning text, edge, and speech.",
 		bullets: [
-			"Strong open-weight models designed for EU AI Act compliance",
-			"Default choice for regulated industries (finance, healthcare, gov)",
-			"Good multilingual support, especially European languages",
-			"Balances capability with privacy and sovereignty requirements"
+			"Mistral Large 3: EU AI Act-compliant flagship for regulated industries (finance, healthcare, gov)",
+			"Mistral Small 4 (March 17): MoE architecture, 119B total / 6B active, 128 experts — fast and efficient",
+			"Voxtral TTS (March 26): open-source 4B text-to-speech, 9 languages, runs on consumer hardware",
+			"Strong European data sovereignty guarantees across the full model family"
 		],
-		bestFor: "EU-regulated enterprises, privacy-first deployments"
+		bestFor: "EU-regulated enterprises, edge deployment, privacy-first apps"
 	},
 	{
 		name: "Kimi K2.5",
@@ -196,6 +200,7 @@ const openSourceModels = [
 // Image & Video Models
 const imageVideoModels = [
 	{ name: "Midjourney v7", company: "Midjourney", bestFor: "Artistic, stylized visuals with strong aesthetic control" },
+	{ name: "Midjourney V1 Video", company: "Midjourney", bestFor: "First video model from MJ — 5s clips extendable to 20s; ~25× cheaper than competitors" },
 	{ name: "Imagen 4", company: "Google", bestFor: "Photorealistic composition, spelling, and typography accuracy" },
 	{ name: "Nano Banana 2", company: "Google", bestFor: "Fast AI image editing, remixing, and style transfers; built on Gemini Flash" },
 	{ name: "DALL-E 4", company: "OpenAI", bestFor: "Integrated with ChatGPT; strong prompt adherence" },
@@ -255,7 +260,7 @@ const scenarios = [
 			{ task: "Run a model on your own infrastructure", model: "Llama 4", color: "#06b6d4" },
 			{ task: "Fine-tune for a domain-specific task", model: "Llama 4", color: "#06b6d4" },
 			{ task: "Deploy in EU-regulated environments", model: "Mistral Large", color: "#818cf8" },
-			{ task: "Budget-friendly open-source alternative", model: "DeepSeek V3", color: "#facc15" },
+			{ task: "Budget-friendly open-source alternative", model: "DeepSeek V4", color: "#facc15" },
 			{ task: "MIT-licensed frontier alternative", model: "GLM-5", color: "#4ecdc4" },
 		]
 	},
@@ -298,7 +303,7 @@ const scenarios = [
 			"url": "https://lukestahl.io/"
 		},
 		"datePublished": "2026-03-10",
-		"dateModified": "2026-03-10",
+		"dateModified": "2026-03-29",
 		"mainEntityOfPage": {
 			"@type": "WebPage",
 			"@id": "https://lukestahl.io/ai-models-guide/"
@@ -327,7 +332,7 @@ const scenarios = [
 			<section class="hero">
 				<h1 class="hero-title">AI Models<br/><span class="hero-title-accent">Guide</span></h1>
 				<p class="hero-subtitle">A quick-reference to the major AI models, who makes them, and what they do best.</p>
-				<div class="hero-badge">Updated March 25, 2026</div>
+				<div class="hero-badge">Updated March 29, 2026</div>
 			</section>
 
 			<!-- Quick Reference -->
@@ -435,7 +440,7 @@ const scenarios = [
 					))}
 				</div>
 				<p class="media-note">
-					<strong>Video generation leaders:</strong> Google Veo 3.1 (native 4K + vertical video), Kling 3.0 (native 4K/60fps), and Runway Gen-4 (creative/cinematic). Sora 2 (OpenAI) remains available via ChatGPT, though the standalone app shut down in March 2026.
+					<strong>Video generation leaders:</strong> Google Veo 3.1 (native 4K + vertical video), Kling 3.0 (native 4K/60fps), Runway Gen-4.5 (creative/cinematic), and Seedance 2.0 (ByteDance — notable for Identity Lock, which maintains consistent faces across multi-scene video). Sora 2 (OpenAI) remains available via ChatGPT, though the standalone app shut down in March 2026.
 				</p>
 			</section>
 
