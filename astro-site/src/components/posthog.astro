@@ -17,7 +17,7 @@
                 disable_conversations: !isSandboxPage, // Only enable conversations on /sandbox page
                 capture_pageview: true,
                 capture_pageleave: true,
-                capture_performance: false, // Disabled - requires web-vitals package (3KB). Using GitHub Actions for weekly monitoring instead
+                capture_performance: true, // Re-enabled - 3KB cost is acceptable for real-user CWV data across all pages
                 capture_exceptions: true, // Enable error tracking
                 enable_recording_console_log: false, // Disable console log recording
                 __preview_remote_config: false, // Disable remote config preview
