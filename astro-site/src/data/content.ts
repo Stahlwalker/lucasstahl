@@ -225,6 +225,13 @@ export const externalBlogPosts = [
     date: "Oct 3, 2024"
   },
   {
+    title: "What is Headless CMS: a Visual Guide",
+    description: "A visual guide to headless CMS — what it is, how it works, and how it compares to traditional CMS platforms.",
+    url: "https://www.builder.io/m/knowledge-center/headless-cms-visual-guide",
+    tags: ["CMS", "Headless", "Architecture"],
+    date: "Sep 27, 2024"
+  },
+  {
     title: "Figma Plugins for Developers in 2024",
     description: "The best Figma plugins that developers need to bridge the gap between design and code.",
     url: "https://www.builder.io/blog/best-figma-plugins",
