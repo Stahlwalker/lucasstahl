@@ -46,17 +46,19 @@ Your job:
 
 WHAT COUNTS AS A MEANINGFUL UPDATE:
 - A new major model release (e.g., GPT-6, Claude 5, Gemini 4)
-- A significant version bump to an existing model (e.g., GPT-5.5)
-- A major new entrant to the market
+- A new model variant or tier (e.g., Flash, Flash-Lite, Codex, Mini, Nano)
+- A significant version bump to an existing model (e.g., Qwen 3.6, GPT-5.3)
+- A major new entrant to the market (any lab, including Microsoft, Apple, etc.)
+- A new open-weight model release (e.g., Gemma 4, Llama 4 variants)
 - A model being discontinued or replaced
-- A significant new capability added (e.g., new modality support)
-- A new image/video generation model release
+- A significant new capability added (e.g., new modality, context window increase, agentic features)
+- A new image/video/audio generation model release
+- A pricing change that is 2x or more different from what's in the guide
 
 WHAT DOES NOT COUNT:
 - Minor benchmark score changes
-- Pricing changes
-- Rumors or leaked info about unreleased models
-- Blog posts or opinion pieces
+- Rumors or leaked info about unreleased models (note them as "Expected" but don't treat as released)
+- Blog posts or opinion pieces with no official announcement
 - Minor API updates or SDK changes
 
 SOURCE QUALITY RULES (CRITICAL):
@@ -74,19 +76,19 @@ RULES FOR OUTPUT:
 - After the frontmatter code block, add a section starting with "CHANGELOG:" listing each change with its official source URL
 - If no updates, respond with exactly: NO_UPDATES`;
 
-  const userPrompt = `Here is the current AI models guide frontmatter data. Search the web for any AI model updates from the past 7 days and tell me if anything needs to change.
+  const userPrompt = `Here is the current AI models guide frontmatter data. Search the web for any AI model updates from the past 14 days and tell me if anything needs to change.
 
 Current data:
 \`\`\`javascript
 ${currentFrontmatter}
 \`\`\`
 
-Search for recent updates to: GPT-5, Claude 4.6, Gemini 3, Grok 4, Llama 4, DeepSeek, Mistral, Qwen 3, Kimi K2.5, GLM-5, Sonar (Perplexity), Composer (Cursor), Midjourney, Imagen, DALL-E, Stable Diffusion, FLUX.2, Nano Banana, Kling, Sora, Veo, and any major new AI models released this week.`;
+Search for recent updates to: GPT-5, Claude 4.6, Gemini 3, Gemma 4, Grok 4, Llama 4, DeepSeek V3/V4, Mistral, Qwen 3.6, Microsoft MAI, Kimi K2.5, GLM-5, Sonar (Perplexity), Composer (Cursor), Midjourney, Imagen, DALL-E, Stable Diffusion, FLUX.2, Nano Banana, Kling, Sora, Veo, and any major new AI models released in the past two weeks.`;
 
   console.log("Searching for AI model updates...");
 
   const response = await client.responses.create({
-    model: "gpt-4o-mini",
+    model: "gpt-4o",
     input: [
       { role: "system", content: systemPrompt },
       { role: "user", content: userPrompt },
