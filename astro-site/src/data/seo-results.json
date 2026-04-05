@@ -1,14 +1,14 @@
 {
-  "lastUpdated": "2026-03-29T09:40:42Z",
+  "lastUpdated": "2026-04-05T09:42:46Z",
   "results": {
     "mobile": {
       "home": {
-        "performance": 61,
+        "performance": 62,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
-        "lcp": 6752.642534865061,
-        "cls": 0.00075000000000000012,
+        "lcp": 6768.1932965871383,
+        "cls": 0.000732,
         "tbt": 0
       },
       "about": {
@@ -19,54 +19,54 @@
       },
       "blog": {
         "performance": 59,
-        "accessibility": 98,
+        "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
       },
       "builds": {
-        "performance": 75,
-        "accessibility": 98,
+        "performance": 61,
+        "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
       },
       "gems": {
-        "performance": 67,
-        "accessibility": 98,
+        "performance": 61,
+        "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
       }
     },
     "desktop": {
       "home": {
-        "performance": 96,
+        "performance": 97,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
-        "lcp": 1264.143832661523,
-        "cls": 0.0006020000000000001,
+        "lcp": 963.06637314693808,
+        "cls": 0.00061200000000000013,
         "tbt": 0
       },
       "about": {
-        "performance": 93,
+        "performance": 94,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
       },
       "blog": {
-        "performance": 94,
-        "accessibility": 98,
+        "performance": 92,
+        "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
       },
       "builds": {
-        "performance": 95,
-        "accessibility": 98,
+        "performance": 97,
+        "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
       },
       "gems": {
         "performance": 94,
-        "accessibility": 98,
+        "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
       }
