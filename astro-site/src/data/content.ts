@@ -127,6 +127,13 @@ export const tinyApps = [
 
 export const externalBlogPosts = [
   {
+    title: "Introducing Enterprise Granular Access Control",
+    description: "Adding contributors to a website should make teams faster. Without scoped permissions, it just makes things riskier.",
+    url: "https://webflow.com/blog/enterprise-granular-access-control",
+    tags: ["Permissions", "Webflow"],
+    date: "Apr 7, 2026"
+  },
+  {
     title: "Where does visual development fit in a production stack?",
     description: "A look at where visual development tools fit alongside code-first workflows in modern production stacks.",
     url: "https://webflow.com/blog/visual-development-stack",
