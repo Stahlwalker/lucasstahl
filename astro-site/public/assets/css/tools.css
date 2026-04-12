@@ -453,7 +453,7 @@ a.daily-tool-card {
 /* ─── Eval Two-Column Layout ─── */
 .eval-layout {
     display: grid;
-    grid-template-columns: 1fr 320px;
+    grid-template-columns: 2fr 3fr;
     gap: 1.5rem;
     align-items: start;
 }
@@ -512,7 +512,7 @@ a.daily-tool-card {
 
 .eval-past-item {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     gap: 1rem;
     padding: 0.875rem 0;
@@ -555,6 +555,14 @@ a.daily-tool-card {
     color: var(--text-secondary);
 }
 
+.eval-past-note {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    opacity: 0.6;
+    margin-top: 0.2rem;
+    line-height: 1.4;
+}
+
 .eval-past-verdict {
     font-size: 0.75rem;
     color: var(--text-secondary);
@@ -575,6 +583,127 @@ a.daily-tool-card {
     color: var(--accent-green);
     background: rgba(5, 150, 105, 0.1);
     border-color: rgba(5, 150, 105, 0.3);
+}
+
+/* ─── Noted Filterable List ─── */
+.noted-container {
+    background: var(--bg-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+[data-theme="light"] .noted-container {
+    background: #fff;
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+.noted-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.noted-filter-btn {
+    padding: 0.375rem 0.875rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 100px;
+    cursor: pointer;
+    transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+    font-family: inherit;
+}
+
+.noted-filter-btn:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+.noted-filter-btn.active {
+    color: var(--accent-primary);
+    background: rgba(96, 165, 250, 0.1);
+    border-color: rgba(96, 165, 250, 0.3);
+}
+
+.noted-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+}
+
+.noted-row {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    text-decoration: none;
+    transition: background 0.15s ease;
+}
+
+[data-theme="light"] .noted-row {
+    border-bottom-color: rgba(0, 0, 0, 0.07);
+}
+
+.noted-row:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.noted-row.hidden {
+    display: none;
+}
+
+.noted-row-name {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.noted-row-cat {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 0.15rem 0.5rem;
+    border-radius: 100px;
+    white-space: nowrap;
+}
+
+[data-theme="light"] .noted-row-cat {
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .noted-filter-btn {
+    background: #fff;
+    border-color: rgba(0, 0, 0, 0.18);
+    color: var(--text-secondary);
+}
+
+[data-theme="light"] .noted-filter-btn:hover {
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.3);
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .noted-filter-btn.active {
+    background: rgba(59, 130, 246, 0.08);
+    border-color: rgba(59, 130, 246, 0.4);
+}
+
+[data-theme="light"] .noted-row:hover {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .noted-row-cat {
+    color: var(--text-secondary);
+    opacity: 0.8;
 }
 
 /* ─── Light Mode Overrides ─── */
@@ -669,6 +798,10 @@ a.daily-tool-card {
 }
 
 @media (max-width: 640px) {
+    .noted-list {
+        grid-template-columns: 1fr;
+    }
+
     .tools-section-title {
         font-size: 1.375rem;
     }
