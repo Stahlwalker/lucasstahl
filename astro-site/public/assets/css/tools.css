@@ -1,5 +1,11 @@
 /* Tools Page Styles */
 
+/* ─── Alternate Section (Daily Arsenal) ─── */
+.tools-section-alt {
+    padding-top: 4rem;
+    padding-bottom: 5rem;
+}
+
 /* ─── Section Headers ─── */
 .tools-section-header {
     margin-bottom: 2rem;
@@ -48,6 +54,11 @@
 .workflow-stage:hover {
     transform: translateY(-2px);
 }
+
+.workflow-stage.stage-write:hover  { box-shadow: 0 8px 28px rgba(96, 165, 250, 0.18); }
+.workflow-stage.stage-build:hover  { box-shadow: 0 8px 28px rgba(168, 85, 247, 0.18); }
+.workflow-stage.stage-ship:hover   { box-shadow: 0 8px 28px rgba(52, 211, 153, 0.18); }
+.workflow-stage.stage-manage:hover { box-shadow: 0 8px 28px rgba(251, 191, 36, 0.18); }
 
 .workflow-stage.stage-write  { border-top: 3px solid var(--accent-blue); }
 .workflow-stage.stage-build  { border-top: 3px solid var(--accent-purple); }
@@ -472,6 +483,31 @@ a.daily-tool-card {
     display: flex;
     flex-direction: column;
     gap: 0;
+    max-height: 320px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+}
+
+.eval-past-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.eval-past-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.eval-past-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+}
+
+[data-theme="light"] .eval-past-list {
+    scrollbar-color: rgba(0, 0, 0, 0.15) transparent;
+}
+
+[data-theme="light"] .eval-past-list::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15);
 }
 
 .eval-past-item {
@@ -544,7 +580,7 @@ a.daily-tool-card {
 /* ─── Light Mode Overrides ─── */
 [data-theme="light"] .workflow-stage {
     background: var(--bg-secondary);
-    border-color: rgba(0, 0, 0, 0.06);
+    border-color: rgba(0, 0, 0, 0.18);
 }
 
 [data-theme="light"] .workflow-stage:hover {
@@ -562,11 +598,11 @@ a.daily-tool-card {
 
 [data-theme="light"] .daily-tool-card {
     background: var(--bg-secondary);
-    border-color: rgba(0, 0, 0, 0.06);
+    border-color: rgba(0, 0, 0, 0.15);
 }
 
 [data-theme="light"] .daily-tool-card:hover {
-    border-color: rgba(0, 0, 0, 0.12);
+    border-color: rgba(0, 0, 0, 0.25);
 }
 
 [data-theme="light"] .eval-card {
@@ -575,7 +611,7 @@ a.daily-tool-card {
 
 [data-theme="light"] .eval-past {
     background: var(--bg-secondary);
-    border-color: rgba(0, 0, 0, 0.06);
+    border-color: rgba(0, 0, 0, 0.18);
 }
 
 [data-theme="light"] .eval-past-item {
