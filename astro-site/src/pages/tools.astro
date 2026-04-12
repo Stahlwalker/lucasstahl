@@ -1,0 +1,401 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
+// Logo imports — Light mode
+import linearIcon from '../assets/images/light/linear-icon.png';
+import resendLight from '../assets/images/light/resend-icon_light.png';
+import remindersImg from '../assets/images/light/Reminders.png';
+import calendarImg from '../assets/images/light/Calendar.png';
+
+// Logo imports — Dark mode (partial)
+import resendDark from '../assets/images/dark/resend-icon.png';
+import cursorLight from '../assets/images/light/Cursor_light.png';
+import cursorLightIcon from '../assets/images/light/CUBE_2D_LIGHT.png';
+import cursorDarkIcon from '../assets/images/dark/CUBE_2D_DARK.png';
+import notionLight from '../assets/images/light/Notion_light.png';
+import notionIcon from '../assets/images/light/Notion-logo-icon.png';
+import slackLight from '../assets/images/light/Slack_light.png';
+import slackIcon from '../assets/images/light/Slack.png';
+import githubLight from '../assets/images/light/GitHub_light.png';
+import githubIcon from '../assets/images/light/GitHub.svg';
+import githubDarkIcon from '../assets/images/dark/GitHub_dark_icon.png';
+import claudeLight from '../assets/images/light/Claude_Light.png';
+import claudeIcon from '../assets/images/light/Claude_icon.png';
+import obsidianImg from '../assets/images/light/obsidian.png';
+import excalidrawLight from '../assets/images/light/Excalidraw_light.png';
+
+// Logo imports — Dark mode
+import cursorDark from '../assets/images/dark/Cursor_dark.png';
+import notionDark from '../assets/images/dark/Notion_dark.png';
+import slackDark from '../assets/images/dark/Slack_dark.png';
+import githubDark from '../assets/images/dark/GitHub_dark.png';
+import claudeDark from '../assets/images/dark/Claude_dark.png';
+import excalidrawDark from '../assets/images/dark/Excalidraw_dark.png';
+---
+
+<Layout
+	title="Tools - Luke Stahl"
+	description="Daily tools Luke Stahl actually uses: Obsidian, Cursor, Claude, Notion, GitHub, Slack, and more. Workflow diagram and current tool evaluations."
+	canonicalUrl="https://lukestahl.io/tools/"
+	ogTitle="Tools - Luke Stahl"
+	ogDescription="The tools I actually open every day: Obsidian, Cursor, Claude, Notion, GitHub, Slack, and more."
+	additionalCss={["/assets/css/about.css", "/assets/css/tools.css"]}
+>
+	<!-- Hero -->
+	<section class="about-hero">
+		<div class="section-container">
+			<h1 class="about-hero-title">
+				<span class="code-bracket">&lt;</span>
+				Tools
+				<span class="code-bracket">/&gt;</span>
+			</h1>
+			<p class="about-hero-subtitle">Daily tools and what I'm testing. Tools I enjoy using.</p>
+		</div>
+	</section>
+
+	<!-- Workflow Diagram -->
+	<section class="about-section">
+		<div class="section-container">
+
+			<div class="tools-section-header">
+				<h2 class="tools-section-title">
+					<span class="code-bracket">&lt;</span>
+					My Workflow
+					<span class="code-bracket">/&gt;</span>
+				</h2>
+				<p class="tools-section-comment">// from idea to shipped</p>
+			</div>
+
+			<div class="workflow-diagram">
+				<div class="workflow-stage stage-write">
+					<span class="stage-number">01</span>
+					<div class="stage-label">Write & Capture</div>
+					<ul class="stage-tools">
+						<li>Obsidian</li>
+						<li>Notion</li>
+						<li>Excalidraw</li>
+						<li>Claude</li>
+					</ul>
+				</div>
+
+				<div class="workflow-connector">
+					<i class="fa-solid fa-chevron-right"></i>
+				</div>
+
+				<div class="workflow-stage stage-build">
+					<span class="stage-number">02</span>
+					<div class="stage-label">Build & Code</div>
+					<ul class="stage-tools">
+						<li>Cursor IDE</li>
+						<li>Cursor (Glass UI)</li>
+						<li>Claude Code</li>
+					</ul>
+					<div class="stage-subgroup">
+						<a href="/ai-models-guide/" class="stage-subgroup-label stage-subgroup-link">Models ↗</a>
+						<ul class="stage-tools">
+							<li>Opus 4.6</li>
+							<li>Sonnet 4.6</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="workflow-connector">
+					<i class="fa-solid fa-chevron-right"></i>
+				</div>
+
+				<div class="workflow-stage stage-ship">
+					<span class="stage-number">03</span>
+					<div class="stage-label">Ship & Automate</div>
+					<ul class="stage-tools">
+						<li>GitHub & Actions</li>
+						<li>Claude Connectors & Tasks</li>
+						<li>Resend</li>
+					</ul>
+				</div>
+
+				<div class="workflow-connector">
+					<i class="fa-solid fa-chevron-right"></i>
+				</div>
+
+				<div class="workflow-stage stage-manage">
+					<span class="stage-number">04</span>
+					<div class="stage-label">Manage & Comms</div>
+					<ul class="stage-tools">
+						<li>Slack</li>
+						<li>Calendar - Apple & Google</li>
+						<li>Apple Reminders</li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+	<!-- Daily Arsenal -->
+	<section class="about-section">
+		<div class="section-container">
+
+			<div class="tools-section-header">
+				<h2 class="tools-section-title">
+					<span class="code-bracket">&lt;</span>
+					Daily Arsenal
+					<span class="code-bracket">/&gt;</span>
+				</h2>
+				<p class="tools-section-comment">// if it went down, I'd notice immediately</p>
+			</div>
+
+			<div class="daily-tools-grid">
+
+				<!-- Obsidian -->
+				<a href="https://obsidian.md/" target="_blank" rel="noopener noreferrer" class="daily-tool-card">
+					<div class="daily-tool-logo">
+						<Image src={obsidianImg} alt="Obsidian" class="logo-showcase-img" loading="lazy" quality={85} width={80} height={80} />
+					</div>
+					<div>
+						<h3 class="daily-tool-name">Obsidian</h3>
+						<p class="daily-tool-use">Personal knowledge base and note-taking. Where ideas and research land before they go anywhere else.</p>
+					</div>
+				</a>
+
+				<!-- Cursor -->
+				<a href="https://cursor.com/" target="_blank" rel="noopener noreferrer" class="daily-tool-card">
+					<div class="daily-tool-logo">
+						<Image src={cursorLightIcon} alt="Cursor" class="logo-showcase-img logo-light" loading="lazy" quality={85} width={80} height={80} />
+						<Image src={cursorDarkIcon} alt="Cursor" class="logo-showcase-img logo-dark" loading="lazy" quality={85} width={80} height={80} />
+					</div>
+					<div>
+						<h3 class="daily-tool-name">Cursor</h3>
+						<p class="daily-tool-use">Primary IDE. Running the Glass UI for a non-traditional layout. Paired with Claude Opus for complex tasks, Sonnet for speed.</p>
+					</div>
+				</a>
+
+				<!-- Claude -->
+				<a href="https://claude.ai/" target="_blank" rel="noopener noreferrer" class="daily-tool-card">
+					<div class="daily-tool-logo">
+						<Image src={claudeIcon} alt="Claude" class="logo-showcase-img" loading="lazy" quality={85} width={80} height={80} />
+					</div>
+					<div>
+						<h3 class="daily-tool-name">Claude</h3>
+						<p class="daily-tool-use">Connectors, scheduled tasks, projects, and chat. Most of the automation running on this site runs through it.</p>
+					</div>
+				</a>
+
+				<!-- Notion -->
+				<a href="https://notion.so/" target="_blank" rel="noopener noreferrer" class="daily-tool-card">
+					<div class="daily-tool-logo">
+						<Image src={notionIcon} alt="Notion" class="logo-showcase-img" loading="lazy" quality={85} width={80} height={80} />
+					</div>
+					<div>
+						<h3 class="daily-tool-name">Notion</h3>
+						<p class="daily-tool-use">My project management tool and CMS. I track projects, write content before it publishes, and use it as a structured data layer for this site.</p>
+					</div>
+				</a>
+
+				<!-- Slack -->
+				<a href="https://slack.com/" target="_blank" rel="noopener noreferrer" class="daily-tool-card">
+					<div class="daily-tool-logo">
+						<Image src={slackIcon} alt="Slack" class="logo-showcase-img" loading="lazy" quality={85} width={80} height={80} />
+					</div>
+					<div>
+						<h3 class="daily-tool-name">Slack</h3>
+						<p class="daily-tool-use">Team communications and workflow automation. Also where I pipe GitHub Actions notifications and agent run updates.</p>
+					</div>
+				</a>
+
+				<!-- GitHub -->
+				<a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="daily-tool-card">
+					<div class="daily-tool-logo">
+						<Image src={githubIcon} alt="GitHub" class="logo-showcase-img logo-light" loading="lazy" width={80} height={80} />
+						<Image src={githubDarkIcon} alt="GitHub" class="logo-showcase-img logo-dark" loading="lazy" quality={85} width={80} height={80} />
+					</div>
+					<div>
+						<h3 class="daily-tool-name">GitHub</h3>
+						<p class="daily-tool-use">Version control and CI/CD. GitHub Actions handles automated builds, deploys, and scheduled monitoring jobs.</p>
+					</div>
+				</a>
+
+				<!-- Excalidraw -->
+				<a href="https://excalidraw.com/" target="_blank" rel="noopener noreferrer" class="daily-tool-card">
+					<div class="daily-tool-logo">
+						<Image src={excalidrawLight} alt="Excalidraw" class="logo-showcase-img" loading="lazy" quality={85} width={80} height={80} />
+					</div>
+					<div>
+						<h3 class="daily-tool-name">Excalidraw</h3>
+						<p class="daily-tool-use">Diagrams and image assets. Good for quick visual work that doesn't need a full design tool.</p>
+					</div>
+				</a>
+
+				<!-- Resend -->
+				<a href="https://resend.com/" target="_blank" rel="noopener noreferrer" class="daily-tool-card">
+					<div class="daily-tool-logo">
+						<Image src={resendLight} alt="Resend" class="logo-showcase-img logo-light" loading="lazy" quality={85} width={80} height={80} />
+						<Image src={resendDark} alt="Resend" class="logo-showcase-img logo-dark" loading="lazy" quality={85} width={80} height={80} />
+					</div>
+					<div>
+						<h3 class="daily-tool-name">Resend</h3>
+						<p class="daily-tool-use">Email delivery for this site. Handles transactional emails and alert notifications from GitHub Actions monitoring jobs.</p>
+					</div>
+				</a>
+
+				<!-- Apple Reminders -->
+				<a href="https://www.apple.com/" target="_blank" rel="noopener noreferrer" class="daily-tool-card">
+					<div class="daily-tool-logo">
+						<Image src={remindersImg} alt="Apple Reminders" class="logo-showcase-img" loading="lazy" quality={85} width={80} height={80} />
+					</div>
+					<div>
+						<h3 class="daily-tool-name">Apple Reminders</h3>
+						<p class="daily-tool-use">All my todos. Syncs across devices, works with Siri, and doesn't get in the way.</p>
+					</div>
+				</a>
+
+				<!-- Apple Calendar -->
+				<a href="https://www.apple.com/" target="_blank" rel="noopener noreferrer" class="daily-tool-card">
+					<div class="daily-tool-logo">
+						<Image src={calendarImg} alt="Calendar" class="logo-showcase-img" loading="lazy" quality={85} width={80} height={80} />
+					</div>
+					<div>
+						<h3 class="daily-tool-name">Apple Calendar</h3>
+						<p class="daily-tool-use">I use Apple Calendar as my main view with Google Gmail integrated. One place for everything.</p>
+					</div>
+				</a>
+
+			</div>
+		</div>
+	</section>
+
+	<!-- Currently Evaluating -->
+	<section class="about-section">
+		<div class="section-container">
+
+			<div class="tools-section-header">
+				<h2 class="tools-section-title">
+					<span class="code-bracket">&lt;</span>
+					Currently Evaluating
+					<span class="code-bracket">/&gt;</span>
+				</h2>
+				<p class="tools-section-comment">// testing new tools in my workflow</p>
+			</div>
+
+			<div class="eval-layout">
+
+				<!-- Current eval -->
+				<div class="eval-card">
+					<div class="eval-card-header">
+						<div class="eval-tool-icon">
+							<Image src={linearIcon} alt="Linear" width={48} height={48} />
+						</div>
+						<div class="eval-tool-meta">
+							<a href="https://linear.app/" target="_blank" rel="noopener noreferrer" class="eval-tool-name" style="text-decoration: none; color: inherit;">Linear</a>
+							<span class="eval-badge">Evaluating</span>
+						</div>
+					</div>
+					<p class="eval-description">
+						Issue tracker built for software teams. Looking at it as a possible Notion replacement, mostly because of how well it connects to GitHub PR workflows.
+					</p>
+					<div class="eval-footer">
+						<span class="eval-status">
+							<span class="eval-dot"></span>
+							Active
+						</span>
+						<span class="eval-category">Project Management</span>
+					</div>
+				</div>
+
+				<!-- Previously evaluated -->
+				<div class="eval-past">
+					<h3 class="eval-past-title">Previously Evaluated</h3>
+					<ul class="eval-past-list">
+						<li class="eval-past-item">
+							<div class="eval-past-info">
+								<a href="https://zed.dev/" target="_blank" rel="noopener noreferrer" class="eval-past-name eval-past-link">Zed</a>
+								<span class="eval-past-cat">IDE</span>
+							</div>
+							<span class="eval-past-verdict">Passed on</span>
+						</li>
+						<li class="eval-past-item">
+							<div class="eval-past-info">
+								<a href="https://paperclip.ing/" target="_blank" rel="noopener noreferrer" class="eval-past-name eval-past-link">Paperclip</a>
+								<span class="eval-past-cat">AI Orchestration</span>
+							</div>
+							<span class="eval-past-verdict">Passed on</span>
+						</li>
+						<li class="eval-past-item">
+							<div class="eval-past-info">
+								<a href="https://ghostty.org/" target="_blank" rel="noopener noreferrer" class="eval-past-name eval-past-link">Ghostty</a>
+								<span class="eval-past-cat">Terminal</span>
+							</div>
+							<span class="eval-past-verdict">Passed on</span>
+						</li>
+						<li class="eval-past-item">
+							<div class="eval-past-info">
+								<a href="https://github.com/webmachinelearning/webmcp" target="_blank" rel="noopener noreferrer" class="eval-past-name eval-past-link">WebMCP</a>
+								<span class="eval-past-cat">MCP</span>
+							</div>
+							<span class="eval-past-verdict">Passed on</span>
+						</li>
+						<li class="eval-past-item">
+							<div class="eval-past-info">
+								<a href="https://www.conductor.build/" target="_blank" rel="noopener noreferrer" class="eval-past-name eval-past-link">Conductor</a>
+								<span class="eval-past-cat">Agent Management</span>
+							</div>
+							<span class="eval-past-verdict">Passed on</span>
+						</li>
+						<li class="eval-past-item">
+							<div class="eval-past-info">
+								<a href="https://openai.com/codex/" target="_blank" rel="noopener noreferrer" class="eval-past-name eval-past-link">Codex</a>
+								<span class="eval-past-cat">AI Coding</span>
+							</div>
+							<span class="eval-past-verdict">Passed on</span>
+						</li>
+						<li class="eval-past-item">
+							<div class="eval-past-info">
+								<a href="https://screen.studio/" target="_blank" rel="noopener noreferrer" class="eval-past-name eval-past-link">Screen Studio</a>
+								<span class="eval-past-cat">Screen Recording</span>
+							</div>
+							<span class="eval-past-verdict">Passed on</span>
+						</li>
+						<li class="eval-past-item">
+							<div class="eval-past-info">
+								<a href="https://jam.dev/" target="_blank" rel="noopener noreferrer" class="eval-past-name eval-past-link">Jam.dev</a>
+								<span class="eval-past-cat">Bug Reporting</span>
+							</div>
+							<span class="eval-past-verdict verdict-adopted">Adopted</span>
+						</li>
+						<li class="eval-past-item">
+							<div class="eval-past-info">
+								<a href="https://www.agentation.com/" target="_blank" rel="noopener noreferrer" class="eval-past-name eval-past-link">Agentation</a>
+								<span class="eval-past-cat">AI Annotation</span>
+							</div>
+							<span class="eval-past-verdict verdict-adopted">Adopted</span>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+
+		</div>
+	</section>
+
+</Layout>
+
+<script>
+	// Theme-aware logo visibility (matches pattern used across the site)
+	(function() {
+		function updateLogos() {
+			const theme = document.documentElement.getAttribute('data-theme') || 'dark';
+			const isLight = theme === 'light';
+			document.querySelectorAll('.logo-light').forEach(el => {
+				(el as HTMLElement).style.display = isLight ? 'block' : 'none';
+			});
+			document.querySelectorAll('.logo-dark').forEach(el => {
+				(el as HTMLElement).style.display = isLight ? 'none' : 'block';
+			});
+		}
+
+		updateLogos();
+
+		const observer = new MutationObserver(() => updateLogos());
+		observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+	})();
+</script>

@@ -146,6 +146,13 @@ export async function buildSearchIndex(): Promise<SearchItem[]> {
     },
     {
       type: 'website' as const,
+      title: 'Tools',
+      description: 'Daily tools Luke Stahl actually uses: Obsidian, Cursor, Claude, Notion, GitHub, Slack, and more. Workflow diagram and current tool evaluations.',
+      url: '/tools/',
+      tags: ['tools', 'stack', 'obsidian', 'cursor', 'claude', 'notion', 'github', 'slack', 'excalidraw', 'resend', 'linear', 'workflow', 'daily tools', 'setup']
+    },
+    {
+      type: 'website' as const,
       title: 'AI Models Guide',
       description: 'A quick-reference to the major AI models in 2026 — GPT-5, Claude 4.6, Gemini 3, Grok 4, Llama 4, DeepSeek, Mistral, and Qwen 3. Who makes them, what they do best, and when to use each one.',
       url: '/ai-models-guide/',
