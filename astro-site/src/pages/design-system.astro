@@ -77,12 +77,27 @@ import Layout from '../layouts/Layout.astro';
 					Brand identity, logo guidelines, and downloadable assets.
 				</p>
 
-				<div class="placeholder-card">
-					<div class="placeholder-icon">
-						<i class="fa-solid fa-image"></i>
+				<div class="logo-grid">
+					<div class="logo-card logo-card-light">
+						<div class="logo-preview logo-preview-light">
+							<img src="/assets/images/logo/luke-stahl-light.png" alt="Luke Stahl logo - light version" class="logo-display" />
+						</div>
+						<div class="logo-card-info">
+							<span class="logo-label">Light</span>
+							<span class="logo-usage">For dark backgrounds</span>
+							<a href="/assets/images/logo/luke-stahl-light.png" download="luke-stahl-light.png" class="inline-link-btn">Download PNG</a>
+						</div>
 					</div>
-					<h3 class="placeholder-title">Logo Coming Soon</h3>
-					<p class="placeholder-text">Will include PNG and SVG download options.</p>
+					<div class="logo-card logo-card-dark">
+						<div class="logo-preview logo-preview-dark">
+							<img src="/assets/images/logo/luke-stahl-dark.png" alt="Luke Stahl logo - dark version" class="logo-display" />
+						</div>
+						<div class="logo-card-info">
+							<span class="logo-label">Dark (Backlit)</span>
+							<span class="logo-usage">For light backgrounds</span>
+							<a href="/assets/images/logo/luke-stahl-dark.png" download="luke-stahl-dark.png" class="inline-link-btn">Download PNG</a>
+						</div>
+					</div>
 				</div>
 
 				<h3 class="subsection-title">X Banner</h3>
@@ -1046,5 +1061,58 @@ gap: 1.25rem;             /* 20px - moderate spacing */</code>
 		.ds-liquid-btn__spinner {
 			animation: none;
 		}
+	}
+
+	/* Logo grid */
+	.logo-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+		gap: 1.5rem;
+		margin-bottom: 2rem;
+	}
+
+	.logo-card {
+		border: 1px solid var(--border-color);
+		border-radius: 12px;
+		overflow: hidden;
+	}
+
+	.logo-preview {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 2rem;
+		min-height: 140px;
+	}
+
+	.logo-preview-light {
+		background: #0a1128;
+	}
+
+	.logo-preview-dark {
+		background: #f8fafc;
+	}
+
+	.logo-display {
+		width: 140px;
+		height: auto;
+	}
+
+	.logo-card-info {
+		padding: 1rem 1.25rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+	}
+
+	.logo-label {
+		font-weight: 600;
+		font-size: 0.95rem;
+	}
+
+	.logo-usage {
+		font-size: 0.8rem;
+		opacity: 0.6;
+		margin-bottom: 0.5rem;
 	}
 </style>

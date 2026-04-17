@@ -17,6 +17,18 @@
         background-color: rgb(229, 240, 136);
     }
 
+    .navbar-logo {
+        height: 60px;
+        width: auto;
+        display: block;
+        flex-shrink: 0;
+        margin: -14px 0;
+    }
+
+    .navbar-logo-light { display: none; }
+    :global([data-theme="dark"]) .navbar-logo-light { display: block; }
+    :global([data-theme="dark"]) .navbar-logo-dark { display: none; }
+
     .navbar-brand {
         display: inline-flex;
         align-items: center;
@@ -158,6 +170,8 @@
 
 <nav class="navbar">
     <a class="navbar-brand" href="/" data-nav-link>
+        <img src="/assets/images/logo/luke-stahl-light.png" alt="Luke Stahl logo" class="navbar-logo navbar-logo-light" />
+        <img src="/assets/images/logo/luke-stahl-dark.png" alt="Luke Stahl logo" class="navbar-logo navbar-logo-dark" />
         Luke Stahl
         <a href="https://x.com/LukeStahl11" target="_blank" rel="noopener noreferrer" class="navbar-github-icon navbar-github-desktop" title="X (Twitter) Profile">
             <i class="fa-brands fa-x-twitter"></i>
