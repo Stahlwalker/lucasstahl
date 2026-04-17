@@ -23,10 +23,8 @@
   </defs>
   <g transform="translate(40 20)" filter="url(#rbShadow)">
     <rect x="0" y="0" width="240" height="170" rx="24" fill="url(#rbSide)"></rect>
-    <rect x="0" y="0" width="240" height="4" rx="2" fill="#22d3ee" opacity=".18"></rect>
     <rect x="10" y="8" width="220" height="140" rx="18" fill="url(#rbTop)" stroke="#22d3ee" stroke-opacity=".18" stroke-width="1"></rect>
     <rect x="10" y="8" width="220" height="140" rx="18" fill="url(#rbBacklight)"></rect>
-    <rect x="10" y="8" width="220" height="2" fill="#22d3ee" opacity=".22"></rect>
     <rect x="14" y="132" width="212" height="14" rx="6" fill="#000" opacity=".4"></rect>
     <g transform="translate(22 22)" stroke="#22d3ee" stroke-width="1.8" fill="none" filter="url(#rbGlow)">
       <rect x="11" y="11" width="10" height="10" rx="0.5"></rect>

@@ -15,7 +15,6 @@
   </defs>
   <g transform="translate(40 20)" filter="url(#rlShadow)">
     <rect x="0" y="0" width="240" height="170" rx="24" fill="url(#rlSide)"></rect>
-    <rect x="0" y="0" width="240" height="4" rx="2" fill="#ffffff" opacity=".35"></rect>
     <rect x="10" y="8" width="220" height="140" rx="18" fill="url(#rlTop)" stroke="#b8c2cf" stroke-width="1"></rect>
     <rect x="14" y="132" width="212" height="14" rx="6" fill="#000" opacity=".06"></rect>
     <g transform="translate(22 22)" stroke="#0e7490" stroke-width="1.8" fill="none">
