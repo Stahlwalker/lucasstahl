@@ -28,6 +28,9 @@
     .navbar-logo-dark { display: none; }
     :global([data-theme="dark"]) .navbar-logo-dark { display: block; }
     :global([data-theme="dark"]) .navbar-logo-light { display: none; }
+    :global([data-theme="dark"]) .navbar-logo {
+        filter: drop-shadow(0 0 6px rgba(34, 211, 238, 0.45));
+    }
 
     .navbar-brand {
         display: inline-flex;
