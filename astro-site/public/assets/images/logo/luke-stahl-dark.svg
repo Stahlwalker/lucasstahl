@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 260" width="520" height="260" role="img" aria-label="LS keyboard keys — backlit teal">
+  <title>LS · Backlit keycaps</title>
+  <defs>
+    
+    <linearGradient id="bkSide" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0a1128"></stop>
+      <stop offset="1" stop-color="#020610"></stop>
+    </linearGradient>
+    
+    <linearGradient id="bkTop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0f1a35"></stop>
+      <stop offset="1" stop-color="#070c1a"></stop>
+    </linearGradient>
+    
+    <radialGradient id="bkBleed" cx="50%" cy="115%" r="70%">
+      <stop offset="0" stop-color="#22d3ee" stop-opacity="0.55"></stop>
+      <stop offset="0.55" stop-color="#22d3ee" stop-opacity="0.15"></stop>
+      <stop offset="1" stop-color="#22d3ee" stop-opacity="0"></stop>
+    </radialGradient>
+    
+    <filter id="bkHalo" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="0" stdDeviation="14" flood-color="#22d3ee" flood-opacity="0.35"></feDropShadow>
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#000" flood-opacity="0.55"></feDropShadow>
+    </filter>
+    
+    <filter id="bkGlyphGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="3" result="b1"></feGaussianBlur>
+      <feGaussianBlur stdDeviation="10" in="SourceGraphic" result="b2"></feGaussianBlur>
+      <feMerge>
+        <feMergeNode in="b2"></feMergeNode>
+        <feMergeNode in="b1"></feMergeNode>
+        <feMergeNode in="SourceGraphic"></feMergeNode>
+      </feMerge>
+    </filter>
+  </defs>
+
+  
+  <g transform="translate(30 20)" filter="url(#bkHalo)">
+    
+    <rect x="0" y="0" width="200" height="210" rx="26" fill="url(#bkSide)"></rect>
+    
+    <rect x="14" y="10" width="172" height="170" rx="20" fill="url(#bkTop)"></rect>
+    
+    <rect x="14" y="10" width="172" height="170" rx="20" fill="url(#bkBleed)"></rect>
+    
+    <rect x="14" y="10" width="172" height="2" fill="#22d3ee" opacity=".22"></rect>
+    
+    <rect x="18" y="165" width="164" height="14" rx="6" fill="#000" opacity=".4"></rect>
+    
+    <g filter="url(#bkGlyphGlow)">
+      <text x="100" y="126" text-anchor="middle" font-family="&#39;Fira Code&#39;, ui-monospace, Menlo, monospace" font-weight="700" font-size="112" fill="#22d3ee" letter-spacing="-2">L</text>
+    </g>
+  </g>
+
+  
+  <g transform="translate(290 20)" filter="url(#bkHalo)">
+    <rect x="0" y="0" width="200" height="210" rx="26" fill="url(#bkSide)"></rect>
+    <rect x="14" y="10" width="172" height="170" rx="20" fill="url(#bkTop)"></rect>
+    <rect x="14" y="10" width="172" height="170" rx="20" fill="url(#bkBleed)"></rect>
+    <rect x="14" y="10" width="172" height="2" fill="#22d3ee" opacity=".22"></rect>
+    <rect x="18" y="165" width="164" height="14" rx="6" fill="#000" opacity=".4"></rect>
+    <g filter="url(#bkGlyphGlow)">
+      <text x="100" y="126" text-anchor="middle" font-family="&#39;Fira Code&#39;, ui-monospace, Menlo, monospace" font-weight="700" font-size="112" fill="#22d3ee" letter-spacing="-2">S</text>
+    </g>
+  </g>
+</svg>
