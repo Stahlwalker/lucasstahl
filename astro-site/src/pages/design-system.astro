@@ -80,22 +80,28 @@ import Layout from '../layouts/Layout.astro';
 				<div class="logo-grid">
 					<div class="logo-card logo-card-light">
 						<div class="logo-preview logo-preview-light">
-							<img src="/assets/images/logo/luke-stahl-light.png" alt="Luke Stahl logo - light version" class="logo-display" />
+							<img src="/assets/images/logo/ls-logo/Luke-Stahl-Light-LS.svg" alt="Luke Stahl logo - light version" class="logo-display" />
 						</div>
 						<div class="logo-card-info">
 							<span class="logo-label">Light</span>
 							<span class="logo-usage">For dark backgrounds</span>
-							<a href="/assets/images/logo/luke-stahl-light.png" download="luke-stahl-light.png" class="inline-link-btn">Download PNG</a>
+							<div class="logo-card-downloads">
+								<a href="/assets/images/logo/ls-logo/Luke-Stahl-Light-LS.svg" download="Luke-Stahl-Light-LS.svg" class="inline-link-btn">Download SVG</a>
+								<a href="/assets/images/logo/ls-logo/Luke-Stahl-Light-LS.png" download="Luke-Stahl-Light-LS.png" class="inline-link-btn">Download PNG</a>
+							</div>
 						</div>
 					</div>
 					<div class="logo-card logo-card-dark">
 						<div class="logo-preview logo-preview-dark">
-							<img src="/assets/images/logo/luke-stahl-dark.png" alt="Luke Stahl logo - dark version" class="logo-display" />
+							<img src="/assets/images/logo/ls-logo/Luke-Stahl-Dark-LS.svg" alt="Luke Stahl logo - dark version" class="logo-display" />
 						</div>
 						<div class="logo-card-info">
 							<span class="logo-label">Dark (Backlit)</span>
 							<span class="logo-usage">For light backgrounds</span>
-							<a href="/assets/images/logo/luke-stahl-dark.png" download="luke-stahl-dark.png" class="inline-link-btn">Download PNG</a>
+							<div class="logo-card-downloads">
+								<a href="/assets/images/logo/ls-logo/Luke-Stahl-Dark-LS.svg" download="Luke-Stahl-Dark-LS.svg" class="inline-link-btn">Download SVG</a>
+								<a href="/assets/images/logo/ls-logo/Luke-Stahl-Dark-LS.png" download="Luke-Stahl-Dark-LS.png" class="inline-link-btn">Download PNG</a>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -1072,9 +1078,9 @@ gap: 1.25rem;             /* 20px - moderate spacing */</code>
 	}
 
 	.logo-card {
-		border: 1px solid var(--border-color);
 		border-radius: 12px;
 		overflow: hidden;
+		box-shadow: 0 0 0 1.5px rgba(128,128,128,0.4);
 	}
 
 	.logo-preview {
@@ -1102,7 +1108,13 @@ gap: 1.25rem;             /* 20px - moderate spacing */</code>
 		padding: 1rem 1.25rem;
 		display: flex;
 		flex-direction: column;
-		gap: 0.25rem;
+		gap: 0.5rem;
+	}
+
+	.logo-card-downloads {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
 	}
 
 	.logo-label {
