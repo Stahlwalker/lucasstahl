@@ -22,13 +22,13 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install OpenAI SDK
-        run: npm install openai
+      - name: Install Anthropic SDK
+        run: npm install @anthropic-ai/sdk
 
       - name: Check for AI model updates
         id: update
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
           OUTPUT=$(node .github/scripts/update-ai-models.mjs 2>&1)
           echo "$OUTPUT"
