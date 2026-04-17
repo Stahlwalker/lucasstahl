@@ -44,8 +44,10 @@ jobs:
             echo "has_updates=false" >> $GITHUB_OUTPUT
           fi
 
+      # PR creation disabled while validating the workflow output.
+      # Re-enable by removing the 'if: false' condition once confirmed working.
       - name: Create Pull Request
-        if: steps.update.outputs.has_updates == 'true'
+        if: false
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -85,8 +87,9 @@ jobs:
           FROM_EMAIL: ${{ secrets.FROM_EMAIL }}
         run: |
           if [ "${{ steps.update.outputs.has_updates }}" == "true" ]; then
-            SUBJECT="🤖 AI Models Guide — Updates Found"
-            BODY="<h2>🤖 AI Models Guide Update</h2><p>The weekly scan found updates to the AI models guide on <strong>$(date '+%B %d, %Y')</strong>.</p><h3>What happened</h3><p>A pull request has been created with the changes. Review and merge when ready.</p><p><a href=\"${{ github.server_url }}/${{ github.repository }}/pulls\">View Open Pull Requests</a></p><hr><p><a href=\"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\">View Workflow Run</a></p>"
+            CHANGELOG=$(cat /tmp/changelog.txt 2>/dev/null || echo "See workflow logs for details.")
+            SUBJECT="🤖 AI Models Guide — Updates Found (review only)"
+            BODY="<h2>🤖 AI Models Guide — Updates Found</h2><p>The weekly scan found updates on <strong>$(date '+%B %d, %Y')</strong>.</p><h3>Changelog</h3><pre style='background:#f4f4f4;padding:1rem;border-radius:6px;font-size:0.85rem;white-space:pre-wrap'>$CHANGELOG</pre><p><em>PR creation is disabled while validating the workflow. Apply these changes manually or re-enable the PR step.</em></p><hr><p><a href=\"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\">View Workflow Run</a></p>"
           else
             SUBJECT="✅ AI Models Guide — No Updates This Week"
             BODY="<h2>✅ No Updates Found</h2><p>The weekly AI models scan ran on <strong>$(date '+%B %d, %Y')</strong> and found no meaningful changes to report.</p><hr><p><a href=\"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\">View Workflow Run</a></p>"
@@ -118,9 +121,9 @@ jobs:
           echo "# 🤖 AI Models Guide Update" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           if [ "${{ steps.update.outputs.has_updates }}" == "true" ]; then
-            echo "✅ **Updates found and PR created!**" >> $GITHUB_STEP_SUMMARY
+            echo "✅ **Updates found — changelog emailed. PR creation is disabled.**" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
-            echo "Review the pull request to see what changed." >> $GITHUB_STEP_SUMMARY
+            echo "Check the email notification or workflow logs for the full changelog." >> $GITHUB_STEP_SUMMARY
           else
             echo "ℹ️ **No meaningful updates this week.**" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
