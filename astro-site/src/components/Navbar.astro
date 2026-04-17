@@ -18,19 +18,21 @@
     }
 
     .navbar-logo {
-        height: 42px;
+        height: 48px;
         width: auto;
         display: block;
         flex-shrink: 0;
-        margin: -6px 0;
+        margin: -8px 0;
+    }
+
+    @media (min-width: 1025px) {
+        .navbar-logo {
+            height: 42px;
+            margin: -6px 0;
+        }
     }
 
     .navbar-logo-dark { display: none; }
-    :global([data-theme="dark"]) .navbar-logo-dark { display: block; }
-    :global([data-theme="dark"]) .navbar-logo-light { display: none; }
-    :global([data-theme="dark"]) .navbar-logo {
-        filter: drop-shadow(0 0 6px rgba(34, 211, 238, 0.45));
-    }
 
     .navbar-brand {
         display: inline-flex;
@@ -112,6 +114,16 @@
         opacity: 0.7;
     }
 
+    .navbar-brand-name {
+        display: none;
+    }
+
+    @media (min-width: 1025px) {
+        .navbar-brand-name {
+            display: inline;
+        }
+    }
+
     /* Desktop styles (lg breakpoint: 1025px — above all iPad Pro sizes) */
     @media (min-width: 1025px) {
         .navbar-toggler {
@@ -175,7 +187,7 @@
     <a class="navbar-brand" href="/" data-nav-link>
         <img src="/assets/images/logo/ls-logo/Luke-Stahl-Light-LS.svg" alt="Luke Stahl logo" class="navbar-logo navbar-logo-light" />
         <img src="/assets/images/logo/ls-logo/Luke-Stahl-Dark-LS.svg" alt="Luke Stahl logo" class="navbar-logo navbar-logo-dark" />
-        Luke Stahl
+        <span class="navbar-brand-name">Luke Stahl</span>
         <a href="https://x.com/LukeStahl11" target="_blank" rel="noopener noreferrer" class="navbar-github-icon navbar-github-desktop" title="X (Twitter) Profile">
             <i class="fa-brands fa-x-twitter"></i>
         </a>
