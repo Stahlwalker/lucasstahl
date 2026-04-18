@@ -3,7 +3,6 @@ import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 
 // Logo imports — Light mode
-import linearIcon from '../assets/images/light/linear-icon.png';
 import resendLight from '../assets/images/light/resend-icon_light.png';
 import remindersImg from '../assets/images/light/Reminders.png';
 import calendarImg from '../assets/images/light/Calendar.png';
@@ -22,6 +21,7 @@ import githubIcon from '../assets/images/light/GitHub.svg';
 import githubDarkIcon from '../assets/images/dark/GitHub_dark_icon.png';
 import claudeLight from '../assets/images/light/Claude_Light.png';
 import claudeIcon from '../assets/images/light/Claude_icon.png';
+import claudeDesignIcon from '../assets/images/light/claude-design-icon.svg';
 import obsidianImg from '../assets/images/light/obsidian.png';
 import excalidrawLight from '../assets/images/light/Excalidraw_light.png';
 
@@ -284,22 +284,22 @@ import excalidrawDark from '../assets/images/dark/Excalidraw_dark.png';
 				<div class="eval-card">
 					<div class="eval-card-header">
 						<div class="eval-tool-icon">
-							<Image src={linearIcon} alt="Linear" width={48} height={48} />
+							<Image src={claudeDesignIcon} alt="Claude Design" width={48} height={48} />
 						</div>
 						<div class="eval-tool-meta">
-							<a href="https://linear.app/" target="_blank" rel="noopener noreferrer" class="eval-tool-name" style="text-decoration: none; color: inherit;">Linear</a>
+							<a href="https://claude.ai/design" target="_blank" rel="noopener noreferrer" class="eval-tool-name" style="text-decoration: none; color: inherit;">Claude Design</a>
 							<span class="eval-badge">Evaluating</span>
 						</div>
 					</div>
 					<p class="eval-description">
-						Issue tracker built for software teams. Looking at it as a possible Notion replacement, mostly because of how well it connects to GitHub PR workflows.
+						Anthropic's design tool built into Claude. Testing it for UI mockups and component design to see if it fits alongside Excalidraw in my workflow.
 					</p>
 					<div class="eval-footer">
 						<span class="eval-status">
 							<span class="eval-dot"></span>
 							Active
 						</span>
-						<span class="eval-category">Project Management</span>
+						<span class="eval-category">Design</span>
 					</div>
 				</div>
 
@@ -307,6 +307,14 @@ import excalidrawDark from '../assets/images/dark/Excalidraw_dark.png';
 				<div class="eval-past">
 					<h3 class="eval-past-title">Previously Evaluated</h3>
 					<ul class="eval-past-list">
+						<li class="eval-past-item">
+							<div class="eval-past-info">
+								<a href="https://linear.app/" target="_blank" rel="noopener noreferrer" class="eval-past-name eval-past-link">Linear</a>
+								<span class="eval-past-cat">Project Management</span>
+								<span class="eval-past-note">Good GitHub integration, but Notion already covers what I need for now.</span>
+							</div>
+							<span class="eval-past-verdict">Passed on</span>
+						</li>
 						<li class="eval-past-item">
 							<div class="eval-past-info">
 								<a href="https://zed.dev/" target="_blank" rel="noopener noreferrer" class="eval-past-name eval-past-link">Zed</a>
