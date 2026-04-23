@@ -2,12 +2,12 @@
 
 Personal website and blog for Luke Stahl.
 
-Built with Astro v5, Notion CMS, deployed to GitHub Pages.
+Built with Astro v6, Notion CMS, deployed to GitHub Pages.
 
 ## Tech Stack
 
-- **Framework**: [Astro](https://astro.build/) v5.16.0 with [React](https://react.dev/) v19 integration
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/) (scoped to React components only)
+- **Framework**: [Astro](https://astro.build/) v6.1.9 with [React](https://react.dev/) v19 integration
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) v4 via `@tailwindcss/vite` (scoped to React components only)
 - **UI Components**: [shadcn/ui](https://ui.shadcn.com/) and [React Bits](https://reactbits.dev/)
 - **CMS**: [Notion](https://www.notion.so/)
 - **Error Tracking**: [Sentry](https://sentry.io/)
@@ -45,7 +45,7 @@ lucasstahl/
     │       └── images/
     ├── .github/
     │   └── workflows/       # GitHub Actions
-    ├── tailwind.config.js   # Tailwind configuration
+    ├── src/styles/tailwind.css  # Tailwind v4 CSS-based config
     ├── components.json      # shadcn/ui configuration
     └── package.json
 ```
@@ -56,9 +56,10 @@ lucasstahl/
 - **Astro Islands**: Static HTML with selective React hydration for interactive components
 - React components available via `@astrojs/react` integration
 - Maintains SSG performance while enabling React-dependent tools
-- **Tailwind CSS**: Scoped exclusively to React components (`.jsx`, `.tsx` files)
-  - No CSS reset applied (`applyBaseStyles: false`)
-  - Preserves existing site styles
+- **Tailwind CSS v4**: Scoped exclusively to React components (`.jsx`, `.tsx` files)
+  - Configured via `@tailwindcss/vite` Vite plugin (no `@astrojs/tailwind` integration)
+  - CSS-based config in `src/styles/tailwind.css` using `@theme` and `@custom-variant`
+  - No preflight/reset applied — preserves existing site styles
   - Zero impact on Astro pages and existing CSS
 - **shadcn/ui**: Copy-paste component library built on Radix UI primitives
   - Components live in `src/components/ui/`
@@ -125,7 +126,7 @@ Example: `npx shadcn@latest add @react-bits/ColorBends-JS-TW`
 ## Development
 
 ### Prerequisites
-- Node.js v18+
+- Node.js v22+
 - npm
 
 ### Setup
@@ -151,8 +152,8 @@ All commands run from the `astro-site` directory:
 ### Performance & Safety
 
 **Tailwind CSS is production-safe:**
-- Scoped to React components only (`tailwind.config.js` content array)
-- No CSS reset applied to preserve existing styles
+- Scoped to React components only (auto-detected by `@tailwindcss/vite`)
+- No preflight/reset applied — preserves existing styles
 - Existing Astro pages and CSS remain completely unaffected
 - CSS bundle size: ~1-2KB for variables + utilities for components used
 
