@@ -164,34 +164,41 @@ All commands run from the `astro-site` directory:
 
 ## Environment Variables
 
-Create `.env` in the `astro-site` directory:
+Create `.env` in the `astro-site` directory (see `.env.example`):
 
 ```bash
-# Notion API
-NOTION_API_KEY=your_notion_api_key
-NOTION_DATABASE_ID=your_notion_database_id
+# Notion CMS (also needed as GitHub Secrets for deploy workflow)
+NOTION_API_KEY=
+NOTION_DATABASE_ID=
 
-# Sentry
-PUBLIC_SENTRY_DSN=your_sentry_dsn
+# Sentry (also needed as GitHub Secret for deploy workflow)
+PUBLIC_SENTRY_DSN=
 
-# Resend
-RESEND_API_KEY=your_resend_api_key
-RESEND_AUDIENCE_ID=your_resend_audience_id
+# AI API Keys
+ANTHROPIC_KEY=
+OPENAI_API_KEY=
+
+# Ahrefs IndexNow
+AHREFS_INDEXNOW_API_KEY=
+
+# Domain config
+DOMAIN_EMAIL=
+
+# Google PageSpeed (also needed as GitHub Secret for performance workflow)
+GOOGLE_CLOUD_PAGESPEED_API_KEY=
 ```
 
 ### GitHub Secrets
 
-Add these to repository settings:
+Add these to repository settings. Keys marked with `*` are also in your local `.env`:
 
-- `NOTION_API_KEY`
-- `NOTION_DATABASE_ID`
-- `PUBLIC_SENTRY_DSN`
+- `NOTION_API_KEY` *
+- `NOTION_DATABASE_ID` *
+- `PUBLIC_SENTRY_DSN` *
+- `GOOGLE_CLOUD_PAGESPEED_API_KEY` *
 - `RESEND_API_KEY`
-- `GOOGLE_CLOUD_PAGESPEED_API_KEY`
-- `AHREFS_INDEXNOW_API_KEY`
-- `DOMAIN_EMAIL`
-- `ANTHROPIC_KEY`
-- `OPENAI_API_KEY`
+- `NOTIFICATION_EMAIL`
+- `FROM_EMAIL`
 
 ## Deployment
 
