@@ -35,9 +35,20 @@ This upgrade is effectively two migrations bundled together: **Astro 5 → 6** a
 
 ---
 
-### 2. Tailwind CSS 3 → 4 (the significant part)
+### 2. Tailwind CSS 3 → 4 (lower risk than it sounds)
 
 `@astrojs/tailwind` is deprecated in Astro 6. The new approach uses Tailwind v4 as a Vite plugin directly.
+
+**Why this is low risk for this site:**
+
+- Tailwind is only used in 5 React component files: `ui/button.tsx`, `ui/calendar.tsx`, `ui/popover.tsx`, `DatePickerTest.jsx`, `ColorBends.jsx`
+- No `.astro` files use Tailwind — they use custom CSS
+- The existing `tailwind.config.js` uses CSS variables for all colors and border radius, which is natively compatible with v4's approach
+- Content scanning is auto-detected in v4 (no `content` array needed)
+
+**The one thing that needs updating:**
+
+- `darkMode: ['class', '[data-theme="dark"]']` — v4 moves this to CSS using `@custom-variant`
 
 **Steps:**
 
@@ -45,8 +56,8 @@ This upgrade is effectively two migrations bundled together: **Astro 5 → 6** a
 2. Uninstall `@astrojs/tailwind` package
 3. Install `tailwindcss@4.x` and `@tailwindcss/vite`
 4. Add `@tailwindcss/vite` to Vite plugins in `astro.config.mjs`
-5. Migrate Tailwind config from `tailwind.config.js` (JS-based, v3) to CSS-based config (v4)
-6. Audit for renamed or removed utility classes (v4 has breaking changes)
+5. Replace `tailwind.config.js` with CSS-based config (see below)
+6. Spot-check the 5 affected React components visually
 
 ---
 
@@ -79,22 +90,50 @@ export default defineConfig({
 });
 ```
 
-Then migrate the Tailwind config and test all pages for visual regressions.
+Replace `tailwind.config.js` with a CSS file (e.g., `src/styles/tailwind.css`):
+
+```css
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@theme {
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
+```
 
 ---
 
 ## Risk Areas
 
-- Tailwind v4 utility class renames may cause visual regressions across the site
-- Dark/light mode implementation may need updates (v4 handles `dark:` variants differently)
-- Custom CSS in `astro-site/src/` should be audited for v3-specific syntax
+- Dark mode variant syntax change (handled above with `@custom-variant`)
+- Spot-check the 5 React components that use Tailwind classes
 
 ## Testing Checklist
 
-- [ ] Homepage (index.astro) — highlights section, sidebar layout, feature flag
-- [ ] Blog post pages — typography, code blocks
-- [ ] Dark/light mode toggle
-- [ ] Mobile responsive layouts
-- [ ] Navbar and footer
-- [ ] Search functionality
-- [ ] `/builds`, `/gems`, `/tools` pages
+- [ ] `ui/button.tsx` — check variants (default, outline, ghost, etc.)
+- [ ] `ui/calendar.tsx` — check date picker styling
+- [ ] `ui/popover.tsx` — check popover positioning and styling
+- [ ] Dark/light mode toggle — verify `data-theme="dark"` variant still applies
+- [ ] Any page that renders these components (`/sandbox`, `/tools`, etc.)
