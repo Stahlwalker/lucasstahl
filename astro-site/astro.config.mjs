@@ -2,7 +2,7 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import sentry from '@sentry/astro';
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 
 import react from '@astrojs/react';
 
@@ -24,10 +24,7 @@ export default defineConfig({
       serialize: (item) => item
     }),
     sentry(),
-    react(),
-    tailwind({
-      applyBaseStyles: false, // Don't apply Tailwind's reset - preserve existing styles
-    })
+    react()
   ],
   redirects: {
     '/contact': '/about',
@@ -35,6 +32,7 @@ export default defineConfig({
     '/portfolio.html': '/'
   },
   vite: {
+    plugins: [tailwindcss()],
     build: {
       target: 'esnext', // Target modern browsers only, no legacy polyfills
     }
