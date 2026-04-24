@@ -2,10 +2,6 @@ import { Client } from '@notionhq/client';
 import { NotionToMarkdown } from 'notion-to-md';
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 // Initialize Notion client
 const auth = import.meta.env.NOTION_API_KEY;
@@ -15,6 +11,10 @@ if (!auth) {
 
 const notion = new Client({ auth });
 const n2m = new NotionToMarkdown({ notionClient: notion });
+
+// Notion SDK types rich_text as RichTextItemResponse[] | EmptyObject — narrow safely
+const getRichText = (arr: unknown): string =>
+  Array.isArray(arr) ? (arr[0] as { plain_text?: string })?.plain_text ?? '' : '';
 
 // Calculate reading time based on word count
 function calculateReadingTime(content: string): number {
@@ -117,43 +117,43 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
       const properties = page.properties;
 
       const title = properties.Name?.type === 'title'
-        ? properties.Name.title[0]?.plain_text || 'Untitled'
+        ? getRichText(properties.Name.title) || 'Untitled'
         : 'Untitled';
 
       const slug = properties.Slug?.type === 'rich_text'
-        ? properties.Slug.rich_text[0]?.plain_text || ''
+        ? getRichText(properties.Slug.rich_text)
         : '';
 
       const excerpt = properties.Excerpt?.type === 'rich_text'
-        ? properties.Excerpt.rich_text[0]?.plain_text || ''
+        ? getRichText(properties.Excerpt.rich_text)
         : '';
 
       const publishedDate = properties.PublishedDate?.type === 'date'
         ? properties.PublishedDate.date?.start || ''
         : '';
 
-      const tags = properties.Tags?.type === 'multi_select'
-        ? properties.Tags.multi_select.map((tag: any) => tag.name)
+      const tags = properties.Tags?.type === 'multi_select' && Array.isArray(properties.Tags.multi_select)
+        ? properties.Tags.multi_select.map((tag: { name: string }) => tag.name)
         : [];
 
       const featured = properties.Featured?.type === 'checkbox'
-        ? properties.Featured.checkbox
+        ? properties.Featured.checkbox as boolean
         : false;
 
       const featuredImage = properties.FeatureImage?.type === 'url'
-        ? properties.FeatureImage.url || ''
+        ? (properties.FeatureImage.url || '') as string
         : '';
 
       const ogImage = properties.OGImage?.type === 'url'
-        ? properties.OGImage.url || ''
+        ? (properties.OGImage.url || '') as string
         : '';
 
       const metaTitle = properties.MetaTitle?.type === 'rich_text'
-        ? properties.MetaTitle.rich_text[0]?.plain_text || ''
+        ? getRichText(properties.MetaTitle.rich_text)
         : '';
 
       const metaDescription = properties.MetaDescription?.type === 'rich_text'
-        ? properties.MetaDescription.rich_text[0]?.plain_text || ''
+        ? getRichText(properties.MetaDescription.rich_text)
         : '';
 
       posts.push({
