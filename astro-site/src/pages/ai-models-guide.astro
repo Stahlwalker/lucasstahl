@@ -3,17 +3,17 @@ import Layout from '../layouts/Layout.astro';
 
 // Quick Reference Data
 const quickReference = [
-	{ model: "GPT-5.x", company: "OpenAI", bestFor: "General purpose", differentiator: "GPT-5.4 flagship ($2.50/1M input); dynamic routing across 5.4 Thinking, 5.3-Codex, and 5.3 Instant sub-models", color: "#10b981" },
+	{ model: "GPT-5.x", company: "OpenAI", bestFor: "General purpose", differentiator: "GPT-5.5 flagship (Apr 23, 2026) — $5/1M input, $30/M output; stronger coding, computer use, and research; dynamic routing across sub-models", color: "#10b981" },
 	{ model: "Claude Opus 4.7", company: "Anthropic", bestFor: "Coding & reasoning", differentiator: "Opus 4.7 (Apr 15, 2026) — latest GA model; 1M context, step-change agentic coding; Sonnet 4.6 best for speed/cost", color: "#c084fc" },
 	{ model: "Gemini 3.x", company: "Google DeepMind", bestFor: "Multimodal", differentiator: "Best benchmark breadth; strong pricing; Workspace integration; Gemini 3.1 Pro flagship", color: "#60a5fa" },
 	{ model: "Grok 4.x", company: "xAI", bestFor: "Real-time info", differentiator: "Grok 4.20 flagship (Mar 2026): 2M context, three variants; live X/Twitter data; multi-agent parallel reasoning", color: "#f97316" },
 	{ model: "Llama 4", company: "Meta", bestFor: "Open-source", differentiator: "10M token context; fully self-hostable; Behemoth still in training/unreleased", color: "#06b6d4" },
-	{ model: "DeepSeek V3.2 / V4*", company: "DeepSeek", bestFor: "Cost efficiency", differentiator: "V3.2 ships on APIs now; V4 (1T MoE, multimodal) expected late April 2026; $0.30/MTok input; open-source", color: "#facc15" },
+	{ model: "DeepSeek V4", company: "DeepSeek", bestFor: "Cost efficiency", differentiator: "Released April 24, 2026 — V4-Pro (1.6T MoE, $1.74/1M input) and V4-Flash (284B, $0.14/1M input); Apache 2.0, 1M context", color: "#facc15" },
 	{ model: "Mistral 3 Family", company: "Mistral", bestFor: "EU compliance", differentiator: "Large 3, Magistral (reasoning), Devstral (open-source coding agent), Small 4, Voxtral — enterprise-safe with data sovereignty", color: "#818cf8" },
 	{ model: "Qwen 3.6", company: "Alibaba", bestFor: "Multilingual", differentiator: "Qwen3.5 open-weight (397B); Qwen3.6-Plus closed-source agentic (1M context, Apr 2026); 119 languages", color: "#f472b6" },
 	{ model: "Microsoft MAI", company: "Microsoft", bestFor: "Speech & media AI", differentiator: "MAI-Transcribe-1, MAI-Voice-1, MAI-Image-2 — Microsoft's own foundation stack on Foundry", color: "#0ea5e9" },
 	{ model: "Gemma 4", company: "Google", bestFor: "On-device open-weight", differentiator: "31B ranks #3 on Arena AI (1452 Elo); E2B/E4B optimized for Android; Apache 2.0", color: "#34d399" },
-	{ model: "Kimi K2.5", company: "Moonshot AI", bestFor: "Agentic open-source", differentiator: "1T params; Agent Swarm coordinates up to 100 sub-agents", color: "#ff6b6b" },
+	{ model: "Kimi K2.6", company: "Moonshot AI", bestFor: "Agentic open-source", differentiator: "Released Apr 20 — 1T MoE, 32B active; Agent Swarm scales to 300 sub-agents; 58.6 SWE-Bench Pro (top open model); Modified MIT", color: "#ff6b6b" },
 	{ model: "GLM-5.1", company: "Zhipu AI", bestFor: "Open frontier", differentiator: "Updated Apr 6, 2026; 744B MoE; MIT license; GPQA 0.9; trained on zero NVIDIA GPUs", color: "#4ecdc4" },
 	{ model: "GPT-5.4-Cyber", company: "OpenAI", bestFor: "Defensive cybersecurity", differentiator: "TAC-gated fine-tune; lowered security refusals; binary reverse engineering; partners: CrowdStrike, Cloudflare, Palo Alto, Cisco", color: "#ef4444" },
 	{ model: "Claude Mythos Preview", company: "Anthropic", bestFor: "Security research", differentiator: "Project Glasswing invite-only; GPQA 0.9; ~12 enterprise partners; $2,500/1M tokens to gate access", color: "#a855f7" },
@@ -30,11 +30,11 @@ const frontierModels = [
 		color: "#10b981",
 		tagline: "The versatile all-rounder with dynamic internal routing.",
 		bullets: [
-			"GPT-5.4 is the current flagship — input pricing $2.50/1M tokens; 1M token context window",
+			"GPT-5.5 is the current flagship (Apr 23, 2026) — $5/1M input, $30/1M output; 1M token context; improved coding, computer use, and multi-step research",
+			"GPT-5.5 rolling out to Plus, Pro, Business, and Enterprise via ChatGPT and Codex",
 			"Uses an internal router to select the right sub-model per request in real time",
-			"GPT-5.4 mini and nano offer GPT-5-class performance at lower cost; mini comes within 5% of flagship on coding benchmarks",
 			"GPT-5.4 Thinking (Mar 5, 2026): reasoning-first variant — strongest at math, spreadsheets, research, and document tasks",
-			"GPT-5.3-Codex (Feb 5, 2026): dedicated agentic coding variant combining Codex and GPT-5 training stacks; set new benchmark highs on coding",
+			"GPT-5.3-Codex (Feb 5, 2026): dedicated agentic coding variant combining Codex and GPT-5 training stacks",
 			"GPT-5.3 Instant: fast chat variant for low-latency applications",
 			"Native computer use and tool calling for agentic automation"
 		],
@@ -47,7 +47,7 @@ const frontierModels = [
 		color: "#c084fc",
 		tagline: "The developer favorite for coding, reasoning, and safety.",
 		bullets: [
-			"Opus 4.7 (Apr 15, 2026): latest GA model — 1M context window, step-change agentic coding, best human-preference scores",
+			"Opus 4.7 (Apr 15, 2026): latest GA model — 1M context window, $5/1M input, $25/1M output; step-change agentic coding, substantially improved vision resolution",
 			"Sonnet 4.6: best speed/cost balance for most production workloads",
 			"Haiku 4.5: fast and cheap for high-volume tasks",
 			"Leads human-preference leaderboards; strong ARC-AGI-2 scores",
@@ -83,7 +83,7 @@ const frontierModels = [
 			"Grok 4.20 uses native multi-agent architecture with four specialist agents that debate before responding",
 			"Grok 4.20 Beta 2 (March 3): improved instruction following and hallucination reduction",
 			"Real-time integration with X (Twitter) for current events",
-			"Scored 100% on AIME 2025 math competition (Heavy variant)",
+			"Grok 4 Heavy (extended inference variant) scored 100% on AIME 2025 — not the base Grok 4.20 model; attribution is widely misreported",
 			"Grok 5 in training — reported ~6T parameter MoE model training on xAI's Colossus 2 supercluster; Q2 2026 target"
 		],
 		bestFor: "Real-time info, math/science, users who want less guardrails"
@@ -149,16 +149,16 @@ const openSourceModels = [
 		bestFor: "Self-hosting, privacy-sensitive orgs, custom fine-tuning"
 	},
 	{
-		name: "DeepSeek V3.2 / V4",
+		name: "DeepSeek V4",
 		company: "DeepSeek",
 		location: "Hangzhou, China",
 		color: "#facc15",
-		tagline: "Cost-redefining open-source models — V3.2 ships now; V4 expected late April 2026.",
+		tagline: "Cost-redefining open-source frontier — released April 24, 2026 in two variants.",
 		bullets: [
-			"DeepSeek V3.2 (current API model): bridges V3 and V4 — optimized for reasoning, agentic long-context, and tool-use; available via DeepInfra, Novita, Fireworks",
-			"DeepSeek V4 (expected late April 2026): 1T MoE parameters, 1M context, $0.30/MTok input, native multimodal (text/image/video) — not yet released",
+			"V4-Pro: 1.6T total parameters / 49B active MoE; $1.74/1M input, $3.48/1M output — cheapest frontier-class open model",
+			"V4-Flash: 284B total / 13B active; $0.14/1M input, $0.28/1M output — ultra-budget tier",
+			"Apache 2.0 license; native 1M context window; built-in agentic long-context and tool-use",
 			"Engram conditional memory and Manifold-Constrained Hyper-Connections for improved long-context performance",
-			"81% on SWE-bench Verified (V4 projected); open-source weights",
 			"Entire V3/V4 lineage trained for under $6M — redefining AI cost efficiency"
 		],
 		bestFor: "Budget-conscious teams, math/reasoning, open-source self-hosting"
@@ -171,27 +171,28 @@ const openSourceModels = [
 		tagline: "The enterprise-safe European model family, now spanning text, reasoning, code, and speech.",
 		bullets: [
 			"Mistral Large 3: EU AI Act-compliant flagship for regulated industries (finance, healthcare, gov); 675B total MoE",
-			"Magistral: Mistral's new reasoning model — multilingual, transparent chain-of-thought",
-			"Mistral Small 4 (March 17): MoE architecture, 119B total / 6B active, 128 experts — fast and efficient",
-			"Devstral: open-source Apache 2.0 coding agent model designed for agentic software engineering",
+			"Magistral: Mistral's reasoning model — multilingual, transparent chain-of-thought",
+			"Mistral Small 4 (March 16): 119B/6.5B-active MoE unifying reasoning (Magistral), vision (Pixtral), and coding (Devstral) in one endpoint",
+			"Devstral 2: 72.2% SWE-bench Verified — top open agentic coding model; 123B params, 256K context, MIT license; competitive with Composer 2",
 			"Voxtral (March 26): open-source 4B text-to-speech, 9 languages, runs on consumer hardware",
 			"Strong European data sovereignty guarantees across the full model family"
 		],
 		bestFor: "EU-regulated enterprises, edge deployment, privacy-first apps"
 	},
 	{
-		name: "Kimi K2.5",
+		name: "Kimi K2.6",
 		company: "Moonshot AI",
 		location: "Beijing, China",
 		color: "#ff6b6b",
-		tagline: "Open-source agentic powerhouse with Agent Swarm.",
+		tagline: "Open-source agentic leader — top SWE-Bench Pro score and the largest open agent swarm.",
 		bullets: [
-			"1T total parameters (32B active), MoE architecture with native vision-language",
-			"Agent Swarm coordinates up to 100 specialized sub-agents in parallel",
-			"Kimi Code CLI agent rivals Claude Code and Gemini CLI",
-			"Backed by Alibaba and HongShan; strong global traction"
+			"Released April 20, 2026 — 1T parameter MoE, 32B active, 262.1K context window",
+			"Agent Swarm scales to 300 specialized sub-agents with up to 4,000 coordinated steps (was 100)",
+			"58.6 on SWE-Bench Pro — edges GPT-5.4's 57.7; top open model on this benchmark",
+			"Open-weight, Modified MIT license; weights on Hugging Face",
+			"Kimi Code CLI agent rivals Claude Code and Gemini CLI"
 		],
-		bestFor: "Agentic workflows, open-source self-hosting, multimodal tasks"
+		bestFor: "Agentic workflows, open-source self-hosting, long-horizon coding tasks"
 	},
 	{
 		name: "GLM-5.1",
@@ -207,6 +208,21 @@ const openSourceModels = [
 			"Priced roughly 6x cheaper than comparable proprietary models"
 		],
 		bestFor: "Budget-conscious teams, open-source deployment, coding"
+	},
+	{
+		name: "NVIDIA Nemotron 3",
+		company: "NVIDIA",
+		location: "Santa Clara",
+		color: "#76b900",
+		tagline: "NVIDIA's open agentic reasoning stack — Nano, Super, and Ultra sizes on Bedrock.",
+		bullets: [
+			"Released March 2026; available on Amazon Bedrock and NVIDIA NIM",
+			"Three sizes: Nano (edge/on-device), Super (balanced), Ultra (frontier-class agentic reasoning)",
+			"Nemotron 3 Super peers with Llama 4 Maverick on open-model benchmarks",
+			"Leading open model for agentic reasoning and multi-step tool use",
+			"Optimized for NVIDIA hardware; available for self-hosting via NIM microservices"
+		],
+		bestFor: "Agentic reasoning, AWS/Bedrock deployments, NVIDIA-native infrastructure"
 	},
 	{
 		name: "Gemma 4",
@@ -296,7 +312,7 @@ const scenarios = [
 			{ task: "Generate unit tests and docs", model: "GPT-5.x", color: "#10b981" },
 			{ task: "Rapid UI prototyping", model: "GPT-5.x", color: "#10b981" },
 			{ task: "Background agents for parallel development", model: "Composer 2 (Cursor)", color: "#50e3c2" },
-			{ task: "Open-source agentic coding", model: "Kimi K2.5", color: "#ff6b6b" },
+			{ task: "Open-source agentic coding", model: "Kimi K2.6", color: "#ff6b6b" },
 		]
 	},
 	{
@@ -337,7 +353,7 @@ const scenarios = [
 			{ task: "Run a model on your own infrastructure", model: "Llama 4", color: "#06b6d4" },
 			{ task: "Fine-tune for a domain-specific task", model: "Llama 4", color: "#06b6d4" },
 			{ task: "Deploy in EU-regulated environments", model: "Mistral Large", color: "#818cf8" },
-			{ task: "Budget-friendly open-source alternative", model: "DeepSeek V3.2", color: "#facc15" },
+			{ task: "Budget-friendly open-source alternative", model: "DeepSeek V4", color: "#facc15" },
 			{ task: "MIT-licensed frontier alternative", model: "GLM-5", color: "#4ecdc4" },
 		]
 	},
@@ -356,9 +372,9 @@ const scenarios = [
 
 <Layout
 	title="AI Models Guide 2026"
-	description="Quick-reference to every major AI model in 2026 — GPT-5.4, Claude Opus 4.7, Gemini 3.1, Grok 4.20, Llama 4, DeepSeek, Mistral, and more."
+	description="Quick-reference to every major AI model in 2026 — GPT-5.5, Claude Opus 4.7, Gemini 3.1, Grok 4.20, Llama 4, DeepSeek V4, Kimi K2.6, and more."
 	ogTitle="AI Models Guide 2026 — Every Major Model Compared"
-	ogDescription="A quick-reference to the major AI models in 2026. GPT-5.4, Claude Opus 4.7, Gemini 3.1, Grok 4.20, Llama 4, DeepSeek, Mistral, Qwen 3.6, Gemma 4, Microsoft MAI, plus the new restricted cyber models GPT-5.4-Cyber and Claude Mythos."
+	ogDescription="A quick-reference to the major AI models in 2026. GPT-5.5, Claude Opus 4.7, Gemini 3.1, Grok 4.20, Llama 4, DeepSeek V4, Mistral Small 4, Devstral 2, Kimi K2.6, NVIDIA Nemotron 3, Qwen 3.6, Gemma 4, Microsoft MAI, plus restricted cyber models GPT-5.4-Cyber and Claude Mythos."
 	canonicalUrl="https://lukestahl.io/ai-models-guide/"
 	ogImage="https://lukestahl.io/assets/images/ai-model-guide.png"
 	hideHandbookButton={true}
@@ -380,12 +396,12 @@ const scenarios = [
 			"url": "https://lukestahl.io/"
 		},
 		"datePublished": "2026-03-10",
-		"dateModified": "2026-04-17",
+		"dateModified": "2026-04-24",
 		"mainEntityOfPage": {
 			"@type": "WebPage",
 			"@id": "https://lukestahl.io/ai-models-guide/"
 		},
-		"keywords": "AI models, GPT-5.4, Claude Opus 4.7, Gemini 3.1, Grok 4.20, Llama 4, DeepSeek V3.2, Mistral, Qwen 3.6, Gemma 4, Microsoft MAI, Kimi K2.5, GLM-5.1, GPT-5.4-Cyber, Claude Mythos, AI comparison, LLM guide 2026"
+		"keywords": "AI models, GPT-5.5, Claude Opus 4.7, Gemini 3.1, Grok 4.20, Llama 4, DeepSeek V4, Mistral Small 4, Devstral 2, Qwen 3.6, Gemma 4, Microsoft MAI, Kimi K2.6, GLM-5.1, NVIDIA Nemotron 3, GPT-5.4-Cyber, Claude Mythos, AI comparison, LLM guide 2026"
 	})} />
 
 	<!-- JSON-LD: BreadcrumbList -->
@@ -409,7 +425,7 @@ const scenarios = [
 			<section class="hero">
 				<h1 class="hero-title">AI Models<br/><span class="hero-title-accent">Guide</span></h1>
 				<p class="hero-subtitle">A quick-reference to the major AI models, who makes them, and what they do best.</p>
-				<div class="hero-badge">Updated April 17, 2026</div>
+				<div class="hero-badge">Updated April 24, 2026</div>
 			</section>
 
 			<!-- Quick Reference -->
