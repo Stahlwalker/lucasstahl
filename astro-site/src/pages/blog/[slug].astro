@@ -21,32 +21,30 @@ if (!post) {
 
 // Create a separate marked instance with Shiki syntax highlighting
 const markedWithShiki = new Marked();
-const renderer = new markedWithShiki.Renderer();
-const originalCodeRenderer = renderer.code.bind(renderer);
 
-renderer.code = async function(this: any, code: string, language: string | undefined, isEscaped: boolean) {
-  if (!language) {
-    return originalCodeRenderer.call(this, code, language, isEscaped);
-  }
-
-  try {
-    const html = await codeToHtml(code, {
-      lang: language,
-      themes: {
-        light: 'github-light',
-        dark: 'github-dark'
-      }
-    });
-    return html;
-  } catch (error) {
-    console.error('Shiki highlighting error:', error);
-    return originalCodeRenderer.call(this, code, language, isEscaped);
-  }
-};
-
-markedWithShiki.setOptions({
+markedWithShiki.use({
   async: true,
-  renderer: renderer
+  async walkTokens(token) {
+    if (token.type === 'code') {
+      const lang = token.lang || 'plaintext';
+      try {
+        (token as any)._highlighted = await codeToHtml(token.text, {
+          lang,
+          theme: 'nord'
+        });
+      } catch {
+        // falls back to default renderer
+      }
+    }
+  },
+  renderer: {
+    code(token) {
+      if ((token as any)._highlighted) {
+        return (token as any)._highlighted;
+      }
+      return false;
+    }
+  }
 });
 
 // Convert markdown to HTML with syntax highlighting
@@ -253,7 +251,7 @@ allPosts.sort((a, b) => new Date(b.publishedDate).getTime() - new Date(a.publish
 const suggestedPosts = allPosts.slice(0, 2);
 
 // Hide announcement on the blog post it's promoting to avoid redundancy
-const hideAnnouncement = post.slug === 'end-of-coding-age-of-building';
+const hideAnnouncement = post.slug === 'stop-upgrading-your-model-fix-your-harness';
 ---
 
 <Layout
@@ -438,6 +436,39 @@ const hideAnnouncement = post.slug === 'end-of-coding-age-of-building';
         setTimeout(setGiscusTheme, 1000);
       </script>
 
+
+      <script is:inline>
+        document.addEventListener('DOMContentLoaded', () => {
+          const COPY_ICON = `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.25H4.75C3.645 3.25 2.75 4.145 2.75 5.25V11.25C2.75 12.355 3.645 13.25 4.75 13.25H11.25C12.355 13.25 13.25 12.355 13.25 11.25V5.25C13.25 4.145 12.355 3.25 11.25 3.25H10"/><path d="M6.286 4.089L5.75 2.75H10.25L9.714 4.089C9.434 4.79 8.755 5.25 8 5.25C7.245 5.25 6.566 4.79 6.286 4.089Z"/></svg>`;
+          const CHECK_ICON = `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5,8 6,11.5 13.5,4"/></svg>`;
+
+          document.querySelectorAll('.blog-post-content .shiki').forEach((pre) => {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'code-block-wrapper';
+            pre.parentNode.insertBefore(wrapper, pre);
+            wrapper.appendChild(pre);
+
+            const btn = document.createElement('button');
+            btn.className = 'code-copy-btn';
+            btn.setAttribute('aria-label', 'Copy code to clipboard');
+            btn.innerHTML = COPY_ICON;
+
+            btn.addEventListener('click', () => {
+              const text = pre.querySelector('code').innerText;
+              navigator.clipboard.writeText(text).then(() => {
+                btn.innerHTML = CHECK_ICON;
+                btn.classList.add('copied');
+                setTimeout(() => {
+                  btn.innerHTML = COPY_ICON;
+                  btn.classList.remove('copied');
+                }, 2000);
+              });
+            });
+
+            wrapper.appendChild(btn);
+          });
+        });
+      </script>
 
       <footer class="blog-post-footer">
         <div class="share-section">
@@ -777,29 +808,90 @@ const hideAnnouncement = post.slug === 'end-of-coding-age-of-building';
       font-size: 0.9em;
     }
 
-    /* Code blocks - Shiki handles its own styling */
-    .blog-post-content :global(pre) {
-      padding: 1rem;
-      border-radius: 8px;
+    /* Code blocks — Clerk-style: always dark, rounded container */
+    .blog-post-content :global(.shiki) {
+      margin: 1.75rem 0;
+      border-radius: 12px;
       overflow-x: auto;
-      margin: 1.5rem 0;
+      padding: 1.25rem 0;
       font-family: 'Fira Code', monospace;
+      font-size: 0.875rem;
+      line-height: 1.6;
+      background-color: #2e3440 !important;
+      box-shadow:
+        0 1.5px 2px 0 rgba(0, 0, 0, 0.32),
+        0 0 0 1px rgba(255, 255, 255, 0.08),
+        0 -1px 0 0 rgba(255, 255, 255, 0.04);
     }
 
-    .blog-post-content :global(pre code) {
+    .blog-post-content :global(.shiki code) {
       background: none;
       padding: 0;
       font-family: 'Fira Code', monospace;
+      font-size: inherit;
+      counter-reset: line;
     }
 
-    /* Shiki dual-theme support */
-    .blog-post-content :global(pre[data-theme]) {
+    .blog-post-content :global(.shiki .line::before) {
+      counter-increment: line;
+      content: counter(line);
+      display: inline-block;
+      width: 2rem;
+      padding-right: 0.75rem;
+      margin-right: 1rem;
+      text-align: right;
+      color: rgba(255, 255, 255, 0.2);
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+      user-select: none;
+      pointer-events: none;
+    }
+
+    /* Light mode: same dark code blocks (intentional — matches Clerk's style) */
+    :global([data-theme="light"]) .blog-post-content :global(.shiki) {
+      box-shadow:
+        0 1.5px 2px 0 rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(0, 0, 0, 0.12);
+    }
+
+    /* Copy button */
+    .blog-post-content :global(.code-block-wrapper) {
+      position: relative;
+      margin: 1.75rem 0;
+    }
+
+    .blog-post-content :global(.code-block-wrapper .shiki) {
+      margin: 0;
+    }
+
+    .blog-post-content :global(.code-copy-btn) {
+      position: absolute;
+      top: 0.625rem;
+      right: 0.625rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.375rem;
+      background: rgba(255, 255, 255, 0.06);
       border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      color: rgba(255, 255, 255, 0.35);
+      cursor: pointer;
+      opacity: 1;
+      transition: color 0.15s, background 0.15s;
+      backdrop-filter: blur(4px);
+      line-height: 0;
     }
 
-    :global([data-theme="light"]) .blog-post-content :global(pre[data-theme]) {
-      border: 1px solid rgba(0, 0, 0, 0.1);
+    .blog-post-content :global(.code-copy-btn:hover) {
+      color: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.12);
     }
+
+    .blog-post-content :global(.code-copy-btn.copied) {
+      color: #22d3ee;
+      opacity: 1;
+    }
+
 
     .blog-post-content :global(ul),
     .blog-post-content :global(ol) {
