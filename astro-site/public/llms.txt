@@ -25,6 +25,7 @@
 
 ## Blog Posts
 
+- [Stop Upgrading Your Model. Fix Your Harness.](https://lukestahl.io/blog/stop-upgrading-your-model-fix-your-harness/)
 - [End of Coding, Age of Building](https://lukestahl.io/blog/end-of-coding-age-of-building/)
 - [What is developer marketing and why it exists](https://lukestahl.io/blog/developer-marketing/)
 - [What gets lost during leadership transitions](https://lukestahl.io/blog/leadership-flywheel/)
