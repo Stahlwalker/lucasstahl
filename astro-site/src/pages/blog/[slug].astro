@@ -1096,6 +1096,14 @@ const hideAnnouncement = post.slug === 'stop-upgrading-your-model-fix-your-harne
       .suggested-post-arrow {
         align-self: flex-end;
       }
+
+      .blog-post-content :global(.shiki) {
+        padding: 1.25rem;
+      }
+
+      .blog-post-content :global(.shiki .line::before) {
+        display: none;
+      }
     }
 
     /* Light mode styles */
