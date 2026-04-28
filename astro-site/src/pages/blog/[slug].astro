@@ -26,14 +26,24 @@ markedWithShiki.use({
   async: true,
   async walkTokens(token) {
     if (token.type === 'code') {
-      const lang = token.lang || 'plaintext';
+      const rawLang = (token.lang || '').trim().toLowerCase();
+      const lang = rawLang === '' || rawLang === 'plain text' || rawLang === 'plain' || rawLang === 'text'
+        ? 'plaintext'
+        : rawLang;
       try {
         (token as any)._highlighted = await codeToHtml(token.text, {
           lang,
           theme: 'nord'
         });
       } catch {
-        // falls back to default renderer
+        try {
+          (token as any)._highlighted = await codeToHtml(token.text, {
+            lang: 'plaintext',
+            theme: 'nord'
+          });
+        } catch {
+          // falls back to default renderer
+        }
       }
     }
   },
