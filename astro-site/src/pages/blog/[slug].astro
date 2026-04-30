@@ -913,6 +913,60 @@ const hideAnnouncement = post.slug === 'stop-upgrading-your-model-fix-your-harne
       margin-bottom: 0.5rem;
     }
 
+    /* GFM task list — drop the disc bullet, render a visible checkbox */
+    .blog-post-content :global(li:has(> input[type="checkbox"])) {
+      list-style: none;
+      margin-left: -1.5rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+    }
+
+    .blog-post-content :global(li > input[type="checkbox"]) {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 1rem;
+      height: 1rem;
+      flex-shrink: 0;
+      border: 1.5px solid rgba(228, 228, 231, 0.5);
+      border-radius: 4px;
+      background-color: rgba(255, 255, 255, 0.06);
+      cursor: default;
+      position: relative;
+      transform: translateY(2px);
+    }
+
+    .blog-post-content :global(li > input[type="checkbox"]:checked) {
+      background-color: var(--accent-blue, #60a5fa);
+      border-color: var(--accent-blue, #60a5fa);
+    }
+
+    .blog-post-content :global(li > input[type="checkbox"]:checked::after) {
+      content: '';
+      position: absolute;
+      left: 3px;
+      top: 0px;
+      width: 5px;
+      height: 9px;
+      border: solid #0a0e27;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+
+    :global([data-theme="light"]) .blog-post-content :global(li > input[type="checkbox"]) {
+      border-color: rgba(24, 24, 27, 0.4);
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    :global([data-theme="light"]) .blog-post-content :global(li > input[type="checkbox"]:checked) {
+      background-color: var(--accent-primary, #2563eb);
+      border-color: var(--accent-primary, #2563eb);
+    }
+
+    :global([data-theme="light"]) .blog-post-content :global(li > input[type="checkbox"]:checked::after) {
+      border-color: #ffffff;
+    }
+
     .blog-post-content :global(blockquote) {
       border-left: 4px solid var(--accent-blue, #60a5fa);
       padding-left: 1.5rem;

@@ -12,6 +12,27 @@ if (!auth) {
 const notion = new Client({ auth });
 const n2m = new NotionToMarkdown({ notionClient: notion });
 
+// notion-to-md hard-codes 3-backtick fences. If a Notion code block's content
+// contains ``` (e.g., a markdown skill example with a nested fenced block),
+// the inner fence prematurely closes the outer block and everything after
+// gets pulled into a runaway code block. Per CommonMark, the outer fence must
+// be longer than the longest backtick run inside, so use 4+ backticks here.
+n2m.setCustomTransformer('code', async (block: any) => {
+  const codeBlock = block.code;
+  if (!codeBlock) return '';
+  const text = (codeBlock.rich_text ?? [])
+    .map((t: { plain_text?: string }) => t.plain_text ?? '')
+    .join('')
+    .trim();
+  if (!text) return '';
+  const language = codeBlock.language && codeBlock.language.trim()
+    ? codeBlock.language.toLowerCase()
+    : 'plaintext';
+  const longest = (text.match(/`+/g) ?? []).reduce((m: number, s: string) => Math.max(m, s.length), 0);
+  const fence = '`'.repeat(Math.max(3, longest + 1));
+  return `${fence}${language}\n${text}\n${fence}`;
+});
+
 // Notion SDK types rich_text as RichTextItemResponse[] | EmptyObject — narrow safely
 const getRichText = (arr: unknown): string =>
   Array.isArray(arr) ? (arr[0] as { plain_text?: string })?.plain_text ?? '' : '';
