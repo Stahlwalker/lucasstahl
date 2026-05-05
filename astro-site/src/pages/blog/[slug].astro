@@ -58,7 +58,16 @@ markedWithShiki.use({
 });
 
 // Convert markdown to HTML with syntax highlighting
-const htmlContent = post.content ? await markedWithShiki.parse(post.content) : '';
+let htmlContent = post.content ? await markedWithShiki.parse(post.content) : '';
+
+// Render any list under a "Checklist" heading as a task list (checkboxes)
+htmlContent = htmlContent.replace(
+  /(<(?:p|h[1-6])[^>]*>\s*(?:<strong>\s*)?Checklist(?:\s*<\/strong>)?\s*<\/(?:p|h[1-6])>\s*)<ul>([\s\S]*?)<\/ul>/gi,
+  (_match, header, listInner) => {
+    const checked = listInner.replace(/<li>/g, '<li><input type="checkbox" disabled> ');
+    return `${header}<ul>${checked}</ul>`;
+  }
+);
 
 // Determine OG image with fallback logic and ensure absolute URL
 let ogImageUrl = post.ogImage || '/assets/images/Hero_OG.png';

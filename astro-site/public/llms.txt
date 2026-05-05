@@ -25,6 +25,7 @@
 
 ## Blog Posts
 
+- [PLG for developer companies](https://lukestahl.io/blog/plg-for-developer-companies/)
 - [Building developer tools for agents (not just humans)](https://lukestahl.io/blog/building-dev-tools-for-agents/)
 - [Stop Upgrading Your Model. Fix Your Harness.](https://lukestahl.io/blog/stop-upgrading-your-model-fix-your-harness/)
 - [End of Coding, Age of Building](https://lukestahl.io/blog/end-of-coding-age-of-building/)
