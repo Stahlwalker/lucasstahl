@@ -7,3 +7,6 @@ docs/Lukes-Developer-Writing-Style.md
 
 # Claude model cost reference (local reference only)
 docs/CLAUDE_MODEL_COSTS.md
+
+# Claude Code local runtime state
+.claude/scheduled_tasks.lock
