@@ -1,6 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
 import seoData from '../data/seo-results.json';
+import webflowLight from '../assets/images/light/Webflow_light.png';
+import webflowDark from '../assets/images/dark/Webflow_dark.png';
+import builderLight from '../assets/images/light/Builder logo light.png';
+import builderDark from '../assets/images/dark/Builder logo dark.png';
+import pangeaLogoLight from '../assets/images/light/PangeaLogoColor.svg';
+import pangeaDark from '../assets/images/dark/pangea-dark.png';
+import hereLogoLight from '../assets/images/light/HERE_logo.svg';
+import hereLogoDark from '../assets/images/dark/HERE_logo_dark.svg';
+import contentfulLight from '../assets/images/light/Contentful-light.png';
+import contentfulDark from '../assets/images/dark/Contentful-dark-v2.png';
 
 const { results } = seoData;
 
@@ -61,6 +72,80 @@ function getStrokeDashoffset(score: number): number {
 			</div>
 		</div>
 	</header>
+
+	<!-- Experience Strip: Companies where I've built developer marketing programs -->
+	<section class="experience-strip" aria-label="Companies where I've built developer marketing programs">
+		<div class="experience-strip-container">
+			<h2 class="experience-strip-title">
+				Built and scaled developer programs at
+			</h2>
+		</div>
+		<div class="experience-strip-grid">
+			<div class="experience-marquee-track">
+				<div class="experience-logo-cell" style="--cell-color: 20 110 245;">
+					<span class="experience-logo-flip">
+						<Image src={webflowLight} alt="Webflow" class="experience-logo logo-light" loading="lazy" quality={95} height={30} />
+						<Image src={webflowDark} alt="Webflow" class="experience-logo logo-dark" loading="lazy" quality={95} height={30} />
+					</span>
+				</div>
+				<div class="experience-logo-cell" style="--cell-color: 22 180 244;">
+					<span class="experience-logo-flip">
+						<Image src={builderLight} alt="Builder.io" class="experience-logo logo-light" loading="lazy" quality={95} height={30} />
+						<Image src={builderDark} alt="Builder.io" class="experience-logo logo-dark" loading="lazy" quality={95} height={30} />
+					</span>
+				</div>
+				<div class="experience-logo-cell" style="--cell-color: 255 200 61;">
+					<span class="experience-logo-flip">
+						<Image src={contentfulLight} alt="Contentful" class="experience-logo logo-light" loading="lazy" quality={95} height={30} />
+						<Image src={contentfulDark} alt="Contentful" class="experience-logo logo-dark" loading="lazy" quality={95} height={30} />
+					</span>
+				</div>
+				<div class="experience-logo-cell experience-logo-cell--pangea" style="--cell-color: 124 88 230;">
+					<span class="experience-logo-flip">
+						<img src={pangeaLogoLight.src} alt="Pangea" class="experience-logo experience-logo--svg logo-light" loading="lazy" />
+						<Image src={pangeaDark} alt="Pangea" class="experience-logo logo-dark" loading="lazy" quality={95} height={30} />
+					</span>
+				</div>
+				<div class="experience-logo-cell experience-logo-cell--icon" style="--cell-color: 101 193 194;">
+					<span class="experience-logo-flip">
+						<img src={hereLogoLight.src} alt="HERE Technologies" class="experience-logo experience-logo--svg logo-light" loading="lazy" width="53" height="48" />
+						<img src={hereLogoDark.src} alt="HERE Technologies" class="experience-logo experience-logo--svg logo-dark" loading="lazy" width="53" height="48" />
+					</span>
+				</div>
+				<!-- Mobile-only duplicates for seamless marquee loop -->
+				<div class="experience-logo-cell experience-logo-cell--clone" style="--cell-color: 20 110 245;" aria-hidden="true">
+					<span class="experience-logo-flip">
+						<Image src={webflowLight} alt="" class="experience-logo logo-light" loading="lazy" quality={95} height={30} />
+						<Image src={webflowDark} alt="" class="experience-logo logo-dark" loading="lazy" quality={95} height={30} />
+					</span>
+				</div>
+				<div class="experience-logo-cell experience-logo-cell--clone" style="--cell-color: 22 180 244;" aria-hidden="true">
+					<span class="experience-logo-flip">
+						<Image src={builderLight} alt="" class="experience-logo logo-light" loading="lazy" quality={95} height={30} />
+						<Image src={builderDark} alt="" class="experience-logo logo-dark" loading="lazy" quality={95} height={30} />
+					</span>
+				</div>
+				<div class="experience-logo-cell experience-logo-cell--clone" style="--cell-color: 255 200 61;" aria-hidden="true">
+					<span class="experience-logo-flip">
+						<Image src={contentfulLight} alt="" class="experience-logo logo-light" loading="lazy" quality={95} height={30} />
+						<Image src={contentfulDark} alt="" class="experience-logo logo-dark" loading="lazy" quality={95} height={30} />
+					</span>
+				</div>
+				<div class="experience-logo-cell experience-logo-cell--clone experience-logo-cell--pangea" style="--cell-color: 124 88 230;" aria-hidden="true">
+					<span class="experience-logo-flip">
+						<img src={pangeaLogoLight.src} alt="" class="experience-logo experience-logo--svg logo-light" loading="lazy" />
+						<Image src={pangeaDark} alt="" class="experience-logo logo-dark" loading="lazy" quality={95} height={30} />
+					</span>
+				</div>
+				<div class="experience-logo-cell experience-logo-cell--icon experience-logo-cell--clone" style="--cell-color: 101 193 194;" aria-hidden="true">
+					<span class="experience-logo-flip">
+						<img src={hereLogoLight.src} alt="" class="experience-logo experience-logo--svg logo-light" loading="lazy" width="53" height="48" />
+						<img src={hereLogoDark.src} alt="" class="experience-logo experience-logo--svg logo-dark" loading="lazy" width="53" height="48" />
+					</span>
+				</div>
+			</div>
+		</div>
+	</section>
 
 	<!-- Claude Skill Callout Section -->
 	<section class="claude-callout" id="claudeSection">
@@ -648,6 +733,240 @@ function getStrokeDashoffset(score: number): number {
 	</section>
 
 	<style>
+		/* Experience Strip — centered title above boxed logo grid with wave-tilt */
+		.experience-strip {
+			padding: 5rem 1rem 4.5rem;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.experience-strip-container {
+			max-width: 900px;
+			margin: 0 auto 1.75rem;
+			text-align: center;
+			position: relative;
+			z-index: 1;
+		}
+
+		.experience-strip-title {
+			font-family: 'Inter', system-ui, sans-serif;
+			font-size: 0.78rem;
+			font-weight: 600;
+			line-height: 1.4;
+			letter-spacing: 0.14em;
+			text-transform: uppercase;
+			color: #94a3b8;
+			margin: 0;
+		}
+
+		:global([data-theme="light"]) .experience-strip-title {
+			color: #64748b;
+		}
+
+		.experience-strip-grid {
+			max-width: 1280px;
+			margin: 0 auto;
+			border-top: 1px solid rgba(148, 163, 184, 0.2);
+			border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+			overflow: hidden;
+		}
+
+		.experience-marquee-track {
+			display: grid;
+			grid-template-columns: repeat(5, 1fr);
+			align-items: stretch;
+		}
+
+		:global([data-theme="light"]) .experience-strip-grid {
+			border-top-color: rgba(15, 23, 42, 0.2);
+			border-bottom-color: rgba(15, 23, 42, 0.2);
+		}
+
+		.experience-logo-cell {
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			min-height: 160px;
+			padding: 2rem 1.5rem;
+			border-left: 1px solid rgba(148, 163, 184, 0.18);
+			overflow: hidden;
+			isolation: isolate;
+			transition: background-color 0.4s ease;
+		}
+
+		.experience-logo-cell:first-child {
+			border-left: none;
+		}
+
+		:global([data-theme="light"]) .experience-logo-cell {
+			border-left-color: rgba(15, 23, 42, 0.2);
+		}
+
+		/* Halftone dot pattern fading from top — hidden until hover */
+		.experience-logo-cell::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background-image: radial-gradient(
+				circle at center,
+				rgb(var(--cell-color, 34 211 238) / 0.85) 1px,
+				transparent 1.6px
+			);
+			background-size: 11px 11px;
+			-webkit-mask-image: linear-gradient(180deg, black 0%, rgba(0, 0, 0, 0.7) 30%, transparent 75%);
+			mask-image: linear-gradient(180deg, black 0%, rgba(0, 0, 0, 0.7) 30%, transparent 75%);
+			opacity: 0;
+			transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+			pointer-events: none;
+			z-index: 0;
+		}
+
+		.experience-logo-cell:hover::before {
+			opacity: 1;
+		}
+
+		.experience-logo-cell:hover {
+			background-color: rgb(var(--cell-color, 34 211 238) / 0.04);
+		}
+
+		.experience-logo-flip {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			position: relative;
+			z-index: 1;
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			.experience-logo-cell::before {
+				transition: none;
+			}
+		}
+
+		.experience-logo {
+			max-height: 30px;
+			max-width: 100%;
+			width: auto;
+			height: auto;
+			object-fit: contain;
+		}
+
+		.experience-logo-cell--icon .experience-logo {
+			max-height: 48px;
+		}
+
+		/* Light/dark logo swapping */
+		.experience-logo-cell .logo-dark { display: inline-block; }
+		.experience-logo-cell .logo-light { display: none; }
+		:global([data-theme="light"]) .experience-logo-cell .logo-dark { display: none; }
+		:global([data-theme="light"]) .experience-logo-cell .logo-light { display: inline-block; }
+
+		/* Cloned cells used only by the mobile marquee — hidden on desktop.
+		   This rule must come AFTER the base .experience-logo-cell rule to override its display:flex. */
+		.experience-logo-cell--clone {
+			display: none;
+		}
+
+		/* Tablet + mobile: switch from static grid to horizontal scrolling marquee.
+		   Threshold covers iPad Pro portrait (1024px) and below. Hover doesn't exist
+		   reliably on touch, so the static halftone-on-hover loses its purpose —
+		   motion fills the gap. */
+		@media (max-width: 1024px) {
+			.experience-strip {
+				padding: 3rem 0 2.5rem;
+			}
+			.experience-marquee-track {
+				display: flex;
+				flex-wrap: nowrap;
+				width: max-content;
+				align-items: center;
+				animation: marquee-scroll 32s linear infinite;
+				will-change: transform;
+			}
+			.experience-logo-cell {
+				flex: 0 0 auto;
+				width: 22vw;
+				min-height: 100px;
+				padding: 1.25rem 1rem;
+			}
+			.experience-logo-cell--clone {
+				display: flex;
+			}
+			.experience-logo {
+				max-height: 24px;
+				max-width: 130px;
+			}
+			.experience-logo-cell--icon .experience-logo {
+				max-height: 44px;
+				max-width: 44px;
+			}
+			.experience-logo-cell--pangea .logo-light {
+				max-height: 20px;
+				max-width: 96px;
+			}
+			/* Hover halftone has no purpose on touch */
+			.experience-logo-cell::before {
+				display: none;
+			}
+		}
+
+		/* Mobile: tighter cells, faster loop, smaller logos */
+		@media (max-width: 600px) {
+			.experience-strip {
+				padding: 2.25rem 0 2rem;
+			}
+			.experience-strip-container {
+				margin-bottom: 1rem;
+			}
+			.experience-strip-title {
+				font-size: 0.7rem;
+				letter-spacing: 0.12em;
+				padding: 0 0.5rem;
+			}
+			.experience-marquee-track {
+				animation-duration: 28s;
+			}
+			.experience-logo-cell {
+				width: 38vw;
+				min-height: 80px;
+				padding: 1rem 0.5rem;
+			}
+			.experience-logo {
+				max-height: 16px;
+				max-width: 100px;
+			}
+			.experience-logo-cell--icon .experience-logo {
+				max-height: 36px;
+				max-width: 36px;
+			}
+			.experience-logo-cell--pangea .logo-light {
+				max-height: 13px;
+				max-width: 64px;
+			}
+		}
+
+		@keyframes marquee-scroll {
+			from { transform: translateX(0); }
+			to { transform: translateX(-50%); }
+		}
+
+		@media (max-width: 1024px) and (prefers-reduced-motion: reduce) {
+			.experience-marquee-track {
+				animation: none;
+				width: 100%;
+				justify-content: space-around;
+			}
+			.experience-logo-cell--clone {
+				display: none;
+			}
+			.experience-logo-cell {
+				width: auto;
+				flex: 1 1 0;
+			}
+		}
+
 		/* Claude Skill Callout Section */
 		.claude-callout {
 			padding: 4rem 1rem;
