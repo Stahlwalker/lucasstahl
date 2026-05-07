@@ -334,5 +334,14 @@ const searchIndex = await buildSearchIndex();
 
     // Expose function globally for navbar button
     window.openSearchModal = openSearchModal;
+
+    // Auto-open modal pre-filled when ?q=... is in the URL (powers schema.org SearchAction)
+    const initialQuery = new URLSearchParams(window.location.search).get('q');
+    if (initialQuery) {
+      openSearchModal().then(() => {
+        searchInput.value = initialQuery;
+        performSearch(initialQuery);
+      });
+    }
   });
 </script>

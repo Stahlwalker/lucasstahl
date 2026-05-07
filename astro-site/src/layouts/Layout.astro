@@ -109,6 +109,56 @@ const {
 		}
 	</script>
 
+	<!-- JSON-LD Structured Data - WebSite Schema with SearchAction -->
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "WebSite",
+			"name": "Luke Stahl",
+			"alternateName": "lukestahl.io",
+			"url": "https://lukestahl.io",
+			"description": "Luke Stahl's site — developer marketing, frontend development, and writing.",
+			"publisher": {
+				"@type": "Person",
+				"name": "Luke Stahl",
+				"url": "https://lukestahl.io"
+			},
+			"potentialAction": {
+				"@type": "SearchAction",
+				"target": {
+					"@type": "EntryPoint",
+					"urlTemplate": "https://lukestahl.io/?q={search_term_string}"
+				},
+				"query-input": "required name=search_term_string"
+			}
+		}
+	</script>
+
+	<!-- JSON-LD Structured Data - ProfessionalService Schema -->
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "ProfessionalService",
+			"name": "Luke Stahl — Developer Marketing & Frontend Consulting",
+			"url": "https://lukestahl.io",
+			"image": "https://lukestahl.io/assets/images/Luke_Stahl_Headshot.jpg",
+			"description": "Developer marketing and frontend consulting — content strategy, technical writing, and web development for developer-focused products.",
+			"provider": {
+				"@type": "Person",
+				"name": "Luke Stahl",
+				"url": "https://lukestahl.io"
+			},
+			"areaServed": "Worldwide",
+			"serviceType": [
+				"Developer Marketing",
+				"Content Strategy",
+				"Technical Writing",
+				"Frontend Development",
+				"SEO"
+			]
+		}
+	</script>
+
 	<!-- Preconnect to external origins for faster resource loading -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
