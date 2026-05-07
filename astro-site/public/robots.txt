@@ -18,5 +18,8 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
+# LLM-friendly content index
+# https://lukestahl.io/llms.txt
+
 # Sitemap location
 Sitemap: https://lukestahl.io/sitemap.xml
