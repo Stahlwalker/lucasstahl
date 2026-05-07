@@ -6,7 +6,7 @@ import webflowLight from '../assets/images/light/Webflow_light.png';
 import webflowDark from '../assets/images/dark/Webflow_dark.png';
 import builderLight from '../assets/images/light/Builder logo light.png';
 import builderDark from '../assets/images/dark/Builder logo dark.png';
-import pangeaLogoLight from '../assets/images/light/PangeaLogoColor.svg';
+import pangeaLight from '../assets/images/light/pangea-light.png';
 import pangeaDark from '../assets/images/dark/pangea-dark.png';
 import hereLogoLight from '../assets/images/light/HERE_logo.svg';
 import hereLogoDark from '../assets/images/dark/HERE_logo_dark.svg';
@@ -102,7 +102,7 @@ function getStrokeDashoffset(score: number): number {
 				</div>
 				<div class="experience-logo-cell experience-logo-cell--pangea" style="--cell-color: 124 88 230;">
 					<span class="experience-logo-flip">
-						<img src={pangeaLogoLight.src} alt="Pangea" class="experience-logo experience-logo--svg logo-light" loading="lazy" />
+						<Image src={pangeaLight} alt="Pangea" class="experience-logo logo-light" loading="lazy" quality={95} height={30} />
 						<Image src={pangeaDark} alt="Pangea" class="experience-logo logo-dark" loading="lazy" quality={95} height={30} />
 					</span>
 				</div>
@@ -133,7 +133,7 @@ function getStrokeDashoffset(score: number): number {
 				</div>
 				<div class="experience-logo-cell experience-logo-cell--clone experience-logo-cell--pangea" style="--cell-color: 124 88 230;" aria-hidden="true">
 					<span class="experience-logo-flip">
-						<img src={pangeaLogoLight.src} alt="" class="experience-logo experience-logo--svg logo-light" loading="lazy" />
+						<Image src={pangeaLight} alt="" class="experience-logo logo-light" loading="lazy" quality={95} height={30} />
 						<Image src={pangeaDark} alt="" class="experience-logo logo-dark" loading="lazy" quality={95} height={30} />
 					</span>
 				</div>
@@ -855,6 +855,13 @@ function getStrokeDashoffset(score: number): number {
 
 		.experience-logo-cell--icon .experience-logo {
 			max-height: 48px;
+		}
+
+		/* Light pangea PNG is tightly cropped (no padding), while the dark PNG
+		   has whitespace baked in. Cap the light variant so the visible text
+		   matches dark-mode rendering. */
+		.experience-logo-cell--pangea .logo-light {
+			max-height: 23px;
 		}
 
 		/* Light/dark logo swapping */
