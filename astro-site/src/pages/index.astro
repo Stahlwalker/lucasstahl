@@ -889,17 +889,14 @@ function getStrokeDashoffset(score: number): number {
 				flex-wrap: nowrap;
 				width: max-content;
 				align-items: center;
+				/* CSS animation is the no-JS fallback. The page script
+				   (see end of file) takes over with a requestAnimationFrame
+				   loop on small viewports — iOS WebKit re-rasterizes the
+				   GPU layer at every CSS keyframe iteration boundary,
+				   producing a ~1-frame flash every loop. RAF avoids the
+				   boundary entirely by wrapping position via modulo. */
 				animation: marquee-scroll 32s linear infinite;
-				/* iOS Safari/Chrome (WebKit) re-rasterizes 2D-transformed
-				   layers at infinite-animation iteration boundaries, which
-				   shows up as a ~1-frame flash every loop. Force a stable
-				   3D compositing layer via translate3d in keyframes plus
-				   backface-visibility hidden. Avoid will-change: transform
-				   here — on long-running iOS animations it tends to make
-				   layer churn worse, not better. */
-				-webkit-backface-visibility: hidden;
-				backface-visibility: hidden;
-				transform: translate3d(0, 0, 0);
+				will-change: transform;
 			}
 			.experience-logo-cell {
 				flex: 0 0 auto;
@@ -973,8 +970,8 @@ function getStrokeDashoffset(score: number): number {
 		}
 
 		@keyframes marquee-scroll {
-			from { transform: translate3d(0, 0, 0); }
-			to { transform: translate3d(-50%, 0, 0); }
+			from { transform: translateX(0); }
+			to { transform: translateX(-50%); }
 		}
 
 		@media (max-width: 1024px) and (prefers-reduced-motion: reduce) {
@@ -1823,5 +1820,79 @@ function getStrokeDashoffset(score: number): number {
 		// Expose filter initialization globally for testing
 		window.initializeFilters = initializeFilters;
 	});
+
+	// Mobile/tablet logo marquee — JS-driven via requestAnimationFrame.
+	// CSS keyframe animations cause a 1-frame flash on iOS WebKit at
+	// every iteration boundary (the GPU layer gets re-rasterized when
+	// the animation loops). Driving position via RAF + modulo wraps
+	// continuously, so there's no boundary to flash on.
+	(function setupMarquee() {
+		const track = document.querySelector('.experience-marquee-track');
+		if (!track) return;
+
+		const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+		const smallViewport = window.matchMedia('(max-width: 1024px)');
+		const tinyViewport = window.matchMedia('(max-width: 600px)');
+
+		let rafId = null;
+		let lastTime = null;
+		let position = 0;
+
+		function tick(now) {
+			if (lastTime === null) lastTime = now;
+			const dt = now - lastTime;
+			lastTime = now;
+			const duration = tinyViewport.matches ? 28000 : 32000;
+			const halfWidth = track.scrollWidth / 2;
+			if (halfWidth > 0) {
+				position = (position + (dt / duration) * halfWidth) % halfWidth;
+				track.style.transform = 'translate3d(' + (-position) + 'px, 0, 0)';
+			}
+			rafId = requestAnimationFrame(tick);
+		}
+
+		function start() {
+			if (rafId !== null) return;
+			track.style.animation = 'none';
+			lastTime = null;
+			rafId = requestAnimationFrame(tick);
+		}
+
+		function stop() {
+			if (rafId !== null) {
+				cancelAnimationFrame(rafId);
+				rafId = null;
+			}
+			track.style.animation = '';
+			track.style.transform = '';
+			position = 0;
+			lastTime = null;
+		}
+
+		function pause() {
+			if (rafId !== null) {
+				cancelAnimationFrame(rafId);
+				rafId = null;
+				lastTime = null;
+			}
+		}
+
+		function evaluate() {
+			if (document.hidden) {
+				pause();
+				return;
+			}
+			if (smallViewport.matches && !reduceMotion.matches) {
+				start();
+			} else {
+				stop();
+			}
+		}
+
+		smallViewport.addEventListener('change', evaluate);
+		reduceMotion.addEventListener('change', evaluate);
+		document.addEventListener('visibilitychange', evaluate);
+		evaluate();
+	})();
 </script>
 </Layout>
