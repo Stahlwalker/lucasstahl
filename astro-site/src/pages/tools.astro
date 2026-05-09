@@ -22,6 +22,7 @@ import githubDarkIcon from '../assets/images/dark/GitHub_dark_icon.png';
 import claudeLight from '../assets/images/light/Claude_Light.png';
 import claudeIcon from '../assets/images/light/Claude_icon.png';
 import claudeDesignIcon from '../assets/images/light/claude-design-icon.svg';
+import executorIcon from '../assets/images/light/Executor.png';
 import obsidianImg from '../assets/images/light/obsidian.png';
 import excalidrawLight from '../assets/images/light/Excalidraw_light.png';
 
@@ -179,7 +180,7 @@ import excalidrawDark from '../assets/images/dark/Excalidraw_dark.png';
 					</div>
 					<div>
 						<h3 class="daily-tool-name">Claude</h3>
-						<p class="daily-tool-use">Connectors, scheduled tasks, projects, and chat. Most of the automation running on this site runs through it.</p>
+						<p class="daily-tool-use">Chat, projects, connectors, and scheduled tasks for daily work. Claude Code for programming, Claude Design for creative.</p>
 					</div>
 				</a>
 
@@ -285,22 +286,22 @@ import excalidrawDark from '../assets/images/dark/Excalidraw_dark.png';
 				<div class="eval-card">
 					<div class="eval-card-header">
 						<div class="eval-tool-icon">
-							<Image src={claudeDesignIcon} alt="Claude Design" width={48} height={48} />
+							<Image src={executorIcon} alt="Executor" width={48} height={48} />
 						</div>
 						<div class="eval-tool-meta">
-							<a href="https://claude.ai/design" target="_blank" rel="noopener noreferrer" class="eval-tool-name" style="text-decoration: none; color: inherit;">Claude Design</a>
+							<a href="https://executor.sh/" target="_blank" rel="noopener noreferrer" class="eval-tool-name" style="text-decoration: none; color: inherit;">Executor</a>
 							<span class="eval-badge">Evaluating</span>
 						</div>
 					</div>
 					<p class="eval-description">
-						Anthropic's design tool built into Claude. Testing it for UI mockups and component design to see if it fits alongside Excalidraw in my workflow.
+						Local-first runtime that unifies tool access across AI agents. Configure once, then expose the same MCP tools to Claude Code, Cursor, Codex, or any MCP-compatible agent. Testing it for agent portability so I'm not re-wiring the same servers in every tool.
 					</p>
 					<div class="eval-footer">
 						<span class="eval-status">
 							<span class="eval-dot"></span>
 							Active
 						</span>
-						<span class="eval-category">Design</span>
+						<span class="eval-category">Agent Runtime</span>
 					</div>
 				</div>
 
@@ -371,6 +372,13 @@ import excalidrawDark from '../assets/images/dark/Excalidraw_dark.png';
 								<span class="eval-past-note">Evaluated the UI app, not the CLI. Prefer Cursor Glass with Claude Code.</span>
 							</div>
 							<span class="eval-past-verdict">Passed on</span>
+						</li>
+						<li class="eval-past-item">
+							<div class="eval-past-info">
+								<a href="https://claude.ai/design" target="_blank" rel="noopener noreferrer" class="eval-past-name eval-past-link">Claude Design</a>
+								<span class="eval-past-cat">Design</span>
+							</div>
+							<span class="eval-past-verdict verdict-adopted">Adopted</span>
 						</li>
 						<li class="eval-past-item">
 							<div class="eval-past-info">
