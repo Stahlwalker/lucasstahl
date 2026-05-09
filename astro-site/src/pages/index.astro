@@ -898,6 +898,15 @@ function getStrokeDashoffset(score: number): number {
 				min-height: 100px;
 				padding: 1.25rem 1rem;
 			}
+			/* Restore border-left on the first cell so its visual matches the
+			   cloned Webflow cell. Without this, the marquee loop snap creates
+			   a 1px flicker on the left edge each time it wraps. */
+			.experience-logo-cell:first-child {
+				border-left: 1px solid rgba(148, 163, 184, 0.18);
+			}
+			:global([data-theme="light"]) .experience-logo-cell:first-child {
+				border-left-color: rgba(15, 23, 42, 0.2);
+			}
 			.experience-logo-cell--clone {
 				display: flex;
 			}
