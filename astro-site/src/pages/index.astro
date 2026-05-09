@@ -890,7 +890,16 @@ function getStrokeDashoffset(score: number): number {
 				width: max-content;
 				align-items: center;
 				animation: marquee-scroll 32s linear infinite;
-				will-change: transform;
+				/* iOS Safari/Chrome (WebKit) re-rasterizes 2D-transformed
+				   layers at infinite-animation iteration boundaries, which
+				   shows up as a ~1-frame flash every loop. Force a stable
+				   3D compositing layer via translate3d in keyframes plus
+				   backface-visibility hidden. Avoid will-change: transform
+				   here — on long-running iOS animations it tends to make
+				   layer churn worse, not better. */
+				-webkit-backface-visibility: hidden;
+				backface-visibility: hidden;
+				transform: translate3d(0, 0, 0);
 			}
 			.experience-logo-cell {
 				flex: 0 0 auto;
@@ -964,8 +973,8 @@ function getStrokeDashoffset(score: number): number {
 		}
 
 		@keyframes marquee-scroll {
-			from { transform: translateX(0); }
-			to { transform: translateX(-50%); }
+			from { transform: translate3d(0, 0, 0); }
+			to { transform: translate3d(-50%, 0, 0); }
 		}
 
 		@media (max-width: 1024px) and (prefers-reduced-motion: reduce) {
