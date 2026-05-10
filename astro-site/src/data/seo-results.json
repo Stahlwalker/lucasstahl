@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-03T12:32:03Z",
+  "lastUpdated": "2026-05-10T10:21:52Z",
   "results": {
     "mobile": {
       "home": {
@@ -7,8 +7,8 @@
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
-        "lcp": 6754.2901496078266,
-        "cls": 0.00073900000000000018,
+        "lcp": 6902.2975094014309,
+        "cls": 0.00079600000000000027,
         "tbt": 0
       },
       "about": {
@@ -18,13 +18,13 @@
         "seo": 100
       },
       "blog": {
-        "performance": 63,
+        "performance": 64,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
       },
       "builds": {
-        "performance": 72,
+        "performance": 66,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
@@ -42,30 +42,30 @@
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
-        "lcp": 1043.1031212336216,
-        "cls": 0.00058900000000000033,
+        "lcp": 1024.1117250701341,
+        "cls": 0.00061100000000000011,
         "tbt": 0
       },
       "about": {
-        "performance": 93,
+        "performance": 85,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
       },
       "blog": {
-        "performance": 94,
+        "performance": 92,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
       },
       "builds": {
-        "performance": 96,
+        "performance": 86,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
       },
       "gems": {
-        "performance": 95,
+        "performance": 94,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
