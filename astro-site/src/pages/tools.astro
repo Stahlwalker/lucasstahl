@@ -23,8 +23,11 @@ import claudeLight from '../assets/images/light/Claude_Light.png';
 import claudeIcon from '../assets/images/light/Claude_icon.png';
 import claudeDesignIcon from '../assets/images/light/claude-design-icon.svg';
 import executorIcon from '../assets/images/light/Executor.png';
+import agentNativeLight from '../assets/images/light/agent-native-icon-light.svg';
+import agentNativeDark from '../assets/images/dark/agent-native-icon-dark.svg';
 import obsidianImg from '../assets/images/light/obsidian.png';
 import excalidrawLight from '../assets/images/light/Excalidraw_light.png';
+import warpLight from '../assets/images/light/Warp light.png';
 
 // Logo imports — Dark mode
 import cursorDark from '../assets/images/dark/Cursor_dark.png';
@@ -33,6 +36,7 @@ import slackDark from '../assets/images/dark/Slack_dark.png';
 import githubDark from '../assets/images/dark/GitHub_dark.png';
 import claudeDark from '../assets/images/dark/Claude_dark.png';
 import excalidrawDark from '../assets/images/dark/Excalidraw_dark.png';
+import warpDarkIcon from '../assets/images/dark/Warp_icon.png';
 ---
 
 <Layout
@@ -173,6 +177,18 @@ import excalidrawDark from '../assets/images/dark/Excalidraw_dark.png';
 					</div>
 				</a>
 
+				<!-- Warp -->
+				<a href="https://www.warp.dev/" target="_blank" rel="noopener noreferrer" class="daily-tool-card">
+					<div class="daily-tool-logo">
+						<Image src={warpLight} alt="Warp" class="logo-showcase-img logo-light" loading="lazy" quality={85} width={80} height={80} />
+						<Image src={warpDarkIcon} alt="Warp" class="logo-showcase-img logo-dark" loading="lazy" quality={85} width={80} height={80} />
+					</div>
+					<div>
+						<h3 class="daily-tool-name">Warp</h3>
+						<p class="daily-tool-use">Primary terminal. Agentic features for quick scripts and shell work outside the IDE, paired with Claude Code when I need a CLI assist.</p>
+					</div>
+				</a>
+
 				<!-- Claude -->
 				<a href="https://claude.ai/" target="_blank" rel="noopener noreferrer" class="daily-tool-card">
 					<div class="daily-tool-logo">
@@ -286,22 +302,23 @@ import excalidrawDark from '../assets/images/dark/Excalidraw_dark.png';
 				<div class="eval-card">
 					<div class="eval-card-header">
 						<div class="eval-tool-icon">
-							<Image src={executorIcon} alt="Executor" width={48} height={48} />
+							<Image src={agentNativeLight} alt="Agent Native" class="logo-light" width={48} height={48} />
+							<Image src={agentNativeDark} alt="Agent Native" class="logo-dark" width={48} height={48} />
 						</div>
 						<div class="eval-tool-meta">
-							<a href="https://executor.sh/" target="_blank" rel="noopener noreferrer" class="eval-tool-name" style="text-decoration: none; color: inherit;">Executor</a>
+							<a href="https://www.agent-native.com/" target="_blank" rel="noopener noreferrer" class="eval-tool-name" style="text-decoration: none; color: inherit;">Agent Native</a>
 							<span class="eval-badge">Evaluating</span>
 						</div>
 					</div>
 					<p class="eval-description">
-						Local-first runtime that unifies tool access across AI agents. Configure once, then expose the same MCP tools to Claude Code, Cursor, Codex, or any MCP-compatible agent. Testing it for agent portability so I'm not re-wiring the same servers in every tool.
+						Open source framework for building agentic apps where the AI agent and UI share one database and state store. Evaluating whether that's cleaner than running an API layer between the agent and the frontend. Has ready-to-fork templates.
 					</p>
 					<div class="eval-footer">
 						<span class="eval-status">
 							<span class="eval-dot"></span>
 							Active
 						</span>
-						<span class="eval-category">Agent Runtime</span>
+						<span class="eval-category">Agent Framework</span>
 					</div>
 				</div>
 
@@ -309,6 +326,14 @@ import excalidrawDark from '../assets/images/dark/Excalidraw_dark.png';
 				<div class="eval-past">
 					<h3 class="eval-past-title">Previously Evaluated</h3>
 					<ul class="eval-past-list">
+						<li class="eval-past-item">
+							<div class="eval-past-info">
+								<a href="https://executor.sh/" target="_blank" rel="noopener noreferrer" class="eval-past-name eval-past-link">Executor</a>
+								<span class="eval-past-cat">Agent Runtime</span>
+								<span class="eval-past-note">Local-first runtime to unify MCP tools across agents. Interesting in theory, but my Claude Code and Cursor setup already covers this without the extra layer.</span>
+							</div>
+							<span class="eval-past-verdict">Passed on</span>
+						</li>
 						<li class="eval-past-item">
 							<div class="eval-past-info">
 								<a href="https://linear.app/" target="_blank" rel="noopener noreferrer" class="eval-past-name eval-past-link">Linear</a>
@@ -443,10 +468,6 @@ import excalidrawDark from '../assets/images/dark/Excalidraw_dark.png';
 				<a href="https://air.dev/" target="_blank" rel="noopener noreferrer" class="noted-row" data-category="ai-coding">
 					<span class="noted-row-name">Air</span>
 					<span class="noted-row-cat">AI Coding</span>
-				</a>
-				<a href="https://www.agent-native.com/" target="_blank" rel="noopener noreferrer" class="noted-row" data-category="agent-management">
-					<span class="noted-row-name">Agent Native</span>
-					<span class="noted-row-cat">Agent Management</span>
 				</a>
 				<a href="https://lilys.ai/" target="_blank" rel="noopener noreferrer" class="noted-row" data-category="ai-agent">
 					<span class="noted-row-name">Lilys</span>
