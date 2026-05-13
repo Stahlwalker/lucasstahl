@@ -3,10 +3,10 @@
   "skills": [
     {
       "name": "developer-marketing",
-      "type": "skill-md",
-      "description": "Evaluate, guide, and enforce standards for developer marketing content and strategy based on Luke Stahl's Developer Marketing Handbook (https://lukestahl.io/handbook/). Use when reviewing or drafting developer-facing content, stress-testing messaging, building content strategies, planning campaigns, or setting up production workflows. Prioritizes technical credibility, specificity, and accountability — challenges vague claims, removes AI-generated patterns, and pushes back on content that lacks proof. Applies a trust-first, pipeline-second philosophy and aligns work to the developer journey (Awareness → Evaluation → Adoption → Advocacy), personas (buyers vs. users), and measurable engagement.",
-      "url": "/.well-known/agent-skills/developer-marketing/SKILL.md",
-      "digest": "sha256:d9dbb2515e890cecf80411cbf82342a4a4b73a54ee4fb229d31ccb32f137b725"
+      "type": "archive",
+      "description": "Evaluate, guide, and enforce standards for developer marketing content and strategy based on Luke Stahl's Developer Marketing Handbook (https://lukestahl.io/handbook/). Use when reviewing or drafting developer-facing content, stress-testing messaging, building content strategies, planning campaigns, or setting up production workflows. Prioritizes technical credibility, specificity, and accountability — challenges vague claims, removes AI-generated patterns, and pushes back on content that lacks proof. Applies a trust-first, pipeline-second philosophy and aligns work to the developer journey (Awareness → Evaluation → Adoption → Advocacy), personas (buyers vs. users), and measurable engagement. Includes SKILL.md plus the developer writing style guide, content strategy template, and content tracker CSV.",
+      "url": "/.well-known/agent-skills/developer-marketing.tar.gz",
+      "digest": "sha256:9c9b95254602401fef288b3c224b6707f6bb56320c4ac2f21ce4e9a6cd38d81c"
     }
   ]
 }
