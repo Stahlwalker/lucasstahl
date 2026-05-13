@@ -1,0 +1,68 @@
+name: Sync developer-marketing skill
+
+on:
+  repository_dispatch:
+    types: [skill-updated]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-skill
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch latest skill files from upstream
+        env:
+          BASE: https://raw.githubusercontent.com/Stahlwalker/developer-marketing/main
+          SKILL_DIR: astro-site/public/.well-known/agent-skills/developer-marketing
+        run: |
+          mkdir -p "$SKILL_DIR"
+          curl -sf "$BASE/SKILL.md"                          -o "$SKILL_DIR/SKILL.md"
+          curl -sf "$BASE/developer-writing-style-guide.md"  -o "$SKILL_DIR/developer-writing-style-guide.md"
+          curl -sf "$BASE/template-content-strategy.md"      -o "$SKILL_DIR/template-content-strategy.md"
+          curl -sf "$BASE/template-content-tracker.csv"      -o "$SKILL_DIR/template-content-tracker.csv"
+
+      - name: Build deterministic tarball
+        working-directory: astro-site/public/.well-known/agent-skills
+        run: |
+          tar --mtime='UTC 1970-01-01' \
+              --owner=0 --group=0 --numeric-owner \
+              --sort=name \
+              -czf developer-marketing.tar.gz developer-marketing
+
+      - name: Update digest in index.json
+        working-directory: astro-site/public/.well-known/agent-skills
+        run: |
+          DIGEST=$(sha256sum developer-marketing.tar.gz | awk '{print $1}')
+          jq --arg d "sha256:$DIGEST" \
+             '(.skills[] | select(.name == "developer-marketing")).digest = $d' \
+             index.json > index.tmp.json
+          mv index.tmp.json index.json
+
+      - name: Detect changes
+        id: changes
+        run: |
+          if git diff --quiet astro-site/public/.well-known/agent-skills/; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit and push
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add astro-site/public/.well-known/agent-skills/
+          git commit -m "Sync developer-marketing skill from upstream
+
+          Auto-pulled from Stahlwalker/developer-marketing@main"
+          git push
