@@ -22,6 +22,8 @@
 - [Design System](https://lukestahl.io/design-system/)
 - [SEO Performance Dashboard](https://lukestahl.io/seo/)
 - [Status](https://lukestahl.io/status/)
+- [Agent Skill - Developer Marketing](https://lukestahl.io/.well-known/agent-skills/developer-marketing/SKILL.md)
+- [Agent Skills Discovery Index](https://lukestahl.io/.well-known/agent-skills/index.json)
 
 ## Blog Posts
 
