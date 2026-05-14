@@ -1,5 +1,31 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getEntry } from 'astro:content';
+import { Marked } from 'marked';
+
+const entry = await getEntry('pages', 'handbook');
+if (!entry) throw new Error('handbook content not found');
+
+function slugify(text: string): string {
+	return text.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
+
+const SECTION_OVERRIDES: Record<string, { slug?: string; navLabel?: string }> = {
+	'Developer Marketing Skill': { slug: 'skill', navLabel: 'Skill' },
+};
+
+const marked = new Marked();
+const sectionChunks = entry.body!.split(/(?=^## )/m).filter(chunk => chunk.trim().length > 0);
+const sections = await Promise.all(sectionChunks.map(async (chunk) => {
+	const headingMatch = chunk.match(/^## (.+)$/m);
+	const title = headingMatch ? headingMatch[1].trim() : '';
+	const override = SECTION_OVERRIDES[title] ?? {};
+	const slug = override.slug ?? slugify(title);
+	const navLabel = override.navLabel ?? title;
+	const body = chunk.replace(/^## .+$/m, '').trim();
+	const html = await marked.parse(body);
+	return { slug, title, navLabel, html };
+}));
 ---
 
 <Layout
@@ -10,6 +36,8 @@ import Layout from '../layouts/Layout.astro';
 	canonicalUrl="https://lukestahl.io/handbook/"
 	hideHandbookButton={true}
 >
+	<link slot="head" rel="alternate" type="text/markdown" href="/handbook.md" title="Markdown version" />
+
 	<div class="handbook-page-container">
 		<div class="handbook-page-header">
 			<div class="handbook-page-header-content">
@@ -20,186 +48,27 @@ import Layout from '../layouts/Layout.astro';
 		<div class="handbook-page-body">
 			<nav class="handbook-page-nav">
 				<ul class="nav-links">
-					<li><a href="#goals" class="nav-link">Goals</a></li>
-					<li><a href="#strategy" class="nav-link">Strategy</a></li>
-					<li><a href="#journey" class="nav-link">Journey</a></li>
-					<li><a href="#personas" class="nav-link">Personas</a></li>
-					<li><a href="#messaging" class="nav-link">Messaging</a></li>
-					<li><a href="#campaigns" class="nav-link">Campaigns</a></li>
-					<li><a href="#content" class="nav-link">Content</a></li>
-					<li><a href="#community" class="nav-link">Community</a></li>
-					<li><a href="#metrics" class="nav-link">Metrics</a></li>
-					<li><a href="#skill" class="nav-link">Skill</a></li>
+					{sections.map(s => (
+						<li><a href={`#${s.slug}`} class="nav-link">{s.navLabel}</a></li>
+					))}
 					<li><a href="/gems/" class="nav-link">Gems</a></li>
 				</ul>
 			</nav>
 
 			<main class="handbook-page-content">
-				<section id="goals" class="handbook-section">
-					<div class="copy-button-wrapper">
-						<button class="copy-all-sections-btn" id="copyAllBtn" title="Copy Goals through Metrics sections">
-							<i class="fa-regular fa-copy"></i>
-						</button>
-					</div>
-					<h2>Goals</h2>
-					<p>Developer marketing builds trust first, pipeline second.<br/>
-					The work connects your product to how developers actually build and helps that credibility translate into adoption and revenue.</p>
-
-					<p>A great developer experience is the foundation. It starts with discoverability, continues through docs, and carries into the product itself. Good documentation shortens time to value and builds confidence that your product can scale with real teams. Developers trust what they can inspect, so show how the product works and let the system speak for itself.</p>
-
-					<p>Success isn't clicks or vanity metrics. It's measurable engagement that creates product-qualified leads, builds influence across teams, and contributes to both product-led and sales-led growth.<br/>
-					When developers use your product by choice and advocate for it inside their company, you've done the job right.</p>
-				</section>
-
-				<section id="strategy" class="handbook-section">
-					<h2>Strategy</h2>
-					<p>Start with reality, not aspiration.</p>
-
-					<p>Map where your product fits in the developer workflow, then help them do that job faster or with less friction.</p>
-
-					<p>Lead with clarity. Explain what it is, what it does, and why it matters.</p>
-
-					<p>Show the system behind the product. Architecture, examples, and tradeoffs explain more than positioning ever will.<br/>
-					If you can do it in a clever or playful way that still feels authentic, that's bonus points.</p>
-
-					<p>The best developer marketing respects time, delivers value, and makes something complex feel obvious.</p>
-				</section>
-
-				<section id="journey" class="handbook-section">
-					<h2>Journey</h2>
-					<p><strong>Awareness → Evaluation → Adoption → Advocacy.</strong><br/>
-					Each stage should connect clearly to the next.</p>
-
-					<p><strong>Awareness</strong> happens in places developers already spend time: GitHub, Reddit, newsletters, blogs.<br/>
-					<strong>Evaluation</strong> happens in your docs, demos, and sandboxes.</p>
-
-					<div class="callout">
-						For most developers, the docs are the real homepage, so accuracy and structure matter more than polish.
-					</div>
-
-					<p><strong>Adoption</strong> depends on how fast they reach first success.<br/>
-					<strong>Advocacy</strong> is when they start teaching others what they learned from you.</p>
-				</section>
-
-				<section id="personas" class="handbook-section">
-					<h2>Personas</h2>
-					<p>Create personas based on who buys the product and who actually uses it. For example:</p>
-
-					<p><strong>Buyers:</strong> CTO or Engineering Leader, Senior Engineer, Implementation Architect.<br/>
-					<strong>Users:</strong> Frontend, Full-stack, App Developer.<br/>
-					<strong>Adjacent:</strong> Ops, Product, Design.</p>
-
-					<p>Each persona has different pain points and goals.<br/>
-					CTOs and Engineering Leaders care about governance and ROI.<br/>
-					Senior Engineers look for performance, flexibility, and code quality.<br/>
-					Implementation Architects focus on how well a tool integrates and scales.<br/>
-					Write for what each person owns, not what you wish they cared about.</p>
-
-					<p>These categories are shifting. PMs and designers who build with AI tools aren't adjacent anymore. They're users. Update your personas to reflect how people actually work, not how the org chart defines them.</p>
-				</section>
-
-				<section id="messaging" class="handbook-section">
-					<h2>Messaging</h2>
-					<p>Be clear first. Be clever only if it helps.<br/>
-					Make every message easy to scan. Lead with the point before expanding on it.<br/>
-					Good developer messaging is specific, practical, and rooted in how people actually build.</p>
-
-					<p>Clarity earns trust, but a bit of personality makes it stick.<br/>
-					The goal isn't to sound like marketing. It's to communicate something real that developers recognize and care about.</p>
-
-					<h3>Build around three pillars:</h3>
-					<ul>
-						<li><strong>Speed:</strong> faster builds, fewer tickets</li>
-						<li><strong>Efficiency:</strong> consolidated stack, lower maintenance</li>
-						<li><strong>Control:</strong> safe scale, long-term confidence</li>
-					</ul>
-
-					<p>If you can back it with code, data, or proof, keep it.<br/>
-					If it only sounds good, cut it.</p>
-				</section>
-
-				<section id="campaigns" class="handbook-section">
-					<h2>Campaigns</h2>
-					<p>Treat campaigns like product launches.<br/>
-					Plan, ship, measure, repeat.</p>
-
-					<h3>Each campaign should answer three questions:</h3>
-					<ul>
-						<li>What developer problem are we solving?</li>
-						<li>What proof are we showing?</li>
-						<li>What happens next?</li>
-					</ul>
-
-					<p>Treat developer feedback like bug reports and close the loop quickly when something needs to be corrected or clarified.</p>
-
-					<p>Make it easy for developers to try, test, or share.<br/>
-					Run retros on every launch and capture what worked, what didn't, and what to change next time. Always learn from what you launch.</p>
-				</section>
-
-				<section id="content" class="handbook-section">
-					<h2>Content</h2>
-					<p>Write with clarity and intention. Every piece should help developers build faster, learn something new, or solve a real problem.</p>
-
-					<p>Strong content earns attention because it's useful.<br/>
-					Lead with the outcome or insight, then show how to get there. Make it easy to skim from top to bottom.<br/>
-					Show working examples, explain tradeoffs, and include visuals or code where it helps understanding. If it doesn't teach or demonstrate something real, it doesn't belong.</p>
-
-					<h3>Core content types</h3>
-					<ul>
-						<li><strong>Blog posts:</strong> tutorials, technical breakdowns, or opinionated takes grounded in experience.</li>
-						<li><strong>Guides and tutorials:</strong> step-by-step instructions that lead to a working result.</li>
-						<li><strong>Integration or workflow content:</strong> explain how tools connect and where they fit in a developer's process.</li>
-						<li><strong>Technical guides and code examples:</strong> deeper material for experienced readers who want implementation detail.</li>
-						<li><strong>Explainer or glossary content:</strong> clear, factual definitions written to answer specific questions directly.</li>
-						<li><strong>Video or live sessions:</strong> demos, interviews, or walkthroughs that show real workflows.</li>
-						<li><strong>Research and surveys:</strong> reports or insights that help developers understand the state of their field.</li>
-					</ul>
-
-					<h3>Content strategy buckets</h3>
-					<ol>
-						<li><strong>Awareness</strong> — generate buzz and discussion. Hot takes, thought leadership, or topics that invite conversation.</li>
-						<li><strong>Acquisition</strong> — bring new developers in through problem-solving content. Tutorials, guides, and explainers that answer real questions.</li>
-						<li><strong>Enablement</strong> — help existing users succeed. Deep tutorials, documentation extensions, and practical how-to content with long-term value.</li>
-						<li><strong>Convert Paid</strong> — drive upgrades or signups. Feature-specific walkthroughs or advanced use cases that show value worth paying for.</li>
-					</ol>
-
-					<p>Each piece should fit into one of these buckets and serve a clear purpose. Awareness earns attention. Acquisition builds trust. Enablement drives success. Convert Paid turns success into growth.</p>
-
-					<p>Clarity is the standard. Use it to earn credibility.</p>
-				</section>
-
-				<section id="community" class="handbook-section">
-					<h2>Community</h2>
-					<p>Reddit. GitHub. Discord. Slack. YouTube and other social platforms.<br/>
-					Join conversations, don't start pitches.</p>
-
-					<p>Be helpful. Add context. Share working examples.<br/>
-					When your content becomes the answer people link to, you've earned credibility.</p>
-				</section>
-
-				<section id="metrics" class="handbook-section">
-					<h2>Metrics</h2>
-					<p>Measure adoption and revenue, not reach.<br/>
-					Awareness is useful, but only if it drives activation or expansion.</p>
-
-					<p>Focus on signals that show impact:</p>
-					<ul>
-						<li>Product or API usage</li>
-						<li>Time to first success</li>
-						<li>Product-qualified leads</li>
-						<li>Developer-influenced revenue</li>
-						<li>Retention and repeat engagement</li>
-					</ul>
-
-					<p>The goal is to prove that trust earned from developers shows up later in product usage and revenue.</p>
-				</section>
-
-				<section id="skill" class="handbook-section">
-					<h2>Developer Marketing Skill</h2>
-					<p>I built a <a href="https://github.com/Stahlwalker/developer-marketing" target="_blank" rel="noopener noreferrer" style="color: #82aaff; text-decoration: underline;">Developer Marketing Skill for Claude</a> that helps evaluate content, strategy, and campaigns against the principles in this handbook.</p>
-
-					<p>Use it to stress-test messaging, review technical content, plan developer campaigns, or get feedback on positioning. It applies a "trust first, pipeline second" philosophy with an emphasis on clarity, technical credibility, and measurable engagement.</p>
-				</section>
+				{sections.map((s, i) => (
+					<section id={s.slug} class="handbook-section">
+						{i === 0 && (
+							<div class="copy-button-wrapper">
+								<button class="copy-all-sections-btn" id="copyAllBtn" title="Copy Goals through Metrics sections">
+									<i class="fa-regular fa-copy"></i>
+								</button>
+							</div>
+						)}
+						<h2>{s.title}</h2>
+						<div set:html={s.html} />
+					</section>
+				))}
 
 				<section class="handbook-cta">
 					<div class="cta-content">
@@ -400,7 +269,7 @@ import Layout from '../layouts/Layout.astro';
 		margin-right: 10px;
 	}
 
-	.handbook-section h3 {
+	.handbook-section :global(h3) {
 		font-size: 16px;
 		font-weight: 600;
 		color: #82aaff;
@@ -408,13 +277,13 @@ import Layout from '../layouts/Layout.astro';
 		font-family: 'Fira Code', monospace;
 	}
 
-	.handbook-section h3::before {
+	.handbook-section :global(h3::before) {
 		content: '>> ';
 		color: #82aaff;
 		margin-right: 8px;
 	}
 
-	.handbook-section p {
+	.handbook-section :global(p) {
 		line-height: 1.8;
 		margin-bottom: 18px;
 		color: #d0d0d0;
@@ -422,23 +291,23 @@ import Layout from '../layouts/Layout.astro';
 		font-family: 'Fira Code', monospace;
 	}
 
-	.handbook-section ul,
-	.handbook-section ol {
+	.handbook-section :global(ul),
+	.handbook-section :global(ol) {
 		margin: 16px 0 24px 0;
 		line-height: 1.8;
 		padding-left: 0;
 	}
 
-	.handbook-section ul {
+	.handbook-section :global(ul) {
 		list-style: none;
 	}
 
-	.handbook-section ol {
+	.handbook-section :global(ol) {
 		list-style: none;
 		counter-reset: item;
 	}
 
-	.handbook-section li {
+	.handbook-section :global(li) {
 		margin-bottom: 10px;
 		color: #d0d0d0;
 		font-size: 14px;
@@ -447,18 +316,18 @@ import Layout from '../layouts/Layout.astro';
 		position: relative;
 	}
 
-	.handbook-section ul li::before {
+	.handbook-section :global(ul li::before) {
 		content: '•';
 		color: #82aaff;
 		position: absolute;
 		left: 8px;
 	}
 
-	.handbook-section ol li {
+	.handbook-section :global(ol li) {
 		counter-increment: item;
 	}
 
-	.handbook-section ol li::before {
+	.handbook-section :global(ol li::before) {
 		content: counter(item) ". ";
 		color: #82aaff;
 		position: absolute;
@@ -466,13 +335,13 @@ import Layout from '../layouts/Layout.astro';
 		font-weight: 600;
 	}
 
-	.handbook-section strong {
+	.handbook-section :global(strong) {
 		color: #c3e88d;
 		font-weight: 600;
 	}
 
 	/* Callout */
-	.callout {
+	:global(.callout) {
 		margin: 20px 0;
 		padding: 16px 20px;
 		background: linear-gradient(135deg, rgba(130, 170, 255, 0.08), rgba(195, 232, 141, 0.05));
@@ -629,12 +498,12 @@ import Layout from '../layouts/Layout.astro';
 			font-size: 18px;
 		}
 
-		.handbook-section h3 {
+		.handbook-section :global(h3) {
 			font-size: 15px;
 		}
 
-		.handbook-section p,
-		.handbook-section li {
+		.handbook-section :global(p),
+		.handbook-section :global(li) {
 			font-size: 13px;
 		}
 
@@ -705,12 +574,12 @@ import Layout from '../layouts/Layout.astro';
 			font-size: 16px;
 		}
 
-		.handbook-section h3 {
+		.handbook-section :global(h3) {
 			font-size: 14px;
 		}
 
-		.handbook-section p,
-		.handbook-section li {
+		.handbook-section :global(p),
+		.handbook-section :global(li) {
 			font-size: 12px;
 			line-height: 1.7;
 		}
@@ -802,29 +671,29 @@ import Layout from '../layouts/Layout.astro';
 		color: #2563eb;
 	}
 
-	:global([data-theme="light"]) .handbook-section h3 {
+	:global([data-theme="light"]) .handbook-section :global(h3) {
 		color: #2563eb;
 	}
 
-	:global([data-theme="light"]) .handbook-section h3::before {
+	:global([data-theme="light"]) .handbook-section :global(h3::before) {
 		color: #2563eb;
 	}
 
-	:global([data-theme="light"]) .handbook-section p,
-	:global([data-theme="light"]) .handbook-section li {
+	:global([data-theme="light"]) .handbook-section :global(p),
+	:global([data-theme="light"]) .handbook-section :global(li) {
 		color: #475569;
 	}
 
-	:global([data-theme="light"]) .handbook-section ul li::before,
-	:global([data-theme="light"]) .handbook-section ol li::before {
+	:global([data-theme="light"]) .handbook-section :global(ul li::before),
+	:global([data-theme="light"]) .handbook-section :global(ol li::before) {
 		color: #2563eb;
 	}
 
-	:global([data-theme="light"]) .handbook-section strong {
+	:global([data-theme="light"]) .handbook-section :global(strong) {
 		color: #15803d;
 	}
 
-	:global([data-theme="light"]) .callout {
+	:global([data-theme="light"]) :global(.callout) {
 		background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(22, 163, 74, 0.05));
 		border-left-color: #2563eb;
 		color: #475569;

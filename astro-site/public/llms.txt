@@ -25,6 +25,14 @@
 - [Agent Skill - Developer Marketing](https://lukestahl.io/.well-known/agent-skills/developer-marketing/SKILL.md)
 - [Agent Skills Discovery Index](https://lukestahl.io/.well-known/agent-skills/index.json)
 
+## Markdown for Agents
+
+All blog posts, newsletter editions, and the handbook are available as raw markdown by appending `.md` to the URL:
+
+- `/handbook.md`
+- `/blog/<slug>.md`
+- `/newsletter/editions/<slug>.md`
+
 ## Blog Posts
 
 - [PLG for developer companies](https://lukestahl.io/blog/plg-for-developer-companies/)
