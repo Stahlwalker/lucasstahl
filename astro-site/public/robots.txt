@@ -1,6 +1,7 @@
 # robots.txt for lukestahl.io
 User-agent: *
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # Explicit allow for LLM crawlers
 User-agent: GPTBot

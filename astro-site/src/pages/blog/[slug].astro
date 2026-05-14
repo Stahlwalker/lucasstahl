@@ -282,6 +282,8 @@ const hideAnnouncement = post.slug === 'stop-upgrading-your-model-fix-your-harne
   ogImage={ogImageUrl}
   showAnnouncement={!hideAnnouncement}
 >
+  <link slot="head" rel="alternate" type="text/markdown" href={`/blog/${post.slug}.md`} title="Markdown version" />
+
   <!-- JSON-LD Structured Data - BlogPosting Schema -->
   <script slot="head" type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",

@@ -32,6 +32,8 @@ const formattedDate = new Date(publishedDate + 'T12:00:00').toLocaleDateString('
   ogDescription={description}
   showAnnouncement={false}
 >
+  <link slot="head" rel="alternate" type="text/markdown" href={`/newsletter/editions/${edition.id}.md`} title="Markdown version" />
+
   <script slot="head" type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "NewsArticle",
