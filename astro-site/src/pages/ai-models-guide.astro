@@ -4,12 +4,12 @@ import Layout from '../layouts/Layout.astro';
 // Quick Reference Data
 const quickReference = [
 	{ model: "GPT-5.x", company: "OpenAI", bestFor: "General purpose", differentiator: "GPT-5.5 flagship (API Apr 24 / ChatGPT default May 5, 2026) — $5/1M input, $30/M output; stronger coding, computer use, and research; dynamic routing across sub-models", color: "#10b981" },
-	{ model: "Claude 4.x Family", company: "Anthropic", bestFor: "Coding & reasoning", differentiator: "Opus 4.7 (Apr 15) flagship — 1M context, step-change agentic coding; Sonnet 4.6 (Feb 17) for speed/cost; Haiku 4.5 hits ~90% of Sonnet 4.5 coding at a fraction of the price", color: "#c084fc" },
+	{ model: "Claude 4.x Family", company: "Anthropic", bestFor: "Coding & reasoning", differentiator: "Opus 4.7 (Apr 16) flagship — 1M context, step-change agentic coding; Sonnet 4.6 (Feb 17) for speed/cost; Haiku 4.5 hits ~90% of Sonnet 4.5 coding at a fraction of the price", color: "#c084fc" },
 	{ model: "Gemini 3.x", company: "Google DeepMind", bestFor: "Multimodal", differentiator: "Gemini 3.1 Ultra (May 2026) — 2M context, native text/image/audio/video; 3.1 Pro at 94.3% GPQA Diamond, 77.1% ARC-AGI-2", color: "#60a5fa" },
 	{ model: "Grok 4.x", company: "xAI", bestFor: "Real-time info", differentiator: "Grok 4.3 flagship (Apr 30, 2026): ~20% cheaper per benchmark run, PDF/spreadsheet/deck generation, video understanding; live X data; multi-agent parallel reasoning", color: "#f97316" },
 	{ model: "Llama 4", company: "Meta", bestFor: "Open-source", differentiator: "10M token context; fully self-hostable; Behemoth still in training/unreleased", color: "#06b6d4" },
 	{ model: "Muse Spark", company: "Meta Superintelligence Labs", bestFor: "Frontier reasoning", differentiator: "Released Apr 8, 2026 — Meta's first closed-weight frontier model; multimodal reasoning, thought compression, parallel sub-agent orchestration; top-5 on AI Intelligence Index (52)", color: "#7c3aed" },
-	{ model: "DeepSeek V4", company: "DeepSeek", bestFor: "Cost efficiency", differentiator: "Released April 24, 2026 — V4-Pro (1.6T MoE, $1.74/1M input) and V4-Flash (284B, $0.14/1M input); Apache 2.0, 1M context", color: "#facc15" },
+	{ model: "DeepSeek V4", company: "DeepSeek", bestFor: "Cost efficiency", differentiator: "Released April 24, 2026 — V4-Pro (1.6T MoE, $1.74/1M input) and V4-Flash (284B, $0.14/1M input); MIT, 1M context", color: "#facc15" },
 	{ model: "Mistral 3 Family", company: "Mistral", bestFor: "EU compliance", differentiator: "Large 3, Magistral (reasoning), Devstral (open-source coding agent), Small 4, Voxtral — enterprise-safe with data sovereignty", color: "#818cf8" },
 	{ model: "Qwen 3.6", company: "Alibaba", bestFor: "Multilingual", differentiator: "Qwen3.5 open-weight (397B); Qwen3.6-Plus closed-source agentic (1M context, Apr 2026); 119 languages", color: "#f472b6" },
 	{ model: "Microsoft MAI", company: "Microsoft", bestFor: "Speech & media AI", differentiator: "MAI-Transcribe-1, MAI-Voice-1, MAI-Image-2, plus Phi-4-reasoning (Apr 10) — Microsoft's own foundation stack on Foundry", color: "#0ea5e9" },
@@ -51,7 +51,7 @@ const frontierModels = [
 		color: "#c084fc",
 		tagline: "The developer favorite for coding, reasoning, and safety.",
 		bullets: [
-			"Opus 4.7 (Apr 15, 2026): current flagship — 1M context window, $5/1M input, $25/1M output; step-change agentic coding, substantially improved vision resolution",
+			"Opus 4.7 (Apr 16, 2026): current flagship — 1M context window, $5/1M input, $25/1M output; step-change agentic coding, substantially improved vision resolution",
 			"Sonnet 4.6 (Feb 17, 2026): best speed/cost balance for most production workloads",
 			"Haiku 4.5: smallest tier — hits ~90% of Sonnet 4.5's agentic coding performance at a fraction of the cost; ideal for high-volume tasks",
 			"Leads human-preference leaderboards; strong ARC-AGI-2 scores",
@@ -195,7 +195,7 @@ const openSourceModels = [
 		bullets: [
 			"V4-Pro: 1.6T total parameters / 49B active MoE; $1.74/1M input, $3.48/1M output — cheapest frontier-class open model",
 			"V4-Flash: 284B total / 13B active; $0.14/1M input, $0.28/1M output — ultra-budget tier",
-			"Apache 2.0 license; native 1M context window; built-in agentic long-context and tool-use",
+			"MIT license; native 1M context window; built-in agentic long-context and tool-use",
 			"Engram conditional memory and Manifold-Constrained Hyper-Connections for improved long-context performance",
 			"Entire V3/V4 lineage trained for under $6M — redefining AI cost efficiency"
 		],
@@ -462,7 +462,7 @@ const scenarios = [
 			"url": "https://lukestahl.io/"
 		},
 		"datePublished": "2026-03-10",
-		"dateModified": "2026-05-11",
+		"dateModified": "2026-05-17",
 		"mainEntityOfPage": {
 			"@type": "WebPage",
 			"@id": "https://lukestahl.io/ai-models-guide/"
