@@ -1,5 +1,21 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import brainSvg from '../icons/brain-solid-full.svg?raw';
+import newspaperSvg from '../icons/newspaper-solid-full.svg?raw';
+import walletSvg from '../icons/wallet-solid-full.svg?raw';
+import golfBallTeeSvg from '../icons/golf-ball-tee-solid-full.svg?raw';
+import gamepadSvg from '../icons/gamepad-solid-full.svg?raw';
+import footballSvg from '../icons/football-solid-full.svg?raw';
+import magnifyingGlassSvg from '../icons/magnifying-glass-solid-full.svg?raw';
+import utensilsSvg from '../icons/utensils-solid-full.svg?raw';
+import heartSvg from '../icons/heart-solid-full.svg?raw';
+import codeSvg from '../icons/code-solid-full.svg?raw';
+import locationDotSvg from '../icons/location-dot-solid-full.svg?raw';
+import globeSvg from '../icons/globe-solid-full.svg?raw';
+import userSvg from '../icons/user-solid-full.svg?raw';
+import arrowOutSvg from '../icons/arrow-up-right-from-square-solid-full.svg?raw';
+import swatchbookSvg from '../icons/swatchbook-solid-full.svg?raw';
+import githubSvg from '../icons/github-brands-solid-full.svg?raw';
 ---
 
 <Layout
@@ -10,6 +26,7 @@ import Layout from '../layouts/Layout.astro';
 	ogDescription="A collection of projects, experiments, and digital experiences built with React, Next.js, TypeScript, and modern web technologies."
 	additionalCss={["/assets/css/builds.css"]}
 	inlineCriticalCSS={true}
+	loadFontAwesome={false}
 >
 	<!-- Builds Hero Section -->
 	<section class="builds-hero">
@@ -33,7 +50,7 @@ import Layout from '../layouts/Layout.astro';
 					<a href="https://github.com/Stahlwalker/developer-marketing" target="_blank" rel="noopener noreferrer" class="build-card-link">
 						<div class="build-card-content">
 							<div class="build-icon featured-icon">
-								<i class="fa-solid fa-brain"></i>
+								<span class="build-icon-svg" set:html={brainSvg} />
 							</div>
 							<h2 class="build-title">Developer Marketing Claude Skill</h2>
 							<p class="build-description">
@@ -46,7 +63,7 @@ import Layout from '../layouts/Layout.astro';
 								<span class="tag">Skill</span>
 							</div>
 							<div class="build-link-wrapper">
-								<span class="build-link-text">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+								<span class="build-link-text">View Project <span class="link-icon-svg" set:html={arrowOutSvg} /></span>
 							</div>
 						</div>
 					</a>
@@ -56,7 +73,7 @@ import Layout from '../layouts/Layout.astro';
 		<article class="build-card">
 			<div class="build-card-content">
 				<div class="build-icon">
-					<i class="fa-solid fa-newspaper"></i>
+					<span class="build-icon-svg" set:html={newspaperSvg} />
 				</div>
 				<h2 class="build-title">Newsletter Builder</h2>
 				<p class="build-description">
@@ -70,10 +87,10 @@ import Layout from '../layouts/Layout.astro';
 				</div>
 				<div class="build-link-wrapper dual-links">
 					<a href="https://marketing-builder-ui.onrender.com/" target="_blank" rel="noopener noreferrer" class="build-link-text">
-						View Demo <i class="fa-solid fa-arrow-up-right-from-square"></i>
+						View Demo <span class="link-icon-svg" set:html={arrowOutSvg} />
 					</a>
 					<a href="https://github.com/Stahlwalker/newsletter-builder" target="_blank" rel="noopener noreferrer" class="build-link-text">
-						GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i>
+						GitHub <span class="link-icon-svg" set:html={arrowOutSvg} />
 					</a>
 				</div>
 			</div>
@@ -83,7 +100,7 @@ import Layout from '../layouts/Layout.astro';
 				<article class="build-card">
 					<div class="build-card-content">
 						<div class="build-icon">
-							<i class="fa-solid fa-wallet"></i>
+							<span class="build-icon-svg" set:html={walletSvg} />
 						</div>
 						<h2 class="build-title">Budget Tracker</h2>
 						<p class="build-description">
@@ -96,7 +113,7 @@ import Layout from '../layouts/Layout.astro';
 						</div>
 						<div class="build-link-wrapper dual-links">
 							<a href="https://github.com/Stahlwalker/budget-app-example" target="_blank" rel="noopener noreferrer" class="build-link-text">
-								GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i>
+								GitHub <span class="link-icon-svg" set:html={arrowOutSvg} />
 							</a>
 						</div>
 					</div>
@@ -106,7 +123,7 @@ import Layout from '../layouts/Layout.astro';
 				<article class="build-card">
 					<div class="build-card-content">
 						<div class="build-icon">
-							<i class="fa-solid fa-golf-ball-tee"></i>
+							<span class="build-icon-svg" set:html={golfBallTeeSvg} />
 						</div>
 						<h2 class="build-title">PGA Majors Tracker</h2>
 						<p class="build-description">
@@ -119,10 +136,10 @@ import Layout from '../layouts/Layout.astro';
 						</div>
 						<div class="build-link-wrapper dual-links">
 							<a href="https://masters-2026-zeta.vercel.app/" target="_blank" rel="noopener noreferrer" class="build-link-text">
-								View Project <i class="fa-solid fa-arrow-up-right-from-square"></i>
+								View Project <span class="link-icon-svg" set:html={arrowOutSvg} />
 							</a>
 							<a href="https://masters-2026.webflow.io/" target="_blank" rel="noopener noreferrer" class="build-link-text">
-								Webflow Cloud <i class="fa-solid fa-arrow-up-right-from-square"></i>
+								Webflow Cloud <span class="link-icon-svg" set:html={arrowOutSvg} />
 							</a>
 						</div>
 					</div>
@@ -133,7 +150,7 @@ import Layout from '../layouts/Layout.astro';
 					<a href="https://family-gaming.netlify.app/" target="_blank" rel="noopener noreferrer" class="build-card-link">
 						<div class="build-card-content">
 							<div class="build-icon">
-								<i class="fa-solid fa-gamepad"></i>
+								<span class="build-icon-svg" set:html={gamepadSvg} />
 							</div>
 							<h2 class="build-title">Family Gaming Hub</h2>
 							<p class="build-description">
@@ -145,7 +162,7 @@ import Layout from '../layouts/Layout.astro';
 								<span class="tag">Tailwind CSS</span>
 							</div>
 							<div class="build-link-wrapper">
-								<span class="build-link-text">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+								<span class="build-link-text">View Project <span class="link-icon-svg" set:html={arrowOutSvg} /></span>
 							</div>
 						</div>
 					</a>
@@ -156,7 +173,7 @@ import Layout from '../layouts/Layout.astro';
 					<a href="https://stahlwalker.github.io/fantasyfootball/" target="_blank" rel="noopener noreferrer" class="build-card-link">
 						<div class="build-card-content">
 							<div class="build-icon">
-								<i class="fa-solid fa-football"></i>
+								<span class="build-icon-svg" set:html={footballSvg} />
 							</div>
 							<h2 class="build-title">Fantasy Football Legend</h2>
 							<p class="build-description">
@@ -168,7 +185,7 @@ import Layout from '../layouts/Layout.astro';
 								<span class="tag">JavaScript</span>
 							</div>
 							<div class="build-link-wrapper">
-								<span class="build-link-text">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+								<span class="build-link-text">View Project <span class="link-icon-svg" set:html={arrowOutSvg} /></span>
 							</div>
 						</div>
 					</a>
@@ -179,7 +196,7 @@ import Layout from '../layouts/Layout.astro';
 					<a href="https://seo-rank-tracker-iota.vercel.app/" target="_blank" rel="noopener noreferrer" class="build-card-link">
 						<div class="build-card-content">
 							<div class="build-icon">
-								<i class="fa-solid fa-magnifying-glass"></i>
+								<span class="build-icon-svg" set:html={magnifyingGlassSvg} />
 							</div>
 							<h2 class="build-title">SERP Tracker</h2>
 							<p class="build-description">
@@ -192,7 +209,7 @@ import Layout from '../layouts/Layout.astro';
 								<span class="tag">Tailwind CSS</span>
 							</div>
 							<div class="build-link-wrapper">
-								<span class="build-link-text">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+								<span class="build-link-text">View Project <span class="link-icon-svg" set:html={arrowOutSvg} /></span>
 							</div>
 						</div>
 					</a>
@@ -203,7 +220,7 @@ import Layout from '../layouts/Layout.astro';
 					<a href="https://cookblog.vercel.app/" target="_blank" rel="noopener noreferrer" class="build-card-link">
 						<div class="build-card-content">
 							<div class="build-icon">
-								<i class="fa-solid fa-utensils"></i>
+								<span class="build-icon-svg" set:html={utensilsSvg} />
 							</div>
 							<h2 class="build-title">Stahlwalker Cookbook</h2>
 							<p class="build-description">
@@ -215,7 +232,7 @@ import Layout from '../layouts/Layout.astro';
 								<span class="tag">Contentful</span>
 							</div>
 							<div class="build-link-wrapper">
-								<span class="build-link-text">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+								<span class="build-link-text">View Project <span class="link-icon-svg" set:html={arrowOutSvg} /></span>
 							</div>
 						</div>
 					</a>
@@ -226,7 +243,7 @@ import Layout from '../layouts/Layout.astro';
 					<a href="https://bloom-ebon-two.vercel.app/" target="_blank" rel="noopener noreferrer" class="build-card-link">
 						<div class="build-card-content">
 							<div class="build-icon">
-								<i class="fa-solid fa-heart"></i>
+								<span class="build-icon-svg" set:html={heartSvg} />
 							</div>
 							<h2 class="build-title">Shacks Bloom & Co</h2>
 							<p class="build-description">
@@ -239,7 +256,7 @@ import Layout from '../layouts/Layout.astro';
 								<span class="tag">Builder.io</span>
 							</div>
 							<div class="build-link-wrapper">
-								<span class="build-link-text">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+								<span class="build-link-text">View Project <span class="link-icon-svg" set:html={arrowOutSvg} /></span>
 							</div>
 						</div>
 					</a>
@@ -250,7 +267,7 @@ import Layout from '../layouts/Layout.astro';
 					<a href="https://developer-hub-webflow.vercel.app/" target="_blank" rel="noopener noreferrer" class="build-card-link">
 						<div class="build-card-content">
 							<div class="build-icon">
-								<i class="fa-solid fa-code"></i>
+								<span class="build-icon-svg" set:html={codeSvg} />
 							</div>
 							<h2 class="build-title">Developer Hub</h2>
 							<p class="build-description">
@@ -263,7 +280,7 @@ import Layout from '../layouts/Layout.astro';
 								<span class="tag">Tailwind CSS</span>
 							</div>
 							<div class="build-link-wrapper">
-								<span class="build-link-text">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+								<span class="build-link-text">View Project <span class="link-icon-svg" set:html={arrowOutSvg} /></span>
 							</div>
 						</div>
 					</a>
@@ -274,7 +291,7 @@ import Layout from '../layouts/Layout.astro';
 					<a href="https://stahlwalker.github.io/greenbaypackers/" target="_blank" rel="noopener noreferrer" class="build-card-link">
 						<div class="build-card-content">
 							<div class="build-icon">
-								<i class="fa-solid fa-location-dot"></i>
+								<span class="build-icon-svg" set:html={locationDotSvg} />
 							</div>
 							<h2 class="build-title">Packers Nation Invasion</h2>
 							<p class="build-description">
@@ -287,7 +304,7 @@ import Layout from '../layouts/Layout.astro';
 								<span class="tag">Shadcn</span>
 							</div>
 							<div class="build-link-wrapper">
-								<span class="build-link-text">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+								<span class="build-link-text">View Project <span class="link-icon-svg" set:html={arrowOutSvg} /></span>
 							</div>
 						</div>
 					</a>
@@ -298,7 +315,7 @@ import Layout from '../layouts/Layout.astro';
 					<a href="https://stahlwalker.org/" target="_blank" rel="noopener noreferrer" class="build-card-link">
 						<div class="build-card-content">
 							<div class="build-icon">
-								<i class="fa-solid fa-globe"></i>
+								<span class="build-icon-svg" set:html={globeSvg} />
 							</div>
 							<h2 class="build-title">Stahlwalker.org</h2>
 							<p class="build-description">
@@ -310,7 +327,7 @@ import Layout from '../layouts/Layout.astro';
 								<span class="tag">Portfolio</span>
 							</div>
 							<div class="build-link-wrapper">
-								<span class="build-link-text">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+								<span class="build-link-text">View Project <span class="link-icon-svg" set:html={arrowOutSvg} /></span>
 							</div>
 						</div>
 					</a>
@@ -321,7 +338,7 @@ import Layout from '../layouts/Layout.astro';
 					<a href="https://stahlwalker.github.io/materialize/" target="_blank" rel="noopener noreferrer" class="build-card-link">
 						<div class="build-card-content">
 							<div class="build-icon">
-								<i class="fa-solid fa-user"></i>
+								<span class="build-icon-svg" set:html={userSvg} />
 							</div>
 							<h2 class="build-title">Portfolio Template</h2>
 							<p class="build-description">
@@ -333,7 +350,7 @@ import Layout from '../layouts/Layout.astro';
 								<span class="tag">Template</span>
 							</div>
 							<div class="build-link-wrapper">
-								<span class="build-link-text">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+								<span class="build-link-text">View Project <span class="link-icon-svg" set:html={arrowOutSvg} /></span>
 							</div>
 						</div>
 					</a>
@@ -356,7 +373,7 @@ import Layout from '../layouts/Layout.astro';
 							<p class="project-desc">PMM dashboard tracking product adoption and revenue metrics, built with Hex and deployed via Webflow Cloud.</p>
 						</div>
 						<div class="project-arrow">
-							<i class="fa-solid fa-arrow-up-right-from-square"></i>
+							<span class="link-icon-svg" set:html={arrowOutSvg} />
 						</div>
 					</a>
 
@@ -367,7 +384,7 @@ import Layout from '../layouts/Layout.astro';
 							<p class="project-desc">A Webflow App Gen project that scrapes competitor sites and uses Resend for scheduled monitoring.</p>
 						</div>
 						<div class="project-arrow">
-							<i class="fa-solid fa-arrow-up-right-from-square"></i>
+							<span class="link-icon-svg" set:html={arrowOutSvg} />
 						</div>
 					</a>
 
@@ -378,7 +395,7 @@ import Layout from '../layouts/Layout.astro';
 							<p class="project-desc">AI-powered writing assistant that transforms content into Luke's developer writing style.</p>
 						</div>
 						<div class="project-arrow">
-							<i class="fa-solid fa-arrow-up-right-from-square"></i>
+							<span class="link-icon-svg" set:html={arrowOutSvg} />
 						</div>
 					</a>
 
@@ -389,7 +406,7 @@ import Layout from '../layouts/Layout.astro';
 							<p class="project-desc">Face detection application built with React and Netlify Functions using Clarifai AI API</p>
 						</div>
 						<div class="project-arrow">
-							<i class="fa-solid fa-arrow-up-right-from-square"></i>
+							<span class="link-icon-svg" set:html={arrowOutSvg} />
 						</div>
 					</a>
 
@@ -400,7 +417,7 @@ import Layout from '../layouts/Layout.astro';
 							<p class="project-desc">A brewery app to search beer and log notes with Firebase authentication</p>
 						</div>
 						<div class="project-arrow">
-							<i class="fa-solid fa-arrow-up-right-from-square"></i>
+							<span class="link-icon-svg" set:html={arrowOutSvg} />
 						</div>
 					</a>
 
@@ -411,7 +428,7 @@ import Layout from '../layouts/Layout.astro';
 							<p class="project-desc">Memory game using React to manage component state and user events</p>
 						</div>
 						<div class="project-arrow">
-							<i class="fa-solid fa-arrow-up-right-from-square"></i>
+							<span class="link-icon-svg" set:html={arrowOutSvg} />
 						</div>
 					</a>
 
@@ -422,7 +439,7 @@ import Layout from '../layouts/Layout.astro';
 							<p class="project-desc">Superhero trivia game based on jQuery and DOM manipulation</p>
 						</div>
 						<div class="project-arrow">
-							<i class="fa-solid fa-arrow-up-right-from-square"></i>
+							<span class="link-icon-svg" set:html={arrowOutSvg} />
 						</div>
 					</a>
 
@@ -433,7 +450,7 @@ import Layout from '../layouts/Layout.astro';
 							<p class="project-desc">Animal gif generator using Giphy API with animated gifs on click</p>
 						</div>
 						<div class="project-arrow">
-							<i class="fa-solid fa-arrow-up-right-from-square"></i>
+							<span class="link-icon-svg" set:html={arrowOutSvg} />
 						</div>
 					</a>
 
@@ -444,7 +461,7 @@ import Layout from '../layouts/Layout.astro';
 							<p class="project-desc">Background generator creating perfect color palettes with gradient backgrounds</p>
 						</div>
 						<div class="project-arrow">
-							<i class="fa-solid fa-arrow-up-right-from-square"></i>
+							<span class="link-icon-svg" set:html={arrowOutSvg} />
 						</div>
 					</a>
 				</div>
@@ -474,7 +491,7 @@ import Layout from '../layouts/Layout.astro';
 				</div>
 
 				<a href="/design-system/" class="design-system-link">
-					<i class="fa-solid fa-swatchbook"></i> Explore Design System
+					<span class="link-icon-svg" set:html={swatchbookSvg} /> Explore Design System
 				</a>
 			</div>
 
@@ -491,10 +508,58 @@ import Layout from '../layouts/Layout.astro';
 				</div>
 
 				<a href="https://github.com/stahlwalker" target="_blank" rel="noopener noreferrer" class="github-profile-link">
-					<i class="fa-brands fa-github"></i> View Full Profile
+					<span class="link-icon-svg" set:html={githubSvg} /> View Full Profile
 				</a>
 			</div>
 
 		</div>
 	</section>
+
+	<style is:inline>
+		/* Mirror the sizing/color rules that builds.css applies to .build-icon i */
+		.build-icon .build-icon-svg {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			line-height: 1;
+			font-size: 2rem;
+			color: var(--accent-primary);
+			transition: transform 0.3s ease;
+		}
+		.build-icon .build-icon-svg svg {
+			width: 1.25em;
+			height: 1.25em;
+			fill: currentColor;
+		}
+		.build-card:hover .build-icon-svg {
+			transform: scale(1.1);
+		}
+		.featured-icon .build-icon-svg {
+			color: #ec4899 !important;
+			filter: drop-shadow(0 0 8px rgba(236, 72, 153, 0.5));
+		}
+		.featured-project:hover .featured-icon .build-icon-svg {
+			transform: scale(1.1);
+			filter: drop-shadow(0 0 12px rgba(236, 72, 153, 0.7));
+		}
+		@media (max-width: 768px) {
+			.build-icon .build-icon-svg { font-size: 1.75rem; }
+		}
+		@media (max-width: 480px) {
+			.build-icon .build-icon-svg { font-size: 1.5rem; }
+		}
+
+		/* Small inline icons next to link text (arrow-up-right, swatchbook, github) */
+		.link-icon-svg {
+			display: inline-flex;
+			align-items: center;
+			margin-left: 0.25em;
+		}
+		.link-icon-svg svg {
+			width: 1.4em;
+			height: 1.4em;
+			fill: currentColor;
+			vertical-align: -0.25em;
+		}
+	</style>
 </Layout>

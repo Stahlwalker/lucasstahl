@@ -28,6 +28,8 @@ interface Props {
 	announcementId?: string;
 	// Perf: inline critical CSS to eliminate render-blocking requests
 	inlineCriticalCSS?: boolean;
+	// Perf: skip the Font Awesome stylesheet on pages that don't use FA <i> tags
+	loadFontAwesome?: boolean;
 }
 
 const {
@@ -45,7 +47,8 @@ const {
 	announcementMessage = "New: Fix Your Agent Harness",
 	announcementLink = "/blog/stop-upgrading-your-model-fix-your-harness/",
 	announcementId = "stop-upgrading-model-fix-harness-apr-2026",
-	inlineCriticalCSS = false
+	inlineCriticalCSS = false,
+	loadFontAwesome = true
 } = Astro.props;
 
 // process.cwd() is the astro-site directory in both `astro dev` and `astro build`.
@@ -199,9 +202,13 @@ const inlinedCss = inlineCriticalCSS
 	<link href="https://fonts.googleapis.com/css?family=Gruppo&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 	<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 
-	<!-- Font Awesome - single file is faster on mobile (fewer network round trips) -->
-	<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" crossorigin>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	{loadFontAwesome && (
+		<>
+			<!-- Font Awesome - single file is faster on mobile (fewer network round trips) -->
+			<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" crossorigin />
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+		</>
+	)}
 
 	<!-- Noscript fallback for fonts and search -->
 	<noscript>
