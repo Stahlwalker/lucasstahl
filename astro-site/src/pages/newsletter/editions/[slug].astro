@@ -5,13 +5,26 @@ import { Marked } from 'marked';
 
 export async function getStaticPaths() {
   const editions = await getCollection('newsletter-editions');
-  return editions.map(edition => ({
-    params: { slug: edition.id },
-    props: { edition },
-  }));
+  const sorted = [...editions].sort(
+    (a, b) => new Date(a.data.publishedDate).getTime() - new Date(b.data.publishedDate).getTime()
+  );
+  return sorted.map((edition, idx) => {
+    const prev = idx > 0 ? sorted[idx - 1] : null;
+    const next = idx < sorted.length - 1 ? sorted[idx + 1] : null;
+    return {
+      params: { slug: edition.id },
+      props: {
+        edition,
+        prevSlug: prev?.id ?? null,
+        prevDate: prev?.data.publishedDate ?? null,
+        nextSlug: next?.id ?? null,
+        nextDate: next?.data.publishedDate ?? null,
+      },
+    };
+  });
 }
 
-const { edition } = Astro.props;
+const { edition, prevSlug, prevDate, nextSlug, nextDate } = Astro.props;
 const { title, publishedDate, description, edition: editionNumber, heroImage } = edition.data;
 
 const marked = new Marked();
@@ -22,6 +35,12 @@ const formattedDate = new Date(publishedDate + 'T12:00:00').toLocaleDateString('
   month: 'long',
   year: 'numeric',
 });
+
+const formatMonth = (date: string) =>
+  new Date(date + 'T12:00:00').toLocaleDateString('en-US', {
+    month: 'long',
+    year: 'numeric',
+  });
 ---
 
 <Layout
@@ -124,6 +143,21 @@ const formattedDate = new Date(publishedDate + 'T12:00:00').toLocaleDateString('
         <img src={heroImage} alt={title} class="edition-hero" loading="eager" />
         <div class="edition-content" set:html={htmlContent} />
       </div>
+
+      <nav class="edition-nav" aria-label="Edition navigation">
+        {prevSlug && (
+          <a href={`/newsletter/editions/${prevSlug}/`} class="edition-nav-link edition-nav-prev" rel="prev">
+            <span class="edition-nav-label">← Previous edition</span>
+            <span class="edition-nav-title">{formatMonth(prevDate)}</span>
+          </a>
+        )}
+        {nextSlug && (
+          <a href={`/newsletter/editions/${nextSlug}/`} class="edition-nav-link edition-nav-next" rel="next">
+            <span class="edition-nav-label">Next edition →</span>
+            <span class="edition-nav-title">{formatMonth(nextDate)}</span>
+          </a>
+        )}
+      </nav>
 
       <div class="edition-cta">
         <p class="edition-cta-text">Want this in your inbox every month?</p>
@@ -432,6 +466,82 @@ const formattedDate = new Date(publishedDate + 'T12:00:00').toLocaleDateString('
     margin: 2.5rem 0;
   }
 
+  /* Prev / Next edition navigation */
+  .edition-nav {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .edition-nav-link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--bg-secondary);
+    border: 1px solid rgba(96, 165, 250, 0.15);
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    flex: 1;
+  }
+
+  /* Single-link state: center it and stop it from stretching full-width */
+  .edition-nav:has(.edition-nav-link:only-child) {
+    justify-content: center;
+  }
+
+  .edition-nav:has(.edition-nav-link:only-child) .edition-nav-link {
+    flex: 0 1 auto;
+    min-width: 280px;
+    text-align: center;
+    align-items: center;
+  }
+
+  .edition-nav-link:hover {
+    border-color: rgba(96, 165, 250, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(96, 165, 250, 0.12);
+  }
+
+  .edition-nav-next {
+    text-align: right;
+    align-items: flex-end;
+  }
+
+  .edition-nav-label {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #818cf8;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .edition-nav-title {
+    font-family: 'Fira Code', monospace;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .edition-nav-spacer {
+    display: block;
+  }
+
+  :global([data-theme="light"]) .edition-nav-link {
+    border: 1.5px solid rgba(14, 165, 233, 0.35);
+  }
+
+  :global([data-theme="light"]) .edition-nav-link:hover {
+    border-color: rgba(14, 165, 233, 0.7);
+    box-shadow: 0 6px 20px rgba(14, 165, 233, 0.15);
+  }
+
+  :global([data-theme="light"]) .edition-nav-label {
+    color: #7c3aed;
+  }
+
   /* CTA */
   .edition-cta {
     text-align: center;
@@ -517,6 +627,15 @@ const formattedDate = new Date(publishedDate + 'T12:00:00').toLocaleDateString('
 
   /* Mobile */
   @media (max-width: 768px) {
+    .edition-nav {
+      grid-template-columns: 1fr;
+    }
+
+    .edition-nav-next {
+      text-align: left;
+      align-items: flex-start;
+    }
+
     .edition-content :global(li:has(.li-thumb)) {
       flex-direction: column;
     }
