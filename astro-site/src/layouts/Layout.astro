@@ -7,6 +7,8 @@ import DevMarketingConsole from '../components/DevMarketingConsole.astro';
 import Search from '../components/Search.astro';
 import AnnouncementBar from '../components/AnnouncementBar.astro';
 import AgentationWrapper from '../components/AgentationWrapper.jsx';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import '../styles/tailwind.css';
 
 interface Props {
@@ -24,6 +26,8 @@ interface Props {
 	announcementMessage?: string;
 	announcementLink?: string;
 	announcementId?: string;
+	// Perf: inline critical CSS to eliminate render-blocking requests
+	inlineCriticalCSS?: boolean;
 }
 
 const {
@@ -40,8 +44,16 @@ const {
 	showAnnouncement = true,
 	announcementMessage = "New: Fix Your Agent Harness",
 	announcementLink = "/blog/stop-upgrading-your-model-fix-your-harness/",
-	announcementId = "stop-upgrading-model-fix-harness-apr-2026"
+	announcementId = "stop-upgrading-model-fix-harness-apr-2026",
+	inlineCriticalCSS = false
 } = Astro.props;
+
+const inlinedCss = inlineCriticalCSS
+	? [
+		readFileSync(resolve(import.meta.dirname, '../../public/assets/css/style.css'), 'utf8'),
+		readFileSync(resolve(import.meta.dirname, '../../public/assets/css/dark-mode.css'), 'utf8'),
+	].join('\n')
+	: '';
 ---
 
 <!DOCTYPE html>
@@ -164,8 +176,14 @@ const {
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="preconnect" href="https://cdnjs.cloudflare.com">
 	<link rel="preconnect" href="https://us-i.posthog.com">
-	<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
-	<link rel="stylesheet" type="text/css" href="/assets/css/dark-mode.css">
+	{inlineCriticalCSS ? (
+		<style is:inline set:html={inlinedCss}></style>
+	) : (
+		<>
+			<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+			<link rel="stylesheet" type="text/css" href="/assets/css/dark-mode.css">
+		</>
+	)}
 	<!-- Defer search.css - only needed when search modal opens (saves 660ms mobile blocking) -->
 	<link rel="stylesheet" type="text/css" href="/assets/css/search.css" media="print" onload="this.media='all'">
 
