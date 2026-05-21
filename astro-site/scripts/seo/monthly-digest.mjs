@@ -14,6 +14,7 @@
 
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { Marked } from 'marked';
 import { resolveSiteUrl, querySearchAnalytics, dateOffset } from './lib/gsc.mjs';
 import { postSlackMessage } from './lib/slack.mjs';
 import { sendEmail } from './lib/email.mjs';
@@ -190,13 +191,36 @@ ${stuckPages.length === 0 ? '_None — every page in the sitemap earned at least
     postSlackMessage({ text: slackText }),
     sendEmail({
       subject: `SEO digest — ${month}`,
-      html: `<pre style="font-family:system-ui;white-space:pre-wrap;font-size:14px">${md
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')}</pre>`,
+      html: renderEmailHtml(md),
     }),
   ]);
   console.log('Sent Slack + email.');
+}
+
+function renderEmailHtml(markdown) {
+  const marked = new Marked({ gfm: true });
+  const body = marked.parse(markdown);
+
+  // Email-safe inline styles. Tables are the big readability win — explicit
+  // borders, header background, generous cell padding.
+  const styles = `
+    <style>
+      .seo-email { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; color: #1f2937; max-width: 720px; margin: 0 auto; padding: 24px; line-height: 1.6; }
+      .seo-email h1 { font-size: 22px; margin: 0 0 8px; color: #111827; }
+      .seo-email h2 { font-size: 16px; margin: 28px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #e5e7eb; color: #111827; }
+      .seo-email p, .seo-email li { font-size: 14px; }
+      .seo-email a { color: #2563eb; text-decoration: none; }
+      .seo-email a:hover { text-decoration: underline; }
+      .seo-email em { color: #6b7280; font-style: normal; font-size: 13px; }
+      .seo-email table { border-collapse: collapse; width: 100%; margin: 8px 0 16px; font-size: 13px; }
+      .seo-email th { background: #f3f4f6; text-align: left; padding: 8px 10px; border-bottom: 2px solid #d1d5db; font-weight: 600; }
+      .seo-email td { padding: 7px 10px; border-bottom: 1px solid #e5e7eb; vertical-align: top; }
+      .seo-email tr:last-child td { border-bottom: none; }
+      .seo-email ul { padding-left: 18px; }
+      .seo-email code { background: #f3f4f6; padding: 1px 5px; border-radius: 3px; font-size: 12px; }
+    </style>
+  `;
+  return `<!doctype html><html><head><meta charset="utf-8">${styles}</head><body><div class="seo-email">${body}</div></body></html>`;
 }
 
 main().catch((err) => {
