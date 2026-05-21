@@ -65,7 +65,7 @@ ${JSON.stringify(topMovers.slice(0, 10), null, 2)}
 Pages in the sitemap with zero impressions in the last 30d:
 ${JSON.stringify(stuckPages.slice(0, 15))}
 
-Write 4-6 sentences. Lead with the single most important fact. Identify the 2-3 most interesting movers (up or down), quote actual numbers, and if you can plausibly infer a reason from the URL or page name, say so in one short clause. End with one specific suggestion about a stuck page or a declining page. Do not pad. No bullet headers. Plain prose.`;
+Output 3-5 bullets, one finding each, starting with "- ". Each bullet is one sentence. Quote actual numbers. If a URL or page name plausibly suggests a reason, add it in a short clause. Include one bullet that's a specific suggestion about a stuck or declining page. No preamble, no headers, no closing summary — just the bullets.`;
 
   const res = await client.messages.create({
     model: 'claude-sonnet-4-6',
@@ -185,7 +185,17 @@ ${stuckPages.length === 0 ? '_None — every page in the sitemap earned at least
   writeFileSync(digestPath, md);
   console.log(`Wrote ${digestPath}`);
 
-  const slackText = `📊 *SEO digest — ${month}*\nClicks: ${summary.clicks.this} (${summary.clicks.delta}) · Impressions: ${summary.impressions.this} (${summary.impressions.delta})\n\n${commentary}\n\n_Full report committed to repo: \`seo/digests/${month}.md\`_`;
+  // Slack uses `•` literal bullets, not markdown `-`. Convert for nicer rendering.
+  const slackCommentary = commentary.replace(/^[-*]\s+/gm, '• ');
+  const slackText = [
+    `📊 *SEO digest — ${month}*`,
+    `*Clicks:* ${summary.clicks.this} (${summary.clicks.delta})  |  *Impressions:* ${summary.impressions.this} (${summary.impressions.delta})  |  *Avg CTR:* ${summary.avgCtr.this}`,
+    '',
+    '*Top findings:*',
+    slackCommentary,
+    '',
+    `_Full report: \`seo/digests/${month}.md\`_`,
+  ].join('\n');
 
   await Promise.all([
     postSlackMessage({ text: slackText }),
