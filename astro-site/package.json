@@ -10,7 +10,8 @@
     "astro": "astro",
     "test": "playwright test",
     "test:ui": "playwright test --ui",
-    "test:report": "playwright show-report"
+    "test:report": "playwright show-report",
+    "auth:gsc": "node scripts/seo/oauth-init.mjs"
   },
   "dependencies": {
     "@astrojs/react": "^5.0.4",
@@ -45,6 +46,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.58.1",
+    "google-auth-library": "^10.6.2",
     "tailwindcss": "^4.2.4"
   }
 }
