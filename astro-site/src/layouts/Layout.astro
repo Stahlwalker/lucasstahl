@@ -48,10 +48,13 @@ const {
 	inlineCriticalCSS = false
 } = Astro.props;
 
+// process.cwd() is the astro-site directory in both `astro dev` and `astro build`.
+// Using import.meta.dirname here breaks at build time because the compiled
+// chunk lives under dist/.prerender/chunks/ rather than next to the source.
 const inlinedCss = inlineCriticalCSS
 	? [
-		readFileSync(resolve(import.meta.dirname, '../../public/assets/css/style.css'), 'utf8'),
-		readFileSync(resolve(import.meta.dirname, '../../public/assets/css/dark-mode.css'), 'utf8'),
+		readFileSync(resolve(process.cwd(), 'public/assets/css/style.css'), 'utf8'),
+		readFileSync(resolve(process.cwd(), 'public/assets/css/dark-mode.css'), 'utf8'),
 	].join('\n')
 	: '';
 ---
