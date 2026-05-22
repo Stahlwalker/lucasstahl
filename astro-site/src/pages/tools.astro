@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
 import { Image } from 'astro:assets';
 
 // Logo imports — Light mode
@@ -46,6 +47,8 @@ import warpDarkIcon from '../assets/images/dark/Warp_icon.png';
 	ogTitle="Tools - Luke Stahl"
 	ogDescription="The tools I actually open every day: Obsidian, Cursor, Claude, Notion, GitHub, Slack, and more."
 	additionalCss={["/assets/css/about.css", "/assets/css/tools.css"]}
+	loadFontAwesome={false}
+	inlineCriticalCSS={true}
 >
 	<!-- Hero -->
 	<section class="about-hero">
@@ -86,7 +89,7 @@ import warpDarkIcon from '../assets/images/dark/Warp_icon.png';
 				</div>
 
 				<div class="workflow-connector">
-					<i class="fa-solid fa-chevron-right"></i>
+					<Icon name="chevron-right" />
 				</div>
 
 				<div class="workflow-stage stage-build">
@@ -107,7 +110,7 @@ import warpDarkIcon from '../assets/images/dark/Warp_icon.png';
 				</div>
 
 				<div class="workflow-connector">
-					<i class="fa-solid fa-chevron-right"></i>
+					<Icon name="chevron-right" />
 				</div>
 
 				<div class="workflow-stage stage-ship">
@@ -122,7 +125,7 @@ import warpDarkIcon from '../assets/images/dark/Warp_icon.png';
 				</div>
 
 				<div class="workflow-connector">
-					<i class="fa-solid fa-chevron-right"></i>
+					<Icon name="chevron-right" />
 				</div>
 
 				<div class="workflow-stage stage-manage">
