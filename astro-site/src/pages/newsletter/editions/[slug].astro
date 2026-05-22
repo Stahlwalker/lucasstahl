@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import Icon from '../../../components/Icon.astro';
 import { getCollection } from 'astro:content';
 import { Marked } from 'marked';
 
@@ -50,6 +51,8 @@ const formatMonth = (date: string) =>
   ogTitle={title}
   ogDescription={description}
   showAnnouncement={false}
+  loadFontAwesome={false}
+  inlineCriticalCSS={true}
 >
   <link slot="head" rel="alternate" type="text/markdown" href={`/newsletter/editions/${edition.id}.md`} title="Markdown version" />
 
@@ -147,13 +150,13 @@ const formatMonth = (date: string) =>
       <nav class="edition-nav" aria-label="Edition navigation">
         {prevSlug && (
           <a href={`/newsletter/editions/${prevSlug}/`} class="edition-nav-link edition-nav-prev" rel="prev">
-            <span class="edition-nav-label">← Previous edition</span>
+            <span class="edition-nav-label"><span class="edition-nav-arrow">←</span> Previous edition</span>
             <span class="edition-nav-title">{formatMonth(prevDate)}</span>
           </a>
         )}
         {nextSlug && (
           <a href={`/newsletter/editions/${nextSlug}/`} class="edition-nav-link edition-nav-next" rel="next">
-            <span class="edition-nav-label">Next edition →</span>
+            <span class="edition-nav-label">Next edition <span class="edition-nav-arrow">→</span></span>
             <span class="edition-nav-title">{formatMonth(nextDate)}</span>
           </a>
         )}
@@ -162,7 +165,7 @@ const formatMonth = (date: string) =>
       <div class="edition-cta">
         <p class="edition-cta-text">Want this in your inbox every month?</p>
         <a href="/newsletter/" class="edition-cta-button">
-          <i class="fa-solid fa-envelope"></i>
+          <Icon name="envelope" />
           Subscribe
         </a>
       </div>
@@ -518,6 +521,11 @@ const formatMonth = (date: string) =>
     text-transform: uppercase;
   }
 
+  .edition-nav-arrow {
+    font-size: 1.1rem;
+    vertical-align: -0.05em;
+  }
+
   .edition-nav-title {
     font-family: 'Fira Code', monospace;
     font-size: 1rem;
@@ -573,6 +581,11 @@ const formatMonth = (date: string) =>
     font-weight: 500;
     transition: all 0.3s ease;
     cursor: pointer;
+  }
+
+  .edition-cta-button :global(.icon-svg svg) {
+    width: 1.1rem;
+    height: 1.1rem;
   }
 
   .edition-cta-button:hover {

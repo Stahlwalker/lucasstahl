@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Icon.astro';
 import { getCollection } from 'astro:content';
 
 const editions = await getCollection('newsletter-editions');
@@ -15,6 +16,8 @@ const sortedEditions = editions.sort((a, b) =>
 	ogTitle="The Builder Newsletter"
 	ogDescription="Monthly updates on web development, developer marketing, and the intersection of code and marketing."
 	showAnnouncement={false}
+	loadFontAwesome={false}
+	inlineCriticalCSS={true}
 >
 	<div class="newsletter-page">
 		<!-- Animated background elements -->
@@ -42,7 +45,7 @@ const sortedEditions = editions.sort((a, b) =>
 				<div class="form-row">
 					<div class="form-field">
 						<label for="firstName" class="form-label">
-							<span class="label-icon"><i class="fa-solid fa-user"></i></span>
+							<span class="label-icon"><Icon name="user" /></span>
 							First Name
 						</label>
 						<input
@@ -57,7 +60,7 @@ const sortedEditions = editions.sort((a, b) =>
 
 					<div class="form-field">
 						<label for="lastName" class="form-label">
-							<span class="label-icon"><i class="fa-solid fa-user"></i></span>
+							<span class="label-icon"><Icon name="user" /></span>
 							Last Name
 						</label>
 						<input
@@ -73,7 +76,7 @@ const sortedEditions = editions.sort((a, b) =>
 
 				<div class="form-field">
 					<label for="email" class="form-label">
-						<span class="label-icon"><i class="fa-solid fa-at"></i></span>
+						<span class="label-icon"><Icon name="at" /></span>
 						Email Address
 					</label>
 					<input
@@ -88,9 +91,12 @@ const sortedEditions = editions.sort((a, b) =>
 
 				<div style="text-align: center;">
 					<button type="submit" class="newsletter-button">
-						<i class="fa-solid fa-envelope"></i>
+						<Icon name="envelope" />
 						Subscribe
 					</button>
+					<span hidden id="loading-state-template">
+						<Icon name="spinner" class="icon-spin" /> Subscribing...
+					</span>
 				</div>
 			</form>
 
@@ -117,7 +123,7 @@ const sortedEditions = editions.sort((a, b) =>
 									</h3>
 								</div>
 								<span class="edition-arrow">
-									<i class="fa-solid fa-arrow-right"></i>
+									<Icon name="arrow-right" />
 								</span>
 							</a>
 						))}
@@ -306,6 +312,11 @@ const sortedEditions = editions.sort((a, b) =>
 		font-size: 0.75rem;
 	}
 
+	.label-icon :global(.icon-svg svg) {
+		width: 1rem;
+		height: 1rem;
+	}
+
 	.form-input {
 		padding: 1rem 1.125rem;
 		background: var(--bg-primary);
@@ -365,6 +376,20 @@ const sortedEditions = editions.sort((a, b) =>
 
 	.newsletter-button i {
 		font-size: 0.85rem;
+	}
+
+	.newsletter-button :global(.icon-svg svg) {
+		width: 1.1rem;
+		height: 1.1rem;
+	}
+
+	:global(.icon-spin svg) {
+		animation: icon-spin 2s linear infinite;
+	}
+
+	@keyframes icon-spin {
+		from { transform: rotate(0deg); }
+		to { transform: rotate(360deg); }
 	}
 
 	.newsletter-button:focus {
@@ -566,6 +591,11 @@ const sortedEditions = editions.sort((a, b) =>
 		flex-shrink: 0;
 	}
 
+	.edition-arrow :global(.icon-svg svg) {
+		width: 1.1rem;
+		height: 1.1rem;
+	}
+
 	.edition-card:hover .edition-arrow {
 		color: #22d3ee;
 		opacity: 1;
@@ -639,7 +669,7 @@ const sortedEditions = editions.sort((a, b) =>
 
 			// Disable button and show loading state
 			submitButton.disabled = true;
-			submitButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Subscribing...';
+			submitButton.innerHTML = document.getElementById('loading-state-template').innerHTML;
 
 			// Hide any previous messages
 			messageDiv.style.display = 'none';

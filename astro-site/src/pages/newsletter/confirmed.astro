@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Icon.astro';
 ---
 
 <Layout
@@ -7,6 +8,8 @@ import Layout from '../../layouts/Layout.astro';
 	description="Successfully subscribed to Luke Stahl's newsletter. You'll receive developer marketing insights, technical content strategies, and product updates in your inbox."
 	robots="noindex, nofollow"
 	showAnnouncement={false}
+	loadFontAwesome={false}
+	inlineCriticalCSS={true}
 >
 	<div class="confirmation-page">
 		<!-- Animated background elements -->
@@ -29,7 +32,7 @@ import Layout from '../../layouts/Layout.astro';
 			<div class="confirmation-content">
 				<p class="confirmation-label">NEWSLETTER</p>
 				<div class="check-icon">
-					<i class="fa-solid fa-circle-check"></i>
+					<Icon name="circle-check" />
 					<div class="icon-burst burst-1"></div>
 					<div class="icon-burst burst-2"></div>
 					<div class="icon-burst burst-3"></div>
@@ -49,15 +52,15 @@ import Layout from '../../layouts/Layout.astro';
 				<a href="/" class="confirmation-button primary">
 					<span class="button-bg"></span>
 					<span class="button-content">
-						<i class="fa-solid fa-arrow-left"></i>
+						<Icon name="arrow-left" />
 						<span>Back to Home</span>
 					</span>
 				</a>
 				<a href="/blog" class="confirmation-button secondary">
 					<span class="button-content">
-						<i class="fa-solid fa-blog"></i>
+						<Icon name="blog" />
 						<span>Read the Blog</span>
-						<i class="fa-solid fa-arrow-right"></i>
+						<Icon name="arrow-right" />
 					</span>
 				</a>
 			</div>
