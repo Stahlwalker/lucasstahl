@@ -34,6 +34,12 @@ const searchIndex = await buildSearchIndex();
       <!-- Results populated by JavaScript -->
     </div>
 
+    <!-- Hidden SVG sources for JS-rendered result items. Spans are display:none
+         so they don't render, but their innerHTML is reachable in JS. -->
+    <span id="svg-search-icon" hidden set:html={searchSvg}></span>
+    <span id="svg-arrow-icon" hidden set:html={arrowOutSvg}></span>
+    <span id="svg-circle-icon" hidden set:html={circleExclSvg}></span>
+
     <div class="search-footer">
       <div class="search-footer-left">
         <kbd>↑</kbd>
@@ -48,8 +54,13 @@ const searchIndex = await buildSearchIndex();
   </div>
 </div>
 
-<script define:vars={{ SVG_SEARCH: searchSvg, SVG_ARROW: arrowOutSvg, SVG_CIRCLE: circleExclSvg }}>
+<script>
   import Fuse from 'fuse.js';
+
+  // Read inline SVG markup from <template> tags rendered by the Astro page.
+  const SVG_SEARCH = document.getElementById('svg-search-icon')?.innerHTML ?? '';
+  const SVG_ARROW = document.getElementById('svg-arrow-icon')?.innerHTML ?? '';
+  const SVG_CIRCLE = document.getElementById('svg-circle-icon')?.innerHTML ?? '';
 
   let fuse;
   let selectedIndex = -1;
