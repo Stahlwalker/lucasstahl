@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
 ---
 
 <Layout
@@ -9,6 +10,8 @@ import Layout from '../layouts/Layout.astro';
 	ogTitle="Gems - Luke Stahl"
 	ogDescription="Curated collection of developer marketing resources, articles, podcasts, and communities."
 	additionalCss={["/assets/css/about.css", "/assets/css/gems.css"]}
+	loadFontAwesome={false}
+	inlineCriticalCSS={true}
 >
 	<!-- Gems Hero Section -->
 	<section class="about-hero">
@@ -42,7 +45,7 @@ import Layout from '../layouts/Layout.astro';
 					<p class="featured-gem-description">The ultimate curated repository of developer marketing and developer relations resources. Includes comprehensive collections of blogs, talks, podcasts, books, newsletters, and communities—everything you need to level up your developer marketing game.</p>
 					<a href="https://github.com/developer-led/links" target="_blank" rel="noopener noreferrer" class="featured-gem-link">
 						Explore Resources
-						<i class="fa-solid fa-arrow-up-right-from-square"></i>
+						<Icon name="arrow-up-right-from-square" />
 					</a>
 				</div>
 			</div>
@@ -54,7 +57,7 @@ import Layout from '../layouts/Layout.astro';
 				<div class="timeline-entry">
 					<div class="timeline-marker"></div>
 					<a href="https://devtooljobs.com/" target="_blank" rel="noopener noreferrer" class="timeline-content-link"><div class="timeline-content">
-						<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+						<Icon name="arrow-up-right-from-square" class="external-icon" />
 						<div class="gem-tags">
 							<span class="gem-tag">Jobs</span>
 							<span class="gem-tag">Career</span>
@@ -70,7 +73,7 @@ import Layout from '../layouts/Layout.astro';
 				<div class="timeline-entry use-const">
 					<div class="timeline-marker"></div>
 					<a href="https://marketingto.dev/" target="_blank" rel="noopener noreferrer" class="timeline-content-link"><div class="timeline-content">
-						<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+						<Icon name="arrow-up-right-from-square" class="external-icon" />
 						<div class="gem-tags">
 							<span class="gem-tag">Community</span>
 							<span class="gem-tag">Slack</span>
@@ -86,7 +89,7 @@ import Layout from '../layouts/Layout.astro';
 				<div class="timeline-entry">
 					<div class="timeline-marker"></div>
 					<a href="https://isitagentready.com/" target="_blank" rel="noopener noreferrer" class="timeline-content-link"><div class="timeline-content">
-						<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+						<Icon name="arrow-up-right-from-square" class="external-icon" />
 						<div class="gem-tags">
 							<span class="gem-tag">AI</span>
 							<span class="gem-tag">Agents</span>
@@ -102,7 +105,7 @@ import Layout from '../layouts/Layout.astro';
 				<div class="timeline-entry">
 					<div class="timeline-marker"></div>
 					<a href="https://roadmap.sh/frontend" target="_blank" rel="noopener noreferrer" class="timeline-content-link"><div class="timeline-content">
-						<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+						<Icon name="arrow-up-right-from-square" class="external-icon" />
 						<div class="gem-tags">
 							<span class="gem-tag">Learning</span>
 							<span class="gem-tag">Roadmap</span>
@@ -118,7 +121,7 @@ import Layout from '../layouts/Layout.astro';
 				<div class="timeline-entry">
 					<div class="timeline-marker"></div>
 					<a href="https://deathbyclawd.com/" target="_blank" rel="noopener noreferrer" class="timeline-content-link"><div class="timeline-content">
-						<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+						<Icon name="arrow-up-right-from-square" class="external-icon" />
 						<div class="gem-tags">
 							<span class="gem-tag">AI</span>
 							<span class="gem-tag">Tools</span>
@@ -149,7 +152,7 @@ import Layout from '../layouts/Layout.astro';
 				<div class="timeline-entry use-const">
 					<div class="timeline-marker"></div>
 					<a href="https://www.passionfroot.me/" target="_blank" rel="noopener noreferrer" class="timeline-content-link"><div class="timeline-content">
-						<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+						<Icon name="arrow-up-right-from-square" class="external-icon" />
 						<div class="gem-tags">
 							<span class="gem-tag">Marketing</span>
 							<span class="gem-tag">Sponsorships</span>
@@ -165,7 +168,7 @@ import Layout from '../layouts/Layout.astro';
 				<div class="timeline-entry use-const">
 					<div class="timeline-marker"></div>
 					<a href="https://posthog.com/founders/actual-marketing-budget" target="_blank" rel="noopener noreferrer" class="timeline-content-link"><div class="timeline-content">
-						<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+						<Icon name="arrow-up-right-from-square" class="external-icon" />
 						<div class="gem-tags">
 							<span class="gem-tag">Strategy</span>
 							<span class="gem-tag">Budget</span>
@@ -181,7 +184,7 @@ import Layout from '../layouts/Layout.astro';
 				<div class="timeline-entry ">
 					<div class="timeline-marker"></div>
 					<a href="https://dev.events/" target="_blank" rel="noopener noreferrer" class="timeline-content-link"><div class="timeline-content">
-						<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+						<Icon name="arrow-up-right-from-square" class="external-icon" />
 						<div class="gem-tags">
 							<span class="gem-tag">Events</span>
 							<span class="gem-tag">Conferences</span>
@@ -197,7 +200,7 @@ import Layout from '../layouts/Layout.astro';
 				<div class="timeline-entry ">
 					<div class="timeline-marker"></div>
 					<a href="https://www.markepear.dev/examples" target="_blank" rel="noopener noreferrer" class="timeline-content-link"><div class="timeline-content">
-						<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+						<Icon name="arrow-up-right-from-square" class="external-icon" />
 						<div class="gem-tags">
 							<span class="gem-tag">Examples</span>
 							<span class="gem-tag">Inspiration</span>
@@ -213,7 +216,7 @@ import Layout from '../layouts/Layout.astro';
 				<div class="timeline-entry use-const">
 					<div class="timeline-marker"></div>
 					<a href="https://stytch.com/blog/the-making-of-an-ooh-campaign/" target="_blank" rel="noopener noreferrer" class="timeline-content-link"><div class="timeline-content">
-						<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+						<Icon name="arrow-up-right-from-square" class="external-icon" />
 						<div class="gem-tags">
 							<span class="gem-tag">Case Study</span>
 							<span class="gem-tag">OOH</span>
@@ -229,7 +232,7 @@ import Layout from '../layouts/Layout.astro';
 				<div class="timeline-entry ">
 					<div class="timeline-marker"></div>
 					<a href="https://devrelcareers.com/" target="_blank" rel="noopener noreferrer" class="timeline-content-link"><div class="timeline-content">
-						<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+						<Icon name="arrow-up-right-from-square" class="external-icon" />
 						<div class="gem-tags">
 							<span class="gem-tag">Careers</span>
 							<span class="gem-tag">Jobs</span>
@@ -245,7 +248,7 @@ import Layout from '../layouts/Layout.astro';
 				<div class="timeline-entry">
 					<div class="timeline-marker"></div>
 					<a href="https://www.stefanjudis.com/" target="_blank" rel="noopener noreferrer" class="timeline-content-link"><div class="timeline-content">
-						<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+						<Icon name="arrow-up-right-from-square" class="external-icon" />
 						<div class="gem-tags">
 							<span class="gem-tag">DevRel</span>
 							<span class="gem-tag">Newsletter</span>
@@ -261,7 +264,7 @@ import Layout from '../layouts/Layout.astro';
 				<div class="timeline-entry use-const">
 					<div class="timeline-marker"></div>
 					<a href="https://brandovermatter.com/" target="_blank" rel="noopener noreferrer" class="timeline-content-link"><div class="timeline-content">
-						<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+						<Icon name="arrow-up-right-from-square" class="external-icon" />
 						<div class="gem-tags">
 							<span class="gem-tag">Design</span>
 							<span class="gem-tag">Branding</span>
@@ -277,7 +280,7 @@ import Layout from '../layouts/Layout.astro';
 				<div class="timeline-entry use-const">
 					<div class="timeline-marker"></div>
 					<a href="https://www.wappalyzer.com/" target="_blank" rel="noopener noreferrer" class="timeline-content-link"><div class="timeline-content">
-						<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+						<Icon name="arrow-up-right-from-square" class="external-icon" />
 						<div class="gem-tags">
 							<span class="gem-tag">Tools</span>
 							<span class="gem-tag">Research</span>
@@ -293,7 +296,7 @@ import Layout from '../layouts/Layout.astro';
 				<div class="timeline-entry use-const">
 					<div class="timeline-marker"></div>
 					<a href="https://lookerstudio.google.com/u/0/reporting/55bc8fad-44c2-4280-aa0b-5f3f0cd3d2be/page/RNEOC?params=%7B%22df48%22:%22include%25EE%2580%25800%25EE%2580%2580IN%25EE%2580%2580Webflow%22%7D" target="_blank" rel="noopener noreferrer" class="timeline-content-link"><div class="timeline-content">
-						<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+						<Icon name="arrow-up-right-from-square" class="external-icon" />
 						<div class="gem-tags">
 							<span class="gem-tag">Analytics</span>
 							<span class="gem-tag">Performance</span>
@@ -309,7 +312,7 @@ import Layout from '../layouts/Layout.astro';
 				<div class="timeline-entry">
 					<div class="timeline-marker"></div>
 					<a href="https://draft.dev/learn/the-ultimate-list-of-developer-newsletters" target="_blank" rel="noopener noreferrer" class="timeline-content-link"><div class="timeline-content">
-						<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+						<Icon name="arrow-up-right-from-square" class="external-icon" />
 						<div class="gem-tags">
 							<span class="gem-tag">Newsletters</span>
 							<span class="gem-tag">Content</span>
@@ -325,7 +328,7 @@ import Layout from '../layouts/Layout.astro';
 				<div class="timeline-entry use-const">
 					<div class="timeline-marker"></div>
 					<a href="https://carbon.now.sh/" target="_blank" rel="noopener noreferrer" class="timeline-content-link"><div class="timeline-content">
-						<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+						<Icon name="arrow-up-right-from-square" class="external-icon" />
 						<div class="gem-tags">
 							<span class="gem-tag">Tools</span>
 							<span class="gem-tag">Design</span>
@@ -341,7 +344,7 @@ import Layout from '../layouts/Layout.astro';
 				<div class="timeline-entry use-const">
 					<div class="timeline-marker"></div>
 					<a href="https://www.profileme.dev/" target="_blank" rel="noopener noreferrer" class="timeline-content-link"><div class="timeline-content">
-						<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+						<Icon name="arrow-up-right-from-square" class="external-icon" />
 						<div class="gem-tags">
 							<span class="gem-tag">GitHub</span>
 							<span class="gem-tag">Profile</span>
@@ -357,7 +360,7 @@ import Layout from '../layouts/Layout.astro';
 				<div class="timeline-entry use-const">
 					<div class="timeline-marker"></div>
 					<a href="https://airtable.com/appyWFRfDzQHW62Wa/shryDVNAyA1DLl5uD/tbl5kARXyzbaQ1cgE" target="_blank" rel="noopener noreferrer" class="timeline-content-link"><div class="timeline-content">
-						<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+						<Icon name="arrow-up-right-from-square" class="external-icon" />
 						<div class="gem-tags">
 							<span class="gem-tag">Template</span>
 							<span class="gem-tag">Content</span>
@@ -373,7 +376,7 @@ import Layout from '../layouts/Layout.astro';
 				<div class="timeline-entry use-const">
 					<div class="timeline-marker"></div>
 					<a href="https://www.tessakriesel.com/p/devrel-strategy-breakdown" target="_blank" rel="noopener noreferrer" class="timeline-content-link"><div class="timeline-content">
-						<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+						<Icon name="arrow-up-right-from-square" class="external-icon" />
 						<div class="gem-tags">
 							<span class="gem-tag">DevRel</span>
 							<span class="gem-tag">Strategy</span>
@@ -389,7 +392,7 @@ import Layout from '../layouts/Layout.astro';
 				<div class="timeline-entry">
 					<div class="timeline-marker"></div>
 					<a href="https://github.com/fmerian/awesome-product-hunt" target="_blank" rel="noopener noreferrer" class="timeline-content-link"><div class="timeline-content">
-						<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+						<Icon name="arrow-up-right-from-square" class="external-icon" />
 						<div class="gem-tags">
 							<span class="gem-tag">Launch</span>
 							<span class="gem-tag">Guide</span>
@@ -405,7 +408,7 @@ import Layout from '../layouts/Layout.astro';
 				<div class="timeline-entry">
 					<div class="timeline-marker"></div>
 					<a href="https://codetomarket.fm/" target="_blank" rel="noopener noreferrer" class="timeline-content-link"><div class="timeline-content">
-						<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+						<Icon name="arrow-up-right-from-square" class="external-icon" />
 						<div class="gem-tags">
 							<span class="gem-tag">Podcast</span>
 							<span class="gem-tag">Marketing</span>
@@ -421,7 +424,7 @@ import Layout from '../layouts/Layout.astro';
 				<div class="timeline-entry">
 					<div class="timeline-marker"></div>
 					<a href="https://survey.stackoverflow.co/2025/" target="_blank" rel="noopener noreferrer" class="timeline-content-link"><div class="timeline-content">
-						<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+						<Icon name="arrow-up-right-from-square" class="external-icon" />
 						<div class="gem-tags">
 							<span class="gem-tag">Research</span>
 							<span class="gem-tag">Survey</span>
@@ -437,7 +440,7 @@ import Layout from '../layouts/Layout.astro';
 				<div class="timeline-entry use-const">
 					<div class="timeline-marker"></div>
 					<a href="https://svgl.app/" target="_blank" rel="noopener noreferrer" class="timeline-content-link"><div class="timeline-content">
-						<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+						<Icon name="arrow-up-right-from-square" class="external-icon" />
 						<div class="gem-tags">
 							<span class="gem-tag">Tools</span>
 							<span class="gem-tag">SVG Library</span>
@@ -478,115 +481,115 @@ import Layout from '../layouts/Layout.astro';
 						<a href="https://posthog.com/" target="_blank" rel="noopener noreferrer" class="table-row">
 						<div class="col-date">2025.11.25</div>
 						<div class="col-title">PostHog <span class="star-badge">★</span></div>
-						<div class="col-type">Platform<span class="icon-wrapper"> <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
+						<div class="col-type">Platform<span class="icon-wrapper"> <Icon name="arrow-up-right-from-square" /></span></div>
 					</a>
 
 					<a href="https://stripe.dev/" target="_blank" rel="noopener noreferrer" class="table-row">
 						<div class="col-date">2025.11.25</div>
 						<div class="col-title">Stripe Developers <span class="star-badge">★</span></div>
-						<div class="col-type">Dev Hub<span class="icon-wrapper"> <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
+						<div class="col-type">Dev Hub<span class="icon-wrapper"> <Icon name="arrow-up-right-from-square" /></span></div>
 					</a>
 
 					<a href="https://sandbox.cloudflare.com/" target="_blank" rel="noopener noreferrer" class="table-row">
 						<div class="col-date">2025.11.25</div>
 						<div class="col-title">Cloudflare Sandbox</div>
-						<div class="col-type">Platform<span class="icon-wrapper"> <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
+						<div class="col-type">Platform<span class="icon-wrapper"> <Icon name="arrow-up-right-from-square" /></span></div>
 					</a>
 
 					<a href="https://www.makingsoftware.com/" target="_blank" rel="noopener noreferrer" class="table-row">
 						<div class="col-date">2025.11.25</div>
 						<div class="col-title">Making Software</div>
-						<div class="col-type">Blog<span class="icon-wrapper"> <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
+						<div class="col-type">Blog<span class="icon-wrapper"> <Icon name="arrow-up-right-from-square" /></span></div>
 					</a>
 
 					<a href="https://github.com/home" target="_blank" rel="noopener noreferrer" class="table-row">
 						<div class="col-date">2025.11.25</div>
 						<div class="col-title">GitHub</div>
-						<div class="col-type">Platform<span class="icon-wrapper"> <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
+						<div class="col-type">Platform<span class="icon-wrapper"> <Icon name="arrow-up-right-from-square" /></span></div>
 					</a>
 
 					<a href="https://react.dev/learn" target="_blank" rel="noopener noreferrer" class="table-row">
 						<div class="col-date">2025.11.25</div>
 						<div class="col-title">React</div>
-						<div class="col-type">Docs<span class="icon-wrapper"> <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
+						<div class="col-type">Docs<span class="icon-wrapper"> <Icon name="arrow-up-right-from-square" /></span></div>
 					</a>
 
 					<a href="https://posthog.com/docs" target="_blank" rel="noopener noreferrer" class="table-row">
 						<div class="col-date">2025.11.25</div>
 						<div class="col-title">PostHog</div>
-						<div class="col-type">Docs<span class="icon-wrapper"> <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
+						<div class="col-type">Docs<span class="icon-wrapper"> <Icon name="arrow-up-right-from-square" /></span></div>
 					</a>
 
 					<a href="https://launchdarkly.com/docs/home/" target="_blank" rel="noopener noreferrer" class="table-row">
 						<div class="col-date">2025.11.25</div>
 						<div class="col-title">LaunchDarkly</div>
-						<div class="col-type">Docs<span class="icon-wrapper"> <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
+						<div class="col-type">Docs<span class="icon-wrapper"> <Icon name="arrow-up-right-from-square" /></span></div>
 					</a>
 
 					<a href="https://vuejs.org/guide/introduction.html" target="_blank" rel="noopener noreferrer" class="table-row">
 						<div class="col-date">2025.11.25</div>
 						<div class="col-title">Vue</div>
-						<div class="col-type">Docs<span class="icon-wrapper"> <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
+						<div class="col-type">Docs<span class="icon-wrapper"> <Icon name="arrow-up-right-from-square" /></span></div>
 					</a>
 
 					<a href="https://cursor.com/en-US/docs" target="_blank" rel="noopener noreferrer" class="table-row">
 						<div class="col-date">2025.11.25</div>
 						<div class="col-title">Cursor</div>
-						<div class="col-type">Docs<span class="icon-wrapper"> <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
+						<div class="col-type">Docs<span class="icon-wrapper"> <Icon name="arrow-up-right-from-square" /></span></div>
 					</a>
 
 					<a href="https://docs.stripe.com/" target="_blank" rel="noopener noreferrer" class="table-row">
 						<div class="col-date">2025.11.25</div>
 						<div class="col-title">Stripe</div>
-						<div class="col-type">Docs<span class="icon-wrapper"> <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
+						<div class="col-type">Docs<span class="icon-wrapper"> <Icon name="arrow-up-right-from-square" /></span></div>
 					</a>
 
 					<a href="https://www.builder.io/" target="_blank" rel="noopener noreferrer" class="table-row">
 						<div class="col-date">2025.11.25</div>
 						<div class="col-title">Builder.io</div>
-						<div class="col-type">Platform<span class="icon-wrapper"> <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
+						<div class="col-type">Platform<span class="icon-wrapper"> <Icon name="arrow-up-right-from-square" /></span></div>
 					</a>
 
 					<a href="https://www.alanagoyal.com/notes/about-me" target="_blank" rel="noopener noreferrer" class="table-row">
 						<div class="col-date">2025.11.27</div>
 						<div class="col-title">Alana Goyal</div>
-						<div class="col-type">Portfolio<span class="icon-wrapper"> <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
+						<div class="col-type">Portfolio<span class="icon-wrapper"> <Icon name="arrow-up-right-from-square" /></span></div>
 					</a>
 
 					<a href="https://ryo.lu/" target="_blank" rel="noopener noreferrer" class="table-row">
 						<div class="col-date">2025.11.27</div>
 						<div class="col-title">Ryo is making Cursor</div>
-						<div class="col-type">Portfolio<span class="icon-wrapper"> <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
+						<div class="col-type">Portfolio<span class="icon-wrapper"> <Icon name="arrow-up-right-from-square" /></span></div>
 					</a>
 
 					<a href="https://factory.ai/" target="_blank" rel="noopener noreferrer" class="table-row">
 						<div class="col-date">2025.11.27</div>
 						<div class="col-title">Factory</div>
-						<div class="col-type">Platform<span class="icon-wrapper"> <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
+						<div class="col-type">Platform<span class="icon-wrapper"> <Icon name="arrow-up-right-from-square" /></span></div>
 					</a>
 
 					<a href="https://supabase.com/docs" target="_blank" rel="noopener noreferrer" class="table-row">
 						<div class="col-date">2026.01.05</div>
 						<div class="col-title">Supabase</div>
-						<div class="col-type">Docs<span class="icon-wrapper"> <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
+						<div class="col-type">Docs<span class="icon-wrapper"> <Icon name="arrow-up-right-from-square" /></span></div>
 					</a>
 
 					<a href="https://clerk.com/" target="_blank" rel="noopener noreferrer" class="table-row">
 						<div class="col-date">2026.01.12</div>
 						<div class="col-title">Clerk <span class="star-badge">★</span></div>
-						<div class="col-type">Platform<span class="icon-wrapper"> <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
+						<div class="col-type">Platform<span class="icon-wrapper"> <Icon name="arrow-up-right-from-square" /></span></div>
 					</a>
 
 					<a href="https://linear.app/homepage" target="_blank" rel="noopener noreferrer" class="table-row">
 						<div class="col-date">2026.04.10</div>
 						<div class="col-title">Linear</div>
-						<div class="col-type">Platform<span class="icon-wrapper"> <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
+						<div class="col-type">Platform<span class="icon-wrapper"> <Icon name="arrow-up-right-from-square" /></span></div>
 					</a>
 
 					<a href="https://www.notion.com/product/dev" target="_blank" rel="noopener noreferrer" class="table-row">
 						<div class="col-date">2026.05.14</div>
 						<div class="col-title">Notion Developer Platform <span class="star-badge">★</span></div>
-						<div class="col-type">Platform<span class="icon-wrapper"> <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
+						<div class="col-type">Platform<span class="icon-wrapper"> <Icon name="arrow-up-right-from-square" /></span></div>
 					</a>
 					</div>
 				</div>

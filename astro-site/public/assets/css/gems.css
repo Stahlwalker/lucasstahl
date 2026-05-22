@@ -268,6 +268,11 @@ html {
     transition: transform 0.3s ease;
 }
 
+.featured-gem-link .icon-svg svg {
+    width: 1.15rem;
+    height: 1.15rem;
+}
+
 .featured-gem-link:hover svg {
     transform: translateX(4px);
 }
@@ -965,6 +970,7 @@ html {
     letter-spacing: 0.5px;
     font-weight: 500;
     transition: color 0.2s ease;
+    white-space: nowrap;
 }
 
 .table-row:hover .col-type {
@@ -1307,6 +1313,11 @@ html {
     z-index: 10;
 }
 
+.timeline-content .external-icon svg {
+    width: 1.1rem;
+    height: 1.1rem;
+}
+
 [data-theme="light"] .timeline-content .external-icon {
     color: var(--text-secondary);
     opacity: 0.6;
@@ -1317,6 +1328,13 @@ html {
     text-decoration: none;
     display: inline-block;
     margin-left: 0.375rem;
+}
+
+.table-row .col-type .icon-wrapper svg {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    vertical-align: -0.15em;
 }
 
 .table-row:hover .col-type {
