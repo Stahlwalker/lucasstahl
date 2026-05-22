@@ -198,10 +198,11 @@ const inlinedCss = inlineCriticalCSS
 		<link rel="stylesheet" type="text/css" href={css}>
 	))}
 
-	<!-- Self-hosted variable fonts. Preload the Inter file because the LCP
-	     element is text styled with Inter — direct preload removes the
-	     CSS-discovers-font chain. @font-face rules live in style.css. -->
-	<link rel="preload" href="/assets/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
+	<!-- Self-hosted variable fonts — @font-face rules live in style.css.
+	     Skip preloading the variable file: it's 344 KB and preloading at
+	     high priority makes LCP _worse_ on mobile by stealing bandwidth
+	     from the HTML/critical path. font-display: swap renders text in
+	     the fallback immediately, then swaps when Inter arrives. -->
 
 	{loadFontAwesome && (
 		<>
