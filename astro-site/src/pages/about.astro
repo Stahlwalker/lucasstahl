@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
 import { Image } from 'astro:assets';
 import headshotImage from '../assets/images/Luke_Stahl.jpeg';
 
@@ -74,6 +75,8 @@ import webflowDark from '../assets/images/dark/Webflow_dark.png';
 	ogTitle="About - Luke Stahl"
 	ogDescription="Developer marketer and web developer. My skills lean heavily on the front-end side of things, but I love learning new tools and ways of programming better."
 	additionalCss={["/assets/css/about.css?v=2"]}
+	loadFontAwesome={false}
+	inlineCriticalCSS={true}
 >
 	<!-- About Hero Section -->
 	<section class="about-hero">
@@ -88,11 +91,11 @@ import webflowDark from '../assets/images/dark/Webflow_dark.png';
 			<!-- Human/Machine Toggle -->
 			<div class="view-mode-toggle">
 				<button class="view-mode-option active" data-view="human">
-					<i class="fa-solid fa-user"></i>
+					<Icon name="user" />
 					<span>HUMAN</span>
 				</button>
 				<button class="view-mode-option" data-view="machine">
-					<i class="fa-solid fa-robot"></i>
+					<Icon name="robot" />
 					<span>MACHINE</span>
 				</button>
 			</div>
@@ -106,11 +109,11 @@ import webflowDark from '../assets/images/dark/Webflow_dark.png';
 			<div class="markdown-toggle-header">
 				<div class="view-mode-toggle modal-toggle">
 					<button class="view-mode-option" data-view="human">
-						<i class="fa-solid fa-user"></i>
+						<Icon name="user" />
 						<span>HUMAN</span>
 					</button>
 					<button class="view-mode-option active" data-view="machine">
-						<i class="fa-solid fa-robot"></i>
+						<Icon name="robot" />
 						<span>MACHINE</span>
 					</button>
 				</div>
@@ -260,7 +263,7 @@ Luke works with developer-focused companies to build clear content, sharpen thei
 
 						<div class="education-pills-container">
 							<div class="education-pill">
-								<i class="fa-solid fa-certificate"></i>
+								<Icon name="certificate" />
 								<span class="education-text">
 									<strong>Certificate in Full Stack Web Development</strong>
 									<span class="education-divider">|</span>
@@ -268,7 +271,7 @@ Luke works with developer-focused companies to build clear content, sharpen thei
 								</span>
 							</div>
 							<div class="education-pill">
-								<i class="fa-solid fa-graduation-cap"></i>
+								<Icon name="graduation-cap" />
 								<span class="education-text">
 									<strong>MA in Communications</strong>
 									<span class="education-divider">|</span>
@@ -298,7 +301,7 @@ Luke works with developer-focused companies to build clear content, sharpen thei
 						</div>
 						<div class="terminal-title">career_timeline.sh</div>
 						<button class="terminal-music-icon" id="musicIcon" aria-label="Play music">
-							<i class="fa-solid fa-music"></i>
+							<Icon name="music" />
 						</button>
 					</div>
 					<div class="terminal-body" id="terminalBody">
@@ -332,7 +335,7 @@ Luke works with developer-focused companies to build clear content, sharpen thei
 				<div class="skills-grid">
 					<div class="skill-category">
 						<h3 class="skill-category-title">
-							<i class="fa-solid fa-code"></i>
+							<Icon name="code" />
 							Frontend
 						</h3>
 						<div class="skill-tags">
@@ -351,7 +354,7 @@ Luke works with developer-focused companies to build clear content, sharpen thei
 
 					<div class="skill-category">
 						<h3 class="skill-category-title">
-							<i class="fa-solid fa-server"></i>
+							<Icon name="server" />
 							Backend
 						</h3>
 						<div class="skill-tags">
@@ -368,7 +371,7 @@ Luke works with developer-focused companies to build clear content, sharpen thei
 
 					<div class="skill-category">
 						<h3 class="skill-category-title">
-							<i class="fa-solid fa-chart-line"></i>
+							<Icon name="chart-line" />
 							Developer Marketing
 						</h3>
 						<div class="skill-tags">
@@ -388,7 +391,7 @@ Luke works with developer-focused companies to build clear content, sharpen thei
 
 					<div class="skill-category">
 						<h3 class="skill-category-title">
-							<i class="fa-solid fa-palette"></i>
+							<Icon name="palette" />
 							Visual Development
 						</h3>
 						<div class="skill-tags">
@@ -418,8 +421,8 @@ Luke works with developer-focused companies to build clear content, sharpen thei
 						<h3 class="talk-title">Webflow Cloud for Full-Stack Web Apps</h3>
 						<p class="talk-description">Webflow Cloud introduces a new foundation for building on the web, where full-stack applications and sites run together on the same edge-native platform.</p>
 						<div class="talk-meta">
-							<span class="talk-date"><i class="fa-solid fa-calendar"></i> September 18, 2025</span>
-							<span class="talk-location"><i class="fa-solid fa-location-dot"></i> Webflow Conf 2025</span>
+							<span class="talk-date"><Icon name="calendar" /> September 18, 2025</span>
+							<span class="talk-location"><Icon name="location-dot" /> Webflow Conf 2025</span>
 						</div>
 					</div>
 					<div class="talk-video" id="youtube-facade" data-video-id="KtXlsaPwS2U">
@@ -450,7 +453,7 @@ Luke works with developer-focused companies to build clear content, sharpen thei
 				<p class="logo-showcase-subtitle">
 					The toolkit that powers my work
 					<span class="tools-subtitle-divider">·</span>
-					<a href="/blog/my-stack/" class="tools-subtitle-link">Read the full breakdown <i class="fa-solid fa-arrow-right"></i></a>
+					<a href="/blog/my-stack/" class="tools-subtitle-link">Read the full breakdown <Icon name="arrow-right" /></a>
 				</p>
 
 				<div class="logo-showcase-section" style="min-height: 400px;">
@@ -650,7 +653,7 @@ Luke works with developer-focused companies to build clear content, sharpen thei
 				<p class="freelance-section-subtitle">Developer & Digital Marketing</p>
 				<div class="freelance-card">
 					<div class="freelance-badge">
-						<i class="fa-solid fa-circle-check"></i>
+						<Icon name="circle-check" />
 						<span>Available for Projects</span>
 					</div>
 					<p class="freelance-description">
@@ -660,25 +663,25 @@ Luke works with developer-focused companies to build clear content, sharpen thei
 					</p>
 					<div class="freelance-services">
 						<div class="service-tag">
-							<i class="fa-solid fa-bullhorn"></i>
+							<Icon name="bullhorn" />
 							Developer Marketing Strategy
 						</div>
 						<div class="service-tag">
-							<i class="fa-solid fa-pen-nib"></i>
+							<Icon name="pen-nib" />
 							Technical Content & Writing
 						</div>
 						<div class="service-tag">
-							<i class="fa-solid fa-chart-line"></i>
+							<Icon name="chart-line" />
 							Campaign Management
 						</div>
 						<div class="service-tag">
-							<i class="fa-solid fa-code"></i>
+							<Icon name="code" />
 							Frontend Development
 						</div>
 					</div>
 					<a href="https://www.upwork.com/freelancers/~01a729dd72b0076831" target="_blank" rel="noopener noreferrer" class="freelance-cta">
 						<span>Contract Through Upwork</span>
-						<i class="fa-solid fa-arrow-up-right-from-square"></i>
+						<Icon name="arrow-up-right-from-square" />
 					</a>
 				</div>
 			</div>
@@ -688,12 +691,12 @@ Luke works with developer-focused companies to build clear content, sharpen thei
 				<div class="llm-cta-divider"></div>
 				<div class="llm-cta-card">
 					<div class="llm-cta-icon">
-						<i class="fa-solid fa-robot"></i>
+						<Icon name="robot" />
 					</div>
 					<h3 class="llm-cta-title">Information for LLMs</h3>
 					<p class="llm-cta-description">Structured data optimized for AI tools and language models</p>
 					<a href="/for-llms/" class="llm-cta-link">
-						View LLM Page <i class="fa-solid fa-arrow-right"></i>
+						View LLM Page <Icon name="arrow-right" />
 					</a>
 				</div>
 			</div>
@@ -704,7 +707,7 @@ Luke works with developer-focused companies to build clear content, sharpen thei
 		<div class="markdown-view" style="display: none;">
 			<div class="markdown-content">
 				<button class="back-to-human-btn">
-					<i class="fa-solid fa-arrow-left"></i>
+					<Icon name="arrow-left" />
 					Back to Human View
 				</button>
 				<pre class="markdown-text"># Luke Stahl - Developer Marketer & Frontend Developer

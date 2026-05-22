@@ -207,6 +207,12 @@
     font-size: 1.25rem;
 }
 
+.education-pill .icon-svg svg {
+    width: 1.4rem;
+    height: 1.4rem;
+    fill: var(--accent-primary);
+}
+
 .education-text {
     color: var(--text-secondary);
     font-size: 0.9375rem;
@@ -312,6 +318,12 @@
     align-items: center;
     justify-content: center;
     justify-self: end;
+}
+
+.terminal-music-icon .icon-svg svg {
+    width: 1rem;
+    height: 1rem;
+    fill: currentColor;
 }
 
 .terminal-music-icon:hover {
@@ -531,6 +543,12 @@
 .skill-category-title i {
     color: var(--accent-primary);
     font-size: 1.5rem;
+}
+
+.skill-category-title .icon-svg svg {
+    width: 1.75rem;
+    height: 1.75rem;
+    fill: var(--accent-primary);
 }
 
 .skill-tags {
@@ -911,6 +929,13 @@
     font-size: 0.875rem;
 }
 
+.talk-date .icon-svg svg,
+.talk-location .icon-svg svg {
+    width: 1.1rem;
+    height: 1.1rem;
+    fill: var(--accent-primary);
+}
+
 .talk-video {
     position: relative;
     width: 100%;
@@ -1042,6 +1067,12 @@
     font-size: 1rem;
 }
 
+.freelance-badge .icon-svg svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    fill: currentColor;
+}
+
 .freelance-description {
     font-size: 1.125rem;
     color: var(--text-secondary);
@@ -1077,6 +1108,12 @@
 .service-tag i {
     color: var(--accent-primary);
     font-size: 1rem;
+}
+
+.service-tag .icon-svg svg {
+    width: 1.2rem;
+    height: 1.2rem;
+    fill: var(--accent-primary);
 }
 
 .service-tag:hover {
@@ -1127,7 +1164,15 @@
     transition: transform 0.3s ease;
 }
 
-.freelance-cta:hover i {
+.freelance-cta .icon-svg svg {
+    width: 1.15rem;
+    height: 1.15rem;
+    fill: currentColor;
+    transition: transform 0.3s ease;
+}
+
+.freelance-cta:hover i,
+.freelance-cta:hover .icon-svg svg {
     transform: translateX(4px);
 }
 
@@ -2528,6 +2573,12 @@
 	color: var(--accent-primary);
 }
 
+.llm-cta-icon .icon-svg svg {
+	width: 2.15rem;
+	height: 2.15rem;
+	fill: var(--accent-primary);
+}
+
 .llm-cta-title {
 	font-family: 'Fira Code', monospace;
 	font-size: 1.25rem;
@@ -2562,7 +2613,15 @@
 	transition: transform 0.2s ease;
 }
 
-.llm-cta-link:hover i {
+.llm-cta-link .icon-svg svg {
+	width: 1.1rem;
+	height: 1.1rem;
+	fill: currentColor;
+	transition: transform 0.2s ease;
+}
+
+.llm-cta-link:hover i,
+.llm-cta-link:hover .icon-svg svg {
 	transform: translateX(4px);
 }
 
@@ -2639,11 +2698,18 @@
 	transition: transform 0.3s ease;
 }
 
+.view-mode-option .icon-svg svg {
+	width: 1.1rem;
+	height: 1.1rem;
+	transition: transform 0.3s ease;
+}
+
 .view-mode-option:hover:not(.active) {
 	color: var(--text-primary);
 }
 
-.view-mode-option:hover:not(.active) i {
+.view-mode-option:hover:not(.active) i,
+.view-mode-option:hover:not(.active) .icon-svg svg {
 	transform: scale(1.1);
 }
 
@@ -2753,6 +2819,11 @@
 
 	.view-mode-option i {
 		font-size: 0.75rem;
+	}
+
+	.view-mode-option .icon-svg svg {
+		width: 1.05rem;
+		height: 1.05rem;
 	}
 }
 
