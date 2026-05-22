@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
 import { getBlogPosts } from '../lib/notion';
 
 const notionPosts = await getBlogPosts();
@@ -56,6 +57,8 @@ const nonFeaturedPosts = [
 	ogTitle="Blog - Luke Stahl"
 	ogDescription="Insights on web development, marketing, and digital strategy from a developer marketer."
 	additionalCss={["/assets/css/blog.css"]}
+	loadFontAwesome={false}
+	inlineCriticalCSS={true}
 >
 	<!-- Critical CSS for LCP - Inline for faster render -->
 	<style slot="head">
@@ -142,7 +145,7 @@ const nonFeaturedPosts = [
 			</h1>
 			<p class="blog-hero-subtitle">Insights on web development, marketing, and digital strategy</p>
 			<a href="/rss.xml" target="_blank" rel="noopener noreferrer" class="rss-subscribe-button">
-				<i class="fa-solid fa-rss"></i>
+				<Icon name="rss" />
 				Subscribe via RSS
 			</a>
 		</div>
@@ -177,6 +180,11 @@ const nonFeaturedPosts = [
 
 		.rss-subscribe-button i {
 			font-size: 0.85rem;
+		}
+
+		.rss-subscribe-button :global(.icon-svg svg) {
+			width: 1.4em;
+			height: 1.4em;
 		}
 
 		@media (max-width: 768px) {
@@ -230,7 +238,7 @@ const nonFeaturedPosts = [
 									</div>
 								)}
 								<span class="blog-link">
-									Read Article <i class="fa-solid fa-arrow-right"></i>
+									Read Article <Icon name="arrow-right" />
 								</span>
 							</div>
 						</a>
@@ -247,7 +255,7 @@ const nonFeaturedPosts = [
 								<div class="blog-meta">
 									<time class="blog-date">{new Date(post.publishedDate + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</time>
 									<span class="blog-type">Article</span>
-									{post.external && <i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>}
+									{post.external && <Icon name="arrow-up-right-from-square" class="external-icon" />}
 								</div>
 								<h2 class="blog-title">{post.title}</h2>
 								{post.excerpt && <p class="blog-excerpt">{post.excerpt}</p>}
@@ -273,7 +281,7 @@ const nonFeaturedPosts = [
 							<div class="blog-meta">
 								<time class="blog-date">Oct 8, 2025</time>
 								<span class="blog-type">Article</span>
-							<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+							<Icon name="arrow-up-right-from-square" class="external-icon" />
 							</div>
 							<h2 class="blog-title">Developers love headless until they're stuck maintaining it</h2>
 							<div class="blog-tags">
@@ -295,7 +303,7 @@ const nonFeaturedPosts = [
 							<div class="blog-meta">
 								<time class="blog-date">Aug 13, 2025</time>
 								<span class="blog-type">Article</span>
-							<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+							<Icon name="arrow-up-right-from-square" class="external-icon" />
 							</div>
 							<h2 class="blog-title">MCP servers worth knowing if you're building with AI</h2>
 							<div class="blog-tags">
@@ -317,7 +325,7 @@ const nonFeaturedPosts = [
 							<div class="blog-meta">
 								<time class="blog-date">Feb 27, 2025</time>
 								<span class="blog-type">Guide</span>
-							<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+							<Icon name="arrow-up-right-from-square" class="external-icon" />
 							</div>
 							<h2 class="blog-title">AI APIs in 2025</h2>
 							<div class="blog-tags">
@@ -339,7 +347,7 @@ const nonFeaturedPosts = [
 							<div class="blog-meta">
 								<time class="blog-date">Feb 5, 2025</time>
 								<span class="blog-type">Guide</span>
-							<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+							<Icon name="arrow-up-right-from-square" class="external-icon" />
 							</div>
 							<h2 class="blog-title">The Rise of Visual Editing in Headless CMSs</h2>
 							<div class="blog-tags">
@@ -361,7 +369,7 @@ const nonFeaturedPosts = [
 							<div class="blog-meta">
 								<time class="blog-date">Jan 29, 2025</time>
 								<span class="blog-type">Article</span>
-							<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+							<Icon name="arrow-up-right-from-square" class="external-icon" />
 							</div>
 							<h2 class="blog-title">Building High-Performance React Components with AI Assistance</h2>
 							<div class="blog-tags">
@@ -383,7 +391,7 @@ const nonFeaturedPosts = [
 							<div class="blog-meta">
 								<time class="blog-date">Jan 9, 2025</time>
 								<span class="blog-type">Guide</span>
-							<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+							<Icon name="arrow-up-right-from-square" class="external-icon" />
 							</div>
 							<h2 class="blog-title">A Guide to Server-Side Rendering</h2>
 							<div class="blog-tags">
@@ -405,7 +413,7 @@ const nonFeaturedPosts = [
 							<div class="blog-meta">
 								<time class="blog-date">Jan 6, 2025</time>
 								<span class="blog-type">Article</span>
-							<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+							<Icon name="arrow-up-right-from-square" class="external-icon" />
 							</div>
 							<h2 class="blog-title">React UI Component Libraries in 2025</h2>
 							<div class="blog-tags">
@@ -427,7 +435,7 @@ const nonFeaturedPosts = [
 							<div class="blog-meta">
 								<time class="blog-date">Dec 13, 2024</time>
 								<span class="blog-type">Explainer</span>
-							<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+							<Icon name="arrow-up-right-from-square" class="external-icon" />
 							</div>
 							<h2 class="blog-title">What is Builder's Visual Development Platform?</h2>
 							<div class="blog-tags">
@@ -449,7 +457,7 @@ const nonFeaturedPosts = [
 							<div class="blog-meta">
 								<time class="blog-date">Nov 20, 2024</time>
 								<span class="blog-type">Guide</span>
-							<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+							<Icon name="arrow-up-right-from-square" class="external-icon" />
 							</div>
 							<h2 class="blog-title">Headless Commerce - A Guide to Decoupled E-Commerce</h2>
 							<div class="blog-tags">
@@ -471,7 +479,7 @@ const nonFeaturedPosts = [
 							<div class="blog-meta">
 								<time class="blog-date">Nov 5, 2024</time>
 								<span class="blog-type">Guide</span>
-							<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+							<Icon name="arrow-up-right-from-square" class="external-icon" />
 							</div>
 							<h2 class="blog-title">What is Design to Code: an Automated Approach</h2>
 							<div class="blog-tags">
@@ -493,7 +501,7 @@ const nonFeaturedPosts = [
 							<div class="blog-meta">
 								<time class="blog-date">Oct 18, 2024</time>
 								<span class="blog-type">Explainer</span>
-							<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+							<Icon name="arrow-up-right-from-square" class="external-icon" />
 							</div>
 							<h2 class="blog-title">Design Systems Explained</h2>
 							<div class="blog-tags">
@@ -515,7 +523,7 @@ const nonFeaturedPosts = [
 							<div class="blog-meta">
 								<time class="blog-date">Oct 3, 2024</time>
 								<span class="blog-type">Article</span>
-							<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+							<Icon name="arrow-up-right-from-square" class="external-icon" />
 							</div>
 							<h2 class="blog-title">A Helpful Approach to Navigating the SEO AI Shift</h2>
 							<div class="blog-tags">
@@ -537,7 +545,7 @@ const nonFeaturedPosts = [
 							<div class="blog-meta">
 								<time class="blog-date">Sep 27, 2024</time>
 								<span class="blog-type">Guide</span>
-							<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+							<Icon name="arrow-up-right-from-square" class="external-icon" />
 							</div>
 							<h2 class="blog-title">What is Headless CMS: a Visual Guide</h2>
 							<div class="blog-tags">
@@ -559,7 +567,7 @@ const nonFeaturedPosts = [
 							<div class="blog-meta">
 								<time class="blog-date">Sep 18, 2024</time>
 								<span class="blog-type">Article</span>
-							<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+							<Icon name="arrow-up-right-from-square" class="external-icon" />
 							</div>
 							<h2 class="blog-title">Figma Plugins for Developers in 2024</h2>
 							<div class="blog-tags">
@@ -581,7 +589,7 @@ const nonFeaturedPosts = [
 							<div class="blog-meta">
 								<time class="blog-date">Sep 9, 2024</time>
 								<span class="blog-type">Explainer</span>
-							<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+							<Icon name="arrow-up-right-from-square" class="external-icon" />
 							</div>
 							<h2 class="blog-title">Extensibility: Building software that adapts</h2>
 							<div class="blog-tags">
@@ -603,7 +611,7 @@ const nonFeaturedPosts = [
 							<div class="blog-meta">
 								<time class="blog-date">Aug 22, 2024</time>
 								<span class="blog-type">Explainer</span>
-							<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+							<Icon name="arrow-up-right-from-square" class="external-icon" />
 							</div>
 							<h2 class="blog-title">Digital Asset Management: Organize your digital world</h2>
 							<div class="blog-tags">
@@ -625,7 +633,7 @@ const nonFeaturedPosts = [
 							<div class="blog-meta">
 								<time class="blog-date">Jul 26, 2024</time>
 								<span class="blog-type">Guide</span>
-							<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+							<Icon name="arrow-up-right-from-square" class="external-icon" />
 							</div>
 							<h2 class="blog-title">An SEO aha moment: understanding Core Web Vitals</h2>
 							<div class="blog-tags">
@@ -647,7 +655,7 @@ const nonFeaturedPosts = [
 							<div class="blog-meta">
 								<time class="blog-date">Jul 15, 2024</time>
 								<span class="blog-type">Explainer</span>
-							<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+							<Icon name="arrow-up-right-from-square" class="external-icon" />
 							</div>
 							<h2 class="blog-title">Structured Data: What It Is and Why You Need It</h2>
 							<div class="blog-tags">
@@ -669,7 +677,7 @@ const nonFeaturedPosts = [
 							<div class="blog-meta">
 								<time class="blog-date">Jul 2, 2024</time>
 								<span class="blog-type">Guide</span>
-							<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+							<Icon name="arrow-up-right-from-square" class="external-icon" />
 							</div>
 							<h2 class="blog-title">Visual Content Modeling: A Comprehensive Guide</h2>
 							<div class="blog-tags">
@@ -691,7 +699,7 @@ const nonFeaturedPosts = [
 							<div class="blog-meta">
 								<time class="blog-date">Feb 1, 2024</time>
 								<span class="blog-type">Guide</span>
-							<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+							<Icon name="arrow-up-right-from-square" class="external-icon" />
 							</div>
 							<h2 class="blog-title">The Complete Guide to Choosing the Best Jamstack CMS</h2>
 							<div class="blog-tags">
@@ -713,7 +721,7 @@ const nonFeaturedPosts = [
 							<div class="blog-meta">
 								<time class="blog-date">Jan 31, 2023</time>
 								<span class="blog-type">Article</span>
-							<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+							<Icon name="arrow-up-right-from-square" class="external-icon" />
 							</div>
 							<h2 class="blog-title">Threat Intelligence via CrowdStrike and Integrations</h2>
 							<div class="blog-tags">
@@ -735,7 +743,7 @@ const nonFeaturedPosts = [
 							<div class="blog-meta">
 								<time class="blog-date">Sep 8, 2022</time>
 								<span class="blog-type">Tutorial</span>
-							<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+							<Icon name="arrow-up-right-from-square" class="external-icon" />
 							</div>
 							<h2 class="blog-title">Ruby on Rails tutorial: Getting started with Contentful</h2>
 							<div class="blog-tags">
@@ -757,7 +765,7 @@ const nonFeaturedPosts = [
 							<div class="blog-meta">
 								<time class="blog-date">Sep 1, 2022</time>
 								<span class="blog-type">Tutorial</span>
-							<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+							<Icon name="arrow-up-right-from-square" class="external-icon" />
 							</div>
 							<h2 class="blog-title">How to get started using Angular with Contentful</h2>
 							<div class="blog-tags">
@@ -779,7 +787,7 @@ const nonFeaturedPosts = [
 							<div class="blog-meta">
 								<time class="blog-date">Aug 18, 2022</time>
 								<span class="blog-type">Tutorial</span>
-							<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+							<Icon name="arrow-up-right-from-square" class="external-icon" />
 							</div>
 							<h2 class="blog-title">A hands-on tutorial for using Contentful with Vue</h2>
 							<div class="blog-tags">
@@ -801,7 +809,7 @@ const nonFeaturedPosts = [
 							<div class="blog-meta">
 								<time class="blog-date">Aug 16, 2022</time>
 								<span class="blog-type">Tutorial</span>
-							<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+							<Icon name="arrow-up-right-from-square" class="external-icon" />
 							</div>
 							<h2 class="blog-title">What is a framework in programming? All about software frameworks</h2>
 							<div class="blog-tags">
@@ -823,7 +831,7 @@ const nonFeaturedPosts = [
 							<div class="blog-meta">
 								<time class="blog-date">Mar 24, 2022</time>
 								<span class="blog-type">Tutorial</span>
-							<i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+							<Icon name="arrow-up-right-from-square" class="external-icon" />
 							</div>
 							<h2 class="blog-title">A galactic guide to building a blog with Next.js and Contentful</h2>
 							<div class="blog-tags">
@@ -851,7 +859,7 @@ const nonFeaturedPosts = [
 		<div class="section-container">
 			<div class="newsletter-cta-card">
 				<div class="newsletter-cta-icon">
-					<i class="fa-solid fa-newspaper"></i>
+					<Icon name="newspaper" />
 				</div>
 				<div class="newsletter-cta-content">
 					<p class="newsletter-cta-label">NEWSLETTER</p>
@@ -860,7 +868,7 @@ const nonFeaturedPosts = [
 						Monthly updates on web dev, developer marketing opportunities, interesting projects, and individuals to follow.
 					</p>
 					<a href="/newsletter/" class="newsletter-cta-button">
-						<i class="fa-solid fa-envelope"></i>
+						<Icon name="envelope" />
 						Subscribe
 					</a>
 				</div>
@@ -910,13 +918,20 @@ const nonFeaturedPosts = [
 			margin-bottom: 1.5rem;
 		}
 
-		.newsletter-cta-icon i {
+		.newsletter-cta-icon i,
+		.newsletter-cta-icon :global(.icon-svg) {
 			font-size: 3rem;
 			color: #22d3ee;
 			opacity: 0.9;
 		}
 
-		:global([data-theme="light"]) .newsletter-cta-icon i {
+		.newsletter-cta-icon :global(.icon-svg svg) {
+			width: 1.25em;
+			height: 1.25em;
+		}
+
+		:global([data-theme="light"]) .newsletter-cta-icon i,
+		:global([data-theme="light"]) .newsletter-cta-icon :global(.icon-svg) {
 			color: #0e9cdd;
 		}
 
@@ -980,6 +995,11 @@ const nonFeaturedPosts = [
 
 		.newsletter-cta-button i {
 			font-size: 0.9rem;
+		}
+
+		.newsletter-cta-button :global(.icon-svg svg) {
+			width: 1.3em;
+			height: 1.3em;
 		}
 
 		/* Light mode */

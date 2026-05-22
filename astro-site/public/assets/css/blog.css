@@ -612,6 +612,13 @@
     margin-left: 0.5rem;
 }
 
+/* Inline SVG external arrow — bump up to match the visual weight that
+   Font Awesome glyphs had at the same font-size. */
+.external-icon.icon-svg svg {
+    width: 1.3em;
+    height: 1.3em;
+}
+
 [data-theme="light"] .external-icon {
     color: var(--text-secondary);
     opacity: 0.6;
