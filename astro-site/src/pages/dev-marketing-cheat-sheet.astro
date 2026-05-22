@@ -1,5 +1,6 @@
 ---
 import MinimalLayout from '../layouts/MinimalLayout.astro';
+import Icon from '../components/Icon.astro';
 
 // Main Role & Responsibilities Categories (Top Section)
 const roleCategories = [
@@ -263,15 +264,15 @@ const sections = [
 		<header class="cheatsheet-header">
 			<div class="header-content">
 				<a href="/" class="home-btn" aria-label="Go to home page">
-					<i class="fa-solid fa-home"></i>
+					<Icon name="house" />
 				</a>
 				<h1 class="cheatsheet-title">Developer Marketing Cheat Sheet</h1>
 				<div class="header-controls">
 					<button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle theme">
-						<i class="fa-solid fa-moon"></i>
+						<Icon name="moon" />
 					</button>
 					<a href="/assets/Dev_Cheatsheet_3.10.26.webp" download class="download-btn">
-						<i class="fa-solid fa-download"></i>
+						<Icon name="download" />
 						<span>Download</span>
 					</a>
 				</div>
@@ -490,6 +491,12 @@ const sections = [
 		box-shadow: 0 4px 12px rgba(96, 165, 250, 0.3);
 	}
 
+	.home-btn :global(.icon-svg svg),
+	.theme-toggle-btn :global(.icon-svg svg) {
+		width: 1.5rem;
+		height: 1.5rem;
+	}
+
 	.download-btn {
 		background: var(--accent-primary);
 		border: none;
@@ -515,6 +522,11 @@ const sections = [
 
 	.download-btn i {
 		font-size: 1rem;
+	}
+
+	.download-btn :global(.icon-svg svg) {
+		width: 1.2rem;
+		height: 1.2rem;
 	}
 
 	/* Role & Responsibilities Section */

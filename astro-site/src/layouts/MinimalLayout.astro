@@ -1,5 +1,6 @@
 ---
 import PostHog from '../components/posthog.astro';
+import Icon from '../components/Icon.astro';
 
 interface Props {
 	title: string;
@@ -43,16 +44,10 @@ const {
 	<meta name="twitter:image" content={ogImage}>
 
 	<!-- Preconnect to external origins for faster resource loading -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link rel="preconnect" href="https://cdnjs.cloudflare.com">
 	<link rel="preconnect" href="https://us-i.posthog.com">
 
 	<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/dark-mode.css">
-
-	<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 	<!-- PostHog Analytics -->
 	<PostHog />
@@ -86,6 +81,11 @@ const {
 	</script>
 </head>
 <body>
+	<!-- SVG sources for theme toggle (JS reads innerHTML) -->
+	<span hidden id="svg-icon-moon"><Icon name="moon" /></span>
+	<span hidden id="svg-icon-sun"><Icon name="sun" /></span>
+	<span hidden id="svg-icon-display"><Icon name="display" /></span>
+
 	<slot />
 
 	<!-- Theme Toggle Functionality -->
@@ -113,19 +113,19 @@ const {
 				if (!themeToggle) return;
 
 				const mode = getCurrentMode();
-				let icon;
+				let sourceId;
 
 				if (mode === 'dark') {
-					icon = 'fa-moon';
+					sourceId = 'svg-icon-moon';
 				} else if (mode === 'light') {
-					icon = 'fa-sun';
+					sourceId = 'svg-icon-sun';
 				} else {
-					icon = 'fa-display'; // system mode
+					sourceId = 'svg-icon-display';
 				}
 
-				const iconElement = themeToggle.querySelector('i');
-				if (iconElement) {
-					iconElement.className = `fa-solid ${icon}`;
+				const source = document.getElementById(sourceId);
+				if (source) {
+					themeToggle.innerHTML = source.innerHTML;
 				}
 			}
 
