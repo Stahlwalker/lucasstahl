@@ -1,24 +1,24 @@
 {
-  "lastUpdated": "2026-05-22T21:43:39Z",
+  "lastUpdated": "2026-05-22T22:10:05.586Z",
   "results": {
     "mobile": {
       "home": {
-        "performance": 94,
+        "performance": 91,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
-        "lcp": 2626.1514339141122,
-        "cls": 0.001381,
-        "tbt": 5
+        "lcp": 2851.04238587298,
+        "cls": 0.0012070000000000002,
+        "tbt": 0
       },
       "about": {
-        "performance": 0,
-        "accessibility": 0,
-        "bestPractices": 0,
-        "seo": 0
+        "performance": 87,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
       },
       "blog": {
-        "performance": 62,
+        "performance": 69,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
@@ -30,7 +30,7 @@
         "seo": 100
       },
       "gems": {
-        "performance": 72,
+        "performance": 64,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
@@ -38,13 +38,13 @@
     },
     "desktop": {
       "home": {
-        "performance": 100,
+        "performance": 99,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
-        "lcp": 581.00802498827431,
-        "cls": 0.000515,
-        "tbt": 39.000000000000057
+        "lcp": 835.6960886797999,
+        "cls": 0.0006940000000000001,
+        "tbt": 2
       },
       "about": {
         "performance": 95,
@@ -53,22 +53,22 @@
         "seo": 100
       },
       "blog": {
-        "performance": 93,
+        "performance": 85,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
       },
       "builds": {
-        "performance": 96,
+        "performance": 95,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
       },
       "gems": {
-        "performance": 0,
-        "accessibility": 0,
-        "bestPractices": 0,
-        "seo": 0
+        "performance": 96,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
       }
     }
   },
