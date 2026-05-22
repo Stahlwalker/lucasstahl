@@ -12,6 +12,20 @@ body {
   margin-bottom: 60px;
 }
 
+/* Inline SVG icon component base — kept here (inlined in head) so icons
+   render at the right size on first paint with no FOUC. */
+.icon-svg {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 0;
+}
+.icon-svg svg {
+  display: block;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
+
 body {
   /* font-family: 'Gloria Hallelujah', cursive; */
   font-family: 'Share Tech', sans-serif;

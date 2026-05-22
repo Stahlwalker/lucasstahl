@@ -1,5 +1,6 @@
 ---
 // Navbar Component
+import Icon from './Icon.astro';
 ---
 
 <style>
@@ -110,6 +111,14 @@
         transition: opacity 0.15s ease-in-out;
     }
 
+    /* Bump SVG icons in the navbar to match the visual weight Font Awesome
+       provided at the same font-size. :global() because the Icon component
+       has its own Astro scope. */
+    .navbar :global(.icon-svg svg) {
+        width: 1.25em;
+        height: 1.25em;
+    }
+
     .nav-link:hover {
         opacity: 0.7;
     }
@@ -189,15 +198,15 @@
         <img src="/assets/images/logo/ls-logo/Luke-Stahl-Dark-LS.svg" alt="Luke Stahl logo" class="navbar-logo navbar-logo-dark" />
         <span class="navbar-brand-name">Luke Stahl</span>
         <a href="https://x.com/LukeStahl11" target="_blank" rel="noopener noreferrer" class="navbar-github-icon navbar-github-desktop" title="X (Twitter) Profile">
-            <i class="fa-brands fa-x-twitter"></i>
+            <Icon name="x-twitter" />
         </a>
         <a href="https://www.linkedin.com/in/lukestahl/" target="_blank" rel="noopener noreferrer" class="navbar-github-icon navbar-github-desktop" title="LinkedIn Profile">
-            <i class="fa-brands fa-linkedin"></i>
+            <Icon name="linkedin-in" />
         </a>
     </a>
     <div class="navbar-mobile-actions">
         <button class="mobile-search-button" id="mobileSearchButton" aria-label="Search" title="Search">
-            <i class="fa-solid fa-search"></i>
+            <Icon name="magnifying-glass" />
         </button>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -223,27 +232,27 @@
             </li>
             <li class="nav-item search-nav-item">
                 <button class="nav-link search-button" id="searchButton" aria-label="Search" title="Search (⌘K)" style="border: none; background: none; cursor: pointer;">
-                    <i class="fa-solid fa-search"></i>
+                    <Icon name="magnifying-glass" />
                 </button>
             </li>
             <li class="nav-item navbar-github-mobile">
                 <a class="nav-link" href="https://x.com/LukeStahl11" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
-                    <i class="fa-brands fa-x-twitter"></i>
+                    <Icon name="x-twitter" />
                 </a>
             </li>
             <li class="nav-item navbar-github-mobile">
                 <a class="nav-link" href="https://www.linkedin.com/in/lukestahl/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                    <i class="fa-brands fa-linkedin"></i>
+                    <Icon name="linkedin-in" />
                 </a>
             </li>
             <li class="nav-item theme-toggle-mobile">
                 <a class="nav-link" id="themeToggleMobile" aria-label="Toggle theme" title="Toggle theme" style="cursor: pointer;">
-                    <i class="fa-solid fa-sun" id="themeIconMobile"></i>
+                    <span class="icon-svg" id="themeIconMobile"></span>
                 </a>
             </li>
             <li class="nav-item theme-toggle-desktop-nav">
                 <button class="theme-toggle theme-toggle-desktop" id="themeToggle" aria-label="Toggle theme" title="Toggle theme" style="border: none; background: none; padding: 0;">
-                    <i class="fa-solid fa-sun" id="themeIcon"></i>
+                    <span class="icon-svg" id="themeIcon"></span>
                 </button>
             </li>
         </ul>

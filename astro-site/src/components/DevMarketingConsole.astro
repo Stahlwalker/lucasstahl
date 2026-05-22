@@ -1,5 +1,9 @@
 ---
 // Developer Marketing Console Component
+import Icon from './Icon.astro';
+import copySvg from '../icons/copy-solid-full.svg?raw';
+import checkSvg from '../icons/check-solid-full.svg?raw';
+
 const commands = {
   help: {
     description: 'Available commands',
@@ -190,7 +194,7 @@ The goal is to prove that trust earned from developers shows up later in product
         <section id="goals" class="handbook-section">
           <div class="copy-button-wrapper-modal">
             <button class="copy-all-sections-btn-modal" id="copyAllBtnModal" title="Copy Goals through Metrics sections">
-              <i class="fa-regular fa-copy"></i>
+              <Icon name="copy" class="copy-icon" />
             </button>
           </div>
           <h2>Goals</h2>
@@ -1299,7 +1303,7 @@ The goal is to prove that trust earned from developers shows up later in product
   }
 </style>
 
-<script>
+<script define:vars={{ ICON_COPY: copySvg, ICON_CHECK: checkSvg }}>
   const button = document.getElementById('devConsoleButton');
   const ring = document.getElementById('devConsoleRing');
   const overlay = document.getElementById('devConsoleOverlay');
@@ -1458,14 +1462,13 @@ The goal is to prove that trust earned from developers shows up later in product
       try {
         await navigator.clipboard.writeText(allContent);
 
-        // Visual feedback
-        const icon = copyAllBtnModal.querySelector('i');
-        const originalClass = icon.className;
-        icon.className = 'fa-solid fa-check';
+        // Visual feedback — swap copy icon SVG for check SVG, then restore.
+        const iconWrap = copyAllBtnModal.querySelector('.copy-icon');
+        iconWrap.innerHTML = ICON_CHECK;
         copyAllBtnModal.classList.add('copied');
 
         setTimeout(() => {
-          icon.className = originalClass;
+          iconWrap.innerHTML = ICON_COPY;
           copyAllBtnModal.classList.remove('copied');
         }, 2000);
       } catch (err) {

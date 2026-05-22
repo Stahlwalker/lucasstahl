@@ -1,4 +1,6 @@
 ---
+import Icon from './Icon.astro';
+
 interface Props {
 	message: string;
 	link?: string;
@@ -21,7 +23,7 @@ const messageContent = startsWithNew
 				{startsWithNew && <span class="announcement-highlight">{messageContent.prefix}</span>}
 				{' '}{messageContent.rest}
 			</span>
-			<i class="fa-solid fa-arrow-right announcement-arrow"></i>
+			<Icon name="arrow-right" class="announcement-arrow" />
 		</a>
 	) : (
 		<div class="announcement-content">
@@ -32,7 +34,7 @@ const messageContent = startsWithNew
 		</div>
 	)}
 	<button class="announcement-close" aria-label="Dismiss announcement">
-		<i class="fa-solid fa-xmark"></i>
+		<Icon name="xmark" />
 	</button>
 </div>
 

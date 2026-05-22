@@ -9,6 +9,9 @@ import AnnouncementBar from '../components/AnnouncementBar.astro';
 import AgentationWrapper from '../components/AgentationWrapper.jsx';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+import moonSvg from '../icons/moon-solid-full.svg?raw';
+import sunSvg from '../icons/sun-solid-full.svg?raw';
+import displaySvg from '../icons/display-solid-full.svg?raw';
 import '../styles/tailwind.css';
 
 interface Props {
@@ -282,7 +285,7 @@ const inlinedCss = inlineCriticalCSS
 	{import.meta.env.DEV && <AgentationWrapper client:only="react" />}
 
 	<!-- Theme Toggle Functionality -->
-	<script is:inline>
+	<script is:inline define:vars={{ ICON_MOON: moonSvg, ICON_SUN: sunSvg, ICON_DISPLAY: displaySvg }}>
 		document.addEventListener('DOMContentLoaded', function() {
 			const themeToggle = document.getElementById('themeToggle');
 			const themeToggleMobile = document.getElementById('themeToggleMobile');
@@ -338,21 +341,21 @@ const inlinedCss = inlineCriticalCSS
 			// Update icon based on current mode
 			function updateIcon() {
 				const mode = getCurrentMode();
-				let icon;
+				let svg;
 
 				if (mode === 'dark') {
-					icon = 'fa-moon';
+					svg = ICON_MOON;
 				} else if (mode === 'light') {
-					icon = 'fa-sun';
+					svg = ICON_SUN;
 				} else {
-					icon = 'fa-display'; // system mode
+					svg = ICON_DISPLAY;
 				}
 
 				if (themeIcon) {
-					themeIcon.className = `fa-solid ${icon}`;
+					themeIcon.innerHTML = svg;
 				}
 				if (themeIconMobile) {
-					themeIconMobile.className = `fa-solid ${icon}`;
+					themeIconMobile.innerHTML = svg;
 				}
 			}
 

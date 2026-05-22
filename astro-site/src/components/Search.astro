@@ -1,5 +1,9 @@
 ---
 import { buildSearchIndex } from '../lib/searchIndex';
+import Icon from './Icon.astro';
+import searchSvg from '../icons/magnifying-glass-solid-full.svg?raw';
+import arrowOutSvg from '../icons/arrow-up-right-from-square-solid-full.svg?raw';
+import circleExclSvg from '../icons/circle-exclamation-solid-full.svg?raw';
 
 const searchIndex = await buildSearchIndex();
 ---
@@ -10,7 +14,7 @@ const searchIndex = await buildSearchIndex();
   <div class="search-modal-content">
     <div class="search-header">
       <div class="search-input-wrapper">
-        <i class="fa-solid fa-search search-icon"></i>
+        <Icon name="magnifying-glass" class="search-icon" />
         <input
           type="text"
           id="search-input"
@@ -22,7 +26,7 @@ const searchIndex = await buildSearchIndex();
         <kbd class="search-kbd">ESC</kbd>
       </div>
       <button id="search-close" class="search-close" aria-label="Close search">
-        <i class="fa-solid fa-times"></i>
+        <Icon name="xmark" />
       </button>
     </div>
 
@@ -44,7 +48,7 @@ const searchIndex = await buildSearchIndex();
   </div>
 </div>
 
-<script>
+<script define:vars={{ SVG_SEARCH: searchSvg, SVG_ARROW: arrowOutSvg, SVG_CIRCLE: circleExclSvg }}>
   import Fuse from 'fuse.js';
 
   let fuse;
@@ -126,7 +130,7 @@ const searchIndex = await buildSearchIndex();
     if (!searchIndex || searchIndex.length === 0) {
       resultsContainer.innerHTML = `
         <div class="search-empty">
-          <i class="fa-solid fa-search"></i>
+          <span class="icon-svg">${SVG_SEARCH}</span>
           <p>Loading search index...</p>
         </div>
       `;
@@ -159,7 +163,7 @@ const searchIndex = await buildSearchIndex();
             <div class="search-result-path">
               <span class="search-result-type">/${item.type}</span>
               <span class="search-result-url">${pathDisplay}</span>
-              ${isExternal ? '<i class="fa-solid fa-arrow-up-right-from-square search-external-icon"></i>' : ''}
+              ${isExternal ? `<span class="icon-svg search-external-icon">${SVG_ARROW}</span>` : ''}
             </div>
             <div class="search-result-title">${item.title}</div>
             <div class="search-result-description">${item.description}</div>
@@ -202,7 +206,7 @@ const searchIndex = await buildSearchIndex();
     if (results.length === 0) {
       resultsContainer.innerHTML = `
         <div class="search-no-results">
-          <i class="fa-solid fa-circle-exclamation"></i>
+          <span class="icon-svg">${SVG_CIRCLE}</span>
           <p>No results found for "${query}"</p>
         </div>
       `;
@@ -236,7 +240,7 @@ const searchIndex = await buildSearchIndex();
           <div class="search-result-path">
             <span class="search-result-type">/${item.type}</span>
             <span class="search-result-url">${pathDisplay}</span>
-            ${isExternal ? '<i class="fa-solid fa-arrow-up-right-from-square search-external-icon"></i>' : ''}
+            ${isExternal ? `<span class="icon-svg search-external-icon">${SVG_ARROW}</span>` : ''}
           </div>
           <div class="search-result-title">${item.title}</div>
           <div class="search-result-description">${item.description}</div>

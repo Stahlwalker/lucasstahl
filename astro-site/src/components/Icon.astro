@@ -1,0 +1,55 @@
+---
+/**
+ * Inline SVG icon component backed by the files in /src/icons/.
+ * Usage: <Icon name="brain" /> or <Icon name="github" />
+ *
+ * Files are loaded eagerly at build time via Vite's import.meta.glob with
+ * ?raw, so each icon usage inlines the SVG markup with no runtime cost
+ * and no external request.
+ */
+
+interface Props {
+  name: string;
+  class?: string;
+  /** Inline style overrides — useful for one-off sizing. */
+  style?: string;
+  /** Accessibility: set when the icon conveys meaning on its own. */
+  ariaLabel?: string;
+  /** Optional element id (used by JS toggles like the theme switcher). */
+  id?: string;
+}
+
+const { name, class: className, style, ariaLabel, id } = Astro.props;
+
+const icons = import.meta.glob('/src/icons/*.svg', {
+  eager: true,
+  query: '?raw',
+  import: 'default',
+}) as Record<string, string>;
+
+// File naming: `<name>-solid-full.svg` or `<name>-brands-solid-full.svg`.
+// Match the first file whose basename starts with `${name}-`.
+const entry = Object.entries(icons).find(([path]) => {
+  const base = path.split('/').pop() ?? '';
+  return base.startsWith(`${name}-`);
+});
+
+if (!entry && !import.meta.env.SSR) {
+  console.warn(`[Icon] No SVG found for name "${name}"`);
+}
+
+const svg = entry?.[1] ?? '';
+---
+
+<span
+  class:list={['icon-svg', className]}
+  style={style}
+  id={id}
+  aria-label={ariaLabel}
+  aria-hidden={ariaLabel ? undefined : 'true'}
+  set:html={svg}
+/>
+
+<!-- Base .icon-svg CSS lives in public/assets/css/style.css so it's inlined
+     in <head> via inlineCriticalCSS and no FOUC happens on first paint. -->
+
