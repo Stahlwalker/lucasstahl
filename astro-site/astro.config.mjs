@@ -31,6 +31,14 @@ export default defineConfig({
     '/portfolio': '/',
     '/portfolio.html': '/'
   },
+  // Perf: embed bundled CSS inline in each page's <head> instead of as a
+  // separate render-blocking <link> file. Trades ~3KB per-page HTML growth
+  // for the ~630ms render-blocking request the bundled CSS used to cause.
+  // TO REVERT: change `inlineStylesheets: 'always'` → `inlineStylesheets: 'auto'`
+  // (Astro default) or remove the `build` block entirely.
+  build: {
+    inlineStylesheets: 'always'
+  },
   vite: {
     plugins: [tailwindcss()],
     build: {

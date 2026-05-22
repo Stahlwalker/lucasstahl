@@ -732,12 +732,11 @@ import Icon from './Icon.astro';
 					document.documentElement.setAttribute('data-theme', displayTheme);
 					document.documentElement.style.backgroundColor = displayTheme === 'dark' ? '#0a0e27' : '#f8fafc';
 
-					// Sync the header toggle icon if it exists
-					const themeIcon = document.getElementById('themeIcon');
-					const themeIconMobile = document.getElementById('themeIconMobile');
-					const iconMap = { dark: 'fa-moon', light: 'fa-sun', system: 'fa-display' };
-					if (themeIcon) themeIcon.className = `fa-solid ${iconMap[mode]}`;
-					if (themeIconMobile) themeIconMobile.className = `fa-solid ${iconMap[mode]}`;
+					// Let Layout.astro's updateIcon handle the navbar icon sync —
+					// it already has the SVG content via define:vars and is wired
+					// up for media-query changes too. Dispatch a custom event
+					// instead of touching themeIcon directly here.
+					window.dispatchEvent(new CustomEvent('lukestahl:theme-change'));
 
 					// Sync the original footer toggle if it exists
 					const origToggle = document.getElementById('footerThemeToggle');

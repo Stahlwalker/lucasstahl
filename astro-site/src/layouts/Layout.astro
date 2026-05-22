@@ -359,6 +359,13 @@ const inlinedCss = inlineCriticalCSS
 				}
 			}
 
+			// Let other components (like FooterV2's theme picker) trigger an
+			// icon refresh without needing access to the SVG strings.
+			window.addEventListener('lukestahl:theme-change', () => {
+				updateIcon();
+				updateFooterToggle();
+			});
+
 			// Send theme to iframe
 			function sendThemeToIframe(theme) {
 				const iframe = document.querySelector('.assistant-iframe');
