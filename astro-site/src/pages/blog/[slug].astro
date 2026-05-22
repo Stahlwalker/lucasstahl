@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Icon.astro';
 import { getBlogPosts, getBlogPostBySlug } from '../../lib/notion';
 import { Marked } from 'marked';
 import { codeToHtml } from 'shiki';
@@ -281,6 +282,8 @@ const hideAnnouncement = post.slug === 'stop-upgrading-your-model-fix-your-harne
   ogDescription={metaDesc}
   ogImage={ogImageUrl}
   showAnnouncement={!hideAnnouncement}
+  loadFontAwesome={false}
+  inlineCriticalCSS={true}
 >
   <link slot="head" rel="alternate" type="text/markdown" href={`/blog/${post.slug}.md`} title="Markdown version" />
 
@@ -385,7 +388,7 @@ const hideAnnouncement = post.slug === 'stop-upgrading-your-model-fix-your-harne
               <>
                 <span class="meta-divider">•</span>
                 <span class="reading-time">
-                  <i class="fa-solid fa-clock"></i>
+                  <Icon name="clock" />
                   {post.readingTime} min read
                 </span>
               </>
@@ -501,7 +504,7 @@ const hideAnnouncement = post.slug === 'stop-upgrading-your-model-fix-your-harne
               class="share-button share-twitter"
               aria-label="Share on X (Twitter)"
             >
-              <i class="fa-brands fa-x-twitter"></i>
+              <Icon name="x-twitter" />
             </a>
             <a
               href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://lukestahl.io/blog/${post.slug}/`)}`}
@@ -510,7 +513,7 @@ const hideAnnouncement = post.slug === 'stop-upgrading-your-model-fix-your-harne
               class="share-button share-linkedin"
               aria-label="Share on LinkedIn"
             >
-              <i class="fa-brands fa-linkedin-in"></i>
+              <Icon name="linkedin-in" />
             </a>
             <a
               href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`https://lukestahl.io/blog/${post.slug}/`)}`}
@@ -519,7 +522,7 @@ const hideAnnouncement = post.slug === 'stop-upgrading-your-model-fix-your-harne
               class="share-button share-facebook"
               aria-label="Share on Facebook"
             >
-              <i class="fa-brands fa-facebook-f"></i>
+              <Icon name="facebook-f" />
             </a>
           </div>
         </div>
@@ -547,9 +550,9 @@ const hideAnnouncement = post.slug === 'stop-upgrading-your-model-fix-your-harne
                   </div>
                   <span class="suggested-post-arrow">
                     {suggestedPost.isExternal ? (
-                      <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                      <Icon name="arrow-up-right-from-square" />
                     ) : (
-                      <i class="fa-solid fa-arrow-right"></i>
+                      <Icon name="arrow-right" />
                     )}
                   </span>
                 </a>
@@ -767,9 +770,15 @@ const hideAnnouncement = post.slug === 'stop-upgrading-your-model-fix-your-harne
       color: rgba(228, 228, 231, 0.6);
     }
 
-    .reading-time i {
+    .reading-time i,
+    .reading-time :global(.icon-svg) {
       font-size: 0.85rem;
       color: var(--accent-blue, #60a5fa);
+    }
+
+    .reading-time :global(.icon-svg svg) {
+      width: 1.2em;
+      height: 1.2em;
     }
 
     .blog-post-tags .tag {
@@ -1042,6 +1051,11 @@ const hideAnnouncement = post.slug === 'stop-upgrading-your-model-fix-your-harne
       transition: all 0.3s ease;
     }
 
+    .share-button :global(.icon-svg svg) {
+      width: 1.3em;
+      height: 1.3em;
+    }
+
     .share-button:hover {
       transform: translateY(-2px);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
@@ -1128,6 +1142,11 @@ const hideAnnouncement = post.slug === 'stop-upgrading-your-model-fix-your-harne
       font-size: 1.5rem;
       color: var(--accent-blue, #60a5fa);
       transition: transform 0.3s ease;
+    }
+
+    .suggested-post-arrow :global(.icon-svg svg) {
+      width: 1.1em;
+      height: 1.1em;
     }
 
     .suggested-post:hover .suggested-post-arrow {
