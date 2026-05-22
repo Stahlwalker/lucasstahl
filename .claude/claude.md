@@ -83,5 +83,6 @@ cd /Users/lucasstahl/Desktop/Open\ Projects/Programming/lucasstahl/astro-site &&
 ## Instructions for Claude
 
 - **Writing Style**: When generating page content, documentation, or site copy, always reference `docs/Lukes-Developer-Writing-Style.md` for tone, style, and formatting guidelines (Note: blog posts are written by Luke in Notion)
+- **Icons**: New pages must not load Font Awesome. Follow the inline-SVG pattern in `.claude/rules/icons.md` — use the `<Icon />` component, drop SVGs into `src/icons/`, and set `loadFontAwesome={false}` + `inlineCriticalCSS={true}` on the Layout call.
 - NEVER commit .env files
 - Always use Context7 MCP when I need library/API documentation, code generation, setup or configuration steps without me having to explicitly ask.
