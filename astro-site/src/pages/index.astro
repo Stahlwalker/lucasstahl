@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
 import { Image } from 'astro:assets';
 import seoData from '../data/seo-results.json';
 import webflowLight from '../assets/images/light/Webflow_light.png';
@@ -26,6 +27,7 @@ function getStrokeDashoffset(score: number): number {
 <Layout
 	title="Luke Stahl | Marketer & Developer"
 	canonicalUrl="https://lukestahl.io"
+	loadFontAwesome={false}
 >
 	<header class="hero-section">
 		<div class="hero-container">
@@ -52,7 +54,7 @@ function getStrokeDashoffset(score: number): number {
 				<div class="hero-buttons">
 					<form action="/assets/Luke_Stahl_Resume_2026.pdf" download style="display: inline;">
 						<button type="submit" class="btn-modern btn-primary-modern" id="viewResumeBtn">
-							<i class="fa-solid fa-file-lines"></i>
+							<Icon name="file-lines" />
 							View Resume
 						</button>
 					</form>
@@ -60,14 +62,14 @@ function getStrokeDashoffset(score: number): number {
 					   target="_blank"
 					   class="btn-modern btn-secondary-modern"
 					   id="portfolioBtn">
-						<i class="fa-solid fa-briefcase"></i>
+						<Icon name="briefcase" />
 						Portfolio
 					</a>
 				</div>
 
 				<div class="scroll-indicator" id="scrollIndicator">
 					<span>Scroll to explore</span>
-					<i class="fa-solid fa-chevron-down"></i>
+					<Icon name="chevron-down" />
 				</div>
 			</div>
 		</div>
@@ -157,7 +159,7 @@ function getStrokeDashoffset(score: number): number {
 			</p>
 
 			<a href="https://github.com/Stahlwalker/developer-marketing" target="_blank" rel="noopener noreferrer" class="claude-callout-link">
-				View on GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i>
+				View on GitHub <Icon name="arrow-up-right-from-square" />
 			</a>
 
 			<!-- Claude Logo with Ripple Effect -->
@@ -190,19 +192,18 @@ function getStrokeDashoffset(score: number): number {
 				<aside class="filter-sidebar" id="filterSidebar">
 					<h3 class="filter-title">Filter by Type</h3>
 					<button class="filter-btn active" data-filter="all">
-						<i class="fa-solid fa-grid-2"></i>
 						All Content
 					</button>
 					<button class="filter-btn" data-filter="article">
-						<i class="fa-solid fa-file-lines"></i>
+						<Icon name="file-lines" />
 						Articles
 					</button>
 					<button class="filter-btn" data-filter="project">
-						<i class="fa-solid fa-code"></i>
+						<Icon name="code" />
 						Projects
 					</button>
 					<button class="filter-btn" data-filter="talk">
-						<i class="fa-solid fa-video"></i>
+						<Icon name="video" />
 						Talks
 					</button>
 				</aside>
@@ -232,7 +233,7 @@ function getStrokeDashoffset(score: number): number {
 								<span class="tag">MCP</span>
 							</div>
 							<span class="feed-link">
-								Read Article <i class="fa-solid fa-arrow-right"></i>
+								Read Article <Icon name="arrow-right" />
 							</span>
 						</div>
 					</div>
@@ -263,7 +264,7 @@ function getStrokeDashoffset(score: number): number {
 								<span class="tag">Webflow</span>
 							</div>
 							<span class="feed-link">
-								Read Article <i class="fa-solid fa-arrow-up-right-from-square"></i>
+								Read Article <Icon name="arrow-up-right-from-square" />
 							</span>
 						</div>
 					</div>
@@ -296,10 +297,10 @@ function getStrokeDashoffset(score: number): number {
 							</div>
 							<div class="feed-actions">
 								<a href="https://marketing-builder-ui.onrender.com/" target="_blank" rel="noopener noreferrer" class="feed-link">
-									View Demo <i class="fa-solid fa-arrow-up-right-from-square"></i>
+									View Demo <Icon name="arrow-up-right-from-square" />
 								</a>
 								<a href="https://github.com/Stahlwalker/newsletter-builder" target="_blank" rel="noopener noreferrer" class="feed-link-secondary">
-									GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i>
+									GitHub <Icon name="arrow-up-right-from-square" />
 								</a>
 							</div>
 						</div>
@@ -322,7 +323,7 @@ function getStrokeDashoffset(score: number): number {
 						</div>
 						<div class="feed-main">
 							<h3 class="feed-title">
-								<i class="fa-solid fa-video"></i>
+								<Icon name="video" />
 								Market Radar: Competitive Intelligence Tool
 							</h3>
 							<p class="feed-description">
@@ -336,10 +337,10 @@ function getStrokeDashoffset(score: number): number {
 							</div>
 							<div class="feed-actions">
 								<a href="https://youtu.be/HRnwy6G_gNA?si=dHzKuJ8YgOYvWyjR" target="_blank" rel="noopener noreferrer" class="feed-link">
-									Watch Video <i class="fa-solid fa-arrow-up-right-from-square"></i>
+									Watch Video <Icon name="arrow-up-right-from-square" />
 								</a>
 								<a href="https://lukes-competitive-web-scraper.webflow.io/website-scraper" target="_blank" rel="noopener noreferrer" class="feed-link-secondary">
-									Try the app <i class="fa-solid fa-arrow-up-right-from-square"></i>
+									Try the app <Icon name="arrow-up-right-from-square" />
 								</a>
 							</div>
 						</div>
@@ -371,7 +372,7 @@ function getStrokeDashoffset(score: number): number {
 								<span class="tag">Tailwind CSS</span>
 							</div>
 							<span class="feed-link">
-								View Project <i class="fa-solid fa-arrow-up-right-from-square"></i>
+								View Project <Icon name="arrow-up-right-from-square" />
 							</span>
 						</div>
 					</div>
@@ -402,7 +403,7 @@ function getStrokeDashoffset(score: number): number {
 								<span class="tag">JavaScript</span>
 							</div>
 							<span class="feed-link">
-								View Project <i class="fa-solid fa-arrow-up-right-from-square"></i>
+								View Project <Icon name="arrow-up-right-from-square" />
 							</span>
 						</div>
 					</div>
@@ -434,7 +435,7 @@ function getStrokeDashoffset(score: number): number {
 								<span class="tag">Tailwind CSS</span>
 							</div>
 							<span class="feed-link">
-								View Project <i class="fa-solid fa-arrow-up-right-from-square"></i>
+								View Project <Icon name="arrow-up-right-from-square" />
 							</span>
 						</div>
 					</div>
@@ -465,7 +466,7 @@ function getStrokeDashoffset(score: number): number {
 									<span class="tag">DevOps</span>
 								</div>
 								<span class="feed-link">
-									Read Article <i class="fa-solid fa-arrow-up-right-from-square"></i>
+									Read Article <Icon name="arrow-up-right-from-square" />
 								</span>
 							</div>
 						</div>
@@ -487,7 +488,7 @@ function getStrokeDashoffset(score: number): number {
 						</div>
 						<div class="feed-main">
 							<h3 class="feed-title">
-								<i class="fa-solid fa-video"></i>
+								<Icon name="video" />
 								Webflow Cloud for Full-Stack Web Apps
 							</h3>
 							<p class="feed-description">
@@ -499,7 +500,7 @@ function getStrokeDashoffset(score: number): number {
 								<span class="tag">Web-apps</span>
 							</div>
 							<span class="feed-link">
-								Watch Talk <i class="fa-solid fa-arrow-up-right-from-square"></i>
+								Watch Talk <Icon name="arrow-up-right-from-square" />
 							</span>
 						</div>
 					</div>
@@ -530,7 +531,7 @@ function getStrokeDashoffset(score: number): number {
 								<span class="tag">Development</span>
 							</div>
 							<span class="feed-link">
-								Read Article <i class="fa-solid fa-arrow-up-right-from-square"></i>
+								Read Article <Icon name="arrow-up-right-from-square" />
 							</span>
 						</div>
 					</div>
@@ -562,7 +563,7 @@ function getStrokeDashoffset(score: number): number {
 								<span class="tag">Tailwind CSS</span>
 							</div>
 							<span class="feed-link">
-								View Project <i class="fa-solid fa-arrow-up-right-from-square"></i>
+								View Project <Icon name="arrow-up-right-from-square" />
 							</span>
 						</div>
 					</div>
@@ -593,7 +594,7 @@ function getStrokeDashoffset(score: number): number {
 								<span class="tag">Contentful</span>
 							</div>
 							<span class="feed-link">
-								View Project <i class="fa-solid fa-arrow-up-right-from-square"></i>
+								View Project <Icon name="arrow-up-right-from-square" />
 							</span>
 						</div>
 					</div>
@@ -616,7 +617,7 @@ function getStrokeDashoffset(score: number): number {
 				<!-- Desktop Scores -->
 				<div class="seo-device-row">
 					<h3 class="seo-device-label">
-						<i class="fa-solid fa-desktop"></i>
+						<Icon name="desktop" />
 						Desktop
 					</h3>
 					<div class="seo-scores-row">
@@ -658,7 +659,7 @@ function getStrokeDashoffset(score: number): number {
 				<!-- Mobile Scores -->
 				<div class="seo-device-row">
 					<h3 class="seo-device-label">
-						<i class="fa-solid fa-mobile-screen-button"></i>
+						<Icon name="mobile-screen-button" />
 						Mobile
 					</h3>
 					<div class="seo-scores-row">
@@ -699,18 +700,18 @@ function getStrokeDashoffset(score: number): number {
 
 				<a href="/seo/" class="seo-widget-cta">
 					View Full Report
-					<i class="fa-solid fa-arrow-right"></i>
+					<Icon name="arrow-right" />
 				</a>
 			</div>
 
 			<!-- GitHub Call-to-Action -->
 			<div class="github-cta">
 				<div class="github-cta-content">
-					<i class="fa-brands fa-github github-icon"></i>
+					<Icon name="github" class="github-icon" />
 					<h3 class="github-cta-title">View all my work on GitHub</h3>
 					<p class="github-cta-description">Explore my open-source contributions, side projects, and code repositories</p>
 					<a href="https://github.com/Stahlwalker" target="_blank" class="btn-modern btn-github">
-						<i class="fa-brands fa-github"></i>
+						<Icon name="github" />
 						Visit GitHub Profile
 					</a>
 				</div>
@@ -720,11 +721,11 @@ function getStrokeDashoffset(score: number): number {
 				<p class="cta-text">Explore the complete collection</p>
 				<div class="cta-buttons">
 					<a href="https://lukestahl.io/builds/" class="btn-modern btn-primary-modern">
-						<i class="fa-solid fa-code"></i>
+						<Icon name="code" />
 						All Projects
 					</a>
 					<a href="https://lukestahl.io/blog/" class="btn-modern btn-secondary-modern">
-						<i class="fa-solid fa-pen"></i>
+						<Icon name="pen" />
 						Read Blogs
 					</a>
 				</div>
@@ -1570,12 +1571,19 @@ function getStrokeDashoffset(score: number): number {
 			color: var(--accent-primary);
 		}
 
-		.filter-btn i {
+		.filter-btn i,
+		.filter-btn :global(.icon-svg) {
 			font-size: 1rem;
 			opacity: 0.8;
 		}
 
-		.filter-btn.active i {
+		.filter-btn :global(.icon-svg svg) {
+			width: 1.25em;
+			height: 1.25em;
+		}
+
+		.filter-btn.active i,
+		.filter-btn.active :global(.icon-svg) {
 			opacity: 1;
 		}
 

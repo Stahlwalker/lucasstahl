@@ -515,6 +515,41 @@ body {
     z-index: 1;
 }
 
+/* Inline SVG icons inside buttons — sized to match Font Awesome visual weight */
+.btn-modern .icon-svg svg {
+    width: 1.5em;
+    height: 1.5em;
+}
+
+/* Inline SVG icons inside text-trailing links (e.g., "View Project →", "Read Article →") */
+.claude-callout-link .icon-svg svg,
+.feed-item-link .icon-svg svg,
+.feed-link .icon-svg svg {
+    width: 1.3em;
+    height: 1.3em;
+}
+
+/* SEO widget device labels (Desktop / Mobile) — match FA <i> sizing + accent color */
+.seo-device-label .icon-svg {
+    color: var(--accent-primary);
+}
+.seo-device-label .icon-svg svg {
+    width: 1.5em;
+    height: 1.5em;
+}
+
+/* SEO widget CTA arrow (View Full Report →) */
+.seo-widget-cta .icon-svg {
+    transition: transform 0.3s ease;
+}
+.seo-widget-cta .icon-svg svg {
+    width: 1.5em;
+    height: 1.5em;
+}
+.seo-widget-cta:hover .icon-svg {
+    transform: translateX(4px);
+}
+
 .btn-modern span {
     z-index: 1;
 }
@@ -537,6 +572,11 @@ body {
 
 .scroll-indicator i {
     font-size: 1.25rem;
+}
+
+.scroll-indicator .icon-svg svg {
+    width: 1.75em;
+    height: 1.75em;
 }
 
 /* Modern Developer Footer */
