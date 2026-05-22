@@ -6,6 +6,28 @@ html {
   background-size: cover; */
 }
 
+/* Self-hosted variable fonts. Two files cover every weight used on the
+   site (Inter 400-700 for body/headings, Fira Code 400-600 for monospace).
+   font-display: swap renders fallback text immediately and swaps once the
+   web font arrives — keeps FCP/LCP unblocked. */
+@font-face {
+  font-family: 'Inter';
+  src: url('/assets/fonts/InterVariable.woff2') format('woff2-variations'),
+       url('/assets/fonts/InterVariable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Fira Code';
+  src: url('/assets/fonts/FiraCode-VF.woff2') format('woff2-variations'),
+       url('/assets/fonts/FiraCode-VF.woff2') format('woff2');
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
   /* width: 100%;
   height: 100%;  */

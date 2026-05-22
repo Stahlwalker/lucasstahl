@@ -181,8 +181,6 @@ const inlinedCss = inlineCriticalCSS
 	</script>
 
 	<!-- Preconnect to external origins for faster resource loading -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="preconnect" href="https://cdnjs.cloudflare.com">
 	<link rel="preconnect" href="https://us-i.posthog.com">
 	{inlineCriticalCSS ? (
@@ -200,8 +198,10 @@ const inlinedCss = inlineCriticalCSS
 		<link rel="stylesheet" type="text/css" href={css}>
 	))}
 
-	<!-- Async load fonts to prevent render blocking -->
-	<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+	<!-- Self-hosted variable fonts. Preload the Inter file because the LCP
+	     element is text styled with Inter — direct preload removes the
+	     CSS-discovers-font chain. @font-face rules live in style.css. -->
+	<link rel="preload" href="/assets/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
 
 	{loadFontAwesome && (
 		<>
@@ -211,11 +211,8 @@ const inlinedCss = inlineCriticalCSS
 		</>
 	)}
 
-	<!-- Noscript fallback for fonts and search -->
+	<!-- Noscript fallback (fonts are self-hosted now, only search.css needs it) -->
 	<noscript>
-		<link href="https://fonts.googleapis.com/css?family=Share+Tech&display=swap" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Gruppo&display=swap" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="/assets/css/search.css">
 	</noscript>
 
