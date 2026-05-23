@@ -44,7 +44,13 @@ if (!entry && !import.meta.env.SSR) {
   console.warn(`[Icon] No SVG found for name "${name}"`);
 }
 
-const svg = entry?.[1] ?? '';
+// Inject `width="1em" height="1em"` directly on the <svg> element so the
+// browser knows the icon size from the HTML alone — without these attrs the
+// SVG would briefly paint at its intrinsic 640×640 viewBox before CSS rules
+// shrink it (the FOUC Luke saw on /seo/). Any per-context CSS override
+// (e.g. `.vitals-card h3 .icon-svg svg { width: 1.55rem }`) still wins.
+const rawSvg = entry?.[1] ?? '';
+const svg = rawSvg.replace('<svg ', '<svg width="1em" height="1em" ');
 ---
 
 <span
