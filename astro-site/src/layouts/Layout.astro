@@ -362,14 +362,6 @@ const inlinedCss = inlineCriticalCSS
 				updateFooterToggle();
 			});
 
-			// Send theme to iframe
-			function sendThemeToIframe(theme) {
-				const iframe = document.querySelector('.assistant-iframe');
-				if (iframe && iframe.contentWindow) {
-					iframe.contentWindow.postMessage({ type: 'theme-change', theme }, '*');
-				}
-			}
-
 			// Apply theme to document
 			function applyTheme() {
 				const displayTheme = getDisplayTheme();
@@ -379,8 +371,10 @@ const inlinedCss = inlineCriticalCSS
 				const backgroundColor = displayTheme === 'dark' ? '#0a0e27' : '#f8fafc';
 				html.style.backgroundColor = backgroundColor;
 
-				// Send theme to iframe
-				sendThemeToIframe(displayTheme);
+				// Broadcast — FooterV2 listens for this to post the theme to
+				// the writing-assistant iframe, and Layout's own listener
+				// further down updates the navbar/footer icon UI.
+				window.dispatchEvent(new CustomEvent('lukestahl:theme-change'));
 			}
 
 			// Toggle theme: dark -> light -> system -> dark
