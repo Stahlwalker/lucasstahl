@@ -113,6 +113,7 @@ import Icon from './Icon.astro';
 	</div>
 	<div class="v2-assistant-iframe-wrapper">
 		<iframe
+			id="assistantIframeV2"
 			src="https://dev-writing-assistant.netlify.app/"
 			class="v2-assistant-iframe"
 			title="Developer Writing Assistant"
@@ -763,10 +764,12 @@ import Icon from './Icon.astro';
 		const iframe      = container ? container.querySelector('.v2-assistant-iframe') : null;
 
 		if (iframe) {
+			const ASSISTANT_ORIGIN = 'https://dev-writing-assistant.netlify.app';
+
 			function postThemeToAssistant() {
 				if (!iframe.contentWindow) return;
 				const theme = document.documentElement.getAttribute('data-theme') || 'dark';
-				iframe.contentWindow.postMessage({ type: 'theme-change', theme }, '*');
+				iframe.contentWindow.postMessage({ type: 'theme-change', theme }, ASSISTANT_ORIGIN);
 			}
 
 			iframe.addEventListener('load', postThemeToAssistant);
@@ -775,6 +778,14 @@ import Icon from './Icon.astro';
 			// sync after the initial load. Without this, manually toggling the
 			// theme leaves the assistant on whatever it was set to at load time.
 			window.addEventListener('lukestahl:theme-change', postThemeToAssistant);
+
+			// The iframe pings on its own load asking for the current theme.
+			// Reply only when the request came from the iframe's origin.
+			window.addEventListener('message', (event) => {
+				if (event.origin !== ASSISTANT_ORIGIN) return;
+				if (event.data?.type !== 'request-theme') return;
+				postThemeToAssistant();
+			});
 		}
 
 		function openAssistant() {
