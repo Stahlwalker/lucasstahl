@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
 ---
 
 <Layout
@@ -9,6 +10,8 @@ import Layout from '../layouts/Layout.astro';
 	ogTitle="Design System - Luke Stahl"
 	ogDescription="Explore the design system behind lukestahl.io including colors, typography, and component examples."
 	additionalCss={["/assets/css/design-system.css"]}
+	loadFontAwesome={false}
+	inlineCriticalCSS={true}
 >
 	<!-- Brand Page Container -->
 	<div class="design-system-container">
@@ -18,7 +21,7 @@ import Layout from '../layouts/Layout.astro';
 			<div class="sidebar-header">
 				<h2 class="sidebar-title">Design System</h2>
 				<button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
-					<i class="fa-solid fa-bars"></i>
+					<Icon name="bars" />
 				</button>
 			</div>
 			<nav class="sidebar-nav">
@@ -57,7 +60,7 @@ import Layout from '../layouts/Layout.astro';
 				</p>
 				<div class="info-card">
 					<h3 class="info-card-title">
-						<i class="fa-solid fa-lightbulb"></i>
+						<Icon name="lightbulb" />
 						Design Philosophy
 					</h3>
 					<ul class="info-list">
@@ -157,7 +160,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#60a5fa</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 					<div class="color-swatch" data-color="#2563eb">
@@ -167,7 +170,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#2563eb</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 					<div class="color-swatch" data-color="#22d3ee">
@@ -177,7 +180,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#22d3ee</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 					<div class="color-swatch" data-color="#0e7490">
@@ -187,7 +190,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#0e7490</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 				</div>
@@ -205,7 +208,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#818cf8</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 					<div class="color-swatch" data-color="#a855f7">
@@ -215,7 +218,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#a855f7</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 					<div class="color-swatch" data-color="#c084fc">
@@ -225,7 +228,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#c084fc</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 					<div class="color-swatch" data-color="#34d399">
@@ -235,7 +238,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#34d399</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 					<div class="color-swatch" data-color="#10b981">
@@ -245,7 +248,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#10b981</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 					<div class="color-swatch" data-color="#60a5fa">
@@ -255,7 +258,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#60a5fa</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 					<div class="color-swatch" data-color="#06b6d4">
@@ -265,7 +268,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#06b6d4</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 					<div class="color-swatch" data-color="#4ecdc4">
@@ -275,7 +278,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#4ecdc4</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 					<div class="color-swatch" data-color="#50e3c2">
@@ -285,7 +288,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#50e3c2</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 					<div class="color-swatch" data-color="#fbbf24">
@@ -295,7 +298,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#fbbf24</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 					<div class="color-swatch" data-color="#ec4899">
@@ -305,7 +308,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#ec4899</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 					<div class="color-swatch" data-color="#f472b6">
@@ -315,7 +318,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#f472b6</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 					<div class="color-swatch" data-color="#fb923c">
@@ -325,7 +328,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#fb923c</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 					<div class="color-swatch" data-color="#ff6b6b">
@@ -335,7 +338,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#ff6b6b</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 				</div>
@@ -350,7 +353,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#0a1128</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 					<div class="color-swatch" data-color="#0f1a35">
@@ -360,7 +363,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#0f1a35</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 					<div class="color-swatch" data-color="#162544">
@@ -370,7 +373,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#162544</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 				</div>
@@ -385,7 +388,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#ffffff</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 					<div class="color-swatch" data-color="#f8fafc">
@@ -395,7 +398,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#f8fafc</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 					<div class="color-swatch" data-color="#f1f5f9">
@@ -405,7 +408,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#f1f5f9</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 				</div>
@@ -420,7 +423,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#e4e4e7</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 					<div class="color-swatch" data-color="#a1a1aa">
@@ -430,7 +433,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#a1a1aa</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 					<div class="color-swatch" data-color="#0f172a">
@@ -440,7 +443,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#0f172a</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 					<div class="color-swatch" data-color="#475569">
@@ -450,7 +453,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#475569</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 				</div>
@@ -465,7 +468,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#c792ea</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 					<div class="color-swatch" data-color="#c3e88d">
@@ -475,7 +478,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#c3e88d</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 					<div class="color-swatch" data-color="#82aaff">
@@ -485,7 +488,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#82aaff</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 					<div class="color-swatch" data-color="#697098">
@@ -495,7 +498,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#697098</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 				</div>
@@ -510,7 +513,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#9333ea</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 					<div class="color-swatch" data-color="#16a34a">
@@ -520,7 +523,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#16a34a</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 					<div class="color-swatch" data-color="#0284c7">
@@ -530,7 +533,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#0284c7</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 					<div class="color-swatch" data-color="#64748b">
@@ -540,7 +543,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#64748b</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 				</div>
@@ -557,7 +560,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#2563eb</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 					<div class="color-swatch" data-color="#4f46e5">
@@ -567,7 +570,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#4f46e5</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 					<div class="color-swatch" data-color="#7c3aed">
@@ -577,7 +580,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#7c3aed</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 					<div class="color-swatch" data-color="#059669">
@@ -587,7 +590,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#059669</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 					<div class="color-swatch" data-color="#d97706">
@@ -597,7 +600,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#d97706</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 					<div class="color-swatch" data-color="#c2410c">
@@ -607,7 +610,7 @@ import Layout from '../layouts/Layout.astro';
 							<code class="color-hex">#c2410c</code>
 						</div>
 						<button class="copy-button" aria-label="Copy color code">
-							<i class="fa-solid fa-copy"></i>
+							<Icon name="copy" />
 						</button>
 					</div>
 				</div>
@@ -685,64 +688,64 @@ import Layout from '../layouts/Layout.astro';
 			<section id="icons" class="design-system-section">
 				<h2 class="section-title">Icons</h2>
 				<p class="section-description">
-					<a href="https://fontawesome.com" target="_blank" rel="noopener noreferrer" class="design-system-link">Font Awesome 6</a> provides the icon set used throughout the site. Icons are used for visual hierarchy and quick recognition.
+					<a href="https://fontawesome.com" target="_blank" rel="noopener noreferrer" class="design-system-link">Font Awesome 6</a> sources the icon set. Icons are used for visual hierarchy and quick recognition.
 				</p>
 
 				<h3 class="subsection-title">Common Icons</h3>
 				<div class="icon-grid">
 					<div class="icon-item">
-						<i class="fa-solid fa-code icon-demo"></i>
-						<span class="icon-name">fa-code</span>
+						<Icon name="code" class="icon-demo" />
+						<span class="icon-name">code</span>
 					</div>
 					<div class="icon-item">
-						<i class="fa-solid fa-pen-nib icon-demo"></i>
-						<span class="icon-name">fa-pen-nib</span>
+						<Icon name="pen-nib" class="icon-demo" />
+						<span class="icon-name">pen-nib</span>
 					</div>
 					<div class="icon-item">
-						<i class="fa-solid fa-bullhorn icon-demo"></i>
-						<span class="icon-name">fa-bullhorn</span>
+						<Icon name="bullhorn" class="icon-demo" />
+						<span class="icon-name">bullhorn</span>
 					</div>
 					<div class="icon-item">
-						<i class="fa-solid fa-chart-line icon-demo"></i>
-						<span class="icon-name">fa-chart-line</span>
+						<Icon name="chart-line" class="icon-demo" />
+						<span class="icon-name">chart-line</span>
 					</div>
 					<div class="icon-item">
-						<i class="fa-solid fa-arrow-right icon-demo"></i>
-						<span class="icon-name">fa-arrow-right</span>
+						<Icon name="arrow-right" class="icon-demo" />
+						<span class="icon-name">arrow-right</span>
 					</div>
 					<div class="icon-item">
-						<i class="fa-solid fa-arrow-up-right-from-square icon-demo"></i>
-						<span class="icon-name">fa-arrow-up-right-from-square</span>
+						<Icon name="arrow-up-right-from-square" class="icon-demo" />
+						<span class="icon-name">arrow-up-right-from-square</span>
 					</div>
 					<div class="icon-item">
-						<i class="fa-solid fa-circle-check icon-demo"></i>
-						<span class="icon-name">fa-circle-check</span>
+						<Icon name="circle-check" class="icon-demo" />
+						<span class="icon-name">circle-check</span>
 					</div>
 					<div class="icon-item">
-						<i class="fa-solid fa-moon icon-demo"></i>
-						<span class="icon-name">fa-moon</span>
+						<Icon name="moon" class="icon-demo" />
+						<span class="icon-name">moon</span>
 					</div>
 					<div class="icon-item">
-						<i class="fa-solid fa-sun icon-demo"></i>
-						<span class="icon-name">fa-sun</span>
+						<Icon name="sun" class="icon-demo" />
+						<span class="icon-name">sun</span>
 					</div>
 					<div class="icon-item">
-						<i class="fa-solid fa-display icon-demo"></i>
-						<span class="icon-name">fa-display</span>
+						<Icon name="display" class="icon-demo" />
+						<span class="icon-name">display</span>
 					</div>
 					<div class="icon-item">
-						<i class="fa-solid fa-magnifying-glass icon-demo"></i>
-						<span class="icon-name">fa-magnifying-glass</span>
+						<Icon name="magnifying-glass" class="icon-demo" />
+						<span class="icon-name">magnifying-glass</span>
 					</div>
 					<div class="icon-item">
-						<i class="fa-solid fa-bars icon-demo"></i>
-						<span class="icon-name">fa-bars</span>
+						<Icon name="bars" class="icon-demo" />
+						<span class="icon-name">bars</span>
 					</div>
 				</div>
 
 				<div class="info-card">
 					<h4 class="info-card-title">
-						<i class="fa-solid fa-circle-info"></i>
+						<Icon name="circle-info" />
 						Icon Guidelines
 					</h4>
 					<ul class="info-list">
@@ -750,6 +753,7 @@ import Layout from '../layouts/Layout.astro';
 						<li>Maintain consistent sizing (1rem for inline, 1.5rem for standalone)</li>
 						<li>Apply accent colors for interactive or highlighted icons</li>
 						<li>Ensure sufficient contrast against backgrounds</li>
+						<li>Inline SVGs from <code>/src/icons/</code> via the <code>&lt;Icon&gt;</code> component — no CDN fetch, no FOUC</li>
 					</ul>
 				</div>
 			</section>
@@ -833,7 +837,7 @@ gap: 1.25rem;             /* 20px - moderate spacing */</code>
 						<span class="comment-slash">//</span> loadMore()
 					</button>
 					<a href="#" class="feed-link">
-						Feed Link Button <i class="fa-solid fa-arrow-up-right-from-square"></i>
+						Feed Link Button <Icon name="arrow-up-right-from-square" />
 					</a>
 					<a href="#" class="inline-link-btn">
 						Inline Link Button
@@ -868,7 +872,7 @@ gap: 1.25rem;             /* 20px - moderate spacing */</code>
 					<span class="feed-type type-project">Project</span>
 					<span class="feed-type type-talk">Talk</span>
 					<div class="freelance-badge">
-						<i class="fa-solid fa-circle-check"></i>
+						<Icon name="circle-check" />
 						<span>Available for Projects</span>
 					</div>
 				</div>
@@ -885,7 +889,7 @@ gap: 1.25rem;             /* 20px - moderate spacing */</code>
 				<h3 class="subsection-title">Links</h3>
 				<div class="component-demo">
 					<p>
-						Standard <a href="#" class="design-system-link">inline link</a> with hover underline. External link with icon <a href="#" class="design-system-link" target="_blank">opens in new tab <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+						Standard <a href="#" class="design-system-link">inline link</a> with hover underline. External link with icon <a href="#" class="design-system-link" target="_blank">opens in new tab <Icon name="arrow-up-right-from-square" /></a>
 					</p>
 				</div>
 			</section>
@@ -899,7 +903,7 @@ gap: 1.25rem;             /* 20px - moderate spacing */</code>
 
 				<div class="info-card">
 					<h3 class="info-card-title">
-						<i class="fa-solid fa-code"></i>
+						<Icon name="code" />
 						Spec
 					</h3>
 					<ul class="info-list">
@@ -949,6 +953,10 @@ gap: 1.25rem;             /* 20px - moderate spacing */</code>
 
 		</main>
 	</div>
+
+	<!-- SVG sources for copy-button swap (JS reads innerHTML) -->
+	<span hidden id="svg-icon-copy"><Icon name="copy" /></span>
+	<span hidden id="svg-icon-check"><Icon name="check" /></span>
 </Layout>
 
 <script>
@@ -964,14 +972,14 @@ gap: 1.25rem;             /* 20px - moderate spacing */</code>
 				try {
 					await navigator.clipboard.writeText(colorCode);
 
-					// Show checkmark feedback
-					const icon = button.querySelector('i');
-					const originalClass = icon.className;
-					icon.className = 'fa-solid fa-check';
+					// Swap copy SVG for check via hidden source spans
+					const wrapper = button.querySelector('.icon-svg');
+					const copySrc = document.getElementById('svg-icon-copy');
+					const checkSrc = document.getElementById('svg-icon-check');
+					if (wrapper && checkSrc) wrapper.innerHTML = checkSrc.innerHTML;
 
-					// Reset after 2 seconds
 					setTimeout(() => {
-						icon.className = originalClass;
+						if (wrapper && copySrc) wrapper.innerHTML = copySrc.innerHTML;
 					}, 2000);
 				} catch (err) {
 					console.error('Failed to copy:', err);
