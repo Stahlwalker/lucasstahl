@@ -54,12 +54,10 @@ This site has migrated off Font Awesome. **New pages must not load FA**, and any
 
 ## Pages still on Font Awesome
 
-As of 2026-05-22, these indexed pages still load FA and should be migrated when touched:
+As of 2026-05-23, every indexed page has been migrated. The only remaining FA usage lives in non-shipping files:
 
-- `/design-system/` (62 icons — biggest perf hit)
-- `/status/` (10)
-- `/seo/` (5)
-- `/handbook/` (2)
-- `/404/` (1)
+- `/sandbox/` and `/home-test/` — both `noindex`, won't affect SEO scores
+- `components/Footer.astro` — legacy component; only `FooterV2.astro` actually renders, so this file is dead code and can be deleted alongside the FA usage
+- `components/Search.astro.bak` — backup file, safe to delete
 
-The `noindex` test pages (`/sandbox/`, `/home-test/`) and the unused `components/Footer.astro` (legacy — `FooterV2.astro` is what renders) don't affect SEO and can stay on FA or be cleaned up incidentally.
+No active user-facing page loads the Font Awesome stylesheet anymore.
