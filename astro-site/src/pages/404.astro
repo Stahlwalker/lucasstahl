@@ -1,11 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
 ---
 
 <Layout
 	title="404 - Luke Stahl"
 	description="Page not found"
 	canonicalUrl="https://lukestahl.io/404"
+	loadFontAwesome={false}
+	inlineCriticalCSS={true}
 >
 	<div class="error-page">
 		<!-- Animated Kryptonian grid -->
@@ -21,7 +24,7 @@ import Layout from '../layouts/Layout.astro';
 			</div>
 
 			<a href="/" class="error-button">
-				<i class="fa-solid fa-arrow-left"></i>
+				<Icon name="arrow-left" />
 				Back to the right universe
 			</a>
 		</div>
@@ -219,7 +222,15 @@ import Layout from '../layouts/Layout.astro';
 		transition: transform 0.2s ease;
 	}
 
-	.error-button:hover i {
+	.error-button :global(.icon-svg svg) {
+		width: 0.95rem;
+		height: 0.95rem;
+		fill: #00d4ff;
+		transition: transform 0.2s ease;
+	}
+
+	.error-button:hover i,
+	.error-button:hover :global(.icon-svg svg) {
 		transform: translateX(-2px);
 	}
 
