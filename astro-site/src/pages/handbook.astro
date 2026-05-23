@@ -763,17 +763,19 @@ const sections = await Promise.all(sectionChunks.map(async (chunk) => {
 		color: #15803d;
 	}
 
-	/* Link styling */
-	.handbook-section a {
+	/* Link styling — markdown-rendered <a> needs :global() to escape scope */
+	.handbook-section :global(a) {
+		color: #f472b6;
+		text-decoration: underline;
 		transition: opacity 0.2s ease;
 	}
 
-	.handbook-section a:hover {
+	.handbook-section :global(a:hover) {
 		opacity: 0.8;
 	}
 
-	:global([data-theme="light"]) .handbook-section a {
-		color: #2563eb !important;
+	:global([data-theme="light"] .handbook-section a) {
+		color: #be185d !important;
 	}
 </style>
 
