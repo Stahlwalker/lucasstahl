@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
 import { getEntry } from 'astro:content';
 import { Marked } from 'marked';
 
@@ -35,6 +36,8 @@ const sections = await Promise.all(sectionChunks.map(async (chunk) => {
 	ogDescription="A comprehensive guide to developer marketing covering strategy, messaging, content creation, and metrics that matter."
 	canonicalUrl="https://lukestahl.io/handbook/"
 	hideHandbookButton={true}
+	loadFontAwesome={false}
+	inlineCriticalCSS={true}
 >
 	<link slot="head" rel="alternate" type="text/markdown" href="/handbook.md" title="Markdown version" />
 
@@ -61,8 +64,10 @@ const sections = await Promise.all(sectionChunks.map(async (chunk) => {
 						{i === 0 && (
 							<div class="copy-button-wrapper">
 								<button class="copy-all-sections-btn" id="copyAllBtn" title="Copy Goals through Metrics sections">
-									<i class="fa-regular fa-copy"></i>
+									<Icon name="copy" />
 								</button>
+								<span hidden id="svg-icon-copy"><Icon name="copy" /></span>
+								<span hidden id="svg-icon-check"><Icon name="check" /></span>
 							</div>
 						)}
 						<h2>{s.title}</h2>
@@ -250,6 +255,12 @@ const sections = await Promise.all(sectionChunks.map(async (chunk) => {
 		background: rgba(195, 232, 141, 0.1);
 		border-color: #c3e88d;
 		color: #c3e88d;
+	}
+
+	.copy-all-sections-btn :global(.icon-svg svg) {
+		width: 1.15rem;
+		height: 1.15rem;
+		fill: currentColor;
 	}
 
 	.handbook-section h2 {
@@ -823,14 +834,14 @@ const sections = await Promise.all(sectionChunks.map(async (chunk) => {
 			try {
 				await navigator.clipboard.writeText(allContent);
 
-				// Visual feedback
-				const icon = copyAllBtn.querySelector('i');
-				const originalClass = icon.className;
-				icon.className = 'fa-solid fa-check';
+				// Visual feedback — swap SVG via hidden source spans
+				const copySrc = document.getElementById('svg-icon-copy');
+				const checkSrc = document.getElementById('svg-icon-check');
+				if (checkSrc) copyAllBtn.innerHTML = checkSrc.innerHTML;
 				copyAllBtn.classList.add('copied');
 
 				setTimeout(() => {
-					icon.className = originalClass;
+					if (copySrc) copyAllBtn.innerHTML = copySrc.innerHTML;
 					copyAllBtn.classList.remove('copied');
 				}, 2000);
 			} catch (err) {

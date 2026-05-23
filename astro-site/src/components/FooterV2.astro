@@ -763,10 +763,18 @@ import Icon from './Icon.astro';
 		const iframe      = container ? container.querySelector('.v2-assistant-iframe') : null;
 
 		if (iframe) {
-			iframe.addEventListener('load', function () {
+			function postThemeToAssistant() {
+				if (!iframe.contentWindow) return;
 				const theme = document.documentElement.getAttribute('data-theme') || 'dark';
 				iframe.contentWindow.postMessage({ type: 'theme-change', theme }, '*');
-			});
+			}
+
+			iframe.addEventListener('load', postThemeToAssistant);
+
+			// Re-post whenever the parent's theme changes so the iframe stays in
+			// sync after the initial load. Without this, manually toggling the
+			// theme leaves the assistant on whatever it was set to at load time.
+			window.addEventListener('lukestahl:theme-change', postThemeToAssistant);
 		}
 
 		function openAssistant() {
