@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
 ---
 
 <Layout
@@ -9,6 +10,8 @@ import Layout from '../layouts/Layout.astro';
 	ogTitle="Status - Luke Stahl"
 	ogDescription="Real-time status of developer marketing systems and operations"
 	additionalCss={["/assets/css/status.css"]}
+	loadFontAwesome={false}
+	inlineCriticalCSS={true}
 >
 	<!-- Status Page -->
 	<section class="status-hero">
@@ -48,7 +51,7 @@ import Layout from '../layouts/Layout.astro';
 				<div class="system-item" data-status="operational">
 					<div class="system-header">
 						<div class="system-name">
-							<i class="fa-solid fa-hammer system-icon"></i>
+							<Icon name="hammer" class="system-icon" />
 							<span>Build System</span>
 						</div>
 						<div class="system-dots"></div>
@@ -61,7 +64,7 @@ import Layout from '../layouts/Layout.astro';
 				<div class="system-item" data-status="operational">
 					<div class="system-header">
 						<div class="system-name">
-							<i class="fa-solid fa-pen-fancy system-icon"></i>
+							<Icon name="pen-fancy" class="system-icon" />
 							<span>Writing Engine</span>
 						</div>
 						<div class="system-dots"></div>
@@ -74,7 +77,7 @@ import Layout from '../layouts/Layout.astro';
 				<div class="system-item" data-status="operational">
 					<div class="system-header">
 						<div class="system-name">
-							<i class="fa-solid fa-boxes-stacked system-icon"></i>
+							<Icon name="boxes-stacked" class="system-icon" />
 							<span>Content Pipeline</span>
 						</div>
 						<div class="system-dots"></div>
@@ -87,7 +90,7 @@ import Layout from '../layouts/Layout.astro';
 				<div class="system-item" data-status="operational">
 					<div class="system-header">
 						<div class="system-name">
-							<i class="fa-solid fa-flask system-icon"></i>
+							<Icon name="flask" class="system-icon" />
 							<span>DX Research Stream</span>
 						</div>
 						<div class="system-dots"></div>
@@ -100,7 +103,7 @@ import Layout from '../layouts/Layout.astro';
 				<div class="system-item" data-status="updating">
 					<div class="system-header">
 						<div class="system-name">
-							<i class="fa-solid fa-chess system-icon"></i>
+							<Icon name="chess" class="system-icon" />
 							<span>Strategy Layer</span>
 						</div>
 						<div class="system-dots"></div>
@@ -113,7 +116,7 @@ import Layout from '../layouts/Layout.astro';
 				<div class="system-item" data-status="operational">
 					<div class="system-header">
 						<div class="system-name">
-							<i class="fa-solid fa-users system-icon"></i>
+							<Icon name="users" class="system-icon" />
 							<span>Community Monitoring</span>
 						</div>
 						<div class="system-dots"></div>
@@ -126,7 +129,7 @@ import Layout from '../layouts/Layout.astro';
 				<div class="system-item" data-status="operational">
 					<div class="system-header">
 						<div class="system-name">
-							<i class="fa-solid fa-robot system-icon"></i>
+							<Icon name="robot" class="system-icon" />
 							<span>AI Assistants</span>
 						</div>
 						<div class="system-dots"></div>
@@ -139,7 +142,7 @@ import Layout from '../layouts/Layout.astro';
 				<div class="system-item" data-status="degraded">
 					<div class="system-header">
 						<div class="system-name">
-							<i class="fa-solid fa-mug-hot system-icon"></i>
+							<Icon name="mug-hot" class="system-icon" />
 							<span>Coffee Service</span>
 						</div>
 						<div class="system-dots"></div>
@@ -155,8 +158,25 @@ import Layout from '../layouts/Layout.astro';
 					<!-- Active Incidents -->
 					<div class="incidents-section">
 						<h2 class="status-section-title">Active Incidents</h2>
-						<div class="incident-card no-incidents">
-							<p>No active incidents</p>
+						<div class="incident-card">
+							<div class="incident-header">
+								<div class="incident-status monitoring">Monitoring</div>
+								<div class="incident-date">May 22, 2026</div>
+							</div>
+							<h3 class="incident-title">Friday Deploy Anti-Pattern</h3>
+							<p class="incident-description">Shipped to production on a Friday afternoon — the classic no-no. Build is green, no rollback yet, but vibes are cautious. Weekend monitoring engaged.</p>
+							<div class="incident-timeline">
+								<div class="timeline-item">
+									<div class="timeline-time">4:47 PM CST</div>
+									<div class="timeline-status">Monitoring</div>
+									<div class="timeline-message">Deploy completed. Watching dashboards over the weekend.</div>
+								</div>
+								<div class="timeline-item">
+									<div class="timeline-time">4:12 PM CST</div>
+									<div class="timeline-status">Identified</div>
+									<div class="timeline-message">Pushed to prod with two hours of daylight left. Brave. Stupid. Both.</div>
+								</div>
+							</div>
 						</div>
 					</div>
 
@@ -215,13 +235,13 @@ import Layout from '../layouts/Layout.astro';
 						<a href="/seo/" class="performance-link">
 							<div class="performance-card">
 								<div class="performance-icon">
-									<i class="fa-solid fa-gauge-high"></i>
+									<Icon name="gauge-high" />
 								</div>
 								<div class="performance-info">
 									<h4>SEO Dashboard</h4>
 									<p>View real-time PageSpeed Insights, Core Web Vitals, and Lighthouse scores</p>
 								</div>
-								<i class="fa-solid fa-arrow-right performance-arrow"></i>
+								<Icon name="arrow-right" class="performance-arrow" />
 							</div>
 						</a>
 					</div>
