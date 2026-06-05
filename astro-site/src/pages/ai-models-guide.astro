@@ -20,7 +20,7 @@ const quickReference = [
 	{ model: "Kimi K2.6", company: "Moonshot AI", bestFor: "Agentic open-source", differentiator: "Released Apr 20 — 1T MoE, 32B active; Agent Swarm scales to 300 sub-agents; 58.6 SWE-Bench Pro (top open model); Modified MIT", color: "#ff6b6b" },
 	{ model: "GLM-5.1", company: "Zhipu AI", bestFor: "Open frontier", differentiator: "Updated Apr 6, 2026; 744B MoE; MIT license; GPQA 0.9; trained on zero NVIDIA GPUs", color: "#4ecdc4" },
 	{ model: "GPT-5.4-Cyber", company: "OpenAI", bestFor: "Defensive cybersecurity", differentiator: "TAC-gated fine-tune; lowered security refusals; binary reverse engineering; partners: CrowdStrike, Cloudflare, Palo Alto, Cisco", color: "#ef4444" },
-	{ model: "Claude Mythos Preview", company: "Anthropic", bestFor: "Security research", differentiator: "Project Glasswing invite-only; GPQA 0.9; ~12 enterprise partners; $2,500/1M tokens to gate access", color: "#a855f7" },
+	{ model: "Claude Mythos Preview", company: "Anthropic", bestFor: "Security research", differentiator: "Project Glasswing expanded June 2, 2026 to 150+ organizations across 15+ countries for critical-infrastructure cybersecurity; GPQA 0.9; high-cost pricing retained to gate access", color: "#a855f7" },
 	{ model: "Sonar", company: "Perplexity", bestFor: "Search & research", differentiator: "Search-grounded, citation-first answers at 1,200 tok/s on Cerebras inference", color: "#22d3ee" },
 	{ model: "Composer 2.5", company: "Cursor", bestFor: "AI-native coding", differentiator: "May 18, 2026 — built on Kimi K2.5 with Cursor's post-training; 79.8% SWE-bench Multilingual, 69.3% Terminal-Bench 2.0; matches Opus 4.7 at ~10× cheaper ($0.50/$2.50 per M tokens)", color: "#50e3c2" },
 	{ model: "SubQ", company: "Subquadratic", bestFor: "Architecturally novel", differentiator: "First commercial subquadratic LLM (May 5, 2026) — Subquadratic Sparse Attention (SSA) scales ~linearly; 1M token production context (12M in research config); Claude Opus-level coding at ~1/20th the compute cost", color: "#94a3b8" },
@@ -60,7 +60,7 @@ const frontierModels = [
 			"Haiku 4.5: smallest tier — hits ~90% of Sonnet 4.5's agentic coding performance at a fraction of the cost; ideal for high-volume tasks",
 			"Leads human-preference leaderboards; strong ARC-AGI-2 scores",
 			"Agentic capabilities: autonomous multi-step coding and long-horizon tasks",
-			"Claude Mythos Preview (Apr 6–7, 2026): invite-only cybersecurity research model via Project Glasswing — limited to ~12 enterprise partners. Anthropic has teased a wider Mythos-class release in the coming weeks"
+			"Claude Mythos Preview (Apr 6–7, 2026): cybersecurity research model via Project Glasswing — expanded June 2, 2026 from the initial ~12 partners to 150+ organizations across 15+ countries for critical-infrastructure use cases"
 		],
 		bestFor: "Software development, agentic workflows, analysis, writing"
 	},
@@ -369,12 +369,11 @@ const specializedModels = [
 		color: "#a855f7",
 		tagline: "Invite-only cybersecurity research model via Project Glasswing — Anthropic's counterpart to GPT-5.4-Cyber.",
 		bullets: [
-			"Released April 6–7, 2026 via Project Glasswing — not publicly available",
+			"Released April 6–7, 2026 via Project Glasswing — still not generally available, but access tier has widened materially",
 			"GPQA 0.9; 93.9% SWE-bench Verified; 97.6% USAMO 2026",
-			"Limited to ~12 enterprise partners: AWS, Apple, Cisco, CrowdStrike, Google, JPMorgan, Microsoft, NVIDIA, and others",
-			"Priced at ~$2,500/1M tokens to gate general use and prevent misuse",
-			"Cybersecurity-focused capabilities not available in standard Claude models",
-			"Anthropic has publicly teased bringing Mythos-class models to all customers in the coming weeks"
+			"June 2, 2026: Anthropic expanded access from the initial ~12 partners (AWS, Apple, Cisco, CrowdStrike, Google, JPMorgan, Microsoft, NVIDIA, others) to 150+ organizations across 15+ countries, targeted at critical-infrastructure cybersecurity",
+			"High-cost pricing retained to gate general use and prevent misuse",
+			"Cybersecurity-focused capabilities not available in standard Claude models"
 		],
 		bestFor: "Invite-only cybersecurity research (Project Glasswing partners only)"
 	}
@@ -489,7 +488,7 @@ const scenarios = [
 			"url": "https://lukestahl.io/"
 		},
 		"datePublished": "2026-03-10",
-		"dateModified": "2026-05-29",
+		"dateModified": "2026-06-05",
 		"mainEntityOfPage": {
 			"@type": "WebPage",
 			"@id": "https://lukestahl.io/ai-models-guide/"
@@ -518,7 +517,7 @@ const scenarios = [
 			<section class="hero">
 				<h1 class="hero-title">AI Models<br/><span class="hero-title-accent">Guide</span></h1>
 				<p class="hero-subtitle">A quick-reference to the major AI models, who makes them, and what they do best.</p>
-				<div class="hero-badge">Updated May 29, 2026</div>
+				<div class="hero-badge">Updated June 5, 2026</div>
 			</section>
 
 			<!-- Quick Reference -->
@@ -655,7 +654,7 @@ const scenarios = [
 					))}
 				</div>
 				<p class="media-note">
-					<strong>Video generation leaders:</strong> Google Veo 3.1 (native 4K + vertical video), Kling 3.0 (native 4K/60fps), Runway Gen-4.5 (creative/cinematic), and Seedance 2.0 (ByteDance — notable for Identity Lock, which maintains consistent faces across multi-scene video). Sora 2 (OpenAI) remains available via ChatGPT, though the standalone app shut down in March 2026.
+					<strong>Video generation leaders:</strong> Google Veo 3.1 (native 4K + vertical video), Kling 3.0 (native 4K/60fps), Runway Gen-4.5 (creative/cinematic), and Seedance 2.0 (ByteDance — notable for Identity Lock, which maintains consistent faces across multi-scene video). Sora 2 (OpenAI) was deprecated April 26, 2026 with an API sunset on September 24, 2026 — do not build new integrations on it.
 				</p>
 			</section>
 
