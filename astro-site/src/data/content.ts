@@ -353,12 +353,6 @@ export const gems = [
     tags: ["Resources", "Repository"]
   },
   {
-    title: "DevToolJobs",
-    description: "A focused job board for GTM roles at developer tooling companies. Find marketing, sales, and community positions at the intersection of developer tools and go-to-market strategy.",
-    url: "https://devtooljobs.com/",
-    tags: ["Jobs", "Career"]
-  },
-  {
     title: "Developer Marketing Slack Community",
     description: "Active Slack community for developer marketing professionals. Connect with peers, share strategies, and discuss best practices for marketing to developers.",
     url: "https://marketingto.dev/",
