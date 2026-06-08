@@ -94,7 +94,7 @@ Search for recent updates to: GPT-5.x (OpenAI), Claude 4.x (Anthropic), Gemini 3
   console.log("Searching for AI model updates via Claude web search...");
 
   const response = await client.messages.create({
-    model: "claude-opus-4-6",
+    model: "claude-opus-4-7",
     max_tokens: 16000,
     system: systemPrompt,
     messages: [{ role: "user", content: userPrompt }],

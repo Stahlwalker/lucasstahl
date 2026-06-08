@@ -30,8 +30,15 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
-          OUTPUT=$(node .github/scripts/update-ai-models.mjs 2>&1)
-          echo "$OUTPUT"
+          set +e
+          node .github/scripts/update-ai-models.mjs 2>&1 | tee /tmp/script-output.txt
+          EXIT=${PIPESTATUS[0]}
+          set -e
+          OUTPUT=$(cat /tmp/script-output.txt)
+          if [ $EXIT -ne 0 ]; then
+            echo "Script failed with exit code $EXIT"
+            exit $EXIT
+          fi
 
           # Extract status and changelog
           if echo "$OUTPUT" | grep -q "STATUS=updated"; then
