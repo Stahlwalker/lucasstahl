@@ -35,6 +35,7 @@ All blog posts, newsletter editions, and the handbook are available as raw markd
 
 ## Blog Posts
 
+- [Prompt then ship a website](https://lukestahl.io/blog/shipping-a-website/)
 - [PLG for developer companies](https://lukestahl.io/blog/plg-for-developer-companies/)
 - [Building developer tools for agents (not just humans)](https://lukestahl.io/blog/building-dev-tools-for-agents/)
 - [Stop Upgrading Your Model. Fix Your Harness.](https://lukestahl.io/blog/stop-upgrading-your-model-fix-your-harness/)
