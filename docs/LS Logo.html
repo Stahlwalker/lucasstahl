@@ -1,0 +1,489 @@
+<!doctype html>
+<!-- @dsCard group="Brand" name="LS Logo" subtitle="Keyboard keycap marks — teal developer energy" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>LS Logo · Keyboard Keys</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a1128;
+    --bg2:#0f1a35;
+    --bg3:#162544;
+    --text:#e4e4e7;
+    --text2:#a1a1aa;
+    --teal:#22d3ee;
+    --teal-deep:#0e7490;
+    --blue:#60a5fa;
+    --stroke:rgba(255,255,255,.1);
+    --mono:'Fira Code',ui-monospace,monospace;
+    --sans:'Inter',-apple-system,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    padding:40px 48px 64px;
+    min-height:100vh;
+    background-image:
+      linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+    background-size:24px 24px;
+  }
+  .head{max-width:1100px;margin:0 auto 28px}
+  .eyebrow{font-family:var(--mono);color:var(--text2);font-size:12px;letter-spacing:2px;text-transform:uppercase;margin:0 0 10px}
+  h1{font-family:var(--mono);font-size:32px;font-weight:700;margin:0 0 10px;letter-spacing:-.02em;color:var(--text)}
+  h1 .b{color:var(--teal);font-weight:400}
+  .sub{color:var(--text2);font-size:15px;margin:0;max-width:640px;line-height:1.6}
+
+  .bar{max-width:1100px;margin:22px auto 20px;padding:14px 18px;background:var(--bg2);border:1px solid var(--stroke);border-radius:10px;font-family:var(--mono);font-size:12px;color:var(--text2);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+  .bar b{color:var(--text)}
+  .size-toggle{display:flex;gap:6px}
+  .size-toggle button{font-family:var(--mono);font-size:11px;padding:.4rem .7rem;background:var(--bg3);border:1px solid var(--stroke);color:var(--text2);border-radius:5px;cursor:pointer}
+  .size-toggle button.on{color:var(--teal);border-color:rgba(34,211,238,.4);background:rgba(34,211,238,.1)}
+
+  .grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .card{background:var(--bg2);border:1px solid var(--stroke);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+  .stage{padding:36px 28px;display:flex;align-items:center;justify-content:center;min-height:240px;background:var(--bg);background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:20px 20px}
+  .stage.light{background:#f8fafc;background-image:linear-gradient(rgba(0,0,0,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.05) 1px,transparent 1px)}
+  .meta{padding:14px 16px;border-top:1px solid var(--stroke);display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .meta h3{font-family:var(--mono);font-size:13px;margin:0;color:var(--text);font-weight:600}
+  .meta p{font-family:var(--mono);font-size:11px;color:var(--text2);margin:2px 0 0}
+  .dl{font-family:var(--mono);font-size:11px;padding:.45rem .75rem;background:rgba(34,211,238,.12);border:1px solid rgba(34,211,238,.35);color:var(--teal);border-radius:6px;cursor:pointer;white-space:nowrap;transition:all .15s;text-decoration:none;display:inline-block}
+  .dl:hover{background:rgba(34,211,238,.22)}
+  .dl.svg{background:rgba(96,165,250,.12);border-color:rgba(96,165,250,.35);color:var(--blue)}
+  .dl.svg:hover{background:rgba(96,165,250,.22)}
+  .dl-group{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+
+  /* =================================================================
+     KEYCAP BASE — core mechanical-keyboard keycap look
+     ================================================================= */
+
+  /* ---- 1. Dark keycap pair, LS on two keys (teal glyph) ---- */
+  .kp-row{display:flex;gap:10px;align-items:flex-end;perspective:900px}
+  .key{
+    --cap-top:#2a3a5e;
+    --cap-side:#182544;
+    --cap-edge:#0c1424;
+    --glyph:#22d3ee;
+    width:96px;height:96px;
+    position:relative;
+    border-radius:14px;
+    font-family:var(--mono);font-weight:700;
+    transform-style:preserve-3d;
+  }
+  /* side/base */
+  .key::before{
+    content:'';position:absolute;inset:0;border-radius:14px;
+    background:linear-gradient(180deg,var(--cap-side) 0%,var(--cap-edge) 100%);
+    box-shadow:
+      0 10px 0 -2px rgba(0,0,0,.5),
+      0 14px 24px rgba(0,0,0,.45),
+      inset 0 -2px 0 rgba(0,0,0,.4);
+  }
+  /* top plate */
+  .key::after{
+    content:'';position:absolute;left:6px;right:6px;top:4px;bottom:12px;
+    border-radius:10px;
+    background:linear-gradient(180deg,var(--cap-top) 0%,color-mix(in srgb,var(--cap-top) 78%,#000) 100%);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.12),
+      inset 0 -2px 4px rgba(0,0,0,.35);
+  }
+  .key .g{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    color:var(--glyph);font-size:42px;line-height:1;letter-spacing:-.02em;
+    text-shadow:0 0 16px color-mix(in srgb,var(--glyph) 55%,transparent);
+    transform:translateY(-3px);
+    z-index:2;
+  }
+
+  /* ---- 2. Single wide keycap "LS" (spacebar-ish) ---- */
+  .key.wide{width:200px;height:88px;border-radius:12px}
+  .key.wide::before{border-radius:12px}
+  .key.wide::after{left:5px;right:5px;top:4px;bottom:10px;border-radius:9px}
+  .key.wide .g{font-size:40px;letter-spacing:.1em;gap:.15em;transform:translateY(-2px);font-weight:600}
+
+  /* ---- 3. Light keycap (white/cream) ---- */
+  .key.light{
+    --cap-top:#f3f4f6;
+    --cap-side:#cbd5e1;
+    --cap-edge:#94a3b8;
+    --glyph:#0e7490;
+  }
+  .key.light .g{text-shadow:none}
+
+  /* ---- 4. Teal accent keycap (backlit look) ---- */
+  .key.teal{
+    --cap-top:#0a1128;
+    --cap-side:#0a1128;
+    --cap-edge:#020610;
+    --glyph:#22d3ee;
+    box-shadow:0 0 36px rgba(34,211,238,.25);
+  }
+  .key.teal::after{
+    background:
+      radial-gradient(120% 70% at 50% 120%, rgba(34,211,238,.35), transparent 60%),
+      linear-gradient(180deg,#0f1a35 0%,#070c1a 100%);
+    box-shadow:
+      inset 0 1px 0 rgba(34,211,238,.15),
+      inset 0 0 18px rgba(34,211,238,.18),
+      inset 0 -2px 4px rgba(0,0,0,.4);
+  }
+  .key.teal .g{
+    text-shadow:
+      0 0 6px #22d3ee,
+      0 0 18px rgba(34,211,238,.7),
+      0 0 32px rgba(34,211,238,.4);
+  }
+
+  /* ---- 5. Tilted 3D keycap ---- */
+  .key.tilt{transform:rotateX(18deg) rotateZ(-4deg)}
+
+  /* ---- 6. Return-style key ---- */
+  .key.ret{width:160px;height:110px;border-radius:14px}
+  .key.ret::before{border-radius:14px}
+  .key.ret::after{left:6px;right:6px;top:4px;bottom:12px;border-radius:10px}
+  .key.ret .sub-lbl{position:absolute;top:10px;left:14px;font-family:var(--mono);font-size:10px;color:color-mix(in srgb,var(--glyph) 70%,transparent);letter-spacing:1.5px;z-index:2;text-shadow:none}
+  .key.ret .g{justify-content:flex-end;align-items:flex-end;padding:0 16px 18px 0;font-size:46px}
+
+  /* ---- 9. Return-shape key with cmd icon + centered LS ---- */
+  .key.ret .cmd-ic{
+    position:absolute;top:12px;left:14px;z-index:2;
+    color:color-mix(in srgb,var(--glyph) 85%,transparent);
+    text-shadow:none
+  }
+  .key.ret.light .cmd-ic{color:#0e7490}
+  .key.ret.light .g{text-shadow:none}
+  .key.ret .cmd-ic svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8}
+  .key.ret.ctr .g{justify-content:center;align-items:center;padding:0;font-size:46px;transform:translateY(-3px)}
+
+  /* ---- 7. Wide nameplate key ---- */
+  .key.name{width:360px;height:120px;border-radius:16px}
+  .key.name::before{border-radius:16px}
+  .key.name::after{left:6px;right:6px;top:5px;bottom:13px;border-radius:12px}
+  .key.name.light .cmd{color:#0e7490}
+  .key.name.light .g{text-shadow:none}
+  .key.name .cmd{
+    position:absolute;top:16px;left:20px;z-index:2;
+    display:inline-flex;align-items:center;
+    color:color-mix(in srgb,var(--glyph) 85%,transparent);
+    text-shadow:none
+  }
+  .key.name .cmd svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:1.8}
+  .key.name .g{
+    justify-content:center;align-items:center;
+    padding:0;font-size:38px;font-weight:700;
+    letter-spacing:-.01em;text-transform:none;gap:0;
+    font-family:var(--mono);transform:translateY(-2px)
+  }
+
+  /* ---- Utility: row layouts ---- */
+  .row{display:flex;gap:10px;align-items:flex-end}
+
+  /* ---- 7. Tiny row with brackets (code keycaps) ---- */
+  .key.small{width:72px;height:72px;border-radius:11px;font-size:28px}
+  .key.small::before{border-radius:11px}
+  .key.small::after{left:5px;right:5px;top:3px;bottom:9px;border-radius:8px}
+  .key.small .g{font-size:26px;transform:translateY(-2px)}
+
+  /* 8. Stacked "L over S" vertical keycap pair */
+  .col{display:flex;flex-direction:column;gap:8px;align-items:center}
+</style>
+</head>
+<body>
+
+<div class="head">
+  <p class="eyebrow">// keyboard.mark()</p>
+  <h1>&lt; LS · Keyboard keys <span class="b">/&gt;</span></h1>
+  <p class="sub">Six mechanical-keycap "LS" logo marks — developer desk-toy energy, teal as the hero. Click <b style="color:var(--teal)">Download PNG</b> on any card for a transparent-background export.</p>
+</div>
+
+<div class="bar">
+  <div><b>Export size</b> · transparent PNG</div>
+  <div class="size-toggle" id="sizeToggle">
+    <button data-size="512">512</button>
+    <button data-size="1024" class="on">1024</button>
+    <button data-size="2048">2048</button>
+  </div>
+</div>
+
+<div class="grid">
+
+  <!-- 01 · Two keys L + S, dark caps, teal glyph -->
+  <div class="card">
+    <div class="stage" data-mark="01">
+      <div class="kp-row">
+        <div class="key"><span class="g">L</span></div>
+        <div class="key"><span class="g">S</span></div>
+      </div>
+    </div>
+    <div class="meta">
+      <div><h3>01 · Two keys</h3><p>dark cap · teal glyph</p></div>
+      <button class="dl" data-mark="01" data-name="ls-keys-dark">Download PNG</button>
+    </div>
+  </div>
+
+  <!-- 02 · Teal backlit pair -->
+  <div class="card">
+    <div class="stage" data-mark="02">
+      <div class="kp-row">
+        <div class="key teal"><span class="g">L</span></div>
+        <div class="key teal"><span class="g">S</span></div>
+      </div>
+    </div>
+    <div class="meta">
+      <div><h3>02 · Backlit</h3><p>teal glow · night-mode</p></div>
+      <div class="dl-group">
+        <a class="dl svg" href="ls-keys-backlit.svg" download>SVG</a>
+        <button class="dl" data-mark="02" data-name="ls-keys-backlit">PNG</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 · Single wide key "LS" -->
+  <div class="card">
+    <div class="stage" data-mark="03">
+      <div class="key wide"><span class="g">LS</span></div>
+    </div>
+    <div class="meta">
+      <div><h3>03 · Wide key</h3><p>spacebar-style · monogram</p></div>
+      <button class="dl" data-mark="03" data-name="ls-keys-wide">Download PNG</button>
+    </div>
+  </div>
+
+  <!-- 04 · Light keys -->
+  <div class="card">
+    <div class="stage light" data-mark="04">
+      <div class="kp-row">
+        <div class="key light"><span class="g">L</span></div>
+        <div class="key light"><span class="g">S</span></div>
+      </div>
+    </div>
+    <div class="meta">
+      <div><h3>04 · Light caps</h3><p>for light surfaces</p></div>
+      <div class="dl-group">
+        <a class="dl svg" href="ls-keys-light.svg" download>SVG</a>
+        <button class="dl" data-mark="04" data-name="ls-keys-light">PNG</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 · Tilted 3D -->
+  <div class="card">
+    <div class="stage" data-mark="05">
+      <div class="kp-row" style="transform:rotateX(18deg) rotateZ(-4deg)">
+        <div class="key"><span class="g">L</span></div>
+        <div class="key"><span class="g">S</span></div>
+      </div>
+    </div>
+    <div class="meta">
+      <div><h3>05 · Tilted</h3><p>isometric · 3D perspective</p></div>
+      <button class="dl" data-mark="05" data-name="ls-keys-tilted">Download PNG</button>
+    </div>
+  </div>
+
+  <!-- 06 · Return-style key with // sublabel -->
+  <div class="card">
+    <div class="stage" data-mark="06">
+      <div class="key ret teal">
+        <span class="sub-lbl">// enter</span>
+        <span class="g">LS</span>
+      </div>
+    </div>
+    <div class="meta">
+      <div><h3>06 · Return key</h3><p>sub-legend · code comment</p></div>
+      <button class="dl" data-mark="06" data-name="ls-keys-return">Download PNG</button>
+    </div>
+  </div>
+
+  <!-- 07 · Wide nameplate key — command icon + full name -->
+  <div class="card" style="grid-column:span 2">
+    <div class="stage" data-mark="07">
+      <div class="key name teal">
+        <span class="cmd">
+          <svg viewBox="0 0 32 32" aria-hidden="true">
+            <!-- central square -->
+            <rect x="11" y="11" width="10" height="10" rx="0.5" fill="none"/>
+            <!-- four identical loop circles -->
+            <circle cx="7" cy="7" r="4"/>
+            <circle cx="25" cy="7" r="4"/>
+            <circle cx="7" cy="25" r="4"/>
+            <circle cx="25" cy="25" r="4"/>
+            <!-- connectors from each circle into the square corners -->
+            <line x1="11" y1="11" x2="9.83" y2="9.83" stroke-linecap="round"/>
+            <line x1="21" y1="11" x2="22.17" y2="9.83" stroke-linecap="round"/>
+            <line x1="11" y1="21" x2="9.83" y2="22.17" stroke-linecap="round"/>
+            <line x1="21" y1="21" x2="22.17" y2="22.17" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="g">Luke Stahl</span>
+      </div>
+    </div>
+    <div class="meta">
+      <div><h3>07 · Nameplate</h3><p>command icon · full name</p></div>
+      <div class="dl-group">
+        <a class="dl svg" href="ls-nameplate-backlit.svg" download>SVG</a>
+        <button class="dl" data-mark="07" data-name="ls-keys-nameplate">PNG</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 08 · Wide nameplate — light cap -->
+  <div class="card" style="grid-column:span 2">
+    <div class="stage light" data-mark="08">
+      <div class="key name light">
+        <span class="cmd">
+          <svg viewBox="0 0 32 32" aria-hidden="true">
+            <rect x="11" y="11" width="10" height="10" rx="0.5" fill="none"/>
+            <circle cx="7" cy="7" r="4"/>
+            <circle cx="25" cy="7" r="4"/>
+            <circle cx="7" cy="25" r="4"/>
+            <circle cx="25" cy="25" r="4"/>
+            <line x1="11" y1="11" x2="9.83" y2="9.83" stroke-linecap="round"/>
+            <line x1="21" y1="11" x2="22.17" y2="9.83" stroke-linecap="round"/>
+            <line x1="11" y1="21" x2="9.83" y2="22.17" stroke-linecap="round"/>
+            <line x1="21" y1="21" x2="22.17" y2="22.17" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="g">Luke Stahl</span>
+      </div>
+    </div>
+    <div class="meta">
+      <div><h3>08 · Nameplate · light</h3><p>for light surfaces</p></div>
+      <div class="dl-group">
+        <a class="dl svg" href="ls-nameplate-light.svg" download>SVG</a>
+        <button class="dl" data-mark="08" data-name="ls-keys-nameplate-light">PNG</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 09 · Return-shape with cmd icon top-left, LS centered -->
+  <div class="card">
+    <div class="stage" data-mark="09">
+      <div class="key ret ctr teal">
+        <span class="cmd-ic">
+          <svg viewBox="0 0 32 32" aria-hidden="true">
+            <rect x="11" y="11" width="10" height="10" rx="0.5" fill="none"/>
+            <circle cx="7" cy="7" r="4"/>
+            <circle cx="25" cy="7" r="4"/>
+            <circle cx="7" cy="25" r="4"/>
+            <circle cx="25" cy="25" r="4"/>
+            <line x1="11" y1="11" x2="9.83" y2="9.83" stroke-linecap="round"/>
+            <line x1="21" y1="11" x2="22.17" y2="9.83" stroke-linecap="round"/>
+            <line x1="11" y1="21" x2="9.83" y2="22.17" stroke-linecap="round"/>
+            <line x1="21" y1="21" x2="22.17" y2="22.17" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="g">LS</span>
+      </div>
+    </div>
+    <div class="meta">
+      <div><h3>09 · Return · cmd</h3><p>command icon · centered LS</p></div>
+      <div class="dl-group">
+        <a class="dl svg" href="ls-return-cmd-backlit.svg" download>SVG</a>
+        <button class="dl" data-mark="09" data-name="ls-keys-return-cmd">PNG</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10 · Return-shape cmd · light -->
+  <div class="card">
+    <div class="stage light" data-mark="10">
+      <div class="key ret ctr light">
+        <span class="cmd-ic">
+          <svg viewBox="0 0 32 32" aria-hidden="true">
+            <rect x="11" y="11" width="10" height="10" rx="0.5" fill="none"/>
+            <circle cx="7" cy="7" r="4"/>
+            <circle cx="25" cy="7" r="4"/>
+            <circle cx="7" cy="25" r="4"/>
+            <circle cx="25" cy="25" r="4"/>
+            <line x1="11" y1="11" x2="9.83" y2="9.83" stroke-linecap="round"/>
+            <line x1="21" y1="11" x2="22.17" y2="9.83" stroke-linecap="round"/>
+            <line x1="11" y1="21" x2="9.83" y2="22.17" stroke-linecap="round"/>
+            <line x1="21" y1="21" x2="22.17" y2="22.17" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="g">LS</span>
+      </div>
+    </div>
+    <div class="meta">
+      <div><h3>10 · Return · cmd · light</h3><p>command icon · light cap</p></div>
+      <div class="dl-group">
+        <a class="dl svg" href="ls-return-cmd-light.svg" download>SVG</a>
+        <button class="dl" data-mark="10" data-name="ls-keys-return-cmd-light">PNG</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- offscreen render target -->
+<div id="render" style="position:fixed;left:-9999px;top:-9999px;pointer-events:none;background:transparent"></div>
+
+<script src="https://unpkg.com/html-to-image@1.11.13/dist/html-to-image.js"></script>
+<script>
+  let exportSize = 1024;
+  document.querySelectorAll('#sizeToggle button').forEach(b => {
+    b.addEventListener('click', () => {
+      document.querySelectorAll('#sizeToggle button').forEach(x => x.classList.remove('on'));
+      b.classList.add('on');
+      exportSize = parseInt(b.dataset.size, 10);
+    });
+  });
+
+  async function download(markKey, filename) {
+    const sourceStage = document.querySelector(`.stage[data-mark="${markKey}"]`);
+    if (!sourceStage) return;
+    const source = sourceStage.firstElementChild;
+    // measure source at actual on-page size
+    const rect = source.getBoundingClientRect();
+    const srcW = rect.width || 260;
+    const srcH = rect.height || 260;
+
+    const markEl = source.cloneNode(true);
+
+    const render = document.getElementById('render');
+    render.innerHTML = '';
+    const pad = exportSize * 0.08;
+    const avail = exportSize - pad * 2;
+    // fit-contain: use the larger dimension so nothing clips
+    const scale = Math.min(avail / srcW, avail / srcH);
+
+    const wrap = document.createElement('div');
+    wrap.style.cssText = `width:${exportSize}px;height:${exportSize}px;display:flex;align-items:center;justify-content:center;background:transparent;padding:${pad}px;overflow:visible;`;
+    const inner = document.createElement('div');
+    inner.style.cssText = `transform:scale(${scale});transform-origin:center center;display:flex;align-items:center;justify-content:center;`;
+    inner.appendChild(markEl);
+    wrap.appendChild(inner);
+    render.appendChild(wrap);
+
+    await new Promise(r => setTimeout(r, 80));
+    try {
+      const dataUrl = await htmlToImage.toPng(wrap, {
+        pixelRatio: 1,
+        width: exportSize,
+        height: exportSize,
+        backgroundColor: null,
+        cacheBust: true
+      });
+      const a = document.createElement('a');
+      a.href = dataUrl;
+      a.download = `${filename}-${exportSize}.png`;
+      document.body.appendChild(a); a.click(); a.remove();
+    } catch (e) {
+      console.error('export failed', e);
+      alert('Export failed — check console.');
+    }
+  }
+
+  document.querySelectorAll('.dl').forEach(btn => {
+    btn.addEventListener('click', () => download(btn.dataset.mark, btn.dataset.name));
+  });
+</script>
+</body>
+</html>
