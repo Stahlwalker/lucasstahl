@@ -42,7 +42,8 @@
     "three": "^0.167.1"
   },
   "overrides": {
-    "fast-xml-parser": "^5.7.0"
+    "fast-xml-parser": "^5.7.0",
+    "esbuild": "^0.28.1"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.1",
