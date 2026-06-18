@@ -16,6 +16,9 @@ import userSvg from '../icons/user-solid-full.svg?raw';
 import arrowOutSvg from '../icons/arrow-up-right-from-square-solid-full.svg?raw';
 import swatchbookSvg from '../icons/swatchbook-solid-full.svg?raw';
 import githubSvg from '../icons/github-brands-solid-full.svg?raw';
+import sunSvg from '../icons/sun-solid-full.svg?raw';
+import fileLinesSvg from '../icons/file-lines-solid-full.svg?raw';
+import boxesStackedSvg from '../icons/boxes-stacked-solid-full.svg?raw';
 ---
 
 <Layout
@@ -39,6 +42,65 @@ import githubSvg from '../icons/github-brands-solid-full.svg?raw';
 			<p class="builds-hero-subtitle">A collection of projects, experiments, and digital experiences</p>
 		</div>
 	</section>
+
+	<!-- Solar Framework Feature Section -->
+	<section class="solar-feature-section">
+		<div class="section-container">
+			<div class="solar-feature-card">
+				<div class="solar-feature-left">
+					<span class="solar-label">/ MY FRAMEWORK</span>
+					<div class="solar-heading-row">
+						<div class="solar-icon">
+							<span class="solar-icon-svg" set:html={sunSvg} />
+						</div>
+						<h2 class="solar-title">Solar</h2>
+					</div>
+					<p class="solar-desc">
+						A JavaScript UI framework designed for AI-generated code. Explicit contracts, a component registry, and structured errors an agent can parse and self-correct. Built so the output is predictably correct, not just probably correct.
+					</p>
+				</div>
+				<div class="solar-feature-right">
+					<div class="solar-links">
+						<a href="https://solar-e6dcfc3e.mintlify.app" target="_blank" rel="noopener noreferrer" class="solar-link">
+							<span class="solar-link-icon" set:html={fileLinesSvg} />
+							Docs
+							<span class="solar-link-arrow" set:html={arrowOutSvg} />
+						</a>
+						<a href="https://github.com/Stahlwalker/framework-solar" target="_blank" rel="noopener noreferrer" class="solar-link">
+							<span class="solar-link-icon" set:html={githubSvg} />
+							GitHub
+							<span class="solar-link-arrow" set:html={arrowOutSvg} />
+						</a>
+						<a href="https://npmjs.com/package/solarbuild" target="_blank" rel="noopener noreferrer" class="solar-link">
+							<span class="solar-link-icon" set:html={boxesStackedSvg} />
+							npm
+							<span class="solar-link-arrow" set:html={arrowOutSvg} />
+						</a>
+					</div>
+					<div class="solar-code-block">
+						<span class="solar-code-prompt">$</span>
+						<code class="solar-code-cmd" id="solar-cmd">npm create solarbuild@latest my-app</code>
+						<button class="solar-copy-btn" id="solar-copy-btn" aria-label="Copy install command">
+							<span id="solar-copy-label">Copy</span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script>
+		const btn = document.getElementById('solar-copy-btn');
+		const label = document.getElementById('solar-copy-label');
+		btn?.addEventListener('click', () => {
+			navigator.clipboard.writeText('npm create solarbuild@latest my-app').then(() => {
+				if (label) {
+					label.textContent = 'Copied!';
+					setTimeout(() => { label.textContent = 'Copy'; }, 2000);
+				}
+			});
+		});
+	</script>
 
 	<!-- Builds Grid Section -->
 	<section class="builds-section">
@@ -547,6 +609,40 @@ import githubSvg from '../icons/github-brands-solid-full.svg?raw';
 		}
 		@media (max-width: 480px) {
 			.build-icon .build-icon-svg { font-size: 1.5rem; }
+		}
+
+		/* Solar section icon */
+		.solar-icon-svg {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			color: #f59e0b;
+			filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.5));
+		}
+		.solar-icon-svg svg {
+			width: 1.75rem;
+			height: 1.75rem;
+			fill: currentColor;
+		}
+		/* Solar link icons */
+		.solar-link-icon {
+			display: inline-flex;
+			align-items: center;
+		}
+		.solar-link-icon svg {
+			width: 0.875rem;
+			height: 0.875rem;
+			fill: currentColor;
+		}
+		.solar-link-arrow {
+			display: inline-flex;
+			align-items: center;
+			opacity: 0.7;
+		}
+		.solar-link-arrow svg {
+			width: 0.75rem;
+			height: 0.75rem;
+			fill: currentColor;
 		}
 
 		/* Small inline icons next to link text (arrow-up-right, swatchbook, github) */
