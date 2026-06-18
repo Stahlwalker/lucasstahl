@@ -45,55 +45,98 @@ import boxesStackedSvg from '../icons/boxes-stacked-solid-full.svg?raw';
 
 	<!-- Solar Framework Feature Section -->
 	<section class="solar-feature-section">
-		<div class="section-container">
-			<div class="solar-feature-card">
-				<div class="solar-feature-left">
-					<span class="solar-label">/ MY FRAMEWORK</span>
-					<div class="solar-heading-row">
-						<div class="solar-icon">
-							<span class="solar-icon-svg" set:html={sunSvg} />
-						</div>
-						<h2 class="solar-title">Solar</h2>
-					</div>
-					<p class="solar-desc">
-						A JavaScript UI framework designed for AI-generated code. Explicit contracts, a component registry, and structured errors an agent can parse and self-correct. Built so the output is predictably correct, not just probably correct.
-					</p>
+		<div class="solar-inner">
+			<div class="solar-left">
+				<div class="solar-eyebrow">
+					<span class="solar-icon-svg" set:html={sunSvg} />
+					<span class="solar-label">MY FRAMEWORK</span>
 				</div>
-				<div class="solar-feature-right">
-					<div class="solar-links">
-						<a href="https://solar-e6dcfc3e.mintlify.app" target="_blank" rel="noopener noreferrer" class="solar-link">
-							<span class="solar-link-icon" set:html={fileLinesSvg} />
-							Docs
-							<span class="solar-link-arrow" set:html={arrowOutSvg} />
-						</a>
-						<a href="https://github.com/Stahlwalker/framework-solar" target="_blank" rel="noopener noreferrer" class="solar-link">
-							<span class="solar-link-icon" set:html={githubSvg} />
-							GitHub
-							<span class="solar-link-arrow" set:html={arrowOutSvg} />
-						</a>
-						<a href="https://npmjs.com/package/solarbuild" target="_blank" rel="noopener noreferrer" class="solar-link">
-							<span class="solar-link-icon" set:html={boxesStackedSvg} />
-							npm
-							<span class="solar-link-arrow" set:html={arrowOutSvg} />
-						</a>
+				<h2 class="solar-headline">Solar</h2>
+				<p class="solar-desc">
+					A JavaScript UI framework designed for AI-generated code. Explicit contracts, a component registry, and structured errors an agent can parse and self-correct. Built so the output is predictably correct, not just probably correct.
+				</p>
+
+				<div class="solar-install">
+					<div class="solar-tabs" role="tablist">
+						<button class="solar-tab is-active" data-tab="npm" role="tab">npm</button>
 					</div>
 					<div class="solar-code-block">
-						<span class="solar-code-prompt">$</span>
+						<span class="solar-code-prompt" id="solar-prompt">$</span>
 						<code class="solar-code-cmd" id="solar-cmd">npm create solarbuild@latest my-app</code>
 						<button class="solar-copy-btn" id="solar-copy-btn" aria-label="Copy install command">
 							<span id="solar-copy-label">Copy</span>
 						</button>
 					</div>
 				</div>
+
+				<div class="solar-links">
+					<a href="https://solar-e6dcfc3e.mintlify.app" target="_blank" rel="noopener noreferrer" class="solar-link solar-link--primary">
+						<span class="solar-link-icon" set:html={fileLinesSvg} />
+						Read the docs
+						<span class="solar-link-arrow" set:html={arrowOutSvg} />
+					</a>
+					<a href="https://github.com/Stahlwalker/framework-solar" target="_blank" rel="noopener noreferrer" class="solar-link">
+						<span class="solar-link-icon" set:html={githubSvg} />
+						GitHub
+						<span class="solar-link-arrow" set:html={arrowOutSvg} />
+					</a>
+					<a href="https://npmjs.com/package/solarbuild" target="_blank" rel="noopener noreferrer" class="solar-link">
+						<span class="solar-link-icon" set:html={boxesStackedSvg} />
+						npm
+						<span class="solar-link-arrow" set:html={arrowOutSvg} />
+					</a>
+				</div>
+			</div>
+
+			<div class="solar-terminal" aria-hidden="true">
+				<div class="solar-terminal-chrome">
+					<span class="solar-dot solar-dot--red"></span>
+					<span class="solar-dot solar-dot--yellow"></span>
+					<span class="solar-dot solar-dot--green"></span>
+					<span class="solar-terminal-title">solar — demo.js</span>
+				</div>
+				<div class="solar-terminal-body">
+<pre class="solar-terminal-pre"><span class="t-brand">████ ████ █    ██  ███
+█    █  █ █   █  █ █  █
+████ █  █ █   ████ ███
+   █ █  █ █   █  █ █ █
+████ ████ ████ ██  █  █</span>
+
+<span class="t-prompt">$</span> npm create solarbuild@latest my-app
+  <span class="t-success">✓</span> Created project
+  <span class="t-success">✓</span> Installed dependencies
+
+<span class="t-prompt">$</span> cd my-app &amp;&amp; npm run dev
+  ➜  Local: <span class="t-str">http://localhost:3456/</span></pre>
+				</div>
 			</div>
 		</div>
 	</section>
 
 	<script>
+		// Tab switcher
+		const commands = {
+			npm: { prompt: '$', cmd: 'npm create solarbuild@latest my-app' },
+			cdn: { prompt: '>', cmd: 'https://cdn.jsdelivr.net/gh/Stahlwalker/framework-solar@main/framework/index.js' },
+		};
+		document.querySelectorAll('.solar-tab').forEach(tab => {
+			tab.addEventListener('click', () => {
+				document.querySelectorAll('.solar-tab').forEach(t => t.classList.remove('is-active'));
+				tab.classList.add('is-active');
+				const key = tab.dataset.tab;
+				const promptEl = document.getElementById('solar-prompt');
+				const cmdEl = document.getElementById('solar-cmd');
+				if (promptEl) promptEl.textContent = commands[key].prompt;
+				if (cmdEl) cmdEl.textContent = commands[key].cmd;
+			});
+		});
+
+		// Copy button
 		const btn = document.getElementById('solar-copy-btn');
 		const label = document.getElementById('solar-copy-label');
 		btn?.addEventListener('click', () => {
-			navigator.clipboard.writeText('npm create solarbuild@latest my-app').then(() => {
+			const cmd = document.getElementById('solar-cmd')?.textContent ?? '';
+			navigator.clipboard.writeText(cmd).then(() => {
 				if (label) {
 					label.textContent = 'Copied!';
 					setTimeout(() => { label.textContent = 'Copy'; }, 2000);
@@ -611,17 +654,16 @@ import boxesStackedSvg from '../icons/boxes-stacked-solid-full.svg?raw';
 			.build-icon .build-icon-svg { font-size: 1.5rem; }
 		}
 
-		/* Solar section icon */
+		/* Solar eyebrow icon */
 		.solar-icon-svg {
 			display: inline-flex;
 			align-items: center;
-			justify-content: center;
 			color: #f59e0b;
-			filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.5));
+			filter: drop-shadow(0 0 5px rgba(245, 158, 11, 0.5));
 		}
 		.solar-icon-svg svg {
-			width: 1.75rem;
-			height: 1.75rem;
+			width: 1rem;
+			height: 1rem;
 			fill: currentColor;
 		}
 		/* Solar link icons */
@@ -630,18 +672,18 @@ import boxesStackedSvg from '../icons/boxes-stacked-solid-full.svg?raw';
 			align-items: center;
 		}
 		.solar-link-icon svg {
-			width: 0.875rem;
-			height: 0.875rem;
+			width: 0.8rem;
+			height: 0.8rem;
 			fill: currentColor;
 		}
 		.solar-link-arrow {
 			display: inline-flex;
 			align-items: center;
-			opacity: 0.7;
+			opacity: 0.6;
 		}
 		.solar-link-arrow svg {
-			width: 0.75rem;
-			height: 0.75rem;
+			width: 0.7rem;
+			height: 0.7rem;
 			fill: currentColor;
 		}
 
