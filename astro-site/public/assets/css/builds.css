@@ -911,6 +911,16 @@
 [data-theme="light"] .solar-terminal-title { color: #b45309; }
 [data-theme="light"] .solar-terminal-ver   { color: rgba(180, 83, 9, 0.65); }
 
+/* npm wordmark letter cutouts: match page bg so they show through the colored block */
+.solar-link--npm .solar-link-icon svg polygon,
+.solar-link--npm .solar-link-icon svg path:not(:first-of-type) {
+    fill: #0a0e27;
+}
+[data-theme="light"] .solar-link--npm .solar-link-icon svg polygon,
+[data-theme="light"] .solar-link--npm .solar-link-icon svg path:not(:first-of-type) {
+    fill: #f8fafc;
+}
+
 /* --- Responsive --- */
 
 @media (max-width: 960px) {

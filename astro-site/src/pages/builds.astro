@@ -76,13 +76,9 @@ import copySvg from '../icons/copy-regular-full.svg?raw';
 					</a>
 					<a href="https://github.com/Stahlwalker/framework-solar" target="_blank" rel="noopener noreferrer" class="solar-link">
 						<span class="solar-link-icon" set:html={githubSvg} />
-						GitHub
-						<span class="solar-link-arrow" set:html={arrowOutSvg} />
 					</a>
-					<a href="https://npmjs.com/package/solarbuild" target="_blank" rel="noopener noreferrer" class="solar-link">
+					<a href="https://npmjs.com/package/solarbuild" target="_blank" rel="noopener noreferrer" class="solar-link solar-link--npm">
 						<span class="solar-link-icon" set:html={npmSvg} />
-						npm
-						<span class="solar-link-arrow" set:html={arrowOutSvg} />
 					</a>
 				</div>
 			</div>
@@ -680,9 +676,14 @@ import copySvg from '../icons/copy-regular-full.svg?raw';
 			align-items: center;
 		}
 		.solar-link-icon svg {
-			width: 0.8rem;
-			height: 0.8rem;
+			width: 1.4rem;
+			height: 1.4rem;
 			fill: currentColor;
+		}
+		/* npm wordmark is 18:7 — let width scale from height */
+		.solar-link--npm .solar-link-icon svg {
+			width: auto;
+			height: 1rem;
 		}
 		.solar-link-arrow {
 			display: inline-flex;
