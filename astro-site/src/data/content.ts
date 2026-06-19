@@ -3,6 +3,13 @@
 
 export const builds = [
   {
+    title: "Solar Framework",
+    description: "A JavaScript UI framework built for AI-generated code. Explicit contracts, a component registry, and structured errors so AI output is predictably correct.",
+    url: "https://docs.solarbuild.dev/",
+    tags: ["Framework", "Static Site", "CLI", "JavaScript"],
+    icon: "fa-solid fa-sun"
+  },
+  {
     title: "Budget Tracker",
     description: "A personal finance tracking app for managing budgets, expenses, and savings goals with visual charts and category breakdowns.",
     url: "https://github.com/Stahlwalker/budget-app-example",
