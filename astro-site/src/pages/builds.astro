@@ -19,6 +19,7 @@ import githubSvg from '../icons/github-brands-solid-full.svg?raw';
 import sunSvg from '../icons/sun-solid-full.svg?raw';
 import fileLinesSvg from '../icons/file-lines-solid-full.svg?raw';
 import boxesStackedSvg from '../icons/boxes-stacked-solid-full.svg?raw';
+import copySvg from '../icons/copy-regular-full.svg?raw';
 ---
 
 <Layout
@@ -57,14 +58,12 @@ import boxesStackedSvg from '../icons/boxes-stacked-solid-full.svg?raw';
 				</p>
 
 				<div class="solar-install">
-					<div class="solar-tabs" role="tablist">
-						<button class="solar-tab is-active" data-tab="npm" role="tab">npm</button>
-					</div>
 					<div class="solar-code-block">
 						<span class="solar-code-prompt" id="solar-prompt">$</span>
 						<code class="solar-code-cmd" id="solar-cmd">npm create solarbuild@latest my-app</code>
 						<button class="solar-copy-btn" id="solar-copy-btn" aria-label="Copy install command">
-							<span id="solar-copy-label">Copy</span>
+							<span class="solar-copy-icon" set:html={copySvg} />
+							<span class="solar-copy-label" id="solar-copy-label">Copy</span>
 						</button>
 					</div>
 				</div>
@@ -137,10 +136,12 @@ import boxesStackedSvg from '../icons/boxes-stacked-solid-full.svg?raw';
 		btn?.addEventListener('click', () => {
 			const cmd = document.getElementById('solar-cmd')?.textContent ?? '';
 			navigator.clipboard.writeText(cmd).then(() => {
-				if (label) {
-					label.textContent = 'Copied!';
-					setTimeout(() => { label.textContent = 'Copy'; }, 2000);
-				}
+				btn.classList.add('is-copied');
+				if (label) label.textContent = 'Copied!';
+				setTimeout(() => {
+					btn.classList.remove('is-copied');
+					if (label) label.textContent = 'Copy';
+				}, 2000);
 			});
 		});
 	</script>
@@ -664,6 +665,16 @@ import boxesStackedSvg from '../icons/boxes-stacked-solid-full.svg?raw';
 		.solar-icon-svg svg {
 			width: 1rem;
 			height: 1rem;
+			fill: currentColor;
+		}
+		/* Copy icon */
+		.solar-copy-icon {
+			display: inline-flex;
+			align-items: center;
+		}
+		.solar-copy-icon svg {
+			width: 0.85rem;
+			height: 0.85rem;
 			fill: currentColor;
 		}
 		/* Solar link icons */

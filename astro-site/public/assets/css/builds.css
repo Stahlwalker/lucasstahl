@@ -696,14 +696,14 @@
 }
 
 .solar-code-block {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 0.75rem;
     background: #0d1117;
     border: 1px solid rgba(245, 158, 11, 0.25);
-    border-top-left-radius: 0;
-    border-radius: 0 6px 6px 6px;
+    border-radius: 6px;
     padding: 0.875rem 1.25rem;
+    max-width: 100%;
 }
 
 .solar-code-prompt {
@@ -719,7 +719,6 @@
     font-family: 'Fira Code', monospace;
     font-size: 0.875rem;
     color: #e2e8f0;
-    flex: 1;
     min-width: 0;
     white-space: nowrap;
     overflow: hidden;
@@ -738,15 +737,33 @@
     padding: 0.3rem 0.7rem;
     cursor: pointer;
     transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
     white-space: nowrap;
 }
 
-.solar-copy-btn:hover {
-    background: rgba(245, 158, 11, 0.22);
-    border-color: #f59e0b;
-}
-
+.solar-copy-btn:hover { background: rgba(245, 158, 11, 0.22); border-color: #f59e0b; }
+.solar-copy-btn.is-copied { color: #34d399; border-color: #34d399; background: rgba(52, 211, 153, 0.1); }
 .solar-copy-btn:active { transform: scale(0.95); }
+
+/* desktop: text only */
+.solar-copy-icon { display: none; }
+.solar-copy-label { display: inline; }
+
+@media (max-width: 600px) {
+    /* mobile: icon only */
+    .solar-copy-btn {
+        background: none;
+        border: none;
+        padding: 0.2rem;
+        color: rgba(245, 158, 11, 0.4);
+    }
+    .solar-copy-btn:hover { background: none; border: none; color: #f59e0b; }
+    .solar-copy-btn.is-copied { background: none; border: none; color: #34d399; }
+    .solar-copy-icon { display: inline-flex; align-items: center; }
+    .solar-copy-label { display: none; }
+}
 
 /* --- Links row --- */
 
@@ -868,19 +885,6 @@
 @media (max-width: 600px) {
     .solar-feature-section { padding: 3rem 1.25rem; }
     .solar-headline { font-size: 1.75rem; }
-
-    .solar-code-block {
-        flex-wrap: wrap;
-        row-gap: 0.6rem;
-    }
-
-    .solar-code-block::after {
-        content: '';
-        width: 100%;
-        order: 1;
-    }
-
-    .solar-copy-btn { order: 2; }
 
     .solar-terminal { display: none; }
 }
