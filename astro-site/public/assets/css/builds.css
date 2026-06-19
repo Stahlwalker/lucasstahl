@@ -805,47 +805,73 @@
     transform: translateY(-1px);
 }
 
-/* --- Terminal window --- */
+/* --- Blueprint panel --- */
 
 .solar-terminal {
-    background: #0b0f1a;
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(245,158,11,0.06);
+    border: 1px solid rgba(245, 158, 11, 0.22);
+    border-radius: 3px;
+    position: relative;
+}
+
+/* Top-left corner bracket */
+.solar-terminal::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 14px;
+    height: 14px;
+    border-top: 2px solid rgba(245, 158, 11, 0.55);
+    border-left: 2px solid rgba(245, 158, 11, 0.55);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Bottom-right corner bracket */
+.solar-terminal::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    right: -4px;
+    width: 14px;
+    height: 14px;
+    border-bottom: 2px solid rgba(245, 158, 11, 0.55);
+    border-right: 2px solid rgba(245, 158, 11, 0.55);
+    pointer-events: none;
+    z-index: 1;
 }
 
 .solar-terminal-chrome {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.875rem 1.25rem;
-    background: rgba(255,255,255,0.03);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    justify-content: space-between;
+    padding: 0.6rem 1rem;
+    background: rgba(245, 158, 11, 0.03);
+    border-bottom: 1px solid rgba(245, 158, 11, 0.1);
 }
-
-.solar-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-}
-
-.solar-dot--red    { background: #ff5f57; }
-.solar-dot--yellow { background: #febc2e; }
-.solar-dot--green  { background: #28c840; }
 
 .solar-terminal-title {
     font-family: 'Fira Code', monospace;
-    font-size: 0.75rem;
-    color: #475569;
-    margin-left: auto;
-    margin-right: auto;
-    transform: translateX(-1rem);
+    font-size: 0.72rem;
+    color: rgba(245, 158, 11, 0.75);
+    letter-spacing: 0.03em;
+}
+
+.solar-terminal-ver {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.65rem;
+    color: rgba(245, 158, 11, 0.5);
+    letter-spacing: 0.05em;
 }
 
 .solar-terminal-body {
     padding: 1.5rem;
     overflow-x: auto;
+    background-color: #090d18;
+    background-image:
+        linear-gradient(rgba(245, 158, 11, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(245, 158, 11, 0.07) 1px, transparent 1px);
+    background-size: 28px 28px;
 }
 
 .solar-terminal-pre {
@@ -865,6 +891,25 @@
 .t-str     { color: #86efac; }
 .t-num     { color: #fb923c; }
 .t-brand   { color: #f59e0b; }
+
+/* Light mode: eyebrow label — #f59e0b is 2.3:1 on white (fail); #b45309 is 4.5:1 (AA pass) */
+[data-theme="light"] .solar-label { color: #b45309; }
+[data-theme="light"] .solar-icon-svg svg { fill: #b45309; }
+
+/* Light mode: darken chrome label for readability on white bg */
+[data-theme="light"] .solar-terminal {
+    border-color: rgba(180, 83, 9, 0.35);
+}
+[data-theme="light"] .solar-terminal::before,
+[data-theme="light"] .solar-terminal::after {
+    border-color: rgba(180, 83, 9, 0.65);
+}
+[data-theme="light"] .solar-terminal-chrome {
+    background: rgba(245, 158, 11, 0.05);
+    border-bottom-color: rgba(180, 83, 9, 0.15);
+}
+[data-theme="light"] .solar-terminal-title { color: #b45309; }
+[data-theme="light"] .solar-terminal-ver   { color: rgba(180, 83, 9, 0.65); }
 
 /* --- Responsive --- */
 
