@@ -9,7 +9,7 @@ if (!auth) {
   throw new Error('NOTION_API_KEY is not defined in environment variables');
 }
 
-const notion = new Client({ auth });
+const notion = new Client({ auth, fetch: globalThis.fetch });
 const n2m = new NotionToMarkdown({ notionClient: notion });
 
 // notion-to-md hard-codes 3-backtick fences. If a Notion code block's content
