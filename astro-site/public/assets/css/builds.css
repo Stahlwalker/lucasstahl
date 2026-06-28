@@ -636,6 +636,18 @@
     letter-spacing: -0.02em;
 }
 
+.solar-logo {
+    display: block;
+    height: 3rem;
+    width: auto;
+}
+
+.solar-logo--light { display: none; }
+.solar-logo--dark  { display: block; }
+
+[data-theme="light"] .solar-logo--dark  { display: none; }
+[data-theme="light"] .solar-logo--light { display: block; }
+
 .solar-headline em {
     font-style: italic;
     font-weight: 700;
@@ -805,6 +817,16 @@
     transform: translateY(-1px);
 }
 
+/* npm wordmark letter cutouts: match page bg so they show through the colored block */
+.solar-link--npm .solar-link-icon svg polygon,
+.solar-link--npm .solar-link-icon svg path:not(:first-of-type) {
+    fill: #0a0e27;
+}
+[data-theme="light"] .solar-link--npm .solar-link-icon svg polygon,
+[data-theme="light"] .solar-link--npm .solar-link-icon svg path:not(:first-of-type) {
+    fill: #f8fafc;
+}
+
 /* --- Blueprint panel --- */
 
 .solar-terminal {
@@ -911,15 +933,6 @@
 [data-theme="light"] .solar-terminal-title { color: #b45309; }
 [data-theme="light"] .solar-terminal-ver   { color: rgba(180, 83, 9, 0.65); }
 
-/* npm wordmark letter cutouts: match page bg so they show through the colored block */
-.solar-link--npm .solar-link-icon svg polygon,
-.solar-link--npm .solar-link-icon svg path:not(:first-of-type) {
-    fill: #0a0e27;
-}
-[data-theme="light"] .solar-link--npm .solar-link-icon svg polygon,
-[data-theme="light"] .solar-link--npm .solar-link-icon svg path:not(:first-of-type) {
-    fill: #f8fafc;
-}
 
 /* --- Responsive --- */
 

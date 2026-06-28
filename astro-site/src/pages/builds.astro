@@ -20,6 +20,8 @@ import sunSvg from '../icons/sun-solid-full.svg?raw';
 import fileLinesSvg from '../icons/file-lines-solid-full.svg?raw';
 import npmSvg from '../icons/npm-brands-solid-full.svg?raw';
 import copySvg from '../icons/copy-regular-full.svg?raw';
+import solarLogoLight from '../assets/images/light/Solar_light.svg';
+import solarLogoDark from '../assets/images/dark/Solar_dark.svg';
 ---
 
 <Layout
@@ -50,11 +52,14 @@ import copySvg from '../icons/copy-regular-full.svg?raw';
 			<div class="solar-left">
 				<div class="solar-eyebrow">
 					<span class="solar-icon-svg" set:html={sunSvg} />
-					<span class="solar-label">MY FRAMEWORK</span>
+					<span class="solar-label">FRAMEWORK</span>
 				</div>
-				<h2 class="solar-headline">Solar</h2>
+				<h2 class="solar-headline">
+					<img src={solarLogoDark.src} alt="Solar" class="solar-logo solar-logo--dark" width="120" height="32" decoding="async" />
+					<img src={solarLogoLight.src} alt="Solar" class="solar-logo solar-logo--light" width="120" height="32" decoding="async" />
+				</h2>
 				<p class="solar-desc">
-					A JavaScript UI framework designed for AI-generated code. Explicit contracts, a component registry, and structured errors an agent can parse and self-correct. Built so the output is predictably correct, not just probably correct.
+					A JavaScript UI framework built for AI-generated code. Explicit contracts, a component registry, and structured errors an agent can parse and self-correct. Built so the output is predictably correct, not just probably correct.
 				</p>
 
 				<div class="solar-install">
@@ -86,7 +91,7 @@ import copySvg from '../icons/copy-regular-full.svg?raw';
 			<div class="solar-terminal" aria-hidden="true">
 				<div class="solar-terminal-chrome">
 					<span class="solar-terminal-title">◈ solar / demo.js</span>
-					<span class="solar-terminal-ver">v0.2.0</span>
+					<span class="solar-terminal-ver">v0.2.1</span>
 				</div>
 				<div class="solar-terminal-body">
 <pre class="solar-terminal-pre"><span class="t-brand">████ ████ █    ██  ███
