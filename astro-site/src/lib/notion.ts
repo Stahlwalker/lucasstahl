@@ -33,6 +33,21 @@ n2m.setCustomTransformer('code', async (block: any) => {
   return `${fence}${language}\n${text}\n${fence}`;
 });
 
+// Retry wrapper for transient Notion API network errors (e.g. premature close mid-gzip)
+async function withRetry<T>(fn: () => Promise<T>, retries = 3, delayMs = 1500): Promise<T> {
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    try {
+      return await fn();
+    } catch (err) {
+      if (attempt === retries) throw err;
+      const wait = delayMs * attempt;
+      console.warn(`Notion API attempt ${attempt} failed, retrying in ${wait}ms…`, err);
+      await new Promise(resolve => setTimeout(resolve, wait));
+    }
+  }
+  throw new Error('unreachable');
+}
+
 // Notion SDK types rich_text as RichTextItemResponse[] | EmptyObject — narrow safely
 const getRichText = (arr: unknown): string =>
   Array.isArray(arr) ? (arr[0] as { plain_text?: string })?.plain_text ?? '' : '';
@@ -115,7 +130,7 @@ export interface BlogPost {
 export async function getBlogPosts(): Promise<BlogPost[]> {
   const databaseId = import.meta.env.NOTION_DATABASE_ID;
 
-  const response = await notion.databases.query({
+  const response = await withRetry(() => notion.databases.query({
     database_id: databaseId,
     filter: {
       property: 'Published',
@@ -129,7 +144,7 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
         direction: 'descending',
       },
     ],
-  });
+  }));
 
   const posts: BlogPost[] = [];
 
@@ -204,17 +219,17 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
 
   // Fetch the full content from Notion page body
   try {
-    const mdblocks = await n2m.pageToMarkdown(post.id);
+    const mdblocks = await withRetry(() => n2m.pageToMarkdown(post.id));
     const mdString = n2m.toMarkdownString(mdblocks);
 
     // Extract first image from content if no OG image is set
     let firstImageUrl = '';
     if (!post.ogImage && !post.featuredImage) {
       // Fetch blocks to find first image
-      const blocks = await notion.blocks.children.list({
+      const blocks = await withRetry(() => notion.blocks.children.list({
         block_id: post.id,
         page_size: 100,
-      });
+      }));
 
       for (const block of blocks.results) {
         if ('type' in block && block.type === 'image') {
