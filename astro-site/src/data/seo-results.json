@@ -1,30 +1,30 @@
 {
-  "lastUpdated": "2026-06-28T11:12:17.327Z",
+  "lastUpdated": "2026-06-28T13:48:43.923Z",
   "results": {
     "mobile": {
       "home": {
-        "performance": 91,
+        "performance": 65,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
-        "lcp": 2926.011043084216,
-        "cls": 0.001386,
+        "lcp": 6342.1630618298195,
+        "cls": 0.0008160000000000003,
         "tbt": 0
       },
       "about": {
-        "performance": 63,
+        "performance": 64,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
       },
       "blog": {
-        "performance": 63,
+        "performance": 62,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
       },
       "builds": {
-        "performance": 94,
+        "performance": 65,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
@@ -38,16 +38,16 @@
     },
     "desktop": {
       "home": {
-        "performance": 98,
+        "performance": 100,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
-        "lcp": 1108.8514845568748,
-        "cls": 0.0024439999999999996,
-        "tbt": 15
+        "lcp": 421.849190613628,
+        "cls": 0.002594000000000001,
+        "tbt": 0
       },
       "about": {
-        "performance": 53,
+        "performance": 96,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
