@@ -187,6 +187,15 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
                   <span class="gauge-label">SEO</span>
                 </div>
               </div>
+              {scores.agenticBrowsingTotal != null && (
+                <div class="agentic-browsing">
+                  <div class={`agentic-pill ${scores.agenticBrowsingPassed === scores.agenticBrowsingTotal ? 'pass' : 'fail'}`}>
+                    <span class="agentic-dot"></span>
+                    {scores.agenticBrowsingPassed}/{scores.agenticBrowsingTotal}
+                  </div>
+                  <span class="gauge-label">Agentic Browsing</span>
+                </div>
+              )}
             </div>
           ))}
         </div>
@@ -271,6 +280,15 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
                   <span class="gauge-label">SEO</span>
                 </div>
               </div>
+              {scores.agenticBrowsingTotal != null && (
+                <div class="agentic-browsing">
+                  <div class={`agentic-pill ${scores.agenticBrowsingPassed === scores.agenticBrowsingTotal ? 'pass' : 'fail'}`}>
+                    <span class="agentic-dot"></span>
+                    {scores.agenticBrowsingPassed}/{scores.agenticBrowsingTotal}
+                  </div>
+                  <span class="gauge-label">Agentic Browsing</span>
+                </div>
+              )}
             </div>
           ))}
         </div>
@@ -543,6 +561,45 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
     text-align: center;
     font-weight: 500;
     transition: color 0.3s ease;
+  }
+
+  .agentic-browsing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .agentic-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 1rem;
+    border-radius: 20px;
+    font-weight: 700;
+    font-family: 'Fira Code', monospace;
+    font-size: 1.05rem;
+  }
+
+  .agentic-pill.pass {
+    background: rgba(22, 163, 74, 0.12);
+    color: var(--green);
+  }
+
+  .agentic-pill.fail {
+    background: rgba(220, 38, 38, 0.12);
+    color: var(--red);
+  }
+
+  .agentic-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+    flex-shrink: 0;
   }
 
   .info-section {

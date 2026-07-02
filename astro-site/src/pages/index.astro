@@ -690,6 +690,15 @@ function getStrokeDashoffset(score: number): number {
 							</svg>
 							<div class="score-label">SEO</div>
 						</div>
+						<div class="seo-score-circle">
+							<div class="seo-agentic-circle-placeholder">
+								<div class={`seo-agentic-pill ${results.desktop.home.agenticBrowsingPassed === results.desktop.home.agenticBrowsingTotal ? 'pass' : 'fail'}`}>
+									<span class="seo-agentic-dot"></span>
+									{results.desktop.home.agenticBrowsingPassed}/{results.desktop.home.agenticBrowsingTotal}
+								</div>
+							</div>
+							<div class="score-label">Agentic Browsing</div>
+						</div>
 					</div>
 				</div>
 
@@ -731,6 +740,15 @@ function getStrokeDashoffset(score: number): number {
 								<text class="score-value" x="35" y="35" text-anchor="middle" dominant-baseline="central" transform="rotate(90 35 35)">{results.mobile.home.seo}</text>
 							</svg>
 							<div class="score-label">SEO</div>
+						</div>
+						<div class="seo-score-circle">
+							<div class="seo-agentic-circle-placeholder">
+								<div class={`seo-agentic-pill ${results.mobile.home.agenticBrowsingPassed === results.mobile.home.agenticBrowsingTotal ? 'pass' : 'fail'}`}>
+									<span class="seo-agentic-dot"></span>
+									{results.mobile.home.agenticBrowsingPassed}/{results.mobile.home.agenticBrowsingTotal}
+								</div>
+							</div>
+							<div class="score-label">Agentic Browsing</div>
 						</div>
 					</div>
 				</div>
@@ -1457,6 +1475,43 @@ function getStrokeDashoffset(score: number): number {
 			font-size: 0.6875rem;
 			color: var(--text-secondary);
 			text-align: center;
+		}
+
+		.seo-agentic-circle-placeholder {
+			width: 70px;
+			height: 70px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.seo-agentic-pill {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.5rem;
+			padding: 0.35rem 1rem;
+			border-radius: 20px;
+			font-weight: 700;
+			font-family: 'Fira Code', monospace;
+			font-size: 1.05rem;
+		}
+
+		.seo-agentic-pill.pass {
+			background: rgba(12, 206, 107, 0.15);
+			color: #0cce6b;
+		}
+
+		.seo-agentic-pill.fail {
+			background: rgba(255, 78, 66, 0.15);
+			color: #ff4e42;
+		}
+
+		.seo-agentic-dot {
+			width: 8px;
+			height: 8px;
+			border-radius: 50%;
+			background: currentColor;
+			flex-shrink: 0;
 		}
 
 		.seo-widget-cta {

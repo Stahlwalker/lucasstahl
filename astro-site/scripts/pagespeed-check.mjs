@@ -41,7 +41,7 @@ function sleep(ms) {
 
 async function callPSI(url, strategy) {
   const params = new URLSearchParams({ url, strategy, key: apiKey });
-  for (const c of ['performance', 'accessibility', 'best-practices', 'seo']) {
+  for (const c of ['performance', 'accessibility', 'best-practices', 'seo', 'experimental-agentic-browsing']) {
     params.append('category', c);
   }
   const endpoint = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?${params}`;
@@ -55,6 +55,17 @@ async function callPSI(url, strategy) {
 function extractScores(data) {
   const cats = data?.lighthouseResult?.categories ?? {};
   const audits = data?.lighthouseResult?.audits ?? {};
+
+  // Agentic Browsing: count passed vs applicable audits (excludes notApplicable/informative)
+  const agCat = cats['experimental-agentic-browsing'];
+  const agRefs = agCat?.auditRefs ?? [];
+  const applicableRefs = agRefs.filter((ref) => {
+    const audit = audits[ref.id];
+    return audit && audit.scoreDisplayMode !== 'notApplicable' && audit.scoreDisplayMode !== 'informative';
+  });
+  const agTotal = applicableRefs.length;
+  const agPassed = applicableRefs.filter((ref) => (audits[ref.id]?.score ?? 0) >= 1).length;
+
   return {
     performance: Math.round((cats.performance?.score ?? 0) * 100),
     accessibility: Math.round((cats.accessibility?.score ?? 0) * 100),
@@ -63,6 +74,8 @@ function extractScores(data) {
     lcp: audits['largest-contentful-paint']?.numericValue ?? 0,
     cls: audits['cumulative-layout-shift']?.numericValue ?? 0,
     tbt: audits['total-blocking-time']?.numericValue ?? 0,
+    agenticBrowsingPassed: agTotal > 0 ? agPassed : null,
+    agenticBrowsingTotal: agTotal > 0 ? agTotal : null,
   };
 }
 
@@ -115,12 +128,16 @@ async function main() {
             lcp: scores.lcp,
             cls: scores.cls,
             tbt: scores.tbt,
+            agenticBrowsingPassed: scores.agenticBrowsingPassed,
+            agenticBrowsingTotal: scores.agenticBrowsingTotal,
           }
         : {
             performance: scores.performance,
             accessibility: scores.accessibility,
             bestPractices: scores.bestPractices,
             seo: scores.seo,
+            agenticBrowsingPassed: scores.agenticBrowsingPassed,
+            agenticBrowsingTotal: scores.agenticBrowsingTotal,
           };
       await sleep(STEP_DELAY_MS);
     }

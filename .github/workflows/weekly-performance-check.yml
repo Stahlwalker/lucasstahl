@@ -92,6 +92,18 @@ jobs:
           echo "gems_d_bp=$(jq -r '.results.desktop.gems.bestPractices' $RESULTS)" >> $GITHUB_OUTPUT
           echo "gems_d_seo=$(jq -r '.results.desktop.gems.seo' $RESULTS)" >> $GITHUB_OUTPUT
 
+          # Agentic Browsing scores (mobile)
+          echo "home_ab_passed=$(jq -r '.results.mobile.home.agenticBrowsingPassed // "N/A"' $RESULTS)" >> $GITHUB_OUTPUT
+          echo "home_ab_total=$(jq -r '.results.mobile.home.agenticBrowsingTotal // "N/A"' $RESULTS)" >> $GITHUB_OUTPUT
+          echo "about_ab_passed=$(jq -r '.results.mobile.about.agenticBrowsingPassed // "N/A"' $RESULTS)" >> $GITHUB_OUTPUT
+          echo "about_ab_total=$(jq -r '.results.mobile.about.agenticBrowsingTotal // "N/A"' $RESULTS)" >> $GITHUB_OUTPUT
+          echo "blog_ab_passed=$(jq -r '.results.mobile.blog.agenticBrowsingPassed // "N/A"' $RESULTS)" >> $GITHUB_OUTPUT
+          echo "blog_ab_total=$(jq -r '.results.mobile.blog.agenticBrowsingTotal // "N/A"' $RESULTS)" >> $GITHUB_OUTPUT
+          echo "builds_ab_passed=$(jq -r '.results.mobile.builds.agenticBrowsingPassed // "N/A"' $RESULTS)" >> $GITHUB_OUTPUT
+          echo "builds_ab_total=$(jq -r '.results.mobile.builds.agenticBrowsingTotal // "N/A"' $RESULTS)" >> $GITHUB_OUTPUT
+          echo "gems_ab_passed=$(jq -r '.results.mobile.gems.agenticBrowsingPassed // "N/A"' $RESULTS)" >> $GITHUB_OUTPUT
+          echo "gems_ab_total=$(jq -r '.results.mobile.gems.agenticBrowsingTotal // "N/A"' $RESULTS)" >> $GITHUB_OUTPUT
+
       - name: Generate Summary
         run: |
           S=${{ steps.scores.outputs.home_perf }}
@@ -111,23 +123,23 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "## 📱 Mobile Lighthouse Scores" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "| Page | Performance | Accessibility | Best Practices | SEO |" >> $GITHUB_STEP_SUMMARY
-          echo "|------|-------------|---------------|----------------|-----|" >> $GITHUB_STEP_SUMMARY
-          echo "| Home | ${{ steps.scores.outputs.home_perf }} | ${{ steps.scores.outputs.home_a11y }} | ${{ steps.scores.outputs.home_bp }} | ${{ steps.scores.outputs.home_seo }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| About | ${{ steps.scores.outputs.about_perf }} | ${{ steps.scores.outputs.about_a11y }} | ${{ steps.scores.outputs.about_bp }} | ${{ steps.scores.outputs.about_seo }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Blog | ${{ steps.scores.outputs.blog_perf }} | ${{ steps.scores.outputs.blog_a11y }} | ${{ steps.scores.outputs.blog_bp }} | ${{ steps.scores.outputs.blog_seo }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Builds | ${{ steps.scores.outputs.builds_perf }} | ${{ steps.scores.outputs.builds_a11y }} | ${{ steps.scores.outputs.builds_bp }} | ${{ steps.scores.outputs.builds_seo }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Gems | ${{ steps.scores.outputs.gems_perf }} | ${{ steps.scores.outputs.gems_a11y }} | ${{ steps.scores.outputs.gems_bp }} | ${{ steps.scores.outputs.gems_seo }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Page | Performance | Accessibility | Best Practices | SEO | Agentic Browsing |" >> $GITHUB_STEP_SUMMARY
+          echo "|------|-------------|---------------|----------------|-----|-----------------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Home | ${{ steps.scores.outputs.home_perf }} | ${{ steps.scores.outputs.home_a11y }} | ${{ steps.scores.outputs.home_bp }} | ${{ steps.scores.outputs.home_seo }} | ${{ steps.scores.outputs.home_ab_passed }}/${{ steps.scores.outputs.home_ab_total }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| About | ${{ steps.scores.outputs.about_perf }} | ${{ steps.scores.outputs.about_a11y }} | ${{ steps.scores.outputs.about_bp }} | ${{ steps.scores.outputs.about_seo }} | ${{ steps.scores.outputs.about_ab_passed }}/${{ steps.scores.outputs.about_ab_total }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Blog | ${{ steps.scores.outputs.blog_perf }} | ${{ steps.scores.outputs.blog_a11y }} | ${{ steps.scores.outputs.blog_bp }} | ${{ steps.scores.outputs.blog_seo }} | ${{ steps.scores.outputs.blog_ab_passed }}/${{ steps.scores.outputs.blog_ab_total }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Builds | ${{ steps.scores.outputs.builds_perf }} | ${{ steps.scores.outputs.builds_a11y }} | ${{ steps.scores.outputs.builds_bp }} | ${{ steps.scores.outputs.builds_seo }} | ${{ steps.scores.outputs.builds_ab_passed }}/${{ steps.scores.outputs.builds_ab_total }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Gems | ${{ steps.scores.outputs.gems_perf }} | ${{ steps.scores.outputs.gems_a11y }} | ${{ steps.scores.outputs.gems_bp }} | ${{ steps.scores.outputs.gems_seo }} | ${{ steps.scores.outputs.gems_ab_passed }}/${{ steps.scores.outputs.gems_ab_total }} |" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "## 🖥️ Desktop Lighthouse Scores" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "| Page | Performance | Accessibility | Best Practices | SEO |" >> $GITHUB_STEP_SUMMARY
-          echo "|------|-------------|---------------|----------------|-----|" >> $GITHUB_STEP_SUMMARY
-          echo "| Home | ${{ steps.scores.outputs.home_d_perf }} | ${{ steps.scores.outputs.home_d_a11y }} | ${{ steps.scores.outputs.home_d_bp }} | ${{ steps.scores.outputs.home_d_seo }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| About | ${{ steps.scores.outputs.about_d_perf }} | ${{ steps.scores.outputs.about_d_a11y }} | ${{ steps.scores.outputs.about_d_bp }} | ${{ steps.scores.outputs.about_d_seo }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Blog | ${{ steps.scores.outputs.blog_d_perf }} | ${{ steps.scores.outputs.blog_d_a11y }} | ${{ steps.scores.outputs.blog_d_bp }} | ${{ steps.scores.outputs.blog_d_seo }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Builds | ${{ steps.scores.outputs.builds_d_perf }} | ${{ steps.scores.outputs.builds_d_a11y }} | ${{ steps.scores.outputs.builds_d_bp }} | ${{ steps.scores.outputs.builds_d_seo }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Gems | ${{ steps.scores.outputs.gems_d_perf }} | ${{ steps.scores.outputs.gems_d_a11y }} | ${{ steps.scores.outputs.gems_d_bp }} | ${{ steps.scores.outputs.gems_d_seo }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Page | Performance | Accessibility | Best Practices | SEO | Agentic Browsing |" >> $GITHUB_STEP_SUMMARY
+          echo "|------|-------------|---------------|----------------|-----|-----------------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Home | ${{ steps.scores.outputs.home_d_perf }} | ${{ steps.scores.outputs.home_d_a11y }} | ${{ steps.scores.outputs.home_d_bp }} | ${{ steps.scores.outputs.home_d_seo }} | ${{ steps.scores.outputs.home_ab_passed }}/${{ steps.scores.outputs.home_ab_total }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| About | ${{ steps.scores.outputs.about_d_perf }} | ${{ steps.scores.outputs.about_d_a11y }} | ${{ steps.scores.outputs.about_d_bp }} | ${{ steps.scores.outputs.about_d_seo }} | ${{ steps.scores.outputs.about_ab_passed }}/${{ steps.scores.outputs.about_ab_total }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Blog | ${{ steps.scores.outputs.blog_d_perf }} | ${{ steps.scores.outputs.blog_d_a11y }} | ${{ steps.scores.outputs.blog_d_bp }} | ${{ steps.scores.outputs.blog_d_seo }} | ${{ steps.scores.outputs.blog_ab_passed }}/${{ steps.scores.outputs.blog_ab_total }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Builds | ${{ steps.scores.outputs.builds_d_perf }} | ${{ steps.scores.outputs.builds_d_a11y }} | ${{ steps.scores.outputs.builds_d_bp }} | ${{ steps.scores.outputs.builds_d_seo }} | ${{ steps.scores.outputs.builds_ab_passed }}/${{ steps.scores.outputs.builds_ab_total }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Gems | ${{ steps.scores.outputs.gems_d_perf }} | ${{ steps.scores.outputs.gems_d_a11y }} | ${{ steps.scores.outputs.gems_d_bp }} | ${{ steps.scores.outputs.gems_d_seo }} | ${{ steps.scores.outputs.gems_ab_passed }}/${{ steps.scores.outputs.gems_ab_total }} |" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "---" >> $GITHUB_STEP_SUMMARY
           echo "🔗 [View detailed reports on PageSpeed Insights](https://pagespeed.web.dev/?url=https://lukestahl.io/)" >> $GITHUB_STEP_SUMMARY
