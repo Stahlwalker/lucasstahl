@@ -708,6 +708,11 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
   }
 
   /* Light mode styles */
+  :global([data-theme="light"]) .agentic-pill.pass {
+    background: rgba(21, 128, 61, 0.1);
+    color: #15803d;
+  }
+
   :global([data-theme="light"]) .seo-hero {
     background-color: var(--bg-secondary);
     background-image:

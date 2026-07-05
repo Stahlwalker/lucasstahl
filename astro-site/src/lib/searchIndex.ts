@@ -154,9 +154,9 @@ export async function buildSearchIndex(): Promise<SearchItem[]> {
     {
       type: 'website' as const,
       title: 'AI Models Guide',
-      description: 'A quick-reference to the major AI models in 2026 — GPT-5, Claude Fable 5, Gemini 3, Grok 4, Llama 4, DeepSeek, Mistral, Qwen 3, Sakana Fugu Ultra, Apple FoundationAI, and more. Who makes them, what they do best, and when to use each one.',
+      description: 'A quick-reference to the major AI models in 2026 — Claude Sonnet 5, Claude Fable 5, GPT-5.5, Gemini 3.5, Grok 4, Llama 4, DeepSeek, Mistral, Qwen 3, Sakana Fugu Ultra, Apple Foundation Models Gen 3, and more. Who makes them, what they do best, and when to use each one.',
       url: '/ai-models-guide/',
-      tags: ['ai', 'models', 'llm', 'gpt', 'claude', 'gemini', 'grok', 'llama', 'deepseek', 'mistral', 'qwen', 'kimi', 'glm', 'comparison', 'guide', 'sakana', 'fugu', 'apple', 'foundation models', 'mai', 'microsoft', 'gemini spark', 'reve', 'orchestration', 'meta-model']
+      tags: ['ai', 'models', 'llm', 'gpt', 'claude', 'sonnet 5', 'claude sonnet 5', 'gemini', 'grok', 'grok 4.5', 'llama', 'deepseek', 'mistral', 'qwen', 'kimi', 'glm', 'comparison', 'guide', 'sakana', 'fugu', 'apple', 'foundation models', 'apple foundation models', 'mai', 'microsoft', 'gemini spark', 'runway gen-4 turbo', 'orchestration', 'meta-model']
     }
   ];
 

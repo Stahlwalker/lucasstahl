@@ -215,7 +215,7 @@ jobs:
             if [ "$s" -ge 90 ] 2>/dev/null; then c="#0cce6b"
             elif [ "$s" -ge 50 ] 2>/dev/null; then c="#ffa400"
             else c="#ff4e42"; fi
-            printf '<td style="padding:8px 12px;font-weight:600;color:%s;text-align:center">%s</td>' "$c" "$s"
+            printf '<td style="padding:8px 12px;font-weight:600;color:%s;text-align:center;border-bottom:1px solid #e5e5e5">%s</td>' "$c" "$s"
           }
 
           DATE_STR=$(date '+%A, %B %-d, %Y')
@@ -228,9 +228,9 @@ jobs:
           CLS_D=$(printf "%.3f" ${{ steps.scores.outputs.home_d_cls }})
           TBT_D=$(printf "%.0f" ${{ steps.scores.outputs.home_d_tbt }})
 
-          TH='style="padding:8px 12px;text-align:center;font-weight:600;"'
-          TH_L='style="padding:8px 12px;text-align:left;font-weight:600;"'
-          TD='style="padding:8px 12px;"'
+          TH='style="padding:8px 12px;text-align:center;font-weight:600;border-bottom:2px solid #ddd;"'
+          TH_L='style="padding:8px 12px;text-align:left;font-weight:600;border-bottom:2px solid #ddd;"'
+          TD='style="padding:8px 12px;border-bottom:1px solid #e5e5e5;"'
           TABLE='style="width:100%;border-collapse:collapse;margin-bottom:28px;font-size:14px;"'
           THEAD='style="background:#f5f5f5;"'
 
