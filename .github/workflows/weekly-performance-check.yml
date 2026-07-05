@@ -208,8 +208,89 @@ jobs:
           TO_EMAIL: ${{ secrets.NOTIFICATION_EMAIL }}
           FROM_EMAIL: ${{ secrets.FROM_EMAIL }}
         run: |
-          SUBJECT="📊 Weekly Performance Report - $(date '+%B %d, %Y')"
-          BODY="<h2>📊 Weekly Performance Report - $(date '+%B %d, %Y')</h2><h3>📱 Mobile Performance Scores</h3><table border=\"1\" cellpadding=\"8\" cellspacing=\"0\" style=\"border-collapse: collapse;\"><tr style=\"background: #f5f5f5;\"><th style=\"padding: 8px;\">Page</th><th style=\"padding: 8px;\">Score</th></tr><tr><td style=\"padding: 8px;\">Home</td><td style=\"padding: 8px;\">${{ steps.scores.outputs.home_perf }}</td></tr><tr><td style=\"padding: 8px;\">About</td><td style=\"padding: 8px;\">${{ steps.scores.outputs.about_perf }}</td></tr><tr><td style=\"padding: 8px;\">Blog</td><td style=\"padding: 8px;\">${{ steps.scores.outputs.blog_perf }}</td></tr><tr><td style=\"padding: 8px;\">Builds</td><td style=\"padding: 8px;\">${{ steps.scores.outputs.builds_perf }}</td></tr><tr><td style=\"padding: 8px;\">Gems</td><td style=\"padding: 8px;\">${{ steps.scores.outputs.gems_perf }}</td></tr></table><h3>🖥️ Desktop Performance Scores</h3><table border=\"1\" cellpadding=\"8\" cellspacing=\"0\" style=\"border-collapse: collapse;\"><tr style=\"background: #f5f5f5;\"><th style=\"padding: 8px;\">Page</th><th style=\"padding: 8px;\">Score</th></tr><tr><td style=\"padding: 8px;\">Home</td><td style=\"padding: 8px;\">${{ steps.scores.outputs.home_d_perf }}</td></tr><tr><td style=\"padding: 8px;\">About</td><td style=\"padding: 8px;\">${{ steps.scores.outputs.about_d_perf }}</td></tr><tr><td style=\"padding: 8px;\">Blog</td><td style=\"padding: 8px;\">${{ steps.scores.outputs.blog_d_perf }}</td></tr><tr><td style=\"padding: 8px;\">Builds</td><td style=\"padding: 8px;\">${{ steps.scores.outputs.builds_d_perf }}</td></tr><tr><td style=\"padding: 8px;\">Gems</td><td style=\"padding: 8px;\">${{ steps.scores.outputs.gems_d_perf }}</td></tr></table><h3>🎯 Core Web Vitals</h3><h4>📱 Mobile (Homepage)</h4><ul><li><strong>LCP:</strong> ${{ steps.scores.outputs.home_lcp }}ms (target: &lt;2500ms)</li><li><strong>CLS:</strong> ${{ steps.scores.outputs.home_cls }} (target: &lt;0.1)</li><li><strong>TBT:</strong> ${{ steps.scores.outputs.home_tbt }}ms (target: &lt;300ms)</li></ul><h4>🖥️ Desktop (Homepage)</h4><ul><li><strong>LCP:</strong> ${{ steps.scores.outputs.home_d_lcp }}ms (target: &lt;2500ms)</li><li><strong>CLS:</strong> ${{ steps.scores.outputs.home_d_cls }} (target: &lt;0.1)</li><li><strong>TBT:</strong> ${{ steps.scores.outputs.home_d_tbt }}ms (target: &lt;300ms)</li></ul><hr><p><a href=\"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\">View Full Workflow Run</a><br><a href=\"https://pagespeed.web.dev/?url=https://lukestahl.io/\">Test on PageSpeed Insights</a></p>"
+          # Returns a color-coded <td> for a Lighthouse score
+          sc() {
+            local s=$1
+            local c
+            if [ "$s" -ge 90 ] 2>/dev/null; then c="#0cce6b"
+            elif [ "$s" -ge 50 ] 2>/dev/null; then c="#ffa400"
+            else c="#ff4e42"; fi
+            printf '<td style="padding:8px 12px;font-weight:600;color:%s;text-align:center">%s</td>' "$c" "$s"
+          }
+
+          DATE_STR=$(date '+%A, %B %-d, %Y')
+          SUBJECT="Weekly PageSpeed Report — ${DATE_STR}"
+
+          LCP_M=$(awk "BEGIN {printf \"%.2f\", ${{ steps.scores.outputs.home_lcp }} / 1000}")s
+          CLS_M=$(printf "%.3f" ${{ steps.scores.outputs.home_cls }})
+          TBT_M=$(printf "%.0f" ${{ steps.scores.outputs.home_tbt }})
+          LCP_D=$(awk "BEGIN {printf \"%.2f\", ${{ steps.scores.outputs.home_d_lcp }} / 1000}")s
+          CLS_D=$(printf "%.3f" ${{ steps.scores.outputs.home_d_cls }})
+          TBT_D=$(printf "%.0f" ${{ steps.scores.outputs.home_d_tbt }})
+
+          TH='style="padding:8px 12px;text-align:center;font-weight:600;"'
+          TH_L='style="padding:8px 12px;text-align:left;font-weight:600;"'
+          TD='style="padding:8px 12px;"'
+          TABLE='style="width:100%;border-collapse:collapse;margin-bottom:28px;font-size:14px;"'
+          THEAD='style="background:#f5f5f5;"'
+
+          BODY=$(cat <<HTMLEOF
+          <!DOCTYPE html>
+          <html>
+          <body style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#111;max-width:600px;margin:0 auto;padding:24px;">
+            <h1 style="font-size:20px;margin-bottom:24px;">Weekly PageSpeed Report — ${DATE_STR}</h1>
+
+            <h2 style="font-size:15px;margin-bottom:8px;">Mobile</h2>
+            <table $TABLE>
+              <tr $THEAD>
+                <th $TH_L>Page</th>
+                <th $TH>Performance</th>
+                <th $TH>Accessibility</th>
+                <th $TH>Best Practices</th>
+                <th $TH>SEO</th>
+              </tr>
+              <tr><td $TD>Home</td>$(sc ${{ steps.scores.outputs.home_perf }})$(sc ${{ steps.scores.outputs.home_a11y }})$(sc ${{ steps.scores.outputs.home_bp }})$(sc ${{ steps.scores.outputs.home_seo }})</tr>
+              <tr><td $TD>About</td>$(sc ${{ steps.scores.outputs.about_perf }})$(sc ${{ steps.scores.outputs.about_a11y }})$(sc ${{ steps.scores.outputs.about_bp }})$(sc ${{ steps.scores.outputs.about_seo }})</tr>
+              <tr><td $TD>Blog</td>$(sc ${{ steps.scores.outputs.blog_perf }})$(sc ${{ steps.scores.outputs.blog_a11y }})$(sc ${{ steps.scores.outputs.blog_bp }})$(sc ${{ steps.scores.outputs.blog_seo }})</tr>
+              <tr><td $TD>Builds</td>$(sc ${{ steps.scores.outputs.builds_perf }})$(sc ${{ steps.scores.outputs.builds_a11y }})$(sc ${{ steps.scores.outputs.builds_bp }})$(sc ${{ steps.scores.outputs.builds_seo }})</tr>
+              <tr><td $TD>Gems</td>$(sc ${{ steps.scores.outputs.gems_perf }})$(sc ${{ steps.scores.outputs.gems_a11y }})$(sc ${{ steps.scores.outputs.gems_bp }})$(sc ${{ steps.scores.outputs.gems_seo }})</tr>
+            </table>
+
+            <h2 style="font-size:15px;margin-bottom:8px;">Desktop</h2>
+            <table $TABLE>
+              <tr $THEAD>
+                <th $TH_L>Page</th>
+                <th $TH>Performance</th>
+                <th $TH>Accessibility</th>
+                <th $TH>Best Practices</th>
+                <th $TH>SEO</th>
+              </tr>
+              <tr><td $TD>Home</td>$(sc ${{ steps.scores.outputs.home_d_perf }})$(sc ${{ steps.scores.outputs.home_d_a11y }})$(sc ${{ steps.scores.outputs.home_d_bp }})$(sc ${{ steps.scores.outputs.home_d_seo }})</tr>
+              <tr><td $TD>About</td>$(sc ${{ steps.scores.outputs.about_d_perf }})$(sc ${{ steps.scores.outputs.about_d_a11y }})$(sc ${{ steps.scores.outputs.about_d_bp }})$(sc ${{ steps.scores.outputs.about_d_seo }})</tr>
+              <tr><td $TD>Blog</td>$(sc ${{ steps.scores.outputs.blog_d_perf }})$(sc ${{ steps.scores.outputs.blog_d_a11y }})$(sc ${{ steps.scores.outputs.blog_d_bp }})$(sc ${{ steps.scores.outputs.blog_d_seo }})</tr>
+              <tr><td $TD>Builds</td>$(sc ${{ steps.scores.outputs.builds_d_perf }})$(sc ${{ steps.scores.outputs.builds_d_a11y }})$(sc ${{ steps.scores.outputs.builds_d_bp }})$(sc ${{ steps.scores.outputs.builds_d_seo }})</tr>
+              <tr><td $TD>Gems</td>$(sc ${{ steps.scores.outputs.gems_d_perf }})$(sc ${{ steps.scores.outputs.gems_d_a11y }})$(sc ${{ steps.scores.outputs.gems_d_bp }})$(sc ${{ steps.scores.outputs.gems_d_seo }})</tr>
+            </table>
+
+            <h2 style="font-size:15px;margin-bottom:8px;">Core Web Vitals — Mobile Homepage</h2>
+            <ul style="line-height:1.9;margin:0 0 24px 0;padding-left:20px;font-size:14px;">
+              <li>LCP: ${LCP_M} (target &lt;2.5s)</li>
+              <li>CLS: ${CLS_M} (target &lt;0.1)</li>
+              <li>TBT: ${TBT_M}ms (target &lt;300ms)</li>
+            </ul>
+
+            <h2 style="font-size:15px;margin-bottom:8px;">Core Web Vitals — Desktop Homepage</h2>
+            <ul style="line-height:1.9;margin:0 0 24px 0;padding-left:20px;font-size:14px;">
+              <li>LCP: ${LCP_D} (target &lt;2.5s)</li>
+              <li>CLS: ${CLS_D} (target &lt;0.1)</li>
+              <li>TBT: ${TBT_D}ms (target &lt;300ms)</li>
+            </ul>
+
+            <p style="font-size:14px;"><a href="https://pagespeed.web.dev/?url=https://lukestahl.io/" style="color:#1a73e8;">Test on PageSpeed Insights</a></p>
+          </body>
+          </html>
+          HTMLEOF
+          )
 
           PAYLOAD=$(jq -n \
             --arg from "$FROM_EMAIL" \

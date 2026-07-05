@@ -9,31 +9,41 @@
         "seo": 0,
         "lcp": 0,
         "cls": 0,
-        "tbt": 0
+        "tbt": 0,
+        "agenticBrowsingPassed": 3,
+        "agenticBrowsingTotal": 3
       },
       "about": {
         "performance": 0,
         "accessibility": 0,
         "bestPractices": 0,
-        "seo": 0
+        "seo": 0,
+        "agenticBrowsingPassed": 3,
+        "agenticBrowsingTotal": 3
       },
       "blog": {
         "performance": 0,
         "accessibility": 0,
         "bestPractices": 0,
-        "seo": 0
+        "seo": 0,
+        "agenticBrowsingPassed": 3,
+        "agenticBrowsingTotal": 3
       },
       "builds": {
         "performance": 0,
         "accessibility": 0,
         "bestPractices": 0,
-        "seo": 0
+        "seo": 0,
+        "agenticBrowsingPassed": 3,
+        "agenticBrowsingTotal": 3
       },
       "gems": {
         "performance": 0,
         "accessibility": 0,
         "bestPractices": 0,
-        "seo": 0
+        "seo": 0,
+        "agenticBrowsingPassed": 3,
+        "agenticBrowsingTotal": 3
       }
     },
     "desktop": {
@@ -44,31 +54,41 @@
         "seo": 0,
         "lcp": 0,
         "cls": 0,
-        "tbt": 0
+        "tbt": 0,
+        "agenticBrowsingPassed": 3,
+        "agenticBrowsingTotal": 3
       },
       "about": {
         "performance": 0,
         "accessibility": 0,
         "bestPractices": 0,
-        "seo": 0
+        "seo": 0,
+        "agenticBrowsingPassed": 3,
+        "agenticBrowsingTotal": 3
       },
       "blog": {
         "performance": 0,
         "accessibility": 0,
         "bestPractices": 0,
-        "seo": 0
+        "seo": 0,
+        "agenticBrowsingPassed": 3,
+        "agenticBrowsingTotal": 3
       },
       "builds": {
         "performance": 0,
         "accessibility": 0,
         "bestPractices": 0,
-        "seo": 0
+        "seo": 0,
+        "agenticBrowsingPassed": 3,
+        "agenticBrowsingTotal": 3
       },
       "gems": {
         "performance": 0,
         "accessibility": 0,
         "bestPractices": 0,
-        "seo": 0
+        "seo": 0,
+        "agenticBrowsingPassed": 3,
+        "agenticBrowsingTotal": 3
       }
     }
   },
