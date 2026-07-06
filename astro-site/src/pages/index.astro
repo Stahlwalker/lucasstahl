@@ -2059,10 +2059,36 @@ function getStrokeDashoffset(score: number): number {
 			ctx.restore();
 		}
 
-		function draw() {
+		const bolts = [];
+
+		// Build a jagged lightning path from (x1,y1) to (x2,y2) along the grid
+		function makePath(x1, y1, x2, y2) {
+			const pts = [{x: x1, y: y1}];
+			let cx = x1, cy = y1;
+			let guard = 0;
+			while ((cx !== x2 || cy !== y2) && guard++ < 400) {
+				const dx = x2 - cx, dy = y2 - cy;
+				// Random perpendicular jog for lightning feel
+				if (Math.random() < 0.3 && Math.abs(dx) > CELL * 2 && Math.abs(dy) > CELL * 2) {
+					const jog = (Math.random() < 0.5 ? 1 : -1) * CELL;
+					if (Math.abs(dx) >= Math.abs(dy)) { cy += jog; }
+					else { cx += jog; }
+					pts.push({x: cx, y: cy});
+				}
+				// Step toward target on dominant axis
+				if (Math.abs(x2 - cx) >= Math.abs(y2 - cy)) { cx += cx < x2 ? CELL : -CELL; }
+				else { cy += cy < y2 ? CELL : -CELL; }
+				pts.push({x: cx, y: cy});
+			}
+			return pts;
+		}
+
+		function draw(now) {
+			checkHold(now);
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
 			const rgb = isDark() ? '34,211,238' : '8,145,178';
 
+			// Ambient ⌘ symbols
 			for (let i = active.length - 1; i >= 0; i--) {
 				const c = active[i];
 				if (c.phase === 'in') {
@@ -2076,6 +2102,48 @@ function getStrokeDashoffset(score: number): number {
 					if (c.alpha === 0) { active.splice(i, 1); continue; }
 				}
 				drawSymbol(c.cx, c.cy, c.alpha, rgb);
+			}
+
+			// Electrical bolts
+			for (let i = bolts.length - 1; i >= 0; i--) {
+				const b = bolts[i];
+
+				if (b.phase === 'travel') {
+					b.progress = Math.min(b.pts.length - 1, b.progress + 2);
+					if (b.progress >= b.pts.length - 1) {
+						b.phase = 'hold';
+						// Spawn ⌘ at destination
+						const end = b.pts[b.pts.length - 1];
+						active.push({ cx: end.x, cy: end.y, alpha: 0, phase: 'in', hold: 0 });
+					}
+				} else if (b.phase === 'hold') {
+					b.hold++;
+					if (b.hold > 20) b.phase = 'fade';
+				} else {
+					b.alpha = Math.max(0, b.alpha - 0.05);
+					if (b.alpha === 0) { bolts.splice(i, 1); continue; }
+				}
+
+				const maxIdx = Math.floor(b.progress);
+				if (maxIdx < 1) continue;
+
+				ctx.save();
+				ctx.strokeStyle = `rgba(${rgb},${b.alpha * 0.75})`;
+				ctx.lineWidth = 1;
+				ctx.shadowBlur = 10;
+				ctx.shadowColor = `rgba(${rgb},${b.alpha * 0.5})`;
+				ctx.beginPath();
+				ctx.moveTo(b.pts[0].x, b.pts[0].y);
+				for (let j = 1; j <= maxIdx; j++) ctx.lineTo(b.pts[j].x, b.pts[j].y);
+				ctx.stroke();
+				// Bright head at tip
+				const tip = b.pts[maxIdx];
+				ctx.fillStyle = `rgba(${rgb},${b.alpha})`;
+				ctx.shadowBlur = 14;
+				ctx.beginPath();
+				ctx.arc(tip.x, tip.y, 2, 0, Math.PI * 2);
+				ctx.fill();
+				ctx.restore();
 			}
 
 			requestAnimationFrame(draw);
@@ -2093,6 +2161,39 @@ function getStrokeDashoffset(score: number): number {
 			}, 500 + Math.random() * 1000);
 		}
 		scheduleNext();
+
+		// ⌘ hold — lightning scales with hold duration
+		let cmdHeld = false, holdStart = 0, lastFire = 0;
+
+		function fireLightning(intensity) {
+			const originX = OFFSET + Math.round((canvas.width / 2 - OFFSET) / CELL) * CELL;
+			const originY = OFFSET + Math.round((canvas.height / 2 - OFFSET) / CELL) * CELL;
+			const cols = Math.ceil(canvas.width / CELL) + 1;
+			const rows = Math.ceil(canvas.height / CELL) + 1;
+			active.push({ cx: originX, cy: originY, alpha: 0, phase: 'in', hold: 0 });
+			const count = intensity === 'low' ? 3 : intensity === 'mid' ? 5 : 8;
+			for (let b = 0; b < count; b++) {
+				const tx = OFFSET + Math.floor(Math.random() * cols) * CELL;
+				const ty = OFFSET + Math.floor(Math.random() * rows) * CELL;
+				bolts.push({ pts: makePath(originX, originY, tx, ty), progress: 0, alpha: 1, phase: 'travel', hold: 0 });
+			}
+		}
+
+		// In the rAF loop we check hold state — integrated by calling checkHold() in draw
+		function checkHold(now) {
+			if (!cmdHeld) return;
+			const held = now - holdStart;
+			const interval = held < 400 ? 350 : held < 900 ? 220 : 130;
+			if (now - lastFire < interval) return;
+			lastFire = now;
+			fireLightning(held < 400 ? 'low' : held < 900 ? 'mid' : 'high');
+		}
+
+		window.addEventListener('keydown', (e) => {
+			if (e.key !== 'Meta') return;
+			if (!cmdHeld) { cmdHeld = true; holdStart = performance.now(); lastFire = 0; fireLightning('low'); }
+		});
+		window.addEventListener('keyup', (e) => { if (e.key === 'Meta') cmdHeld = false; });
 	})();
 </script>
 </Layout>
