@@ -1791,7 +1791,9 @@ function getStrokeDashoffset(score: number): number {
 		:global([data-theme="light"]) .feed-link-secondary:hover {
 			color: #1e40af;
 		}
+
 	</style>
+
 
 	<script>
 		// Smooth scroll functionality for scroll indicator
@@ -1998,6 +2000,99 @@ function getStrokeDashoffset(score: number): number {
 		reduceMotion.addEventListener('change', evaluate);
 		document.addEventListener('visibilitychange', evaluate);
 		evaluate();
+	})();
+
+	// Command key — ⌘ symbols randomly surface and fade across the grid
+	(function gridCommandKey() {
+		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+		const CELL = 24;
+		const OFFSET = -1;
+
+		const canvas = document.createElement('canvas');
+		canvas.setAttribute('aria-hidden', 'true');
+		canvas.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9998;';
+		document.body.appendChild(canvas);
+
+		const ctx = canvas.getContext('2d');
+
+		function resize() {
+			canvas.width = window.innerWidth;
+			canvas.height = window.innerHeight;
+		}
+		resize();
+		window.addEventListener('resize', resize);
+
+		function isDark() {
+			return document.documentElement.getAttribute('data-theme') !== 'light';
+		}
+
+		function updateBlend() {
+			canvas.style.mixBlendMode = isDark() ? 'screen' : 'normal';
+		}
+		updateBlend();
+		new MutationObserver(updateBlend).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+		const active = [];
+
+		function addCell() {
+			const cols = Math.ceil(canvas.width / CELL) + 1;
+			const rows = Math.ceil(canvas.height / CELL) + 1;
+			active.push({
+				cx: OFFSET + Math.floor(Math.random() * cols) * CELL,
+				cy: OFFSET + Math.floor(Math.random() * rows) * CELL,
+				alpha: 0,
+				phase: 'in',
+				hold: 0,
+			});
+		}
+
+		function drawSymbol(cx, cy, a, rgb) {
+			ctx.save();
+			ctx.font = '14px system-ui, -apple-system, sans-serif';
+			ctx.fillStyle = `rgba(${rgb},${a * 0.9})`;
+			ctx.shadowBlur = 10;
+			ctx.shadowColor = `rgba(${rgb},${a * 0.6})`;
+			ctx.textAlign = 'center';
+			ctx.textBaseline = 'middle';
+			ctx.fillText('⌘', cx + CELL / 2, cy + CELL / 2);
+			ctx.restore();
+		}
+
+		function draw() {
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+			const rgb = isDark() ? '34,211,238' : '8,145,178';
+
+			for (let i = active.length - 1; i >= 0; i--) {
+				const c = active[i];
+				if (c.phase === 'in') {
+					c.alpha = Math.min(1, c.alpha + 0.06);
+					if (c.alpha === 1) c.phase = 'hold';
+				} else if (c.phase === 'hold') {
+					c.hold++;
+					if (c.hold > 30) c.phase = 'out';
+				} else {
+					c.alpha = Math.max(0, c.alpha - 0.04);
+					if (c.alpha === 0) { active.splice(i, 1); continue; }
+				}
+				drawSymbol(c.cx, c.cy, c.alpha, rgb);
+			}
+
+			requestAnimationFrame(draw);
+		}
+
+		requestAnimationFrame(draw);
+
+		function scheduleNext() {
+			setTimeout(() => {
+				if (!document.hidden) {
+					const burst = Math.random() < 0.3 ? 2 : 1;
+					for (let i = 0; i < burst; i++) addCell();
+				}
+				scheduleNext();
+			}, 500 + Math.random() * 1000);
+		}
+		scheduleNext();
 	})();
 </script>
 </Layout>
