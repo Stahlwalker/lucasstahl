@@ -457,9 +457,8 @@ const inlinedCss = inlineCriticalCSS
 				rgba(34, 211, 238, 0.15) 40%,
 				transparent 70%
 			);
-			transform: translate(-50%, -50%);
 			mix-blend-mode: screen;
-			transition: opacity 0.3s ease;
+			transition: opacity 0.3s ease, transform 0s;
 			left: 0;
 			top: 0;
 		}
@@ -483,8 +482,6 @@ const inlinedCss = inlineCriticalCSS
 	</style>
 
 	<script>
-		import { animate } from 'motion/mini';
-
 		// Only run on desktop (non-touch devices)
 		if (window.matchMedia('(hover: hover)').matches) {
 			const cursorGlow = document.getElementById('cursor-glow');
@@ -492,55 +489,28 @@ const inlinedCss = inlineCriticalCSS
 			if (cursorGlow) {
 				let mouseX = 0;
 				let mouseY = 0;
-				let currentAnimation = null;
-				let isDetached = false;
+				let rafId = null;
 
-				// Watch for the element being removed from the DOM (e.g. page transitions)
-				// so we can cancel the in-flight animation before commitStyles() is called
-				const observer = new MutationObserver(() => {
-					if (!document.contains(cursorGlow)) {
-						isDetached = true;
-						if (currentAnimation) {
-							currentAnimation.cancel();
-							currentAnimation = null;
-						}
-						observer.disconnect();
-					}
-				});
-				observer.observe(document.body, { childList: true, subtree: true });
-
-				// Track mouse position
 				document.addEventListener('mousemove', (e) => {
-					if (isDetached) return;
-
 					mouseX = e.clientX;
 					mouseY = e.clientY;
 
-					// Show glow on first move
-					if (cursorGlow.style.opacity === '0' || cursorGlow.style.opacity === '') {
+					if (cursorGlow.style.opacity !== '1') {
 						cursorGlow.style.opacity = '1';
 					}
 
-					// Animate glow position with smooth easing
-					currentAnimation = animate(
-						cursorGlow,
-						{
-							left: mouseX + 'px',
-							top: mouseY + 'px'
-						},
-						{
-							duration: 0.2,
-							easing: 'ease-out'
-						}
-					);
+					if (!rafId) {
+						rafId = requestAnimationFrame(() => {
+							cursorGlow.style.transform = `translate(${mouseX - 50}px, ${mouseY - 50}px)`;
+							rafId = null;
+						});
+					}
 				});
 
-				// Hide glow when cursor leaves window
 				document.addEventListener('mouseleave', () => {
 					cursorGlow.style.opacity = '0';
 				});
 
-				// Show glow when cursor enters window
 				document.addEventListener('mouseenter', () => {
 					cursorGlow.style.opacity = '1';
 				});
