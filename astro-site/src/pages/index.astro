@@ -2189,11 +2189,32 @@ function getStrokeDashoffset(score: number): number {
 			fireLightning(held < 400 ? 'low' : held < 900 ? 'mid' : 'high');
 		}
 
+		let pendingFire = null;
 		window.addEventListener('keydown', (e) => {
+			// Cancel if a modifier arrives (Cmd+Shift screenshot etc.)
+			if (e.key === 'Shift' || e.key === 'Alt' || e.key === 'Control') {
+				if (pendingFire) { clearTimeout(pendingFire); pendingFire = null; }
+				cmdHeld = false;
+				return;
+			}
 			if (e.key !== 'Meta' || e.shiftKey || e.altKey || e.ctrlKey) return;
-			if (!cmdHeld) { cmdHeld = true; holdStart = performance.now(); lastFire = 0; fireLightning('low'); }
+			if (!cmdHeld && !pendingFire) {
+				// Small delay lets any co-pressed modifier cancel this
+				pendingFire = setTimeout(() => {
+					pendingFire = null;
+					cmdHeld = true;
+					holdStart = performance.now();
+					lastFire = 0;
+					fireLightning('low');
+				}, 60);
+			}
 		});
-		window.addEventListener('keyup', (e) => { if (e.key === 'Meta') cmdHeld = false; });
+		window.addEventListener('keyup', (e) => {
+			if (e.key === 'Meta') {
+				cmdHeld = false;
+				if (pendingFire) { clearTimeout(pendingFire); pendingFire = null; }
+			}
+		});
 	})();
 </script>
 </Layout>
