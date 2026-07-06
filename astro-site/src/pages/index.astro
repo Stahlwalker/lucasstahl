@@ -2190,7 +2190,7 @@ function getStrokeDashoffset(score: number): number {
 		}
 
 		window.addEventListener('keydown', (e) => {
-			if (e.key !== 'Meta') return;
+			if (e.key !== 'Meta' || e.shiftKey || e.altKey || e.ctrlKey) return;
 			if (!cmdHeld) { cmdHeld = true; holdStart = performance.now(); lastFire = 0; fireLightning('low'); }
 		});
 		window.addEventListener('keyup', (e) => { if (e.key === 'Meta') cmdHeld = false; });
