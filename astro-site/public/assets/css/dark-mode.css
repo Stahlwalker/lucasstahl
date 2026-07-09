@@ -97,10 +97,13 @@ body {
     touch-action: manipulation;
 }
 
-.navbar-brand:hover {
-    color: #22d3ee !important;
-    transform: translateY(-2px);
+@media (hover: hover) and (pointer: fine) {
+    .navbar-brand:hover {
+        color: #22d3ee !important;
+        transform: translateY(-2px);
+    }
 }
+
 
 [data-theme="light"] .navbar-brand:hover {
     color: #0e7490 !important;
@@ -126,20 +129,26 @@ body {
     margin-left: 0.25rem;
 }
 
-.navbar-github-icon:hover {
-    color: #22d3ee !important;
-    background: rgba(34, 211, 238, 0.15);
-    transform: translateY(-3px);
+@media (hover: hover) and (pointer: fine) {
+    .navbar-github-icon:hover {
+        color: #22d3ee !important;
+        background: rgba(34, 211, 238, 0.15);
+        transform: translateY(-3px);
+    }
 }
+
 
 [data-theme="light"] .navbar-github-icon:hover {
     color: #0e7490 !important;
     background: rgba(14, 116, 144, 0.1);
 }
 
-.navbar-brand:hover .navbar-github-icon {
-    transform: translateY(-2px);
+@media (hover: hover) and (pointer: fine) {
+    .navbar-brand:hover .navbar-github-icon {
+        transform: translateY(-2px);
+    }
 }
+
 
 /* Hide mobile GitHub nav item on desktop */
 .navbar-github-mobile {
@@ -174,10 +183,13 @@ body {
     opacity: 0.8;
 }
 
-.mobile-search-button:hover {
-    opacity: 1;
-    transform: scale(1.1);
+@media (hover: hover) and (pointer: fine) {
+    .mobile-search-button:hover {
+        opacity: 1;
+        transform: scale(1.1);
+    }
 }
+
 
 .nav-link {
     color: var(--text-secondary) !important;
@@ -257,7 +269,7 @@ body {
 
 .hero-content {
     text-align: center;
-    animation: fadeInUp 1s ease-out;
+    animation: fadeInUp 0.4s ease-out;
 }
 
 @keyframes fadeInUp {
@@ -286,7 +298,7 @@ body {
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     position: relative;
     overflow: hidden;
-    animation: slideIn 0.8s ease-out 0.2s both;
+    animation: slideIn 0.4s ease-out 0.1s both;
 }
 
 @keyframes slideIn {
@@ -487,6 +499,11 @@ body {
     height: 300px;
 }
 
+.btn-modern:active {
+    transform: translateY(0) scale(0.97);
+    transition-duration: 50ms;
+}
+
 .btn-primary-modern {
     background: rgba(34, 211, 238, 0.1);
     color: var(--accent-teal);
@@ -494,11 +511,14 @@ body {
     box-shadow: 0 0 16px rgba(34, 211, 238, 0.2);
 }
 
-.btn-primary-modern:hover {
-    background: rgba(34, 211, 238, 0.18);
-    transform: translateY(-2px);
-    box-shadow: 0 0 28px rgba(34, 211, 238, 0.35);
+@media (hover: hover) and (pointer: fine) {
+    .btn-primary-modern:hover {
+        background: rgba(34, 211, 238, 0.18);
+        transform: translateY(-2px);
+        box-shadow: 0 0 28px rgba(34, 211, 238, 0.35);
+    }
 }
+
 
 .btn-secondary-modern {
     background: transparent;
@@ -506,11 +526,14 @@ body {
     border: 1.5px solid rgba(255, 255, 255, 0.15);
 }
 
-.btn-secondary-modern:hover {
-    color: var(--text-primary);
-    border-color: var(--accent-teal);
-    transform: translateY(-2px);
+@media (hover: hover) and (pointer: fine) {
+    .btn-secondary-modern:hover {
+        color: var(--text-primary);
+        border-color: var(--accent-teal);
+        transform: translateY(-2px);
+    }
 }
+
 
 .btn-modern i {
     font-size: 1rem;
@@ -548,9 +571,12 @@ body {
     width: 1.5em;
     height: 1.5em;
 }
-.seo-widget-cta:hover .icon-svg {
-    transform: translateX(4px);
+@media (hover: hover) and (pointer: fine) {
+    .seo-widget-cta:hover .icon-svg {
+        transform: translateX(4px);
+    }
 }
+
 
 .btn-modern span {
     z-index: 1;
@@ -621,11 +647,14 @@ body {
     text-decoration: none;
 }
 
-.footer-social a:hover {
-    color: var(--accent-primary) !important;
-    background: rgba(96, 165, 250, 0.15);
-    transform: translateY(-3px);
+@media (hover: hover) and (pointer: fine) {
+    .footer-social a:hover {
+        color: var(--accent-primary) !important;
+        background: rgba(96, 165, 250, 0.15);
+        transform: translateY(-3px);
+    }
 }
+
 
 .footer-social a svg {
     width: 24px;
@@ -666,7 +695,7 @@ body {
 .section-header {
     text-align: center;
     margin-bottom: 2.5rem;
-    animation: fadeInUp 0.8s ease-out;
+    animation: fadeInUp 0.4s ease-out;
 }
 
 .section-title {
@@ -724,7 +753,7 @@ body {
     overflow: hidden;
     transition: all 0.3s ease;
     position: relative;
-    animation: fadeInUp 0.6s ease-out both;
+    animation: fadeInUp 0.3s ease-out both;
 }
 
 .feed-item-link:nth-child(1) .feed-item { animation-delay: 0.1s; }
@@ -732,11 +761,14 @@ body {
 .feed-item-link:nth-child(3) .feed-item { animation-delay: 0.3s; }
 .feed-item-link:nth-child(4) .feed-item { animation-delay: 0.4s; }
 
-.feed-item-link:hover .feed-item {
-    border-color: rgba(96, 165, 250, 0.3);
-    transform: translateY(-4px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+@media (hover: hover) and (pointer: fine) {
+    .feed-item-link:hover .feed-item {
+        border-color: rgba(96, 165, 250, 0.3);
+        transform: translateY(-4px);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    }
 }
+
 
 /* Abstract Background */
 .feed-background {
@@ -940,12 +972,15 @@ body {
     transition: all 0.3s ease;
 }
 
-.tag:hover {
-    transform: none;
-    background: rgba(96, 165, 250, 0.1);
-    border-color: var(--accent-primary);
-    color: var(--accent-primary);
+@media (hover: hover) and (pointer: fine) {
+    .tag:hover {
+        transform: none;
+        background: rgba(96, 165, 250, 0.1);
+        border-color: var(--accent-primary);
+        color: var(--accent-primary);
+    }
 }
+
 
 /* Feed Link */
 .feed-link {
@@ -964,21 +999,27 @@ body {
     border: 1px solid rgba(96, 165, 250, 0.2);
 }
 
-.feed-link:hover {
-    gap: 0.75rem;
-    background: rgba(96, 165, 250, 0.15);
-    border-color: var(--accent-primary);
-    transform: translateX(4px);
+@media (hover: hover) and (pointer: fine) {
+    .feed-link:hover {
+        gap: 0.75rem;
+        background: rgba(96, 165, 250, 0.15);
+        border-color: var(--accent-primary);
+        transform: translateX(4px);
+    }
 }
+
 
 .feed-link i {
     font-size: 0.875rem;
     transition: transform 0.3s ease;
 }
 
-.feed-link:hover i {
-    transform: translateX(4px);
+@media (hover: hover) and (pointer: fine) {
+    .feed-link:hover i {
+        transform: translateX(4px);
+    }
 }
+
 
 /* CTA Section */
 .cta-section {
@@ -987,7 +1028,7 @@ body {
     background: var(--bg-secondary);
     border: 2px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
-    animation: fadeInUp 0.8s ease-out 0.5s both;
+    animation: fadeInUp 0.4s ease-out 0.25s both;
 }
 
 .cta-text {
@@ -1018,7 +1059,7 @@ body {
     text-align: center;
     position: relative;
     overflow: hidden;
-    animation: fadeInUp 0.8s ease-out 0.6s both;
+    animation: fadeInUp 0.4s ease-out 0.3s both;
 }
 
 .github-cta::before {
@@ -1091,12 +1132,15 @@ body {
     border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
-.btn-github:hover {
-    background: linear-gradient(135deg, #1a1e22, #0d1117);
-    transform: translateY(-4px);
-    box-shadow: 0 10px 30px rgba(96, 165, 250, 0.3);
-    border-color: var(--accent-primary);
+@media (hover: hover) and (pointer: fine) {
+    .btn-github:hover {
+        background: linear-gradient(135deg, #1a1e22, #0d1117);
+        transform: translateY(-4px);
+        box-shadow: 0 10px 30px rgba(96, 165, 250, 0.3);
+        border-color: var(--accent-primary);
+    }
 }
+
 
 /* Smooth Scroll */
 html {
@@ -1451,19 +1495,25 @@ html {
     transform: translateY(-3px);
 }
 
-.theme-toggle:hover {
-    background: rgba(96, 165, 250, 0.15);
-    border-color: var(--accent-primary);
-    transform: translateY(-6px);
+@media (hover: hover) and (pointer: fine) {
+    .theme-toggle:hover {
+        background: rgba(96, 165, 250, 0.15);
+        border-color: var(--accent-primary);
+        transform: translateY(-6px);
+    }
 }
+
 
 .theme-toggle i {
     transition: transform 0.3s ease;
 }
 
-.theme-toggle:hover i {
-    transform: rotate(20deg);
+@media (hover: hover) and (pointer: fine) {
+    .theme-toggle:hover i {
+        transform: rotate(20deg);
+    }
 }
+
 
 /* Light mode body with subtle texture */
 [data-theme="light"] body {
@@ -1562,10 +1612,13 @@ body,
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
-[data-theme="light"] .feed-item-link:hover .feed-item {
-    border-color: var(--accent-primary);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+@media (hover: hover) and (pointer: fine) {
+    [data-theme="light"] .feed-item-link:hover .feed-item {
+        border-color: var(--accent-primary);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
 }
+
 
 /* Light mode tags */
 [data-theme="light"] .tag {
@@ -1574,12 +1627,15 @@ body,
     color: var(--text-secondary);
 }
 
-[data-theme="light"] .tag:hover {
-    transform: none;
-    background: rgba(37, 99, 235, 0.08);
-    border-color: var(--accent-primary);
-    color: var(--accent-primary);
+@media (hover: hover) and (pointer: fine) {
+    [data-theme="light"] .tag:hover {
+        transform: none;
+        background: rgba(37, 99, 235, 0.08);
+        border-color: var(--accent-primary);
+        color: var(--accent-primary);
+    }
 }
+
 
 /* Light mode featured content section */
 [data-theme="light"] .featured-content {
@@ -1607,10 +1663,13 @@ body,
     box-shadow: 0 0 14px rgba(8, 145, 178, 0.15);
 }
 
-[data-theme="light"] .btn-primary-modern:hover {
-    background: rgba(8, 145, 178, 0.14);
-    box-shadow: 0 0 26px rgba(8, 145, 178, 0.28);
+@media (hover: hover) and (pointer: fine) {
+    [data-theme="light"] .btn-primary-modern:hover {
+        background: rgba(8, 145, 178, 0.14);
+        box-shadow: 0 0 26px rgba(8, 145, 178, 0.28);
+    }
 }
+
 
 [data-theme="light"] .btn-secondary-modern {
     border: 1.5px solid rgba(0, 0, 0, 0.15);
@@ -1654,5 +1713,27 @@ body,
     .footer-social a svg {
         width: 16px;
         height: 16px;
+    }
+}
+
+/* Accessibility: respect OS-level reduce-motion preference.
+   Keeps opacity/color transitions (they aid comprehension) but kills
+   all movement-based animations sitewide. */
+@media (prefers-reduced-motion: reduce) {
+    /* Stop all keyframe animations across every stylesheet */
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    /* Kill specific infinite ambient animations */
+    .hero-section::before,
+    .scroll-indicator,
+    .floating-shape {
+        animation: none !important;
     }
 }

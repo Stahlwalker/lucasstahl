@@ -13,7 +13,7 @@
     color: var(--text-primary);
     margin-bottom: 1rem;
     font-weight: 700;
-    animation: fadeInUp 0.8s ease-out;
+    animation: fadeInUp 0.4s ease-out;
 }
 
 .blog-hero-subtitle {
@@ -21,7 +21,7 @@
     color: var(--text-secondary);
     max-width: 600px;
     margin: 0 auto;
-    animation: fadeInUp 0.8s ease-out 0.2s both;
+    animation: fadeInUp 0.4s ease-out 0.1s both;
 }
 
 /* Blog Feed Section */
@@ -92,11 +92,14 @@
     border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
-.blog-card-compact:hover {
-    background: var(--bg-tertiary) !important;
-    border-color: rgba(96, 165, 250, 0.4) !important;
-    transform: translateX(4px);
+@media (hover: hover) and (pointer: fine) {
+    .blog-card-compact:hover {
+        background: var(--bg-tertiary) !important;
+        border-color: rgba(96, 165, 250, 0.4) !important;
+        transform: translateX(4px);
+    }
 }
+
 
 /* Reduce gap for compact posts */
 .blog-card-compact + .blog-card-compact {
@@ -110,7 +113,7 @@
     border-radius: 8px;
     overflow: hidden;
     transition: all 0.3s ease;
-    animation: fadeInUp 0.6s ease-out both;
+    animation: fadeInUp 0.3s ease-out both;
 }
 
 /* Compact Blog Card (no thumbnail) */
@@ -121,12 +124,15 @@
     border-radius: 8px;
 }
 
-.blog-card-compact:hover {
-    background: var(--bg-tertiary);
-    border-color: rgba(96, 165, 250, 0.4);
-    transform: translateX(4px);
-    box-shadow: none;
+@media (hover: hover) and (pointer: fine) {
+    .blog-card-compact:hover {
+        background: var(--bg-tertiary);
+        border-color: rgba(96, 165, 250, 0.4);
+        transform: translateX(4px);
+        box-shadow: none;
+    }
 }
+
 
 .blog-card-compact .blog-card-inner {
     gap: 0;
@@ -162,11 +168,14 @@
 .blog-card:nth-child(10) { animation-delay: 0.55s; }
 .blog-card:nth-child(n+11) { animation-delay: 0.6s; }
 
-.blog-card:hover {
-    border-color: rgba(96, 165, 250, 0.3);
-    transform: translateY(-4px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+@media (hover: hover) and (pointer: fine) {
+    .blog-card:hover {
+        border-color: rgba(96, 165, 250, 0.3);
+        transform: translateY(-4px);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    }
 }
+
 
 .blog-card-inner {
     display: flex;
@@ -224,9 +233,12 @@
     transition: transform 0.5s ease;
 }
 
-.blog-card:hover .blog-thumbnail img {
-    transform: scale(1.05);
+@media (hover: hover) and (pointer: fine) {
+    .blog-card:hover .blog-thumbnail img {
+        transform: scale(1.05);
+    }
 }
+
 
 /* Blog Content */
 .blog-content {
@@ -345,22 +357,28 @@
     display: none;
 }
 
-.blog-link:hover {
-    gap: 0.75rem;
-    background: rgba(96, 165, 250, 0.15);
-    border-color: var(--accent-primary);
-    transform: translateX(4px);
-    text-decoration: none;
+@media (hover: hover) and (pointer: fine) {
+    .blog-link:hover {
+        gap: 0.75rem;
+        background: rgba(96, 165, 250, 0.15);
+        border-color: var(--accent-primary);
+        transform: translateX(4px);
+        text-decoration: none;
+    }
 }
+
 
 .blog-link i {
     font-size: 0.875rem;
     transition: transform 0.3s ease;
 }
 
-.blog-link:hover i {
-    transform: translateX(4px);
+@media (hover: hover) and (pointer: fine) {
+    .blog-link:hover i {
+        transform: translateX(4px);
+    }
 }
+
 
 /* Make entire card clickable */
 .blog-card {
@@ -544,10 +562,13 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
-[data-theme="light"] .blog-card:hover {
-    border-color: var(--accent-primary);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+@media (hover: hover) and (pointer: fine) {
+    [data-theme="light"] .blog-card:hover {
+        border-color: var(--accent-primary);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
 }
+
 
 [data-theme="light"] .blog-hero {
     background-color: var(--bg-secondary);
@@ -646,12 +667,15 @@
     letter-spacing: 0.02em;
 }
 
-.load-more-btn:hover {
-    background: linear-gradient(135deg, rgba(96, 165, 250, 0.15), rgba(129, 140, 248, 0.1));
-    border-color: var(--accent-primary);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(96, 165, 250, 0.2);
+@media (hover: hover) and (pointer: fine) {
+    .load-more-btn:hover {
+        background: linear-gradient(135deg, rgba(96, 165, 250, 0.15), rgba(129, 140, 248, 0.1));
+        border-color: var(--accent-primary);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(96, 165, 250, 0.2);
+    }
 }
+
 
 .load-more-btn .comment-slash {
     color: #546e7a;
@@ -665,11 +689,14 @@
     border-color: rgba(37, 99, 235, 0.3);
 }
 
-[data-theme="light"] .load-more-btn:hover {
-    background: rgba(37, 99, 235, 0.1);
-    border-color: var(--accent-primary);
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+@media (hover: hover) and (pointer: fine) {
+    [data-theme="light"] .load-more-btn:hover {
+        background: rgba(37, 99, 235, 0.1);
+        border-color: var(--accent-primary);
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+    }
 }
+
 
 @media (max-width: 768px) {
     .load-more-btn {

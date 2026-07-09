@@ -693,6 +693,12 @@
     box-shadow: 0 8px 24px rgba(96, 165, 250, 0.4);
 }
 
+.btn-primary:active,
+.btn-secondary:active {
+    transform: translateY(0) scale(0.97);
+    transition-duration: 50ms;
+}
+
 .btn-secondary {
     background: var(--bg-tertiary);
     color: var(--text-primary);

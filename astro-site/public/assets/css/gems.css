@@ -16,11 +16,14 @@
     opacity: 1;
 }
 
-.scroll-hint:hover {
-    background: rgba(96, 165, 250, 0.15);
-    border-color: var(--accent-primary);
-    transform: translateY(2px);
+@media (hover: hover) and (pointer: fine) {
+    .scroll-hint:hover {
+        background: rgba(96, 165, 250, 0.15);
+        border-color: var(--accent-primary);
+        transform: translateY(2px);
+    }
 }
+
 
 .scroll-hint .comment-slash {
     color: var(--code-comment);
@@ -40,10 +43,13 @@
     font-weight: 700;
 }
 
-.scroll-hint:hover .arrow {
-    transform: translateY(3px);
-    animation: bounce 1s ease infinite;
+@media (hover: hover) and (pointer: fine) {
+    .scroll-hint:hover .arrow {
+        transform: translateY(3px);
+        animation: bounce 1s ease-in-out infinite;
+    }
 }
+
 
 @keyframes bounce {
     0%, 100% {
@@ -70,20 +76,26 @@ html {
     transition: all 0.3s ease;
 }
 
-.navbar-github-icon:hover {
-    color: var(--accent-primary) !important;
-    transform: translateY(-2px) scale(1.1);
+@media (hover: hover) and (pointer: fine) {
+    .navbar-github-icon:hover {
+        color: var(--accent-primary) !important;
+        transform: translateY(-2px) scale(1.1);
+    }
 }
 
-.navbar-brand:hover .navbar-github-icon {
-    transform: translateY(-2px);
+
+@media (hover: hover) and (pointer: fine) {
+    .navbar-brand:hover .navbar-github-icon {
+        transform: translateY(-2px);
+    }
 }
+
 
 /* Keyframe Animations */
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(40px);
+        transform: translateY(12px);
     }
     to {
         opacity: 1;
@@ -139,7 +151,7 @@ html {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-    animation: fadeInUp 0.8s ease;
+    animation: fadeInUp 0.4s ease-out;
 }
 
 .featured-gem::before {
@@ -151,15 +163,18 @@ html {
     height: 3px;
     background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary), var(--accent-primary));
     background-size: 200% 100%;
-    animation: gradientShift 3s ease infinite;
+    animation: gradientShift 3s linear infinite;
 }
 
-.featured-gem:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-    border-color: rgba(96, 165, 250, 0.3);
-    background: var(--bg-tertiary);
+@media (hover: hover) and (pointer: fine) {
+    .featured-gem:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        border-color: rgba(96, 165, 250, 0.3);
+        background: var(--bg-tertiary);
+    }
 }
+
 
 .featured-gem-content {
     position: relative;
@@ -205,12 +220,15 @@ html {
     margin-left: 0.5rem;
 }
 
-.featured-gem-title a:hover {
-    color: var(--accent-primary);
-    background: linear-gradient(135deg, rgba(96, 165, 250, 0.2), rgba(129, 140, 248, 0.15));
-    border-left-color: var(--accent-secondary);
-    transform: translateX(4px);
+@media (hover: hover) and (pointer: fine) {
+    .featured-gem-title a:hover {
+        color: var(--accent-primary);
+        background: linear-gradient(135deg, rgba(96, 165, 250, 0.2), rgba(129, 140, 248, 0.15));
+        border-left-color: var(--accent-secondary);
+        transform: translateX(4px);
+    }
 }
+
 
 .featured-gem-description {
     font-size: 1.125rem;
@@ -259,10 +277,13 @@ html {
     box-shadow: 0 4px 15px rgba(96, 165, 250, 0.3);
 }
 
-.featured-gem-link:hover {
-    transform: translateX(4px) translateY(-2px);
-    box-shadow: 0 6px 25px rgba(96, 165, 250, 0.4);
+@media (hover: hover) and (pointer: fine) {
+    .featured-gem-link:hover {
+        transform: translateX(4px) translateY(-2px);
+        box-shadow: 0 6px 25px rgba(96, 165, 250, 0.4);
+    }
 }
+
 
 .featured-gem-link svg {
     transition: transform 0.3s ease;
@@ -273,9 +294,12 @@ html {
     height: 1.15rem;
 }
 
-.featured-gem-link:hover svg {
-    transform: translateX(4px);
+@media (hover: hover) and (pointer: fine) {
+    .featured-gem-link:hover svg {
+        transform: translateX(4px);
+    }
 }
+
 
 /* Timeline Layout */
 .timeline-container {
@@ -305,7 +329,7 @@ html {
     position: relative;
     margin-bottom: 3rem;
     opacity: 0;
-    animation: fadeInLeft 0.6s ease forwards;
+    animation: fadeInLeft 0.3s ease-out both;
 }
 
 /* Stagger the animations */
@@ -369,12 +393,15 @@ html {
     opacity: 0.5;
 }
 
-.timeline-entry:hover .timeline-marker {
-    transform: scale(1.3);
-    box-shadow: 0 0 0 8px rgba(96, 165, 250, 0.2);
-    background: var(--accent-primary);
-    border-color: var(--accent-secondary);
+@media (hover: hover) and (pointer: fine) {
+    .timeline-entry:hover .timeline-marker {
+        transform: scale(1.3);
+        box-shadow: 0 0 0 8px rgba(96, 165, 250, 0.2);
+        background: var(--accent-primary);
+        border-color: var(--accent-secondary);
+    }
 }
+
 
 .timeline-entry:hover .timeline-marker::before {
     opacity: 1;
@@ -433,12 +460,15 @@ html {
 }
 
 /* Hover effects for timeline content */
-.timeline-content-link:hover .timeline-content {
-    transform: translateX(8px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-    border-color: rgba(96, 165, 250, 0.3);
-    background: var(--bg-tertiary);
+@media (hover: hover) and (pointer: fine) {
+    .timeline-content-link:hover .timeline-content {
+        transform: translateX(8px);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        border-color: rgba(96, 165, 250, 0.3);
+        background: var(--bg-tertiary);
+    }
 }
+
 
 /* Tags */
 .gem-tags {
@@ -488,12 +518,15 @@ html {
     border-color: rgba(96, 165, 250, 0.3);
 }
 
-.gem-tag:hover {
-    transform: translateY(-2px) scale(1.05);
-    background: rgba(96, 165, 250, 0.1);
-    border-color: var(--accent-primary);
-    color: var(--accent-primary);
+@media (hover: hover) and (pointer: fine) {
+    .gem-tag:hover {
+        transform: translateY(-2px) scale(1.05);
+        background: rgba(96, 165, 250, 0.1);
+        border-color: var(--accent-primary);
+        color: var(--accent-primary);
+    }
 }
+
 
 .featured-gem .gem-tag:first-child {
     background: rgba(96, 165, 250, 0.15);
@@ -541,12 +574,15 @@ html {
     margin-left: 0.25rem;
 }
 
-.timeline-content-link:hover .gem-title {
-    background: linear-gradient(135deg, rgba(96, 165, 250, 0.15), rgba(129, 140, 248, 0.1));
-    border-left-color: var(--accent-secondary);
-    transform: translateX(4px);
-    color: var(--accent-primary);
+@media (hover: hover) and (pointer: fine) {
+    .timeline-content-link:hover .gem-title {
+        background: linear-gradient(135deg, rgba(96, 165, 250, 0.15), rgba(129, 140, 248, 0.1));
+        border-left-color: var(--accent-secondary);
+        transform: translateX(4px);
+        color: var(--accent-primary);
+    }
 }
+
 
 /* Description - Code Comment Style */
 .gem-description {
@@ -779,11 +815,14 @@ html {
     font-weight: 600;
 }
 
-.load-more-btn:hover {
-    background: rgba(96, 165, 250, 0.15);
-    border-color: var(--accent-primary);
-    transform: none;
+@media (hover: hover) and (pointer: fine) {
+    .load-more-btn:hover {
+        background: rgba(96, 165, 250, 0.15);
+        border-color: var(--accent-primary);
+        transform: none;
+    }
 }
+
 
 .load-more-btn:active {
     transform: translateY(1px);
@@ -929,11 +968,14 @@ html {
     border-bottom: none;
 }
 
-.table-row:hover {
-    background: rgba(96, 165, 250, 0.05);
-    border-left-color: var(--accent-blue);
-    box-shadow: inset 0 0 20px rgba(96, 165, 250, 0.05);
+@media (hover: hover) and (pointer: fine) {
+    .table-row:hover {
+        background: rgba(96, 165, 250, 0.05);
+        border-left-color: var(--accent-blue);
+        box-shadow: inset 0 0 20px rgba(96, 165, 250, 0.05);
+    }
 }
+
 
 .table-row:hover::before {
     opacity: 1;
@@ -957,10 +999,13 @@ html {
     transition: all 0.2s ease;
 }
 
-.table-row:hover .col-title {
-    color: var(--accent-blue);
-    transform: translateX(2px);
+@media (hover: hover) and (pointer: fine) {
+    .table-row:hover .col-title {
+        color: var(--accent-blue);
+        transform: translateX(2px);
+    }
 }
+
 
 .col-type {
     font-size: 0.8125rem;
@@ -1001,9 +1046,12 @@ html {
     }
 }
 
-.table-row:hover .star-badge {
-    animation: starSpin 0.6s ease;
+@media (hover: hover) and (pointer: fine) {
+    .table-row:hover .star-badge {
+        animation: starSpin 0.6s ease-in-out;
+    }
 }
+
 
 @keyframes starSpin {
     0% {
@@ -1115,11 +1163,14 @@ html {
     border: 2px solid rgba(0, 0, 0, 0.12);
 }
 
-[data-theme="light"] .featured-gem:hover {
-    background: rgba(255, 255, 255, 0.7);
-    border-color: var(--accent-primary);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+@media (hover: hover) and (pointer: fine) {
+    [data-theme="light"] .featured-gem:hover {
+        background: rgba(255, 255, 255, 0.7);
+        border-color: var(--accent-primary);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
 }
+
 
 [data-theme="light"] .featured-gem-content {
     background: transparent;
@@ -1169,10 +1220,13 @@ html {
     border: 2px solid rgba(0, 0, 0, 0.08);
 }
 
-[data-theme="light"] .timeline-entry:hover .timeline-content {
-    border-color: var(--accent-primary);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+@media (hover: hover) and (pointer: fine) {
+    [data-theme="light"] .timeline-entry:hover .timeline-content {
+        border-color: var(--accent-primary);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
 }
+
 
 [data-theme="light"] .timeline-marker {
     background: #0ea5e9;
