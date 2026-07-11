@@ -33,9 +33,10 @@ const htmlContent = await marked.parse(edition.body || '');
 
 const canonicalUrl = `https://lukestahl.io/newsletter/editions/${edition.id}/`;
 const formattedDate = new Date(publishedDate + 'T12:00:00').toLocaleDateString('en-US', {
-  month: 'long',
+  month: 'short',
   year: 'numeric',
 });
+const pageTitle = `The Builder Newsletter - ${formattedDate} | #${editionNumber}`;
 
 const formatMonth = (date: string) =>
   new Date(date + 'T12:00:00').toLocaleDateString('en-US', {
@@ -45,11 +46,12 @@ const formatMonth = (date: string) =>
 ---
 
 <Layout
-  title={`${title} - Luke Stahl`}
+  title={pageTitle}
   description={description}
   canonicalUrl={canonicalUrl}
-  ogTitle={title}
+  ogTitle={pageTitle}
   ogDescription={description}
+  ogImage={heroImage ? `https://lukestahl.io${heroImage}` : undefined}
   showAnnouncement={false}
   loadFontAwesome={false}
   inlineCriticalCSS={true}
