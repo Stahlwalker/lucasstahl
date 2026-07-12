@@ -1,15 +1,15 @@
 {
-  "lastUpdated": "2026-07-05T12:17:00.173Z",
+  "lastUpdated": "2026-07-12T10:30:49.367Z",
   "results": {
     "mobile": {
       "home": {
-        "performance": 73,
+        "performance": 67,
         "accessibility": 96,
         "bestPractices": 100,
         "seo": 100,
-        "lcp": 4678.348074586844,
-        "cls": 0.0010780000000000002,
-        "tbt": 2.5,
+        "lcp": 5551.0110041239295,
+        "cls": 0.001066978644016868,
+        "tbt": 3.5,
         "agenticBrowsingPassed": 3,
         "agenticBrowsingTotal": 3
       },
@@ -52,8 +52,8 @@
         "accessibility": 96,
         "bestPractices": 100,
         "seo": 100,
-        "lcp": 866.703901919509,
-        "cls": 0.0006730000000000001,
+        "lcp": 744.113987815278,
+        "cls": 0.0005523877917757149,
         "tbt": 0,
         "agenticBrowsingPassed": 3,
         "agenticBrowsingTotal": 3
@@ -67,7 +67,7 @@
         "agenticBrowsingTotal": 3
       },
       "blog": {
-        "performance": 95,
+        "performance": 93,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
