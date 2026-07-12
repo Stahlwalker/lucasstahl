@@ -59,7 +59,7 @@ import solarLogoDark from '../assets/images/dark/Solar_dark.svg';
 					<img src={solarLogoLight.src} alt="Solar" class="solar-logo solar-logo--light" width="120" height="32" decoding="async" />
 				</h2>
 				<p class="solar-desc">
-					A JavaScript UI framework built for AI-generated code. Explicit contracts, a component registry, and structured errors an agent can parse and self-correct. Built so the output is predictably correct, not just probably correct.
+					A JavaScript UI framework built for AI-generated code. Explicit contracts, a component registry, and structured errors an agent can parse and self-correct. Includes an MCP server so agents can introspect your components at runtime.
 				</p>
 
 				<div class="solar-install">
@@ -76,7 +76,11 @@ import solarLogoDark from '../assets/images/dark/Solar_dark.svg';
 				<div class="solar-links">
 					<a href="https://solarbuild.dev" target="_blank" rel="noopener noreferrer" class="solar-link solar-link--primary">
 						<span class="solar-link-icon" set:html={fileLinesSvg} />
-						Read the docs
+						Visit solarbuild.dev
+						<span class="solar-link-arrow" set:html={arrowOutSvg} />
+					</a>
+					<a href="https://docs.solarbuild.dev/docs/integrations/mcp" target="_blank" rel="noopener noreferrer" class="solar-link solar-link--secondary">
+						Install MCP
 						<span class="solar-link-arrow" set:html={arrowOutSvg} />
 					</a>
 					<a href="https://github.com/Stahlwalker/framework-solar" target="_blank" rel="noopener noreferrer" class="solar-link" aria-label="Solar on GitHub">

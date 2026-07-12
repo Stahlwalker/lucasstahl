@@ -846,6 +846,23 @@
     }
 }
 
+.solar-link--secondary {
+    color: var(--text-primary);
+    font-weight: 600;
+    padding: 0.55rem 1.25rem;
+    border: 1px solid rgba(245, 158, 11, 0.55);
+    border-radius: 8px;
+    transition: all 0.25s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .solar-link--secondary:hover {
+        border-color: #f59e0b;
+        color: #f59e0b;
+        transform: translateY(-1px);
+    }
+}
+
 
 /* npm wordmark letter cutouts: match page bg so they show through the colored block */
 .solar-link--npm .solar-link-icon svg polygon,
