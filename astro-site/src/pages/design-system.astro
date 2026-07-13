@@ -1,6 +1,8 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
+import youtubeBanner from '../assets/images/banners/youtube-banner.png';
 ---
 
 <Layout
@@ -151,10 +153,14 @@ import Icon from '../components/Icon.astro';
 				</p>
 
 				<div class="banner-preview-card">
-					<img
-						src="/assets/images/banners/youtube-banner.png"
+					<Image
+						src={youtubeBanner}
 						alt="Luke Stahl YouTube Banner - 2048x1152"
 						class="banner-preview-image"
+						width={800}
+						format="webp"
+						quality={85}
+						loading="lazy"
 					/>
 				</div>
 			</section>
