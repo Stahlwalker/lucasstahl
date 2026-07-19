@@ -54,6 +54,7 @@ server.listen(0, '127.0.0.1', () => {
     const err = reqUrl.searchParams.get('error');
 
     if (err) {
+      res.writeHead(200, { 'Content-Type': 'text/plain' });
       res.end(`Auth failed: ${err}. You can close this tab.`);
       console.error(`Auth failed: ${err}`);
       server.close();

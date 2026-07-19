@@ -71,6 +71,17 @@ function calculateReadingTime(content: string): number {
   return readingTime;
 }
 
+// Checks the actual hostname (not a substring anywhere in the URL) to identify Notion-hosted images
+function isNotionHostedUrl(url: string): boolean {
+  try {
+    const { hostname } = new URL(url);
+    return hostname === 'amazonaws.com' || hostname.endsWith('.amazonaws.com') ||
+      hostname === 'notion.so' || hostname.endsWith('.notion.so');
+  } catch {
+    return false;
+  }
+}
+
 // Utility function to download and save images
 async function downloadImage(url: string, slug: string, imageName: string): Promise<string> {
   try {
@@ -254,8 +265,8 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
     while ((match = imageRegex.exec(mdString.parent)) !== null) {
       const [, altText, imageUrl] = match;
 
-      // Only process Notion URLs (they contain 'amazonaws.com' or 'notion.so')
-      if (imageUrl.includes('amazonaws.com') || imageUrl.includes('notion.so')) {
+      // Only process Notion-hosted images
+      if (isNotionHostedUrl(imageUrl)) {
         // Extract filename from URL or use alt text
         const urlParts = imageUrl.split('/');
         const urlFilename = urlParts[urlParts.length - 1].split('?')[0];
@@ -274,7 +285,7 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
 
     // Download OG image if it's a Notion URL
     let processedOgImage = post.ogImage || post.featuredImage || firstImageUrl || '';
-    if (processedOgImage && (processedOgImage.includes('amazonaws.com') || processedOgImage.includes('notion.so'))) {
+    if (processedOgImage && isNotionHostedUrl(processedOgImage)) {
       const ogImageName = 'og-image';
       processedOgImage = await downloadImage(processedOgImage, slug, ogImageName);
     }
