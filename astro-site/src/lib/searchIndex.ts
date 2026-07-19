@@ -154,9 +154,9 @@ export async function buildSearchIndex(): Promise<SearchItem[]> {
     {
       type: 'website' as const,
       title: 'AI Models Guide',
-      description: 'A quick-reference to the major AI models in 2026 — Claude Sonnet 5, Claude Fable 5, GPT-5.5, Gemini 3.5, Grok 4, Llama 4, DeepSeek, Mistral, Qwen 3, Sakana Fugu Ultra, Apple Foundation Models Gen 3, and more. Who makes them, what they do best, and when to use each one.',
+      description: 'A quick-reference to the major AI models in 2026 — Claude Sonnet 5, Claude Fable 5, GPT-5.5, GPT-Live-1, Gemini 3.5, Grok 4, Llama 4, Muse Spark 1.1, DeepSeek, Mistral, Qwen 3, Sakana Fugu Ultra, Apple Foundation Models Gen 3, and more. Who makes them, what they do best, and when to use each one.',
       url: '/ai-models-guide/',
-      tags: ['ai', 'models', 'llm', 'gpt', 'claude', 'sonnet 5', 'claude sonnet 5', 'gemini', 'grok', 'grok 4.5', 'llama', 'deepseek', 'mistral', 'qwen', 'kimi', 'glm', 'comparison', 'guide', 'sakana', 'fugu', 'apple', 'foundation models', 'apple foundation models', 'mai', 'microsoft', 'gemini spark', 'runway gen-4 turbo', 'orchestration', 'meta-model']
+      tags: ['ai', 'models', 'llm', 'gpt', 'claude', 'sonnet 5', 'claude sonnet 5', 'gemini', 'grok', 'grok 4.5', 'llama', 'deepseek', 'mistral', 'qwen', 'kimi', 'glm', 'comparison', 'guide', 'sakana', 'fugu', 'apple', 'foundation models', 'apple foundation models', 'mai', 'microsoft', 'gemini spark', 'runway gen-4 turbo', 'orchestration', 'meta-model', 'gpt-live-1', 'gpt live', 'voice ai', 'muse spark', 'muse spark 1.1', 'gemini 3.5 pro']
     }
   ];
 

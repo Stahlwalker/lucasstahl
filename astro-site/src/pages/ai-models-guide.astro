@@ -3,12 +3,12 @@ import Layout from '../layouts/Layout.astro';
 
 // Quick Reference Data
 const quickReference = [
-	{ model: "GPT-5.x", company: "OpenAI", bestFor: "General purpose", differentiator: "GPT-5.5 API flagship (Apr 24) — $5/1M input, $30/M output; GPT-5.5 Instant (May 5) is the new ChatGPT default for all tiers — leaner variant, ~30% fewer words/lines, optimized for low latency; GPT-5.6 Sol/Terra/Luna launched July 9, 2026 — Sol ($5/$30) flagship/best coding, Terra ($2.50/$15) mid-tier, Luna ($1/$6) lightweight; dynamic routing across sub-models", color: "#10b981" },
+	{ model: "GPT-5.x", company: "OpenAI", bestFor: "General purpose", differentiator: "GPT-5.5 API flagship (Apr 24) — $5/1M input, $30/M output; GPT-5.5 Instant (May 5) is the new ChatGPT default for all tiers — leaner variant, ~30% fewer words/lines, optimized for low latency; GPT-5.6 Sol/Terra/Luna launched July 9, 2026 — Sol ($5/$30) flagship/best coding, Terra ($2.50/$15) mid-tier, Luna ($1/$6) lightweight; dynamic routing across sub-models; GPT-Live-1/mini launched July 8, 2026 — full-duplex voice models with agentic delegation to GPT-5.5, now the default ChatGPT voice mode", color: "#10b981" },
 	{ model: "Claude 4.x Family", company: "Anthropic", bestFor: "Coding & reasoning", differentiator: "Fable 5 (Jun 9) — 1M context, 128K output, $10/$50 per 1M tokens, 95% SWE-bench Verified, 80% SWE-bench Pro; Opus 4.8 (May 28) — 69.2% SWE-bench Pro, Dynamic Workflows for parallel subagents; Sonnet 5 (Jun 30) — new default Free/Pro model, near-Opus 4.8 performance at $2/$10 per 1M (intro); Haiku 4.5 hits ~90% of Sonnet 4.5 coding at a fraction of the price", color: "#c084fc" },
-	{ model: "Gemini 3.x", company: "Google DeepMind", bestFor: "Multimodal", differentiator: "Gemini 3.5 Pro (I/O 2026): limited Vertex enterprise preview; broad GA unconfirmed as of June 2026; leads 3.1 Pro on reasoning; Gemini 3.5 Flash (May 20) is the new default in the Gemini app at $1.50/$9.00 per M tokens; 3.1 Ultra remains the top reasoning tier", color: "#60a5fa" },
+	{ model: "Gemini 3.x", company: "Google DeepMind", bestFor: "Multimodal", differentiator: "Gemini 3.5 Pro (I/O 2026): has missed three consecutive GA deadlines (most recently July 17); no confirmed launch date, reportedly rebuilt from scratch after recursive tool-calling failures; still limited Vertex enterprise preview; leads 3.1 Pro on reasoning; Gemini 3.5 Flash (May 20) is the new default in the Gemini app at $1.50/$9.00 per M tokens; 3.1 Ultra remains the top reasoning tier", color: "#60a5fa" },
 	{ model: "Grok 4.x", company: "xAI", bestFor: "Real-time info", differentiator: "Grok 4.3 (Apr 30) is the cost-efficient API model at $1.25/$2.50 per M tokens with always-on reasoning and native video input (5-min clips); Grok 4 Heavy is the premium multi-agent variant (256K context, first model to hit 50.7% on Humanity's Last Exam (text-only with tools)) gated behind the $300/mo SuperGrok Heavy tier; Grok 4.5 launched July 8, 2026 — 1.5T-param V9 MoE, 500K context, $2/$6 per 1M tokens; EU availability pending mid-July", color: "#f97316" },
 	{ model: "Llama 4", company: "Meta", bestFor: "Open-source", differentiator: "10M token context; fully self-hostable; Behemoth effectively shelved — repeated delays, MoE-routing failures; Meta pivoting to Muse Spark", color: "#06b6d4" },
-	{ model: "Muse Spark", company: "Meta Superintelligence Labs", bestFor: "Frontier reasoning", differentiator: "Released Apr 8, 2026 — Meta's first closed-weight frontier model; multimodal reasoning, thought compression, parallel sub-agent orchestration; top-5 on AI Intelligence Index (52)", color: "#7c3aed" },
+	{ model: "Muse Spark 1.1", company: "Meta Superintelligence Labs", bestFor: "Agentic coding & reasoning", differentiator: "Released Apr 8, 2026, upgraded to 1.1 on July 9, 2026 — Meta's first closed-weight frontier model and first paid developer API ($1.25/$4.25 per 1M tokens); 1M token context, agentic coding focus (tool use, computer use, multi-agent orchestration); top scores on MCP Atlas, JobBench, Humanity's Last Exam", color: "#7c3aed" },
 	{ model: "DeepSeek V4", company: "DeepSeek", bestFor: "Cost efficiency", differentiator: "Released April 24, 2026 — V4-Pro (1.6T MoE, $1.74/1M input, $3.48/1M output) and V4-Flash (284B, $0.14/1M input); MIT, 1M context", color: "#facc15" },
 	{ model: "Mistral 3 Family", company: "Mistral", bestFor: "EU compliance", differentiator: "Large 3, Magistral (reasoning), Devstral (open-source coding agent), Small 4, Voxtral — enterprise-safe with data sovereignty", color: "#818cf8" },
 	{ model: "Qwen 3.7", company: "Alibaba", bestFor: "Multilingual", differentiator: "Qwen 3.7 Max (May 19, closed-weight) — 56.6 AI Intelligence Index, $2.50/$7.50 per 1M tokens; Qwen 3.7 Plus with vision GA June 1; Qwen3.5 open-weight (397B) and Qwen3.6-Plus still available", color: "#f472b6" },
@@ -44,7 +44,8 @@ const frontierModels = [
 			"GPT-5.4 Thinking (Mar 5, 2026): reasoning-first variant — strongest at math, spreadsheets, research, and document tasks",
 			"GPT-5.3-Codex (Feb 5, 2026): dedicated agentic coding variant combining Codex and GPT-5 training stacks",
 			"Native computer use and tool calling for agentic automation",
-			"GPT-5.6 Sol / Terra / Luna (publicly launched July 9, 2026): government review delay lifted; previously limited to ~20 approved companies, now broadly available. 1M token context window. Sol (flagship): $5/$30 per 1M tokens — OpenAI's best coding model, adds 'Sol Ultra' multi-agent mode. Terra (balanced): $2.50/$15 per 1M tokens — GPT-5.5-competitive at roughly half the cost. Luna (fast/cheap): $1/$6 per 1M tokens."
+			"GPT-5.6 Sol / Terra / Luna (publicly launched July 9, 2026): government review delay lifted; previously limited to ~20 approved companies, now broadly available. 1M token context window. Sol (flagship): $5/$30 per 1M tokens — OpenAI's best coding model, adds 'Sol Ultra' multi-agent mode. Terra (balanced): $2.50/$15 per 1M tokens — GPT-5.5-competitive at roughly half the cost. Luna (fast/cheap): $1/$6 per 1M tokens.",
+			"GPT-Live-1 / GPT-Live-1 mini (July 8, 2026): full-duplex voice models — listen and speak simultaneously, real-time translation, nine remastered voices; agentic delegation routes hard queries to GPT-5.5; GPQA 84.2% at highest reasoning (vs. 45.3% for the prior Advanced Voice Mode); GPT-Live-1 is now the default voice mode for Plus/Pro, mini is the Free default"
 		],
 		bestFor: "Rapid prototyping, general-purpose tasks, API automation"
 	},
@@ -75,7 +76,7 @@ const frontierModels = [
 		color: "#60a5fa",
 		tagline: "Multimodal powerhouse with top benchmark breadth.",
 		bullets: [
-			"Gemini 3.5 Pro (Google I/O, May 20, 2026): Google's next frontier flagship — GA delayed; July 17, 2026 target date per leaks (second slip from original June 30 target). Still in limited Vertex AI enterprise preview. Leads Gemini 3.1 Pro on reasoning benchmarks; 2M context window; Deep Think reasoning mode",
+			"Gemini 3.5 Pro (Google I/O, May 20, 2026): Google's next frontier flagship — has now missed three consecutive GA deadlines (June 30, then July 17); no confirmed launch date, reportedly rebuilt from scratch after recursive tool-calling failures and hallucination rates falling short of GPT-5.6. Still in limited Vertex AI enterprise preview. Leads Gemini 3.1 Pro on reasoning benchmarks; 2M context window; Deep Think reasoning mode",
 			"Gemini 3.5 Flash (May 20, 2026): unveiled at Google I/O — now the default model in the Gemini app globally; outperforms 3.1 Pro on coding and agentic benchmarks; ~4× faster than competing frontier models; $1.50/1M input, $9.00/1M output (~40% cheaper than 3.1 Pro)",
 			"Gemini 3.1 Ultra (May 2026): current top reasoning tier — 2M-token context, natively multimodal across text, image, audio, and video",
 			"Gemini 3.1 Pro (Feb 2026): prior flagship — 94.3% GPQA Diamond, 77.1% ARC-AGI-2, $2/1M input, $12/1M output. Led the Artificial Analysis Intelligence Index until 3.5 Pro",
@@ -151,19 +152,20 @@ const frontierModels = [
 		bestFor: "Speech transcription, voice synthesis, compact reasoning, enterprise media AI on Azure"
 	},
 	{
-		name: "Meta Muse Spark",
+		name: "Meta Muse Spark 1.1",
 		company: "Meta Superintelligence Labs",
 		location: "Menlo Park",
 		color: "#7c3aed",
-		tagline: "Meta's first closed-weight frontier model — a deliberate break from the open Llama strategy.",
+		tagline: "Meta's first closed-weight frontier model — a deliberate break from the open Llama strategy, now with Meta's first paid developer API.",
 		bullets: [
 			"Released April 8, 2026 — led by Alexandr Wang (formerly Scale AI) following Meta's $14.3B investment",
 			"Multimodal reasoning with thought compression and parallel sub-agent orchestration",
 			"Scored 52 on the Artificial Analysis Intelligence Index — top 5 globally",
+			"Muse Spark 1.1 (July 9, 2026): major upgrade — 1M token context, agentic coding focus (tool use, computer use, multi-agent orchestration), and Meta's first-ever paid developer API at $1.25/$4.25 per 1M input/output tokens; claims top scores on MCP Atlas, JobBench, and Humanity's Last Exam",
 			"Closed weights: a strategic departure from Meta's open-source Llama lineage",
 			"Positions Meta directly against OpenAI, Anthropic, and Google in the closed-frontier tier"
 		],
-		bestFor: "Frontier multimodal reasoning, agentic workflows, closed-API enterprise deployments"
+		bestFor: "Frontier multimodal reasoning, agentic coding, closed-API enterprise deployments"
 	},
 	{
 		name: "Apple FoundationAI",
@@ -432,6 +434,7 @@ const imageVideoModels = [
 	{ name: "LTX-2.3", company: "Lightricks", bestFor: "Open-weights video+audio in one pass; 22B params; 4K at 50 FPS, up to 20s; one of the most capable open video models available" },
 	{ name: "Grok Imagine Video 1.5", company: "xAI", bestFor: "~2× faster video generation than prior version, native audio output (Jun 2026)" },
 	{ name: "Reve 2.0", company: "Reve", bestFor: "Image generation with precise layout control and typography — strong alternative to DALL-E 4 / Imagen 4 for design-heavy use cases (Jun 3, 2026)" },
+	{ name: "Gemini 3.1 Flash Lite Image", company: "Google", bestFor: "Specialized fast image generation — Flash variant tuned for high-volume, low-latency image tasks (Jun 23, 2026)" },
 ];
 
 // Scenario Cards — real tasks mapped to models
@@ -532,7 +535,7 @@ const scenarios = [
 			"url": "https://lukestahl.io/"
 		},
 		"datePublished": "2026-03-10",
-		"dateModified": "2026-07-12",
+		"dateModified": "2026-07-19",
 		"mainEntityOfPage": {
 			"@type": "WebPage",
 			"@id": "https://lukestahl.io/ai-models-guide/"
@@ -561,7 +564,7 @@ const scenarios = [
 			<section class="hero">
 				<h1 class="hero-title">AI Models<br/><span class="hero-title-accent">Guide</span></h1>
 				<p class="hero-subtitle">A quick-reference to the major AI models, who makes them, and what they do best.</p>
-				<div class="hero-badge">Updated July 12, 2026</div>
+				<div class="hero-badge">Updated July 19, 2026</div>
 			</section>
 
 			<!-- Quick Reference -->
