@@ -1,15 +1,15 @@
 {
-  "lastUpdated": "2026-07-12T10:30:49.367Z",
+  "lastUpdated": "2026-07-19T10:30:43.749Z",
   "results": {
     "mobile": {
       "home": {
-        "performance": 67,
-        "accessibility": 96,
+        "performance": 94,
+        "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
-        "lcp": 5551.0110041239295,
-        "cls": 0.001066978644016868,
-        "tbt": 3.5,
+        "lcp": 2626.0081333725034,
+        "cls": 0.0012239154665118284,
+        "tbt": 0,
         "agenticBrowsingPassed": 3,
         "agenticBrowsingTotal": 3
       },
@@ -22,7 +22,7 @@
         "agenticBrowsingTotal": 3
       },
       "blog": {
-        "performance": 63,
+        "performance": 62,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
@@ -30,7 +30,7 @@
         "agenticBrowsingTotal": 3
       },
       "builds": {
-        "performance": 64,
+        "performance": 87,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
@@ -38,7 +38,7 @@
         "agenticBrowsingTotal": 3
       },
       "gems": {
-        "performance": 64,
+        "performance": 92,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
@@ -48,18 +48,18 @@
     },
     "desktop": {
       "home": {
-        "performance": 99,
-        "accessibility": 96,
+        "performance": 100,
+        "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
-        "lcp": 744.113987815278,
-        "cls": 0.0005523877917757149,
+        "lcp": 461.00299102877125,
+        "cls": 0.002461013370658179,
         "tbt": 0,
         "agenticBrowsingPassed": 3,
         "agenticBrowsingTotal": 3
       },
       "about": {
-        "performance": 95,
+        "performance": 96,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
@@ -83,7 +83,7 @@
         "agenticBrowsingTotal": 3
       },
       "gems": {
-        "performance": 96,
+        "performance": 99,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
