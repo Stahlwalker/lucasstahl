@@ -24,8 +24,8 @@ import claudeLight from '../assets/images/light/Claude_Light.png';
 import claudeIcon from '../assets/images/light/Claude_icon.png';
 import claudeDesignIcon from '../assets/images/light/claude-design-icon.svg';
 import executorIcon from '../assets/images/light/Executor.png';
-import agentNativeLight from '../assets/images/light/agent-native-icon-light.svg';
-import agentNativeDark from '../assets/images/dark/agent-native-icon-dark.svg';
+import piDevLight from '../assets/images/light/pi-dev-icon-light.svg';
+import piDevDark from '../assets/images/dark/pi-dev-icon-dark.svg';
 import obsidianImg from '../assets/images/light/obsidian.png';
 import excalidrawLight from '../assets/images/light/Excalidraw_light.png';
 import warpLight from '../assets/images/light/Warp light.png';
@@ -103,8 +103,8 @@ import warpDarkIcon from '../assets/images/dark/Warp_icon.png';
 					<div class="stage-subgroup">
 						<a href="/ai-models-guide/" class="stage-subgroup-label stage-subgroup-link">Models ↗</a>
 						<ul class="stage-tools">
-							<li>Opus 4.7</li>
-							<li>Sonnet 4.6</li>
+							<li>Opus 4.8</li>
+							<li>Sonnet 5</li>
 						</ul>
 					</div>
 				</div>
@@ -305,16 +305,16 @@ import warpDarkIcon from '../assets/images/dark/Warp_icon.png';
 				<div class="eval-card">
 					<div class="eval-card-header">
 						<div class="eval-tool-icon">
-							<Image src={agentNativeLight} alt="Agent Native" class="logo-light" width={48} height={48} />
-							<Image src={agentNativeDark} alt="Agent Native" class="logo-dark" width={48} height={48} />
+							<Image src={piDevLight} alt="Pi" class="logo-light" width={48} height={48} />
+							<Image src={piDevDark} alt="Pi" class="logo-dark" width={48} height={48} />
 						</div>
 						<div class="eval-tool-meta">
-							<a href="https://www.agent-native.com/" target="_blank" rel="noopener noreferrer" class="eval-tool-name" style="text-decoration: none; color: inherit;">Agent Native</a>
+							<a href="https://pi.dev/" target="_blank" rel="noopener noreferrer" class="eval-tool-name" style="text-decoration: none; color: inherit;">Pi</a>
 							<span class="eval-badge">Evaluating</span>
 						</div>
 					</div>
 					<p class="eval-description">
-						Open source framework for building agentic apps where the AI agent and UI share one database and state store. Evaluating whether that's cleaner than running an API layer between the agent and the frontend. Has ready-to-fork templates.
+						Minimal, extensible agent harness for AI-assisted coding: no opinionated workflow, just core primitives to assemble your own. Evaluating vs. Claude Code's batteries-included setup.
 					</p>
 					<div class="eval-footer">
 						<span class="eval-status">
@@ -331,9 +331,17 @@ import warpDarkIcon from '../assets/images/dark/Warp_icon.png';
 					<ul class="eval-past-list">
 						<li class="eval-past-item">
 							<div class="eval-past-info">
+								<a href="https://www.agent-native.com/" target="_blank" rel="noopener noreferrer" class="eval-past-name eval-past-link">Agent Native</a>
+								<span class="eval-past-cat">Agent Framework</span>
+								<span class="eval-past-note">Shared agent/UI database wasn't cleaner than the API layer I already run.</span>
+							</div>
+							<span class="eval-past-verdict">Passed on</span>
+						</li>
+						<li class="eval-past-item">
+							<div class="eval-past-info">
 								<a href="https://executor.sh/" target="_blank" rel="noopener noreferrer" class="eval-past-name eval-past-link">Executor</a>
 								<span class="eval-past-cat">Agent Runtime</span>
-								<span class="eval-past-note">Local-first runtime to unify MCP tools across agents. Interesting in theory, but my Claude Code and Cursor setup already covers this without the extra layer.</span>
+								<span class="eval-past-note">My Claude Code and Cursor setup already covers this without the extra layer.</span>
 							</div>
 							<span class="eval-past-verdict">Passed on</span>
 						</li>
