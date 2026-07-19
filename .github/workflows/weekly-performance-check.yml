@@ -104,6 +104,10 @@ jobs:
           echo "gems_ab_passed=$(jq -r '.results.mobile.gems.agenticBrowsingPassed // "N/A"' $RESULTS)" >> $GITHUB_OUTPUT
           echo "gems_ab_total=$(jq -r '.results.mobile.gems.agenticBrowsingTotal // "N/A"' $RESULTS)" >> $GITHUB_OUTPUT
 
+      - name: Check for performance regressions
+        id: regression
+        run: node astro-site/scripts/check-performance-regression.mjs
+
       - name: Generate Summary
         run: |
           S=${{ steps.scores.outputs.home_perf }}
@@ -152,55 +156,42 @@ jobs:
           git diff --staged --quiet || git commit -m "📊 Update SEO performance results - $(date -u +"%Y-%m-%d %H:%M UTC")"
           git push
 
-      - name: Create Performance Report Issue
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          REPORT=$(cat <<EOF
-          ## 📊 Weekly Performance Report - $(date '+%B %d, %Y')
+      - name: Create or update issue if a regression was detected
+        if: steps.regression.outputs.has_regression == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const reasons = `${{ steps.regression.outputs.reasons }}`;
+            const runUrl = `${context.payload.repository.html_url}/actions/runs/${context.runId}`;
+            const body = `## 🔻 Performance Regression Detected - ${new Date().toLocaleDateString()}\n\n` +
+              `${reasons}\n\n` +
+              `---\n` +
+              `🔗 [View Full Workflow Run](${runUrl})\n` +
+              `🔗 [Test on PageSpeed Insights](https://pagespeed.web.dev/?url=https://lukestahl.io/)`;
 
-          ### 📱 Mobile Performance Scores
-          | Page | Score |
-          |------|-------|
-          | Home | ${{ steps.scores.outputs.home_perf }} |
-          | About | ${{ steps.scores.outputs.about_perf }} |
-          | Blog | ${{ steps.scores.outputs.blog_perf }} |
-          | Builds | ${{ steps.scores.outputs.builds_perf }} |
-          | Gems | ${{ steps.scores.outputs.gems_perf }} |
+            const issues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'performance'
+            });
 
-          ### 🖥️ Desktop Performance Scores
-          | Page | Score |
-          |------|-------|
-          | Home | ${{ steps.scores.outputs.home_d_perf }} |
-          | About | ${{ steps.scores.outputs.about_d_perf }} |
-          | Blog | ${{ steps.scores.outputs.blog_d_perf }} |
-          | Builds | ${{ steps.scores.outputs.builds_d_perf }} |
-          | Gems | ${{ steps.scores.outputs.gems_d_perf }} |
-
-          ### 🎯 Core Web Vitals
-
-          **📱 Mobile (Homepage)**
-          - **LCP**: ${{ steps.scores.outputs.home_lcp }}ms (target: <2500ms)
-          - **CLS**: ${{ steps.scores.outputs.home_cls }} (target: <0.1)
-          - **TBT**: ${{ steps.scores.outputs.home_tbt }}ms (target: <300ms)
-
-          **🖥️ Desktop (Homepage)**
-          - **LCP**: ${{ steps.scores.outputs.home_d_lcp }}ms (target: <2500ms)
-          - **CLS**: ${{ steps.scores.outputs.home_d_cls }} (target: <0.1)
-          - **TBT**: ${{ steps.scores.outputs.home_d_tbt }}ms (target: <300ms)
-
-          ---
-
-          🔗 [View Full Workflow Run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
-          🔗 [Test on PageSpeed Insights](https://pagespeed.web.dev/?url=https://lukestahl.io/)
-          EOF
-          )
-
-          gh issue create \
-            --title "📊 Weekly Performance Report - $(date '+%B %d, %Y')" \
-            --body "$REPORT" \
-            --label "performance" \
-            --repo ${{ github.repository }}
+            if (issues.data.length > 0) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issues.data[0].number,
+                body
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: `🔻 Performance Regression Detected - ${new Date().toLocaleDateString()}`,
+                body,
+                labels: ['performance']
+              });
+            }
 
       - name: Send Email via Resend
         env:
