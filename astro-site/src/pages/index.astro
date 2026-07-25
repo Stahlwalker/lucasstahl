@@ -13,6 +13,9 @@ import hereLogoLight from '../assets/images/light/HERE_logo.svg';
 import hereLogoDark from '../assets/images/dark/HERE_logo_dark.svg';
 import contentfulLight from '../assets/images/light/Contentful-light.png';
 import contentfulDark from '../assets/images/dark/Contentful-dark-v2.png';
+import cursorIconLight from '../assets/images/light/Cursor-cube-icon.svg';
+import cursorIconDark from '../assets/images/dark/Cursor-cube-icon.svg';
+import codexIcon from '../assets/images/dark/codex-color.svg';
 
 const { results } = seoData;
 
@@ -150,27 +153,48 @@ function getStrokeDashoffset(score: number): number {
 		</div>
 	</section>
 
-	<!-- Claude Skill Callout Section -->
+	<!-- Agent Skill Callout Section -->
 	<section class="claude-callout" id="claudeSection">
 		<div class="claude-callout-container">
 			<p class="claude-callout-label">DEVELOPER MARKETING AI</p>
-			<h2 class="claude-callout-title">Teach Claude developer marketing</h2>
+			<h2 class="claude-callout-title">Teach agents developer marketing</h2>
 			<p class="claude-callout-description">
-				A custom Claude skill that brings developer marketing strategy, content templates, and writing guidelines into your AI workflow.
+				A custom skill that brings developer marketing strategy, content templates, and writing guidelines into your AI workflow.
 			</p>
 
-			<a href="https://github.com/Stahlwalker/developer-marketing" target="_blank" rel="noopener noreferrer" class="claude-callout-link">
-				View on GitHub <Icon name="arrow-up-right-from-square" />
+			<a href="/.well-known/agent-skills/developer-marketing/SKILL.md" target="_blank" rel="noopener noreferrer" class="claude-callout-link">
+				View the Agent Skill <Icon name="arrow-up-right-from-square" />
 			</a>
 
-			<!-- Claude Logo with Ripple Effect -->
-			<div class="claude-logo-wrapper">
-				<div class="ripple-ring ripple-ring-1"></div>
-				<div class="ripple-ring ripple-ring-2"></div>
-				<div class="ripple-ring ripple-ring-3"></div>
-				<div class="ripple-ring ripple-ring-4"></div>
-				<div class="claude-logo-circle">
-					<img src="/assets/images/Claude_AI_symbol.svg" alt="Claude AI Logo" class="claude-logo" />
+			<!-- Agent Logos with Staggered Ripple Effect -->
+			<div class="agent-logos-row">
+				<div class="agent-logo-wrapper agent-logo-wrapper--1">
+					<div class="ripple-ring ripple-ring-1"></div>
+					<div class="ripple-ring ripple-ring-2"></div>
+					<div class="ripple-ring ripple-ring-3"></div>
+					<div class="ripple-ring ripple-ring-4"></div>
+					<div class="agent-logo-circle">
+						<img src="/assets/images/Claude_AI_symbol.svg" alt="Claude" class="agent-logo" />
+					</div>
+				</div>
+				<div class="agent-logo-wrapper agent-logo-wrapper--2">
+					<div class="ripple-ring ripple-ring-1"></div>
+					<div class="ripple-ring ripple-ring-2"></div>
+					<div class="ripple-ring ripple-ring-3"></div>
+					<div class="ripple-ring ripple-ring-4"></div>
+					<div class="agent-logo-circle">
+						<img src={cursorIconLight.src} alt="Cursor" class="agent-logo logo-light" />
+						<img src={cursorIconDark.src} alt="Cursor" class="agent-logo logo-dark" />
+					</div>
+				</div>
+				<div class="agent-logo-wrapper agent-logo-wrapper--3">
+					<div class="ripple-ring ripple-ring-1"></div>
+					<div class="ripple-ring ripple-ring-2"></div>
+					<div class="ripple-ring ripple-ring-3"></div>
+					<div class="ripple-ring ripple-ring-4"></div>
+					<div class="agent-logo-circle">
+						<img src={codexIcon.src} alt="Codex" class="agent-logo agent-logo--codex" />
+					</div>
 				</div>
 			</div>
 		</div>
@@ -1117,15 +1141,22 @@ function getStrokeDashoffset(score: number): number {
 			font-size: 0.875rem;
 		}
 
-		/* Claude Logo with Ripple Effect */
-		.claude-logo-wrapper {
-			position: relative;
-			width: 100px;
-			height: 100px;
+		/* Agent Logos with Staggered Ripple Effect */
+		.agent-logos-row {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 1.5rem;
 			margin: 0 auto;
 		}
 
-		.claude-logo-circle {
+		.agent-logo-wrapper {
+			position: relative;
+			width: 100px;
+			height: 100px;
+		}
+
+		.agent-logo-circle {
 			position: absolute;
 			top: 50%;
 			left: 50%;
@@ -1142,10 +1173,20 @@ function getStrokeDashoffset(score: number): number {
 			border: 2px solid rgba(96, 165, 250, 0.3);
 		}
 
-		.claude-logo {
+		.agent-logo {
 			width: 36px;
 			height: 36px;
 		}
+
+		.agent-logo--codex {
+			width: 46px;
+			height: 46px;
+		}
+
+		.agent-logo-circle .logo-dark { display: inline-block; }
+		.agent-logo-circle .logo-light { display: none; }
+		:global([data-theme="light"]) .agent-logo-circle .logo-dark { display: none; }
+		:global([data-theme="light"]) .agent-logo-circle .logo-light { display: inline-block; }
 
 		/* Ripple Rings */
 		.ripple-ring {
@@ -1181,6 +1222,17 @@ function getStrokeDashoffset(score: number): number {
 			height: 115px;
 			animation-delay: 2.25s;
 		}
+
+		/* Stagger each circle's ripple so the pulse cascades left to right */
+		.agent-logo-wrapper--2 .ripple-ring-1 { animation-delay: 0.6s; }
+		.agent-logo-wrapper--2 .ripple-ring-2 { animation-delay: 1.35s; }
+		.agent-logo-wrapper--2 .ripple-ring-3 { animation-delay: 2.1s; }
+		.agent-logo-wrapper--2 .ripple-ring-4 { animation-delay: 2.85s; }
+
+		.agent-logo-wrapper--3 .ripple-ring-1 { animation-delay: 1.2s; }
+		.agent-logo-wrapper--3 .ripple-ring-2 { animation-delay: 1.95s; }
+		.agent-logo-wrapper--3 .ripple-ring-3 { animation-delay: 2.7s; }
+		.agent-logo-wrapper--3 .ripple-ring-4 { animation-delay: 0.45s; }
 
 		@keyframes ripple {
 			0% {
@@ -1235,7 +1287,7 @@ function getStrokeDashoffset(score: number): number {
 			text-decoration-color: rgba(236, 72, 153, 0.6);
 		}
 
-		:global([data-theme="light"]) .claude-logo-circle {
+		:global([data-theme="light"]) .agent-logo-circle {
 			background: rgba(37, 99, 235, 0.1);
 			border-color: #2563eb;
 		}
@@ -1269,6 +1321,50 @@ function getStrokeDashoffset(score: number): number {
 
 			.claude-callout-link i {
 				font-size: 0.8125rem;
+			}
+
+			.agent-logos-row {
+				gap: 1rem;
+			}
+
+			.agent-logo-wrapper {
+				width: 80px;
+				height: 80px;
+			}
+
+			.agent-logo-circle {
+				width: 56px;
+				height: 56px;
+			}
+
+			.agent-logo {
+				width: 28px;
+				height: 28px;
+			}
+
+			.agent-logo--codex {
+				width: 36px;
+				height: 36px;
+			}
+
+			.ripple-ring-1 {
+				width: 56px;
+				height: 56px;
+			}
+
+			.ripple-ring-2 {
+				width: 68px;
+				height: 68px;
+			}
+
+			.ripple-ring-3 {
+				width: 80px;
+				height: 80px;
+			}
+
+			.ripple-ring-4 {
+				width: 92px;
+				height: 92px;
 			}
 		}
 
