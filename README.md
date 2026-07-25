@@ -2,11 +2,11 @@
 
 Personal website and blog for Luke Stahl.
 
-Built with Astro v6, Notion CMS, deployed to GitHub Pages.
+Built with Astro v7, Notion CMS, deployed to GitHub Pages.
 
 ## Tech Stack
 
-- **Framework**: [Astro](https://astro.build/) v6.1.9 with [React](https://react.dev/) v19 integration
+- **Framework**: [Astro](https://astro.build/) v7.1.3 with [React](https://react.dev/) v19 integration
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/) v4 via `@tailwindcss/vite` (scoped to React components only)
 - **UI Components**: [shadcn/ui](https://ui.shadcn.com/) and [React Bits](https://reactbits.dev/)
 - **CMS**: [Notion](https://www.notion.so/)

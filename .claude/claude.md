@@ -16,7 +16,7 @@ Personal website and blog for Luke Stahl, deployed at lukestahl.io. The site fea
 
 ## Tech Stack
 
-- **Framework**: Astro v5.15.8
+- **Framework**: Astro v7.1.3
 - **CMS**: Notion API with notion-to-md
 - **Error Tracking**: Sentry (10% sample rate in production)
 - **Analytics**: PostHog
@@ -65,6 +65,14 @@ npm run preview      # Preview build locally
 ```bash
 cd /Users/lucasstahl/Desktop/Open\ Projects/Programming/lucasstahl/astro-site && npm run dev
 ```
+
+**Astro 7 dev server runs as a background daemon**: `npm run dev` spawns the dev server and the parent process exits immediately (it does not stay attached to the foreground). This means a backgrounded `npm run dev` command may report as "completed" or "exited" right away even though the server is still running. Verify with:
+```bash
+npx astro dev status   # confirms it's running + shows pid/uptime
+npx astro dev logs     # view logs
+npx astro dev stop     # stop it
+```
+Don't assume the server is down just because the shell task shows exited/completed — check `astro dev status` first.
 
 ## Architecture
 
