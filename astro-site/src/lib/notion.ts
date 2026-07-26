@@ -54,7 +54,8 @@ n2m.setCustomTransformer('table', async (block: any) => {
     cursor = response.next_cursor ?? undefined;
   } while (cursor);
 
-  const escapeCell = (text: string) => text.replace(/\|/g, '\\|').replace(/\r?\n/g, '<br>');
+  const escapeCell = (text: string) =>
+    text.replace(/\\/g, '\\\\').replace(/\|/g, '\\|').replace(/\r?\n/g, '<br>');
 
   const tableArr = await Promise.all(
     rows
