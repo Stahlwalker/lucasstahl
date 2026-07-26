@@ -33,6 +33,52 @@ n2m.setCustomTransformer('code', async (block: any) => {
   return `${fence}${language}\n${text}\n${fence}`;
 });
 
+// notion-to-md's built-in table handling has two bugs: it assembles rows via
+// concurrent Promise.all + array.push, so row order isn't guaranteed to match
+// the source table, and it hardcodes has_column_header away, so a table
+// without an explicit header row loses its first row of real data to the
+// GFM header. It also doesn't escape pipes or line breaks inside cells,
+// either of which can corrupt the table enough that `marked` stops parsing
+// it as a table at all.
+n2m.setCustomTransformer('table', async (block: any) => {
+  if (!block.has_children) return '';
+
+  const rows: any[] = [];
+  let cursor: string | undefined;
+  do {
+    const response = await withRetry(() => notion.blocks.children.list({
+      block_id: block.id,
+      start_cursor: cursor,
+    }));
+    rows.push(...response.results);
+    cursor = response.next_cursor ?? undefined;
+  } while (cursor);
+
+  const escapeCell = (text: string) => text.replace(/\|/g, '\\|').replace(/\r?\n/g, '<br>');
+
+  const tableArr = await Promise.all(
+    rows
+      .filter((row: any) => row.type === 'table_row')
+      .map((row: any) => Promise.all(
+        row.table_row.cells.map(async (cell: any) => {
+          const text = await n2m.blockToMarkdown({ type: 'paragraph', paragraph: { rich_text: cell } } as any);
+          return escapeCell(text ?? '');
+        })
+      ))
+  );
+
+  if (tableArr.length === 0) return '';
+
+  if (!block.table?.has_column_header) {
+    tableArr.unshift(new Array(tableArr[0].length).fill(''));
+  }
+
+  const [header, ...body] = tableArr;
+  const separator = header.map(() => '---');
+  const formatRow = (cells: string[]) => `| ${cells.join(' | ')} |`;
+  return [formatRow(header), formatRow(separator), ...body.map(formatRow)].join('\n');
+});
+
 // Retry wrapper for transient Notion API network errors (e.g. premature close mid-gzip)
 async function withRetry<T>(fn: () => Promise<T>, retries = 3, delayMs = 1500): Promise<T> {
   for (let attempt = 1; attempt <= retries; attempt++) {
