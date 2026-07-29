@@ -135,16 +135,22 @@ import solarLogoDark from '../assets/images/dark/Solar_dark.svg';
 		// Copy button
 		const btn = document.getElementById('solar-copy-btn');
 		const label = document.getElementById('solar-copy-label');
-		btn?.addEventListener('click', () => {
+		btn?.addEventListener('click', async () => {
 			const cmd = document.getElementById('solar-cmd')?.textContent ?? '';
-			navigator.clipboard.writeText(cmd).then(() => {
+			try {
+				await navigator.clipboard.writeText(cmd);
 				btn.classList.add('is-copied');
 				if (label) label.textContent = 'Copied!';
 				setTimeout(() => {
 					btn.classList.remove('is-copied');
 					if (label) label.textContent = 'Copy';
 				}, 2000);
-			});
+			} catch {
+				if (label) label.textContent = 'Copy failed';
+				setTimeout(() => {
+					if (label) label.textContent = 'Copy';
+				}, 2000);
+			}
 		});
 	</script>
 
