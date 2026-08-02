@@ -3,13 +3,13 @@ import Layout from '../layouts/Layout.astro';
 
 // Quick Reference Data
 const quickReference = [
-	{ model: "GPT-5.x", company: "OpenAI", bestFor: "General purpose", differentiator: "GPT-5.6 Sol/Terra/Luna (Jul 9) is the current flagship API family — Sol ($5/$30) best coding, Terra ($2.50/$15) mid-tier, Luna ($1/$6) lightweight, dynamic routing across sub-models; GPT-5.5 Instant (May 5) is the ChatGPT default for all tiers — leaner variant, ~30% fewer words/lines, optimized for low latency; GPT-Live-1/mini (Jul 8) are full-duplex voice models with agentic delegation to GPT-5.5, now the default ChatGPT voice mode", color: "#10b981" },
+	{ model: "GPT-5.x", company: "OpenAI", bestFor: "General purpose", differentiator: "GPT-5.6 Sol/Terra/Luna (Jul 9) is the current flagship API family — Sol ($5/$30) best coding, Terra ($2/$12) mid-tier, Luna ($0.20/$1.20) lightweight, dynamic routing across sub-models; Terra/Luna cut 20%/80% Jul 30; Sol Fast Mode (Jul 30, renamed from Priority Processing) runs 2.5× faster at 2× the price; GPT-5.5 Instant (May 5) is the ChatGPT default for all tiers — leaner variant, ~30% fewer words/lines, optimized for low latency; GPT-Live-1/mini (Jul 8) are full-duplex voice models with agentic delegation to GPT-5.5, now the default ChatGPT voice mode", color: "#10b981" },
 	{ model: "Claude 5.x Family", company: "Anthropic", bestFor: "Coding & reasoning", differentiator: "Claude Opus 5 (Jul 24) — new flagship, 1M context, 128K output (300K on Batch API), $5/$25 per 1M tokens; frontier intelligence of Fable 5 at roughly half the price, the recommended starting model for agentic coding & enterprise work; Fable 5 (Jun 9) — max-capability option, 1M context, 128K output, $10/$50 per 1M tokens, 95% SWE-bench Verified; Sonnet 5 (Jun 30) — default Free/Pro model, near-flagship performance at $2/$10 per 1M (intro); Haiku 4.5 hits ~90% of Sonnet 5 coding at a fraction of the price", color: "#c084fc" },
 	{ model: "Gemini 3.x", company: "Google DeepMind", bestFor: "Multimodal", differentiator: "Gemini 3.5 Pro (I/O 2026): has missed three consecutive GA deadlines (most recently July 17); no confirmed launch date, reportedly rebuilt from scratch after recursive tool-calling failures; still limited Vertex enterprise preview; leads 3.1 Pro on reasoning; Gemini 3.6 Flash (Jul 21) is the new default in the Gemini app, superseding 3.5 Flash — 17% fewer output tokens, output price cut to $7.50/M (from $9.00), knowledge cutoff advanced to March 2026; siblings Gemini 3.5 Flash-Lite and Flash Cyber launched same day; Gemini 4 teased, no release date; 3.1 Ultra remains the top reasoning tier", color: "#60a5fa" },
 	{ model: "Grok 4.x", company: "xAI", bestFor: "Real-time info", differentiator: "Grok 4.3 (Apr 30) is the cost-efficient API model at $1.25/$2.50 per M tokens with always-on reasoning and native video input (5-min clips); Grok 4 Heavy is the premium multi-agent variant (256K context, first model to hit 50.7% on Humanity's Last Exam (text-only with tools)) gated behind the $300/mo SuperGrok Heavy tier; Grok 4.5 launched July 8, 2026 — 1.5T-param V9 MoE, 500K context, $2/$6 per 1M tokens; EU rollout partial as of late July — live via Cursor, direct API console still restricted", color: "#f97316" },
 	{ model: "Llama 4", company: "Meta", bestFor: "Open-source", differentiator: "10M token context; fully self-hostable; Behemoth effectively shelved — repeated delays, MoE-routing failures; Meta pivoting to Muse Spark", color: "#06b6d4" },
 	{ model: "Muse Spark 1.1", company: "Meta Superintelligence Labs", bestFor: "Agentic coding & reasoning", differentiator: "Released Apr 8, 2026, upgraded to 1.1 on July 9, 2026 — Meta's first closed-weight frontier model and first paid developer API ($1.25/$4.25 per 1M tokens); 1M token context, agentic coding focus (tool use, computer use, multi-agent orchestration); top scores on MCP Atlas, JobBench, Humanity's Last Exam", color: "#7c3aed" },
-	{ model: "DeepSeek V4", company: "DeepSeek", bestFor: "Cost efficiency", differentiator: "Released April 24, 2026 — V4-Pro (1.6T MoE, $0.435/1M input, $0.87/1M output after a permanent May 22 price cut) and V4-Flash (284B, $0.14/1M input); MIT, 1M context", color: "#facc15" },
+	{ model: "DeepSeek V4", company: "DeepSeek", bestFor: "Cost efficiency", differentiator: "Released April 24, 2026 — V4-Pro (1.6T MoE, $0.435/1M input, $0.87/1M output after a permanent May 22 price cut) and V4-Flash-0731 (304B, Jul 31 stable release, $0.14/$0.27 per 1M — ranks ahead of MiniMax M3 on Artificial Analysis's value-per-intelligence chart); MIT, 1M context", color: "#facc15" },
 	{ model: "Mistral 3 Family", company: "Mistral", bestFor: "EU compliance", differentiator: "Large 3, Magistral (reasoning), Devstral (open-source coding agent), Small 4, Voxtral — enterprise-safe with data sovereignty", color: "#818cf8" },
 	{ model: "Qwen 3.7", company: "Alibaba", bestFor: "Multilingual", differentiator: "Qwen 3.7 Max (May 19, closed-weight) — 56.6 AI Intelligence Index, $2.50/$7.50 per 1M tokens; Qwen 3.7 Plus with vision GA June 1; Qwen3.5 open-weight (397B) and Qwen3.6-Plus still available; Qwen3.8-Max previewed Jul 19 (2.4T params, not yet GA)", color: "#f472b6" },
 	{ model: "Microsoft MAI", company: "Microsoft", bestFor: "Speech & media AI", differentiator: "MAI-Transcribe-1, MAI-Voice-1, MAI-Image-2, plus Phi-4-reasoning (Apr 10) — Microsoft's own foundation stack on Foundry", color: "#0ea5e9" },
@@ -37,7 +37,7 @@ const frontierModels = [
 		color: "#10b981",
 		tagline: "The versatile all-rounder with dynamic internal routing.",
 		bullets: [
-			"GPT-5.6 Sol / Terra / Luna (July 9, 2026): OpenAI's current flagship API family, now broadly available after an early access period — 1M token context, with an internal router selecting the right sub-model per request. Sol (flagship): $5/$30 per 1M tokens — OpenAI's best coding model, adds 'Sol Ultra' multi-agent mode. Terra (balanced): $2.50/$15 per 1M tokens. Luna (fast/cheap): $1/$6 per 1M tokens.",
+			"GPT-5.6 Sol / Terra / Luna (July 9, 2026): OpenAI's current flagship API family, now broadly available after an early access period — 1M token context, with an internal router selecting the right sub-model per request. Sol (flagship): $5/$30 per 1M tokens — OpenAI's best coding model, adds 'Sol Ultra' multi-agent mode; gained Fast Mode on July 30 (renamed from Priority Processing) — 2.5× faster at 2× the standard price. Terra (balanced): $2/$12 per 1M tokens (cut 20% on July 30). Luna (fast/cheap): $0.20/$1.20 per 1M tokens (cut 80% on July 30 — OpenAI cites efficiency gains from internal optimization).",
 			"GPT-5.5 Instant (May 5, 2026): the ChatGPT default for all tiers — leaner variant tuned for low latency (~30% fewer words/lines per response), distinct from the API flagship family. This is what most consumer users actually hit",
 			"Available to Plus, Pro, Business, and Enterprise via ChatGPT and Codex; native computer use and tool calling for agentic automation",
 			"GPT-Live-1 / GPT-Live-1 mini (July 8, 2026): full-duplex voice models — listen and speak simultaneously, real-time translation, nine remastered voices; agentic delegation routes hard queries to GPT-5.5; GPT-Live-1 is now the default voice mode for Plus/Pro, mini is the Free default"
@@ -216,7 +216,7 @@ const openSourceModels = [
 		tagline: "Cost-redefining open-source frontier — released April 24, 2026 in two variants.",
 		bullets: [
 			"V4-Pro: 1.6T total parameters / 49B active MoE; $0.435/1M input, $0.87/1M output (permanent price cut from launch pricing as of May 22, 2026) — cheapest frontier-class open model",
-			"V4-Flash: 284B total / 13B active; $0.14/1M input, $0.28/1M output — ultra-budget tier",
+			"V4-Flash-0731 (July 31, 2026 stable release): 304B parameters; $0.14/1M input, $0.27/1M output — ranks ahead of MiniMax M3 on Artificial Analysis's cost-vs-intelligence chart, in the same value tier as models costing ~10x more",
 			"MIT license; native 1M context window; built-in agentic long-context and tool-use",
 			"Engram conditional memory and Manifold-Constrained Hyper-Connections for improved long-context performance",
 			"Entire V3/V4 lineage trained for under $6M — redefining AI cost efficiency"
@@ -338,6 +338,7 @@ const openSourceModels = [
 			"Qwen 3.7 Plus (GA June 1, 2026): closed-weight multimodal with vision, deep reasoning, and tool invocation; built on the Bailian platform",
 			"Qwen3.5 (Feb 2026): open-weight, 397B parameters — available for self-hosting and fine-tuning",
 			"Qwen3.5-Omni: native audio/video/text multimodal — Thinker architecture, 256K context, 113-language speech recognition",
+			"Qwen 3.7 Flash (quietly released late July 2026, live on OpenRouter Jul 27): vision-language model for multimodal agents — 1M context, $0.03/1M input, $0.13/1M output; no official technical report or benchmarks published",
 			"Qwen3.6-Plus (Apr 2, 2026): closed-source API-only, 1M context; still available alongside 3.7 lineup",
 			"0.6B to 235B open-weight range; Qwen3-Max (1T+) API-only; supports 119 languages",
 			"Qwen3-Coder achieves 69.6% on SWE-Bench Verified; Qwen3 Coder Next (Feb 4, 2026) is the follow-up"
@@ -423,7 +424,7 @@ const imageVideoModels = [
 	{ name: "Nano Banana 2", company: "Google", bestFor: "Fast AI image editing, remixing, and style transfers; built on Gemini Flash" },
 	{ name: "DALL-E 4", company: "OpenAI", bestFor: "Integrated with ChatGPT; strong prompt adherence" },
 	{ name: "Stable Diffusion 3.5", company: "Stability AI", bestFor: "Open-source; self-hostable; highly customizable" },
-	{ name: "FLUX.2", company: "Black Forest Labs", bestFor: "From the Stable Diffusion creators; up to 4MP; open-weight Klein variant" },
+	{ name: "FLUX 3", company: "Black Forest Labs", bestFor: "Unified image/video/audio/robotics model (Jul 23); video in Early Access now, image + open-weight Dev + robotics variant rolling out in stages, no public pricing yet" },
 	{ name: "LTX-2.3", company: "Lightricks", bestFor: "Open-weights video+audio in one pass; 22B params; 4K at 50 FPS, up to 20s; one of the most capable open video models available" },
 	{ name: "Grok Imagine Video 1.5", company: "xAI", bestFor: "~2× faster video generation than prior version, native audio output (Jun 2026)" },
 	{ name: "Reve 2.0", company: "Reve", bestFor: "Image generation with precise layout control and typography — strong alternative to DALL-E 4 / Imagen 4 for design-heavy use cases (Jun 3, 2026)" },
@@ -528,7 +529,7 @@ const scenarios = [
 			"url": "https://lukestahl.io/"
 		},
 		"datePublished": "2026-03-10",
-		"dateModified": "2026-07-25",
+		"dateModified": "2026-08-02",
 		"mainEntityOfPage": {
 			"@type": "WebPage",
 			"@id": "https://lukestahl.io/ai-models-guide/"
@@ -557,7 +558,7 @@ const scenarios = [
 			<section class="hero">
 				<h1 class="hero-title">AI Models<br/><span class="hero-title-accent">Guide</span></h1>
 				<p class="hero-subtitle">A quick-reference to the major AI models, who makes them, and what they do best.</p>
-				<div class="hero-badge">Updated July 25, 2026</div>
+				<div class="hero-badge">Updated August 2, 2026</div>
 			</section>
 
 			<!-- Quick Reference -->
