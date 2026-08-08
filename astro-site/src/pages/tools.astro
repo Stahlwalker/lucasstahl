@@ -27,8 +27,10 @@ import executorIcon from '../assets/images/light/Executor.png';
 import piDevLight from '../assets/images/light/pi-dev-icon-light.svg';
 import piDevDark from '../assets/images/dark/pi-dev-icon-dark.svg';
 import obsidianImg from '../assets/images/light/obsidian.png';
+import linearMarkLight from '../assets/images/light/linear-mark-light.svg';
 import excalidrawLight from '../assets/images/light/Excalidraw_light.png';
 import warpLight from '../assets/images/light/Warp light.png';
+import figmaLight from '../assets/images/light/figma-icon-cropped.png';
 
 // Logo imports — Dark mode
 import cursorDark from '../assets/images/dark/Cursor_dark.png';
@@ -38,6 +40,8 @@ import githubDark from '../assets/images/dark/GitHub_dark.png';
 import claudeDark from '../assets/images/dark/Claude_dark.png';
 import excalidrawDark from '../assets/images/dark/Excalidraw_dark.png';
 import warpDarkIcon from '../assets/images/dark/Warp_icon.png';
+import figmaDark from '../assets/images/dark/figma-icon-cropped.png';
+import linearMarkDark from '../assets/images/dark/linear-mark-dark.svg';
 ---
 
 <Layout
@@ -214,6 +218,18 @@ import warpDarkIcon from '../assets/images/dark/Warp_icon.png';
 					</div>
 				</a>
 
+				<!-- Linear -->
+				<a href="https://linear.app/" target="_blank" rel="noopener noreferrer" class="daily-tool-card">
+					<div class="daily-tool-logo">
+						<img src={linearMarkLight.src} alt="Linear" class="logo-showcase-img logo-light" loading="lazy" width="80" height="80" />
+						<img src={linearMarkDark.src} alt="Linear" class="logo-showcase-img logo-dark" loading="lazy" width="80" height="80" />
+					</div>
+					<div>
+						<h3 class="daily-tool-name">Linear</h3>
+						<p class="daily-tool-use">Tracking what's releasing, how, at what stage, and versioning. My window into engineering and product team work.</p>
+					</div>
+				</a>
+
 				<!-- Slack -->
 				<a href="https://slack.com/" target="_blank" rel="noopener noreferrer" class="daily-tool-card">
 					<div class="daily-tool-logo">
@@ -245,6 +261,18 @@ import warpDarkIcon from '../assets/images/dark/Warp_icon.png';
 					<div>
 						<h3 class="daily-tool-name">Excalidraw</h3>
 						<p class="daily-tool-use">Diagrams and image assets. Good for quick visual work that doesn't need a full design tool.</p>
+					</div>
+				</a>
+
+				<!-- Figma -->
+				<a href="https://figma.com/" target="_blank" rel="noopener noreferrer" class="daily-tool-card">
+					<div class="daily-tool-logo">
+						<Image src={figmaLight} alt="Figma" class="logo-showcase-img logo-light" loading="lazy" quality={85} width={80} height={80} />
+						<Image src={figmaDark} alt="Figma" class="logo-showcase-img logo-dark" loading="lazy" quality={85} width={80} height={80} />
+					</div>
+					<div>
+						<h3 class="daily-tool-name">Figma</h3>
+						<p class="daily-tool-use">Reviewing design handoffs and building my own mockups and prototypes, both for work and for this site.</p>
 					</div>
 				</a>
 
@@ -342,14 +370,6 @@ import warpDarkIcon from '../assets/images/dark/Warp_icon.png';
 								<a href="https://executor.sh/" target="_blank" rel="noopener noreferrer" class="eval-past-name eval-past-link">Executor</a>
 								<span class="eval-past-cat">Agent Runtime</span>
 								<span class="eval-past-note">My Claude Code and Cursor setup already covers this without the extra layer.</span>
-							</div>
-							<span class="eval-past-verdict">Passed on</span>
-						</li>
-						<li class="eval-past-item">
-							<div class="eval-past-info">
-								<a href="https://linear.app/" target="_blank" rel="noopener noreferrer" class="eval-past-name eval-past-link">Linear</a>
-								<span class="eval-past-cat">Project Management</span>
-								<span class="eval-past-note">Good GitHub integration, but Notion already covers what I need for now.</span>
 							</div>
 							<span class="eval-past-verdict">Passed on</span>
 						</li>
