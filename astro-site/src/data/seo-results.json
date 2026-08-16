@@ -1,20 +1,20 @@
 {
-  "lastUpdated": "2026-08-09T09:41:33.896Z",
+  "lastUpdated": "2026-08-16T09:28:50.446Z",
   "results": {
     "mobile": {
       "home": {
-        "performance": 68,
+        "performance": 93,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
-        "lcp": 5345.245389877093,
-        "cls": 0.000846558563192398,
-        "tbt": 1,
+        "lcp": 3173.712063387208,
+        "cls": 0.0013233415609725508,
+        "tbt": 0,
         "agenticBrowsingPassed": 3,
         "agenticBrowsingTotal": 3
       },
       "about": {
-        "performance": 86,
+        "performance": 83,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
@@ -22,7 +22,7 @@
         "agenticBrowsingTotal": 3
       },
       "blog": {
-        "performance": 70,
+        "performance": 77,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
@@ -52,9 +52,9 @@
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
-        "lcp": 601.0040420828567,
-        "cls": 0.002874654985415971,
-        "tbt": 0,
+        "lcp": 521.0016473273688,
+        "cls": 0.002400932391140958,
+        "tbt": 5.000000000000057,
         "agenticBrowsingPassed": 3,
         "agenticBrowsingTotal": 3
       },
@@ -67,7 +67,7 @@
         "agenticBrowsingTotal": 3
       },
       "blog": {
-        "performance": 97,
+        "performance": 98,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
