@@ -18,7 +18,6 @@
 	background: transparent;
 	color: var(--guide-text);
 	position: relative;
-	overflow-x: hidden;
 	font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
@@ -55,9 +54,144 @@
 
 /* --- Main --- */
 .guide-main {
-	max-width: 1100px;
+	max-width: 1320px;
 	margin: 0 auto;
 	padding: 0 2rem 4rem;
+}
+
+/* --- On This Page (sidebar TOC) --- */
+.guide-layout {
+	display: flex;
+	align-items: flex-start;
+	gap: 3rem;
+}
+
+.guide-toc {
+	position: sticky;
+	top: 2rem;
+	flex: 0 0 200px;
+	width: 200px;
+	align-self: flex-start;
+	padding-top: 4rem;
+}
+
+.guide-toc-label {
+	display: block;
+	font-family: 'Fira Code', monospace;
+	font-size: 0.72rem;
+	font-weight: 600;
+	color: var(--guide-text-faint);
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	margin-bottom: 1rem;
+}
+
+.guide-toc-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 0.15rem;
+	border-left: 1px solid var(--guide-border);
+}
+
+.guide-toc-link {
+	display: block;
+	font-size: 0.84rem;
+	color: var(--guide-text-dim);
+	text-decoration: none;
+	padding: 0.4rem 0 0.4rem 0.9rem;
+	border-left: 2px solid transparent;
+	margin-left: -1px;
+	transition: color 0.15s, border-color 0.15s;
+}
+
+.guide-toc-link:hover {
+	color: var(--guide-text);
+}
+
+.guide-toc-link.is-active {
+	color: #60a5fa;
+	border-left-color: #60a5fa;
+}
+
+.guide-content {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+/* --- On This Page (mobile dropdown pill) --- */
+.guide-toc-mobile {
+	display: none;
+	width: fit-content;
+}
+
+.guide-toc-mobile-summary {
+	cursor: pointer;
+	list-style: none;
+	font-family: 'Fira Code', monospace;
+	font-size: 0.76rem;
+	font-weight: 600;
+	color: var(--guide-text-dim);
+	letter-spacing: 0.02em;
+	padding: 0.6rem 0.85rem;
+	background: var(--guide-bg);
+	border: 1px solid var(--guide-border);
+	border-radius: 10px;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.65rem;
+	white-space: nowrap;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.guide-toc-mobile-summary::-webkit-details-marker {
+	display: none;
+}
+
+.guide-toc-mobile-summary::after {
+	content: '⌄';
+	font-size: 0.9rem;
+	line-height: 1;
+	color: var(--guide-text-faint);
+	transition: transform 0.2s;
+}
+
+.guide-toc-mobile[open] .guide-toc-mobile-summary::after {
+	transform: rotate(180deg);
+}
+
+.guide-toc-mobile-list {
+	position: absolute;
+	top: calc(100% + 0.5rem);
+	left: 0;
+	min-width: 210px;
+	list-style: none;
+	margin: 0;
+	padding: 0.4rem 0;
+	background: var(--guide-bg);
+	border: 1px solid var(--guide-border);
+	border-radius: 10px;
+	box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+.guide-toc-mobile-list a {
+	display: block;
+	padding: 0.55rem 1.1rem;
+	font-size: 0.82rem;
+	color: var(--guide-text-dim);
+	text-decoration: none;
+}
+
+.guide-toc-mobile-list a:hover {
+	color: var(--guide-text);
+	background: var(--guide-surface-hover);
+}
+
+[data-theme="light"] .guide-toc-mobile-summary,
+[data-theme="light"] .guide-toc-mobile-list {
+	background: #ffffff;
 }
 
 /* --- Hero --- */
@@ -798,6 +932,24 @@
 /* ============================
    RESPONSIVE
    ============================ */
+@media (max-width: 1180px) {
+	.guide-toc {
+		display: none;
+	}
+
+	.guide-layout {
+		display: block;
+	}
+
+	.guide-toc-mobile {
+		display: block;
+		position: sticky;
+		top: calc(61px + 0.75rem);
+		z-index: 5;
+		margin-bottom: 1.5rem;
+	}
+}
+
 @media (max-width: 1024px) {
 	.media-grid {
 		grid-template-columns: repeat(2, 1fr);
@@ -859,7 +1011,6 @@
 
 	.ref-diff {
 		font-size: 0.78rem;
-		max-width: 200px;
 	}
 }
 
