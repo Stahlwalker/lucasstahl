@@ -24,13 +24,12 @@ import claudeLight from '../assets/images/light/Claude_Light.png';
 import claudeIcon from '../assets/images/light/Claude_icon.png';
 import claudeDesignIcon from '../assets/images/light/claude-design-icon.svg';
 import executorIcon from '../assets/images/light/Executor.png';
-import piDevLight from '../assets/images/light/pi-dev-icon-light.svg';
-import piDevDark from '../assets/images/dark/pi-dev-icon-dark.svg';
 import obsidianImg from '../assets/images/light/obsidian.png';
 import linearMarkLight from '../assets/images/light/linear-mark-light.svg';
 import excalidrawLight from '../assets/images/light/Excalidraw_light.png';
 import warpLight from '../assets/images/light/Warp light.png';
 import figmaLight from '../assets/images/light/figma-icon-cropped.png';
+import paperLogo from '../assets/images/light/paper-logo.svg';
 
 // Logo imports — Dark mode
 import cursorDark from '../assets/images/dark/Cursor_dark.png';
@@ -333,23 +332,22 @@ import linearMarkDark from '../assets/images/dark/linear-mark-dark.svg';
 				<div class="eval-card">
 					<div class="eval-card-header">
 						<div class="eval-tool-icon">
-							<Image src={piDevLight} alt="Pi" class="logo-light" width={48} height={48} />
-							<Image src={piDevDark} alt="Pi" class="logo-dark" width={48} height={48} />
+							<Image src={paperLogo} alt="Paper" width={48} height={48} />
 						</div>
 						<div class="eval-tool-meta">
-							<a href="https://pi.dev/" target="_blank" rel="noopener noreferrer" class="eval-tool-name" style="text-decoration: none; color: inherit;">Pi</a>
+							<a href="https://paper.design/" target="_blank" rel="noopener noreferrer" class="eval-tool-name" style="text-decoration: none; color: inherit;">Paper</a>
 							<span class="eval-badge">Evaluating</span>
 						</div>
 					</div>
 					<p class="eval-description">
-						Minimal, extensible agent harness for AI-assisted coding: no opinionated workflow, just core primitives to assemble your own. Evaluating vs. Claude Code's batteries-included setup.
+						A modern, powerful design tool for creating, sharing, and shipping work. Evaluating how it fits into my own workflow.
 					</p>
 					<div class="eval-footer">
 						<span class="eval-status">
 							<span class="eval-dot"></span>
 							Active
 						</span>
-						<span class="eval-category">Agent Framework</span>
+						<span class="eval-category">AI Design</span>
 					</div>
 				</div>
 
@@ -357,6 +355,14 @@ import linearMarkDark from '../assets/images/dark/linear-mark-dark.svg';
 				<div class="eval-past">
 					<h3 class="eval-past-title">Previously Evaluated</h3>
 					<ul class="eval-past-list">
+						<li class="eval-past-item">
+							<div class="eval-past-info">
+								<a href="https://pi.dev/" target="_blank" rel="noopener noreferrer" class="eval-past-name eval-past-link">Pi</a>
+								<span class="eval-past-cat">Agent Framework</span>
+								<span class="eval-past-note">Didn't replace my current workflow with Claude & Cursor.</span>
+							</div>
+							<span class="eval-past-verdict">Passed on</span>
+						</li>
 						<li class="eval-past-item">
 							<div class="eval-past-info">
 								<a href="https://www.agent-native.com/" target="_blank" rel="noopener noreferrer" class="eval-past-name eval-past-link">Agent Native</a>
