@@ -15,7 +15,8 @@ import contentfulLight from '../assets/images/light/Contentful-light.png';
 import contentfulDark from '../assets/images/dark/Contentful-dark-v2.png';
 import cursorIconLight from '../assets/images/light/Cursor-cube-icon.svg';
 import cursorIconDark from '../assets/images/dark/Cursor-cube-icon.svg';
-import codexIcon from '../assets/images/dark/codex-color.svg';
+import codexIconLight from '../assets/images/light/codex.svg';
+import codexIconDark from '../assets/images/dark/codex.svg';
 
 const { results } = seoData;
 
@@ -193,7 +194,8 @@ function getStrokeDashoffset(score: number): number {
 					<div class="ripple-ring ripple-ring-3"></div>
 					<div class="ripple-ring ripple-ring-4"></div>
 					<div class="agent-logo-circle">
-						<img src={codexIcon.src} alt="Codex" class="agent-logo agent-logo--codex" />
+						<img src={codexIconLight.src} alt="Codex" class="agent-logo agent-logo--codex logo-light" />
+						<img src={codexIconDark.src} alt="Codex" class="agent-logo agent-logo--codex logo-dark" />
 					</div>
 				</div>
 			</div>
