@@ -1,20 +1,20 @@
 {
-  "lastUpdated": "2026-08-30T14:21:47.965Z",
+  "lastUpdated": "2026-09-06T12:47:52.791Z",
   "results": {
     "mobile": {
       "home": {
-        "performance": 79,
+        "performance": 90,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
-        "lcp": 4074.7142974829026,
-        "cls": 0.0010673584352684465,
-        "tbt": 0,
+        "lcp": 3239.8487931609156,
+        "cls": 0.0011753995557607657,
+        "tbt": 28.5,
         "agenticBrowsingPassed": 3,
         "agenticBrowsingTotal": 3
       },
       "about": {
-        "performance": 63,
+        "performance": 80,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
@@ -30,7 +30,7 @@
         "agenticBrowsingTotal": 3
       },
       "builds": {
-        "performance": 64,
+        "performance": 88,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
@@ -38,7 +38,7 @@
         "agenticBrowsingTotal": 3
       },
       "gems": {
-        "performance": 64,
+        "performance": 83,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
@@ -52,14 +52,14 @@
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
-        "lcp": 801.011393252419,
-        "cls": 0.0023838123283321144,
-        "tbt": 0,
+        "lcp": 741.0121428249993,
+        "cls": 0.0027041914515324654,
+        "tbt": 1,
         "agenticBrowsingPassed": 3,
         "agenticBrowsingTotal": 3
       },
       "about": {
-        "performance": 95,
+        "performance": 96,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
@@ -67,7 +67,7 @@
         "agenticBrowsingTotal": 3
       },
       "blog": {
-        "performance": 98,
+        "performance": 95,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
@@ -75,7 +75,7 @@
         "agenticBrowsingTotal": 3
       },
       "builds": {
-        "performance": 98,
+        "performance": 93,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
@@ -83,7 +83,7 @@
         "agenticBrowsingTotal": 3
       },
       "gems": {
-        "performance": 96,
+        "performance": 97,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
