@@ -27,6 +27,7 @@ jobs:
             --exclude 'linkedin.com/in'
             --exclude 'upwork.com'
             --exclude 'twitter.com'
+            --exclude 'x.com'
             --exclude 'facebook.com'
             --exclude 'instagram.com'
             --exclude 'fonts.googleapis.com/$'
