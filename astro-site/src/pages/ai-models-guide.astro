@@ -9,7 +9,7 @@ const quickReference = [
 	{ model: "Grok 4.x", company: "xAI", bestFor: "Real-time info", differentiator: "Grok 4.6 (Aug 12) is the current flagship — 1.5T MoE, $2/$6 per 1M tokens, built for long-running agentic work", color: "#f97316" },
 	{ model: "Llama 4", company: "Meta", bestFor: "Open-source", differentiator: "10M token context, fully self-hostable; Behemoth shelved as Meta pivots to closed-weight Muse Spark", color: "#06b6d4" },
 	{ model: "Muse Spark 1.3", company: "Meta Superintelligence Labs", bestFor: "Agentic coding & reasoning", differentiator: "Meta's first closed-weight frontier model — Spark 1.3 (Sep 2) improves coding/agentic performance for longer-horizon work, #6 on Artificial Analysis Intelligence Index", color: "#7c3aed" },
-	{ model: "DeepSeek V4", company: "DeepSeek", bestFor: "Cost efficiency", differentiator: "V4-Pro and V4-Flash-0731 — MIT license, 1M context, among the cheapest frontier-class models available", color: "#facc15" },
+	{ model: "DeepSeek V4", company: "DeepSeek", bestFor: "Cost efficiency", differentiator: "V4.1-Flash (Sep 10) now outperforms V4-Pro and has taken over V4-Pro's API traffic at its lower rates — MIT license, 1M context, among the cheapest frontier-class models available", color: "#facc15" },
 	{ model: "Mistral 3 Family", company: "Mistral", bestFor: "EU compliance", differentiator: "Large 3, Medium 3.5, Small 4, Voxtral — enterprise-safe with EU data sovereignty", color: "#818cf8" },
 	{ model: "Qwen 3.8", company: "Alibaba", bestFor: "Multilingual", differentiator: "Qwen3.8-Max (Aug 2) is the new flagship; Qwen3.8-27B (Aug 13) is a separate, genuinely self-hostable Apache 2.0 companion", color: "#f472b6" },
 	{ model: "Microsoft MAI", company: "Microsoft", bestFor: "Speech & media AI", differentiator: "MAI-Transcribe-1, MAI-Voice-1, MAI-Image-2, Phi-4-reasoning — Microsoft's own foundation stack on Foundry", color: "#0ea5e9" },
@@ -22,7 +22,7 @@ const quickReference = [
 	{ model: "GPT-5.5-Cyber", company: "OpenAI", bestFor: "Defensive cybersecurity", differentiator: "TAC-gated fine-tune for defensive cybersecurity — CrowdStrike, Cloudflare, Palo Alto, Cisco partners", color: "#ef4444" },
 	{ model: "Claude Mythos 5.1", company: "Anthropic", bestFor: "Security research", differentiator: "Cybersecurity research model via Project Glasswing — 150+ partner orgs, same weights as Fable 5.1", color: "#a855f7" },
 	{ model: "Gemini 3.8 Flash Cyber", company: "Google DeepMind", bestFor: "Restricted cybersecurity", differentiator: "Defensive-security variant of Gemini 3.8 Flash — gated to vetted defenders via Google's Fairwind Program, not on public price sheet", color: "#1d4ed8" },
-	{ model: "Sakana Fugu Ultra", company: "Sakana AI", bestFor: "Orchestration / routing", differentiator: "Meta-model that dynamically routes tasks across frontier models internally; 73.7% SWE-Bench Pro", color: "#f59e0b" },
+	{ model: "Sakana Fugu Max / Ultra v2", company: "Sakana AI", bestFor: "Orchestration / routing", differentiator: "Meta-model that dynamically routes tasks across frontier models internally; Ultra v2 hits 74.3 DeepSWE without Fable 5.1 or GPT-6-Astra in its pool", color: "#f59e0b" },
 	{ model: "Apple AFM 3", company: "Apple", bestFor: "On-device + cloud privacy", differentiator: "Five-model family spanning on-device and cloud — privacy-preserving inference for iOS/macOS", color: "#6b7280" },
 	{ model: "Sonar", company: "Perplexity", bestFor: "Search & research", differentiator: "Search-grounded, citation-first answers at 1,200 tok/s on Cerebras inference", color: "#22d3ee" },
 	{ model: "Composer 2.5", company: "Cursor", bestFor: "AI-native coding", differentiator: "Built on Kimi K2.5 with Cursor's post-training — matches Opus 4.7 at ~10× cheaper", color: "#50e3c2" },
@@ -213,12 +213,12 @@ const openSourceModels = [
 		company: "DeepSeek",
 		location: "Hangzhou, China",
 		color: "#facc15",
-		tagline: "Cost-redefining open-source frontier — released April 24, 2026 in two variants.",
+		tagline: "Cost-redefining open-source frontier — V4.1-Flash (Sept 10, 2026) now outperforms the flagship V4-Pro.",
 		bullets: [
-			"V4-Pro: 1.6T/49B active MoE, $0.435/$0.87 per 1M — cheapest frontier-class open model",
-			"V4-Flash-0731 (July 31, 2026): 304B params, $0.14/$0.27 per 1M — ranks ahead of MiniMax M3 on cost-vs-intelligence",
+			"V4.1-Flash (Sept 10, 2026): 552B MoE, 8B active on input / 16B active on output — new Causal Encoder-Decoder architecture, native multimodal image understanding, MIT license; beats the larger V4-Pro on cost, speed, and total runtime",
+			"$0.15/$0.60 per 1M off-peak, doubling to $0.30/$1.20 at peak hours — among the cheapest frontier-class models available",
+			"Starting Sept 14, 2026: all V4-Pro API requests are answered by V4.1-Flash and billed at its lower rate, until a V4.1-Pro ships; V4-Flash and the August vision-preview model are retired",
 			"MIT license; native 1M context window; built-in agentic long-context and tool-use",
-			"Engram conditional memory and Manifold-Constrained Hyper-Connections for improved long-context performance",
 			"Entire V3/V4 lineage trained for under $6M — redefining AI cost efficiency"
 		],
 		bestFor: "Budget-conscious teams, math/reasoning, open-source self-hosting"
@@ -356,15 +356,15 @@ const openSourceModels = [
 // Orchestration Models
 const orchestrationModels = [
 	{
-		name: "Sakana Fugu / Fugu Ultra",
+		name: "Sakana Fugu Max / Fugu Ultra v2",
 		company: "Sakana AI",
 		location: "Tokyo, Japan",
 		color: "#f59e0b",
-		tagline: "A meta-model that presents as a single API but dynamically routes tasks across a pool of frontier models internally — no hardcoded rules.",
+		tagline: "A meta-model that presents as a single API but dynamically routes tasks across a pool of frontier models internally — no hardcoded rules. Now ships in two tiers.",
 		bullets: [
-			"Released June 22, 2026 — TRINITY coordinator + Conductor orchestration architecture",
-			"73.7% SWE-Bench Pro at launch — above Opus 4.8, below Fable 5; v1.1 (July 2026) gained up to 7.9 points at the same pricing",
-			"Pricing: $5/$30 per 1M standard; $10/$45 above 272K context",
+			"Fugu Max and Fugu Ultra v2 (Sept 11, 2026) replace the original Fugu Ultra — same orchestration architecture split into a cost-efficient tier (Max) and a max-capability tier (Ultra v2)",
+			"Fugu Ultra v2 hits 74.3 on DeepSWE and 48.3 on Chartography (vs. 27.3 for Opus 5, 29.5 for Fable 5) — and does it without Fable 5, Fable 5.1, or GPT-6-Astra in its own agent pool",
+			"Pricing: Fugu Max $2/$6 per 1M; Fugu Ultra v2 $5/$30 per 1M standard ($0.50/1M cache reads), $10/$45/$1 above 272K context",
 			"Can substitute models around export controls — built for research, cybersecurity, multi-step patent work",
 			"No hardcoded routing rules — the meta-model selects and coordinates sub-models per task"
 		],
@@ -534,7 +534,7 @@ const scenarios = [
 			"url": "https://lukestahl.io/"
 		},
 		"datePublished": "2026-03-10",
-		"dateModified": "2026-09-06",
+		"dateModified": "2026-09-13",
 		"mainEntityOfPage": {
 			"@type": "WebPage",
 			"@id": "https://lukestahl.io/ai-models-guide/"
@@ -563,7 +563,7 @@ const scenarios = [
 			<section class="hero">
 				<h1 class="hero-title">AI Models<br/><span class="hero-title-accent">Guide</span></h1>
 				<p class="hero-subtitle">A quick-reference to the major AI models, who makes them, and what they do best.</p>
-				<div class="hero-badge">Updated September 6, 2026</div>
+				<div class="hero-badge">Updated September 13, 2026</div>
 			</section>
 
 			<div class="guide-layout">
