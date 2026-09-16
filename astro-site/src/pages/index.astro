@@ -919,10 +919,20 @@ function getStrokeDashoffset(score: number): number {
 		}
 
 		/* Light pangea PNG is tightly cropped (no padding), while the dark PNG
-		   has whitespace baked in. Cap the light variant so the visible text
-		   matches dark-mode rendering. */
+		   (155x41) has ~10px of whitespace baked in on every side, so the
+		   visible glyph is only ~68% of the canvas height. Cap the light
+		   variant AND scale the dark variant up so the rendered glyph size
+		   matches in both themes. */
 		.experience-logo-cell--pangea .logo-light {
 			max-height: 23px;
+		}
+		.experience-logo-cell--pangea .logo-dark {
+			/* height:auto never stretches an image past its requested pixel
+			   size, so max-height alone can't upscale this — force a definite
+			   height (overriding .experience-logo's 30px cap on both
+			   properties) and let width scale via the intrinsic ratio. */
+			height: 34px;
+			max-height: 34px;
 		}
 
 		/* Light/dark logo swapping */
@@ -989,6 +999,11 @@ function getStrokeDashoffset(score: number): number {
 				max-height: 20px;
 				max-width: 96px;
 			}
+			.experience-logo-cell--pangea .logo-dark {
+				height: 29px;
+				max-height: 29px;
+				max-width: 110px;
+			}
 			/* Hover halftone has no purpose on touch */
 			.experience-logo-cell::before {
 				display: none;
@@ -1027,6 +1042,11 @@ function getStrokeDashoffset(score: number): number {
 			.experience-logo-cell--pangea .logo-light {
 				max-height: 13px;
 				max-width: 64px;
+			}
+			.experience-logo-cell--pangea .logo-dark {
+				height: 19px;
+				max-height: 19px;
+				max-width: 72px;
 			}
 		}
 
