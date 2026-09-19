@@ -19,12 +19,14 @@ const quickReference = [
 	{ model: "Gemma 4", company: "Google", bestFor: "On-device open-weight", differentiator: "31B ranks #3 on Arena AI; E2B/E4B optimized for on-device Android", color: "#34d399" },
 	{ model: "Kimi K3", company: "Moonshot AI", bestFor: "Agentic open-source", differentiator: "2.8T MoE, open-weight — second only to Fable 5 and GPT-5.6 on most benchmarks", color: "#ff6b6b" },
 	{ model: "GLM-5.3", company: "Zhipu AI", bestFor: "Open frontier", differentiator: "MIT license, 1M context; GLM-5.3-Flash (Aug 26) adds native multimodal at ~1/10th the price, trained on Huawei Ascend chips", color: "#4ecdc4" },
+	{ model: "Atria Dawn Preview", company: "Shanghai AI Lab", bestFor: "Long-horizon research agents", differentiator: "744B MoE on a GLM-5.2 base, MIT license; vendor-reported top-5-of-16 benchmark claims, not yet independently verified", color: "#e879f9" },
 	{ model: "GPT-5.5-Cyber", company: "OpenAI", bestFor: "Defensive cybersecurity", differentiator: "TAC-gated fine-tune for defensive cybersecurity — CrowdStrike, Cloudflare, Palo Alto, Cisco partners", color: "#ef4444" },
 	{ model: "Claude Mythos 5.1", company: "Anthropic", bestFor: "Security research", differentiator: "Cybersecurity research model via Project Glasswing — 150+ partner orgs, same weights as Fable 5.1", color: "#a855f7" },
 	{ model: "Gemini 3.8 Flash Cyber", company: "Google DeepMind", bestFor: "Restricted cybersecurity", differentiator: "Defensive-security variant of Gemini 3.8 Flash — gated to vetted defenders via Google's Fairwind Program, not on public price sheet", color: "#1d4ed8" },
 	{ model: "Sakana Fugu Max / Ultra v2", company: "Sakana AI", bestFor: "Orchestration / routing", differentiator: "Meta-model that dynamically routes tasks across frontier models internally; Ultra v2 hits 74.3 DeepSWE without Fable 5.1 or GPT-6-Astra in its pool", color: "#f59e0b" },
 	{ model: "Apple AFM 3", company: "Apple", bestFor: "On-device + cloud privacy", differentiator: "Five-model family spanning on-device and cloud — privacy-preserving inference for iOS/macOS", color: "#6b7280" },
 	{ model: "Sonar", company: "Perplexity", bestFor: "Search & research", differentiator: "Search-grounded, citation-first answers at 1,200 tok/s on Cerebras inference", color: "#22d3ee" },
+	{ model: "Jev", company: "TypeSafe AI", bestFor: "Structured decisions, not text", differentiator: "Not an LLM — outputs typed, schema-conformant decisions in parallel instead of generating text; 70-500ms, $0.042/M input, output free", color: "#94a3b8" },
 	{ model: "Composer 2.5", company: "Cursor", bestFor: "AI-native coding", differentiator: "Built on Kimi K2.5 with Cursor's post-training — matches Opus 4.7 at ~10× cheaper", color: "#50e3c2" },
 	{ model: "SubQ", company: "Subquadratic", bestFor: "Architecturally novel", differentiator: "First commercial subquadratic LLM — 12M token context at ~1/5th the compute cost of transformers", color: "#94a3b8" },
 ];
@@ -111,6 +113,21 @@ const frontierModels = [
 			"Matches GPT-4o on user satisfaction benchmarks"
 		],
 		bestFor: "Research with citations, competitive analysis, fact-checking"
+	},
+	{
+		name: "Jev (TypeSafe AI)",
+		company: "TypeSafe AI",
+		location: "San Francisco",
+		color: "#94a3b8",
+		tagline: "Not an LLM — a System One model that outputs typed, schema-conformant decisions instead of generated text.",
+		bullets: [
+			"Early access Sept 15, 2026 — founded by Diogo Almeida",
+			"\"Unstructured state in, typed probabilistic decisions out\" — built for classification, routing, scoring, and extraction, not chat",
+			"Outputs generated in parallel rather than token-by-token, so schema conformance is structural, not prompted — can't hallucinate or produce a type error by design",
+			"70-500ms end-to-end — 40-200× faster than a comparable frontier LLM on the same task",
+			"$0.042 per 1M input tokens, output free; trade-off is no text generation — structured decisions only"
+		],
+		bestFor: "High-volume classification, routing, and extraction where you need a typed decision, not prose"
 	},
 	{
 		name: "Composer 2.5 (Cursor)",
@@ -279,6 +296,21 @@ const openSourceModels = [
 			"Priced roughly 6x cheaper than comparable proprietary models"
 		],
 		bestFor: "Budget-conscious teams, open-source deployment, 1M-context workloads"
+	},
+	{
+		name: "Atria Dawn Preview",
+		company: "Shanghai AI Lab",
+		location: "Shanghai, China",
+		color: "#e879f9",
+		tagline: "Open-weight agentic model for long-horizon research, built on a GLM-5.2 base — appeared on Hugging Face before its own technical report.",
+		bullets: [
+			"Released Sept 11, 2026, with no announcement; the 140-author technical report followed three days later",
+			"744B-parameter MoE built on the GLM-5.2 foundation; MIT license, open weights on Hugging Face",
+			"Trained via a \"Verifiable Experience Pipeline\" — connects tool-mediated interactions to executable environments and externally verified outcomes",
+			"Vendor claims top score on 5 of 16 benchmarks, incl. 59.6% SWE-bench Pro (vs. 74.7% for Fable 5.1) — none independently verified by Artificial Analysis yet",
+			"Built for carrying scientific work from a published method to executable experiments and a reproducible report"
+		],
+		bestFor: "Open-source long-horizon research agents, self-hosted agentic workflows"
 	},
 	{
 		name: "NVIDIA Nemotron 3",
@@ -534,7 +566,7 @@ const scenarios = [
 			"url": "https://lukestahl.io/"
 		},
 		"datePublished": "2026-03-10",
-		"dateModified": "2026-09-13",
+		"dateModified": "2026-09-19",
 		"mainEntityOfPage": {
 			"@type": "WebPage",
 			"@id": "https://lukestahl.io/ai-models-guide/"
@@ -563,7 +595,7 @@ const scenarios = [
 			<section class="hero">
 				<h1 class="hero-title">AI Models<br/><span class="hero-title-accent">Guide</span></h1>
 				<p class="hero-subtitle">A quick-reference to the major AI models, who makes them, and what they do best.</p>
-				<div class="hero-badge">Updated September 13, 2026</div>
+				<div class="hero-badge">Updated September 19, 2026</div>
 			</section>
 
 			<div class="guide-layout">
