@@ -1643,6 +1643,10 @@
         font-size: 1.75rem;
     }
 
+    .about-image-container {
+        max-width: 260px;
+    }
+
     /* Career Timeline Mobile 480px */
     .career-timeline-title {
         font-size: 1.5rem;
@@ -1765,10 +1769,14 @@
     }
 
     .terminal-quote {
-        font-size: 0.65rem;
-        padding: 0.6rem 0.75rem;
+        font-size: 0.6rem;
+        padding: 0.6rem 0.65rem;
         gap: 6px;
         min-height: 2.3rem;
+    }
+
+    .terminal-text {
+        letter-spacing: 0;
     }
 
     .terminal-text {
