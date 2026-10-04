@@ -3,10 +3,10 @@ import Layout from '../layouts/Layout.astro';
 
 // Quick Reference Data
 const quickReference = [
-	{ model: "GPT-5.x / GPT-6", company: "OpenAI", bestFor: "General purpose", differentiator: "GPT-6 Astra (Sep 3) is now the flagship, first model rated Critical for cybersecurity; GPT-5.6 Sol/Terra/Luna remains available; GPT-5.5 Instant is the ChatGPT default", color: "#10b981" },
+	{ model: "GPT-5.x / GPT-6", company: "OpenAI", bestFor: "General purpose", differentiator: "GPT-6 Astra (Sep 3) is the flagship, first model rated Critical for cybersecurity; GPT-6.1 Sol (Sep 29) and GPT-6 Luna are the cheaper API tiers, replacing GPT-5.6 Sol/Luna; GPT-5.5 Instant is the ChatGPT default", color: "#10b981" },
 	{ model: "Claude 5.x Family", company: "Anthropic", bestFor: "Coding & reasoning", differentiator: "Opus 5.5 (Sep 22) supersedes Opus 5 as the recommended starting model — Fable-5.1-level performance at 40% lower typical cost; Fable 5.1 (Sep 1) remains the max-capability tier", color: "#c084fc" },
-	{ model: "Gemini 3.x", company: "Google DeepMind", bestFor: "Multimodal", differentiator: "Gemini 3.8 Flash (Sep 2) is the new default workhorse, same price as 3.7 Flash; Gemini 3.5 Pro remains delayed with no confirmed launch date", color: "#60a5fa" },
-	{ model: "Grok 4.x", company: "xAI", bestFor: "Real-time info", differentiator: "Grok 4.6 (Aug 12) is the current flagship — 1.5T MoE, $2/$6 per 1M tokens, built for long-running agentic work", color: "#f97316" },
+	{ model: "Gemini 3.x / 4", company: "Google DeepMind", bestFor: "Multimodal", differentiator: "Gemini 4 Argon (Sep 30) is the new flagship, rolling out gated: Fairwind cyber partners first; Gemini 3.8 Flash (Sep 2) stays the default workhorse; Gemini 3.5 Pro is still unreleased", color: "#60a5fa" },
+	{ model: "Grok 4.x", company: "xAI", bestFor: "Real-time info", differentiator: "Grok 4.7 (Sep 21) is the current flagship — $2/$6 per 1M tokens, with a Fast variant at 2× the speed and price", color: "#f97316" },
 	{ model: "Llama 4", company: "Meta", bestFor: "Open-source", differentiator: "10M token context, fully self-hostable; Behemoth shelved as Meta pivots to closed-weight Muse Spark", color: "#06b6d4" },
 	{ model: "Muse Spark 1.3", company: "Meta Superintelligence Labs", bestFor: "Agentic coding & reasoning", differentiator: "Meta's first closed-weight frontier model — Spark 1.3 (Sep 2) improves coding/agentic performance for longer-horizon work, #6 on Artificial Analysis Intelligence Index", color: "#7c3aed" },
 	{ model: "DeepSeek V4", company: "DeepSeek", bestFor: "Cost efficiency", differentiator: "V4.1-Flash (Sep 10) now outperforms V4-Pro and has taken over V4-Pro's API traffic at its lower rates — MIT license, 1M context, among the cheapest frontier-class models available", color: "#facc15" },
@@ -40,7 +40,7 @@ const frontierModels = [
 		color: "#10b981",
 		tagline: "The versatile all-rounder with dynamic internal routing.",
 		bullets: [
-			"GPT-5.6 Sol / Terra / Luna (July 9, 2026): current flagship API family — 1M context, internal router picks the sub-model per request. Sol (best coding): $5/$30 per 1M, Fast Mode 2.5× faster at 2× price. Terra (balanced): $2/$12 per 1M. Luna (cheap): $0.20/$1.20 per 1M.",
+			"GPT-6 Sol / Luna (Sept 22, 2026): replaced GPT-5.6 Sol and Luna (Terra was retired) — 1.05M context, 128K output. Sol: $2/$10 per 1M. Luna (cheap): $0.10/$0.50 per 1M. GPT-6.1 Sol (Sept 29) upgrades Sol at the same price, near-Astra on agentic coding and computer use",
 			"GPT-5.5 Instant (May 5, 2026): ChatGPT's default for all tiers — leaner, lower-latency variant distinct from the API flagship family",
 			"Available on Plus/Pro/Business/Enterprise via ChatGPT and Codex; native computer use and tool calling for agentic automation",
 			"GPT-Live-1 / mini (July 8, 2026): full-duplex voice models with real-time translation — now the default ChatGPT voice mode (Live-1 for Plus/Pro, mini for Free)",
@@ -57,7 +57,7 @@ const frontierModels = [
 		bullets: [
 			"Claude Opus 5.5 (Sept 22, 2026): flagship, supersedes Opus 5 — 1M context, 128K output, $4/$20 per 1M (cache reads $0.20/M, down 60%); performs at Fable-5.1 level on most work, ~40% cheaper than Opus 5 on typical workloads, 30%+ faster output; model ID: claude-opus-5-5",
 			"Fable 5.1 (Sept 1, 2026): most capable model — 1M context, 128K output, $10/$50 per 1M (cache reads now $0.25/M, down 75%); outperforms Fable 5, Opus 5, and GPT-5.6 Sol; ~25-45% cheaper than Fable 5 for typical/agentic work, 60% fewer cybersecurity false positives",
-			"Sonnet 5 (June 30, 2026): default on Free/Pro tiers — near-flagship performance, $2/$10 per 1M; model ID: claude-sonnet-5",
+			"Sonnet 5.5 (Sept 28, 2026): supersedes Sonnet 5 — same $2/$10 per 1M, 1M context, 128K output, 30%+ faster; model ID: claude-sonnet-5-5",
 			"Dynamic Workflows: run parallel subagents on independent subtasks",
 			"Fast mode across the Opus line: ~2.5× faster at ~2-3× price",
 			"Haiku 4.5: ~90% of Sonnet 5's coding performance at a fraction of the cost",
@@ -67,13 +67,14 @@ const frontierModels = [
 		bestFor: "Software development, agentic workflows, analysis, writing"
 	},
 	{
-		name: "Gemini 3.x",
+		name: "Gemini 3.x / 4",
 		company: "Google DeepMind",
 		location: "Mountain View",
 		color: "#60a5fa",
 		tagline: "Multimodal powerhouse with top benchmark breadth.",
 		bullets: [
-			"Gemini 3.5 Pro (I/O 2026): next flagship — repeatedly delayed, no confirmed launch date; 2M context, Deep Think mode",
+			"Gemini 4 Argon (Sept 30, 2026): Google's new flagship, focused on coding, agentic work, research, and cybersecurity — 1M-token output (up from 64K), $2/$10 per 1M. Access is gated: cyber partners via the Fairwind Program first, then paying API customers and Google AI Ultra subscribers",
+			"Gemini 3.5 Pro (I/O 2026): still unreleased and in partner testing, now overshadowed by Argon; 2M context, Deep Think mode",
 			"Gemini 3.8 Flash (Sept 2, 2026): new default workhorse, built on 3.7 Flash — beats 3.7 on every benchmark Google published, 1M context, 64K output, same $0.75/$3.75 per 1M pricing through Dec 31, 2026",
 			"Gemini 3.5 Flash-Lite and Flash Cyber (July 21, 2026): cost-efficient high-volume and defensive-security variants",
 			"Gemini 3.1 Ultra (May 2026): top reasoning tier — 2M context, natively multimodal",
@@ -94,9 +95,9 @@ const frontierModels = [
 			"Grok 4 Heavy: premium multi-agent variant — 256K context, first model to score 50.7% on Humanity's Last Exam; gated behind the $300/month SuperGrok Heavy tier",
 			"Grok 4 Heavy also scored 100% on AIME 2025 — often mistakenly attributed to the base Grok 4.x model",
 			"Real-time integration with X (Twitter) for current events",
-			"Grok 4.6 (Aug 12, 2026): supersedes Grok 4.5 — same 1.5T-param MoE, $2/$6 per 1M, 500K context; scores 61 on the Artificial Analysis Intelligence Index (near GPT-5.6 Sol); focus on long-running agentic work",
+			"Grok 4.7 (Sept 21, 2026): supersedes Grok 4.6 — $2/$6 per 1M; Fast variant runs 2× faster at 2× the price",
 			"Grok Voice: voice interface model released June 4, 2026",
-			"Grok 4.7 (2.1T params) expected within weeks of 4.6; Grok 5 (~6T MoE) now targeted before end of 2026"
+			"Grok 5 (~6T MoE) now targeted before end of 2026"
 		],
 		bestFor: "Real-time info, math/science, users who want less guardrails"
 	},
@@ -529,7 +530,7 @@ const scenarios = [
 		title: "Writing & Communication",
 		color: "#10b981",
 		tasks: [
-			{ task: "Write long-form technical content", model: "Claude Sonnet 5", color: "#c084fc" },
+			{ task: "Write long-form technical content", model: "Claude Sonnet 5.5", color: "#c084fc" },
 			{ task: "Draft emails and business writing", model: "GPT-5.x", color: "#10b981" },
 			{ task: "Translate content across 100+ languages", model: "Qwen 3.8", color: "#f472b6" },
 			{ task: "Summarize meeting transcripts", model: "Gemini 3.x", color: "#60a5fa" },
@@ -540,9 +541,9 @@ const scenarios = [
 
 <Layout
 	title="AI Models Guide 2026"
-	description="Quick reference to major AI models of 2026: Claude Fable 5.1, Opus 5.5, GPT-6 Astra, Gemini 3.8 Flash, Grok 4.6, and more. Costs and use cases compared."
+	description="Quick reference to major AI models of 2026: Claude Fable 5.1, Opus 5.5, GPT-6 Astra, Gemini 4 Argon, Grok 4.7, and more. Costs and use cases compared."
 	ogTitle="AI Models Guide 2026 — Every Major Model Compared"
-	ogDescription="A quick-reference to the major AI models in 2026. Claude Opus 5.5 (Sep 22), Claude Sonnet 5 (Jun 30), Claude Fable 5.1 (Sep 1), GPT-6 Astra, GPT-5.5 (and GPT-5.5 Instant), Gemini 3.5 Pro, Gemini 3.8 Flash, Gemini 3.1 Ultra, Gemini Omni, Grok 4.6, Grok 4 Heavy, Cursor Composer 2.5, SubQ, Llama 4, Meta Muse Spark 1.3, Amazon Nova 2, DeepSeek V4, MiniMax M3, Mistral Small 4, Mistral Medium 3.5, Kimi K3, GLM-5.3, GLM-5.3-Flash, NVIDIA Nemotron 3 Ultra 550B, Qwen 3.8, Qwen3.8-27B, Gemma 4, Microsoft MAI, Cohere Command A+, plus restricted cyber models GPT-5.5-Cyber, Claude Mythos 5.1, and Gemini 3.8 Flash Cyber."
+	ogDescription="A quick-reference to the major AI models in 2026. Claude Opus 5.5 (Sep 22), Claude Sonnet 5.5 (Sep 28), Claude Fable 5.1 (Sep 1), GPT-6 Astra, GPT-6 Sol, GPT-5.5 (and GPT-5.5 Instant), Gemini 4 Argon, Gemini 3.5 Pro, Gemini 3.8 Flash, Gemini 3.1 Ultra, Gemini Omni, Grok 4.7, Grok 4 Heavy, Cursor Composer 2.5, SubQ, Llama 4, Meta Muse Spark 1.3, Amazon Nova 2, DeepSeek V4, MiniMax M3, Mistral Small 4, Mistral Medium 3.5, Kimi K3, GLM-5.3, GLM-5.3-Flash, NVIDIA Nemotron 3 Ultra 550B, Qwen 3.8, Qwen3.8-27B, Gemma 4, Microsoft MAI, Cohere Command A+, plus restricted cyber models GPT-5.5-Cyber, Claude Mythos 5.1, and Gemini 3.8 Flash Cyber."
 	canonicalUrl="https://lukestahl.io/ai-models-guide/"
 	ogImage="https://lukestahl.io/assets/images/ai-model-guide.png"
 	hideHandbookButton={true}
@@ -555,7 +556,7 @@ const scenarios = [
 		"@context": "https://schema.org",
 		"@type": "Article",
 		"headline": "AI Models Guide 2026 — Every Major Model Compared",
-		"description": "A quick-reference to the major AI models in 2026. Claude Opus 5.5, Claude Fable 5.1, GPT-6 Astra, GPT-5.5 and GPT-5.5 Instant, Gemini 3.5 Pro, Gemini 3.8 Flash, Gemini 3.1 Ultra, Gemini Omni, Grok 4.6, Grok 4 Heavy, Cursor Composer 2.5, SubQ, Llama 4, Amazon Nova 2, DeepSeek V4, MiniMax M3, Kimi K3, GLM-5.3, Mistral, Qwen 3.8, Gemma 4, Microsoft MAI, plus restricted cyber models GPT-5.5-Cyber, Claude Mythos 5.1, and Gemini 3.8 Flash Cyber.",
+		"description": "A quick-reference to the major AI models in 2026. Claude Opus 5.5, Claude Fable 5.1, GPT-6 Astra, GPT-6 Sol, GPT-5.5 and GPT-5.5 Instant, Gemini 4 Argon, Gemini 3.5 Pro, Gemini 3.8 Flash, Gemini 3.1 Ultra, Gemini Omni, Grok 4.7, Grok 4 Heavy, Cursor Composer 2.5, SubQ, Llama 4, Amazon Nova 2, DeepSeek V4, MiniMax M3, Kimi K3, GLM-5.3, Mistral, Qwen 3.8, Gemma 4, Microsoft MAI, plus restricted cyber models GPT-5.5-Cyber, Claude Mythos 5.1, and Gemini 3.8 Flash Cyber.",
 		"author": {
 			"@type": "Person",
 			"name": "Luke Stahl",
@@ -572,7 +573,7 @@ const scenarios = [
 			"@type": "WebPage",
 			"@id": "https://lukestahl.io/ai-models-guide/"
 		},
-		"keywords": "AI models, Claude Opus 5.5, Claude Opus 5, Claude Sonnet 5, Claude Fable 5.1, Claude Mythos 5.1, GPT-6 Astra, GPT-5.5, GPT-5.5 Instant, Gemini 3.5 Pro, Gemini 3.8 Flash, Gemini 3.8 Flash Cyber, Gemini 3.5 Flash-Lite, Gemini 3.5 Flash Cyber, Gemini 3.1 Ultra, Gemini 3.1 Pro, Gemini Omni, Grok 4.6, Grok 4 Heavy, Grok 4.7, Cursor Composer 2.5, SubQ, Llama 4, Meta Muse Spark 1.3, Muse Code, Amazon Nova 2, DeepSeek V4, MiniMax M3, Mistral Small 4, Mistral Medium 3.5, Qwen 3.8, Qwen3.8-Max, Qwen3.8-27B, Qwen 3.7 Max, Qwen3 Coder Next, Gemma 4, Microsoft MAI, Phi-4-reasoning, Cohere Command A+, Kimi K3, GLM-5.3, GLM-5.3-Flash, NVIDIA Nemotron 3 Ultra 550B, GPT-5.5-Cyber, Apple AFM 3, AI comparison, LLM guide 2026"
+		"keywords": "AI models, Claude Opus 5.5, Claude Opus 5, Claude Sonnet 5.5, Claude Fable 5.1, Claude Mythos 5.1, GPT-6 Astra, GPT-6 Sol, GPT-5.5, GPT-5.5 Instant, Gemini 4 Argon, Gemini 3.5 Pro, Gemini 3.8 Flash, Gemini 3.8 Flash Cyber, Gemini 3.5 Flash-Lite, Gemini 3.5 Flash Cyber, Gemini 3.1 Ultra, Gemini 3.1 Pro, Gemini Omni, Grok 4.7, Grok 4 Heavy, Cursor Composer 2.5, SubQ, Llama 4, Meta Muse Spark 1.3, Muse Code, Amazon Nova 2, DeepSeek V4, MiniMax M3, Mistral Small 4, Mistral Medium 3.5, Qwen 3.8, Qwen3.8-Max, Qwen3.8-27B, Qwen 3.7 Max, Qwen3 Coder Next, Gemma 4, Microsoft MAI, Phi-4-reasoning, Cohere Command A+, Kimi K3, GLM-5.3, GLM-5.3-Flash, NVIDIA Nemotron 3 Ultra 550B, GPT-5.5-Cyber, Apple AFM 3, AI comparison, LLM guide 2026"
 	})} />
 
 	<!-- JSON-LD: BreadcrumbList -->
@@ -596,7 +597,7 @@ const scenarios = [
 			<section class="hero">
 				<h1 class="hero-title">AI Models<br/><span class="hero-title-accent">Guide</span></h1>
 				<p class="hero-subtitle">A quick-reference to the major AI models, who makes them, and what they do best.</p>
-				<div class="hero-badge">Updated September 27, 2026</div>
+				<div class="hero-badge">Updated October 4, 2026</div>
 			</section>
 
 			<div class="guide-layout">
