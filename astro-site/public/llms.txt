@@ -21,6 +21,9 @@
 - [Newsletter - May 2026 Edition](https://lukestahl.io/newsletter/editions/may-2026/)
 - [Newsletter - June 2026 Edition](https://lukestahl.io/newsletter/editions/jun-2026/)
 - [Newsletter - July 2026 Edition](https://lukestahl.io/newsletter/editions/jul-2026/)
+- [Newsletter - August 2026 Edition](https://lukestahl.io/newsletter/editions/aug-2026/)
+- [Newsletter - September 2026 Edition](https://lukestahl.io/newsletter/editions/sep-2026/)
+- [Newsletter - October 2026 Edition](https://lukestahl.io/newsletter/editions/oct-2026/)
 - [Developer Marketing Cheat Sheet](https://lukestahl.io/dev-marketing-cheat-sheet/)
 - [AI Models Guide 2026](https://lukestahl.io/ai-models-guide/)
 - [Design System](https://lukestahl.io/design-system/)
@@ -40,6 +43,7 @@ All blog posts, newsletter editions, and the handbook are available as raw markd
 ## Blog Posts
 
 - [AI lingo, checked against the noise](https://lukestahl.io/blog/ai-lingo/)
+- [MCP just leveled up. Animate, deploy, and get more out of your CMS.](https://webflow.com/blog/mcp-interactions)
 - [Solar turns a bad prop into a fix an agent can act on](https://lukestahl.io/blog/solar-ui-framework-for-agents/)
 - [Prompt then ship a website](https://lukestahl.io/blog/shipping-a-website/)
 - [PLG for developer companies](https://lukestahl.io/blog/plg-for-developer-companies/)

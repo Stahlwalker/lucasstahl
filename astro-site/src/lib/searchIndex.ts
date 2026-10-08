@@ -1,4 +1,5 @@
 // Search index builder for Fuse.js
+import { getCollection } from 'astro:content';
 import { getBlogPosts } from './notion';
 import { builds, tinyApps, externalBlogPosts, gems } from '../data/content';
 
@@ -24,6 +25,20 @@ export async function buildSearchIndex(): Promise<SearchItem[]> {
       url: `/blog/${post.slug}/`,
       tags: post.tags,
       date: post.publishedDate
+    });
+  });
+
+  // Newsletter editions (dynamic, from the content collection)
+  const editions = await getCollection('newsletter-editions');
+  editions.forEach(({ id, data }) => {
+    const month = new Date(`${data.publishedDate}T12:00:00`).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+    searchIndex.push({
+      type: 'website',
+      title: `The Builder Newsletter - ${month} (#${data.edition})`,
+      description: data.description,
+      url: `/newsletter/editions/${id}/`,
+      tags: ['newsletter', 'the builder', 'edition', month.toLowerCase()],
+      date: data.publishedDate
     });
   });
 
