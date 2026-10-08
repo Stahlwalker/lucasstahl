@@ -627,6 +627,13 @@ const sortedEditions = editions.sort((a, b) =>
 		.edition-card {
 			padding: 0.75rem 1rem;
 		}
+
+		/* Touch browsers hide overlay scrollbars, so a capped list looks like a cut-off page */
+		.editions-list {
+			max-height: none;
+			overflow-y: visible;
+			padding-right: 0;
+		}
 	}
 
 	@media (max-width: 480px) {
