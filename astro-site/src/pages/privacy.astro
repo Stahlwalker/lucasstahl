@@ -1,0 +1,141 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+	title="Privacy Policy - Luke Stahl"
+	description="What lukestahl.io collects, which services see it, and how to unsubscribe or ask me to delete your data."
+	canonicalUrl="https://lukestahl.io/privacy/"
+	showAnnouncement={false}
+	loadFontAwesome={false}
+	inlineCriticalCSS={true}
+>
+	<main class="privacy-page">
+		<article class="privacy-content">
+			<p class="privacy-label">PRIVACY</p>
+			<h1>Privacy policy</h1>
+			<p class="privacy-updated">Last updated October 9, 2026</p>
+
+			<p>
+				lukestahl.io is a personal site. I run it, I write it, and I keep data collection small.
+				This page lists what the site collects, which services handle it, and how to get in touch if you want something removed.
+			</p>
+
+			<h2>What I collect</h2>
+			<ul>
+				<li>
+					<strong>Analytics.</strong> PostHog records page views, page leaves, performance timings, and clicks.
+					Visitors who haven't identified themselves don't get a person profile. Session recordings are turned off.
+				</li>
+				<li>
+					<strong>Error reports.</strong> Sentry receives JavaScript errors and the page they happened on, so I can fix them. A sample of page loads is also sent for performance monitoring.
+				</li>
+				<li>
+					<strong>Newsletter signups.</strong> If you subscribe to The Builder, I store your email address. Nothing else is required.
+				</li>
+				<li>
+					<strong>Comments.</strong> Blog comments run on Giscus, which uses GitHub Discussions. If you comment, GitHub handles your sign-in and your comment is public.
+				</li>
+			</ul>
+
+			<h2>Who sees it</h2>
+			<ul>
+				<li><strong>PostHog</strong> receives analytics events through a proxy on <code>t.lukestahl.io</code>.</li>
+				<li><strong>Sentry</strong> receives error and performance data.</li>
+				<li><strong>Cloudflare</strong> handles DNS for the domain.</li>
+				<li><strong>GitHub</strong> hosts the site on GitHub Pages and sees standard request data such as IP address and browser.</li>
+				<li><strong>Render</strong> hosts the API that stores newsletter signups.</li>
+				<li><strong>Resend</strong> sends the newsletter.</li>
+				<li><strong>cdnjs (Cloudflare)</strong> serves a few third-party assets, such as icon fonts, on some pages.</li>
+			</ul>
+			<p>I don't sell your data and I don't run ads.</p>
+
+			<h2>Cookies and local storage</h2>
+			<p>
+				PostHog stores an anonymous ID in your browser so it can tell repeat visits apart. The site also remembers your light or dark mode choice in local storage.
+				If you'd rather not be tracked, a browser tracking blocker will stop PostHog and Sentry. The site works without them.
+			</p>
+
+			<h2>Newsletter</h2>
+			<p>
+				Every issue has an unsubscribe link in the footer. Use it and you're off the list. Or email me and I'll remove you by hand.
+			</p>
+
+			<h2>Your data</h2>
+			<p>
+				You can ask what I have on you, ask me to delete it, or ask me to correct it. Email <a href="mailto:luke@lukestahl.io">luke@lukestahl.io</a> and I'll respond. If you're in the EU, UK, or California, you also have legal rights over your data, and the same address is how to use them.
+			</p>
+
+			<h2>Kids</h2>
+			<p>This site is written for working developers and marketers. It isn't aimed at children under 13, and I don't knowingly collect their data.</p>
+
+			<h2>Changes</h2>
+			<p>If this page changes in a way that matters, I'll update the date at the top.</p>
+		</article>
+	</main>
+</Layout>
+
+<style>
+	.privacy-page {
+		max-width: 720px;
+		margin: 0 auto;
+		padding: 6rem 1.25rem 4rem;
+		color: var(--text-primary);
+	}
+
+	.privacy-content {
+		background: var(--bg-secondary);
+		border: 1px solid rgba(96, 165, 250, 0.15);
+		border-radius: 16px;
+		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+		padding: 3rem;
+	}
+
+	@media (max-width: 768px) {
+		.privacy-content {
+			padding: 1.75rem 1.25rem;
+		}
+	}
+
+	.privacy-label {
+		font-family: 'Fira Code', monospace;
+		font-size: 0.75rem;
+		letter-spacing: 0.15em;
+		color: var(--text-secondary);
+		margin: 0 0 0.5rem;
+	}
+
+	h1 {
+		font-family: 'Fira Code', monospace;
+		font-size: 2rem;
+		margin: 0 0 0.5rem;
+	}
+
+	h2 {
+		font-family: 'Fira Code', monospace;
+		font-size: 1.25rem;
+		margin: 2.5rem 0 0.75rem;
+	}
+
+	.privacy-updated {
+		color: var(--text-secondary);
+		margin: 0 0 2rem;
+	}
+
+	p,
+	li {
+		line-height: 1.7;
+	}
+
+	ul {
+		padding-left: 1.25rem;
+	}
+
+	li {
+		margin-bottom: 0.75rem;
+	}
+
+	a {
+		color: var(--accent-primary);
+	}
+</style>
