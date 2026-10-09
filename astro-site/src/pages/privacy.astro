@@ -31,7 +31,7 @@ import Layout from '../layouts/Layout.astro';
 					<strong>Error reports.</strong> Sentry receives JavaScript errors and the page they happened on, so I can fix them. A sample of page loads is also sent for performance monitoring.
 				</li>
 				<li>
-					<strong>Newsletter signups.</strong> If you subscribe to The Builder, I store your email address. Nothing else is required.
+					<strong>Newsletter signups.</strong> If you subscribe to The Builder, I store your first name, last name, and email address.
 				</li>
 				<li>
 					<strong>Comments.</strong> Blog comments run on Giscus, which uses GitHub Discussions. If you comment, GitHub handles your sign-in and your comment is public.
@@ -42,11 +42,11 @@ import Layout from '../layouts/Layout.astro';
 			<ul>
 				<li><strong>PostHog</strong> receives analytics events through a proxy on <code>t.lukestahl.io</code>.</li>
 				<li><strong>Sentry</strong> receives error and performance data.</li>
-				<li><strong>Cloudflare</strong> handles DNS for the domain.</li>
+				<li><strong>Cloudflare</strong> handles DNS and proxies traffic to the site, so it sees standard request data such as IP address and browser.</li>
 				<li><strong>GitHub</strong> hosts the site on GitHub Pages and sees standard request data such as IP address and browser.</li>
-				<li><strong>Render</strong> hosts the API that stores newsletter signups.</li>
+				<li><strong>Render</strong> hosts the API that handles newsletter signups.</li>
+				<li><strong>Neon</strong> stores the subscriber list in a database.</li>
 				<li><strong>Resend</strong> sends the newsletter.</li>
-				<li><strong>cdnjs (Cloudflare)</strong> serves a few third-party assets, such as icon fonts, on some pages.</li>
 			</ul>
 			<p>I don't sell your data and I don't run ads.</p>
 
@@ -58,7 +58,7 @@ import Layout from '../layouts/Layout.astro';
 
 			<h2>Newsletter</h2>
 			<p>
-				Every issue has an unsubscribe link in the footer. Use it and you're off the list. Or email me and I'll remove you by hand.
+				Resend sends each issue and records whether it was opened and which links were clicked. Every issue has an unsubscribe link in the footer. Use it and you're off the list. Or email me and I'll remove you by hand.
 			</p>
 
 			<h2>Your data</h2>

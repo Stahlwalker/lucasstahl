@@ -98,6 +98,9 @@ const sortedEditions = editions.sort((a, b) =>
 						<Icon name="spinner" class="icon-spin" /> Subscribing...
 					</span>
 				</div>
+				<p class="form-privacy-note">
+					I store your name and email to send The Builder. Unsubscribe anytime. Details in the <a href="/privacy/">privacy policy</a>.
+				</p>
 			</form>
 
 			{sortedEditions.length > 0 && (
@@ -506,6 +509,20 @@ const sortedEditions = editions.sort((a, b) =>
 		letter-spacing: 2px;
 		text-transform: uppercase;
 		margin: 0 0 0.75rem 0;
+	}
+
+	.form-privacy-note {
+		margin: 1rem 0 0;
+		text-align: center;
+		font-size: 0.875rem;
+		line-height: 1.5;
+		color: var(--text-secondary);
+	}
+
+	.form-privacy-note a {
+		color: var(--accent-primary);
+		text-decoration: underline;
+		text-underline-offset: 2px;
 	}
 
 	.editions-title {
