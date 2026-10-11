@@ -9,10 +9,10 @@ const quickReference = [
 	{ model: "Grok 4.x", company: "xAI", bestFor: "Real-time info", differentiator: "Grok 4.7 (Sep 21) is the current flagship — $2/$6 per 1M tokens, with a Fast variant at 2× the speed and price", color: "#f97316" },
 	{ model: "Llama 4", company: "Meta", bestFor: "Open-source", differentiator: "10M token context, fully self-hostable; Behemoth shelved as Meta pivots to closed-weight Muse Spark", color: "#06b6d4" },
 	{ model: "Muse Spark 1.3", company: "Meta Superintelligence Labs", bestFor: "Agentic coding & reasoning", differentiator: "Meta's first closed-weight frontier model — Spark 1.3 (Sep 2) improves coding/agentic performance for longer-horizon work, #6 on Artificial Analysis Intelligence Index", color: "#7c3aed" },
-	{ model: "DeepSeek V4", company: "DeepSeek", bestFor: "Cost efficiency", differentiator: "V4.1-Flash (Sep 10) now outperforms V4-Pro and has taken over V4-Pro's API traffic at its lower rates — MIT license, 1M context, among the cheapest frontier-class models available", color: "#facc15" },
-	{ model: "Mistral 3 Family", company: "Mistral", bestFor: "EU compliance", differentiator: "Large 3, Medium 3.5, Small 4, Voxtral — enterprise-safe with EU data sovereignty", color: "#818cf8" },
+	{ model: "DeepSeek V4", company: "DeepSeek", bestFor: "Cost efficiency", differentiator: "V4.1-Flash (Sep 10) outperforms V4-Pro at lower rates, and V4-Pro stays available at unchanged billing — MIT license, 1M context, among the cheapest frontier-class models available", color: "#facc15" },
+	{ model: "Mistral Family", company: "Mistral", bestFor: "EU compliance", differentiator: "Large 4 (Oct 6, preview), Medium 3.5, Small 4, Voxtral — enterprise-safe with EU data sovereignty", color: "#818cf8" },
 	{ model: "Qwen 3.8", company: "Alibaba", bestFor: "Multilingual", differentiator: "Qwen3.8-Max (Aug 2) is the new flagship; Qwen3.8-27B (Aug 13) is a separate, genuinely self-hostable Apache 2.0 companion", color: "#f472b6" },
-	{ model: "Microsoft MAI", company: "Microsoft", bestFor: "Speech & media AI", differentiator: "MAI-Transcribe-1, MAI-Voice-1, MAI-Image-2, Phi-4-reasoning — Microsoft's own foundation stack on Foundry", color: "#0ea5e9" },
+	{ model: "Microsoft MAI", company: "Microsoft", bestFor: "Speech & media AI", differentiator: "MAI-Transcribe-2-Streaming, MAI-Voice-2.1, MAI-Image-2, Phi-4-reasoning — Microsoft's own foundation stack on Foundry", color: "#0ea5e9" },
 	{ model: "Amazon Nova 2", company: "Amazon / AWS", bestFor: "AWS-native enterprise", differentiator: "Lite, Pro, Sonic, Omni — AWS-native family powering the Nova Act agent", color: "#ff9900" },
 	{ model: "MiniMax M3", company: "MiniMax", bestFor: "Cost-efficient coding", differentiator: "1M context, 59.0% SWE-bench Pro at $0.15/$1.15 per 1M tokens", color: "#a78bfa" },
 	{ model: "Command A+", company: "Cohere", bestFor: "Enterprise RAG", differentiator: "218B MoE, Cohere's first fully Apache 2.0 frontier model, tuned for RAG", color: "#fb923c" },
@@ -44,7 +44,7 @@ const frontierModels = [
 			"GPT-5.5 Instant (May 5, 2026): ChatGPT's default for all tiers — leaner, lower-latency variant distinct from the API flagship family",
 			"Available on Plus/Pro/Business/Enterprise via ChatGPT and Codex; native computer use and tool calling for agentic automation",
 			"GPT-Live-1 / mini (July 8, 2026): full-duplex voice models with real-time translation — now the default ChatGPT voice mode (Live-1 for Plus/Pro, mini for Free)",
-			"GPT-6 Astra (Sept 3, 2026): new flagship, supersedes GPT-5.6 Sol — $10/$50 per 1M, 72.6% OSWorld 2.0 (vs 65.7% for Sol); first model rated Critical for cybersecurity under OpenAI's Preparedness Framework — rollout started with enterprise Daybreak-program partners before reaching ChatGPT/API"
+			"GPT-6 Astra (Sept 3, 2026): new flagship, supersedes GPT-5.6 Sol — $10/$50 per 1M, 72.6% OSWorld 2.0 (vs 65.7% for Sol); first model rated Critical for cybersecurity under OpenAI's Preparedness Framework — rollout started with enterprise Daybreak-program partners before reaching ChatGPT/API. A follow-up GPT-6.1 Astra was shelved on Sept 28 over safety concerns"
 		],
 		bestFor: "Rapid prototyping, general-purpose tasks, API automation"
 	},
@@ -60,7 +60,7 @@ const frontierModels = [
 			"Sonnet 5.5 (Sept 28, 2026): supersedes Sonnet 5 — same $2/$10 per 1M, 1M context, 128K output, 30%+ faster; model ID: claude-sonnet-5-5",
 			"Dynamic Workflows: run parallel subagents on independent subtasks",
 			"Fast mode across the Opus line: ~2.5× faster at ~2-3× price",
-			"Haiku 4.5: ~90% of Sonnet 5's coding performance at a fraction of the cost",
+			"Haiku 5.5 (Oct 7, 2026): cheapest Claude tier — $0.10/$0.50 per 1M for prompts up to 100K ($0.50/$2.50 above), 1M context, 128K output",
 			"Leads human-preference leaderboards, strong ARC-AGI-2 scores",
 			"Claude Mythos 5.1 (Sept 1, 2026): cybersecurity research model via Project Glasswing — same weights as Fable 5.1"
 		],
@@ -152,8 +152,8 @@ const frontierModels = [
 		color: "#0ea5e9",
 		tagline: "Microsoft's own foundation model stack — independent of OpenAI, built for speech, voice, vision, and reasoning.",
 		bullets: [
-			"MAI-Transcribe-1: speech-to-text across 25 languages, outperforms Whisper-large-v3",
-			"MAI-Voice-1: generates 60s of audio in 1s, supports voice cloning",
+			"MAI-Transcribe-2-Streaming (Oct 1, 2026): real-time speech-to-text in 60 languages with automatic language detection, $0.54 per audio hour (public preview)",
+			"MAI-Voice-2.1 and Flash (Oct 1, 2026): text-to-speech in 23 languages with one voice carried across languages; Flash targets low-latency, high-volume use",
 			"MAI-Image-2: high-quality image generation",
 			"Phi-4-reasoning (Apr 10, 2026): compact reasoning model, strong math/logic at small-model cost",
 			"MAI-Thinking-1 (Jun 2026): 1T/35B active MoE reasoning model — flagship of a seven-model MAI launch",
@@ -232,24 +232,24 @@ const openSourceModels = [
 		company: "DeepSeek",
 		location: "Hangzhou, China",
 		color: "#facc15",
-		tagline: "Cost-redefining open-source frontier — V4.1-Flash (Sept 10, 2026) now outperforms the flagship V4-Pro.",
+		tagline: "Cost-redefining open-source frontier — V4.1-Flash (Sept 10, 2026) outperforms the flagship V4-Pro.",
 		bullets: [
 			"V4.1-Flash (Sept 10, 2026): 552B MoE, 8B active on input / 16B active on output — new Causal Encoder-Decoder architecture, native multimodal image understanding, MIT license; beats the larger V4-Pro on cost, speed, and total runtime",
 			"$0.15/$0.60 per 1M off-peak, doubling to $0.30/$1.20 at peak hours — among the cheapest frontier-class models available",
-			"Starting Sept 14, 2026: all V4-Pro API requests are answered by V4.1-Flash and billed at its lower rate, until a V4.1-Pro ships; V4-Flash and the August vision-preview model are retired",
+			"V4-Pro stays available: DeepSeek said it will keep serving V4-Pro after Sept 14 at unchanged billing, after first planning to reroute it; the old V4-Flash and vision-preview model names now route to V4.1-Flash. No V4.1-Pro announced",
 			"MIT license; native 1M context window; built-in agentic long-context and tool-use",
 			"Entire V3/V4 lineage trained for under $6M — redefining AI cost efficiency"
 		],
 		bestFor: "Budget-conscious teams, math/reasoning, open-source self-hosting"
 	},
 	{
-		name: "Mistral 3 Family",
+		name: "Mistral Family",
 		company: "Mistral AI",
 		location: "Paris, France",
 		color: "#818cf8",
 		tagline: "The enterprise-safe European model family, now spanning text, reasoning, code, and speech.",
 		bullets: [
-			"Mistral Large 3: EU AI Act-compliant flagship for regulated industries; 675B total MoE",
+			"Mistral Large 4 (Oct 6, 2026, public preview): EU AI Act-compliant flagship — 1.05T MoE, 49B active, 1M context, $1.36/$4.18 per 1M; open weights expected by end of October",
 			"Mistral Medium 3.5 (Apr 29, 2026): 128B dense, 256K context — retired Magistral (reasoning), Devstral 2 (coding), and Medium 3.1 (chat) into one unified model with configurable reasoning effort; 77.6% SWE-bench Verified, $1.50/$7.50 per 1M",
 			"Mistral Small 4 (March 16): 119B/6.5B-active MoE unifying reasoning, vision (Pixtral), and coding in one endpoint",
 			"Voxtral (March 26): open-source 4B text-to-speech, 9 languages, runs on consumer hardware",
@@ -543,7 +543,7 @@ const scenarios = [
 	title="AI Models Guide 2026"
 	description="Quick reference to major AI models of 2026: Claude Fable 5.1, Opus 5.5, GPT-6 Astra, Gemini 4 Argon, Grok 4.7, and more. Costs and use cases compared."
 	ogTitle="AI Models Guide 2026 — Every Major Model Compared"
-	ogDescription="A quick-reference to the major AI models in 2026. Claude Opus 5.5 (Sep 22), Claude Sonnet 5.5 (Sep 28), Claude Fable 5.1 (Sep 1), GPT-6 Astra, GPT-6 Sol, GPT-5.5 (and GPT-5.5 Instant), Gemini 4 Argon, Gemini 3.5 Pro, Gemini 3.8 Flash, Gemini 3.1 Ultra, Gemini Omni, Grok 4.7, Grok 4 Heavy, Cursor Composer 2.5, SubQ, Llama 4, Meta Muse Spark 1.3, Amazon Nova 2, DeepSeek V4, MiniMax M3, Mistral Small 4, Mistral Medium 3.5, Kimi K3, GLM-5.3, GLM-5.3-Flash, NVIDIA Nemotron 3 Ultra 550B, Qwen 3.8, Qwen3.8-27B, Gemma 4, Microsoft MAI, Cohere Command A+, plus restricted cyber models GPT-5.5-Cyber, Claude Mythos 5.1, and Gemini 3.8 Flash Cyber."
+	ogDescription="A quick-reference to the major AI models in 2026. Claude Opus 5.5 (Sep 22), Claude Sonnet 5.5 (Sep 28), Claude Haiku 5.5 (Oct 7), Claude Fable 5.1 (Sep 1), GPT-6 Astra, GPT-6 Sol, GPT-5.5 (and GPT-5.5 Instant), Gemini 4 Argon, Gemini 3.5 Pro, Gemini 3.8 Flash, Gemini 3.1 Ultra, Gemini Omni, Grok 4.7, Grok 4 Heavy, Cursor Composer 2.5, SubQ, Llama 4, Meta Muse Spark 1.3, Amazon Nova 2, DeepSeek V4, MiniMax M3, Mistral Large 4, Mistral Small 4, Mistral Medium 3.5, Kimi K3, GLM-5.3, GLM-5.3-Flash, NVIDIA Nemotron 3 Ultra 550B, Qwen 3.8, Qwen3.8-27B, Gemma 4, Microsoft MAI, Cohere Command A+, plus restricted cyber models GPT-5.5-Cyber, Claude Mythos 5.1, and Gemini 3.8 Flash Cyber."
 	canonicalUrl="https://lukestahl.io/ai-models-guide/"
 	ogImage="https://lukestahl.io/assets/images/ai-model-guide.png"
 	hideHandbookButton={true}
@@ -573,7 +573,7 @@ const scenarios = [
 			"@type": "WebPage",
 			"@id": "https://lukestahl.io/ai-models-guide/"
 		},
-		"keywords": "AI models, Claude Opus 5.5, Claude Opus 5, Claude Sonnet 5.5, Claude Fable 5.1, Claude Mythos 5.1, GPT-6 Astra, GPT-6 Sol, GPT-5.5, GPT-5.5 Instant, Gemini 4 Argon, Gemini 3.5 Pro, Gemini 3.8 Flash, Gemini 3.8 Flash Cyber, Gemini 3.5 Flash-Lite, Gemini 3.5 Flash Cyber, Gemini 3.1 Ultra, Gemini 3.1 Pro, Gemini Omni, Grok 4.7, Grok 4 Heavy, Cursor Composer 2.5, SubQ, Llama 4, Meta Muse Spark 1.3, Muse Code, Amazon Nova 2, DeepSeek V4, MiniMax M3, Mistral Small 4, Mistral Medium 3.5, Qwen 3.8, Qwen3.8-Max, Qwen3.8-27B, Qwen 3.7 Max, Qwen3 Coder Next, Gemma 4, Microsoft MAI, Phi-4-reasoning, Cohere Command A+, Kimi K3, GLM-5.3, GLM-5.3-Flash, NVIDIA Nemotron 3 Ultra 550B, GPT-5.5-Cyber, Apple AFM 3, AI comparison, LLM guide 2026"
+		"keywords": "AI models, Claude Opus 5.5, Claude Opus 5, Claude Sonnet 5.5, Claude Haiku 5.5, Claude Fable 5.1, Claude Mythos 5.1, GPT-6 Astra, GPT-6 Sol, GPT-5.5, GPT-5.5 Instant, Gemini 4 Argon, Gemini 3.5 Pro, Gemini 3.8 Flash, Gemini 3.8 Flash Cyber, Gemini 3.5 Flash-Lite, Gemini 3.5 Flash Cyber, Gemini 3.1 Ultra, Gemini 3.1 Pro, Gemini Omni, Grok 4.7, Grok 4 Heavy, Cursor Composer 2.5, SubQ, Llama 4, Meta Muse Spark 1.3, Muse Code, Amazon Nova 2, DeepSeek V4, MiniMax M3, Mistral Large 4, Mistral Small 4, Mistral Medium 3.5, Qwen 3.8, Qwen3.8-Max, Qwen3.8-27B, Qwen 3.7 Max, Qwen3 Coder Next, Gemma 4, Microsoft MAI, Phi-4-reasoning, Cohere Command A+, Kimi K3, GLM-5.3, GLM-5.3-Flash, NVIDIA Nemotron 3 Ultra 550B, GPT-5.5-Cyber, Apple AFM 3, AI comparison, LLM guide 2026"
 	})} />
 
 	<!-- JSON-LD: BreadcrumbList -->
@@ -597,7 +597,7 @@ const scenarios = [
 			<section class="hero">
 				<h1 class="hero-title">AI Models<br/><span class="hero-title-accent">Guide</span></h1>
 				<p class="hero-subtitle">A quick-reference to the major AI models, who makes them, and what they do best.</p>
-				<div class="hero-badge">Updated October 4, 2026</div>
+				<div class="hero-badge">Updated October 11, 2026</div>
 			</section>
 
 			<div class="guide-layout">
