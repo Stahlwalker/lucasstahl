@@ -134,6 +134,13 @@ export const tinyApps = [
 
 export const externalBlogPosts = [
   {
+    title: "From building to measuring, Webflow's MCP server now reads how your site performs.",
+    description: "Ask your agent about traffic, experiments, and AI visibility, and Webflow's MCP server reads the data it needs to answer.",
+    url: "https://webflow.com/blog/mcp-analyze-optimize-aeo",
+    tags: ["MCP", "Analyze", "Optimize", "AEO"],
+    date: "Oct 15, 2026"
+  },
+  {
     title: "Introducing Enterprise Granular Access Control",
     description: "Adding contributors to a website should make teams faster. Without scoped permissions, it just makes things riskier.",
     url: "https://webflow.com/blog/enterprise-granular-access-control",
