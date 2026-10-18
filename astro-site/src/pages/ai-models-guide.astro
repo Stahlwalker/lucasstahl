@@ -3,13 +3,13 @@ import Layout from '../layouts/Layout.astro';
 
 // Quick Reference Data
 const quickReference = [
-	{ model: "GPT-5.x / GPT-6", company: "OpenAI", bestFor: "General purpose", differentiator: "GPT-6 Astra (Sep 3) is the flagship, first model rated Critical for cybersecurity; GPT-6.1 Sol (Sep 29) and GPT-6 Luna are the cheaper API tiers, replacing GPT-5.6 Sol/Luna; GPT-5.5 Instant is the ChatGPT default", color: "#10b981" },
+	{ model: "GPT-5.x / GPT-6", company: "OpenAI", bestFor: "General purpose", differentiator: "GPT-6 Astra (Sep 3) is the flagship, first model rated Critical for cybersecurity; GPT-6.1 Sol (Sep 29) and GPT-6 Luna are the cheaper API tiers, replacing GPT-5.6 Sol/Luna; GPT-6 is now the ChatGPT default", color: "#10b981" },
 	{ model: "Claude 5.x Family", company: "Anthropic", bestFor: "Coding & reasoning", differentiator: "Opus 5.5 (Sep 22) supersedes Opus 5 as the recommended starting model — Fable-5.1-level performance at 40% lower typical cost; Fable 5.1 (Sep 1) remains the max-capability tier", color: "#c084fc" },
-	{ model: "Gemini 3.x / 4", company: "Google DeepMind", bestFor: "Multimodal", differentiator: "Gemini 4 Argon (Sep 30) is the new flagship, rolling out gated: Fairwind cyber partners first; Gemini 3.8 Flash (Sep 2) stays the default workhorse; Gemini 3.5 Pro is still unreleased", color: "#60a5fa" },
+	{ model: "Gemini 3.x / 4", company: "Google DeepMind", bestFor: "Multimodal", differentiator: "Gemini 4 Argon (Sep 30) is the new flagship, generally available since Oct 13 at $2/$10 per 1M through Nov 30, then $4/$20; Gemini 3.8 Flash (Sep 2) stays the default workhorse", color: "#60a5fa" },
 	{ model: "Grok 4.x", company: "xAI", bestFor: "Real-time info", differentiator: "Grok 4.7 (Sep 21) is the current flagship — $2/$6 per 1M tokens, with a Fast variant at 2× the speed and price", color: "#f97316" },
-	{ model: "Llama 4", company: "Meta", bestFor: "Open-source", differentiator: "10M token context, fully self-hostable; Behemoth shelved as Meta pivots to closed-weight Muse Spark", color: "#06b6d4" },
-	{ model: "Muse Spark 1.3", company: "Meta Superintelligence Labs", bestFor: "Agentic coding & reasoning", differentiator: "Meta's first closed-weight frontier model — Spark 1.3 (Sep 2) improves coding/agentic performance for longer-horizon work, #6 on Artificial Analysis Intelligence Index", color: "#7c3aed" },
-	{ model: "DeepSeek V4", company: "DeepSeek", bestFor: "Cost efficiency", differentiator: "V4.1-Flash (Sep 10) outperforms V4-Pro at lower rates, and V4-Pro stays available at unchanged billing — MIT license, 1M context, among the cheapest frontier-class models available", color: "#facc15" },
+	{ model: "Llama 4", company: "Meta", bestFor: "Open-source", differentiator: "10M token context, fully self-hostable; Behemoth shelved; Meta's newest open-weight model is Muse Spark Open", color: "#06b6d4" },
+	{ model: "Muse Wonder / Spark", company: "Meta Superintelligence Labs", bestFor: "Agentic coding & reasoning", differentiator: "Muse Wonder (Oct 12) is Meta's new closed-weight frontier model at $4/$20 per 1M; Spark 1.3 (Sep 2) is the cheaper tier at $1.25/$4.25; open-weight Muse Spark Open followed Oct 15", color: "#7c3aed" },
+	{ model: "DeepSeek V4", company: "DeepSeek", bestFor: "Cost efficiency", differentiator: "V4.1-Flash (updated Oct 17) outperforms V4-Pro at lower rates, and V4-Pro stays available at unchanged billing — MIT license, 1M context, among the cheapest frontier-class models available", color: "#facc15" },
 	{ model: "Mistral Family", company: "Mistral", bestFor: "EU compliance", differentiator: "Large 4 (Oct 6, preview), Medium 3.5, Small 4, Voxtral — enterprise-safe with EU data sovereignty", color: "#818cf8" },
 	{ model: "Qwen 3.8", company: "Alibaba", bestFor: "Multilingual", differentiator: "Qwen3.8-Max (Aug 2) is the new flagship; Qwen3.8-27B (Aug 13) is a separate, genuinely self-hostable Apache 2.0 companion", color: "#f472b6" },
 	{ model: "Microsoft MAI", company: "Microsoft", bestFor: "Speech & media AI", differentiator: "MAI-Transcribe-2-Streaming, MAI-Voice-2.1, MAI-Image-2, Phi-4-reasoning — Microsoft's own foundation stack on Foundry", color: "#0ea5e9" },
@@ -41,7 +41,7 @@ const frontierModels = [
 		tagline: "The versatile all-rounder with dynamic internal routing.",
 		bullets: [
 			"GPT-6 Sol / Luna (Sept 22, 2026): replaced GPT-5.6 Sol and Luna (Terra was retired) — 1.05M context, 128K output. Sol: $2/$10 per 1M. Luna (cheap): $0.10/$0.50 per 1M. GPT-6.1 Sol (Sept 29) upgrades Sol at the same price, near-Astra on agentic coding and computer use",
-			"GPT-5.5 Instant (May 5, 2026): ChatGPT's default for all tiers — leaner, lower-latency variant distinct from the API flagship family",
+			"GPT-6 became ChatGPT's default on Oct 7, 2026: Sol for Plus, Pro, Business, and Enterprise, Luna for Free and Go (from Oct 8), shipped with the new Intelligent UI",
 			"Available on Plus/Pro/Business/Enterprise via ChatGPT and Codex; native computer use and tool calling for agentic automation",
 			"GPT-Live-1 / mini (July 8, 2026): full-duplex voice models with real-time translation — now the default ChatGPT voice mode (Live-1 for Plus/Pro, mini for Free)",
 			"GPT-6 Astra (Sept 3, 2026): new flagship, supersedes GPT-5.6 Sol — $10/$50 per 1M, 72.6% OSWorld 2.0 (vs 65.7% for Sol); first model rated Critical for cybersecurity under OpenAI's Preparedness Framework — rollout started with enterprise Daybreak-program partners before reaching ChatGPT/API. A follow-up GPT-6.1 Astra was shelved on Sept 28 over safety concerns"
@@ -73,8 +73,7 @@ const frontierModels = [
 		color: "#60a5fa",
 		tagline: "Multimodal powerhouse with top benchmark breadth.",
 		bullets: [
-			"Gemini 4 Argon (Sept 30, 2026): Google's new flagship, focused on coding, agentic work, research, and cybersecurity — 1M-token output (up from 64K), $2/$10 per 1M. Access is gated: cyber partners via the Fairwind Program first, then paying API customers and Google AI Ultra subscribers",
-			"Gemini 3.5 Pro (I/O 2026): still unreleased and in partner testing, now overshadowed by Argon; 2M context, Deep Think mode",
+			"Gemini 4 Argon (Sept 30, 2026): Google's new flagship, focused on coding, agentic work, research, and cybersecurity — 1M-token output (up from 64K). Generally available since Oct 13 to paid Gemini API developers, AI Pro and Ultra subscribers, and Gemini for Business. $2/$10 per 1M is introductory through Nov 30; from Dec 1 it becomes $4/$20",
 			"Gemini 3.8 Flash (Sept 2, 2026): new default workhorse, built on 3.7 Flash — beats 3.7 on every benchmark Google published, 1M context, 64K output, same $0.75/$3.75 per 1M pricing through Dec 31, 2026",
 			"Gemini 3.5 Flash-Lite and Flash Cyber (July 21, 2026): cost-efficient high-volume and defensive-security variants",
 			"Gemini 3.1 Ultra (May 2026): top reasoning tier — 2M context, natively multimodal",
@@ -96,8 +95,7 @@ const frontierModels = [
 			"Grok 4 Heavy also scored 100% on AIME 2025 — often mistakenly attributed to the base Grok 4.x model",
 			"Real-time integration with X (Twitter) for current events",
 			"Grok 4.7 (Sept 21, 2026): supersedes Grok 4.6 — $2/$6 per 1M; Fast variant runs 2× faster at 2× the price",
-			"Grok Voice: voice interface model released June 4, 2026",
-			"Grok 5 (~6T MoE) now targeted before end of 2026"
+			"Grok Voice: voice interface model released June 4, 2026"
 		],
 		bestFor: "Real-time info, math/science, users who want less guardrails"
 	},
@@ -163,7 +161,7 @@ const frontierModels = [
 		bestFor: "Speech transcription, voice synthesis, compact reasoning, enterprise media AI on Azure"
 	},
 	{
-		name: "Meta Muse Spark 1.3",
+		name: "Meta Muse Wonder / Spark",
 		company: "Meta Superintelligence Labs",
 		location: "Menlo Park",
 		color: "#7c3aed",
@@ -174,6 +172,8 @@ const frontierModels = [
 			"Scored 52 on the Artificial Analysis Intelligence Index — top 5 globally",
 			"Muse Spark 1.1 (July 9, 2026): 1M context, Meta's first paid developer API, $1.25/$4.25 per 1M",
 			"Muse Spark 1.3 (Sept 2, 2026): improved coding/agentic performance for longer-horizon work — #6 on Artificial Analysis Intelligence Index, $1.25/$4.25 per 1M",
+			"Muse Wonder (Oct 12, 2026): Meta's first frontier model — closed weights, 1M context, multimodal input, built for agents, $4/$20 per 1M via the Meta Model API and Muse Code. Muse Wonder Full, the higher tier, is only in Muse Code's $50 and $200 monthly plans",
+			"Muse Spark Open (Oct 15, 2026): open-weight sibling — 816B total / 42B active MoE, 1M context, multimodal input. Released under the Muse Model License (free use and fine-tuning, but products must show \"Built with Muse Spark Open\"), so it is not OSI open source",
 			"Muse (Sept 8, 2026): Meta's personal AI agent, powered by Muse Spark 1.3 — takes actions (email, travel booking, forms, shopping) from an isolated cloud VM with a separate approval gate before anything touches the internet; US-only, 18+, free tier plus $20/$100 monthly plans"
 		],
 		bestFor: "Frontier multimodal reasoning, agentic and terminal coding (Muse Code), personal task automation (Muse), closed-API enterprise deployments"
@@ -222,8 +222,7 @@ const openSourceModels = [
 			"Llama 4 Scout: industry-leading 10M token context window",
 			"Llama 4 Maverick: 17B active / 128 experts — outperforms GPT-4o and Gemini 2.0 Flash on key benchmarks",
 			"Fully open weights; can be self-hosted for complete data control",
-			"Llama 4 Behemoth (288B active): effectively shelved — repeated delays and MoE-routing failures at 2T scale; Meta pivoting to closed-weight Muse Spark",
-			"Llama 4.5: announced for 2026 as the next open Llama release, distinct from closed-weight Muse Spark — no release date confirmed"
+			"Llama 4 Behemoth (288B active): effectively shelved — repeated delays and MoE-routing failures at 2T scale; Meta pivoting to closed-weight Muse Spark"
 		],
 		bestFor: "Self-hosting, privacy-sensitive orgs, custom fine-tuning"
 	},
@@ -232,11 +231,12 @@ const openSourceModels = [
 		company: "DeepSeek",
 		location: "Hangzhou, China",
 		color: "#facc15",
-		tagline: "Cost-redefining open-source frontier — V4.1-Flash (Sept 10, 2026) outperforms the flagship V4-Pro.",
+		tagline: "Cost-redefining open-source frontier — V4.1-Flash outperforms the flagship V4-Pro.",
 		bullets: [
-			"V4.1-Flash (Sept 10, 2026): 552B MoE, 8B active on input / 16B active on output — new Causal Encoder-Decoder architecture, native multimodal image understanding, MIT license; beats the larger V4-Pro on cost, speed, and total runtime",
+			"V4.1-Flash (Sept 10, 2026): 552B MoE at launch, 8B active on input / 16B active on output — new Causal Encoder-Decoder architecture, native multimodal image understanding, MIT license; beats the larger V4-Pro on cost, speed, and total runtime",
+			"V4.1-Flash-1017 (Oct 17, 2026): updated checkpoint under the same deepseek-flash API name, MIT license — better benchmarks and shorter outputs than the Sept 10 release, 77.0 on DeepSWE",
 			"$0.15/$0.60 per 1M off-peak, doubling to $0.30/$1.20 at peak hours — among the cheapest frontier-class models available",
-			"V4-Pro stays available: DeepSeek said it will keep serving V4-Pro after Sept 14 at unchanged billing, after first planning to reroute it; the old V4-Flash and vision-preview model names now route to V4.1-Flash. No V4.1-Pro announced",
+			"V4-Pro stays available: DeepSeek said it will keep serving V4-Pro after Sept 14 at unchanged billing, after first planning to reroute it; the old V4-Flash and vision-preview model names now route to V4.1-Flash",
 			"MIT license; native 1M context window; built-in agentic long-context and tool-use",
 			"Entire V3/V4 lineage trained for under $6M — redefining AI cost efficiency"
 		],
@@ -249,7 +249,7 @@ const openSourceModels = [
 		color: "#818cf8",
 		tagline: "The enterprise-safe European model family, now spanning text, reasoning, code, and speech.",
 		bullets: [
-			"Mistral Large 4 (Oct 6, 2026, public preview): EU AI Act-compliant flagship — 1.05T MoE, 49B active, 1M context, $1.36/$4.18 per 1M; open weights expected by end of October",
+			"Mistral Large 4 (Oct 6, 2026, public preview): EU AI Act-compliant flagship — 1.05T MoE, 49B active, 1M context, $1.36/$4.18 per 1M",
 			"Mistral Medium 3.5 (Apr 29, 2026): 128B dense, 256K context — retired Magistral (reasoning), Devstral 2 (coding), and Medium 3.1 (chat) into one unified model with configurable reasoning effort; 77.6% SWE-bench Verified, $1.50/$7.50 per 1M",
 			"Mistral Small 4 (March 16): 119B/6.5B-active MoE unifying reasoning, vision (Pixtral), and coding in one endpoint",
 			"Voxtral (March 26): open-source 4B text-to-speech, 9 languages, runs on consumer hardware",
@@ -319,9 +319,10 @@ const openSourceModels = [
 		company: "NVIDIA",
 		location: "Santa Clara",
 		color: "#76b900",
-		tagline: "NVIDIA's open agentic reasoning stack — Nano, Super, and Ultra 550B sizes on Bedrock.",
+		tagline: "NVIDIA's open agentic reasoning stack — Nano, Super, Ultra 550B, and the new 3.5 Super VL and Bolt models.",
 		bullets: [
-			"Nemotron 3 Ultra 550B (June 4, 2026): 550B/55B active MoE, hybrid Mamba-Transformer, 1M context; 48/100 AA Intelligence Index — strongest open US model benchmarked",
+			"Nemotron 3.5 (Oct 15, 2026): Super VL, a 120B open vision-language model for enterprise agents, and Bolt 74B-A9B, a 2-bit 24GB build for local RTX and DGX workloads",
+			"Nemotron 3 Ultra 550B (June 4, 2026): 550B/55B active MoE, hybrid Mamba-Transformer, 1M context; 48/100 AA Intelligence Index at launch — the strongest open US model benchmarked at the time",
 			"Nemotron 3 Nano Omni: 30B MoE omni-modal model unifying vision, audio, and text",
 			"Nano and Super sizes released March 2026; Super peers with Llama 4 Maverick on benchmarks",
 			"Weights, data, and recipes public on Hugging Face; available via Amazon Bedrock and NVIDIA NIM"
@@ -543,7 +544,7 @@ const scenarios = [
 	title="AI Models Guide 2026"
 	description="Quick reference to major AI models of 2026: Claude Fable 5.1, Opus 5.5, GPT-6 Astra, Gemini 4 Argon, Grok 4.7, and more. Costs and use cases compared."
 	ogTitle="AI Models Guide 2026 — Every Major Model Compared"
-	ogDescription="A quick-reference to the major AI models in 2026. Claude Opus 5.5 (Sep 22), Claude Sonnet 5.5 (Sep 28), Claude Haiku 5.5 (Oct 7), Claude Fable 5.1 (Sep 1), GPT-6 Astra, GPT-6 Sol, GPT-5.5 (and GPT-5.5 Instant), Gemini 4 Argon, Gemini 3.5 Pro, Gemini 3.8 Flash, Gemini 3.1 Ultra, Gemini Omni, Grok 4.7, Grok 4 Heavy, Cursor Composer 2.5, SubQ, Llama 4, Meta Muse Spark 1.3, Amazon Nova 2, DeepSeek V4, MiniMax M3, Mistral Large 4, Mistral Small 4, Mistral Medium 3.5, Kimi K3, GLM-5.3, GLM-5.3-Flash, NVIDIA Nemotron 3 Ultra 550B, Qwen 3.8, Qwen3.8-27B, Gemma 4, Microsoft MAI, Cohere Command A+, plus restricted cyber models GPT-5.5-Cyber, Claude Mythos 5.1, and Gemini 3.8 Flash Cyber."
+	ogDescription="Claude, GPT-6, Gemini 4, Grok, Muse, DeepSeek and more, side by side. Cost, context window, and what each model is best at. Updated weekly."
 	canonicalUrl="https://lukestahl.io/ai-models-guide/"
 	ogImage="https://lukestahl.io/assets/images/ai-model-guide.png"
 	hideHandbookButton={true}
@@ -556,7 +557,7 @@ const scenarios = [
 		"@context": "https://schema.org",
 		"@type": "Article",
 		"headline": "AI Models Guide 2026 — Every Major Model Compared",
-		"description": "A quick-reference to the major AI models in 2026. Claude Opus 5.5, Claude Fable 5.1, GPT-6 Astra, GPT-6 Sol, GPT-5.5 and GPT-5.5 Instant, Gemini 4 Argon, Gemini 3.5 Pro, Gemini 3.8 Flash, Gemini 3.1 Ultra, Gemini Omni, Grok 4.7, Grok 4 Heavy, Cursor Composer 2.5, SubQ, Llama 4, Amazon Nova 2, DeepSeek V4, MiniMax M3, Kimi K3, GLM-5.3, Mistral, Qwen 3.8, Gemma 4, Microsoft MAI, plus restricted cyber models GPT-5.5-Cyber, Claude Mythos 5.1, and Gemini 3.8 Flash Cyber.",
+		"description": "A quick-reference to the major AI models in 2026. Claude Opus 5.5, Claude Fable 5.1, GPT-6 Astra, GPT-6 Sol, GPT-5.5 and GPT-5.5 Instant, Gemini 4 Argon, Gemini 3.8 Flash, Gemini 3.1 Ultra, Gemini Omni, Grok 4.7, Grok 4 Heavy, Cursor Composer 2.5, SubQ, Llama 4, Amazon Nova 2, DeepSeek V4, MiniMax M3, Kimi K3, GLM-5.3, Mistral, Qwen 3.8, Gemma 4, Microsoft MAI, plus restricted cyber models GPT-5.5-Cyber, Claude Mythos 5.1, and Gemini 3.8 Flash Cyber.",
 		"author": {
 			"@type": "Person",
 			"name": "Luke Stahl",
@@ -573,7 +574,7 @@ const scenarios = [
 			"@type": "WebPage",
 			"@id": "https://lukestahl.io/ai-models-guide/"
 		},
-		"keywords": "AI models, Claude Opus 5.5, Claude Opus 5, Claude Sonnet 5.5, Claude Haiku 5.5, Claude Fable 5.1, Claude Mythos 5.1, GPT-6 Astra, GPT-6 Sol, GPT-5.5, GPT-5.5 Instant, Gemini 4 Argon, Gemini 3.5 Pro, Gemini 3.8 Flash, Gemini 3.8 Flash Cyber, Gemini 3.5 Flash-Lite, Gemini 3.5 Flash Cyber, Gemini 3.1 Ultra, Gemini 3.1 Pro, Gemini Omni, Grok 4.7, Grok 4 Heavy, Cursor Composer 2.5, SubQ, Llama 4, Meta Muse Spark 1.3, Muse Code, Amazon Nova 2, DeepSeek V4, MiniMax M3, Mistral Large 4, Mistral Small 4, Mistral Medium 3.5, Qwen 3.8, Qwen3.8-Max, Qwen3.8-27B, Qwen 3.7 Max, Qwen3 Coder Next, Gemma 4, Microsoft MAI, Phi-4-reasoning, Cohere Command A+, Kimi K3, GLM-5.3, GLM-5.3-Flash, NVIDIA Nemotron 3 Ultra 550B, GPT-5.5-Cyber, Apple AFM 3, AI comparison, LLM guide 2026"
+		"keywords": "AI models, Claude Opus 5.5, Claude Opus 5, Claude Sonnet 5.5, Claude Haiku 5.5, Claude Fable 5.1, Claude Mythos 5.1, GPT-6 Astra, GPT-6 Sol, GPT-5.5, GPT-5.5 Instant, Gemini 4 Argon, Gemini 3.8 Flash, Gemini 3.8 Flash Cyber, Gemini 3.5 Flash-Lite, Gemini 3.5 Flash Cyber, Gemini 3.1 Ultra, Gemini 3.1 Pro, Gemini Omni, Grok 4.7, Grok 4 Heavy, Cursor Composer 2.5, SubQ, Llama 4, Meta Muse Wonder, Muse Spark 1.3, Muse Spark Open, Muse Code, Amazon Nova 2, DeepSeek V4, MiniMax M3, Mistral Large 4, Mistral Small 4, Mistral Medium 3.5, Qwen 3.8, Qwen3.8-Max, Qwen3.8-27B, Qwen 3.7 Max, Qwen3 Coder Next, Gemma 4, Microsoft MAI, Phi-4-reasoning, Cohere Command A+, Kimi K3, GLM-5.3, GLM-5.3-Flash, NVIDIA Nemotron 3 Ultra 550B, GPT-5.5-Cyber, Apple AFM 3, AI comparison, LLM guide 2026"
 	})} />
 
 	<!-- JSON-LD: BreadcrumbList -->
@@ -597,7 +598,7 @@ const scenarios = [
 			<section class="hero">
 				<h1 class="hero-title">AI Models<br/><span class="hero-title-accent">Guide</span></h1>
 				<p class="hero-subtitle">A quick-reference to the major AI models, who makes them, and what they do best.</p>
-				<div class="hero-badge">Updated October 11, 2026</div>
+				<div class="hero-badge">Updated October 18, 2026</div>
 			</section>
 
 			<div class="guide-layout">
@@ -817,7 +818,7 @@ const scenarios = [
 					))}
 				</div>
 				<p class="media-note">
-					<strong>Video generation leaders:</strong> Google Veo 3.1 (native 4K + vertical video), Kling 3.0 (native 4K/60fps), Runway Gen-4.5 (creative/cinematic), Runway Gen-4 Turbo (July 2026 — ~60% faster inference at comparable quality to Gen-4), and Seedance 2.0 (ByteDance — notable for Identity Lock, which maintains consistent faces across multi-scene video). Sora 2 (OpenAI) was deprecated April 26, 2026 with an API sunset on September 24, 2026 — do not build new integrations on it.
+					<strong>Video generation leaders:</strong> Google Veo 3.1 (native 4K + vertical video), Kling 4.0 (Oct 16 — native 30-second clips, 4K with 10-bit HDR), Runway Gen-4.5 (creative/cinematic), Runway Gen-4 Turbo (July 2026 — ~60% faster inference at comparable quality to Gen-4), and Seedance 2.0 (ByteDance — notable for Identity Lock, which maintains consistent faces across multi-scene video). Sora 2 (OpenAI) is gone: the app shut down April 26, 2026 and the API on September 24, 2026.
 				</p>
 			</section>
 
