@@ -17,7 +17,8 @@ const quickReference = [
 	{ model: "MiniMax M3", company: "MiniMax", bestFor: "Cost-efficient coding", differentiator: "1M context, 59.0% SWE-bench Pro at $0.15/$1.15 per 1M tokens", color: "#a78bfa" },
 	{ model: "Command A+", company: "Cohere", bestFor: "Enterprise RAG", differentiator: "218B MoE, Cohere's first fully Apache 2.0 frontier model, tuned for RAG", color: "#fb923c" },
 	{ model: "Gemma 4", company: "Google", bestFor: "On-device open-weight", differentiator: "31B ranks #3 on Arena AI; E2B/E4B optimized for on-device Android", color: "#34d399" },
-	{ model: "Kimi K3", company: "Moonshot AI", bestFor: "Agentic open-source", differentiator: "2.8T MoE, open-weight — second only to Fable 5 and GPT-5.6 on most benchmarks", color: "#ff6b6b" },
+	{ model: "Kimi K3 / K3.1", company: "Moonshot AI", bestFor: "Agentic open-source", differentiator: "K3.1 Pro (Oct 23) post-trains the same 2.8T MoE at $2/$10 per 1M with 1M context; K3 (Jul 16) is the open-weight release", color: "#ff6b6b" },
+	{ model: "Ling 3.1 Flash", company: "InclusionAI (Ant Group)", bestFor: "Open-weight agents & coding", differentiator: "560B MoE, 25B active, 1M context, MIT license — open weights on Hugging Face since Oct 14", color: "#e11d48" },
 	{ model: "GLM-5.3", company: "Zhipu AI", bestFor: "Open frontier", differentiator: "MIT license, 1M context; GLM-5.3-Flash (Aug 26) adds native multimodal at ~1/10th the price, trained on Huawei Ascend chips", color: "#4ecdc4" },
 	{ model: "Atria Dawn Preview", company: "Shanghai AI Lab", bestFor: "Long-horizon research agents", differentiator: "744B MoE on a GLM-5.2 base, MIT license; vendor-reported top-5-of-16 benchmark claims, not yet independently verified", color: "#e879f9" },
 	{ model: "GPT-5.5-Cyber", company: "OpenAI", bestFor: "Defensive cybersecurity", differentiator: "TAC-gated fine-tune for defensive cybersecurity — CrowdStrike, Cloudflare, Palo Alto, Cisco partners", color: "#ef4444" },
@@ -40,11 +41,10 @@ const frontierModels = [
 		color: "#10b981",
 		tagline: "The versatile all-rounder with dynamic internal routing.",
 		bullets: [
-			"GPT-6 Sol / Luna (Sept 22, 2026): replaced GPT-5.6 Sol and Luna (Terra was retired) — 1.05M context, 128K output. Sol: $2/$10 per 1M. Luna (cheap): $0.10/$0.50 per 1M. GPT-6.1 Sol (Sept 29) upgrades Sol at the same price, near-Astra on agentic coding and computer use",
-			"GPT-6 became ChatGPT's default on Oct 7, 2026: Sol for Plus, Pro, Business, and Enterprise, Luna for Free and Go (from Oct 8), shipped with the new Intelligent UI",
-			"Available on Plus/Pro/Business/Enterprise via ChatGPT and Codex; native computer use and tool calling for agentic automation",
-			"GPT-Live-1 / mini (July 8, 2026): full-duplex voice models with real-time translation — now the default ChatGPT voice mode (Live-1 for Plus/Pro, mini for Free)",
-			"GPT-6 Astra (Sept 3, 2026): new flagship, supersedes GPT-5.6 Sol — $10/$50 per 1M, 72.6% OSWorld 2.0 (vs 65.7% for Sol); first model rated Critical for cybersecurity under OpenAI's Preparedness Framework — rollout started with enterprise Daybreak-program partners before reaching ChatGPT/API. A follow-up GPT-6.1 Astra was shelved on Sept 28 over safety concerns"
+			"GPT-6 Astra (Sept 3, 2026): flagship at $10/$50 per 1M, and the first model rated Critical for cybersecurity under OpenAI's Preparedness Framework. A follow-up GPT-6.1 Astra was shelved Sept 28 over safety concerns",
+			"GPT-6.1 Sol (Sept 29) and GPT-6 Luna: 1.05M context. Sol is $2/$10 per 1M with near-Astra agentic coding and computer use; Luna is $0.10/$0.50. They replaced GPT-5.6 Sol and Luna (Terra was retired)",
+			"In ChatGPT: GPT-6 became the default on Oct 7 (Sol on paid plans, Luna on Free and Go). GPT-6 Pro added parallel agents on Oct 16",
+			"GPT-Live-1 / mini (July 8, 2026): full-duplex voice models with real-time translation, now the default ChatGPT voice mode"
 		],
 		bestFor: "Rapid prototyping, general-purpose tasks, API automation"
 	},
@@ -55,14 +55,10 @@ const frontierModels = [
 		color: "#c084fc",
 		tagline: "The developer favorite for coding, reasoning, and safety.",
 		bullets: [
-			"Claude Opus 5.5 (Sept 22, 2026): flagship, supersedes Opus 5 — 1M context, 128K output, $4/$20 per 1M (cache reads $0.20/M, down 60%); performs at Fable-5.1 level on most work, ~40% cheaper than Opus 5 on typical workloads, 30%+ faster output; model ID: claude-opus-5-5",
-			"Fable 5.1 (Sept 1, 2026): most capable model — 1M context, 128K output, $10/$50 per 1M (cache reads now $0.25/M, down 75%); outperforms Fable 5, Opus 5, and GPT-5.6 Sol; ~25-45% cheaper than Fable 5 for typical/agentic work, 60% fewer cybersecurity false positives",
-			"Sonnet 5.5 (Sept 28, 2026): supersedes Sonnet 5 — same $2/$10 per 1M, 1M context, 128K output, 30%+ faster; model ID: claude-sonnet-5-5",
-			"Dynamic Workflows: run parallel subagents on independent subtasks",
-			"Fast mode across the Opus line: ~2.5× faster at ~2-3× price",
-			"Haiku 5.5 (Oct 7, 2026): cheapest Claude tier — $0.10/$0.50 per 1M for prompts up to 100K ($0.50/$2.50 above), 1M context, 128K output",
-			"Leads human-preference leaderboards, strong ARC-AGI-2 scores",
-			"Claude Mythos 5.1 (Sept 1, 2026): cybersecurity research model via Project Glasswing — same weights as Fable 5.1"
+			"Opus 5.5 (Sept 22, 2026): flagship, 1M context, 128K output, $4/$20 per 1M. Performs at Fable 5.1 level on most work at about 40% lower cost than Opus 5; model ID claude-opus-5-5",
+			"Fable 5.1 (Sept 1, 2026): most capable model, 1M context, 128K output, $10/$50 per 1M, and about 25-45% cheaper than Fable 5 on typical work",
+			"Sonnet 5.5 (Sept 28, 2026): $2/$10 per 1M, 1M context, 30%+ faster than Sonnet 5; model ID claude-sonnet-5-5",
+			"Haiku 5.5 (Oct 7, 2026): cheapest tier at $0.10/$0.50 per 1M for prompts up to 100K, with 1M context"
 		],
 		bestFor: "Software development, agentic workflows, analysis, writing"
 	},
@@ -78,8 +74,7 @@ const frontierModels = [
 			"Gemini 3.5 Flash-Lite and Flash Cyber (July 21, 2026): cost-efficient high-volume and defensive-security variants",
 			"Gemini 3.1 Ultra (May 2026): top reasoning tier — 2M context, natively multimodal",
 			"Gemini 3.1 Pro (Feb 2026): deployed Pro-tier flagship — 94.3% GPQA Diamond, 1M context, $2/$12 per 1M",
-			"Gemini 3.1 Flash Live and Flash TTS round out the audio lineup; Omni Flash (May 19, 2026) adds any-to-any input with video output",
-			"Gemini Spark (May 19, 2026): Google's 24/7 persistent AI agent, running on Gemini 3.7 Flash"
+			"Gemini 3.1 Flash Live and Flash TTS round out the audio lineup; Omni Flash (May 19, 2026) adds any-to-any input with video output"
 		],
 		bestFor: "Multimodal apps, Google Workspace users, cost-conscious teams"
 	},
@@ -165,18 +160,15 @@ const frontierModels = [
 		company: "Meta Superintelligence Labs",
 		location: "Menlo Park",
 		color: "#7c3aed",
-		tagline: "Meta's first closed-weight frontier model — a deliberate break from the open Llama strategy, now shipping with Meta's first terminal coding agent.",
+		tagline: "Meta's closed-weight frontier models — a break from the open Llama strategy, with an open-weight sibling in Muse Spark Open and Muse Code as its terminal coding agent.",
 		bullets: [
 			"Released April 8, 2026 — led by Alexandr Wang (ex-Scale AI)",
 			"Multimodal reasoning with thought compression and parallel sub-agent orchestration",
-			"Scored 52 on the Artificial Analysis Intelligence Index — top 5 globally",
-			"Muse Spark 1.1 (July 9, 2026): 1M context, Meta's first paid developer API, $1.25/$4.25 per 1M",
 			"Muse Spark 1.3 (Sept 2, 2026): improved coding/agentic performance for longer-horizon work — #6 on Artificial Analysis Intelligence Index, $1.25/$4.25 per 1M",
 			"Muse Wonder (Oct 12, 2026): Meta's first frontier model — closed weights, 1M context, multimodal input, built for agents, $4/$20 per 1M via the Meta Model API and Muse Code. Muse Wonder Full, the higher tier, is only in Muse Code's $50 and $200 monthly plans",
 			"Muse Spark Open (Oct 15, 2026): open-weight sibling — 816B total / 42B active MoE, 1M context, multimodal input. Released under the Muse Model License (free use and fine-tuning, but products must show \"Built with Muse Spark Open\"), so it is not OSI open source",
-			"Muse (Sept 8, 2026): Meta's personal AI agent, powered by Muse Spark 1.3 — takes actions (email, travel booking, forms, shopping) from an isolated cloud VM with a separate approval gate before anything touches the internet; US-only, 18+, free tier plus $20/$100 monthly plans"
 		],
-		bestFor: "Frontier multimodal reasoning, agentic and terminal coding (Muse Code), personal task automation (Muse), closed-API enterprise deployments"
+		bestFor: "Frontier multimodal reasoning, agentic and terminal coding (Muse Code), closed-API enterprise deployments"
 	},
 	{
 		name: "Apple AFM 3",
@@ -222,7 +214,7 @@ const openSourceModels = [
 			"Llama 4 Scout: industry-leading 10M token context window",
 			"Llama 4 Maverick: 17B active / 128 experts — outperforms GPT-4o and Gemini 2.0 Flash on key benchmarks",
 			"Fully open weights; can be self-hosted for complete data control",
-			"Llama 4 Behemoth (288B active): effectively shelved — repeated delays and MoE-routing failures at 2T scale; Meta pivoting to closed-weight Muse Spark"
+			"Llama 4 Behemoth (288B active): effectively shelved — repeated delays and MoE-routing failures at 2T scale; Meta's newer models are the Muse line, including the open-weight Muse Spark Open"
 		],
 		bestFor: "Self-hosting, privacy-sensitive orgs, custom fine-tuning"
 	},
@@ -271,19 +263,30 @@ const openSourceModels = [
 		bestFor: "Budget-conscious agentic coding, open-source self-hosting, high-throughput coding pipelines"
 	},
 	{
-		name: "Kimi K3",
+		name: "Kimi K3 / K3.1",
 		company: "Moonshot AI",
 		location: "Beijing, China",
 		color: "#ff6b6b",
-		tagline: "Open-weight frontier model that closes the gap with US labs — 2.8T MoE, second only to Fable 5 and GPT-5.6 on most benchmarks.",
+		tagline: "Open-weight frontier model from Moonshot — 2.8T MoE, with K3.1 Pro as the newest post-trained version.",
 		bullets: [
-			"Released July 16, 2026 (full weights July 27) — 2.8T parameter MoE, successor to K2.7 Code",
-			"Outperforms every other model except Claude Fable 5 and GPT-5.6 on most benchmarks",
-			"K2.7 Code (June 12, 2026): still available — 1T MoE coding variant of K2.6, 30% fewer thinking tokens",
+			"Kimi K3.1 Pro (Oct 23, 2026): post-trained successor on the same 2.8T MoE — $2/$10 per 1M (a third cheaper than K3), 1M context. K3.1 Pro Highspeed runs 2-3× faster at $4/$20",
+			"Kimi K3 (July 16, 2026; full weights July 27): 2.8T parameter MoE, successor to K2.7 Code",
 			"Open-weight, Modified MIT license; weights on Hugging Face",
 			"Kimi Code CLI agent rivals Claude Code and Gemini CLI"
 		],
 		bestFor: "Agentic coding workflows, open-source self-hosting, long-horizon coding tasks"
+	},
+	{
+		name: "Ling 3.1 Flash",
+		company: "InclusionAI (Ant Group)",
+		location: "Hangzhou, China",
+		color: "#e11d48",
+		tagline: "Ant Group's open-weight agent and coding model — 560B MoE with 25B active parameters.",
+		bullets: [
+			"Ling 3.1 Flash (Sept 30, 2026): 560B total / 25B active MoE, 1M context, built for coding, terminal, and tool-calling work",
+			"Weights released on Hugging Face under the MIT license on Oct 14, 2026"
+		],
+		bestFor: "Self-hosted agentic and coding workflows"
 	},
 	{
 		name: "GLM-5.3",
@@ -321,7 +324,7 @@ const openSourceModels = [
 		color: "#76b900",
 		tagline: "NVIDIA's open agentic reasoning stack — Nano, Super, Ultra 550B, and the new 3.5 Super VL and Bolt models.",
 		bullets: [
-			"Nemotron 3.5 (Oct 15, 2026): Super VL, a 120B open vision-language model for enterprise agents, and Bolt 74B-A9B, a 2-bit 24GB build for local RTX and DGX workloads",
+			"Nemotron 3.5 (Oct 15, 2026): Super VL, a 120B open vision-language model for enterprise agents, and Bolt 74B-A9B, a 2-bit 24GB build for local RTX and DGX workloads. Bolt E4B (Oct 23), a roughly 4GB build derived from Gemma 4 for edge devices, runs on about 6GB of RAM",
 			"Nemotron 3 Ultra 550B (June 4, 2026): 550B/55B active MoE, hybrid Mamba-Transformer, 1M context; 48/100 AA Intelligence Index at launch — the strongest open US model benchmarked at the time",
 			"Nemotron 3 Nano Omni: 30B MoE omni-modal model unifying vision, audio, and text",
 			"Nano and Super sizes released March 2026; Super peers with Llama 4 Maverick on benchmarks",
@@ -471,6 +474,18 @@ const imageVideoModels = [
 	{ name: "Gemini 3.1 Flash Lite Image", company: "Google", bestFor: "Specialized fast image generation — Flash variant tuned for high-volume, low-latency image tasks (Jun 23, 2026)" },
 ];
 
+// Personal Agents
+const personalAgents = [
+	{ name: "Claude Duet", company: "Anthropic", color: "#c084fc", bestFor: "Proactive chief of staff", details: "Opus 5.5 in Anthropic's cloud. US waitlist for Pro and Max (research preview)" },
+	{ name: "ChatGPT dots", company: "OpenAI", color: "#10b981", bestFor: "Always-on background agent", details: "GPT-6 Astra in OpenAI's cloud. Pro and Business Premium, first dot included; not in the EEA, UK, or Switzerland" },
+	{ name: "Gemini Spark", company: "Google", color: "#60a5fa", bestFor: "Ongoing tasks across Google apps", details: "Gemini in Google's cloud. Google AI Pro ($19.99/mo) and Ultra; not in the EEA, UK, or Switzerland" },
+	{ name: "Grok Bot", company: "xAI with Cursor", color: "#f97316", bestFor: "Named bots on a shared cloud computer", details: "Cursor-managed mix of xAI and third-party models, no model picker, on a shared Cursor-hosted cloud computer. Paid X Subscription plans, from $30/mo" },
+	{ name: "Hermes Agent", company: "Nous Research", color: "#fbbf24", bestFor: "Open-source agent with persistent memory", details: "Self-hosted with your own model (Nous Portal, OpenRouter, OpenAI, or local). Free; model and hosting costs vary" },
+	{ name: "Instinct", company: "Spear Street Technology", color: "#94a3b8", bestFor: "An agent you text or call", details: "Reached by text or call. Invite-only beta, free for now" },
+	{ name: "Muse", company: "Meta", color: "#7c3aed", bestFor: "Personal tasks like email, travel, and shopping", details: "Muse Spark 1.3 in Meta's cloud. US only; free tier, Power $20/mo, Maximum $100/mo" },
+	{ name: "OpenClaw", company: "Open source", color: "#ef4444", bestFor: "Self-hosted agent behind your chat apps", details: "Self-hosted with your own model. Free; model and hosting costs vary" },
+];
+
 // Scenario Cards — real tasks mapped to models
 const scenarios = [
 	{
@@ -557,7 +572,7 @@ const scenarios = [
 		"@context": "https://schema.org",
 		"@type": "Article",
 		"headline": "AI Models Guide 2026 — Every Major Model Compared",
-		"description": "A quick-reference to the major AI models in 2026. Claude Opus 5.5, Claude Fable 5.1, GPT-6 Astra, GPT-6 Sol, GPT-5.5 and GPT-5.5 Instant, Gemini 4 Argon, Gemini 3.8 Flash, Gemini 3.1 Ultra, Gemini Omni, Grok 4.7, Grok 4 Heavy, Cursor Composer 2.5, SubQ, Llama 4, Amazon Nova 2, DeepSeek V4, MiniMax M3, Kimi K3, GLM-5.3, Mistral, Qwen 3.8, Gemma 4, Microsoft MAI, plus restricted cyber models GPT-5.5-Cyber, Claude Mythos 5.1, and Gemini 3.8 Flash Cyber.",
+		"description": "A quick-reference to the major AI models in 2026. Claude Opus 5.5, Claude Fable 5.1, GPT-6 Astra, GPT-6 Sol, GPT-5.5 and GPT-5.5 Instant, Gemini 4 Argon, Gemini 3.8 Flash, Gemini 3.1 Ultra, Gemini Omni, Grok 4.7, Grok 4 Heavy, Cursor Composer 2.5, SubQ, Llama 4, Amazon Nova 2, DeepSeek V4, MiniMax M3, Kimi K3.1 Pro, Kimi K3, GLM-5.3, Mistral, Qwen 3.8, Gemma 4, Microsoft MAI, plus restricted cyber models GPT-5.5-Cyber, Claude Mythos 5.1, and Gemini 3.8 Flash Cyber.",
 		"author": {
 			"@type": "Person",
 			"name": "Luke Stahl",
@@ -574,7 +589,7 @@ const scenarios = [
 			"@type": "WebPage",
 			"@id": "https://lukestahl.io/ai-models-guide/"
 		},
-		"keywords": "AI models, Claude Opus 5.5, Claude Opus 5, Claude Sonnet 5.5, Claude Haiku 5.5, Claude Fable 5.1, Claude Mythos 5.1, GPT-6 Astra, GPT-6 Sol, GPT-5.5, GPT-5.5 Instant, Gemini 4 Argon, Gemini 3.8 Flash, Gemini 3.8 Flash Cyber, Gemini 3.5 Flash-Lite, Gemini 3.5 Flash Cyber, Gemini 3.1 Ultra, Gemini 3.1 Pro, Gemini Omni, Grok 4.7, Grok 4 Heavy, Cursor Composer 2.5, SubQ, Llama 4, Meta Muse Wonder, Muse Spark 1.3, Muse Spark Open, Muse Code, Amazon Nova 2, DeepSeek V4, MiniMax M3, Mistral Large 4, Mistral Small 4, Mistral Medium 3.5, Qwen 3.8, Qwen3.8-Max, Qwen3.8-27B, Qwen 3.7 Max, Qwen3 Coder Next, Gemma 4, Microsoft MAI, Phi-4-reasoning, Cohere Command A+, Kimi K3, GLM-5.3, GLM-5.3-Flash, NVIDIA Nemotron 3 Ultra 550B, GPT-5.5-Cyber, Apple AFM 3, AI comparison, LLM guide 2026"
+		"keywords": "AI models, personal AI agents, Claude Duet, ChatGPT dots, Gemini Spark, Grok Bot, Hermes Agent, Instinct, OpenClaw, Claude Opus 5.5, Claude Opus 5, Claude Sonnet 5.5, Claude Haiku 5.5, Claude Fable 5.1, Claude Mythos 5.1, GPT-6 Astra, GPT-6 Sol, GPT-5.5, GPT-5.5 Instant, Gemini 4 Argon, Gemini 3.8 Flash, Gemini 3.8 Flash Cyber, Gemini 3.5 Flash-Lite, Gemini 3.5 Flash Cyber, Gemini 3.1 Ultra, Gemini 3.1 Pro, Gemini Omni, Grok 4.7, Grok 4 Heavy, Cursor Composer 2.5, SubQ, Llama 4, Meta Muse Wonder, Muse Spark 1.3, Muse Spark Open, Muse Code, Amazon Nova 2, DeepSeek V4, MiniMax M3, Mistral Large 4, Mistral Small 4, Mistral Medium 3.5, Qwen 3.8, Qwen3.8-Max, Qwen3.8-27B, Qwen 3.7 Max, Qwen3 Coder Next, Gemma 4, Microsoft MAI, Phi-4-reasoning, Cohere Command A+, Kimi K3.1 Pro, Kimi K3, GLM-5.3, GLM-5.3-Flash, NVIDIA Nemotron 3 Ultra 550B, GPT-5.5-Cyber, Apple AFM 3, AI comparison, LLM guide 2026"
 	})} />
 
 	<!-- JSON-LD: BreadcrumbList -->
@@ -598,7 +613,7 @@ const scenarios = [
 			<section class="hero">
 				<h1 class="hero-title">AI Models<br/><span class="hero-title-accent">Guide</span></h1>
 				<p class="hero-subtitle">A quick-reference to the major AI models, who makes them, and what they do best.</p>
-				<div class="hero-badge">Updated October 18, 2026</div>
+				<div class="hero-badge">Updated October 25, 2026</div>
 			</section>
 
 			<div class="guide-layout">
@@ -609,6 +624,7 @@ const scenarios = [
 						<li><a href="#quick-reference" class="guide-toc-link">Quick Reference</a></li>
 						<li><a href="#use-cases" class="guide-toc-link">When to use what</a></li>
 						<li><a href="#frontier" class="guide-toc-link">Frontier Models</a></li>
+						<li><a href="#personal-agents" class="guide-toc-link">Personal Agents</a></li>
 						<li><a href="#restricted" class="guide-toc-link">Restricted &amp; Specialized</a></li>
 						<li><a href="#orchestration" class="guide-toc-link">Orchestration</a></li>
 						<li><a href="#open-source" class="guide-toc-link">Open Source</a></li>
@@ -625,6 +641,7 @@ const scenarios = [
 					<li><a href="#quick-reference">Quick Reference</a></li>
 					<li><a href="#use-cases">When to use what</a></li>
 					<li><a href="#frontier">Frontier Models</a></li>
+					<li><a href="#personal-agents">Personal Agents</a></li>
 					<li><a href="#restricted">Restricted &amp; Specialized</a></li>
 					<li><a href="#orchestration">Orchestration</a></li>
 					<li><a href="#open-source">Open Source</a></li>
@@ -717,6 +734,41 @@ const scenarios = [
 			</section>
 
 			<!-- Restricted & Specialized -->
+			<section class="section" id="personal-agents">
+				<div class="section-label">
+					<span class="section-label-dot"></span>
+					Personal Agents
+				</div>
+				<div class="ref-table-wrap">
+					<table class="ref-table">
+						<thead>
+							<tr>
+								<th>Agent</th>
+								<th>Company</th>
+								<th>Best For</th>
+								<th>Model, Hosting &amp; Access</th>
+							</tr>
+						</thead>
+						<tbody>
+							{personalAgents.map(a => (
+								<tr>
+									<td>
+										<span class="ref-dot" style={`--dot-color: ${a.color}`}></span>
+										<span class="ref-model">{a.name}</span>
+									</td>
+									<td class="ref-company">{a.company}</td>
+									<td><span class="ref-badge" style={`--badge-color: ${a.color}`}>{a.bestFor}</span></td>
+									<td class="ref-diff">{a.details}</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
+				</div>
+				<p class="media-note">
+					Agents work in the background on your behalf, unlike chat models. Plans and prices change often, so check the vendor before you buy.
+				</p>
+			</section>
+
 			<section class="section" id="restricted">
 				<div class="section-label">
 					<span class="section-label-dot" style="background: #ef4444; box-shadow: 0 0 8px rgba(239, 68, 68, 0.5);"></span>
@@ -803,6 +855,7 @@ const scenarios = [
 			</section>
 
 			<!-- Image & Video -->
+
 			<section class="section" id="image-video">
 				<div class="section-label">
 					<span class="section-label-dot"></span>
