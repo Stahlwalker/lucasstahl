@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-18T13:02:59.027Z",
+  "lastUpdated": "2026-10-25T13:37:48.636Z",
   "results": {
     "mobile": {
       "home": {
@@ -7,14 +7,14 @@
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
-        "lcp": 3151.0138600279784,
-        "cls": 0.001023984740167357,
-        "tbt": 7.5,
+        "lcp": 3526.0065817292552,
+        "cls": 0.001223178977495541,
+        "tbt": 10,
         "agenticBrowsingPassed": 3,
         "agenticBrowsingTotal": 3
       },
       "about": {
-        "performance": 63,
+        "performance": 64,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
@@ -22,7 +22,7 @@
         "agenticBrowsingTotal": 3
       },
       "blog": {
-        "performance": 80,
+        "performance": 62,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
@@ -38,7 +38,7 @@
         "agenticBrowsingTotal": 3
       },
       "gems": {
-        "performance": 73,
+        "performance": 64,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
@@ -48,18 +48,18 @@
     },
     "desktop": {
       "home": {
-        "performance": 99,
+        "performance": 100,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
-        "lcp": 821.0064926716219,
-        "cls": 0.00046114229411717305,
+        "lcp": 541.0078742516321,
+        "cls": 0.00047144386887296933,
         "tbt": 0,
         "agenticBrowsingPassed": 3,
         "agenticBrowsingTotal": 3
       },
       "about": {
-        "performance": 96,
+        "performance": 95,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
@@ -75,7 +75,7 @@
         "agenticBrowsingTotal": 3
       },
       "builds": {
-        "performance": 94,
+        "performance": 99,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
@@ -83,7 +83,7 @@
         "agenticBrowsingTotal": 3
       },
       "gems": {
-        "performance": 99,
+        "performance": 97,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100,
