@@ -106,10 +106,10 @@ jobs:
           TO_EMAIL: ${{ secrets.NOTIFICATION_EMAIL }}
           FROM_EMAIL: ${{ secrets.FROM_EMAIL }}
         run: |
-          if [ "${{ steps.playwright.outcome }}" == "success" ]; then
+          if [ "${{ steps.playwright.outcome }}" = "success" ]; then
             SUBJECT="✅ Cross-Browser Health Checks Passed - lukestahl.io"
             BODY="<h2>✅ All Health Checks Passing</h2><p>The automated cross-browser health checks ran successfully on <strong>$(date '+%B %d, %Y')</strong> against your production site.</p><p><strong>Result:</strong> All pages load successfully across Chromium, Firefox, and WebKit!</p><hr><h3>Pages Checked:</h3><ul><li>Homepage (200 OK)</li><li>Blog page (200 OK)</li><li>About page (200 OK)</li><li>Builds page (200 OK)</li><li>Gems page (200 OK)</li><li>404 handling (works correctly)</li><li>JavaScript errors (none detected)</li></ul><p><strong>Site Tested:</strong> https://lukestahl.io</p><p><a href=\"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\">View Full Workflow Run</a></p>"
-          elif [ "${{ steps.playwright.outcome }}" == "skipped" ]; then
+          elif [ "${{ steps.playwright.outcome }}" = "skipped" ]; then
             SUBJECT="⚠️ Cross-Browser Health Checks Didn't Run - lukestahl.io"
             BODY="<h2>⚠️ Health Checks Didn't Run</h2><p>The automated health checks could not run on <strong>$(date '+%B %d, %Y')</strong> because a setup step failed or timed out before testing began. Your site was <strong>not</strong> tested.</p><h3>Action Required</h3><ol><li>Review the <a href=\"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\">workflow run logs</a> to see which step stopped</li><li>Re-run the workflow from the Actions tab</li></ol><hr><p><strong>Site:</strong> https://lukestahl.io</p>"
           else
@@ -144,7 +144,7 @@ jobs:
         run: |
           echo "# 🏥 Cross-Browser Health Check Results" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          if [ "${{ steps.playwright.outcome }}" == "success" ]; then
+          if [ "${{ steps.playwright.outcome }}" = "success" ]; then
             echo "✅ **All health checks passed!**" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
             echo "All pages loaded successfully across:" >> $GITHUB_STEP_SUMMARY
@@ -153,7 +153,7 @@ jobs:
             echo "- WebKit (Safari) ✓" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
             echo "**Pages Verified:** Homepage, Blog, About, Builds, Gems, 404 handling" >> $GITHUB_STEP_SUMMARY
-          elif [ "${{ steps.playwright.outcome }}" == "skipped" ]; then
+          elif [ "${{ steps.playwright.outcome }}" = "skipped" ]; then
             echo "⚠️ **Health checks did not run**" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
             echo "A setup step failed or timed out before the tests started, so the site was not tested. Review the logs and re-run the workflow." >> $GITHUB_STEP_SUMMARY
