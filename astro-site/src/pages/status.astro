@@ -13,6 +13,8 @@ import Icon from '../components/Icon.astro';
 	loadFontAwesome={false}
 	inlineCriticalCSS={true}
 >
+	<script slot="head" type="application/ld+json" set:html={JSON.stringify({"@context": "https://schema.org", "@type": "Article", "headline": "Status", "description": "Real-time status dashboard showing uptime, performance metrics, and operational health of developer marketing systems and infrastructure.", "url": "https://lukestahl.io/status/", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://lukestahl.io/status/"}, "datePublished": "2025-12-09", "image": "https://lukestahl.io/assets/images/Hero_OG.png", "author": {"@type": "Person", "name": "Luke Stahl", "url": "https://lukestahl.io/"}, "publisher": {"@type": "Person", "name": "Luke Stahl", "url": "https://lukestahl.io/"}})} />
+
 	<!-- Status Page -->
 	<section class="status-hero">
 		<div class="section-container">

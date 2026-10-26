@@ -41,6 +41,8 @@ const sections = await Promise.all(sectionChunks.map(async (chunk) => {
 >
 	<link slot="head" rel="alternate" type="text/markdown" href="/handbook.md" title="Markdown version" />
 
+	<script slot="head" type="application/ld+json" set:html={JSON.stringify({"@context": "https://schema.org", "@type": "Article", "headline": "Developer Marketing Handbook", "description": "A handbook for developer marketing that covers goals, strategy, journey, personas, messaging, campaigns, content, community, and metrics.", "url": "https://lukestahl.io/handbook/", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://lukestahl.io/handbook/"}, "datePublished": "2025-11-21", "image": "https://lukestahl.io/assets/images/Hero_OG.png", "author": {"@type": "Person", "name": "Luke Stahl", "url": "https://lukestahl.io/"}, "publisher": {"@type": "Person", "name": "Luke Stahl", "url": "https://lukestahl.io/"}})} />
+
 	<div class="handbook-page-container">
 		<div class="handbook-page-header">
 			<div class="handbook-page-header-content">
