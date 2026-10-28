@@ -43,6 +43,7 @@ All blog posts, newsletter editions, and the handbook are available as raw markd
 ## Blog Posts
 
 - [AI lingo, checked against the noise](https://lukestahl.io/blog/ai-lingo/)
+- [Developers ask AI which tool to use. Here's how we track the answer.](https://webflow.com/blog/track-mcp-ai-visibility)
 - [From building to measuring, Webflow's MCP server now reads how your site performs.](https://webflow.com/blog/mcp-analyze-optimize-aeo)
 - [MCP just leveled up. Animate, deploy, and get more out of your CMS.](https://webflow.com/blog/mcp-interactions)
 - [Solar turns a bad prop into a fix an agent can act on](https://lukestahl.io/blog/solar-ui-framework-for-agents/)

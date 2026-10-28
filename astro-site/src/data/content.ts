@@ -134,6 +134,13 @@ export const tinyApps = [
 
 export const externalBlogPosts = [
   {
+    title: "Developers ask AI which tool to use. Here's how we track the answer.",
+    description: "How we track AI answers about Webflow's MCP server in Webflow AEO, what 100 responses showed, what you can do about it, and how to test your own product.",
+    url: "https://webflow.com/blog/track-mcp-ai-visibility",
+    tags: ["AEO", "MCP", "AI Visibility"],
+    date: "Oct 28, 2026"
+  },
+  {
     title: "From building to measuring, Webflow's MCP server now reads how your site performs.",
     description: "Ask your agent about traffic, experiments, and AI visibility, and Webflow's MCP server reads the data it needs to answer.",
     url: "https://webflow.com/blog/mcp-analyze-optimize-aeo",
