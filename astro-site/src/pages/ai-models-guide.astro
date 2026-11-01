@@ -3,14 +3,14 @@ import Layout from '../layouts/Layout.astro';
 
 // Quick Reference Data
 const quickReference = [
-	{ model: "GPT-5.x / GPT-6", company: "OpenAI", bestFor: "General purpose", differentiator: "GPT-6 Astra (Sep 3) is the flagship, first model rated Critical for cybersecurity; GPT-6.1 Sol (Sep 29) and GPT-6 Luna are the cheaper API tiers, replacing GPT-5.6 Sol/Luna; GPT-6 is now the ChatGPT default", color: "#10b981" },
+	{ model: "GPT-5.x / GPT-6", company: "OpenAI", bestFor: "General purpose", differentiator: "GPT-6 Astra (Sep 3) is the flagship, first model rated Critical for cybersecurity; GPT-6.1 Sol (Sep 29), GPT-6.1 Terra (Oct 26, $1/$5) and GPT-6 Luna are the cheaper API tiers; GPT-6 is now the ChatGPT default", color: "#10b981" },
 	{ model: "Claude 5.x Family", company: "Anthropic", bestFor: "Coding & reasoning", differentiator: "Opus 5.5 (Sep 22) supersedes Opus 5 as the recommended starting model — Fable-5.1-level performance at 40% lower typical cost; Fable 5.1 (Sep 1) remains the max-capability tier", color: "#c084fc" },
-	{ model: "Gemini 3.x / 4", company: "Google DeepMind", bestFor: "Multimodal", differentiator: "Gemini 4 Argon (Sep 30) is the new flagship, generally available since Oct 13 at $2/$10 per 1M through Nov 30, then $4/$20; Gemini 3.8 Flash (Sep 2) stays the default workhorse", color: "#60a5fa" },
+	{ model: "Gemini 3.x / 4", company: "Google DeepMind", bestFor: "Multimodal", differentiator: "Gemini 4 Carbon (Oct 28) is the newest but limited to Fairwind cyber defenders; Gemini 4 Argon (Sep 30) is the generally available flagship at $2/$10 per 1M through Nov 30, then $4/$20; Gemini 3.8 Flash (Sep 2) stays the default workhorse", color: "#60a5fa" },
 	{ model: "Grok 4.x", company: "xAI", bestFor: "Real-time info", differentiator: "Grok 4.7 (Sep 21) is the current flagship — $2/$6 per 1M tokens, with a Fast variant at 2× the speed and price", color: "#f97316" },
 	{ model: "Llama 4", company: "Meta", bestFor: "Open-source", differentiator: "10M token context, fully self-hostable; Behemoth shelved; Meta's newest open-weight model is Muse Spark Open", color: "#06b6d4" },
 	{ model: "Muse Wonder / Spark", company: "Meta Superintelligence Labs", bestFor: "Agentic coding & reasoning", differentiator: "Muse Wonder (Oct 12) is Meta's new closed-weight frontier model at $4/$20 per 1M; Spark 1.3 (Sep 2) is the cheaper tier at $1.25/$4.25; open-weight Muse Spark Open followed Oct 15", color: "#7c3aed" },
 	{ model: "DeepSeek V4", company: "DeepSeek", bestFor: "Cost efficiency", differentiator: "V4.1-Flash (updated Oct 17) outperforms V4-Pro at lower rates, and V4-Pro stays available at unchanged billing — MIT license, 1M context, among the cheapest frontier-class models available", color: "#facc15" },
-	{ model: "Mistral Family", company: "Mistral", bestFor: "EU compliance", differentiator: "Large 4 (Oct 6, preview), Medium 3.5, Small 4, Voxtral — enterprise-safe with EU data sovereignty", color: "#818cf8" },
+	{ model: "Mistral Family", company: "Mistral", bestFor: "EU compliance", differentiator: "Large 4 (Oct 6; open weights Oct 29), Medium 3.5, Small 4, Voxtral — enterprise-safe with EU data sovereignty", color: "#818cf8" },
 	{ model: "Qwen 3.8", company: "Alibaba", bestFor: "Multilingual", differentiator: "Qwen3.8-Max (Aug 2) is the new flagship; Qwen3.8-27B (Aug 13) is a separate, genuinely self-hostable Apache 2.0 companion", color: "#f472b6" },
 	{ model: "Microsoft MAI", company: "Microsoft", bestFor: "Speech & media AI", differentiator: "MAI-Transcribe-2-Streaming, MAI-Voice-2.1, MAI-Image-2, Phi-4-reasoning — Microsoft's own foundation stack on Foundry", color: "#0ea5e9" },
 	{ model: "Amazon Nova 2", company: "Amazon / AWS", bestFor: "AWS-native enterprise", differentiator: "Lite, Pro, Sonic, Omni — AWS-native family powering the Nova Act agent", color: "#ff9900" },
@@ -42,7 +42,7 @@ const frontierModels = [
 		tagline: "The versatile all-rounder with dynamic internal routing.",
 		bullets: [
 			"GPT-6 Astra (Sept 3, 2026): flagship at $10/$50 per 1M, and the first model rated Critical for cybersecurity under OpenAI's Preparedness Framework. A follow-up GPT-6.1 Astra was shelved Sept 28 over safety concerns",
-			"GPT-6.1 Sol (Sept 29) and GPT-6 Luna: 1.05M context. Sol is $2/$10 per 1M with near-Astra agentic coding and computer use; Luna is $0.10/$0.50. They replaced GPT-5.6 Sol and Luna (Terra was retired)",
+			"GPT-6.1 Sol (Sept 29), GPT-6.1 Terra (Oct 26), and GPT-6 Luna: 1.05M context, replacing the GPT-5.6 tiers. Sol is $2/$10 per 1M with near-Astra agentic coding and computer use; Terra is $1/$5 for computer use, visual reasoning, and everyday office work; Luna is $0.10/$0.50",
 			"In ChatGPT: GPT-6 became the default on Oct 7 (Sol on paid plans, Luna on Free and Go). GPT-6 Pro added parallel agents on Oct 16",
 			"GPT-Live-1 / mini (July 8, 2026): full-duplex voice models with real-time translation, now the default ChatGPT voice mode"
 		],
@@ -69,7 +69,8 @@ const frontierModels = [
 		color: "#60a5fa",
 		tagline: "Multimodal powerhouse with top benchmark breadth.",
 		bullets: [
-			"Gemini 4 Argon (Sept 30, 2026): Google's new flagship, focused on coding, agentic work, research, and cybersecurity — 1M-token output (up from 64K). Generally available since Oct 13 to paid Gemini API developers, AI Pro and Ultra subscribers, and Gemini for Business. $2/$10 per 1M is introductory through Nov 30; from Dec 1 it becomes $4/$20",
+			"Gemini 4 Carbon (Oct 28, 2026): Google's newest model, focused on cybersecurity and long-horizon work. So far it is limited to selected cyber defenders through the Fairwind Program, with no public release date",
+			"Gemini 4 Argon (Sept 30, 2026): Google's generally available flagship, focused on coding, agentic work, research, and cybersecurity — 1M-token output (up from 64K). Generally available since Oct 13 to paid Gemini API developers, AI Pro and Ultra subscribers, and Gemini for Business. $2/$10 per 1M is introductory through Nov 30; from Dec 1 it becomes $4/$20",
 			"Gemini 3.8 Flash (Sept 2, 2026): new default workhorse, built on 3.7 Flash — beats 3.7 on every benchmark Google published, 1M context, 64K output, same $0.75/$3.75 per 1M pricing through Dec 31, 2026",
 			"Gemini 3.5 Flash-Lite and Flash Cyber (July 21, 2026): cost-efficient high-volume and defensive-security variants",
 			"Gemini 3.1 Ultra (May 2026): top reasoning tier — 2M context, natively multimodal",
@@ -90,7 +91,7 @@ const frontierModels = [
 			"Grok 4 Heavy also scored 100% on AIME 2025 — often mistakenly attributed to the base Grok 4.x model",
 			"Real-time integration with X (Twitter) for current events",
 			"Grok 4.7 (Sept 21, 2026): supersedes Grok 4.6 — $2/$6 per 1M; Fast variant runs 2× faster at 2× the price",
-			"Grok Voice: voice interface model released June 4, 2026"
+			"Grok Voice 3.0 (Oct 14, 2026): speech-to-speech model for voice agents, $0.08 per minute"
 		],
 		bestFor: "Real-time info, math/science, users who want less guardrails"
 	},
@@ -241,7 +242,7 @@ const openSourceModels = [
 		color: "#818cf8",
 		tagline: "The enterprise-safe European model family, now spanning text, reasoning, code, and speech.",
 		bullets: [
-			"Mistral Large 4 (Oct 6, 2026, public preview): EU AI Act-compliant flagship — 1.05T MoE, 49B active, 1M context, $1.36/$4.18 per 1M",
+			"Mistral Large 4 (Oct 6, 2026): EU AI Act-compliant flagship — 1.05T MoE, 49B active, 1M context, $1.36/$4.18 per 1M. Open weights on Hugging Face since Oct 29 under Mistral's own license",
 			"Mistral Medium 3.5 (Apr 29, 2026): 128B dense, 256K context — retired Magistral (reasoning), Devstral 2 (coding), and Medium 3.1 (chat) into one unified model with configurable reasoning effort; 77.6% SWE-bench Verified, $1.50/$7.50 per 1M",
 			"Mistral Small 4 (March 16): 119B/6.5B-active MoE unifying reasoning, vision (Pixtral), and coding in one endpoint",
 			"Voxtral (March 26): open-source 4B text-to-speech, 9 languages, runs on consumer hardware",
@@ -324,7 +325,7 @@ const openSourceModels = [
 		color: "#76b900",
 		tagline: "NVIDIA's open agentic reasoning stack — Nano, Super, Ultra 550B, and the new 3.5 Super VL and Bolt models.",
 		bullets: [
-			"Nemotron 3.5 (Oct 15, 2026): Super VL, a 120B open vision-language model for enterprise agents, and Bolt 74B-A9B, a 2-bit 24GB build for local RTX and DGX workloads. Bolt E4B (Oct 23), a roughly 4GB build derived from Gemma 4 for edge devices, runs on about 6GB of RAM",
+			"Nemotron 3.5 (Oct 15, 2026): Super VL, a 120B open vision-language model for enterprise agents, and Bolt 74B-A9B, a 2-bit 24GB build for local RTX and DGX workloads. Bolt E4B (Oct 23), a roughly 4GB build derived from Gemma 4 for edge devices, runs on about 6GB of RAM. Nemotron 3.5 Transcribe (Oct 28) is an open-weight speech-to-text model for recorded audio: 40 languages, translation to and from English, and speaker labels for up to eight speakers",
 			"Nemotron 3 Ultra 550B (June 4, 2026): 550B/55B active MoE, hybrid Mamba-Transformer, 1M context; 48/100 AA Intelligence Index at launch — the strongest open US model benchmarked at the time",
 			"Nemotron 3 Nano Omni: 30B MoE omni-modal model unifying vision, audio, and text",
 			"Nano and Super sizes released March 2026; Super peers with Llama 4 Maverick on benchmarks",
@@ -469,6 +470,7 @@ const imageVideoModels = [
 	{ name: "Stable Diffusion 3.5", company: "Stability AI", bestFor: "Open-source; self-hostable; highly customizable" },
 	{ name: "FLUX 3", company: "Black Forest Labs", bestFor: "Unified image/video/audio/robotics model (Jul 23); video in Early Access now, image + open-weight Dev + robotics variant rolling out in stages, no public pricing yet" },
 	{ name: "LTX-2.3", company: "Lightricks", bestFor: "Open-weights video+audio in one pass; 22B params; 4K at 50 FPS, up to 20s; one of the most capable open video models available" },
+	{ name: "Genie 4", company: "Google DeepMind", bestFor: "Real-time interactive world model that generates audio with the scene; holds a scene for up to two minutes (Oct 27, research preview for trusted testers)" },
 	{ name: "Grok Imagine Video 1.5", company: "xAI", bestFor: "~2× faster video generation than prior version, native audio output (Jun 2026)" },
 	{ name: "Reve 2.0", company: "Reve", bestFor: "Image generation with precise layout control and typography — strong alternative to ChatGPT Images 2.5 / Imagen 4 for design-heavy use cases (Jun 3, 2026)" },
 	{ name: "Gemini 3.1 Flash Lite Image", company: "Google", bestFor: "Specialized fast image generation — Flash variant tuned for high-volume, low-latency image tasks (Jun 23, 2026)" },
@@ -613,7 +615,7 @@ const scenarios = [
 			<section class="hero">
 				<h1 class="hero-title">AI Models<br/><span class="hero-title-accent">Guide</span></h1>
 				<p class="hero-subtitle">A quick-reference to the major AI models, who makes them, and what they do best.</p>
-				<div class="hero-badge">Updated October 25, 2026</div>
+				<div class="hero-badge">Updated November 1, 2026</div>
 			</section>
 
 			<div class="guide-layout">
