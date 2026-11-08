@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 
 // Quick Reference Data
 const quickReference = [
-	{ model: "GPT-5.x / GPT-6", company: "OpenAI", bestFor: "General purpose", differentiator: "GPT-6 Astra (Sep 3) is the flagship, first model rated Critical for cybersecurity; GPT-6.1 Sol (Sep 29), GPT-6.1 Terra (Oct 26, $1/$5) and GPT-6 Luna are the cheaper API tiers; GPT-6 is now the ChatGPT default", color: "#10b981" },
+	{ model: "GPT-5.x / GPT-6", company: "OpenAI", bestFor: "General purpose", differentiator: "GPT-6 Astra (Sep 3) is the flagship; GPT-6.1 Sol (Sep 29), GPT-6.1 Terra (Oct 26, $1/$5) and GPT-6 Luna are the cheaper API tiers; GPT-6 is now the ChatGPT default", color: "#10b981" },
 	{ model: "Claude 5.x Family", company: "Anthropic", bestFor: "Coding & reasoning", differentiator: "Opus 5.5 (Sep 22) supersedes Opus 5 as the recommended starting model — Fable-5.1-level performance at 40% lower typical cost; Fable 5.1 (Sep 1) remains the max-capability tier", color: "#c084fc" },
 	{ model: "Gemini 3.x / 4", company: "Google DeepMind", bestFor: "Multimodal", differentiator: "Gemini 4 Carbon (Oct 28) is the newest but limited to Fairwind cyber defenders; Gemini 4 Argon (Sep 30) is the generally available flagship at $2/$10 per 1M through Nov 30, then $4/$20; Gemini 3.8 Flash (Sep 2) stays the default workhorse", color: "#60a5fa" },
 	{ model: "Grok 4.x", company: "xAI", bestFor: "Real-time info", differentiator: "Grok 4.7 (Sep 21) is the current flagship — $2/$6 per 1M tokens, with a Fast variant at 2× the speed and price", color: "#f97316" },
@@ -17,11 +17,12 @@ const quickReference = [
 	{ model: "MiniMax M3", company: "MiniMax", bestFor: "Cost-efficient coding", differentiator: "1M context, 59.0% SWE-bench Pro at $0.15/$1.15 per 1M tokens", color: "#a78bfa" },
 	{ model: "Command A+", company: "Cohere", bestFor: "Enterprise RAG", differentiator: "218B MoE, Cohere's first fully Apache 2.0 frontier model, tuned for RAG", color: "#fb923c" },
 	{ model: "Gemma 4", company: "Google", bestFor: "On-device open-weight", differentiator: "31B ranks #3 on Arena AI; E2B/E4B optimized for on-device Android", color: "#34d399" },
-	{ model: "Kimi K3 / K3.1", company: "Moonshot AI", bestFor: "Agentic open-source", differentiator: "K3.1 Pro (Oct 23) post-trains the same 2.8T MoE at $2/$10 per 1M with 1M context; K3 (Jul 16) is the open-weight release", color: "#ff6b6b" },
+	{ model: "Kimi K3 / K3.1", company: "Moonshot AI", bestFor: "Agentic open-source", differentiator: "K3.1 Pro (Oct 23) post-trains the same 2.8T MoE at $2/$10 per 1M with 1M context; open weights since Nov 4", color: "#ff6b6b" },
+	{ model: "Tencent Hy4", company: "Tencent", bestFor: "Agents & computer use", differentiator: "Hy4 (Nov 4) is Tencent's new flagship family with computer use; final open weights not yet published, only the Aug 28 preview weights", color: "#38bdf8" },
 	{ model: "Ling 3.1 Flash", company: "InclusionAI (Ant Group)", bestFor: "Open-weight agents & coding", differentiator: "560B MoE, 25B active, 1M context, MIT license — open weights on Hugging Face since Oct 14", color: "#e11d48" },
 	{ model: "GLM-5.3", company: "Zhipu AI", bestFor: "Open frontier", differentiator: "MIT license, 1M context; GLM-5.3-Flash (Aug 26) adds native multimodal at ~1/10th the price, trained on Huawei Ascend chips", color: "#4ecdc4" },
 	{ model: "Atria Dawn Preview", company: "Shanghai AI Lab", bestFor: "Long-horizon research agents", differentiator: "744B MoE on a GLM-5.2 base, MIT license; vendor-reported top-5-of-16 benchmark claims, not yet independently verified", color: "#e879f9" },
-	{ model: "GPT-5.5-Cyber", company: "OpenAI", bestFor: "Defensive cybersecurity", differentiator: "TAC-gated fine-tune for defensive cybersecurity — CrowdStrike, Cloudflare, Palo Alto, Cisco partners", color: "#ef4444" },
+	{ model: "GPT-6 Cyber / 5.5-Cyber", company: "OpenAI", bestFor: "Defensive cybersecurity", differentiator: "GPT-6 Cyber (Nov 5) is rated Critical and limited to approved Daybreak Red customers; GPT-5.5-Cyber is the TAC-gated fine-tune for CrowdStrike, Cloudflare, Palo Alto, and Cisco", color: "#ef4444" },
 	{ model: "Claude Mythos 5.1", company: "Anthropic", bestFor: "Security research", differentiator: "Cybersecurity research model via Project Glasswing — 150+ partner orgs, same weights as Fable 5.1", color: "#a855f7" },
 	{ model: "Gemini 3.8 Flash Cyber", company: "Google DeepMind", bestFor: "Restricted cybersecurity", differentiator: "Defensive-security variant of Gemini 3.8 Flash — gated to vetted defenders via Google's Fairwind Program, not on public price sheet", color: "#1d4ed8" },
 	{ model: "Sakana Fugu Max / Ultra v2", company: "Sakana AI", bestFor: "Orchestration / routing", differentiator: "Meta-model that dynamically routes tasks across frontier models internally; Ultra v2 hits 74.3 DeepSWE without Fable 5.1 or GPT-6-Astra in its pool", color: "#f59e0b" },
@@ -75,7 +76,7 @@ const frontierModels = [
 			"Gemini 3.5 Flash-Lite and Flash Cyber (July 21, 2026): cost-efficient high-volume and defensive-security variants",
 			"Gemini 3.1 Ultra (May 2026): top reasoning tier — 2M context, natively multimodal",
 			"Gemini 3.1 Pro (Feb 2026): deployed Pro-tier flagship — 94.3% GPQA Diamond, 1M context, $2/$12 per 1M",
-			"Gemini 3.1 Flash Live and Flash TTS round out the audio lineup; Omni Flash (May 19, 2026) adds any-to-any input with video output"
+			"Gemini 3.1 Flash Live and Flash TTS round out the audio lineup; Omni 1.2 Flash (Nov 5, 2026) takes any input and generates video, up to 15 seconds at $0.07 per second for 720p"
 		],
 		bestFor: "Multimodal apps, Google Workspace users, cost-conscious teams"
 	},
@@ -120,7 +121,8 @@ const frontierModels = [
 			"\"Unstructured state in, typed probabilistic decisions out\" — built for classification, routing, scoring, and extraction, not chat",
 			"Outputs generated in parallel rather than token-by-token, so schema conformance is structural, not prompted — can't hallucinate or produce a type error by design",
 			"70-500ms end-to-end — 40-200× faster than a comparable frontier LLM on the same task",
-			"$0.042 per 1M input tokens, output free; trade-off is no text generation — structured decisions only"
+			"$0.042 per 1M input tokens, output free; trade-off is no text generation — structured decisions only",
+			"Sarvam Prism (Nov 3, 2026) is a similar open decision model built on Sarvam 105B — Apache 2.0 weights on Hugging Face plus hosted API access"
 		],
 		bestFor: "High-volume classification, routing, and extraction where you need a typed decision, not prose"
 	},
@@ -270,12 +272,24 @@ const openSourceModels = [
 		color: "#ff6b6b",
 		tagline: "Open-weight frontier model from Moonshot — 2.8T MoE, with K3.1 Pro as the newest post-trained version.",
 		bullets: [
-			"Kimi K3.1 Pro (Oct 23, 2026): post-trained successor on the same 2.8T MoE — $2/$10 per 1M (a third cheaper than K3), 1M context. K3.1 Pro Highspeed runs 2-3× faster at $4/$20",
+			"Kimi K3.1 Pro (Oct 23, 2026): post-trained successor on the same 2.8T MoE — $2/$10 per 1M (a third cheaper than K3), 1M context. K3.1 Pro Highspeed runs 2-3× faster at $4/$20. Open weights on Hugging Face since Nov 4 under a modified MIT license",
 			"Kimi K3 (July 16, 2026; full weights July 27): 2.8T parameter MoE, successor to K2.7 Code",
 			"Open-weight, Modified MIT license; weights on Hugging Face",
 			"Kimi Code CLI agent rivals Claude Code and Gemini CLI"
 		],
 		bestFor: "Agentic coding workflows, open-source self-hosting, long-horizon coding tasks"
+	},
+	{
+		name: "Tencent Hy4",
+		company: "Tencent",
+		location: "Shenzhen, China",
+		color: "#38bdf8",
+		tagline: "Tencent's flagship model family, built for agents and computer use.",
+		bullets: [
+			"Hy4 (Nov 4, 2026): Tencent's new flagship with computer use, available through its API. Tencent says it trails Claude and GPT",
+			"Open weights: only the Hy4 preview (Aug 28, 2026, 770B total / 49B active) is downloadable so far"
+		],
+		bestFor: "Agentic workflows and computer use at low API cost"
 	},
 	{
 		name: "Ling 3.1 Flash",
@@ -414,13 +428,14 @@ const orchestrationModels = [
 // Restricted & Specialized Models
 const specializedModels = [
 	{
-		name: "GPT-5.5-Cyber",
+		name: "GPT-6 Cyber / GPT-5.5-Cyber",
 		company: "OpenAI",
 		location: "San Francisco",
 		color: "#ef4444",
-		tagline: "Fine-tuned GPT-5.5 for enterprise defensive cybersecurity — gated behind OpenAI's Trusted Access for Cyber program.",
+		tagline: "OpenAI's gated cybersecurity models — GPT-6 Cyber and the earlier GPT-5.5-Cyber.",
 		bullets: [
-			"Released May 7, 2026 — fine-tune of GPT-5.5 for dual-use security research; supersedes GPT-5.4-Cyber, still available under the same program",
+			"GPT-6 Cyber (Nov 5, 2026): rated Critical for cybersecurity under OpenAI's Preparedness Framework. Offered through the API and Codex to a small group of approved Daybreak Red customers; no general availability",
+			"GPT-5.5-Cyber (May 7, 2026): fine-tune of GPT-5.5 for dual-use security research; supersedes GPT-5.4-Cyber, still available under the same program",
 			"Lowered refusal thresholds for defensive cybersecurity tasks; native binary reverse engineering without source code",
 			"Gated behind OpenAI's Trusted Access for Cyber (TAC) program; partners include CrowdStrike, Cloudflare, Palo Alto, Cisco, JPMorgan, Goldman Sachs",
 			"No public API pricing; $10M in credits committed via the Cybersecurity Grant Program",
@@ -466,13 +481,13 @@ const imageVideoModels = [
 	{ name: "Midjourney V1 Video", company: "Midjourney", bestFor: "First video model from MJ — 5s clips extendable to 20s; ~25× cheaper than competitors" },
 	{ name: "Imagen 4", company: "Google", bestFor: "Photorealistic composition, spelling, and typography accuracy" },
 	{ name: "Nano Banana 2", company: "Google", bestFor: "Fast AI image editing, remixing, and style transfers; built on Gemini Flash" },
-	{ name: "ChatGPT Images 2.5", company: "OpenAI", bestFor: "Supersedes DALL-E 4 in ChatGPT (Sep 8, 2026); adds Sketch (draw a visual reference in-chat), up to 50% faster generation" },
+	{ name: "ChatGPT Images 2.6", company: "OpenAI", bestFor: "Succeeds Images 2.5 in ChatGPT (Nov 4, 2026); adds animated GIFs and reusable reference images of people, pets, and characters" },
 	{ name: "Stable Diffusion 3.5", company: "Stability AI", bestFor: "Open-source; self-hostable; highly customizable" },
 	{ name: "FLUX 3", company: "Black Forest Labs", bestFor: "Unified image/video/audio/robotics model (Jul 23); video in Early Access now, image + open-weight Dev + robotics variant rolling out in stages, no public pricing yet" },
 	{ name: "LTX-2.3", company: "Lightricks", bestFor: "Open-weights video+audio in one pass; 22B params; 4K at 50 FPS, up to 20s; one of the most capable open video models available" },
 	{ name: "Genie 4", company: "Google DeepMind", bestFor: "Real-time interactive world model that generates audio with the scene; holds a scene for up to two minutes (Oct 27, research preview for trusted testers)" },
 	{ name: "Grok Imagine Video 1.5", company: "xAI", bestFor: "~2× faster video generation than prior version, native audio output (Jun 2026)" },
-	{ name: "Reve 2.0", company: "Reve", bestFor: "Image generation with precise layout control and typography — strong alternative to ChatGPT Images 2.5 / Imagen 4 for design-heavy use cases (Jun 3, 2026)" },
+	{ name: "Reve 2.0", company: "Reve", bestFor: "Image generation with precise layout control and typography — strong alternative to ChatGPT Images 2.6 / Imagen 4 for design-heavy use cases (Jun 3, 2026)" },
 	{ name: "Gemini 3.1 Flash Lite Image", company: "Google", bestFor: "Specialized fast image generation — Flash variant tuned for high-volume, low-latency image tasks (Jun 23, 2026)" },
 ];
 
@@ -499,7 +514,7 @@ const scenarios = [
 			{ task: "Generate unit tests and docs", model: "GPT-5.x", color: "#10b981" },
 			{ task: "Rapid UI prototyping", model: "GPT-5.x", color: "#10b981" },
 			{ task: "Background agents for parallel development", model: "Composer 2.5 (Cursor)", color: "#50e3c2" },
-			{ task: "Open-source agentic coding", model: "Kimi K3", color: "#ff6b6b" },
+			{ task: "Open-source agentic coding", model: "Kimi K3.1", color: "#ff6b6b" },
 		]
 	},
 	{
@@ -615,7 +630,7 @@ const scenarios = [
 			<section class="hero">
 				<h1 class="hero-title">AI Models<br/><span class="hero-title-accent">Guide</span></h1>
 				<p class="hero-subtitle">A quick-reference to the major AI models, who makes them, and what they do best.</p>
-				<div class="hero-badge">Updated November 1, 2026</div>
+				<div class="hero-badge">Updated November 8, 2026</div>
 			</section>
 
 			<div class="guide-layout">
