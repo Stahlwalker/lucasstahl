@@ -32,6 +32,8 @@ const formattedDate = new Date(lastUpdated).toLocaleString('en-US', {
   loadFontAwesome={false}
   inlineCriticalCSS={true}
 >
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify({"@context": "https://schema.org", "@type": "Article", "headline": "SEO Performance Dashboard", "description": "Real-time PageSpeed Insights scores, Core Web Vitals, and Lighthouse metrics for lukestahl.io.", "url": "https://lukestahl.io/seo/", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://lukestahl.io/seo/"}, "datePublished": "2026-01-04", "dateModified": new Date(lastUpdated).toISOString(), "image": "https://lukestahl.io/assets/images/Hero_OG.png", "author": {"@type": "Person", "name": "Luke Stahl", "url": "https://lukestahl.io/"}, "publisher": {"@type": "Person", "name": "Luke Stahl", "url": "https://lukestahl.io/"}})} />
+
   <!-- SEO Hero Section -->
   <section class="seo-hero">
     <div class="section-container">
