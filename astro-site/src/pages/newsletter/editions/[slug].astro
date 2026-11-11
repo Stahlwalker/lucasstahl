@@ -174,9 +174,90 @@ const formatMonth = (date: string) =>
 
     </div>
   </div>
+
+  <dialog id="thumb-lightbox" class="thumb-lightbox" aria-label="Enlarged image">
+    <form method="dialog">
+      <button class="thumb-lightbox-close" aria-label="Close image">&times;</button>
+    </form>
+    <img id="thumb-lightbox-img" src="" alt="" />
+  </dialog>
 </Layout>
 
+<script>
+  const lightbox = document.getElementById('thumb-lightbox') as HTMLDialogElement | null;
+  const lightboxImg = document.getElementById('thumb-lightbox-img') as HTMLImageElement | null;
+
+  const openLightbox = (thumb: HTMLImageElement) => {
+    if (!lightbox || !lightboxImg) return;
+    lightboxImg.src = thumb.currentSrc || thumb.src;
+    lightboxImg.alt = thumb.alt;
+    lightbox.showModal();
+  };
+
+  document.querySelectorAll<HTMLImageElement>('.edition-content .li-thumb').forEach((thumb) => {
+    thumb.tabIndex = 0;
+    thumb.setAttribute('role', 'button');
+    thumb.setAttribute('aria-label', `Enlarge image: ${thumb.alt}`);
+    thumb.addEventListener('click', () => openLightbox(thumb));
+    thumb.addEventListener('keydown', (event) => {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      event.preventDefault();
+      openLightbox(thumb);
+    });
+  });
+
+  // Click on the backdrop or the image closes it
+  lightbox?.addEventListener('click', () => lightbox.close());
+</script>
+
 <style>
+  .thumb-lightbox {
+    border: none;
+    padding: 0;
+    margin: auto;
+    background: transparent;
+    width: fit-content;
+    height: fit-content;
+    max-width: 92vw;
+    max-height: 88vh;
+    overflow: visible;
+  }
+
+  .thumb-lightbox form {
+    margin: 0;
+    padding: 0;
+  }
+
+  .thumb-lightbox::backdrop {
+    background: rgba(0, 0, 0, 0.82);
+  }
+
+  .thumb-lightbox img {
+    display: block;
+    max-width: 92vw;
+    max-height: 84vh;
+    width: auto;
+    height: auto;
+    border-radius: 8px;
+    background: #fff;
+  }
+
+  .thumb-lightbox-close {
+    position: absolute;
+    top: -2.25rem;
+    right: 0;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .edition-content :global(.li-thumb) {
+    cursor: zoom-in;
+  }
+
   .edition-page {
     min-height: calc(100vh - 200px);
     padding: 4rem 2rem;

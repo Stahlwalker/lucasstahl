@@ -24,6 +24,7 @@
 - [Newsletter - August 2026 Edition](https://lukestahl.io/newsletter/editions/aug-2026/)
 - [Newsletter - September 2026 Edition](https://lukestahl.io/newsletter/editions/sep-2026/)
 - [Newsletter - October 2026 Edition](https://lukestahl.io/newsletter/editions/oct-2026/)
+- [Newsletter - November 2026 Edition](https://lukestahl.io/newsletter/editions/nov-2026/)
 - [Developer Marketing Cheat Sheet](https://lukestahl.io/dev-marketing-cheat-sheet/)
 - [AI Models Guide 2026](https://lukestahl.io/ai-models-guide/)
 - [Design System](https://lukestahl.io/design-system/)
