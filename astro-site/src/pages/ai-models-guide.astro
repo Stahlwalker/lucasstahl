@@ -4,32 +4,33 @@ import Layout from '../layouts/Layout.astro';
 // Quick Reference Data
 const quickReference = [
 	{ model: "GPT-5.x / GPT-6", company: "OpenAI", bestFor: "General purpose", differentiator: "GPT-6 Astra (Sep 3) is the flagship; GPT-6.1 Sol (Sep 29), GPT-6.1 Terra (Oct 26, $1/$5) and GPT-6 Luna are the cheaper API tiers; GPT-6 is now the ChatGPT default", color: "#10b981" },
-	{ model: "Claude 5.x Family", company: "Anthropic", bestFor: "Coding & reasoning", differentiator: "Opus 5.5 (Sep 22) supersedes Opus 5 as the recommended starting model — Fable-5.1-level performance at 40% lower typical cost; Fable 5.1 (Sep 1) remains the max-capability tier", color: "#c084fc" },
-	{ model: "Gemini 3.x / 4", company: "Google DeepMind", bestFor: "Multimodal", differentiator: "Gemini 4 Carbon (Oct 28) is the newest but limited to Fairwind cyber defenders; Gemini 4 Argon (Sep 30) is the generally available flagship at $2/$10 per 1M through Nov 30, then $4/$20; Gemini 3.8 Flash (Sep 2) stays the default workhorse", color: "#60a5fa" },
+	{ model: "Claude 5.x Family", company: "Anthropic", bestFor: "Coding & reasoning", differentiator: "Opus 5.5 (Sep 22) is the recommended starting model at 40% lower typical cost than Opus 5; Fable 5.2 (Nov 9) is the max-capability tier at $8/$40 per 1M, up to 30% faster than 5.1", color: "#c084fc" },
+	{ model: "Gemini 3.x / 4", company: "Google DeepMind", bestFor: "Multimodal", differentiator: "Gemini 4 Hydrogen (Nov 12) is the new default workhorse at $1.50/$7.50 per 1M; Gemini 4 Carbon (public Nov 10) and Argon (Sep 30) are the frontier tiers at $2/$10 per 1M through Nov 30, then $4/$20", color: "#60a5fa" },
 	{ model: "Grok 4.x", company: "xAI", bestFor: "Real-time info", differentiator: "Grok 4.7 (Sep 21) is the current flagship — $2/$6 per 1M tokens, with a Fast variant at 2× the speed and price", color: "#f97316" },
 	{ model: "Llama 4", company: "Meta", bestFor: "Open-source", differentiator: "10M token context, fully self-hostable; Behemoth shelved; Meta's newest open-weight model is Muse Spark Open", color: "#06b6d4" },
-	{ model: "Muse Wonder / Spark", company: "Meta Superintelligence Labs", bestFor: "Agentic coding & reasoning", differentiator: "Muse Wonder (Oct 12) is Meta's new closed-weight frontier model at $4/$20 per 1M; Spark 1.3 (Sep 2) is the cheaper tier at $1.25/$4.25; open-weight Muse Spark Open followed Oct 15", color: "#7c3aed" },
+	{ model: "Muse Wonder / Spark", company: "Meta Superintelligence Labs", bestFor: "Agentic coding & reasoning", differentiator: "Muse Wonder (Oct 12) is Meta's new closed-weight frontier model at $4/$20 per 1M; Spark 1.3 (Sep 2) is the cheaper tier at $1.25/$4.25; Muse Ember (Nov 9) is the budget agent tier at $0.10 per 1M input; open-weight Muse Spark Open followed Oct 15", color: "#7c3aed" },
 	{ model: "DeepSeek V4", company: "DeepSeek", bestFor: "Cost efficiency", differentiator: "V4.1-Flash (updated Oct 17) outperforms V4-Pro at lower rates, and V4-Pro stays available at unchanged billing — MIT license, 1M context, among the cheapest frontier-class models available", color: "#facc15" },
 	{ model: "Mistral Family", company: "Mistral", bestFor: "EU compliance", differentiator: "Large 4 (Oct 6; open weights Oct 29), Medium 3.5, Small 4, Voxtral — enterprise-safe with EU data sovereignty", color: "#818cf8" },
 	{ model: "Qwen 3.8", company: "Alibaba", bestFor: "Multilingual", differentiator: "Qwen3.8-Max (Aug 2) is the new flagship; Qwen3.8-27B (Aug 13) is a separate, genuinely self-hostable Apache 2.0 companion", color: "#f472b6" },
 	{ model: "Microsoft MAI", company: "Microsoft", bestFor: "Speech & media AI", differentiator: "MAI-Transcribe-2-Streaming, MAI-Voice-2.1, MAI-Image-2, Phi-4-reasoning — Microsoft's own foundation stack on Foundry", color: "#0ea5e9" },
 	{ model: "Amazon Nova 2", company: "Amazon / AWS", bestFor: "AWS-native enterprise", differentiator: "Lite, Pro, Sonic, Omni — AWS-native family powering the Nova Act agent", color: "#ff9900" },
-	{ model: "MiniMax M3", company: "MiniMax", bestFor: "Cost-efficient coding", differentiator: "1M context, 59.0% SWE-bench Pro at $0.15/$1.15 per 1M tokens", color: "#a78bfa" },
+	{ model: "MiniMax M3 / M3.1 Flash", company: "MiniMax", bestFor: "Cost-efficient coding", differentiator: "M3 has 1M context and 59.0% SWE-bench Pro at $0.15/$1.15 per 1M; M3.1 Flash is API-only for now at $0.15/$0.60, with weights promised later", color: "#a78bfa" },
 	{ model: "Command A+", company: "Cohere", bestFor: "Enterprise RAG", differentiator: "218B MoE, Cohere's first fully Apache 2.0 frontier model, tuned for RAG", color: "#fb923c" },
 	{ model: "Gemma 4", company: "Google", bestFor: "On-device open-weight", differentiator: "31B ranks #3 on Arena AI; E2B/E4B optimized for on-device Android", color: "#34d399" },
-	{ model: "Kimi K3 / K3.1", company: "Moonshot AI", bestFor: "Agentic open-source", differentiator: "K3.1 Pro (Oct 23) post-trains the same 2.8T MoE at $2/$10 per 1M with 1M context; open weights since Nov 4", color: "#ff6b6b" },
+	{ model: "Kimi K3 / K3.1", company: "Moonshot AI", bestFor: "Agentic open-source", differentiator: "K3.1 Pro (Oct 23) post-trains the same 2.8T MoE at $2/$10 per 1M with 1M context; open weights on Hugging Face under the Kimi K3.1 Pro License", color: "#ff6b6b" },
 	{ model: "Tencent Hy4", company: "Tencent", bestFor: "Agents & computer use", differentiator: "Hy4 (Nov 4) is Tencent's new flagship family with computer use; final open weights not yet published, only the Aug 28 preview weights", color: "#38bdf8" },
 	{ model: "Ling 3.1 Flash", company: "InclusionAI (Ant Group)", bestFor: "Open-weight agents & coding", differentiator: "560B MoE, 25B active, 1M context, MIT license — open weights on Hugging Face since Oct 14", color: "#e11d48" },
 	{ model: "GLM-5.3", company: "Zhipu AI", bestFor: "Open frontier", differentiator: "MIT license, 1M context; GLM-5.3-Flash (Aug 26) adds native multimodal at ~1/10th the price, trained on Huawei Ascend chips", color: "#4ecdc4" },
 	{ model: "Atria Dawn Preview", company: "Shanghai AI Lab", bestFor: "Long-horizon research agents", differentiator: "744B MoE on a GLM-5.2 base, MIT license; vendor-reported top-5-of-16 benchmark claims, not yet independently verified", color: "#e879f9" },
 	{ model: "GPT-6 Cyber / 5.5-Cyber", company: "OpenAI", bestFor: "Defensive cybersecurity", differentiator: "GPT-6 Cyber (Nov 5) is rated Critical and limited to approved Daybreak Red customers; GPT-5.5-Cyber is the TAC-gated fine-tune for CrowdStrike, Cloudflare, Palo Alto, and Cisco", color: "#ef4444" },
-	{ model: "Claude Mythos 5.1", company: "Anthropic", bestFor: "Security research", differentiator: "Cybersecurity research model via Project Glasswing — 150+ partner orgs, same weights as Fable 5.1", color: "#a855f7" },
+	{ model: "Claude Mythos 5.2", company: "Anthropic", bestFor: "Security research", differentiator: "Same model as Fable 5.2 without its cyber and biology safeguards — apply through the Cyber or Life Sciences Verification Programs", color: "#a855f7" },
 	{ model: "Gemini 3.8 Flash Cyber", company: "Google DeepMind", bestFor: "Restricted cybersecurity", differentiator: "Defensive-security variant of Gemini 3.8 Flash — gated to vetted defenders via Google's Fairwind Program, not on public price sheet", color: "#1d4ed8" },
 	{ model: "Sakana Fugu Max / Ultra v2", company: "Sakana AI", bestFor: "Orchestration / routing", differentiator: "Meta-model that dynamically routes tasks across frontier models internally; Ultra v2 hits 74.3 DeepSWE without Fable 5.1 or GPT-6-Astra in its pool", color: "#f59e0b" },
 	{ model: "Apple AFM 3", company: "Apple", bestFor: "On-device + cloud privacy", differentiator: "Five-model family spanning on-device and cloud — privacy-preserving inference for iOS/macOS", color: "#6b7280" },
 	{ model: "Sonar", company: "Perplexity", bestFor: "Search & research", differentiator: "Search-grounded, citation-first answers at 1,200 tok/s on Cerebras inference", color: "#22d3ee" },
 	{ model: "Jev", company: "TypeSafe AI", bestFor: "Structured decisions, not text", differentiator: "Not an LLM — outputs typed, schema-conformant decisions in parallel instead of generating text; 70-500ms, $0.042/M input, output free", color: "#94a3b8" },
-	{ model: "Composer 2.5", company: "Cursor", bestFor: "AI-native coding", differentiator: "Built on Kimi K2.5 with Cursor's post-training — matches Opus 4.7 at ~10× cheaper", color: "#50e3c2" },
+	{ model: "Composer 2.5", company: "Cursor", bestFor: "AI-native coding", differentiator: "Cursor's in-house model at $0.50/$2.50 per 1M, built on Kimi K2.5; Cursor joined SpaceX Aug 14", color: "#50e3c2" },
+	{ model: "SWE-2 Flash", company: "Cognition", bestFor: "Fast, cheap coding agent", differentiator: "Nov 4; one-fifth the price and 3× the speed of SWE-2, in Devin Desktop and CLI only; weights withheld over cyber risk", color: "#2dd4bf" },
 	{ model: "SubQ", company: "Subquadratic", bestFor: "Architecturally novel", differentiator: "First commercial subquadratic LLM — 12M token context at ~1/5th the compute cost of transformers", color: "#94a3b8" },
 ];
 
@@ -56,8 +57,8 @@ const frontierModels = [
 		color: "#c084fc",
 		tagline: "The developer favorite for coding, reasoning, and safety.",
 		bullets: [
-			"Opus 5.5 (Sept 22, 2026): flagship, 1M context, 128K output, $4/$20 per 1M. Performs at Fable 5.1 level on most work at about 40% lower cost than Opus 5; model ID claude-opus-5-5",
-			"Fable 5.1 (Sept 1, 2026): most capable model, 1M context, 128K output, $10/$50 per 1M, and about 25-45% cheaper than Fable 5 on typical work",
+			"Opus 5.5 (Sept 22, 2026): recommended starting model, 1M context, 128K output, $4/$20 per 1M, about 40% lower typical cost than Opus 5; model ID claude-opus-5-5",
+			"Fable 5.2 (Nov 9, 2026): most capable model at $8/$40 per 1M. Output is up to 30% faster than 5.1, and an optional fast mode runs up to 2.5× faster at $16/$80. Anthropic still suggests starting with Opus 5.5; model ID claude-fable-5-2",
 			"Sonnet 5.5 (Sept 28, 2026): $2/$10 per 1M, 1M context, 30%+ faster than Sonnet 5; model ID claude-sonnet-5-5",
 			"Haiku 5.5 (Oct 7, 2026): cheapest tier at $0.10/$0.50 per 1M for prompts up to 100K, with 1M context"
 		],
@@ -70,12 +71,10 @@ const frontierModels = [
 		color: "#60a5fa",
 		tagline: "Multimodal powerhouse with top benchmark breadth.",
 		bullets: [
-			"Gemini 4 Carbon (Oct 28, 2026): Google's newest model, focused on cybersecurity and long-horizon work. So far it is limited to selected cyber defenders through the Fairwind Program, with no public release date",
+			"Gemini 4 Hydrogen (Nov 12, 2026): new default workhorse for everyday coding and agentic work — flat $1.50/$7.50 per 1M across its 1M-token context, with four thinking levels. In the Gemini API, Gemini app, and Search. Google says it finishes tasks 2.5× faster than Gemini 3.8 Flash",
+			"Gemini 4 Carbon (Oct 28 for cyber defenders; public Nov 10, 2026): Google's strongest model for long-horizon agentic work, hard coding, and research. Paid Gemini API developers and Gemini for business get it at the Argon introductory price ($2/$10 per 1M through Nov 30, then $4/$20), and Google AI Ultra subscribers can use it in the Gemini app. Carbon for cyber stays in the Fairwind Program",
 			"Gemini 4 Argon (Sept 30, 2026): Google's generally available flagship, focused on coding, agentic work, research, and cybersecurity — 1M-token output (up from 64K). Generally available since Oct 13 to paid Gemini API developers, AI Pro and Ultra subscribers, and Gemini for Business. $2/$10 per 1M is introductory through Nov 30; from Dec 1 it becomes $4/$20",
-			"Gemini 3.8 Flash (Sept 2, 2026): new default workhorse, built on 3.7 Flash — beats 3.7 on every benchmark Google published, 1M context, 64K output, same $0.75/$3.75 per 1M pricing through Dec 31, 2026",
-			"Gemini 3.5 Flash-Lite and Flash Cyber (July 21, 2026): cost-efficient high-volume and defensive-security variants",
-			"Gemini 3.1 Ultra (May 2026): top reasoning tier — 2M context, natively multimodal",
-			"Gemini 3.1 Pro (Feb 2026): deployed Pro-tier flagship — 94.3% GPQA Diamond, 1M context, $2/$12 per 1M",
+			"Gemini 3.5 Flash-Lite (July 21, 2026): cost-efficient high-volume tier",
 			"Gemini 3.1 Flash Live and Flash TTS round out the audio lineup; Omni 1.2 Flash (Nov 5, 2026) takes any input and generates video, up to 15 seconds at $0.07 per second for 720p"
 		],
 		bestFor: "Multimodal apps, Google Workspace users, cost-conscious teams"
@@ -131,11 +130,9 @@ const frontierModels = [
 		company: "Cursor",
 		location: "San Francisco",
 		color: "#50e3c2",
-		tagline: "Frontier-class coding at one-tenth the price — built on Kimi K2.5 with Cursor's own post-training pipeline.",
+		tagline: "Cursor's in-house coding model, built on Kimi K2.5 with Cursor's own post-training. Cursor became part of SpaceX on Aug 14, 2026.",
 		bullets: [
-			"Released May 18, 2026 — built on Kimi K2.5 with Cursor's own post-training",
-			"79.8% SWE-bench Multilingual, 69.3% Terminal-Bench 2.0 — matches Claude Opus 4.7 and GPT-5.5 on coding benchmarks",
-			"$0.50/$2.50 per 1M — roughly 10× cheaper than Opus 4.7",
+			"Released May 18, 2026; $0.50/$2.50 per 1M",
 			"Trained with RL for complex, hundreds-of-steps tasks",
 			"Fast variant is the default; background agents run tasks autonomously"
 		],
@@ -169,6 +166,7 @@ const frontierModels = [
 			"Multimodal reasoning with thought compression and parallel sub-agent orchestration",
 			"Muse Spark 1.3 (Sept 2, 2026): improved coding/agentic performance for longer-horizon work — #6 on Artificial Analysis Intelligence Index, $1.25/$4.25 per 1M",
 			"Muse Wonder (Oct 12, 2026): Meta's first frontier model — closed weights, 1M context, multimodal input, built for agents, $4/$20 per 1M via the Meta Model API and Muse Code. Muse Wonder Full, the higher tier, is only in Muse Code's $50 and $200 monthly plans",
+			"Muse Ember (Nov 9, 2026): Meta's lightest and cheapest model, built for repetitive agent work like tool calls, routing, extraction, and long-document parsing. $0.10 per 1M input, with image, audio, and video input. Meta pairs it with Wonder: Wonder plans, Ember handles the volume",
 			"Muse Spark Open (Oct 15, 2026): open-weight sibling — 816B total / 42B active MoE, 1M context, multimodal input. Released under the Muse Model License (free use and fine-tuning, but products must show \"Built with Muse Spark Open\"), so it is not OSI open source",
 		],
 		bestFor: "Frontier multimodal reasoning, agentic and terminal coding (Muse Code), closed-API enterprise deployments"
@@ -259,9 +257,9 @@ const openSourceModels = [
 		color: "#a78bfa",
 		tagline: "Cost-efficient open-weight coding leader — 1M context and top SWE-bench Pro score per dollar.",
 		bullets: [
-			"Released June 1, 2026 — 1M context window; 59.0% SWE-bench Pro; successor to M2.5 (Feb 12) and M2.7 (late April)",
+			"Released June 1, 2026 — 1M context window; 59.0% SWE-bench Pro",
 			"$0.15/1M input, $1.15/1M output — among the cheapest frontier-class coding models",
-			"M2.5 base: 230B MoE / 10B active, 80.2% SWE-Bench Verified; M3 extends context and benchmark lead"
+			"M3.1 Flash: in the MiniMax API, M Plan, and MiniMax Code at $0.15/$0.60 per 1M. MiniMax says inference is nearly 3× faster and agent-task cost 70% lower than its predecessor. Weights are promised for later"
 		],
 		bestFor: "Budget-conscious agentic coding, open-source self-hosting, high-throughput coding pipelines"
 	},
@@ -272,9 +270,7 @@ const openSourceModels = [
 		color: "#ff6b6b",
 		tagline: "Open-weight frontier model from Moonshot — 2.8T MoE, with K3.1 Pro as the newest post-trained version.",
 		bullets: [
-			"Kimi K3.1 Pro (Oct 23, 2026): post-trained successor on the same 2.8T MoE — $2/$10 per 1M (a third cheaper than K3), 1M context. K3.1 Pro Highspeed runs 2-3× faster at $4/$20. Open weights on Hugging Face since Nov 4 under a modified MIT license",
-			"Kimi K3 (July 16, 2026; full weights July 27): 2.8T parameter MoE, successor to K2.7 Code",
-			"Open-weight, Modified MIT license; weights on Hugging Face",
+			"Kimi K3.1 Pro (Oct 23, 2026): post-trained successor on the same 2.8T MoE — $2/$10 per 1M (a third cheaper than K3), 1M context. K3.1 Pro Highspeed runs 2-3× faster at $4/$20. Open weights on Hugging Face under the Kimi K3.1 Pro License",
 			"Kimi Code CLI agent rivals Claude Code and Gemini CLI"
 		],
 		bestFor: "Agentic coding workflows, open-source self-hosting, long-horizon coding tasks"
@@ -444,19 +440,18 @@ const specializedModels = [
 		bestFor: "Enterprise defensive security, vulnerability research, threat analysis (TAC partners only)"
 	},
 	{
-		name: "Claude Mythos 5.1",
+		name: "Claude Mythos 5.2",
 		company: "Anthropic",
 		location: "San Francisco",
 		color: "#a855f7",
-		tagline: "Cybersecurity research model via Project Glasswing — Anthropic's counterpart to GPT-5.5-Cyber. Updated to Mythos 5.1 alongside Fable 5.1 on Sept 1, 2026.",
+		tagline: "Cybersecurity research model — Anthropic's counterpart to GPT-5.5-Cyber, and the same model as Fable 5.2 with fewer safeguards.",
 		bullets: [
-			"Originally launched April 6–7, 2026 as Mythos Preview; graduated to Mythos 5 on June 9, 2026 alongside Fable 5; updated to Mythos 5.1 on Sept 1, 2026 alongside Fable 5.1",
-			"GPQA 0.9; 93.9% SWE-bench Verified; 97.6% USAMO 2026 (as measured on Mythos 5)",
-			"Expanded June 2, 2026 from ~12 initial partners to 150+ organizations across 15+ countries for critical-infrastructure cybersecurity",
-			"Same weights as Fable 5.1 — safety classifiers lifted only for Glasswing partners, not a separate model",
-			"High-cost pricing retained to gate general use and prevent misuse"
+			"Launched April 2026 as Mythos Preview; Mythos 5.2 has shipped alongside Fable 5.2 since Nov 9, 2026",
+			"On Anthropic's internal CVE Rediscovery eval, Mythos 5.2 found 89.6% of advisories vs. 78.3% for Mythos 5.1 (vendor-reported)",
+			"Priced like Fable 5.2 at $8/$40 per 1M",
+			"Same underlying model as Fable 5.2 — its cyber and biology safeguards are lifted only for vetted organizations, which apply through the Cyber or Life Sciences Verification Programs",
 		],
-		bestFor: "Restricted cybersecurity research (Project Glasswing partners only)"
+		bestFor: "Restricted cybersecurity research (vetted organizations only)"
 	},
 	{
 		name: "Gemini 3.8 Flash Cyber",
@@ -469,9 +464,22 @@ const specializedModels = [
 			"Restricted to governments, critical infrastructure operators, and software maintainers approved through the Fairwind Program — not on general release or a public price sheet",
 			"70%+ real-world vulnerability discovery rate; sits on the CWE-Bench Pareto frontier for patching speed",
 			"Participating orgs must limit access to internal cybersecurity/incident-response/pentest teams and enforce MFA",
-			"Third major lab (after OpenAI's GPT-5.5-Cyber and Anthropic's Mythos 5.1) to ship a gated defensive-cyber model"
+			"Third major lab (after OpenAI's GPT-5.5-Cyber and Anthropic's Mythos) to ship a gated defensive-cyber model"
 		],
 		bestFor: "Restricted defensive cybersecurity work (Fairwind Program partners only)"
+	},
+	{
+		name: "SWE-2 Flash",
+		company: "Cognition",
+		location: "San Francisco",
+		color: "#2dd4bf",
+		tagline: "Cognition's fast, low-cost coding model for Devin — built on Thinking Machines' Inkling-Small.",
+		bullets: [
+			"Released Nov 4, 2026 in Devin Desktop and CLI, free through Nov 30. Cognition says it costs one-fifth as much and runs 3× faster than SWE-2",
+			"276B total / 12B active parameters. Cognition scores it 20.0% on Terminal-Bench 4.0 and 24.0% on FrontierCode 2.0",
+			"Weights are not public: Cognition cites cyber risk and is building a program to share them with industry partners and researchers"
+		],
+		bestFor: "Automations, code review, feature work, and docs updates inside Devin"
 	}
 ];
 
@@ -525,7 +533,7 @@ const scenarios = [
 			{ task: "Summarize a YouTube video", model: "Gemini 3.x", color: "#60a5fa" },
 			{ task: "Get real-time data on a trending topic", model: "Grok 4.x", color: "#f97316" },
 			{ task: "Get sourced answers with citations", model: "Sonar (Perplexity)", color: "#22d3ee" },
-			{ task: "Deep competitive research", model: "Claude Fable 5.1", color: "#c084fc" },
+			{ task: "Deep competitive research", model: "Claude Fable 5.2", color: "#c084fc" },
 		]
 	},
 	{
@@ -574,7 +582,7 @@ const scenarios = [
 
 <Layout
 	title="AI Models Guide 2026"
-	description="Quick reference to major AI models of 2026: Claude Fable 5.1, Opus 5.5, GPT-6 Astra, Gemini 4 Argon, Grok 4.7, and more. Costs and use cases compared."
+	description="Quick reference to major AI models of 2026: Claude Fable 5.2, Opus 5.5, GPT-6 Astra, Gemini 4 Argon, Grok 4.7, and more. Costs and use cases compared."
 	ogTitle="AI Models Guide 2026 — Every Major Model Compared"
 	ogDescription="Claude, GPT-6, Gemini 4, Grok, Muse, DeepSeek and more, side by side. Cost, context window, and what each model is best at. Updated weekly."
 	canonicalUrl="https://lukestahl.io/ai-models-guide/"
@@ -589,7 +597,7 @@ const scenarios = [
 		"@context": "https://schema.org",
 		"@type": "Article",
 		"headline": "AI Models Guide 2026 — Every Major Model Compared",
-		"description": "A quick-reference to the major AI models in 2026. Claude Opus 5.5, Claude Fable 5.1, GPT-6 Astra, GPT-6 Sol, GPT-5.5 and GPT-5.5 Instant, Gemini 4 Argon, Gemini 3.8 Flash, Gemini 3.1 Ultra, Gemini Omni, Grok 4.7, Grok 4 Heavy, Cursor Composer 2.5, SubQ, Llama 4, Amazon Nova 2, DeepSeek V4, MiniMax M3, Kimi K3.1 Pro, Kimi K3, GLM-5.3, Mistral, Qwen 3.8, Gemma 4, Microsoft MAI, plus restricted cyber models GPT-5.5-Cyber, Claude Mythos 5.1, and Gemini 3.8 Flash Cyber.",
+		"description": "A quick-reference to the major AI models in 2026. Claude Opus 5.5, Claude Fable 5.2, GPT-6 Astra, GPT-6 Sol, GPT-5.5 and GPT-5.5 Instant, Gemini 4 Argon, Gemini 4 Carbon, Gemini 4 Hydrogen, Gemini Omni, Grok 4.7, Grok 4 Heavy, Cursor Composer 2.5, SubQ, Llama 4, Amazon Nova 2, DeepSeek V4, MiniMax M3.1 Flash, Kimi K3.1 Pro, GLM-5.3, Muse Ember, SWE-2 Flash, Mistral, Qwen 3.8, Gemma 4, Microsoft MAI, plus restricted cyber models GPT-5.5-Cyber, Claude Mythos 5.2, and Gemini 3.8 Flash Cyber.",
 		"author": {
 			"@type": "Person",
 			"name": "Luke Stahl",
@@ -606,7 +614,7 @@ const scenarios = [
 			"@type": "WebPage",
 			"@id": "https://lukestahl.io/ai-models-guide/"
 		},
-		"keywords": "AI models, personal AI agents, Claude Duet, ChatGPT dots, Gemini Spark, Grok Bot, Hermes Agent, Instinct, OpenClaw, Claude Opus 5.5, Claude Opus 5, Claude Sonnet 5.5, Claude Haiku 5.5, Claude Fable 5.1, Claude Mythos 5.1, GPT-6 Astra, GPT-6 Sol, GPT-5.5, GPT-5.5 Instant, Gemini 4 Argon, Gemini 3.8 Flash, Gemini 3.8 Flash Cyber, Gemini 3.5 Flash-Lite, Gemini 3.5 Flash Cyber, Gemini 3.1 Ultra, Gemini 3.1 Pro, Gemini Omni, Grok 4.7, Grok 4 Heavy, Cursor Composer 2.5, SubQ, Llama 4, Meta Muse Wonder, Muse Spark 1.3, Muse Spark Open, Muse Code, Amazon Nova 2, DeepSeek V4, MiniMax M3, Mistral Large 4, Mistral Small 4, Mistral Medium 3.5, Qwen 3.8, Qwen3.8-Max, Qwen3.8-27B, Qwen 3.7 Max, Qwen3 Coder Next, Gemma 4, Microsoft MAI, Phi-4-reasoning, Cohere Command A+, Kimi K3.1 Pro, Kimi K3, GLM-5.3, GLM-5.3-Flash, NVIDIA Nemotron 3 Ultra 550B, GPT-5.5-Cyber, Apple AFM 3, AI comparison, LLM guide 2026"
+		"keywords": "AI models, personal AI agents, Claude Duet, ChatGPT dots, Gemini Spark, Grok Bot, Hermes Agent, Instinct, OpenClaw, Claude Opus 5.5, Claude Opus 5, Claude Sonnet 5.5, Claude Haiku 5.5, Claude Fable 5.2, Claude Mythos 5.2, GPT-6 Astra, GPT-6 Sol, GPT-5.5, GPT-5.5 Instant, Gemini 4 Argon, Gemini 4 Carbon, Gemini 4 Hydrogen, Gemini 3.8 Flash Cyber, Gemini 3.5 Flash-Lite, Gemini Omni, Grok 4.7, Grok 4 Heavy, Cursor Composer 2.5, SubQ, Llama 4, Meta Muse Wonder, Muse Spark 1.3, Muse Ember, Muse Spark Open, Muse Code, Amazon Nova 2, DeepSeek V4, MiniMax M3, MiniMax M3.1 Flash, Mistral Large 4, Mistral Small 4, Mistral Medium 3.5, Qwen 3.8, Qwen3.8-Max, Qwen3.8-27B, Qwen 3.7 Max, Qwen3 Coder Next, Gemma 4, Microsoft MAI, Phi-4-reasoning, Cohere Command A+, Kimi K3.1 Pro, GLM-5.3, GLM-5.3-Flash, SWE-2 Flash, Cognition, NVIDIA Nemotron 3 Ultra 550B, GPT-5.5-Cyber, Apple AFM 3, AI comparison, LLM guide 2026"
 	})} />
 
 	<!-- JSON-LD: BreadcrumbList -->
@@ -630,7 +638,7 @@ const scenarios = [
 			<section class="hero">
 				<h1 class="hero-title">AI Models<br/><span class="hero-title-accent">Guide</span></h1>
 				<p class="hero-subtitle">A quick-reference to the major AI models, who makes them, and what they do best.</p>
-				<div class="hero-badge">Updated November 8, 2026</div>
+				<div class="hero-badge">Updated November 14, 2026</div>
 			</section>
 
 			<div class="guide-layout">
