@@ -3,16 +3,16 @@ import Layout from '../layouts/Layout.astro';
 
 // Quick Reference Data
 const quickReference = [
-	{ model: "GPT-5.x / GPT-6", company: "OpenAI", bestFor: "General purpose", differentiator: "GPT-6 Astra (Sep 3) is the flagship; GPT-6.1 Sol (Sep 29), GPT-6.1 Terra (Oct 26, $1/$5) and GPT-6 Luna are the cheaper API tiers; GPT-6 is now the ChatGPT default", color: "#10b981" },
+	{ model: "GPT-5.x / GPT-6", company: "OpenAI", bestFor: "General purpose", differentiator: "GPT-6.2 Astra (Nov 17) is the flagship at $8/$40 per 1M; GPT-6.2 Sol ($2/$10) is the everyday model, with GPT-6.1 Terra (Oct 26, $1/$5) and GPT-6 Luna as the cheaper API tiers", color: "#10b981" },
 	{ model: "Claude 5.x Family", company: "Anthropic", bestFor: "Coding & reasoning", differentiator: "Opus 5.5 (Sep 22) is the recommended starting model at 40% lower typical cost than Opus 5; Fable 5.2 (Nov 9) is the max-capability tier at $8/$40 per 1M, up to 30% faster than 5.1", color: "#c084fc" },
-	{ model: "Gemini 3.x / 4", company: "Google DeepMind", bestFor: "Multimodal", differentiator: "Gemini 4 Hydrogen (Nov 12) is the new default workhorse at $1.50/$7.50 per 1M; Gemini 4 Carbon (public Nov 10) and Argon (Sep 30) are the frontier tiers at $2/$10 per 1M through Nov 30, then $4/$20", color: "#60a5fa" },
+	{ model: "Gemini 3.x / 4", company: "Google DeepMind", bestFor: "Multimodal", differentiator: "Gemini 4 Neon (Nov 18) is the new mid-tier at $3/$15 per 1M; Hydrogen (Nov 12) is the default workhorse at $1.50/$7.50; Gemini 4 Carbon (public Nov 10) and Argon (Sep 30) are the frontier tiers at $2/$10 per 1M through Nov 30, then $4/$20", color: "#60a5fa" },
 	{ model: "Grok 4.x", company: "xAI", bestFor: "Real-time info", differentiator: "Grok 4.7 (Sep 21) is the current flagship — $2/$6 per 1M tokens, with a Fast variant at 2× the speed and price", color: "#f97316" },
 	{ model: "Llama 4", company: "Meta", bestFor: "Open-source", differentiator: "10M token context, fully self-hostable; Behemoth shelved; Meta's newest open-weight model is Muse Spark Open", color: "#06b6d4" },
 	{ model: "Muse Wonder / Spark", company: "Meta Superintelligence Labs", bestFor: "Agentic coding & reasoning", differentiator: "Muse Wonder (Oct 12) is Meta's new closed-weight frontier model at $4/$20 per 1M; Spark 1.3 (Sep 2) is the cheaper tier at $1.25/$4.25; Muse Ember (Nov 9) is the budget agent tier at $0.10 per 1M input; open-weight Muse Spark Open followed Oct 15", color: "#7c3aed" },
 	{ model: "DeepSeek V4", company: "DeepSeek", bestFor: "Cost efficiency", differentiator: "V4.1-Flash (updated Oct 17) outperforms V4-Pro at lower rates, and V4-Pro stays available at unchanged billing — MIT license, 1M context, among the cheapest frontier-class models available", color: "#facc15" },
 	{ model: "Mistral Family", company: "Mistral", bestFor: "EU compliance", differentiator: "Large 4 (Oct 6; open weights Oct 29), Medium 3.5, Small 4, Voxtral — enterprise-safe with EU data sovereignty", color: "#818cf8" },
-	{ model: "Qwen 3.8", company: "Alibaba", bestFor: "Multilingual", differentiator: "Qwen3.8-Max (Aug 2) is the new flagship; Qwen3.8-27B (Aug 13) is a separate, genuinely self-hostable Apache 2.0 companion", color: "#f472b6" },
-	{ model: "Microsoft MAI", company: "Microsoft", bestFor: "Speech & media AI", differentiator: "MAI-Transcribe-2-Streaming, MAI-Voice-2.1, MAI-Image-2, Phi-4-reasoning — Microsoft's own foundation stack on Foundry", color: "#0ea5e9" },
+	{ model: "Qwen 4", company: "Alibaba", bestFor: "Multilingual", differentiator: "Qwen4-Max (Nov 16) is the new hosted flagship, 2.4T MoE with 1M context; Qwen3.8-27B (Aug 13) stays the self-hostable Apache 2.0 option", color: "#f472b6" },
+	{ model: "Microsoft MAI", company: "Microsoft", bestFor: "Speech, media & coding AI", differentiator: "MAI Code 2 (Nov 17) is the new coding flagship; MAI-Transcribe-2-Streaming, MAI-Voice-2.1, MAI-Image-2, Phi-4-reasoning — Microsoft's own foundation stack on Foundry", color: "#0ea5e9" },
 	{ model: "Amazon Nova 2", company: "Amazon / AWS", bestFor: "AWS-native enterprise", differentiator: "Lite, Pro, Sonic, Omni — AWS-native family powering the Nova Act agent", color: "#ff9900" },
 	{ model: "MiniMax M3 / M3.1 Flash", company: "MiniMax", bestFor: "Cost-efficient coding", differentiator: "M3 has 1M context and 59.0% SWE-bench Pro at $0.15/$1.15 per 1M; M3.1 Flash is API-only for now at $0.15/$0.60, with weights promised later", color: "#a78bfa" },
 	{ model: "Command A+", company: "Cohere", bestFor: "Enterprise RAG", differentiator: "218B MoE, Cohere's first fully Apache 2.0 frontier model, tuned for RAG", color: "#fb923c" },
@@ -43,8 +43,8 @@ const frontierModels = [
 		color: "#10b981",
 		tagline: "The versatile all-rounder with dynamic internal routing.",
 		bullets: [
-			"GPT-6 Astra (Sept 3, 2026): flagship at $10/$50 per 1M, and the first model rated Critical for cybersecurity under OpenAI's Preparedness Framework. A follow-up GPT-6.1 Astra was shelved Sept 28 over safety concerns",
-			"GPT-6.1 Sol (Sept 29), GPT-6.1 Terra (Oct 26), and GPT-6 Luna: 1.05M context, replacing the GPT-5.6 tiers. Sol is $2/$10 per 1M with near-Astra agentic coding and computer use; Terra is $1/$5 for computer use, visual reasoning, and everyday office work; Luna is $0.10/$0.50",
+			"GPT-6.2 Astra and GPT-6.2 Sol (Nov 17, 2026): Astra is the flagship for hard professional work at $8/$40 per 1M ($0.40 cached), 20% below GPT-6 Astra; Sol is the everyday model and keeps GPT-6.1 Sol's $2/$10. Both are in ChatGPT Work and Codex for Plus, Pro, Enterprise, and Edu",
+			"GPT-6.1 Terra (Oct 26) and GPT-6 Luna: 1.05M context, replacing the GPT-5.6 tiers. Terra is $1/$5 for computer use, visual reasoning, and everyday office work; Luna is $0.10/$0.50",
 			"In ChatGPT: GPT-6 became the default on Oct 7 (Sol on paid plans, Luna on Free and Go). GPT-6 Pro added parallel agents on Oct 16",
 			"GPT-Live-1 / mini (July 8, 2026): full-duplex voice models with real-time translation, now the default ChatGPT voice mode"
 		],
@@ -71,11 +71,11 @@ const frontierModels = [
 		color: "#60a5fa",
 		tagline: "Multimodal powerhouse with top benchmark breadth.",
 		bullets: [
-			"Gemini 4 Hydrogen (Nov 12, 2026): new default workhorse for everyday coding and agentic work — flat $1.50/$7.50 per 1M across its 1M-token context, with four thinking levels. In the Gemini API, Gemini app, and Search. Google says it finishes tasks 2.5× faster than Gemini 3.8 Flash",
-			"Gemini 4 Carbon (Oct 28 for cyber defenders; public Nov 10, 2026): Google's strongest model for long-horizon agentic work, hard coding, and research. Paid Gemini API developers and Gemini for business get it at the Argon introductory price ($2/$10 per 1M through Nov 30, then $4/$20), and Google AI Ultra subscribers can use it in the Gemini app. Carbon for cyber stays in the Fairwind Program",
-			"Gemini 4 Argon (Sept 30, 2026): Google's generally available flagship, focused on coding, agentic work, research, and cybersecurity — 1M-token output (up from 64K). Generally available since Oct 13 to paid Gemini API developers, AI Pro and Ultra subscribers, and Gemini for Business. $2/$10 per 1M is introductory through Nov 30; from Dec 1 it becomes $4/$20",
-			"Gemini 3.5 Flash-Lite (July 21, 2026): cost-efficient high-volume tier",
-			"Gemini 3.1 Flash Live and Flash TTS round out the audio lineup; Omni 1.2 Flash (Nov 5, 2026) takes any input and generates video, up to 15 seconds at $0.07 per second for 720p"
+			"Gemini 4 Neon (Nov 18, 2026): mid-tier model for coding, knowledge work, and science — $3/$15 per 1M, 1M context",
+			"Gemini 4 Hydrogen (Nov 12, 2026): default workhorse for everyday coding and agentic work — $1.50/$7.50 per 1M, 1M context, four thinking levels",
+			"Gemini 4 Carbon (public Nov 10, 2026): strongest model for long-horizon agentic work, hard coding, and research. Same introductory price as Argon; Google AI Ultra subscribers get it in the Gemini app",
+			"Gemini 4 Argon (Sept 30, 2026): generally available flagship for coding, agentic work, and research, with 1M-token output. $2/$10 per 1M through Nov 30, then $4/$20",
+			"Also: Gemini 3.5 Flash-Lite (cost-efficient, high volume), Flash Live and Flash TTS (audio), and Omni 1.2 Flash (Nov 5; any input to video, up to 15 seconds at $0.07 per second for 720p)"
 		],
 		bestFor: "Multimodal apps, Google Workspace users, cost-conscious teams"
 	},
@@ -86,7 +86,6 @@ const frontierModels = [
 		color: "#f97316",
 		tagline: "Real-time data meets raw reasoning power.",
 		bullets: [
-			"Grok 4.3 (Apr 30, 2026): cost-efficient API flagship — $1.25/$2.50 per 1M, always-on reasoning, native video input up to 5-minute clips",
 			"Grok 4 Heavy: premium multi-agent variant — 256K context, first model to score 50.7% on Humanity's Last Exam; gated behind the $300/month SuperGrok Heavy tier",
 			"Grok 4 Heavy also scored 100% on AIME 2025 — often mistakenly attributed to the base Grok 4.x model",
 			"Real-time integration with X (Twitter) for current events",
@@ -145,12 +144,12 @@ const frontierModels = [
 		color: "#0ea5e9",
 		tagline: "Microsoft's own foundation model stack — independent of OpenAI, built for speech, voice, vision, and reasoning.",
 		bullets: [
+			"MAI Code 2 and MAI Code 2 Flash (Nov 17, 2026): agentic coding models announced at Ignite, in GitHub Copilot; Code 2 Flash is also in limited preview on Foundry. No specs or API pricing published yet",
 			"MAI-Transcribe-2-Streaming (Oct 1, 2026): real-time speech-to-text in 60 languages with automatic language detection, $0.54 per audio hour (public preview)",
 			"MAI-Voice-2.1 and Flash (Oct 1, 2026): text-to-speech in 23 languages with one voice carried across languages; Flash targets low-latency, high-volume use",
 			"MAI-Image-2: high-quality image generation",
 			"Phi-4-reasoning (Apr 10, 2026): compact reasoning model, strong math/logic at small-model cost",
 			"MAI-Thinking-1 (Jun 2026): 1T/35B active MoE reasoning model — flagship of a seven-model MAI launch",
-			"MAI-Code-1 / Flash (Jun 2026): 5B-param coding model trained on Copilot's production workflows",
 			"All available on Microsoft Foundry — independent of OpenAI"
 		],
 		bestFor: "Speech transcription, voice synthesis, compact reasoning, enterprise media AI on Azure"
@@ -160,14 +159,12 @@ const frontierModels = [
 		company: "Meta Superintelligence Labs",
 		location: "Menlo Park",
 		color: "#7c3aed",
-		tagline: "Meta's closed-weight frontier models — a break from the open Llama strategy, with an open-weight sibling in Muse Spark Open and Muse Code as its terminal coding agent.",
+		tagline: "Meta's closed-weight frontier models, with an open-weight sibling in Muse Spark Open and Muse Code as its terminal coding agent.",
 		bullets: [
-			"Released April 8, 2026 — led by Alexandr Wang (ex-Scale AI)",
-			"Multimodal reasoning with thought compression and parallel sub-agent orchestration",
-			"Muse Spark 1.3 (Sept 2, 2026): improved coding/agentic performance for longer-horizon work — #6 on Artificial Analysis Intelligence Index, $1.25/$4.25 per 1M",
-			"Muse Wonder (Oct 12, 2026): Meta's first frontier model — closed weights, 1M context, multimodal input, built for agents, $4/$20 per 1M via the Meta Model API and Muse Code. Muse Wonder Full, the higher tier, is only in Muse Code's $50 and $200 monthly plans",
-			"Muse Ember (Nov 9, 2026): Meta's lightest and cheapest model, built for repetitive agent work like tool calls, routing, extraction, and long-document parsing. $0.10 per 1M input, with image, audio, and video input. Meta pairs it with Wonder: Wonder plans, Ember handles the volume",
-			"Muse Spark Open (Oct 15, 2026): open-weight sibling — 816B total / 42B active MoE, 1M context, multimodal input. Released under the Muse Model License (free use and fine-tuning, but products must show \"Built with Muse Spark Open\"), so it is not OSI open source",
+			"Muse Wonder (Oct 12, 2026): closed-weight flagship, 1M context, $4/$20 per 1M via the Meta Model API and Muse Code. Muse Wonder Full, the higher tier, is only in Muse Code's $50 and $200 monthly plans",
+			"Muse Spark 1.3 (Sept 2, 2026): cheaper tier for coding and longer-horizon agentic work, $1.25/$4.25 per 1M",
+			"Muse Ember (Nov 9, 2026): cheapest model at $0.10 per 1M input, built for high-volume agent work like routing and extraction",
+			"Muse Spark Open (Oct 15, 2026): open-weight, 816B total / 42B active MoE, 1M context. The Muse Model License requires \"Built with Muse Spark Open\" on products, so it is not OSI open source"
 		],
 		bestFor: "Frontier multimodal reasoning, agentic and terminal coding (Muse Code), closed-API enterprise deployments"
 	},
@@ -372,13 +369,13 @@ const openSourceModels = [
 		bestFor: "RAG pipelines, enterprise search, knowledge-grounded assistants"
 	},
 	{
-		name: "Qwen 3.8",
+		name: "Qwen 4",
 		company: "Alibaba Cloud",
 		location: "Hangzhou, China",
 		color: "#f472b6",
-		tagline: "The multilingual giant — Qwen3.8-Max is now the flagship, succeeding Qwen 3.7 Max; open-weight Qwen3.5 remains available.",
+		tagline: "The multilingual giant — Qwen4-Max is now the hosted flagship; open-weight Qwen3.8-27B and Qwen3.5 remain available.",
 		bullets: [
-			"Qwen3.8-Max (GA Aug 2, 2026): flagship succeeding Qwen 3.7 Max — 2.4T/95B active MoE; hosted API is multimodal, 1M context, $2/$6 per 1M; open weights (Aug 12) under a restricted revenue-share license, text-only, 262K context",
+			"Qwen4-Max (Nov 16, 2026): flagship succeeding Qwen3.8-Max — 2.4T-parameter MoE with 71B active, multimodal, 1M context. Alibaba Cloud Model Studio lists about $1.50/$4.50 per 1M, varying by region. No open weights for Max; Alibaba says smaller Qwen4 models will open-source later, with no date",
 			"Qwen3.8-27B (Aug 13–14, 2026): separate, genuinely self-hostable companion — 27B dense, multimodal with vision encoder, 262K context, Apache 2.0",
 			"Qwen3.5 (Feb 2026): open-weight, 397B params, available for self-hosting; Qwen3.5-Omni adds native audio/video/text (256K context, 113 languages)",
 			"Qwen3-Coder: 69.6% SWE-Bench Verified; Qwen3 Coder Next is the follow-up"
@@ -505,6 +502,7 @@ const personalAgents = [
 	{ name: "ChatGPT dots", company: "OpenAI", color: "#10b981", bestFor: "Always-on background agent", details: "GPT-6 Astra in OpenAI's cloud. Pro and Business Premium, first dot included; not in the EEA, UK, or Switzerland" },
 	{ name: "Gemini Spark", company: "Google", color: "#60a5fa", bestFor: "Ongoing tasks across Google apps", details: "Gemini in Google's cloud. Google AI Pro ($19.99/mo) and Ultra; not in the EEA, UK, or Switzerland" },
 	{ name: "Grok Bot", company: "xAI with Cursor", color: "#f97316", bestFor: "Named bots on a shared cloud computer", details: "Cursor-managed mix of xAI and third-party models, no model picker, on a shared Cursor-hosted cloud computer. Paid X Subscription plans, from $30/mo" },
+	{ name: "Devin Bots", company: "Cognition", color: "#2dd4bf", bestFor: "Engineering teammate that leads a team of Devins", details: "Persistent agent with its own memory and tools, announced Nov 17 at devin.ai/bots. Cognition hasn't published pricing or the underlying model" },
 	{ name: "Hermes Agent", company: "Nous Research", color: "#fbbf24", bestFor: "Open-source agent with persistent memory", details: "Self-hosted with your own model (Nous Portal, OpenRouter, OpenAI, or local). Free; model and hosting costs vary" },
 	{ name: "Instinct", company: "Spear Street Technology", color: "#94a3b8", bestFor: "An agent you text or call", details: "Reached by text or call. Invite-only beta, free for now" },
 	{ name: "Muse", company: "Meta", color: "#7c3aed", bestFor: "Personal tasks like email, travel, and shopping", details: "Muse Spark 1.3 in Meta's cloud. US only; free tier, Power $20/mo, Maximum $100/mo" },
@@ -573,7 +571,7 @@ const scenarios = [
 		tasks: [
 			{ task: "Write long-form technical content", model: "Claude Sonnet 5.5", color: "#c084fc" },
 			{ task: "Draft emails and business writing", model: "GPT-5.x", color: "#10b981" },
-			{ task: "Translate content across 100+ languages", model: "Qwen 3.8", color: "#f472b6" },
+			{ task: "Translate content across 100+ languages", model: "Qwen 4", color: "#f472b6" },
 			{ task: "Summarize meeting transcripts", model: "Gemini 3.x", color: "#60a5fa" },
 		]
 	},
@@ -582,7 +580,7 @@ const scenarios = [
 
 <Layout
 	title="AI Models Guide 2026"
-	description="Quick reference to major AI models of 2026: Claude Fable 5.2, Opus 5.5, GPT-6 Astra, Gemini 4 Argon, Grok 4.7, and more. Costs and use cases compared."
+	description="Quick reference to major AI models of 2026: Claude Fable 5.2, Opus 5.5, GPT-6.2 Astra, Gemini 4 Neon, Grok 4.7, and more. Costs and use cases compared."
 	ogTitle="AI Models Guide 2026 — Every Major Model Compared"
 	ogDescription="Claude, GPT-6, Gemini 4, Grok, Muse, DeepSeek and more, side by side. Cost, context window, and what each model is best at. Updated weekly."
 	canonicalUrl="https://lukestahl.io/ai-models-guide/"
@@ -597,7 +595,7 @@ const scenarios = [
 		"@context": "https://schema.org",
 		"@type": "Article",
 		"headline": "AI Models Guide 2026 — Every Major Model Compared",
-		"description": "A quick-reference to the major AI models in 2026. Claude Opus 5.5, Claude Fable 5.2, GPT-6 Astra, GPT-6 Sol, GPT-5.5 and GPT-5.5 Instant, Gemini 4 Argon, Gemini 4 Carbon, Gemini 4 Hydrogen, Gemini Omni, Grok 4.7, Grok 4 Heavy, Cursor Composer 2.5, SubQ, Llama 4, Amazon Nova 2, DeepSeek V4, MiniMax M3.1 Flash, Kimi K3.1 Pro, GLM-5.3, Muse Ember, SWE-2 Flash, Mistral, Qwen 3.8, Gemma 4, Microsoft MAI, plus restricted cyber models GPT-5.5-Cyber, Claude Mythos 5.2, and Gemini 3.8 Flash Cyber.",
+		"description": "A quick-reference to the major AI models in 2026. Claude Opus 5.5, Claude Fable 5.2, GPT-6.2 Astra, GPT-6.2 Sol, GPT-5.5 and GPT-5.5 Instant, Gemini 4 Neon, Gemini 4 Argon, Gemini 4 Carbon, Gemini 4 Hydrogen, Gemini Omni, Grok 4.7, Grok 4 Heavy, Cursor Composer 2.5, SubQ, Llama 4, Amazon Nova 2, DeepSeek V4, MiniMax M3.1 Flash, Kimi K3.1 Pro, GLM-5.3, Muse Ember, SWE-2 Flash, Mistral, Qwen4-Max, Gemma 4, Microsoft MAI Code 2, plus restricted cyber models GPT-5.5-Cyber, Claude Mythos 5.2, and Gemini 3.8 Flash Cyber.",
 		"author": {
 			"@type": "Person",
 			"name": "Luke Stahl",
@@ -614,7 +612,7 @@ const scenarios = [
 			"@type": "WebPage",
 			"@id": "https://lukestahl.io/ai-models-guide/"
 		},
-		"keywords": "AI models, personal AI agents, Claude Duet, ChatGPT dots, Gemini Spark, Grok Bot, Hermes Agent, Instinct, OpenClaw, Claude Opus 5.5, Claude Opus 5, Claude Sonnet 5.5, Claude Haiku 5.5, Claude Fable 5.2, Claude Mythos 5.2, GPT-6 Astra, GPT-6 Sol, GPT-5.5, GPT-5.5 Instant, Gemini 4 Argon, Gemini 4 Carbon, Gemini 4 Hydrogen, Gemini 3.8 Flash Cyber, Gemini 3.5 Flash-Lite, Gemini Omni, Grok 4.7, Grok 4 Heavy, Cursor Composer 2.5, SubQ, Llama 4, Meta Muse Wonder, Muse Spark 1.3, Muse Ember, Muse Spark Open, Muse Code, Amazon Nova 2, DeepSeek V4, MiniMax M3, MiniMax M3.1 Flash, Mistral Large 4, Mistral Small 4, Mistral Medium 3.5, Qwen 3.8, Qwen3.8-Max, Qwen3.8-27B, Qwen 3.7 Max, Qwen3 Coder Next, Gemma 4, Microsoft MAI, Phi-4-reasoning, Cohere Command A+, Kimi K3.1 Pro, GLM-5.3, GLM-5.3-Flash, SWE-2 Flash, Cognition, NVIDIA Nemotron 3 Ultra 550B, GPT-5.5-Cyber, Apple AFM 3, AI comparison, LLM guide 2026"
+		"keywords": "AI models, personal AI agents, Claude Duet, ChatGPT dots, Gemini Spark, Grok Bot, Devin Bots, Hermes Agent, Instinct, OpenClaw, Claude Opus 5.5, Claude Opus 5, Claude Sonnet 5.5, Claude Haiku 5.5, Claude Fable 5.2, Claude Mythos 5.2, GPT-6.2 Astra, GPT-6.2 Sol, GPT-6 Astra, GPT-5.5, GPT-5.5 Instant, Gemini 4 Neon, Gemini 4 Argon, Gemini 4 Carbon, Gemini 4 Hydrogen, Gemini 3.8 Flash Cyber, Gemini 3.5 Flash-Lite, Gemini Omni, Grok 4.7, Grok 4 Heavy, Cursor Composer 2.5, SubQ, Llama 4, Meta Muse Wonder, Muse Spark 1.3, Muse Ember, Muse Spark Open, Muse Code, Amazon Nova 2, DeepSeek V4, MiniMax M3, MiniMax M3.1 Flash, Mistral Large 4, Mistral Small 4, Mistral Medium 3.5, Qwen 4, Qwen4-Max, Qwen3.8-Max, Qwen3.8-27B, Qwen3 Coder Next, Gemma 4, Microsoft MAI, MAI Code 2, Phi-4-reasoning, Cohere Command A+, Kimi K3.1 Pro, GLM-5.3, GLM-5.3-Flash, SWE-2 Flash, Cognition, NVIDIA Nemotron 3 Ultra 550B, GPT-5.5-Cyber, Apple AFM 3, AI comparison, LLM guide 2026"
 	})} />
 
 	<!-- JSON-LD: BreadcrumbList -->
@@ -638,7 +636,7 @@ const scenarios = [
 			<section class="hero">
 				<h1 class="hero-title">AI Models<br/><span class="hero-title-accent">Guide</span></h1>
 				<p class="hero-subtitle">A quick-reference to the major AI models, who makes them, and what they do best.</p>
-				<div class="hero-badge">Updated November 14, 2026</div>
+				<div class="hero-badge">Updated November 21, 2026</div>
 			</section>
 
 			<div class="guide-layout">
@@ -673,6 +671,40 @@ const scenarios = [
 					<li><a href="#image-video">Image &amp; Video</a></li>
 				</ul>
 			</details>
+
+			<section class="stack" aria-labelledby="stack-title">
+				<p class="stack-eyebrow" id="stack-title">How this guide uses these terms</p>
+				<div class="stack-layout">
+					<div class="nest" aria-hidden="true">
+						<div class="nest-box nest-bot" style="--c: #2dd4bf;">
+							<span class="nest-label">Bot</span>
+							<div class="nest-box nest-agent" style="--c: #c084fc;">
+								<span class="nest-label">Agent</span>
+								<div class="nest-box nest-model" style="--c: #60a5fa;">
+									<span class="nest-label">Model</span>
+									<p class="nest-items">prompt in / response out</p>
+								</div>
+								<p class="nest-items">instructions / context / tools</p>
+							</div>
+							<p class="nest-items">computer / browser / files / accounts<br>routines / memory / approvals</p>
+						</div>
+					</div>
+					<dl class="stack-legend">
+						<div class="stack-row" style="--c: #60a5fa;">
+							<dt>Model</dt>
+							<dd>The AI engine, like Claude, GPT or Gemini. It reads a prompt and writes a response.</dd>
+						</div>
+						<div class="stack-row" style="--c: #c084fc;">
+							<dt>Agent</dt>
+							<dd>A model packaged with instructions, context and tools, so it can decide and carry out the steps of a task.</dd>
+						</div>
+						<div class="stack-row" style="--c: #2dd4bf;">
+							<dt>Bot</dt>
+							<dd>One or more agents wrapped in a workspace of their own (computer, browser, files, accounts) with routines, memory and approvals, so they work like a coworker. Most products in the Personal Agents section are bots in this sense.</dd>
+						</div>
+					</dl>
+				</div>
+			</section>
 
 			<!-- Quick Reference -->
 			<section class="section" id="quick-reference">
@@ -790,7 +822,7 @@ const scenarios = [
 					</table>
 				</div>
 				<p class="media-note">
-					Agents work in the background on your behalf, unlike chat models. Plans and prices change often, so check the vendor before you buy.
+					Plans and prices change often, so check the vendor before you buy.
 				</p>
 			</section>
 
