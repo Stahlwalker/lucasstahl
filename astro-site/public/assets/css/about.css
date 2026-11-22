@@ -527,6 +527,54 @@
     gap: 2rem;
 }
 
+.skill-category-wide {
+    grid-column: 1 / -1;
+}
+
+.skill-category.skill-category-ai {
+    --ai-accent: var(--accent-teal, #22d3ee);
+    border: 1px dashed color-mix(in srgb, var(--ai-accent) 55%, transparent);
+}
+
+[data-theme="light"] .skill-category.skill-category-ai {
+    --ai-accent: #0891b2;
+    border: 1.5px dashed color-mix(in srgb, var(--ai-accent) 60%, transparent);
+}
+
+.skill-category-ai .skill-category-title .icon-svg svg {
+    fill: var(--ai-accent);
+}
+
+.skill-category-ai .skill-category-title::after {
+    content: '';
+    width: 0.55rem;
+    height: 1.15rem;
+    background: var(--ai-accent);
+    animation: ai-caret 1.1s steps(1) infinite;
+}
+
+.skill-category-ai .skill-tag {
+    border-color: color-mix(in srgb, var(--ai-accent) 30%, rgba(255, 255, 255, 0.1));
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .skill-category.skill-category-ai:hover {
+        border-color: var(--ai-accent);
+    }
+}
+
+@keyframes ai-caret {
+    50% {
+        opacity: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .skill-category-ai .skill-category-title::after {
+        animation: none;
+    }
+}
+
 .skill-category {
     background: var(--bg-secondary);
     border: 1px solid rgba(255, 255, 255, 0.1);
