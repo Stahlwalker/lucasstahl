@@ -5,7 +5,7 @@ import Layout from '../layouts/Layout.astro';
 const quickReference = [
 	{ model: "GPT-5.x / GPT-6", company: "OpenAI", bestFor: "General purpose", differentiator: "GPT-6.2 Astra (Nov 17) is the flagship at $8/$40 per 1M; GPT-6.2 Sol ($2/$10) is the everyday model, with GPT-6.1 Terra (Oct 26, $1/$5) and GPT-6 Luna as the cheaper API tiers", color: "#10b981" },
 	{ model: "Claude 5.x Family", company: "Anthropic", bestFor: "Coding & reasoning", differentiator: "Opus 5.5 (Sep 22) is the recommended starting model at 40% lower typical cost than Opus 5; Fable 5.2 (Nov 9) is the max-capability tier at $8/$40 per 1M, up to 30% faster than 5.1", color: "#c084fc" },
-	{ model: "Gemini 3.x / 4", company: "Google DeepMind", bestFor: "Multimodal", differentiator: "Gemini 4 Neon (Nov 18) is the new mid-tier at $3/$15 per 1M; Hydrogen (Nov 12) is the default workhorse at $1.50/$7.50; Gemini 4 Carbon (public Nov 10) and Argon (Sep 30) are the frontier tiers at $2/$10 per 1M through Nov 30, then $4/$20", color: "#60a5fa" },
+	{ model: "Gemini 3.x / 4", company: "Google DeepMind", bestFor: "Multimodal", differentiator: "Gemini 4 Neon (Nov 18) is the new mid-tier at $3/$15 per 1M; Hydrogen (Nov 12) is the default workhorse at $1.50/$7.50; Gemini 4 Carbon (public Nov 10) and Argon (Oct 13) are the frontier tiers at $2/$10 per 1M through Nov 30, then $4/$20", color: "#60a5fa" },
 	{ model: "Grok 4.x", company: "xAI", bestFor: "Real-time info", differentiator: "Grok 4.7 (Sep 21) is the current flagship — $2/$6 per 1M tokens, with a Fast variant at 2× the speed and price", color: "#f97316" },
 	{ model: "Llama 4", company: "Meta", bestFor: "Open-source", differentiator: "10M token context, fully self-hostable; Behemoth shelved; Meta's newest open-weight model is Muse Spark Open", color: "#06b6d4" },
 	{ model: "Muse Wonder / Spark", company: "Meta Superintelligence Labs", bestFor: "Agentic coding & reasoning", differentiator: "Muse Wonder (Oct 12) is Meta's new closed-weight frontier model at $4/$20 per 1M; Spark 1.3 (Sep 2) is the cheaper tier at $1.25/$4.25; Muse Ember (Nov 9) is the budget agent tier at $0.10 per 1M input; open-weight Muse Spark Open followed Oct 15", color: "#7c3aed" },
@@ -18,7 +18,7 @@ const quickReference = [
 	{ model: "Command A+", company: "Cohere", bestFor: "Enterprise RAG", differentiator: "218B MoE, Cohere's first fully Apache 2.0 frontier model, tuned for RAG", color: "#fb923c" },
 	{ model: "Gemma 4", company: "Google", bestFor: "On-device open-weight", differentiator: "31B ranks #3 on Arena AI; E2B/E4B optimized for on-device Android", color: "#34d399" },
 	{ model: "Kimi K3 / K3.1", company: "Moonshot AI", bestFor: "Agentic open-source", differentiator: "K3.1 Pro (Oct 23) post-trains the same 2.8T MoE at $2/$10 per 1M with 1M context; open weights on Hugging Face under the Kimi K3.1 Pro License", color: "#ff6b6b" },
-	{ model: "Tencent Hy4", company: "Tencent", bestFor: "Agents & computer use", differentiator: "Hy4 (Nov 4) is Tencent's new flagship family with computer use; final open weights not yet published, only the Aug 28 preview weights", color: "#38bdf8" },
+	{ model: "Tencent Hy4", company: "Tencent", bestFor: "Agents & computer use", differentiator: "Hy4 (Nov 4) is Tencent's new flagship family with computer use; Hy4 flash (Nov 16) is the low-cost open-weight tier, while the flagship's weights are still preview-only", color: "#38bdf8" },
 	{ model: "Ling 3.1 Flash", company: "InclusionAI (Ant Group)", bestFor: "Open-weight agents & coding", differentiator: "560B MoE, 25B active, 1M context, MIT license — open weights on Hugging Face since Oct 14", color: "#e11d48" },
 	{ model: "GLM-5.3", company: "Zhipu AI", bestFor: "Open frontier", differentiator: "MIT license, 1M context; GLM-5.3-Flash (Aug 26) adds native multimodal at ~1/10th the price, trained on Huawei Ascend chips", color: "#4ecdc4" },
 	{ model: "Atria Dawn Preview", company: "Shanghai AI Lab", bestFor: "Long-horizon research agents", differentiator: "744B MoE on a GLM-5.2 base, MIT license; vendor-reported top-5-of-16 benchmark claims, not yet independently verified", color: "#e879f9" },
@@ -74,7 +74,7 @@ const frontierModels = [
 			"Gemini 4 Neon (Nov 18, 2026): mid-tier model for coding, knowledge work, and science — $3/$15 per 1M, 1M context",
 			"Gemini 4 Hydrogen (Nov 12, 2026): default workhorse for everyday coding and agentic work — $1.50/$7.50 per 1M, 1M context, four thinking levels",
 			"Gemini 4 Carbon (public Nov 10, 2026): strongest model for long-horizon agentic work, hard coding, and research. Same introductory price as Argon; Google AI Ultra subscribers get it in the Gemini app",
-			"Gemini 4 Argon (Sept 30, 2026): generally available flagship for coding, agentic work, and research, with 1M-token output. $2/$10 per 1M through Nov 30, then $4/$20",
+			"Gemini 4 Argon (Oct 13, 2026): generally available flagship for coding, agentic work, and research, with 1M-token output. $2/$10 per 1M through Nov 30, then $4/$20",
 			"Also: Gemini 3.5 Flash-Lite (cost-efficient, high volume), Flash Live and Flash TTS (audio), and Omni 1.2 Flash (Nov 5; any input to video, up to 15 seconds at $0.07 per second for 720p)"
 		],
 		bestFor: "Multimodal apps, Google Workspace users, cost-conscious teams"
@@ -280,7 +280,8 @@ const openSourceModels = [
 		tagline: "Tencent's flagship model family, built for agents and computer use.",
 		bullets: [
 			"Hy4 (Nov 4, 2026): Tencent's new flagship with computer use, available through its API. Tencent says it trails Claude and GPT",
-			"Open weights: only the Hy4 preview (Aug 28, 2026, 770B total / 49B active) is downloadable so far"
+			"Hy4 flash (Nov 16, 2026): Tencent's cheapest Hy model — 224B total / 12B active, 1M context, $0.07/$0.281 per 1M. Open weights on Hugging Face",
+			"Flagship open weights: only the Hy4 preview (Aug 28, 2026, 770B total / 49B active) is downloadable so far"
 		],
 		bestFor: "Agentic workflows and computer use at low API cost"
 	},
@@ -353,6 +354,18 @@ const openSourceModels = [
 			"All models natively multimodal; larger variants support 256K context"
 		],
 		bestFor: "On-device Android apps, open-weight deployment, resource-constrained environments"
+	},
+	{
+		name: "Inkling 2 Mini",
+		company: "Thinking Machines Lab",
+		location: "San Francisco",
+		color: "#f472b6",
+		tagline: "Open-weight model small enough to run on a laptop — it loops its middle layers to reason more per token.",
+		bullets: [
+			"Released Nov 20, 2026 with open weights on Hugging Face, Ollama, and llama.cpp",
+			"26.4B total / 3.4B active MoE, about 20GB in memory; runs on a Mac with 32GB of RAM via Ollama"
+		],
+		bestFor: "Local and on-device coding and agent work"
 	},
 	{
 		name: "Cohere Command A+",
@@ -636,7 +649,7 @@ const scenarios = [
 			<section class="hero">
 				<h1 class="hero-title">AI Models<br/><span class="hero-title-accent">Guide</span></h1>
 				<p class="hero-subtitle">A quick-reference to the major AI models, who makes them, and what they do best.</p>
-				<div class="hero-badge">Updated November 21, 2026</div>
+				<div class="hero-badge">Updated November 28, 2026</div>
 			</section>
 
 			<div class="guide-layout">
@@ -928,7 +941,7 @@ const scenarios = [
 					))}
 				</div>
 				<p class="media-note">
-					<strong>Video generation leaders:</strong> Google Veo 3.1 (native 4K + vertical video), Kling 4.0 (Oct 16 — native 30-second clips, 4K with 10-bit HDR), Runway Gen-4.5 (creative/cinematic), Runway Gen-4 Turbo (July 2026 — ~60% faster inference at comparable quality to Gen-4), and Seedance 2.0 (ByteDance — notable for Identity Lock, which maintains consistent faces across multi-scene video). Sora 2 (OpenAI) is gone: the app shut down April 26, 2026 and the API on September 24, 2026.
+					<strong>Video generation leaders:</strong> Google Veo 3.1 (native 4K + vertical video), Kling 4.0 (Oct 16 — native 30-second clips, 4K with 10-bit HDR), Runway Gen-4.5 (creative/cinematic), Runway Gen-4 Turbo (July 2026 — ~60% faster inference at comparable quality to Gen-4), and Seedance 2.5 (ByteDance — 30-second clips with audio and reference control, plus a lower-cost Flash tier). Sora 2 (OpenAI) is gone: the app shut down April 26, 2026 and the API on September 24, 2026.
 				</p>
 			</section>
 
